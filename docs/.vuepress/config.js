@@ -74,6 +74,12 @@ module.exports = {
           '/help/faq',
           '/help/contact'
         ]
+      },
+      {
+        title: 'Open in Nanome button',
+        collapsable: true,
+        sidebarDepth: 1,
+        children: ['/deeplinking']
       }
     ],
     sidebarDepth: 2,
