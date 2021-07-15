@@ -1,12 +1,19 @@
 <template>
   <div class="landing-page">
-    <p>
+    <HeroCarousel :slides="data.hero" />
+    <HomeCarousel
+      v-for="carousel in data.carousels"
+      :key="carousel.title"
+      v-bind="carousel"
+    />
+
+    <!-- <p>
       Collaborative virtual reality tools for nanoscale design. Nanome is
       available for Windows and the Oculus Quest (closed beta). Please contact
       us at
       <a href="mailto:support@nanome.ai">support@nanome.ai</a> to be added to
       the Quest beta.
-    </p>
+    </p> -->
 
     <h2>Featured Sections</h2>
     <div class="featured">
@@ -51,17 +58,26 @@
       </a>
     </div>
 
-    <h2>Download Nanome</h2>
+    <h2>Compatible Headsets</h2>
     <div class="text-center">
-      <a class="btn" href="https://home.nanome.ai/setup" target="_blank">
+      <!-- <a class="btn" href="https://home.nanome.ai/setup" target="_blank">
         Download Nanome
-      </a>
-      <img class="headsets" src="/assets/original/gettingStarted-page/supportedheadsets2.png" alt="headsets" />
+      </a> -->
+      <img
+        class="headsets"
+        src="/assets/original/gettingStarted-page/supportedheadsets2.png"
+        alt="headsets"
+      />
     </div>
 
+    <h2>Requirements</h2>
     <div class="requirements">
       <div>
-        <h3><a href="https://docs.nanome.ai/help/hardwarerequirements.html">Minimum Requirements</a></h3>
+        <h3>
+          <a href="https://docs.nanome.ai/help/hardwarerequirements.html">
+            Minimum Requirements
+          </a>
+        </h3>
         <div><b>Operating System:</b> Windows 10</div>
         <div><b>Processor:</b> i5-4590</div>
         <div><b>Memory:</b> 4 GB RAM</div>
@@ -70,7 +86,11 @@
       </div>
 
       <div>
-        <h3><a href="https://docs.nanome.ai/help/hardwarerequirements.html">Recommended Requirements</a></h3>
+        <h3>
+          <a href="https://docs.nanome.ai/help/hardwarerequirements.html">
+            Recommended Requirements
+          </a>
+        </h3>
         <div><b>Operating System:</b> Windows 10</div>
         <div><b>Processor:</b> Intel i7</div>
         <div><b>Memory:</b> 8 GB RAM</div>
@@ -79,7 +99,7 @@
       </div>
     </div>
 
-    <div class="home-video">
+    <!-- <div class="home-video">
       <iframe
         width="900"
         height="500"
@@ -88,11 +108,24 @@
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
       ></iframe>
-    </div>
+    </div> -->
   </div>
 </template>
 
+<script>
+export default {
+  props: ['data'],
+}
+</script>
+
 <style>
+.landing-page h2 {
+  font-size: 1.5em;
+  border: unset;
+  font-weight: unset;
+  margin: 2em 0 1em;
+}
+
 .landing-page .featured {
   width: 100%;
   display: grid;

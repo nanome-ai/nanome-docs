@@ -92,7 +92,8 @@ module.exports = {
         delay: 2000,
         options: {
           scaleBase: 0.8
-        }
+        },
+        selector: '.vimg > img'
       }
     ]
   ]
