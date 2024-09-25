@@ -10,6 +10,18 @@ module.exports = {
     sidebar: [
       '/',
       {
+        title: 'MARA',
+        collapsable: true,
+        sidebarDepth: 1,
+        children: [
+          '/mara/navigation',
+          '/mara/features',
+          '/mara/resources',
+          '/mara/deployment',
+          '/mara/technical',
+        ],
+      },
+      {
         title: 'Nanome Controls',
         collapsable: true,
         sidebarDepth: 1,
