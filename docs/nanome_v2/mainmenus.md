@@ -37,6 +37,12 @@ This area displays the content of the current Navbar option that is selected. (S
 
 The Scenes section allows you to manage the scenes in the session. This panel stays visible on all Navbar options.
 
+### Ligand Table Menu
+
+Accessible from the Navbar, the Ligand Table Menu lets you view and rate ligands while accessing detailed, RDKit-calculated properties in XR. 
+
+<vimg src="nanome-v2/ligand-table-menu.png" />
+
 ## Ligand Builder Menu
 
 The Ligand Builder Menu appears when in you are in Ligand Builder mode. There are four tools within this menu:

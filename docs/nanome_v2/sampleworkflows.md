@@ -26,3 +26,19 @@ Limitations: Each ‘open in headset’ from MARA will create a new workspace. R
     - Invite a user directly by email if they have a Nanome account. (This must be an exact email match, there is no auto-completion.)
 - Each user that joins with the code or was added via email will appear in the workspace list. 
     - Each user permission can be individually managed (including setting to none).
+
+## Displaying Interactions Between Structures
+
+- Make sure your structures show up as entries in the main section of the Application Menu.
+- Find one of the entries, then click on the '3 dots' button to the right of the entry name.
+- Select 'Add inter-entry interactions' from the pop-up menu, then choose the other entry you want to view and click 'Run'.
+
+<vimg src="nanome-v2/display-interactions.gif" />
+
+## Aligning Proteins in XR
+
+- Make sure your proteins show up as entries in the main section of the Application Menu.
+- Select one protein in the entry list, then click on the 'align' button to the right of the entry name.
+- In the pop-up menu, select the protein you want to align with, then click 'Align'.
+
+<vimg src="nanome-v2/align-proteins.gif" />
