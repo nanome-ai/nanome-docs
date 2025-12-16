@@ -74,6 +74,7 @@ module.exports = {
               '/nanome1x/plugins/chemicalproperties',
               '/nanome1x/plugins/conformergenerator',
               '/nanome1x/plugins/docking',
+              '/nanome1x/plugins/LiveDesign',
               '/nanome1x/plugins/minimization',
               '/nanome1x/plugins/realtimescoring',
               '/nanome1x/plugins/structureprep',
