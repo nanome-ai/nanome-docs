@@ -22,7 +22,7 @@ Once logged in, click the "Get Auth Token" button, this will redirect you to a w
 
 If the keyboard is not opened, click on the keyboard icon on the lower left part of the web browser, then click to select the whole token string and click "Copy" button, next to the keyboard.
 
-Then, on the LiveDesign plugin, click on the "Auth Token" input field, just under the "Paste Auth Token Below" text. The keyboard will appear and you can use the "Paste" button to paste the authentification token.
+Then, on the LiveDesign plugin, click on the "Auth Token" input field, just under the "Paste Auth Token Below" text. The keyboard will appear and you can use the "Paste" button to paste the authentication token.
 
 <vimg src="plugins-page/livedesign/token_paste.jpg"/>
 
