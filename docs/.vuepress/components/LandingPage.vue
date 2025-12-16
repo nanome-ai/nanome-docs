@@ -1,6 +1,22 @@
 <template>
   <div class="landing-page">
     <HeroCarousel :slides="data.hero" />
+
+    <!-- New Updates Section -->
+    <div v-if="data.newUpdates" class="new-updates">
+      <h2>New Updates</h2>
+      <div class="update-card">
+        <a :href="data.newUpdates.url">
+          <img :src="data.newUpdates.img" :alt="data.newUpdates.title" />
+        </a>
+        <div class="update-content">
+          <h3>{{ data.newUpdates.title }}</h3>
+          <p>{{ data.newUpdates.description }}</p>
+          <a :href="data.newUpdates.url" class="btn">Learn More</a>
+        </div>
+      </div>
+    </div>
+
     <HomeCarousel
       v-for="carousel in data.carousels"
       :key="carousel.title"
@@ -109,6 +125,59 @@ export default {
   border: unset;
   font-weight: unset;
   margin: 2em 0 1em;
+}
+
+.landing-page .new-updates {
+  margin: 2rem 0 3rem;
+}
+
+.landing-page .update-card {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.landing-page .update-card img {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+
+.landing-page .update-card img:hover {
+  transform: scale(1.02);
+}
+
+.landing-page .update-content {
+  flex: 1;
+}
+
+.landing-page .update-content h3 {
+  margin-top: 0;
+  font-size: 1.8rem;
+  color: #2c3e50;
+}
+
+.landing-page .update-content p {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.6;
+  margin: 1rem 0 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .landing-page .update-card {
+    flex-direction: column;
+  }
+
+  .landing-page .update-card img {
+    max-width: 100%;
+  }
 }
 
 .landing-page .featured {

@@ -7,6 +7,11 @@ hero:
     url: https://drive.google.com/file/d/1tUNxT72rwmFEDi40arh8BAPsOEodpBw6/view
   - img: /assets/carousels/hero/discengine.png
     url: https://blog.matryx.ai/nanome-is-joining-forces-with-discngine-to-greatly-impact-the-sbdd-experience-1af0b83b3057
+newUpdates:
+  title: New LiveDesign Plugin Documentation
+  description: Explore our new LiveDesign plugin that allows you to seamlessly load molecular data from LiveDesign and send ligand poses to LiveReports. Authenticate with tokens, filter entities, and visualize 3D data directly in Nanome.
+  img: /assets/original/plugins-page/livedesign/loaded.jpg
+  url: /nanome1x/plugins/LiveDesign.html
 carousels:
   - title: Videos of Spatial Recordings
     numSlides: 4
