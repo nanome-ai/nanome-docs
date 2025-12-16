@@ -42,7 +42,7 @@ To load data from LiveDesign, first select a Project name in the list of project
 
 Similarly, select a LiveReport name and 3D columns. Remember that you can filter both by typing text in the input fields on top of the dropdown menus.
 
-Example of unfiletered and filtered LiveReport names:
+Example of unfiltered and filtered LiveReport names:
 
 <vimg src="plugins-page/livedesign/unfiltered.jpg"/>
 <vimg src="plugins-page/livedesign/filtered.jpg"/>
