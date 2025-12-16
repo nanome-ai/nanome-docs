@@ -4,9 +4,9 @@ title: LiveDesign
 
 # LiveDesign Plugin documentation
 
-## Authentification
+## Authentication
 
-This Nanome plugin uses an authentification token to interact with LiveDesign.
+This Nanome plugin uses an authentication token to interact with LiveDesign.
 
 When starting the plugin for the first time, this is what the login menu looks like:
 
