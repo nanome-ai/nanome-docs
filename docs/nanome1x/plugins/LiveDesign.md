@@ -76,3 +76,6 @@ If not, a new row will be created and poses will be added to it in the "Nanome U
 
 <vimg src="plugins-page/livedesign/sending.jpg"/>
 <vimg src="plugins-page/livedesign/ld.jpg"/>
+
+## Experiencing issues or not seeing the plugin?
+Feel free to reach out to support@nanome.ai and we'll get back to you soon. 
