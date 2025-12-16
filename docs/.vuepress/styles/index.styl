@@ -140,23 +140,29 @@
   li.slick-active button
     background #eee
 
-// Updated sidebar styling
-.sidebar-group {
-  .sidebar-heading {
-    color: #2c3e50 !important;
-  }
-  
-  // Style for nested items
-  .sidebar-group {
-    .sidebar-heading,
-    .sidebar-link {
-      color: rgba(44, 62, 80, 0.45) !important;
-    }
-  }
+// Updated sidebar styling - simplified approach
+// Target all sidebar links and headings with better contrast
+// Using solid color instead of transparency to avoid blending with white background
+.sidebar-link,
+.sidebar-heading,
+.sidebar-heading.open,
+.sidebar-heading > span:not(.arrow) {
+  color: #2c3e50 !important;
 }
 
-// Active/hover states
-.sidebar-link:hover,
+// Ensure non-clickable sub-group headings have full opacity
+.sidebar-group.is-sub-group > .sidebar-heading:not(.clickable) {
+  opacity: 1 !important;
+}
+
+// Active state
 .sidebar-link.active {
-  color: #3eaf7c !important;
+  color: #29a1ff !important;
+}
+
+// Hover states
+.sidebar-link:hover,
+.sidebar-heading:hover,
+.sidebar-heading:hover > span:not(.arrow) {
+  color: #29a1ff !important;
 }
