@@ -6,7 +6,7 @@ module.exports = {
     home: true,
     title: 'Documentation',
     docsDir: 'docs',
-    logo: '../assets/original/features-page/nanome-logo.png',
+    logo: '/assets/original/features-page/nanome-logo.png',
     sidebar: [
       '/',
       {
