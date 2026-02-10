@@ -22,7 +22,7 @@ In order to scale the environment or molecular structures, press down on the mid
 
 <vimg src="navigating-page/Grab_Molecule.gif" />
 
-In order to grab a structure, reach out and press the middle finger 'grip' button on one of the left or right controllers. Users can also grab structures from afar by pointing their ray/laser then pressing the 'grip' button.
+In order to grab a structure, reach out and press the middle finger 'grip' button on one of the left or right controllers. Users can also grab structures from a distance by pointing their ray/laser and then pressing the 'grip' button.
 
 Once the structure is grabbed, users can use the joystick or touchpad of their controllers to move the structure closer or further away from them.
 

@@ -138,7 +138,7 @@ If you experience an issue with Nanome, please be sure to send us the logs for t
 - #### The VR headset needs to be turned on during this process.
 - #### The computer you are connecting the headset to does not need to be VR-Ready. It can be a generic low spec computer.
 
-All-in-one VR headsets such as the Quest 2 or the Vive Focus 3 are Android based operating systems and log files are saved directly onto the headset. In order to move them or make a copy, you will need to connect your VR device to your computer via a USB-C cable. After pluggin in your headset via USB-C to your computer, make sure to turn on the headset and put it on. You will be prompted in-VR to click "Allow" when prompted to let the computer read the headset's files.
+All-in-one VR headsets such as the Quest 2 or the Vive Focus 3 are Android based operating systems and log files are saved directly onto the headset. In order to move them or make a copy, you will need to connect your VR device to your computer via a USB-C cable. After plugging in your headset via USB-C to your computer, make sure to turn on the headset and put it on. You will be prompted in-VR to click "Allow" to let the computer read the headset's files.
 
 Note that some USB-C cables are charging only cables and you will need one that can transmit data.
 
@@ -146,7 +146,7 @@ Now that the computer has access to read the VR headset's storage, there are two
 
 ### Windows
 
-Open your Windows File Explorer and look to the left panel. There you can see Storage Devices that are connected to your computer. You will see an item to the left that lists the associated File Storage for the VR headset. Sometime it is named "Quest" or "Oculus".
+Open your Windows File Explorer and look to the left panel. There you can see Storage Devices that are connected to your computer. You will see an item to the left that lists the associated File Storage for the VR headset. Sometimes it is named "Quest" or "Oculus".
 
 ## I have requests/ideas for new features, where can I send them?
 

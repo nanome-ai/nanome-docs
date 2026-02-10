@@ -27,7 +27,7 @@ From here you can drag and drop files into the web browser as well as rename, mo
 <vimg src="plugins-page/nanome-vault/web-upload.png" />
 
 
-After you launch Nanome, open up the Load Menu and go to the "Stacks" tab. This will show Nanome Vault that you can now click and navigate through the Nanome Vault and see what you have uploaded.
+After you launch Nanome, open up the Load Menu and go to the "Stacks" tab. This will show the Nanome Vault which you can now click and navigate through to see what you have uploaded.
 <vimg src="plugins-page/nanome-vault/plugin-shared.png" />
 
 Additionally, users can upload from inside a Nanome Session to the Nanome Vault to use for other applications or come back to later. 

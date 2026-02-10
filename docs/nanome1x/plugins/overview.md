@@ -6,7 +6,7 @@ title: Overview
 
 *The Nanome Platform's flexibility and extensibility comes from a robust Python API known as the Plugin System. It allows scientists and users to highly customize everything from the user interface to the integration of external molecular simulation tools.*
 
-## Plugin System and PythonAPI
+## Plugin System and Python API
 
 
 The Plugin System was built with interface extensibility at its core and enables computational chemistry tools and calculations all to happen in the cloud. This is critical for supporting all-in-one devices such as the Oculus Quest 2 and standalone Augmented Reality glasses. Plugins are also easily configurable and swappable for different computation packages to easily adapt to different workflows. Plugins extend your scientific capabilities by leveraging existing expert tools and radically advanced computation techniques whose only limit is your AWS credits and creativity.
@@ -22,13 +22,13 @@ Some examples of plugins that our customers love are:
 - Chemical Properties: Live chemical property prediction during design with RDKit
 - All of our public plugins are available on our [Github](https://github.com/nanome-ai) with the "plugins-" prefix.
 
-New users who sign up for a Nanome account get a 30-day free trial unlocking premium license capabilites and also early access to Nanome's cloud-hosted plugins.
+New users who sign up for a Nanome account get a 30-day free trial unlocking premium license capabilities and also early access to Nanome's cloud-hosted plugins.
 
 If you would like to develop plugins for Nanome, please reach out to us by [contacting us](mailto:hello@nanome.ai) and take a look at our development resources such as our [API documentation](https://nanome.readthedocs.org).
 
 ## Nanome Plugins List
 
-The following is the list of some our favorite plugins we have made so far:
+The following is the list of some of our favorite plugins we have made so far:
 
 - [Vault](vault.md)
 - [Minimization](minimization.md)
@@ -44,4 +44,4 @@ The following is the list of some our favorite plugins we have made so far:
 - 2D Chemical Preview
 
 
-A general rule of thumb is that any 3rd Party application that can interact using a command line or a python script would be easy to build a plugin for. Plugins can be designed and ran from different environments including Windows, Linux, and Mac operating systems depending on the requirements needed from the plugin.
+A general rule of thumb is that any 3rd Party application that can interact using a command line or a python script would be easy to build a plugin for. Plugins can be designed and run from different environments including Windows, Linux, and Mac operating systems depending on the requirements needed from the plugin.

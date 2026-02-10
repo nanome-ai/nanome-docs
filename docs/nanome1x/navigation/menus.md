@@ -16,7 +16,7 @@ The Load, Plugin, Display, Color, Modify, Select, Macro, and Spatial Tutorial Me
 
 <vimg src="navigating-page/Limiter.png" />
 
-The Device Limiter is an indicator that shows how close the current amount of atoms is to hitting the limit of a standalone device's computing capability. This indicator only shows up in the when using a device in standalone mode (if applicable). When the amount of atoms approaches or hit the limit, the following prompts will show up.
+The Device Limiter is an indicator that shows how close the current amount of atoms is to hitting the limit of a standalone device's computing capability. This indicator only shows up when using a device in standalone mode (if applicable). When the amount of atoms approaches or hits the limit, the following prompts will show up.
 
 <vimg src="navigating-page/Limiter-Close.jpg" />
 <vimg src="navigating-page/Limiter-Max.jpg" />
@@ -26,7 +26,7 @@ The Device Limiter is an indicator that shows how close the current amount of at
 <vimg src="navigating-page/Entry-Hierarchy.jpg" />
 <vimg src="navigating-page/Entry-HierarchyMenu.jpg" />
 
-Hierarchy menus lists out the component of an entity, such as chains and residues, in hierarchical levels.
+The Hierarchy Menu lists out the components of an entity, such as chains and residues, in hierarchical levels.
 
 ### Different Browsing Modes (Small, Medium, Large)
 
@@ -136,6 +136,7 @@ Recent files loaded in Nanome.
 ### Cancel a load
 
 <table>
+<tbody>
 <tr>
 <td width="50%" ></td>
 <td width="50%" ></td>
@@ -144,6 +145,7 @@ Recent files loaded in Nanome.
 <td><vimg src="navigating-page/loadingtoolong.jpg" /></td>
 <td><vimg src="navigating-page/cancelledload.jpg" /></td>
 </tr>
+</tbody>
 </table>
 
 Cancel the loading of structures from the menu source tab, perfect for if your structure is taking too long to load or you made a mistake in the PDB code.
@@ -167,7 +169,7 @@ This tab contains options for the visual of atoms and bonds.
 | <vimg src="navigating-page/Display-Atom-Wire-Button.jpg" />Wire      | Hide atoms and show bonds in thin wire visual. | <vimg src="navigating-page/Display-Atom-Wire-Small.jpg" /> |
 | <vimg src="navigating-page/Display-Atom-Stick-Button.jpg" />Stick      | Show small atoms and bonds in volumetric stick visual.      |   <vimg src="navigating-page/Display-Atom-Stick-Small.jpg" /> |
 | <vimg src="navigating-page/Display-Atom-Vanderwal-Button.jpg" />Van Der Waals | Show atoms in thin Van Der Waals visual and hide bonds.      |    <vimg src="navigating-page/Display-Atom-Vanderwal-Small.jpg" /> |
-| <vimg src="navigating-page/Display-Atom-Adaptive-Button.jpg" />Adaptive | Show atoms with radius proportion to their color value and hide bonds.      |    <vimg src="navigating-page/Display-Atom-Adaptive-Small.jpg" /> |
+| <vimg src="navigating-page/Display-Atom-Adaptive-Button.jpg" />Adaptive | Show atoms with radius proportional to their b-factor value and hide bonds.      |    <vimg src="navigating-page/Display-Atom-Adaptive-Small.jpg" /> |
 | <vimg src="navigating-page/Display-Atom-BallnStick-Button.jpg" />Ball & Stick | Hide all atoms and bonds. | <vimg src="navigating-page/Display-Atom-BallnStick-Small.jpg" /> |
 
 ### Ribbon
@@ -180,7 +182,7 @@ This tab contains options for the visual of ribbons.
 |:-------------:|:-------------:|:-----:|
 | <vimg src="navigating-page/Display-Ribbon-Cartoon-Button.jpg" />Cartoon | Show ribbon in cartoon visual that highlight secondary structures using helix and arrows. | <vimg src="navigating-page/Display-Ribbon-Cartoon-Small.jpg" /> |
 | <vimg src="navigating-page/Display-Ribbon-Coil-Button.jpg" />Coil | Show ribbon in uniform tube visual.| <vimg src="navigating-page/Display-Ribbon-Coil-Small.jpg" />|
-| <vimg src="navigating-page/Display-Ribbon-Putty-Button.jpg" />Putty | Show ribbon in tube with widths proportional to the atoms' color value.| <vimg src="navigating-page/Display-Ribbon-Putty-Small.jpg" />|
+| <vimg src="navigating-page/Display-Ribbon-Putty-Button.jpg" />Putty | Show ribbon in tube with widths proportional to the atoms' b-factor value.| <vimg src="navigating-page/Display-Ribbon-Putty-Small.jpg" />|
 
 ### Surface
 

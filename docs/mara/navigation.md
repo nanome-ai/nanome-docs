@@ -26,7 +26,7 @@ MARA keeps a record of your previous chats, so you can refer back to them later.
 
 ### Tools
 
-The Tools sections display all of the tools currently available in MARA. You can sort by All or Custom tools, or you can query the list to see if a tools is available.
+The Tools sections display all of the tools currently available in MARA. You can sort by All or Custom tools, or you can query the list to see if a tool is available.
 
 You can currently create custom tools using Python snippets, HTML endpoints, or SQL queries. For more information on tool creation, see [here.](https://nanome.ai/blog/introduction-to-mara-tool-creation/)
 
