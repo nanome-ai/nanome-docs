@@ -52,7 +52,7 @@ Users can join a prescheduled meeting in Nanome by entering the Meeting ID provi
 
 <vimg src="navigating-page/createroom.png" />
 
-There are three Room Types a user can create depending on their Nanome Licence.
+There are three Room Types a user can create depending on their Nanome License.
 
 Room Types:
 

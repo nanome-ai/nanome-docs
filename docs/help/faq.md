@@ -6,7 +6,7 @@ title: FAQ
 
 ## What is Nanome?
 
-Nanome is a collaborative virtual-reality molecular modelling tool made for professional researchers working on structures and proteins at the nano scale. Analyze the 3D arrangement of molecules while inside of a protein binding pocket, surround your self in crystal data, or communicate your ligand design to your colleagues in the same virtual room. No matter what you do, Nanome empowers your research and enhances your understanding like no other tools have before. Whether you are a structural biologist, crystallographer, computational chemist, medicinal chemist, or a protein engineer, you will find your daily workflow much more intrigueing and effective in Nanome because of the power of VR.
+Nanome is a collaborative virtual-reality molecular modelling tool made for professional researchers working on structures and proteins at the nano scale. Analyze the 3D arrangement of molecules while inside of a protein binding pocket, surround your self in crystal data, or communicate your ligand design to your colleagues in the same virtual room. No matter what you do, Nanome empowers your research and enhances your understanding like no other tools have before. Whether you are a structural biologist, crystallographer, computational chemist, medicinal chemist, or a protein engineer, you will find your daily workflow much more intriguing and effective in Nanome because of the power of VR.
 
 ## What VR headsets does Nanome support?
 
@@ -16,7 +16,7 @@ Check out the full list on our <a href="https://docs.nanome.ai/help/hardwarerequ
 
 Nanome can be downloaded for free from all major Virtual Reality stores including [Oculus](https://nanome.ai/pricing/), [Steam](https://nanome.ai/pricing/), and [VivePort](https://www.viveport.com/apps/0a467f78-2ed2-43eb-ada8-9d677d5acf54/Nanome/), or directly from [https://home.nanome.ai/setup](https://home.nanome.ai/setup). Premium versions with upgraded features are available for purchase from our website at [https://nanome.ai/pricing/](https://nanome.ai/pricing/).
 
-## How to I update Nanome to the latest version?
+## How do I update Nanome to the latest version?
 
 Please download our [Nanome update guide](https://drive.google.com/file/d/1x6LEc1-kV3yp9XYgSqxnIsU8iv1ou4fk/view?usp=sharing) and follow the instructions to update your Nanome software.
 

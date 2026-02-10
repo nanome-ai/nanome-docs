@@ -63,7 +63,7 @@ Click on the [Build Menu](https://docs.nanome.ai/navigation/toolsmenu.html#build
 ### How to build molecules using the MedChem tool
 
 1. Click on a structure on the [Build menu](https://docs.nanome.ai/navigation/toolsmenu.html#build) to select it for placement.
-2. Overlap the structure on the right controller with an atom on the ligand. Once a yellow outline encloese the atom(s) that you want to build on, press down trigger button on your right controller in order to place the structure.
+2. Overlap the structure on the right controller with an atom on the ligand. Once a yellow outline encloses the atom(s) that you want to build on, press down trigger button on your right controller in order to place the structure.
 
 ## How to use the Measurement tool
 

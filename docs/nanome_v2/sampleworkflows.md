@@ -1,5 +1,5 @@
 ---
-title: Sample Worfklows
+title: Sample Workflows
 ---
 
 # Sample Workflows and Usage

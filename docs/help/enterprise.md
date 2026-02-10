@@ -4,7 +4,7 @@ title: Enterprise
 
 # Enterprise Deployment Information - Nanome 1.x ONLY 
 
-This section provides additional information and resources for on-prem enteprise deployments. For assistance with setting up or managing your environments, please reach out to your dedicated Nanome representative.
+This section provides additional information and resources for on-prem enterprise deployments. For assistance with setting up or managing your environments, please reach out to your dedicated Nanome representative.
 
 NOTE: THIS IS FOR NANOME 1.X ONLY. Please contact your enterprise account manager for MARA or NanomeAI deployment information.
 
