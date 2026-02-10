@@ -3,8 +3,8 @@ const sharp = require('sharp')
 // const imageminGifsicle = require('imagemin-gifsicle');
 const fs = require('fs')
 
-const assetDir = __dirname + '/public/assets/original'
-const compressedDir = __dirname + '/public/assets/compressed'
+const assetDir = __dirname + '/../docs/public/assets/original'
+const compressedDir = __dirname + '/../docs/public/assets/compressed'
 
 const regex = {
   file: /^(.+)\.(\w+)$/

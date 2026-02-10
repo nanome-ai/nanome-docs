@@ -11,15 +11,13 @@
   </div>
 </template>
 
-<script>
-export default {
-  data: () => ({
-    open: false
-  })
-};
+<script setup>
+import { ref } from 'vue'
+
+const open = ref(false)
 </script>
 
-<style>
+<style scoped>
 .toggle-section {
   margin-top: 1em;
   background: #f7f7f7;

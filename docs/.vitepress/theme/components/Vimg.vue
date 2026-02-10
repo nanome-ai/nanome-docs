@@ -3,35 +3,33 @@
     <div class="vimg">
       <img
         :src="`/assets/compressed/${compressedSrc}`"
-        :data-original="`/assets/original/${src}`"
+        :data-zoom-src="`/assets/original/${src}`"
       />
       <div v-if="isGif" class="vimg__play-btn">&#9654;</div>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    src: {
-      type: String,
-      required: true
-    }
-  },
+<script setup>
+import { computed } from 'vue'
 
-  computed: {
-    isGif() {
-      return this.src.lastIndexOf('.gif') != -1
-    },
-
-    compressedSrc() {
-      return this.src.substr(0, this.src.lastIndexOf('.')) + '.jpg'
-    }
+const props = defineProps({
+  src: {
+    type: String,
+    required: true
   }
-}
+})
+
+const isGif = computed(() => {
+  return props.src.lastIndexOf('.gif') !== -1
+})
+
+const compressedSrc = computed(() => {
+  return props.src.substr(0, props.src.lastIndexOf('.')) + '.jpg'
+})
 </script>
 
-<style>
+<style scoped>
 .vimg {
   position: relative;
   display: inline-block;

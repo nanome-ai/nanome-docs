@@ -23,17 +23,9 @@
       v-bind="carousel"
     />
 
-    <!-- <p>
-      Collaborative virtual reality tools for nanoscale design. Nanome is
-      available for Windows and the Oculus Quest (closed beta). Please contact
-      us at
-      <a href="mailto:support@nanome.ai">support@nanome.ai</a> to be added to
-      the Quest beta.
-    </p> -->
-
     <h2>Featured Sections</h2>
     <div class="featured">
-      <a href="/nanome1x/navigation/menus.html">
+      <a href="/nanome1x/navigation/menus">
         <div class="home-video">
           <video
             src="https://media.giphy.com/media/jq6CX2eDIckqP47Bk3/giphy.mp4"
@@ -46,7 +38,7 @@
         <h3>Main Menus</h3>
         <span>All the menus of Nanome</span>
       </a>
-      <a href="/nanome1x/navigation/toolsmenu.html">
+      <a href="/nanome1x/navigation/toolsmenu">
         <div class="home-video">
           <video
             src="https://media.giphy.com/media/mIyglT252D52nxnXAH/giphy.mp4"
@@ -59,7 +51,7 @@
         <h3>Tools Menu</h3>
         <span>All the tools of Nanome</span>
       </a>
-      <a href="/nanome1x/plugins/overview.html">
+      <a href="/nanome1x/plugins/overview">
         <div class="home-video">
           <video
             src="https://media.giphy.com/media/XbOZ8ZJiLGeobFiwxt/giphy.mp4"
@@ -76,9 +68,6 @@
 
     <h2>Compatible Headsets</h2>
     <div class="text-center">
-      <!-- <a class="btn" href="https://home.nanome.ai/setup" target="_blank">
-        Download Nanome
-      </a> -->
       <img
         class="headsets"
         src="/assets/original/gettingStarted-page/SupportedHeadsets2023-2.png"
@@ -94,32 +83,24 @@
             Please see minimum and recommended PC requirements here.
           </a>
         </h3>
-        
       </div>
-
-      
     </div>
-
-    <!-- <div class="home-video">
-      <iframe
-        width="900"
-        height="500"
-        src="https://www.youtube.com/embed/gCNbuH9Y6hU"
-        frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
-    </div> -->
   </div>
 </template>
 
-<script>
-export default {
-  props: ['data'],
-}
+<script setup>
+import HeroCarousel from './HeroCarousel.vue'
+import HomeCarousel from './HomeCarousel.vue'
+
+defineProps({
+  data: {
+    type: Object,
+    required: true
+  }
+})
 </script>
 
-<style>
+<style scoped>
 .landing-page h2 {
   font-size: 1.5em;
   border: unset;

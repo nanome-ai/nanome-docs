@@ -78,48 +78,44 @@
   </div>
 </template>
 
-<script>
-export default {
-  data: () => ({
-    firstName: '',
-    lastName: '',
-    email: '',
-    org: '',
-    profession: '',
-    referrer: '',
-    content: '',
-    success: false,
-    error: '',
-  }),
+<script setup>
+import { ref } from 'vue'
 
-  methods: {
-    async onSubmit() {
-      let message = ''
-      if (this.org) message += `Organization / Affiliation: ${this.org}\n\n`
-      if (this.profession) message += `Profession: ${this.profession}\n\n`
-      if (this.referrer) message += `Referrer: ${this.referrer}\n\n`
-      message += `Message: \n${this.content}`
+const firstName = ref('')
+const lastName = ref('')
+const email = ref('')
+const org = ref('')
+const profession = ref('')
+const referrer = ref('')
+const content = ref('')
+const success = ref(false)
+const error = ref('')
 
-      const data = new FormData()
-      data.append('first_name', this.firstName)
-      data.append('last_name', this.lastName)
-      data.append('email', this.email)
-      data.append('message', message)
+async function onSubmit() {
+  let message = ''
+  if (org.value) message += `Organization / Affiliation: ${org.value}\n\n`
+  if (profession.value) message += `Profession: ${profession.value}\n\n`
+  if (referrer.value) message += `Referrer: ${referrer.value}\n\n`
+  message += `Message: \n${content.value}`
 
-      const res = await fetch(
-        'https://hook.integromat.com/hunbolbb299tldil4nkanx2hj9kyd3iu',
-        { method: 'POST', body: data }
-      )
+  const data = new FormData()
+  data.append('first_name', firstName.value)
+  data.append('last_name', lastName.value)
+  data.append('email', email.value)
+  data.append('message', message)
 
-      if (!res.ok) {
-        this.error = `There was an error processing your request. Please try again later.`
-        this.success = false
-        return
-      }
+  const res = await fetch(
+    'https://hook.integromat.com/hunbolbb299tldil4nkanx2hj9kyd3iu',
+    { method: 'POST', body: data }
+  )
 
-      this.success = true
-    },
-  },
+  if (!res.ok) {
+    error.value = `There was an error processing your request. Please try again later.`
+    success.value = false
+    return
+  }
+
+  success.value = true
 }
 </script>
 

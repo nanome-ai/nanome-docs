@@ -1,5 +1,6 @@
 ---
 title: Home
+aside: false
 hero:
   - img: /assets/carousels/hero/nimbus.png
     url: https://drive.google.com/file/d/1TCVhg27YMvh223DH4JLPxKNHe7TqUiaf/view
