@@ -4,7 +4,7 @@ title: Environment
 
 # Environment
 
-The current Nanome 2.0 virtual environment is a simple square grid floor with a 'skybox' background. It is also possible to enable MR passthrough, which will show the real world.
+The current Nanome v2 virtual environment is a simple square grid floor with a 'skybox' background. It is also possible to enable MR passthrough, which will show the real world.
 
 ## Central Structure Area
 
@@ -20,6 +20,6 @@ Pointers are always positioned relative to the structure. They display the user'
 
 ## Avatars
 
-Avatars in Nanome 2.0 currently consist of an object representing the user's head, with a display on top showing the user's name and scene they are currently on, and abstract shapes representing the user's hands.
+Avatars in Nanome v2 currently consist of an object representing the user's head, with a display on top showing the user's name and scene they are currently on, and abstract shapes representing the user's hands.
 
 In a collaboration session, avatars are automatically laid out around the central structure area in a circle pattern as more people arrive. They do not directly interact or move, instead they simply show who is in the room. The pointers are the primary way to signal on the structure.

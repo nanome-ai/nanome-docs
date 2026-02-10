@@ -18,7 +18,7 @@ Action menu offers a quick access to all major features in Nanome anywhere. If y
 
 <vimg src="navigating-page/action-menu-create-meeting.png" />
 
-#### Use the action menu to activate MR passthrough (Meta Quest Pro and Meta Quest 2 only)
+#### Use the action menu to activate MR passthrough (Meta Quest Pro and Meta Quest 3 only)
 
 <vimg src="navigating-page/action-menu-MR.png" />
 

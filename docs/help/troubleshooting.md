@@ -86,7 +86,7 @@ Step 4. Identify which connection is your Ethernet # with the indicator "Unident
 
 Step 5: Right click it and go to the Sharing tab
 
-Step 6: Check allow sharing for other users in the network. From the dropdown, select your mobile hotspot connection "Local Area Connection #". It should be labeled as Wifi Direct Virtual Adapter
+Step 6: Check allow sharing for other users in the network. From the dropdown, select your mobile hotspot connection "Local Area Connection #". It should be labeled as WiFi Direct Virtual Adapter
 
 Step 7: Join the Mobile Hotspot Wifi from your Oculus Quest
 

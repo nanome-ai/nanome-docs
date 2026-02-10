@@ -115,8 +115,8 @@ title: Choosing Hardware
         <tr>
             <td>Cost</td>
             <td>$999</td>
-            <td>$499 +recommended headstrap ($50/pc)</td>
-            <td>$299 +recommended headstrap ($50/pc)</td>
+            <td>$499 + recommended headstrap ($50/pc)</td>
+            <td>$299 + recommended headstrap ($50/pc)</td>
             <td>$1100, optional vive business annual fee</td>
             <td>$499</td>
             <td>$380</td>

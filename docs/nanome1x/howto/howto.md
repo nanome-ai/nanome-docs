@@ -73,16 +73,16 @@ Click on the [Build Menu](https://docs.nanome.ai/navigation/toolsmenu.html#build
 
 ## How to change the color of your avatar
 
-VR: 
+VR:
 
-1.Press the Y Button on the left controller to bring up the [Action Menu](https://docs.nanome.ai/navigation/actionmenu.html#action-menu).
+1. Press the Y Button on the left controller to bring up the [Action Menu](https://docs.nanome.ai/navigation/actionmenu.html#action-menu).
 
-Desktop: 
+Desktop:
 
-1.Right-click anywhere in the window.  
+1. Right-click anywhere in the window.
 
-2.Click on the Settings Button at the bottom of the [Action Menu](https://docs.nanome.ai/navigation/actionmenu.html#action-menu) to open Settings Submenu.
-3.Click on the Change My Color button to change avatar color.
+2. Click on the Settings Button at the bottom of the [Action Menu](https://docs.nanome.ai/navigation/actionmenu.html#action-menu) to open Settings Submenu.
+3. Click on the Change My Color button to change avatar color.
 
 
 

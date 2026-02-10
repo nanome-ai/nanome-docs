@@ -56,7 +56,7 @@ Offers options to quickly access binding sites and config the auxiliary features
 
 <vimg src="navigating-page/Medchem-Build.jpg" />
 
-Select a substructure from the build menu and build it on top of existing atoms using MedChem tool.
+Select a substructure from the build menu and build it on top of existing atoms using the MedChem tool.
 
 <vimg src="navigating-page/Medchem-Place.jpg" />
 

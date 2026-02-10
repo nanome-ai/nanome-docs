@@ -4,7 +4,7 @@ title: Voice Command
 
 # Voice Command 
 
-Nanome is voiced-powered. In order to activate voice command, either hold down Y Button on the left controller or say "Ok Nanome" loudly. After you see a voice command prompt show up, you can say a command to the mic in your headset and trigger the action.
+Nanome is voice-powered. In order to activate voice command, either hold down Y Button on the left controller or say "Ok Nanome" loudly. After you see a voice command prompt show up, you can say a command to the mic in your headset and trigger the action.
 
 Here are the voice commands and combinations currently available:
 

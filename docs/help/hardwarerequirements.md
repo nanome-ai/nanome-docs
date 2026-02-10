@@ -10,7 +10,7 @@ Supported headsets
 
 <vimg src="gettingStarted-page/SupportedHeadsets2023-2.png" />
 
-#### Recommended specs for desktop computer
+#### Recommended specs for a desktop computer
 Please see <a href="https://docs.nanome.ai/help/pchardware.html"> minimum and recommended PC specs here. </a>
 
 #### Examples of light weight VR ready laptops:

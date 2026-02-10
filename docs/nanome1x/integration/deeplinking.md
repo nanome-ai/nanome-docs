@@ -6,11 +6,11 @@ title: Deep Linking
 
 Deep linking (also known as application protocol) enables 3rd party applications to construct a URL to automatically launch Nanome with various parameters, files, and scripts programatically.
 
-An example of this would be having an Molecular Database Partner or customer's internal web application that could have button to "Open in Nanome" for a single or specific set of molecules. Clicking on the button would then prompt the user to launch the pre-installed Nanome Application and to immediately load the files into the corresponding Nanome room seamlessly.
+An example of this would be having a Molecular Database Partner or customer's internal web application that could have a button to "Open in Nanome" for a single or specific set of molecules. Clicking the button would prompt the user to launch the pre-installed Nanome Application and immediately load the files into the corresponding Nanome room seamlessly.
 
 Please note that:
 
-1. the deep linking/app protocol requires the Nanome application to be downloaded and requires Windows registry binding. Thus, users who want to use this method will needed to have installed Nanome using the Windows Setup Installer located on the [nanome.ai/setup](https://nanome.ai/setup) page.
+1. the deep linking/app protocol requires the Nanome application to be downloaded and requires Windows registry binding. Thus, users who want to use this method will need to have installed Nanome using the Windows Setup Installer located on the [nanome.ai/setup](https://nanome.ai/setup) page.
 
 2. All-in-one headsets do not yet have support for this deeplinking protocol unless invoked through the Nanome in-VR web browser.
 
@@ -30,7 +30,7 @@ Please note that:
 
 - Run a script
 
-> A scientist can click a button in the web browser and it would would load and run a Nanome Macro (written in LUA) in the room and apply changes such as changing the molecular representation for the secondary structure, doing modifying molecular operations. [(See Lua Script here)](#run-script-functions-lua-directly)
+> A scientist can click a button in the web browser and it would load and run a Nanome Macro (written in LUA) in the room and apply changes such as changing the molecular representation for the secondary structure, doing modifying molecular operations. [(See Lua Script here)](#run-script-functions-lua-directly)
 
 <a href="https://open.nanome.ai/#/W3sidHlwZSI6InNjcmlwdCIsInNjcmlwdCI6IlxuICAgICAgICAgICAgZnVuY3Rpb24gbWFpbiAoKVxuICAgICAgICAgICAgICAgIGlmIExpc3RfTGVuZ3RoKFNlbGVjdGlvbl9HZXRDb21wbGV4ZXMoKSkgPD0gMCB0aGVuXG4gICAgICAgICAgICAgICAgICAgIHJldHVybiBcIkVycm9yOiBObyBTdHJ1Y3R1cmUgU2VsZWN0ZWRcIlxuICAgICAgICAgICAgICAgIGVuZFxuICAgICAgICAgICAgICAgIENvbW1hbmRfU2V0UmliYm9uc1JlbmRlcihcInNlY29uZGFyeS1zdHJ1Y3R1cmVzXCIpXG4gICAgICAgICAgICAgICAgQ29tbWFuZF9TZXRTdXJmYWNlc1RyYW5zcGFyZW5jeSgwLjUpXG4gICAgICAgICAgICAgICAgQ29tbWFuZF9Db2xvcmluZ0F0b21zQm9uZHMoXCJkZWZhdWx0XCIsIG5pbCwgbmlsLCB0cnVlKVxuICAgICAgICAgICAgICAgIENvbW1hbmRfQ29sb3JpbmdSaWJib25zKFwiZGVmYXVsdFwiKVxuICAgICAgICAgICAgICAgIENvbW1hbmRfQ29sb3JpbmdTdXJmYWNlcyhcImRlZmF1bHRcIilcbiAgICAgICAgICAgICAgICByZXR1cm4gXCJTdWNjZXNzXCJcbiAgICAgICAgICAgIGVuZCJ9XQ==" class="btn">Run a script in Nanome</a>
 

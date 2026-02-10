@@ -4,7 +4,7 @@ title: Quest for Business
 
 # Quest for Business: Device Management tailored for Meta Quest Headsets
 
-Quest for Business (QFB) offers a native solution for managing Meta Quest headsets within your organization. With a suite of powerful tools, QFB ensures effortless management, enhanced security, and seamless integration with existing systems. (For more information, check out official quest for business page here.)
+Quest for Business (QFB) offers a native solution for managing Meta Quest headsets within your organization. With a suite of powerful tools, QFB ensures effortless management, enhanced security, and seamless integration with existing systems. (For more information, check out the official Quest for Business page here.)
 
 **Effortless Management**
 

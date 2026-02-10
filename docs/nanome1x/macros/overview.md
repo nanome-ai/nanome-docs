@@ -12,9 +12,9 @@ Macros are custom shortcuts you’ll be able to program yourself to speed up you
 
 Nanome macros provide functionality for all of the following:
 
-- Selection manipulation (Highlight and Focus on certains parts of the loaded entities)
+- Selection manipulation (Highlight and Focus on certain parts of the loaded entities)
 - Command scheduling (edit the rendering and content of the selection)
-- Molecular manipulation (read and write Workspace,Complexes,Molecules,Chains,Residues,Atoms)
+- Molecular manipulation (read and write Workspace, Complexes, Molecules, Chains, Residues, Atoms)
 - Search and find (Easily locate, search or find molecular structures, residues, atoms etc within the scene)
 - Menus manipulation (read, locate and move the UI menus available to the user)
 - User manipulation (read, locate and move the User that is using the macro)
