@@ -10,7 +10,7 @@ module.exports = {
     sidebar: [
       '/',
       {
-        title: 'Nanome 1.x (1st Gen)',
+        title: 'Nanome 1.24 (1st Gen)',
         sidebarDepth: 1,
         collapsable: true,
         children: [
@@ -119,7 +119,7 @@ module.exports = {
         ]
       },
       {
-        title: 'Nanome 2.0 (2nd Gen)',
+        title: 'Nanome v2 (2nd Gen)',
         collapsable: true,
         sidebarDepth: 1,
         children: [
