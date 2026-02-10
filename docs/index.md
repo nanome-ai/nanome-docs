@@ -25,7 +25,7 @@ carousels:
       #  img: https://i.ytimg.com/vi/zvFNUMnCSkM/hqdefault.jpg
       #  description: Helpful tips on some of the basic yet helpful functions of Nanome
       #  url: https://youtu.be/zvFNUMnCSkM
-      #- title: Web Browswer
+      #- title: Web Browser
       #  img: https://i.ytimg.com/vi/n_i7aZoZNew/hqdefault.jpg
       #  description: Learn about the web browser and how to use it effectively
       #  url: https://youtu.be/n_i7aZoZNew

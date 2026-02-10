@@ -75,7 +75,7 @@ When a node is assigned a content type, you can view and edit its properties, su
 
 <vimg src="plugins-page/pluginator/window.JPG" />
 
-Here in window tab, you can change the menu window title and size. This tab changes the menu window properties, so it is independant from the node there you selected to edit.
+Here in window tab, you can change the menu window title and size. This tab changes the menu window properties, so it is independent from the node you selected to edit.
 
 ## UI Components
 

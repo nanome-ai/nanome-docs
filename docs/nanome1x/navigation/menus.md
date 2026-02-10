@@ -73,7 +73,7 @@ Action buttons on the Entry List provide quick access to common actions on the w
 |<vimg src="navigating-page/Entry-New-Button.jpg" />New Workspace | Discard the current workspace and create a new one.||
 |<vimg src="navigating-page/export_button_updated.png" />Export| Export the selected structures in a desired format.| <vimg src="navigating-page/export_menu_updated.png" /> |
 |<vimg src="navigating-page/Entry-Align-Button.jpg" />Align | Align the selected entities and place them in the same position under the same coordinate system. Caution: this does not necessarily align the entities by their atom position, and the entities could end up not overlapping after the alignment.| |
-|<vimg src="navigating-page/sequence_menu_button_updated.png" />Sequence | View the seqences of multiple chains and align them.| <vimg src="navigating-page/Entry-SequenceMenu.jpg" /> |
+|<vimg src="navigating-page/sequence_menu_button_updated.png" />Sequence | View the sequences of multiple chains and align them.| <vimg src="navigating-page/Entry-SequenceMenu.jpg" /> |
 |<vimg src="navigating-page/Entry-Delete-Button.jpg" /> Delete | Delete the selected entities.||
 
 ### Spatial ("Quick") Anchor
@@ -180,7 +180,7 @@ This tab contains options for the visual of ribbons.
 |:-------------:|:-------------:|:-----:|
 | <vimg src="navigating-page/Display-Ribbon-Cartoon-Button.jpg" />Cartoon | Show ribbon in cartoon visual that highlight secondary structures using helix and arrows. | <vimg src="navigating-page/Display-Ribbon-Cartoon-Small.jpg" /> |
 | <vimg src="navigating-page/Display-Ribbon-Coil-Button.jpg" />Coil | Show ribbon in uniform tube visual.| <vimg src="navigating-page/Display-Ribbon-Coil-Small.jpg" />|
-| <vimg src="navigating-page/Display-Ribbon-Putty-Button.jpg" />Putty | Show ribbon in tube with widths proportion to the atoms' color value.| <vimg src="navigating-page/Display-Ribbon-Putty-Small.jpg" />|
+| <vimg src="navigating-page/Display-Ribbon-Putty-Button.jpg" />Putty | Show ribbon in tube with widths proportional to the atoms' color value.| <vimg src="navigating-page/Display-Ribbon-Putty-Small.jpg" />|
 
 ### Surface
 

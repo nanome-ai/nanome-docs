@@ -6,7 +6,7 @@ title: FAQ
 
 ## What is Nanome?
 
-Nanome is a collaborative virtual-reality molecular modelling tool made for professional researchers working on structures and proteins at the nano scale. Analyze the 3D arrangement of molecules while inside of a protein binding pocket, surround your self in crystal data, or communicate your ligand design to your colleagues in the same virtual room. No matter what you do, Nanome empowers your research and enhances your understanding like no other tools have before. Whether you are a structural biologist, crystallographer, computational chemist, medicinal chemist, or a protein engineer, you will find your daily workflow much more intriguing and effective in Nanome because of the power of VR.
+Nanome is a collaborative virtual-reality molecular modelling tool made for professional researchers working on structures and proteins at the nano scale. Analyze the 3D arrangement of molecules while inside of a protein binding pocket, surround yourself in crystal data, or communicate your ligand design to your colleagues in the same virtual room. No matter what you do, Nanome empowers your research and enhances your understanding like no other tools have before. Whether you are a structural biologist, crystallographer, computational chemist, medicinal chemist, or a protein engineer, you will find your daily workflow much more intriguing and effective in Nanome because of the power of VR.
 
 ## What VR headsets does Nanome support?
 
@@ -26,7 +26,7 @@ Yes, Nanome has a 2D desktop mode for users without VR devices. In 2D mode, user
 
 ## What are the System Requirements to run Nanome in VR?
 
-Please see <a href="https://docs.nanome.ai/help/pchardware.html">minimum and recommend specs here. </a>
+Please see <a href="https://docs.nanome.ai/help/pchardware.html">minimum and recommended specs here. </a>
 
 ## Can I use Nanome on Mac/Linux?
 
@@ -93,7 +93,7 @@ Yes, for Nanome site licenses please contact sales@nanome.ai.
 
 ## My company and I are looking to incorporate VR technology into our workflow (research, training, presentations, etc.) and we are interested in trying Nanome. Would it be possible to get a free trial so that our team can experiment with your software and see if it meets our needs?
 
-Of course! We understand that integrating new technologies into existing procedures can take some time. Just email us at sales@nanome.ai so that we can initiate a trial for you. If you'd like to schedule a demo with on our team members, you can submit a request [here](https://nanome.ai/demo/).
+Of course! We understand that integrating new technologies into existing procedures can take some time. Just email us at sales@nanome.ai so that we can initiate a trial for you. If you'd like to schedule a demo with one of our team members, you can submit a request [here](https://nanome.ai/demo/).
 
 ## Can I use this for my school?
 
@@ -109,7 +109,7 @@ A limited version of Nanome is free for all users which can be downloaded at any
 
 ## If I purchase multiple licenses, how can I administer them in my class or lab?
 
-One workflow we can recommend is the following: you need to have a Nanome account that acts as the "license administrator". This can be your own Nanome account, or maybe an account mutually maintained by your deparment or lab. This license administrator Nanome account is not required to have a license assigned to it, but it will own all the licenses you intend to use.
+One workflow we can recommend is the following: you need to have a Nanome account that acts as the "license administrator". This can be your own Nanome account, or maybe an account mutually maintained by your department or lab. This license administrator Nanome account is not required to have a license assigned to it, but it will own all the licenses you intend to use.
 
 You should purchase the licenses from the license administrator Nanome account, or if you need to [request a quote from us](https://home.nanome.ai/quote) then be sure to indicate the email address for the license administrator Nanome account. Once your licenses have been allocated (they will be visible in the Licenses section on [home.nanome.ai](https://home.nanome.ai/) Then, follow the instructions [here](https://docs.nanome.ai/home.nanome.ai/licenses.html#assign-licenses) to assign these licenses to other users. One of the licenses will automatically be assigned to this admin account, but it can be re-assigned to another user. If you don't have existing user accounts, you can also create new Nanome accounts (e.g. "student-1", "student-2", etc.) and then assign the licenses to these accounts.
 
@@ -119,7 +119,7 @@ First, create an account or login at [https://nanome.ai/pricing/](https://nanome
 
 ## How to find the log file (Logs) of Nanome sessions for PC-tethered VR
 
-If you experience an issue with Nanome, please be sure to send us the logs for the event (both message.txt and detaileds.txt) so that we can investigate the issue. Feel free to email your bug report to support@nanome.ai.
+If you experience an issue with Nanome, please be sure to send us the logs for the event (both messages.txt and details.txt) so that we can investigate the issue. Feel free to email your bug report to support@nanome.ai.
 
 If you are using PC 2D mode or PC-tethered VR headsets, the logs for your session will be on your computer. If you open up your file explorer, please navigate to the following path:
 
@@ -131,7 +131,7 @@ For frequent users of Nanome, we recommend favoriting this path in your Windows 
 
 ## How to find the log file (Logs) of Nanome sessions for All-in-One VR (e.g. Quest 2/Vive Focus 3)
 
-If you experience an issue with Nanome, please be sure to send us the logs for the event (both message.txt and detaileds.txt) so that we can investigate the issue. Feel free to email your bug report to support@nanome.ai.
+If you experience an issue with Nanome, please be sure to send us the logs for the event (both messages.txt and details.txt) so that we can investigate the issue. Feel free to email your bug report to support@nanome.ai.
 
 ### NOTE:
 

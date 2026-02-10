@@ -515,7 +515,7 @@ Toggle on and off each menu quickly or all at once.
 
 <vimg src="navigating-page/Wrist-Room-ManageUsers.jpg" />
 
-Manage users by giving them the presenter privilage or teleporting them.
+Manage users by giving them the presenter privilege or teleporting them.
 
 - Presenter Requests
 

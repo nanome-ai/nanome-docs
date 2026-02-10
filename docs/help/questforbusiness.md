@@ -16,7 +16,7 @@ With enterprise-grade security measures such as SSO, SOC2 type 2 compliance, and
 
 **Seamless Integration**
 
-QFB integrates with major Mobile Device Management (MDM) platforms, including Microsoft Intune, VMware Workspace ONE, and Invanti (formerly MobileIron). This allows the preservation of existing device management workflows.
+QFB integrates with major Mobile Device Management (MDM) platforms, including Microsoft Intune, VMware Workspace ONE, and Ivanti (formerly MobileIron). This allows the preservation of existing device management workflows.
 
 **Supported Devices**
 - Meta Quest 2

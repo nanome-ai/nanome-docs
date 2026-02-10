@@ -56,7 +56,7 @@ Offers options to quickly access binding sites and config the auxiliary features
 
 <vimg src="navigating-page/Medchem-Build.jpg" />
 
-Select a substructure from the build menu and build it on top of existing atoms using medchem tool.
+Select a substructure from the build menu and build it on top of existing atoms using MedChem tool.
 
 <vimg src="navigating-page/Medchem-Place.jpg" />
 
@@ -72,7 +72,7 @@ Select any atom type from the periodic table to use in build mode.
 
 <vimg src="navigating-page/whiteboard.gif" />
 
-The Draw Tool puts a marker in your hand and brings up a whiteboard that you can draw/write on. Toggle the right joystick sideways (left/right) to switch between your marker and eraser. Tn the right of the whiteboard, there are undo/redo buttons as well as a button to save your drawing as a PNG file.
+The Draw Tool puts a marker in your hand and brings up a whiteboard that you can draw/write on. Toggle the right joystick sideways (left/right) to switch between your marker and eraser. On the right of the whiteboard, there are undo/redo buttons as well as a button to save your drawing as a PNG file.
 
 <vimg src="navigating-page/updated_whiteboard.png" />
 

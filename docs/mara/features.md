@@ -70,6 +70,6 @@ Example Prompts:
 * Hide waters
 * Spin the molecule
 * Focus on ligand 50D
-* Download as [ molx| stl | obj | glb | usdz ]
+* Download as [molx | stl | obj | glb | usdz]
 * Highlight residues 149-150 in green
 * Set style to illustrative
