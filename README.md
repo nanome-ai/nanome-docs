@@ -1,43 +1,44 @@
-## Netlify CMS example for vuepress
+# Nanome Docs
 
-### Deploy
+Documentation site for [Nanome](https://nanome.ai/) software, hosted at [docs.nanome.ai](https://docs.nanome.ai). Built with [VitePress](https://vitepress.dev/).
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/toshilow/netlify-cms-vuepress)
+## Prerequisites
 
-### Add Netlify Widget
+- Node.js >= 20
 
-1. Open Netlify Build and Deploy settings page.
-1. Add Snippet injection
+## Development
 
-```html
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+```bash
+npm install
+npm run dev
 ```
 
-### Setup Netlify Identity
+## Build
 
-1. Open Netlify Identity Settings page.
-1. Enable Identity
-1. Select Registration preferences -> Invite only
-1. Enable Git Gateway
+```bash
+npm run docs:build
+npm run docs:preview  # preview the built site locally
+```
 
-### Invite admin user
+## Images
 
-1. Open Identity tab in Netlify site page.
-1. Push Invite users
-1. Input email address and push 'Send' button.
-1. Open invite email and set password.
+Place original images in `docs/assets/original/`, then run:
 
-### Development
+```bash
+npm run docs:compress
+```
 
-Check out code from your repository
+This generates optimized versions in `docs/assets/compressed/`. Do not manually add files to the `compressed` folder — it is entirely managed by the compress script.
+
+## Project Structure
 
 ```
-# Install npm modules
-yarn install
-
-# Start local dev server
-yarn docs:dev
-
-# Compress all images in /assets/original directory
-yarn docs:compress
+docs/
+├── .vitepress/       # VitePress config and theme
+├── nanome1x/         # Nanome 1.24 (1st Gen) docs
+├── nanome_v2/        # Nanome v2 (2nd Gen) docs
+├── mara/             # MARA docs
+├── home.nanome.ai/   # Account management docs
+├── help/             # Troubleshooting, hardware, FAQ
+└── index.md          # Landing page
 ```
