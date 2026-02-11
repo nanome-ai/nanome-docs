@@ -40,7 +40,7 @@ defineProps({
 .slide img {
   width: 100%;
   max-height: 450px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .content {

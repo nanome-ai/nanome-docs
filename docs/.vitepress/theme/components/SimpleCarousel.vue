@@ -10,14 +10,14 @@
         ‹
       </button>
 
-      <div ref="track" class="carousel-track" @scroll="onScroll">
+      <div ref="track" class="carousel-track">
         <div
-          v-for="(item, index) in items"
+          v-for="(item, index) in clonedItems"
           :key="index"
           class="carousel-slide"
           :style="{ width: slideWidth }"
         >
-          <slot :item="item" :index="index" />
+          <slot :item="item" :index="index % items.length" />
         </div>
       </div>
 
@@ -81,7 +81,9 @@ const props = defineProps({
 
 const track = ref(null)
 const currentDot = ref(0)
+const currentIndex = ref(0)
 const autoplayTimer = ref(null)
+const isTransitioning = ref(false)
 
 const slideWidth = computed(() => {
   return `${100 / props.slidesToShow}%`
@@ -91,41 +93,84 @@ const dotCount = computed(() => {
   return Math.ceil(props.items.length / props.slidesToShow)
 })
 
+// Clone slides for infinite effect
+const clonedItems = computed(() => {
+  if (props.items.length === 0) return []
+  const cloneCount = props.slidesToShow
+  return [...props.items.slice(-cloneCount), ...props.items, ...props.items.slice(0, cloneCount)]
+})
+
+function getSlidePixelWidth() {
+  return track.value.offsetWidth / props.slidesToShow
+}
+
+function scrollToPosition(index, smooth = true) {
+  track.value.scrollTo({
+    left: getSlidePixelWidth() * index,
+    behavior: smooth ? 'smooth' : 'auto'
+  })
+}
+
+function updateDot(index) {
+  const cloneCount = props.slidesToShow
+  const realSlides = props.items.length
+  const realSlideIndex = ((index - cloneCount) % realSlides + realSlides) % realSlides
+  currentDot.value = Math.floor(realSlideIndex / props.slidesToShow)
+}
+
+function afterScrollEnd(callback) {
+  let settled = false
+  const done = () => {
+    if (settled) return
+    settled = true
+    callback()
+  }
+  track.value.addEventListener('scrollend', done, { once: true })
+  setTimeout(done, 1000) // Fallback in case scrollend doesn't fire
+}
+
+function scrollAndWrap(targetIndex) {
+  if (!track.value || isTransitioning.value) return
+  isTransitioning.value = true
+
+  const cloneCount = props.slidesToShow
+  const realSlides = props.items.length
+
+  currentIndex.value = targetIndex
+  updateDot(targetIndex)
+  scrollToPosition(targetIndex)
+
+  let wrapIndex = null
+  if (targetIndex < cloneCount) {
+    wrapIndex = targetIndex + realSlides
+  } else if (targetIndex >= cloneCount + realSlides) {
+    wrapIndex = targetIndex - realSlides
+  }
+
+  afterScrollEnd(() => {
+    if (wrapIndex !== null) {
+      currentIndex.value = wrapIndex
+      scrollToPosition(wrapIndex, false)
+    }
+    isTransitioning.value = false
+  })
+}
+
 function scrollPrev() {
-  if (!track.value) return
-  const slideWidth = track.value.offsetWidth / props.slidesToShow
-  track.value.scrollBy({ left: -slideWidth, behavior: 'smooth' })
+  scrollAndWrap(currentIndex.value - 1)
 }
 
 function scrollNext() {
-  if (!track.value) return
-  const slideWidth = track.value.offsetWidth / props.slidesToShow
-  track.value.scrollBy({ left: slideWidth, behavior: 'smooth' })
+  scrollAndWrap(currentIndex.value + 1)
 }
 
-function scrollToSlide(index) {
-  if (!track.value) return
-  const slideWidth = track.value.offsetWidth / props.slidesToShow
-  track.value.scrollTo({ left: slideWidth * index, behavior: 'smooth' })
-}
-
-function onScroll() {
-  if (!track.value) return
-  const slideWidth = track.value.offsetWidth / props.slidesToShow
-  currentDot.value = Math.round(track.value.scrollLeft / slideWidth)
+function scrollToSlide(dotIndex) {
+  scrollAndWrap(props.slidesToShow + dotIndex)
 }
 
 function startAutoplay() {
   if (!props.autoplay) return
-  autoplayTimer.value = setInterval(() => {
-    if (!track.value) return
-    const maxScroll = track.value.scrollWidth - track.value.offsetWidth
-    if (track.value.scrollLeft >= maxScroll) {
-      track.value.scrollTo({ left: 0, behavior: 'smooth' })
-    } else {
-      scrollNext()
-    }
-  }, props.autoplaySpeed)
+  autoplayTimer.value = setInterval(scrollNext, props.autoplaySpeed)
 }
 
 function stopAutoplay() {
@@ -135,11 +180,23 @@ function stopAutoplay() {
   }
 }
 
+function onResize() {
+  if (track.value) {
+    scrollToPosition(currentIndex.value, false)
+  }
+}
+
 onMounted(() => {
+  if (track.value) {
+    currentIndex.value = props.slidesToShow
+    scrollToPosition(props.slidesToShow, false)
+  }
+  window.addEventListener('resize', onResize)
   startAutoplay()
 })
 
 onUnmounted(() => {
+  window.removeEventListener('resize', onResize)
   stopAutoplay()
 })
 </script>
@@ -279,7 +336,6 @@ onUnmounted(() => {
 .carousel-track {
   display: flex;
   overflow-x: auto;
-  scroll-behavior: smooth;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
