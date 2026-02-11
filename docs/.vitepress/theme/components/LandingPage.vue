@@ -117,7 +117,7 @@ defineProps({
   align-items: center;
   gap: 2rem;
   padding: 2rem;
-  background: #f8f9fa;
+  background: var(--vp-c-bg-soft);
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -141,12 +141,12 @@ defineProps({
 .landing-page .update-content h3 {
   margin-top: 0;
   font-size: 1.8rem;
-  color: #2c3e50;
+  color: var(--vp-c-text-1);
 }
 
 .landing-page .update-content p {
   font-size: 1.1rem;
-  color: #666;
+  color: var(--vp-c-text-2);
   line-height: 1.6;
   margin: 1rem 0 1.5rem;
 }

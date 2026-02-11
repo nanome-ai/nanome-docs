@@ -6,6 +6,12 @@
   --vp-layout-max-width: 100%;
 }
 
+input,
+select,
+textarea {
+  background: transparent;
+}
+
 /* Hide outbound icon */
 .vp-external-link-icon::after {
   display: none !important;

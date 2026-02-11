@@ -149,13 +149,12 @@ async function onSubmit() {
 
 .contact input,
 .contact textarea,
-.contact select,
-.contact button {
+.contact select {
   display: block;
   width: 100%;
   font-size: 1.1rem;
   padding: 0.5rem;
-  border: 1px solid #2c3e503f;
+  border: 1px solid var(--vp-c-border);
   box-sizing: border-box;
   border-radius: 4px;
 }

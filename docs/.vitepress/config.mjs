@@ -30,7 +30,10 @@ export default defineConfig({
   lastUpdated: true,
 
   themeConfig: {
-    logo: '/assets/original/features-page/nanome-logo.png',
+    logo: {
+      light: '/assets/nanome-logo-dark.svg',
+      dark: '/assets/nanome-logo.svg',
+    },
 
     nav: [
       { text: 'Home', link: '/' },
