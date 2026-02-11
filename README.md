@@ -22,13 +22,13 @@ npm run docs:preview  # preview the built site locally
 
 ## Images
 
-Place original images in `docs/assets/original/`, then run:
+Place original images in `docs/public/assets/original/`, then run:
 
 ```bash
 npm run docs:compress
 ```
 
-This generates optimized versions in `docs/assets/compressed/`. Do not manually add files to the `compressed` folder — it is entirely managed by the compress script.
+This generates optimized versions in `docs/public/assets/compressed/`. Do not manually add files to the `compressed` folder — it is entirely managed by the compress script.
 
 ## Project Structure
 
