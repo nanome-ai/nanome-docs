@@ -10,7 +10,7 @@
     "medium-zoom": "^1.1.0"
   },
   "devDependencies": {
-    "sharp": "^0.30.7",
+    "sharp": "^0.32.6",
     "vitepress": "^1.5.0",
     "vue": "^3.5.13"
   },
