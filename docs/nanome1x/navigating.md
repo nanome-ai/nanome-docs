@@ -96,7 +96,7 @@ In order to join a room, select a room from the lobby.
 
 <vimg src="features-page/collaboration.gif" />
 
-In addition to physically moving around in VR, users can teleport around the environment by pointing to a spot on the floor and clicking and holding with their index finger.
+In addition to physically moving around in VR, users can teleport around the environment by pointing to a spot on the floor and pressing and holding down the trigger button.
 
 ### Environment Scaling
 
@@ -291,7 +291,7 @@ Show atoms in thin Van Der Waals visual and hide bonds.
 
 <vimg src="navigating-page/Display-Atom-Adaptive.jpg" />
 
-Show atoms with radius proportion to their b-factor value and hide bonds.
+Show atoms with radius proportional to their b-factor value and hide bonds.
 
 - Ball & Stick
 
@@ -319,7 +319,7 @@ Show ribbon in uniform tube visual.
 
 <vimg src="navigating-page/Display-Ribbon-Putty.jpg" />
 
-Show ribbon in tube with widths proportion to the atoms' b-factor value.
+Show ribbon in tube with widths proportional to the atoms' b-factor value.
 
 #### Surface
 
@@ -515,7 +515,7 @@ Toggle on and off each menu quickly or all at once.
 
 <vimg src="navigating-page/Wrist-Room-ManageUsers.jpg" />
 
-Manage users by giving them the presenter privilage or teleporting them.
+Manage users by giving them the presenter privilege or teleporting them.
 
 - Presenter Requests
 

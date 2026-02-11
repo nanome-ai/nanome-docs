@@ -8,7 +8,7 @@ title: How to
 
  Auto height calibration can be toggled on/off using the action menu. If users are having height issues, we recommend using this toggle to help troubleshoot the issue. By default, the toggle is off when users are in Mixed Reality Passthrough and turned on when users are in virtual reality. If height issues persist, we recommend resetting your floor height by calibrating your device. EX: with meta devices, this is done by resetting the guardian.
 
-## How to export a molecule for future access or other softwares
+## How to export a molecule for future access or other software
 
 1. Select the structure you want to save.
 2. On the Entry List menu, click the [Export button](https://docs.nanome.ai/navigation/menus.html#export)
@@ -63,7 +63,7 @@ Click on the [Build Menu](https://docs.nanome.ai/navigation/toolsmenu.html#build
 ### How to build molecules using the MedChem tool
 
 1. Click on a structure on the [Build menu](https://docs.nanome.ai/navigation/toolsmenu.html#build) to select it for placement.
-2. Overlap the structure on the right controller with an atom on the ligand. Once a yellow outline encloese the atom(s) that you want to build on, press down trigger button on your right controller in order to place the structure.
+2. Overlap the structure on the right controller with an atom on the ligand. Once a yellow outline encloses the atom(s) that you want to build on, press down trigger button on your right controller in order to place the structure.
 
 ## How to use the Measurement tool
 
@@ -73,16 +73,16 @@ Click on the [Build Menu](https://docs.nanome.ai/navigation/toolsmenu.html#build
 
 ## How to change the color of your avatar
 
-VR: 
+VR:
 
-1.Press the Y Button on the left controller to bring up the [Action Menu](https://docs.nanome.ai/navigation/actionmenu.html#action-menu).
+1. Press the Y Button on the left controller to bring up the [Action Menu](https://docs.nanome.ai/navigation/actionmenu.html#action-menu).
 
-Desktop: 
+Desktop:
 
-1.Right-click anywhere in the window.  
+1. Right-click anywhere in the window.
 
-2.Click on the Settings Button at the bottom of the [Action Menu](https://docs.nanome.ai/navigation/actionmenu.html#action-menu) to open Settings Submenu.
-3.Click on the Change My Color button to change avatar color.
+2. Click on the Settings Button at the bottom of the [Action Menu](https://docs.nanome.ai/navigation/actionmenu.html#action-menu) to open Settings Submenu.
+3. Click on the Change My Color button to change avatar color.
 
 
 

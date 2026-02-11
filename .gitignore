@@ -8,6 +8,10 @@ yarn-error.log*
 /test/e2e/reports/
 selenium-debug.log
 
+# VitePress
+docs/.vitepress/dist
+docs/.vitepress/cache
+
 # Editor directories and files
 .idea
 .vscode

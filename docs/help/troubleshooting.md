@@ -19,11 +19,11 @@ title: Troubleshooting
 - TCP 443 to DNS pubchem.ncbi.nlm.nih.gov
 - TCP 443 to DNS www.drugbank.ca
 
-### If you are unable to get the Steam or Oculus applications to irrespective of Nanome, try these opening these ports from each device:
+### If you are unable to get the Steam or Oculus applications to work regardless of Nanome, try opening these ports from each device:
 
 #### Oculus (according to their documentation)
 
-TCP port 80 & 443 for 
+TCP port 80 & 443 for
 - oculus.com
 - facebook.com
 - fbcdn.net
@@ -52,7 +52,7 @@ TCP port 80 & 443 for
 - steamstatic.com
 - akamaihd.net
 
-They also recommend opening network traffic to the Steam application for UDP Ports 27015-27030 and TCP Ports 27015-27030 
+They also recommend opening network traffic to the Steam application for UDP Ports 27015-27030 and TCP Ports 27015-27030
 
 
 #### Tips to use your Oculus Quest in a VPN network
@@ -64,7 +64,7 @@ The Oculus Quest 2 with the v29 firmware update from Oculus enables the use of a
 ##### Old method
 
 Method 1: VPN-enabled Hotspot from a Windows 10 PC
-Requirements: 
+Requirements:
 1. An existing organizational VPN and VPN software on your PC
 2. Admin access to your Windows 10 PC
 3. Have VPN Credentials on hand
@@ -80,13 +80,13 @@ Step 2: Hit Windows Key + type Mobile Hotspot
 
 Open Mobile Hotspot and change your wifi name and password then turn on the hotspot
 
-Step 3: Open your Control Panel > Network and Internet > Network and Sharing Center > Change adapter settings. 
+Step 3: Open your Control Panel > Network and Internet > Network and Sharing Center > Change adapter settings.
 
-Step 4. Identify which connection is your Ethernet # with the indicator "Unidentified Network, TAP-&lt;VPNType&gt; Windows Adapter 
+Step 4. Identify which connection is your Ethernet # with the indicator "Unidentified Network, TAP-&lt;VPNType&gt; Windows Adapter
 
 Step 5: Right click it and go to the Sharing tab
 
-Step 6: Check allow sharing for other users in the network. From the dropdown, select your mobile hotspot connection "Local Area Connection #". It should be labeled as Wifi Direct Virtual Adapter
+Step 6: Check allow sharing for other users in the network. From the dropdown, select your mobile hotspot connection "Local Area Connection #". It should be labeled as WiFi Direct Virtual Adapter
 
 Step 7: Join the Mobile Hotspot Wifi from your Oculus Quest
 
@@ -94,7 +94,7 @@ Step 8: Verify you have the VPN applied by checking your IP/location (https://wh
 
 Step 9: Launch and enjoy Nanome behind your firewall!
 
-Oculus for Business FAQ  
+Oculus for Business FAQ
 [https://developer.oculus.com/documentation/ofb/latest/concepts/ofb-developer-reference/](https://developer.oculus.com/documentation/ofb/latest/concepts/ofb-developer-reference/)
 
 ### Allow Nanome through firewall

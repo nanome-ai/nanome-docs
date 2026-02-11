@@ -52,7 +52,7 @@ Users can join a prescheduled meeting in Nanome by entering the Meeting ID provi
 
 <vimg src="navigating-page/createroom.png" />
 
-There are three Room Types a user can create depending on their Nanome Licence.
+There are three Room Types a user can create depending on their Nanome License.
 
 Room Types:
 
@@ -89,6 +89,6 @@ By selecting the Configuration button in the Setting tab, users can view the Nan
 The left window in the lobby offers a quick way to make changes to how you interact with Nanome and other users.
 
 - Mixed Reality Toggle - Enables Mixed reality on supported headsets. To check compatibility, check out our <a href="https://docs.nanome.ai/help/choosinghardware.html">Hardware Matrix. </a>
-- User Preview - In this window, you'll see a preview of how you'll be seen to others in a Nanome room.
+- User Preview - In this window, you'll see a preview of how you'll appear to others in a Nanome room.
 - Mute Button and Voice Indicator - Ability to see your microphone levels at a glance, and mute your microphone while in the lobby.
 - Change Avatar - Ability to change how you appear to yourself and others in a Nanome room.

@@ -20,4 +20,4 @@ In the snapshots view:
 
 Pressing a column header will switch through the sorting options for that column. Pressing it once will sort ascending, a second time will sort descending, and a third time will remove sorting on that column.
 Pressing on a snapshot row will bring up a window containing a 2D rendering of the snapshot, as well as the snapshot timestamp and options to rename, load, or delete the snapshot.
-Pressing "export csv" will save the snapshot names, SMILES string, and properties to ~\Documents\nanome\snaphots on the computer running Nanome.
+Pressing "export csv" will save the snapshot names, SMILES string, and properties to ~\Documents\nanome\snapshots on the computer running Nanome.

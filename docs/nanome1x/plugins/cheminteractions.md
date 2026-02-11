@@ -12,7 +12,7 @@ The Chemical Interactions plugin visualizes ligand-receptor and protein-protein 
 <br>
 <vimg src="plugins-page/chem_interactions_menu_labeled.png" />
 
-1. Select Structure 1 from the dropdown. this should be the receptor, or the larger of the two interacting proteins
+1. Select Structure 1 from the dropdown. This should be the receptor, or the larger of the two interacting proteins
 
 2. Set your Selection mode for Structure 2
     - **Selected Atoms/Residues**: Uses the atoms/residues selected in the workspace, and calculates interactions with Structure 1.

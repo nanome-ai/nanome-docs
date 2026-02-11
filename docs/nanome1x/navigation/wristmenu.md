@@ -20,13 +20,13 @@ Toggle on and off each menu quickly or all at once.
 
 <vimg src="navigating-page/Wrist-Room-ManageUsers.jpg" />
 
-Manage users by giving them the presenter privilage or teleporting them.
+Manage users by giving them the presenter privilege or teleporting them.
 
 - Presenter Requests
 
 <vimg src="navigating-page/Wrist-Room-PresenterRequests.jpg" />
 
-View the presenter requests and grant presenter priviledge.
+View the presenter requests and grant presenter privilege.
 
 ## Menu Layouts
 
@@ -98,6 +98,6 @@ This can be used as a sticky note.
 
 <vimg src="navigating-page/wrist_menu_web_browser.jpg" />
 
-This is a web browser that can be accessed from within the virtual environment. The browser may viewed by only by a single user, or shared with everyone in the same workspace. Note: only one browser can be shared at a time.
+This is a web browser that can be accessed from within the virtual environment. The browser may be viewed by only a single user, or shared with everyone in the same workspace. Note: only one browser can be shared at a time.
 
 <vimg src="navigating-page/web_browser_no_keyboard.jpg" /> <vimg src="navigating-page/web_browser_with_keyboard.jpg" />

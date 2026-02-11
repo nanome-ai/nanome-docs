@@ -24,4 +24,4 @@ You'll be prompted to scan the QR code with your app, and then enter a 6-digit c
 
 ### Step 4: You're all set! Now you'll be prompted to enter your 2FA code every time you log into your Nanome account.
 
-Note: while it is strongly encouraged to enable 2FA on your account, if you wish to disable 2FA you can navigate to Account Setting and click "Disable 2FA" under the Security section.
+Note: while it is strongly encouraged to enable 2FA on your account, if you wish to disable 2FA you can navigate to Account Settings and click "Disable 2FA" under the Security section.

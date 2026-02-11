@@ -9,7 +9,7 @@ title: Collaboration
 The following are useful details to keep in mind when collaborating with other users in the same session.
 
 - Structures are organized into protein components with sub-selections.
-- New scenes have fresh (unset) representations and require each entry
+- New scenes have fresh (unset) representations and require each entry to be set up.
 - Duplicated scenes are identical to the scene they are derived from.
 
 

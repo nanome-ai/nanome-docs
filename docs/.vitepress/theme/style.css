@@ -1,0 +1,98 @@
+/* Theme colors */
+:root {
+  --vp-c-brand-1: #29a1ff;
+  --vp-c-brand-2: #0690ff;
+  --vp-c-brand-3: #29a1ff;
+  --vp-layout-max-width: 100%;
+}
+
+input,
+select,
+textarea {
+  background: transparent;
+}
+
+/* Hide outbound icon */
+.vp-external-link-icon::after {
+  display: none !important;
+}
+
+/* Full width content */
+.vp-doc {
+  max-width: 100% !important;
+}
+
+/* Button styling */
+.vp-doc .btn {
+  display: inline-block;
+  padding: 0.5em 1em;
+  background: #29a1ff;
+  color: #fff !important;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background 300ms ease;
+  text-decoration: none !important;
+}
+
+.vp-doc .btn:hover {
+  background: #0690ff;
+}
+
+.vp-doc .btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.VPNavBarSearch {
+  justify-content: flex-end;
+  padding-right: 1em;
+}
+
+.VPSidebarItem.level-0 {
+  padding-bottom: 10px !important;
+}
+
+/* Text utilities */
+.text-center {
+  text-align: center;
+}
+
+/* Video wrapper for 16:9 aspect ratio */
+.home-video {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+}
+
+.home-video iframe,
+.home-video video {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.medium-zoom-overlay,
+.medium-zoom-image {
+  z-index: 9999;
+}
+
+/* Vimg component */
+.vimg {
+  position: relative;
+  display: inline-block;
+}
+
+.vimg__play-btn {
+  position: absolute;
+  pointer-events: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 7rem;
+  text-shadow: 0 0 10px black;
+}

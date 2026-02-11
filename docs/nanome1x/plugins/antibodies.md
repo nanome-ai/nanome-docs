@@ -47,7 +47,7 @@ Selection of CDR loops from the Regions table can be used in conjunction with ot
 
 *Chemical Interactions made by the residues of 2 CDR loops*
 
-### Generate High Quality Surfaces on any selection of CDR loops  in 5 steps.
+### Generate High Quality Surfaces on any selection of CDR loops in 5 steps.
 
 1.  Make selections in the Regions table
 2.  Activate the High Quality Surfaces plugin from the stacks menu to launch the plugin menu

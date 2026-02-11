@@ -26,7 +26,7 @@ MARA keeps a record of your previous chats, so you can refer back to them later.
 
 ### Tools
 
-The Tools sections display all of the tools currently available in MARA. You can sort by All or Custom tools, or you can query the list to see if a tools is available.
+The Tools sections display all of the tools currently available in MARA. You can sort by All or Custom tools, or you can query the list to see if a tool is available.
 
 You can currently create custom tools using Python snippets, HTML endpoints, or SQL queries. For more information on tool creation, see [here.](https://nanome.ai/blog/introduction-to-mara-tool-creation/)
 
@@ -44,13 +44,13 @@ You can view workflows that you've created here. A workflow is a sequence of too
 
 ### Workspace Management (for use with XR only)
 
-You can create and manage Nanome 2.0 workspaces here.
+You can create and manage Nanome v2 workspaces here.
 
 <vimg src="mara/v2_workspaces.png" />
 
 ### Quick Drop (for use with XR only)
 
-The Quick Drop area allows you to easily upload structures and session files into a Nanome 2.0 workspace.
+The Quick Drop area allows you to easily upload structures and session files into a Nanome v2 workspace.
 
 <vimg src="mara/v2_quickdrop.png" />
 

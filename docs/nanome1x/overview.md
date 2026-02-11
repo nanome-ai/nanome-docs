@@ -4,4 +4,4 @@ Nanome 1.x is the first generation of Nanome, a real-time collaborative molecula
 
 <!-- Image of Nanome 1.x collaborative environment -->
 
-Nanome is used by many of the world's leading pharmaceutical pharmaceutical companies
+Nanome is used by many of the world's leading pharmaceutical companies

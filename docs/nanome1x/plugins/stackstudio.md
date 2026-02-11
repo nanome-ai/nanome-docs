@@ -18,12 +18,12 @@ Currently, Stack Studio is still in beta and we would love to hear your feedback
 <a href="https://nanome.s3-us-west-1.amazonaws.com/installers/StackStudio/StackStudio_v0.5_Mac.zip" class="btn">Mac Download </a>
 
 
-1. If you are a Nanome Stack beta user, please download Stack Studio from provided link and extract the compressed file. If you can't extract it, you can download any archiver such as [7zip](https://www.7-zip.org/download.html) to do so.
+1. If you are a Nanome Stack beta user, please download Stack Studio from the provided link and extract the compressed file. If you can't extract it, you can download any archiver such as [7zip](https://www.7-zip.org/download.html) to do so.
 
-2. Once you extract the file, open Nanome.exe from the extracted content. Once Nanome.exe is running, you should be seeing the interface below.
+2. Once you extract the file, open StackStudio.exe from the extracted content. Once StackStudio.exe is running, you should be seeing the interface below.
 <vimg src="plugins-page/pluginator/stackstudio.JPG" />
 
-3. Create a JSON file at your prefered location. Copy paste the RMSD plugin menu content from [here](https://raw.githubusercontent.com/nanome-ai/plugin-rmsd/master/nanome_rmsd/rmsd_pluginator.json) into the JSON file.
+3. Create a JSON file at your preferred location. Copy paste the RMSD plugin menu content from [here](https://raw.githubusercontent.com/nanome-ai/plugin-rmsd/master/nanome_rmsd/rmsd_pluginator.json) into the JSON file.
 
 4. Open file option in Stack Studio and select [Import]. Choose the JSON file that you just created.
 <vimg src="plugins-page/pluginator/import.JPG" />
@@ -75,7 +75,7 @@ When a node is assigned a content type, you can view and edit its properties, su
 
 <vimg src="plugins-page/pluginator/window.JPG" />
 
-Here in window tab, you can change the menu window title and size. This tab changes the menu window properties, so it is independant from the node there you selected to edit.
+Here in window tab, you can change the menu window title and size. This tab changes the menu window properties, so it is independent from the node you selected to edit.
 
 ## UI Components
 
@@ -87,7 +87,7 @@ When you add content to a new node, these are the contents currently available.
 
 <vimg src="plugins-page/pluginator/button.JPG" />
 
-Button is the fundamental interactable component of a plugin menu. When cliced on, a button sends an event to the plugin script with its name as payload. A button can include five sub-components, all of which being optional: __Text__, __Icon__, __Mesh__, __Outline__, __Tooltip__. A button contains five states: __Idle__, __Selected__, __Highlighted__, __Both__, __Unusable__. You can customize the properties, such as color and visibility, of all five sub-components under all five states.
+Button is the fundamental interactable component of a plugin menu. When clicked on, a button sends an event to the plugin script with its name as payload. A button can include five sub-components, all of which being optional: __Text__, __Icon__, __Mesh__, __Outline__, __Tooltip__. A button contains five states: __Idle__, __Selected__, __Highlighted__, __Both__, __Unusable__. You can customize the properties, such as color and visibility, of all five sub-components under all five states.
 
 ### Mesh
 
@@ -105,7 +105,7 @@ Slider is an interactable component that sends the current slider position to th
 
 <vimg src="plugins-page/pluginator/list.JPG" />
 
-List is an two dimensional grid of children nodes that have to be assigned and managed during runtime in the plugin script. It allows the plugin to dynamically generate a menu of contents.
+List is a two-dimensional grid of children nodes that have to be assigned and managed during runtime in the plugin script. It allows the plugin to dynamically generate a menu of contents.
 
 ### Image
 

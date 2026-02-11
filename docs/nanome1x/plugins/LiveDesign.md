@@ -12,7 +12,7 @@ When starting the plugin for the first time, this is what the login menu looks l
 
 <vimg src="plugins-page/livedesign/main.jpg"/>
 
-First you will need to click on "Login to LD", this will open the Nanome web browser. Please login in LiveDesign using your usual credentials.
+First you will need to click on "Login to LD", which will open the Nanome web browser. Please log in to LiveDesign using your usual credentials.
 
 <vimg src="plugins-page/livedesign/okta.jpg"/>
 

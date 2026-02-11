@@ -24,7 +24,7 @@ There are two ways to load a map into Nanome
 2. Select which method you wish to load the map with
     #### Load from Vault
     - The Browse Vault button will open the Vault navigation menu.
-    - Find the maps and models you have already  uploaded, select them, and press Load.
+    - Find the maps and models you have already uploaded, select them, and press Load.
 
     #### Load from EMDB
     <vimg src="plugins-page/cryo-em/CryoEMDBMenu.png" />
@@ -56,7 +56,7 @@ Color Options:
 - **Chain**: Each chain on the model is given a different color.
 
 #### Map Boxing Options
-We provide the ability to use only show a subset of the loaded map.
+We provide the ability to only show a subset of the loaded map.
 
 There are 3 ways to edit the section of the map rendered.
 

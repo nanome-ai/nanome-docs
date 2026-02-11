@@ -20,7 +20,7 @@ We have a few tutorials available to help you get started with using MARA.
 
 See below for blogs discussing the use of MARA by different personas or in different workflows.
 
-- [Bioinformatics Worfklow](https://nanome.ai/blog/mara-bioinformatics-workflow/)
+- [Bioinformatics Workflow](https://nanome.ai/blog/mara-bioinformatics-workflow/)
 
 - [MARA & CDD Integration Example](https://nanome.ai/blog/mara-and-cdd-integration-example/)
 

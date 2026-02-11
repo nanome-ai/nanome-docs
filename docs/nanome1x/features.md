@@ -13,7 +13,7 @@ Our feature list is the following:
 - Grab, rotate, or enlarge your molecules and measure distances or angles between atoms with your hands.
 - Analyze your structures and binding sites or explore the fit of different ligands.
 - Share a virtual lab in real time with colleagues across the globe. Or join VR sessions via a 2D interface.
-- Customize your virtual workspace and save you VR sessions for future presenting or collaboration.
+- Customize your virtual workspace and save your VR sessions for future presenting or collaboration.
 
 ## Collaboration
 

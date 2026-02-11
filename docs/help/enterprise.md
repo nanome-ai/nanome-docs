@@ -2,9 +2,9 @@
 title: Enterprise
 ---
 
-# Enterprise Deployment Information - Nanome 1.x ONLY 
+# Enterprise Deployment Information - Nanome 1.x ONLY
 
-This section provides additional information and resources for on-prem enteprise deployments. For assistance with setting up or managing your environments, please reach out to your dedicated Nanome representative.
+This section provides additional information and resources for on-prem enterprise deployments. For assistance with setting up or managing your environments, please reach out to your dedicated Nanome representative.
 
 NOTE: THIS IS FOR NANOME 1.X ONLY. Please contact your enterprise account manager for MARA or NanomeAI deployment information.
 
@@ -19,20 +19,20 @@ The following diagram illustrates how network traffic in Nanome works, as well a
 ### Virtual Machine #1:
 
 The recommended specs for the Private Server VM are:
-- _Amazon AWS T2.Medium EC2 Windows 2012 Server or greater_ **or** *equivalent
-- 1 quad core CPU (e.g., Intel Xeon 3440, E3-1230 etc.) 4 GB RAM 1 GBps NIC / uplink port speed 
-- Windows Server 2012 and above 
+- _Amazon AWS T2.Medium EC2 Windows 2012 Server or greater_ **or** _equivalent_
+- 1 quad core CPU (e.g., Intel Xeon 3440, E3-1230 etc.) 4 GB RAM 1 GBps NIC / uplink port speed
+- Windows Server 2012 and above
 - 10GB + of storage space
 
 ### Virtual Machine #2:
 
-The recommend specs for the Dedicated Plugins VM are: 
-- _Amazon AWS T2.Large EC2 Linux machine with 30 GB of disk storage_ **or** *equivalent
-- 1 GBps NIC / uplink port speed 
-- A Linux based operating system (Ubuntu or CentOS) 
+The recommended specs for the Dedicated Plugins VM are:
+- _Amazon AWS T2.Large EC2 Linux machine with 30 GB of disk storage_ **or** _equivalent_
+- 1 GBps NIC / uplink port speed
+- A Linux based operating system (Ubuntu or CentOS)
 - 4 CPU - equiv. to an Intel Broadwell E5-2686v4 or higher
-- 8GB of RAM 
-- 90GB of Storage space 
+- 8GB of RAM
+- 90GB of Storage space
 - 1 GBps NIC /uplink port speed
 
 ### Inbound Ports
@@ -91,4 +91,3 @@ NTS_IP=<NTS_IP>
 ### HTTPS for Web Plugins and Services:
 
 By default, self-signed certs in the nginx/certs folder are used, but if you'd like to provide your own certs, simply replace _default.crt_ and _default.key_ with your own certs.
-
