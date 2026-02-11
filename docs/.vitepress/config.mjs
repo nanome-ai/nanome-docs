@@ -3,6 +3,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: 'Docs',
   description: 'Documentation site for Nanome software.',
+  cleanUrls: true,
 
   head: [
     ['link', { rel: 'icon', href: '/assets/favicon.ico' }],
