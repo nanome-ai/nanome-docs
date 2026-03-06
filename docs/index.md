@@ -14,6 +14,41 @@ newUpdates:
   img: /assets/original/plugins-page/livedesign/loaded.jpg
   url: /nanome1x/plugins/LiveDesign.html
 carousels:
+  - title: Nanome v2.4 Quick Tips
+    numSlides: 4
+    slides:
+      - title: Creating Your Account
+        img: https://img.youtube.com/vi/cB82b8xIZoY/hqdefault.jpg
+        description: Create a new account directly inside VR and configure initial settings
+        url: https://youtu.be/cB82b8xIZoY
+      - title: Setting Up a New Workspace
+        img: https://img.youtube.com/vi/aOICs-LXoj4/hqdefault.jpg
+        description: Create, join, and manage workspaces for your molecular data
+        url: https://youtu.be/aOICs-LXoj4
+      - title: Loading Structures from RCSB
+        img: https://img.youtube.com/vi/KZaMiop6eXc/hqdefault.jpg
+        description: Import PDB entries and explore auto-generated component hierarchies
+        url: https://youtu.be/KZaMiop6eXc
+      - title: Changing Representations
+        img: https://img.youtube.com/vi/wdECz2HmR3o/hqdefault.jpg
+        description: Customize molecular display styles from Ball and Stick to Surface
+        url: https://youtu.be/wdECz2HmR3o
+      - title: Building Custom Components
+        img: https://img.youtube.com/vi/Mw3oZhPD14k/hqdefault.jpg
+        description: Select residues and atoms to create independent component groups
+        url: https://youtu.be/Mw3oZhPD14k
+      - title: Aligning Proteins
+        img: https://img.youtube.com/vi/jNaFAtmfaRE/hqdefault.jpg
+        description: Superimpose structures and compare RMSD scores in real time
+        url: https://youtu.be/jNaFAtmfaRE
+      - title: Cross-Entry Interactions
+        img: https://img.youtube.com/vi/tgocYV6N0X8/hqdefault.jpg
+        description: Visualize binding interactions and pocket regions between entries
+        url: https://youtu.be/tgocYV6N0X8
+      - title: Working with Scenes
+        img: https://img.youtube.com/vi/vngy1zlFvRA/hqdefault.jpg
+        description: Organize curated views with saved camera positions and visibility states
+        url: https://youtu.be/vngy1zlFvRA
   - title: Videos of Spatial Recordings
     numSlides: 4
     slides:
