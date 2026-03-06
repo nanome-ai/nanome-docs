@@ -1,11 +1,8 @@
 <template>
   <div class="landing-page">
-    <!-- Top Carousels (v2.4 Quick Tips) -->
-    <HomeCarousel
-      v-for="carousel in data.topCarousels"
-      :key="carousel.title"
-      v-bind="carousel"
-    />
+    <!-- v2.4 Quick Tips — hero carousel style -->
+    <h2>Nanome v2.4 Quick Tips</h2>
+    <HeroCarousel :slides="data.quickTips" />
 
     <!-- New Updates Section -->
     <div v-if="data.newUpdates" class="new-updates">
@@ -58,25 +55,22 @@
         <h3>Sample Workflows</h3>
         <span>Align proteins, display interactions, and more</span>
       </a>
-      <a href="/nanome1x/plugins/overview">
+      <a href="/mara/overview">
         <div class="home-video">
-          <video
-            src="https://media.giphy.com/media/XbOZ8ZJiLGeobFiwxt/giphy.mp4"
-            loop
-            muted
-            autoplay
-            playsinline
-          ></video>
+          <img
+            src="/assets/original/mara/mara-chat.png"
+            alt="MARA AI assistant for molecular analysis"
+          />
         </div>
-        <h3>Nanome Stacks</h3>
-        <span>An overview of the plugin system</span>
+        <h3>MARA</h3>
+        <span>AI-powered molecular analysis and reasoning assistant</span>
       </a>
     </div>
 
     <!-- Hero Carousel — below Featured Sections -->
     <HeroCarousel :slides="data.hero" />
 
-    <h2>Compatible Headsets</h2>
+    <h2>v1.24 Compatible Headsets</h2>
     <div class="text-center">
       <img
         class="headsets"
