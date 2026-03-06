@@ -101,37 +101,6 @@ carousels:
         img: /assets/carousels/advanced-tutorials/rtas.png
         description: Visualize individual atomic binding affinity using our plugin leveraging DSX
         url: https://youtu.be/fe8aNK3FR-s
-  - title: v1.24 Advanced Tutorials
-    numSlides: 4
-    slides:
-      - title: Tools
-        img: /assets/carousels/advanced-tutorials/tools.png
-        description: Building blocks at nanoscale with atoms and molecules
-        file: https://nanome.s3.us-west-1.amazonaws.com/docs/tutorials/<version>/tools.nanosr
-      # - title: Quick Tips
-      #   img: /assets/carousels/advanced-tutorials/quick-tips.png
-      #   description: Tips on some of the basic yet helpful functions of Nanome
-      #   file: https://nanome.s3.us-west-1.amazonaws.com/docs/tutorials/<version>/quick-tips.nanosr
-      - title: Building Molecules
-        img: /assets/carousels/advanced-tutorials/building-molecules.png
-        description: Select elements from the periodic table to design small molecules
-        file: https://nanome.s3.us-west-1.amazonaws.com/docs/tutorials/<version>/building-molecules.nanosr
-      - title: Docking
-        img: /assets/carousels/advanced-tutorials/docking.png
-        description: A demonstration of docking using the Autodock Smina Plugin
-        file: https://nanome.s3.us-west-1.amazonaws.com/docs/tutorials/<version>/docking.nanosr
-      - title: Medchem Workflow
-        img: /assets/carousels/advanced-tutorials/medchem-workflow.png
-        description: The golden path of the Medchemist Workflow
-        file: https://nanome.s3.us-west-1.amazonaws.com/docs/tutorials/<version>/medchem-workflow.nanosr
-      - title: RMSD
-        img: /assets/carousels/advanced-tutorials/rmsd.png
-        description: Learn to superimpose molecules with this structural alignment plugin
-        file: https://nanome.s3.us-west-1.amazonaws.com/docs/tutorials/<version>/rmsd.nanosr
-      - title: Real-Time Atom Scoring
-        img: /assets/carousels/advanced-tutorials/rtas.png
-        description: Visualize individual atomic binding affinity using our plugin leveraging DSX
-        file: https://nanome.s3.us-west-1.amazonaws.com/docs/tutorials/<version>/rtas.nanosr
   - title: Nanome Youtube Channel
     numSlides: 4
     slides:
@@ -165,31 +134,19 @@ carousels:
       - title: 'Covid-19 in VR: Exploring Spike Protein Mutations with Dr. Kuiper from CSIRO Data61'
         img: https://i.ytimg.com/vi/daaoazyBml8/hqdefault.jpg
         url: https://youtu.be/daaoazyBml8
-bottomCarousels:
+blogCarousels:
   - title: Nanome Blog
     numSlides: 3
     slides:
-      - title: 'Scientists at Oak Ridge National Laboratory use virtual reality to study the structure and function of the COVID-19 viral main protease and to design drug candidates'
-        img: /assets/carousels/blog/oakridge.png
-        url: https://blog.matryx.ai/scientists-at-oak-ridge-national-laboratory-use-virtual-reality-to-study-the-structure-and-function-ad5e8b6ff5a2
-      - title: 'Advanced Tutorials Series | Quick Tips — Tips on some basic yet helpful functions of Nanome'
-        img: /assets/carousels/blog/advtutquicktips.png
-        url: https://blog.matryx.ai/advanced-tutorialss-series-quick-tips-tips-on-some-basic-yet-helpful-functions-of-nanome-3db720aea437
-      - title: 'SARS-CoV-2 spike protein mutations and the potential implications for antibody therapy and vaccine effectiveness'
-        img: /assets/carousels/blog/SARS-CoV-2spikes.png
-        url: https://blog.matryx.ai/sars-cov-2-spike-protein-mutations-and-the-potential-implications-for-antibody-therapy-and-vaccine-2a4f8b6057b4
-      - title: 'Nanome is joining forces with Discngine to greatly impact the SBDD experience'
-        img: /assets/carousels/blog/discengine.png
-        url: https://blog.matryx.ai/nanome-is-joining-forces-with-discngine-to-greatly-impact-the-sbdd-experience-1af0b83b3057
-      - title: 'New Harvard study shows the efficacy of Nanome & VR for Chemistry Education'
-        img: /assets/carousels/blog/harvardstudy.png
-        url: https://blog.matryx.ai/new-harvard-study-shows-the-efficacy-of-nanome-vr-for-chemistry-education-cb45da304ea2
-      - title: 'New case study shows VR could save biopharmaceutical companies tens of thousands per year'
-        img: /assets/carousels/blog/nimbus.png
-        url: https://blog.matryx.ai/new-case-study-shows-virtual-reality-tools-could-save-biopharmaceutical-companies-tens-of-8421699bd8f7
-      - title: 'Exploring AI-generated Molecules from Insilico Medicine for SARS-CoV-2 in Virtual Reality'
-        img: /assets/carousels/blog/insilicomedicine.png
-        url: https://blog.matryx.ai/exploring-ai-generated-molecules-from-insilico-medicine-for-sars-cov-2-in-virtual-reality-49d4c854fd54
+      - title: 'Nanome v2.4.0: Early Access Release, Mara Voice Commands, Minimization, Chem Interactions, and more!'
+        img: https://nanome-cms.s3.us-west-1.amazonaws.com/lobby_with_controller_instructions_banner_4d6e7c1eae.png
+        url: https://nanome.ai/blog/nanome-v2.4.0:-early-access-release-mara-voice-commands-minimization-chem-interactions-and-more!
+      - title: 'Meta Horizon Managed Services Goes Free: What This Means for Enterprise VR Users'
+        img: /assets/carousels/hero/nimbus.png
+        url: https://nanome.ai/blog/meta-horizon-managed-services-goes-free:-what-this-means-for-enterprise-vr-users
+      - title: 'Setting Up Boltz-2 Configuration Files and Analysis with Nanome AI'
+        img: https://nanome-cms.s3.us-west-1.amazonaws.com/blog_1_a48d3fdf6c.png
+        url: https://nanome.ai/blog/setting-up-boltz-2-configuration-files-and-analysis-with-nanome-ai
 ---
 
 <LandingPage :data="$frontmatter" />

@@ -1,8 +1,6 @@
 <template>
   <div class="landing-page">
-    <HeroCarousel :slides="data.hero" />
-
-    <!-- Top Carousels (v2.4 Quick Tips) — above New Updates -->
+    <!-- Top Carousels (v2.4 Quick Tips) -->
     <HomeCarousel
       v-for="carousel in data.topCarousels"
       :key="carousel.title"
@@ -23,6 +21,13 @@
         </div>
       </div>
     </div>
+
+    <!-- Blog Carousels — below New Updates -->
+    <HomeCarousel
+      v-for="carousel in data.blogCarousels"
+      :key="carousel.title"
+      v-bind="carousel"
+    />
 
     <!-- Middle Carousels (v1.24 content, YouTube Channel) -->
     <HomeCarousel
@@ -68,12 +73,8 @@
       </a>
     </div>
 
-    <!-- Bottom Carousels (Blog) — below Featured Sections -->
-    <HomeCarousel
-      v-for="carousel in data.bottomCarousels"
-      :key="carousel.title"
-      v-bind="carousel"
-    />
+    <!-- Hero Carousel — below Featured Sections -->
+    <HeroCarousel :slides="data.hero" />
 
     <h2>Compatible Headsets</h2>
     <div class="text-center">
