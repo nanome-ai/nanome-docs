@@ -13,7 +13,7 @@ newUpdates:
   description: Explore our new LiveDesign plugin that allows you to seamlessly load molecular data from LiveDesign and send ligand poses to LiveReports. Authenticate with tokens, filter entities, and visualize 3D data directly in Nanome.
   img: /assets/original/plugins-page/livedesign/loaded.jpg
   url: /nanome1x/plugins/LiveDesign.html
-carousels:
+topCarousels:
   - title: Nanome v2.4 Quick Tips
     numSlides: 4
     slides:
@@ -49,7 +49,8 @@ carousels:
         img: https://img.youtube.com/vi/vngy1zlFvRA/hqdefault.jpg
         description: Organize curated views with saved camera positions and visibility states
         url: https://youtu.be/vngy1zlFvRA
-  - title: Videos of Spatial Recordings
+carousels:
+  - title: v1.24 Videos of Spatial Recordings
     numSlides: 4
     slides:
       #- title: Deep dive into Nanome’s tools
@@ -100,7 +101,7 @@ carousels:
         img: /assets/carousels/advanced-tutorials/rtas.png
         description: Visualize individual atomic binding affinity using our plugin leveraging DSX
         url: https://youtu.be/fe8aNK3FR-s
-  - title: Advanced Tutorials
+  - title: v1.24 Advanced Tutorials
     numSlides: 4
     slides:
       - title: Tools
@@ -164,6 +165,7 @@ carousels:
       - title: 'Covid-19 in VR: Exploring Spike Protein Mutations with Dr. Kuiper from CSIRO Data61'
         img: https://i.ytimg.com/vi/daaoazyBml8/hqdefault.jpg
         url: https://youtu.be/daaoazyBml8
+bottomCarousels:
   - title: Nanome Blog
     numSlides: 3
     slides:

@@ -2,6 +2,13 @@
   <div class="landing-page">
     <HeroCarousel :slides="data.hero" />
 
+    <!-- Top Carousels (v2.4 Quick Tips) — above New Updates -->
+    <HomeCarousel
+      v-for="carousel in data.topCarousels"
+      :key="carousel.title"
+      v-bind="carousel"
+    />
+
     <!-- New Updates Section -->
     <div v-if="data.newUpdates" class="new-updates">
       <h2>New Updates</h2>
@@ -17,6 +24,7 @@
       </div>
     </div>
 
+    <!-- Middle Carousels (v1.24 content, YouTube Channel) -->
     <HomeCarousel
       v-for="carousel in data.carousels"
       :key="carousel.title"
@@ -25,31 +33,25 @@
 
     <h2>Featured Sections</h2>
     <div class="featured">
-      <a href="/nanome1x/navigation/menus">
+      <a href="/nanome_v2/mainmenus">
         <div class="home-video">
-          <video
-            src="https://media.giphy.com/media/jq6CX2eDIckqP47Bk3/giphy.mp4"
-            loop
-            muted
-            autoplay
-            playsinline
-          ></video>
+          <img
+            src="/assets/original/nanome-v2/display-interactions.gif"
+            alt="Cross-entry interaction components in Nanome v2"
+          />
         </div>
         <h3>Main Menus</h3>
-        <span>All the menus of Nanome</span>
+        <span>Manage structures, representations, and collaboration</span>
       </a>
-      <a href="/nanome1x/navigation/toolsmenu">
+      <a href="/nanome_v2/sampleworkflows">
         <div class="home-video">
-          <video
-            src="https://media.giphy.com/media/mIyglT252D52nxnXAH/giphy.mp4"
-            loop
-            muted
-            autoplay
-            playsinline
-          ></video>
+          <img
+            src="/assets/original/nanome-v2/align-proteins.gif"
+            alt="Aligning proteins in Nanome v2"
+          />
         </div>
-        <h3>Tools Menu</h3>
-        <span>All the tools of Nanome</span>
+        <h3>Sample Workflows</h3>
+        <span>Align proteins, display interactions, and more</span>
       </a>
       <a href="/nanome1x/plugins/overview">
         <div class="home-video">
@@ -65,6 +67,13 @@
         <span>An overview of the plugin system</span>
       </a>
     </div>
+
+    <!-- Bottom Carousels (Blog) — below Featured Sections -->
+    <HomeCarousel
+      v-for="carousel in data.bottomCarousels"
+      :key="carousel.title"
+      v-bind="carousel"
+    />
 
     <h2>Compatible Headsets</h2>
     <div class="text-center">

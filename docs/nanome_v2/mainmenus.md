@@ -37,6 +37,12 @@ At the bottom of the panel, **Position Molecules** allows you to move structures
 
 ### Entries and Components
 
+#### Video: Loading Structures from RCSB
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/KZaMiop6eXc?si=oudpLQ9lIlOPDUJ1" title="Nanome v2.4 Quick Tips: Loading Structures from RCSB" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
 <vimg src="nanome-v2/entries-and-components.jpg" />
 
 Structures are organized as **entries** (e.g., PDB codes like 5CEO, 5CEN). Each entry contains **components**, which are sub-selections of the structure with their own representation settings.
@@ -52,13 +58,13 @@ For example, an entry might contain:
   - **Pocket A:50D_501** — the 5 Å sphere around the ligand
   - **Pocket + Ligand A:50D_501** — combined view with multiple representations
 
-#### Video: Loading Structures from RCSB
+### Representations and Color Options
+
+#### Video: Changing Molecular Representations
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/KZaMiop6eXc?si=oudpLQ9lIlOPDUJ1" title="Nanome v2.4 Quick Tips: Loading Structures from RCSB" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/wdECz2HmR3o?si=OC9nAVp_Fj6duvnF" title="Nanome v2.4 Quick Tips: Changing Molecular Representations" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
-
-### Representations and Color Options
 
 <vimg src="nanome-v2/representation-panel.jpg" />
 
@@ -98,12 +104,6 @@ When interactions are computed between structures, you can toggle the visibility
 
 The color palette provides schemes including Element Type, Residue Type, Chain Name, Secondary Structure, Potential Interactions, BFactor, Occupancy, Uniform, Chain Instance, and Model Instance. A "Carbons only" toggle applies the color scheme to carbon atoms only while preserving element colors for heteroatoms.
 
-#### Video: Changing Molecular Representations
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/wdECz2HmR3o?si=OC9nAVp_Fj6duvnF" title="Nanome v2.4 Quick Tips: Changing Molecular Representations" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
 ### Structure Actions
 
 <vimg src="nanome-v2/structure-actions-menu.jpg" />
@@ -133,18 +133,18 @@ Clicking the Entry Options button on an entry opens the Structure Actions menu w
 
 ### Entry More Options
 
+#### Video: Building Custom Components
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/Mw3oZhPD14k?si=5uLBF9DR9KkX0Rck" title="Nanome v2.4 Quick Tips: Building Custom Components" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
 <vimg src="nanome-v2/entry-more-options.jpg" />
 
 Clicking the (...) button on an entry provides:
 
 - **Rename** — Change the display name of the entry.
 - **Delete** — Remove the entire entry from the workspace.
-
-#### Video: Building Custom Components
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/Mw3oZhPD14k?si=5uLBF9DR9KkX0Rck" title="Nanome v2.4 Quick Tips: Building Custom Components" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
 
 ## Ligands Tab
 
@@ -178,6 +178,12 @@ Available properties include RDKit-calculated values (NumAtoms, MolWeight, Hbond
 
 ## Workspaces Tab
 
+#### Video: Setting Up a New Workspace
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/aOICs-LXoj4?si=Ee-0TC_t6QkT1fLh" title="Nanome v2.4 Quick Tips: Setting Up a New Workspace" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
 <vimg src="nanome-v2/workspaces-tab-overview.jpg" />
 
 The Workspaces Tab allows you to manage, create, and navigate between workspaces. The interface resembles the MARA web interface.
@@ -190,12 +196,6 @@ The Workspaces Tab allows you to manage, create, and navigate between workspaces
 - **+ New** — Create a new workspace.
 - **Load for All** — Go to the selected workspace and bring everyone in the current session with you. Users will be prompted to assign permissions if they don't already have them.
 - **Load** — Go to the selected workspace for yourself only, leaving other participants in their current workspace.
-
-#### Video: Setting Up a New Workspace
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/aOICs-LXoj4?si=Ee-0TC_t6QkT1fLh" title="Nanome v2.4 Quick Tips: Setting Up a New Workspace" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
 
 ## Collaboration Tab
 
@@ -255,6 +255,12 @@ The bottom of the Settings Tab displays the currently logged-in username, the Na
 
 ## Scenes Panel
 
+#### Video: Working with Scenes
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/vngy1zlFvRA?si=mLJSpAgZqMJ897ih" title="Nanome v2.4 Quick Tips: Working with Scenes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
 The Scenes Panel is accessible from the left side of the interface and manages scene views within a workspace.
 
 <vimg src="nanome-v2/scenes-panel-controls.jpg" />
@@ -288,12 +294,6 @@ Clicking **Spotlight Me** activates Spotlight Mode, making your view the shared 
 
 - **Spotlighter's View** — The "Spotlighting 1/1" indicator shows Spotlight Mode is active and how many users are following. Followers are listed with an eye icon next to their name.
 - **Follower's View** — Followers see the spotlighter's name with a crown icon, along with a **Reset Orientation** button and a **Stop** button to exit follow mode.
-
-#### Video: Working with Scenes
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/vngy1zlFvRA?si=mLJSpAgZqMJ897ih" title="Nanome v2.4 Quick Tips: Working with Scenes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
 
 ## Sequence Panel
 

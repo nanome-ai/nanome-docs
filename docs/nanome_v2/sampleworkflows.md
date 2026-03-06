@@ -29,28 +29,28 @@ Limitation: Each 'open in headset' action from MARA will create a new workspace.
 
 ## Displaying Interactions Between Structures
 
-- Make sure your structures show up as entries in the main section of the Application Menu.
-- Find one of the entries, then click on the 'Structure Actions' button to the right of the entry name.
-- Select 'Create interaction components' and choose either 'Polymer-Ligand' or 'Polymer-Polymer' depending on the type of interaction you want to display, then select the target entry and click 'Create'.
-
-<vimg src="nanome-v2/display-interactions.gif" />
-
 ### Video: Cross-Entry Interaction Components
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
   <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/tgocYV6N0X8?si=Bo6Ele3GipEBKRCt" title="Nanome v2.4 Quick Tips: Cross-Entry Interaction Components" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-## Aligning Proteins in XR
-
-- Make sure your proteins show up as entries in the main section of the Application Menu.
+- Make sure your structures show up as entries in the main section of the Application Menu.
 - Find one of the entries, then click on the 'Structure Actions' button to the right of the entry name.
-- Select 'Align proteins to this', then choose which entry you want to align to and click 'Align'.
+- Select 'Create interaction components' and choose either 'Polymer-Ligand' or 'Polymer-Polymer' depending on the type of interaction you want to display, then select the target entry and click 'Create'.
 
-<vimg src="nanome-v2/align-proteins.gif" />
+<vimg src="nanome-v2/display-interactions.gif" />
+
+## Aligning Proteins in XR
 
 ### Video: Aligning Proteins
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
   <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/jNaFAtmfaRE?si=sZSQT8k7uHcadI9R" title="Nanome v2.4 Quick Tips: Aligning Proteins" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
+
+- Make sure your proteins show up as entries in the main section of the Application Menu.
+- Find one of the entries, then click on the 'Structure Actions' button to the right of the entry name.
+- Select 'Align proteins to this', then choose which entry you want to align to and click 'Align'.
+
+<vimg src="nanome-v2/align-proteins.gif" />
