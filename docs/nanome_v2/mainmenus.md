@@ -39,9 +39,7 @@ At the bottom of the panel, **Position Molecules** allows you to move structures
 
 #### Video: Loading Structures from RCSB
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/KZaMiop6eXc?si=oudpLQ9lIlOPDUJ1" title="Nanome v2.4 Quick Tips: Loading Structures from RCSB" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+<YoutubeEmbed videoId="KZaMiop6eXc" title="Nanome v2.4 Quick Tips: Loading Structures from RCSB" />
 
 <vimg src="nanome-v2/entries-and-components.jpg" />
 
@@ -62,9 +60,7 @@ For example, an entry might contain:
 
 #### Video: Changing Molecular Representations
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/wdECz2HmR3o?si=OC9nAVp_Fj6duvnF" title="Nanome v2.4 Quick Tips: Changing Molecular Representations" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+<YoutubeEmbed videoId="wdECz2HmR3o" title="Nanome v2.4 Quick Tips: Changing Molecular Representations" />
 
 <vimg src="nanome-v2/representation-panel.jpg" />
 
@@ -135,9 +131,7 @@ Clicking the Entry Options button on an entry opens the Structure Actions menu w
 
 #### Video: Building Custom Components
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/Mw3oZhPD14k?si=5uLBF9DR9KkX0Rck" title="Nanome v2.4 Quick Tips: Building Custom Components" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+<YoutubeEmbed videoId="Mw3oZhPD14k" title="Nanome v2.4 Quick Tips: Building Custom Components" />
 
 <vimg src="nanome-v2/entry-more-options.jpg" />
 
@@ -180,9 +174,7 @@ Available properties include RDKit-calculated values (NumAtoms, MolWeight, Hbond
 
 #### Video: Setting Up a New Workspace
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/aOICs-LXoj4?si=Ee-0TC_t6QkT1fLh" title="Nanome v2.4 Quick Tips: Setting Up a New Workspace" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+<YoutubeEmbed videoId="aOICs-LXoj4" title="Nanome v2.4 Quick Tips: Setting Up a New Workspace" />
 
 <vimg src="nanome-v2/workspaces-tab-overview.jpg" />
 
@@ -257,9 +249,7 @@ The bottom of the Settings Tab displays the currently logged-in username, the Na
 
 #### Video: Working with Scenes
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/vngy1zlFvRA?si=mLJSpAgZqMJ897ih" title="Nanome v2.4 Quick Tips: Working with Scenes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+<YoutubeEmbed videoId="vngy1zlFvRA" title="Nanome v2.4 Quick Tips: Working with Scenes" />
 
 The Scenes Panel is accessible from the left side of the interface and manages scene views within a workspace.
 
