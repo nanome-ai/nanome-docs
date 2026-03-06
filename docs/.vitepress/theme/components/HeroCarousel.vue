@@ -35,29 +35,62 @@ defineProps({
 .slide {
   position: relative;
   display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #111;
 }
 
 .slide img {
   width: 100%;
-  max-height: 450px;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
+  pointer-events: none;
 }
 
 .content {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
-  padding: 10%;
+  right: 0;
+  padding: 2rem 3rem;
   color: white;
+  z-index: 1;
 }
 
 .content h1 {
-  margin: 0 0 1rem;
-  font-size: 2rem;
+  margin: 0 0 0.5rem;
+  font-size: 1.6rem;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 }
 
 .content p {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  opacity: 0.9;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 1.5rem;
+  }
+
+  .content h1 {
+    font-size: 1.2rem;
+  }
+
+  .content p {
+    font-size: 0.9rem;
+  }
 }
 </style>
