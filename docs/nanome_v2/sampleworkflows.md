@@ -29,16 +29,24 @@ Limitation: Each 'open in headset' action from MARA will create a new workspace.
 
 ## Displaying Interactions Between Structures
 
+### Video: Cross-Entry Interaction Components
+
+<YoutubeEmbed videoId="tgocYV6N0X8" title="Nanome v2.4 Quick Tips: Cross-Entry Interaction Components" />
+
 - Make sure your structures show up as entries in the main section of the Application Menu.
-- Find one of the entries, then click on the '3 dots' button to the right of the entry name.
-- Select 'Add inter-entry interactions' from the pop-up menu, then choose the other entry you want to view and click 'Run'.
+- Find one of the entries, then click on the 'Structure Actions' button to the right of the entry name.
+- Select 'Create interaction components' and choose either 'Polymer-Ligand' or 'Polymer-Polymer' depending on the type of interaction you want to display, then select the target entry and click 'Create'.
 
 <vimg src="nanome-v2/display-interactions.gif" />
 
 ## Aligning Proteins in XR
 
+### Video: Aligning Proteins
+
+<YoutubeEmbed videoId="jNaFAtmfaRE" title="Nanome v2.4 Quick Tips: Aligning Proteins" />
+
 - Make sure your proteins show up as entries in the main section of the Application Menu.
-- Select one protein in the entry list, then click on the 'align' button to the right of the entry name.
-- In the pop-up menu, select the protein you want to align with, then click 'Align'.
+- Find one of the entries, then click on the 'Structure Actions' button to the right of the entry name.
+- Select 'Align proteins to this', then choose which entry you want to align to and click 'Align'.
 
 <vimg src="nanome-v2/align-proteins.gif" />

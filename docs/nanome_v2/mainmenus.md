@@ -37,6 +37,10 @@ At the bottom of the panel, **Position Molecules** allows you to move structures
 
 ### Entries and Components
 
+#### Video: Loading Structures from RCSB
+
+<YoutubeEmbed videoId="KZaMiop6eXc" title="Nanome v2.4 Quick Tips: Loading Structures from RCSB" />
+
 <vimg src="nanome-v2/entries-and-components.jpg" />
 
 Structures are organized as **entries** (e.g., PDB codes like 5CEO, 5CEN). Each entry contains **components**, which are sub-selections of the structure with their own representation settings.
@@ -53,6 +57,10 @@ For example, an entry might contain:
   - **Pocket + Ligand A:50D_501** — combined view with multiple representations
 
 ### Representations and Color Options
+
+#### Video: Changing Molecular Representations
+
+<YoutubeEmbed videoId="wdECz2HmR3o" title="Nanome v2.4 Quick Tips: Changing Molecular Representations" />
 
 <vimg src="nanome-v2/representation-panel.jpg" />
 
@@ -121,6 +129,10 @@ Clicking the Entry Options button on an entry opens the Structure Actions menu w
 
 ### Entry More Options
 
+#### Video: Building Custom Components
+
+<YoutubeEmbed videoId="Mw3oZhPD14k" title="Nanome v2.4 Quick Tips: Building Custom Components" />
+
 <vimg src="nanome-v2/entry-more-options.jpg" />
 
 Clicking the (...) button on an entry provides:
@@ -159,6 +171,10 @@ Each ligand row displays the 2D structure preview along with selected property c
 Available properties include RDKit-calculated values (NumAtoms, MolWeight, HbondA, HbondD, HeavyAtomMolWeight, LogP, NumAliphaticRings, NumAromaticRings, NumHeavyAtoms, NumRings, NumRotatableBonds, NumSaturatedRings, Rating, and SMILES) as well as any SDF metadata from the source file.
 
 ## Workspaces Tab
+
+#### Video: Setting Up a New Workspace
+
+<YoutubeEmbed videoId="aOICs-LXoj4" title="Nanome v2.4 Quick Tips: Setting Up a New Workspace" />
 
 <vimg src="nanome-v2/workspaces-tab-overview.jpg" />
 
@@ -230,6 +246,10 @@ The Settings Tab provides environment and interaction preferences.
 The bottom of the Settings Tab displays the currently logged-in username, the Nanome version number, and a **Log Out** button.
 
 ## Scenes Panel
+
+#### Video: Working with Scenes
+
+<YoutubeEmbed videoId="vngy1zlFvRA" title="Nanome v2.4 Quick Tips: Working with Scenes" />
 
 The Scenes Panel is accessible from the left side of the interface and manages scene views within a workspace.
 

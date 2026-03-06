@@ -11,10 +11,6 @@
     <template #default="{ item }">
       <a :href="item.url" class="slide" target="_blank">
         <img :src="item.img" />
-        <div class="content">
-          <h1>{{ item.title }}</h1>
-          <p>{{ item.description }}</p>
-        </div>
       </a>
     </template>
   </SimpleCarousel>
@@ -35,29 +31,15 @@ defineProps({
 .slide {
   position: relative;
   display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #111;
 }
 
 .slide img {
   width: 100%;
-  max-height: 450px;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
 }
 
-.content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 10%;
-  color: white;
-}
-
-.content h1 {
-  margin: 0 0 1rem;
-  font-size: 2rem;
-}
-
-.content p {
-  margin: 0;
-  font-size: 1.2rem;
-}
 </style>

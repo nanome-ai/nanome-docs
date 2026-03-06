@@ -14,6 +14,7 @@ import LandingPage from './components/LandingPage.vue'
 import HeroCarousel from './components/HeroCarousel.vue'
 import HomeCarousel from './components/HomeCarousel.vue'
 import SimpleCarousel from './components/SimpleCarousel.vue'
+import YoutubeEmbed from './components/YoutubeEmbed.vue'
 
 export default {
   extends: DefaultTheme,
@@ -27,6 +28,7 @@ export default {
     app.component('HeroCarousel', HeroCarousel)
     app.component('HomeCarousel', HomeCarousel)
     app.component('SimpleCarousel', SimpleCarousel)
+    app.component('YoutubeEmbed', YoutubeEmbed)
   },
 
   setup() {

@@ -4,8 +4,6 @@ title: Wrist Menu
 
 # Wrist Menu
 
-<vimg src="nanome-v2/wristmenu.png" />
+<vimg src="nanome-v2/wristmenu.jpg" />
 
-This is a personalized menu that is attached to your virtual "wrist". There is a large button displaying the time - clicking this button will show/hide the Application Menu.
-
-A simplified top bar shows which workspace the user is in, who is in that session, and offers spotlight/follow controls similar to the Application Menu.
+This is a small menu that is attached to your virtual "wrist". There is a large button displaying the time - clicking this button will show/hide the Application Menu. The Mara button will summon the Mara representation agent and mute button will toggle muting for your device's microphone.

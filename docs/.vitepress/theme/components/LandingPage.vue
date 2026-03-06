@@ -1,6 +1,7 @@
 <template>
   <div class="landing-page">
-    <HeroCarousel :slides="data.hero" />
+    <!-- v2.4 Quick Tips — hero carousel style -->
+    <HeroCarousel :slides="data.quickTips" />
 
     <!-- New Updates Section -->
     <div v-if="data.newUpdates" class="new-updates">
@@ -17,6 +18,14 @@
       </div>
     </div>
 
+    <!-- Blog Carousels — below New Updates -->
+    <HomeCarousel
+      v-for="carousel in data.blogCarousels"
+      :key="carousel.title"
+      v-bind="carousel"
+    />
+
+    <!-- Middle Carousels (v1.24 content, YouTube Channel) -->
     <HomeCarousel
       v-for="carousel in data.carousels"
       :key="carousel.title"
@@ -25,48 +34,42 @@
 
     <h2>Featured Sections</h2>
     <div class="featured">
-      <a href="/nanome1x/navigation/menus">
+      <a href="/nanome_v2/mainmenus">
         <div class="home-video">
-          <video
-            src="https://media.giphy.com/media/jq6CX2eDIckqP47Bk3/giphy.mp4"
-            loop
-            muted
-            autoplay
-            playsinline
-          ></video>
+          <img
+            src="/assets/original/nanome-v2/display-interactions.gif"
+            alt="Cross-entry interaction components in Nanome v2"
+          />
         </div>
         <h3>Main Menus</h3>
-        <span>All the menus of Nanome</span>
+        <span>Manage structures, representations, and collaboration</span>
       </a>
-      <a href="/nanome1x/navigation/toolsmenu">
+      <a href="/nanome_v2/sampleworkflows">
         <div class="home-video">
-          <video
-            src="https://media.giphy.com/media/mIyglT252D52nxnXAH/giphy.mp4"
-            loop
-            muted
-            autoplay
-            playsinline
-          ></video>
+          <img
+            src="/assets/original/nanome-v2/align-proteins.gif"
+            alt="Aligning proteins in Nanome v2"
+          />
         </div>
-        <h3>Tools Menu</h3>
-        <span>All the tools of Nanome</span>
+        <h3>Sample Workflows</h3>
+        <span>Align proteins, display interactions, and more</span>
       </a>
-      <a href="/nanome1x/plugins/overview">
+      <a href="/mara/overview">
         <div class="home-video">
-          <video
-            src="https://media.giphy.com/media/XbOZ8ZJiLGeobFiwxt/giphy.mp4"
-            loop
-            muted
-            autoplay
-            playsinline
-          ></video>
+          <img
+            src="/assets/original/mara/mara-chat.png"
+            alt="MARA AI assistant for molecular analysis"
+          />
         </div>
-        <h3>Nanome Stacks</h3>
-        <span>An overview of the plugin system</span>
+        <h3>MARA</h3>
+        <span>AI-powered molecular analysis and reasoning assistant</span>
       </a>
     </div>
 
-    <h2>Compatible Headsets</h2>
+    <!-- Hero Carousel — below Featured Sections -->
+    <HeroCarousel :slides="data.hero" />
+
+    <h2>v1.24 Compatible Headsets</h2>
     <div class="text-center">
       <img
         class="headsets"
