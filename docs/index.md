@@ -139,7 +139,7 @@ blogCarousels:
         img: https://nanome-cms.s3.us-west-1.amazonaws.com/lobby_with_controller_instructions_banner_4d6e7c1eae.png
         url: https://nanome.ai/blog/nanome-v2.4.0:-early-access-release-mara-voice-commands-minimization-chem-interactions-and-more!
       - title: 'Meta Horizon Managed Services Goes Free: What This Means for Enterprise VR Users'
-        img: /assets/carousels/hero/nimbus.png
+        img: https://nanome-cms.s3.us-west-1.amazonaws.com/meta_quest_devices_4285c4d34d.png
         url: https://nanome.ai/blog/meta-horizon-managed-services-goes-free:-what-this-means-for-enterprise-vr-users
       - title: 'Setting Up Boltz-2 Configuration Files and Analysis with Nanome AI'
         img: https://nanome-cms.s3.us-west-1.amazonaws.com/blog_1_a48d3fdf6c.png
