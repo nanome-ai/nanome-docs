@@ -1,7 +1,6 @@
 <template>
   <div class="landing-page">
     <!-- v2.4 Quick Tips — hero carousel style -->
-    <h2>Nanome v2.4 Quick Tips</h2>
     <HeroCarousel :slides="data.quickTips" />
 
     <!-- New Updates Section -->
