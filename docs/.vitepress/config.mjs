@@ -40,6 +40,7 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'Nanome.ai', link: 'https://nanome.ai/' },
       { text: 'Download', link: 'https://home.nanome.ai/setup' },
+      { text: 'Contact', link: '/help/contact' },
     ],
 
     search: {
@@ -52,7 +53,20 @@ export default defineConfig({
         link: '/'
       },
       {
-        text: 'Nanome 1.24 (1st Gen)',
+        text: 'Nanome',
+        collapsed: true,
+        items: [
+          { text: 'Login', link: '/nanome_v2/login' },
+          { text: 'Environment', link: '/nanome_v2/environment' },
+          { text: 'Main Menus', link: '/nanome_v2/mainmenus' },
+          { text: 'Wrist Menu', link: '/nanome_v2/wristmenu' },
+          { text: 'Collaboration', link: '/nanome_v2/collaboration' },
+          { text: 'Sample Workflows', link: '/nanome_v2/sampleworkflows' },
+          { text: 'Tips', link: '/nanome_v2/tips' }
+        ]
+      },
+      {
+        text: 'Nanome Classic (v1.24)',
         collapsed: true,
         items: [
           {
@@ -125,19 +139,6 @@ export default defineConfig({
               { text: 'Quick Drop', link: '/nanome1x/integration/quickdrop' }
             ]
           }
-        ]
-      },
-      {
-        text: 'Nanome v2 (2nd Gen)',
-        collapsed: true,
-        items: [
-          { text: 'Login', link: '/nanome_v2/login' },
-          { text: 'Environment', link: '/nanome_v2/environment' },
-          { text: 'Main Menus', link: '/nanome_v2/mainmenus' },
-          { text: 'Wrist Menu', link: '/nanome_v2/wristmenu' },
-          { text: 'Collaboration', link: '/nanome_v2/collaboration' },
-          { text: 'Sample Workflows', link: '/nanome_v2/sampleworkflows' },
-          { text: 'Tips', link: '/nanome_v2/tips' }
         ]
       },
       {
