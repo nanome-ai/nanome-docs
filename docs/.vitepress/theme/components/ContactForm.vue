@@ -92,30 +92,38 @@ const success = ref(false)
 const error = ref('')
 
 async function onSubmit() {
-  let message = ''
-  if (org.value) message += `Organization / Affiliation: ${org.value}\n\n`
-  if (profession.value) message += `Profession: ${profession.value}\n\n`
-  if (referrer.value) message += `Referrer: ${referrer.value}\n\n`
-  message += `Message: \n${content.value}`
+  error.value = ''
 
-  const data = new FormData()
-  data.append('first_name', firstName.value)
-  data.append('last_name', lastName.value)
-  data.append('email', email.value)
-  data.append('message', message)
+  // Posts to the shared contact endpoint on nanome.ai, which emails the
+  // submission to support@nanome.ai via Resend (replaces the old Make webhook).
+  try {
+    const res = await fetch('https://nanome.ai/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        type: 'contact',
+        first_name: firstName.value,
+        last_name: lastName.value,
+        email: email.value,
+        organization: org.value,
+        profession: profession.value,
+        referrer: referrer.value,
+        message: content.value,
+      }),
+    })
 
-  const res = await fetch(
-    'https://hook.integromat.com/hunbolbb299tldil4nkanx2hj9kyd3iu',
-    { method: 'POST', body: data }
-  )
+    if (!res.ok) {
+      error.value = `There was an error processing your request. Please try again later.`
+      success.value = false
+      return
+    }
 
-  if (!res.ok) {
+    success.value = true
+  }
+  catch {
     error.value = `There was an error processing your request. Please try again later.`
     success.value = false
-    return
   }
-
-  success.value = true
 }
 </script>
 
