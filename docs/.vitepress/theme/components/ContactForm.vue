@@ -108,6 +108,7 @@ async function onSubmit() {
         organization: org.value,
         profession: profession.value,
         referrer: referrer.value,
+        source_url: window.location.href,
         message: content.value,
       }),
     })
