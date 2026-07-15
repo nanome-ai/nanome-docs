@@ -1,0 +1,5 @@
+# Main Menus was renamed to Main Panel and split into per-panel pages (v2.5 docs update).
+# Anything under docs/public is copied verbatim into the build output, so this file
+# ships to the host root. Netlify and Cloudflare Pages both read /_redirects.
+/nanome_v2/mainmenus       /nanome_v2/mainpanel  301
+/nanome_v2/mainmenus.html  /nanome_v2/mainpanel  301

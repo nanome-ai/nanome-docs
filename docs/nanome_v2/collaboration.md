@@ -8,14 +8,14 @@ title: Collaboration
 
 The following are useful details to keep in mind when collaborating with other users in the same session.
 
-- Structures are organized into protein components with sub-selections.
-- New scenes have fresh (unset) representations and require each entry to be set up.
+- Structures are organized into protein components with sub-selections. See the [Components Tab](/nanome_v2/mainpanel#components-tab).
+- New scenes have fresh (unset) representations and require each entry to be set up. See the [Scenes Panel](/nanome_v2/scenespanel).
 - Duplicated scenes are identical to the scene they are derived from.
 
 
 ## Spotlight / Follow / Free Look
 
-Content is oriented centrally for all users automatically. You can select another user to **follow**, which allows you to see what that user is showing. If you are being followed by other users, then you are the **spotlight**, which means those users can see your view and are on your scene. Note that Pointers point relative to the structures, so even when in free view all users see the cursors pointing at the same structural feature.
+Content is oriented centrally for all users automatically. You can select another user to **follow**, which allows you to see what that user is showing. If you are being followed by other users, then you are the **spotlight**, which means those users can see your view and are on your scene. For the controls themselves, see [Spotlight Mode](/nanome_v2/scenespanel#spotlight-mode). Note that Pointers point relative to the structures, so even when in free view all users see the cursors pointing at the same structural feature.
 
 <vimg src="nanome-v2/multiuser_view.png" />
 
@@ -23,13 +23,13 @@ This system allows users to seamlessly interact in a multiplayer environment wit
 
 ## Workspace / Code / Permissions
 
-A workspace contains arrangements of structures, representations of those structures, scenes, and permissions.
+A workspace contains arrangements of structures, representations of those structures, scenes, and permissions. Workspaces are managed from the [Workspaces Tab](/nanome_v2/mainpanel#workspaces-tab).
 
 <vimg src="nanome-v2/workspace_menu.png" />
 
 ### Permissions
 
-Permissions determine what users can access content, and whether they can modify the representations of that content.
+Permissions determine what users can access content, and whether they can modify the representations of that content. They are set from the [Users Tab](/nanome_v2/mainpanel#permissions).
 
 - **Viewer**: Can see structures and spotlight their view, follow others and navigate scenes; cannot edit representations, arrange structures.
 - **Editor**: Can make all changes and invite others to view or edit.

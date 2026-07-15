@@ -14,38 +14,34 @@ newUpdates:
   img: /assets/original/plugins-page/livedesign/loaded.jpg
   url: /nanome1x/plugins/LiveDesign.html
 quickTips:
-  - title: Creating Your Account
-    img: https://img.youtube.com/vi/cB82b8xIZoY/maxresdefault.jpg
-    description: Create a new account directly inside VR and configure initial settings
-    url: https://youtu.be/cB82b8xIZoY
-  - title: Setting Up a New Workspace
-    img: https://img.youtube.com/vi/aOICs-LXoj4/maxresdefault.jpg
-    description: Create, join, and manage workspaces for your molecular data
-    url: https://youtu.be/aOICs-LXoj4
-  - title: Loading Structures from RCSB
-    img: https://img.youtube.com/vi/KZaMiop6eXc/maxresdefault.jpg
-    description: Import PDB entries and explore auto-generated component hierarchies
-    url: https://youtu.be/KZaMiop6eXc
-  - title: Changing Representations
-    img: https://img.youtube.com/vi/wdECz2HmR3o/maxresdefault.jpg
-    description: Customize molecular display styles from Ball and Stick to Surface
-    url: https://youtu.be/wdECz2HmR3o
-  - title: Building Custom Components
-    img: https://img.youtube.com/vi/Mw3oZhPD14k/maxresdefault.jpg
-    description: Select residues and atoms to create independent component groups
-    url: https://youtu.be/Mw3oZhPD14k
-  - title: Aligning Proteins
-    img: https://img.youtube.com/vi/jNaFAtmfaRE/maxresdefault.jpg
-    description: Superimpose structures and compare RMSD scores in real time
-    url: https://youtu.be/jNaFAtmfaRE
-  - title: Cross-Entry Interactions
-    img: https://img.youtube.com/vi/tgocYV6N0X8/maxresdefault.jpg
-    description: Visualize binding interactions and pocket regions between entries
-    url: https://youtu.be/tgocYV6N0X8
-  - title: Working with Scenes
-    img: https://img.youtube.com/vi/vngy1zlFvRA/maxresdefault.jpg
-    description: Organize curated views with saved camera positions and visibility states
-    url: https://youtu.be/vngy1zlFvRA
+  - title: 'Nanome v2.5 Quick Tips: Web App Basics'
+    img: /assets/carousels/quicktips/web-app-basics.jpg
+    description: A full walkthrough of the Nanome web interface at app.nanome.ai
+    url: https://youtu.be/sseI0CxNrDc
+  - title: 'Nanome v2.5 Quick Tips: Loading Structures from the Web'
+    img: /assets/carousels/quicktips/loading-from-web.jpg
+    description: Create a project and workspace, then load your first protein in under 3 minutes
+    url: https://youtu.be/BkZ6R8fPbgQ
+  - title: 'Nanome v2.5 Quick Tips: Invite Users & Follow from the Web'
+    img: /assets/carousels/quicktips/invite-follow-web.jpg
+    description: Share a workspace and follow a colleague's VR perspective in real time
+    url: https://youtu.be/6v7xlQNzzoY
+  - title: 'Nanome v2.5 Quick Tips: MD Trajectory Playback'
+    img: /assets/carousels/quicktips/md-playback.jpg
+    description: Stream molecular dynamics trajectories from the web to standalone XR headsets
+    url: https://youtu.be/cNW8DnFap6A
+  - title: 'Nanome v2.5 Quick Tips: Load Structures, Invite & Follow from XR'
+    img: /assets/carousels/quicktips/load-invite-follow-xr.jpg
+    description: Create a workspace, load from RCSB, invite collaborators, and spotlight your view
+    url: https://youtu.be/5uikQlDO7FA
+  - title: 'Nanome v2.5 Quick Tips: Torsion Tool (Beta)'
+    img: /assets/carousels/quicktips/torsion-tool.jpg
+    description: Inspect and manipulate dihedral angles with real-time strain coloring
+    url: https://youtu.be/IBQeKcSOJ8A
+  - title: 'Nanome v2.5 Quick Tips: Chemical Interactions Menu'
+    img: /assets/carousels/quicktips/chem-interactions.jpg
+    description: Create polymer interaction components and explore the interactions report in VR
+    url: https://youtu.be/YHOGQq1dUck
 carousels:
   - title: v1.24 Videos of Spatial Recordings
     numSlides: 4

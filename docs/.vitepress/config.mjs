@@ -1,7 +1,7 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  title: 'Docs',
+  title: 'Help & Documentation',
   description: 'Documentation site for Nanome software.',
   cleanUrls: true,
 
@@ -58,11 +58,37 @@ export default defineConfig({
         items: [
           { text: 'Login', link: '/nanome_v2/login' },
           { text: 'Environment', link: '/nanome_v2/environment' },
-          { text: 'Main Menus', link: '/nanome_v2/mainmenus' },
+          { text: 'Main Panel', link: '/nanome_v2/mainpanel' },
+          { text: 'Scenes Panel', link: '/nanome_v2/scenespanel' },
+          { text: 'Sequence Panel', link: '/nanome_v2/sequencepanel' },
+          { text: 'Tools Panel', link: '/nanome_v2/toolspanel' },
           { text: 'Wrist Menu', link: '/nanome_v2/wristmenu' },
           { text: 'Collaboration', link: '/nanome_v2/collaboration' },
           { text: 'Sample Workflows', link: '/nanome_v2/sampleworkflows' },
           { text: 'Tips', link: '/nanome_v2/tips' }
+        ]
+      },
+      {
+        text: 'Nanome Web',
+        collapsed: true,
+        items: [
+          { text: 'Overview', link: '/nanome_web/overview' },
+          { text: 'Web App Basics', link: '/nanome_web/basics' },
+          { text: 'Loading Structures', link: '/nanome_web/loading' },
+          { text: 'Invite & Follow', link: '/nanome_web/collaboration' },
+          { text: 'MD Trajectory Playback', link: '/nanome_web/mdplayback' }
+        ]
+      },
+      {
+        text: 'MARA',
+        collapsed: true,
+        items: [
+          { text: 'Overview', link: '/mara/overview' },
+          { text: 'Navigation', link: '/mara/navigation' },
+          { text: 'Features', link: '/mara/features' },
+          { text: 'Resources', link: '/mara/resources' },
+          { text: 'Deployment', link: '/mara/deployment' },
+          { text: 'Technical', link: '/mara/technical' }
         ]
       },
       {
@@ -139,18 +165,6 @@ export default defineConfig({
               { text: 'Quick Drop', link: '/nanome1x/integration/quickdrop' }
             ]
           }
-        ]
-      },
-      {
-        text: 'MARA',
-        collapsed: true,
-        items: [
-          { text: 'Overview', link: '/mara/overview' },
-          { text: 'Navigation', link: '/mara/navigation' },
-          { text: 'Features', link: '/mara/features' },
-          { text: 'Resources', link: '/mara/resources' },
-          { text: 'Deployment', link: '/mara/deployment' },
-          { text: 'Technical', link: '/mara/technical' }
         ]
       },
       {

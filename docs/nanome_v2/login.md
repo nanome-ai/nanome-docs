@@ -12,7 +12,7 @@ title: Login Screen
 
 Upon launching the Nanome app, you will be brought to the login screen. There are options for entering your Nanome account username and password, or using an authentication code to log in. New users can create an account directly from this screen by clicking the **Create Account** button.
 
-On the left side of the login screen, a basic tutorial banner is displayed to help new users get started. This banner can be closed, and toggled back on through the Settings menu once logged in.
+On the left side of the login screen, a basic tutorial banner is displayed to help new users get started. This banner can be closed, and toggled back on through the [Settings Tab](/nanome_v2/mainpanel#settings-tab) once logged in.
 
 You can also see your current network connection status (online or offline) and the Nanome version number.
 

@@ -48,6 +48,24 @@ textarea {
   padding-right: 1em;
 }
 
+/* Stack the site title beneath the logo as a tagline.
+   The nav bar is a fixed 64px, so the lockup has to stay under that:
+   24px logo + 2px gap + ~15px text. */
+.VPNavBarTitle .title {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2px;
+  line-height: 1.15;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* Default theme spaces the logo to the right of the text; not needed when stacked. */
+.VPNavBarTitle .title .logo {
+  margin-right: 0;
+}
+
 .VPSidebarItem.level-0 {
   padding-bottom: 10px !important;
 }

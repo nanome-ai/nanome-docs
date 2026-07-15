@@ -4,7 +4,7 @@ title: Sample Workflows
 
 # Sample Workflows and Usage
 
-Below are some examples of workflows that can be accomplished in Nanome v2, including using MARA to open and prep structures.
+Below are some examples of workflows that can be accomplished in Nanome v2, including using [MARA](/mara/overview) to open and prep structures.
 
 ## Opening from MARA
 
@@ -21,7 +21,7 @@ Limitation: Each 'open in headset' action from MARA will create a new workspace.
 
 ## Sharing Workspace
 
-- Open Collaboration and click ‘Permissions’. There are two main methods to do this:
+- Open the [Users Tab](/nanome_v2/mainpanel#users-tab) and click ‘Permissions’. There are two main methods to do this:
     - Set the workspace code from ‘Private’ to ‘Viewer’ or ‘Editor’ depending on your needs, then tell your colleagues the code.
     - Invite a user directly by email if they have a Nanome account. (This must be an exact email match, there is no auto-completion.)
 - Each user that joins with the code or was added via email will appear in the workspace list.
@@ -33,11 +33,17 @@ Limitation: Each 'open in headset' action from MARA will create a new workspace.
 
 <YoutubeEmbed videoId="tgocYV6N0X8" title="Nanome v2.4 Quick Tips: Cross-Entry Interaction Components" />
 
-- Make sure your structures show up as entries in the main section of the Application Menu.
-- Find one of the entries, then click on the 'Structure Actions' button to the right of the entry name.
+- Make sure your structures show up as entries in the main section of the [Main Panel](/nanome_v2/mainpanel).
+- Find one of the entries, then click on the ['Structure Actions'](/nanome_v2/mainpanel#structure-actions) button to the right of the entry name.
 - Select 'Create interaction components' and choose either 'Polymer-Ligand' or 'Polymer-Polymer' depending on the type of interaction you want to display, then select the target entry and click 'Create'.
 
 <vimg src="nanome-v2/display-interactions.gif" />
+
+### Video: Chemical Interactions Menu
+
+<YoutubeEmbed videoId="YHOGQq1dUck" title="Nanome v2.5 Quick Tips: Chemical Interactions Menu" />
+
+Once interaction components exist, the Chemical Interactions panel lists every interaction found. Hover over an entry in the list to highlight the corresponding bond in 3D, pin the interactions you want to keep to hand, and toggle clash detection.
 
 ## Aligning Proteins in XR
 
@@ -45,8 +51,8 @@ Limitation: Each 'open in headset' action from MARA will create a new workspace.
 
 <YoutubeEmbed videoId="jNaFAtmfaRE" title="Nanome v2.4 Quick Tips: Aligning Proteins" />
 
-- Make sure your proteins show up as entries in the main section of the Application Menu.
-- Find one of the entries, then click on the 'Structure Actions' button to the right of the entry name.
+- Make sure your proteins show up as entries in the main section of the [Main Panel](/nanome_v2/mainpanel).
+- Find one of the entries, then click on the ['Structure Actions'](/nanome_v2/mainpanel#structure-actions) button to the right of the entry name.
 - Select 'Align proteins to this', then choose which entry you want to align to and click 'Align'.
 
 <vimg src="nanome-v2/align-proteins.gif" />

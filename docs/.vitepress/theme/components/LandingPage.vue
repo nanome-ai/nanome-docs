@@ -34,14 +34,14 @@
 
     <h2>Featured Sections</h2>
     <div class="featured">
-      <a href="/nanome_v2/mainmenus">
+      <a href="/nanome_v2/mainpanel">
         <div class="home-video">
           <img
             src="/assets/original/nanome-v2/display-interactions.gif"
             alt="Cross-entry interaction components in Nanome v2"
           />
         </div>
-        <h3>Main Menus</h3>
+        <h3>Main Panel</h3>
         <span>Manage structures, representations, and collaboration</span>
       </a>
       <a href="/nanome_v2/sampleworkflows">
