@@ -18,3 +18,5 @@ The tutorial covers:
 - **Import from chat** — Pull in molecules from previous MARA chats.
 
 Nanome automatically generates a pocket view for any ligand-containing structure you load.
+
+The web app accepts the full range of supported file types — structures, session files, trajectories, and electrostatic maps. For the complete list, see [Supported File Formats](/nanome_web/fileformats).
