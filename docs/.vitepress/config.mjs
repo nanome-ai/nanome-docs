@@ -76,7 +76,8 @@ export default defineConfig({
           { text: 'Web App Basics', link: '/nanome_web/basics' },
           { text: 'Loading Structures', link: '/nanome_web/loading' },
           { text: 'Invite & Follow', link: '/nanome_web/collaboration' },
-          { text: 'MD Trajectory Playback', link: '/nanome_web/mdplayback' }
+          { text: 'MD Trajectory Playback', link: '/nanome_web/mdplayback' },
+          { text: 'Supported File Formats', link: '/nanome_web/fileformats' }
         ]
       },
       {
