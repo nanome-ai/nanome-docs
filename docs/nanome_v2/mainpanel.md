@@ -51,6 +51,8 @@ At the bottom of the panel, **Position Molecules** allows you to move structures
 
 Structures are organized as **entries** (e.g., PDB codes like 5CEO, 5CEN). Each entry contains **components**, which are sub-selections of the structure with their own representation settings.
 
+From within XR, structures are loaded by **PDB code** directly from the RCSB. To load other file types, use the [Nanome Web app](/nanome_web/loading), which accepts the full range of [supported file formats](/nanome_web/fileformats) — the workspace then syncs to your XR session.
+
 <vimg src="nanome-v2/entry-component-breakdown.jpg" />
 
 For example, an entry might contain:

@@ -24,7 +24,7 @@ title: How to
 
 <video src="https://user-images.githubusercontent.com/125503369/235212408-5e740ee3-1cb3-49a3-9bd9-0cc5aba5137a.mp4" controls="controls" style="max-width: 720px;" loop muted playsinline></video>
 
-Nanome supports the following MD trajectory files: .PDB, .PSE, .DCD, .GRO, .XTC, .TRR. 
+Nanome supports the following MD trajectory files (v1.26): .PDB, .PSE, .DCD, .GRO, .XTC, .TRR. For trajectory support in Nanome v2, see [Supported File Formats](/nanome_web/fileformats#trajectory-molecular-dynamics). 
 1. Go to the [Load menu](https://docs.nanome.ai/navigation/menus.html#load).
 2. Click on [Files](https://docs.nanome.ai/navigation/menus.html#my-files). Navigate to the folder that contains your trajectories and press load (you may also have to multi-select the topology file for trajectories generated via Gromacs or Desmond.
 If a trajectory doesn’t load properly, please try reducing its frame count and/or export as a multi-model .PDB. Additionally, please let us know some details about the problematic files and we can look into resolving them. Relevant details would include the file format type and the number of frames. Typically, the shorter the trajectory the easier time you’ll have to load it in. 

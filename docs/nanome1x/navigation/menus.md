@@ -84,7 +84,9 @@ When saving a workspace, you have the option to create a spatial anchor for your
 
 ## Load
 
-Load molecules or structures into your workspace. Supported file formats include:
+Load molecules or structures into your workspace. Supported file formats include (v1.26):
+
+For the file formats supported in Nanome v2, see [Supported File Formats](/nanome_web/fileformats).
 
 _Structural Coordinate File Formats_ <br />
 .pdb, .cif, .mmcif, .pse, .nanome, .sdf, .mol, .xyz, .mol2

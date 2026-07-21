@@ -224,8 +224,10 @@ Delete the selected entities.
 
 ### Load
 
-Load molecules or structures into your workspace. Supported file formats include:
+Load molecules or structures into your workspace. Supported file formats include (v1.26):
 .pdb, .cif, .mmcif, .sdf, .mol, .xyz, .mol2, .ccp4, .dsn6, .pse, .nanome, .png, .jpg, .jpeg, .pdf
+
+For the file formats supported in Nanome v2, see [Supported File Formats](/nanome_web/fileformats).
 
 #### Featured
 
