@@ -8,7 +8,7 @@ This page lists the file formats supported in Nanome v2, current through 2.6.0. 
 
 All parsing is server-side, and the format is detected by file extension.
 
-Capability key: 👁 view static · ▶️ animates (substrate noted) · ✏️ editable · 💾 exportable · 🆕 new or changed in 2.6.0.
+Capability key: 👁 view static · ▶️ animates (substrate noted) · ✏️ editable · 💾 exportable · 🆕 new or changed in 2.6.0 · † loads via a MARA tool, not directly in a workspace (see below).
 
 ## Structures
 
@@ -17,13 +17,15 @@ Small molecule and macromolecule formats.
 | Format | Extensions | Import | Animates? | Export |
 |--------|------------|--------|-----------|--------|
 | **PDB** | `.pdb` `.ent` | 👁 ✏️ | ▶️ model-index (multi-MODEL) | 💾 PDB |
-| **mmCIF / PDBx** | `.cif` `.mmcif` `.mcif` `.bcif` | 👁 ✏️ | ▶️ model-index | — |
-| **SDF** | `.sdf` `.sd` `.mol` | 👁 ✏️ | ▶️ model-index (multi-record) | 💾 SDF |
-| **MOL / MOL2** | `.mol` `.mol2` | 👁 ✏️ | — | — |
+| **mmCIF / PDBx** | `.cif` `.mmcif` `.mcif`† `.bcif`† | 👁 ✏️ | ▶️ model-index | — |
+| **SDF** | `.sdf` `.sd`† `.mol`† | 👁 ✏️ | ▶️ model-index (multi-record) | 💾 SDF |
+| **MOL / MOL2** | `.mol`† `.mol2`† | 👁 ✏️ | — | — |
 | **SMILES** | `.smi` `.smiles` / typed | 👁 ✏️ | — | 🆕 💾 SMILES |
 | **XYZ** | `.xyz` | 👁 ✏️ | 🆕 ▶️ model-index (playback fixed in 2.6.0) | — |
 | **PQR** | `.pqr` | 👁 ✏️ | — | — |
 | **PDBQT** | `.pdbqt` | 🆕 👁 (imported as PDB; charges dropped) | — | — |
+
+> **† Requires a MARA tool.** A Nanome workspace on its own cannot load `.bcif`, `.mcif`, `.sd`, `.mol`, or `.mol2` directly. Files such as these — and others — require a [MARA](/mara/overview) tool that supports them, which loads or converts the file into your workspace. The rest of the structure formats above load directly.
 
 ## Session and proprietary
 

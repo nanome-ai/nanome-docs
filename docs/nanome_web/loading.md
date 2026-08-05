@@ -19,4 +19,4 @@ The tutorial covers:
 
 Nanome automatically generates a pocket view for any ligand-containing structure you load.
 
-The web app accepts the full range of supported file types — structures, session files, trajectories, and electrostatic maps. For the complete list, see [Supported File Formats](/nanome_web/fileformats).
+The web app accepts the full range of supported file types — structures, session files, trajectories, and electrostatic maps. Some formats that a Nanome workspace cannot open on its own — such as `.bcif`, `.mcif`, `.sd`, `.mol`, and `.mol2` — are loaded here through a [MARA](/mara/overview) tool that supports them. For the complete list, see [Supported File Formats](/nanome_web/fileformats).

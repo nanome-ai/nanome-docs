@@ -53,6 +53,8 @@ Structures are organized as **entries** (e.g., PDB codes like 5CEO, 5CEN). Each 
 
 From within XR, structures are loaded by **PDB code** directly from the RCSB. To load other file types, use the [Nanome Web app](/nanome_web/loading), which accepts the full range of [supported file formats](/nanome_web/fileformats) — the workspace then syncs to your XR session.
 
+A Nanome workspace on its own cannot load some formats directly. Files such as `.bcif`, `.mcif`, `.sd`, `.mol`, and `.mol2` — among others — require a [MARA](/mara/overview) tool that supports them. See [Supported File Formats](/nanome_web/fileformats) for the full breakdown.
+
 <vimg src="nanome-v2/entry-component-breakdown.jpg" />
 
 For example, an entry might contain:
