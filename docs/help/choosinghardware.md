@@ -148,6 +148,12 @@ title: Choosing Hardware
     </tbody>
 </table>
 
+## Headsets Not Supported
+
+**Meta Quest 1**, originally sold as Oculus Quest, is not supported. It does not appear as
+a supported platform on any current Nanome store listing. Meta Quest 2 is the oldest
+all-in-one headset Nanome supports.
+
 ## Nanome All-In-One (Quest Pro, Quest 2 & Focus 3) vs PCVR Feature Comparison
 
 The following tables below show brief overviews of the capabilities of the Meta Quest Pro, Meta Quest 2, Vive Focus 3
