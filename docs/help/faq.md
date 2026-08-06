@@ -40,7 +40,15 @@ A stable Internet connection is highly recommended when using Nanome, especially
 
 Nanome currently supports up to 20 XR collaborators in a room concurrently. Up to 50 more users can join via Nanome's 2D mode.
 
-## What file formats does Nanome support? How can I import them?
+## What file formats does Nanome v2 support?
+
+For the current, per-format list of what Nanome v2 supports — including import/export capability, trajectory playback, and per-release changes — see [Supported File Formats](/nanome_web/fileformats).
+
+In short, v2 imports structures (PDB, mmCIF, SDF, MOL/MOL2, SMILES, XYZ, PQR, PDBQT), session files (MAE, MOE, PSE), trajectories (GRO, XTC, TRR, DCD), and DX electrostatic maps. Molecule export is single-frame, to PDB, SDF, or SMILES.
+
+## What file formats does Nanome support? How can I import them? (v1.26)
+
+*This answer describes Nanome 1.26 (Classic). For Nanome v2, see [Supported File Formats](/nanome_web/fileformats).*
 
 Nanome supports .pdb, .sdf, and features limited compatibility with other atomic coordinate files, like .cif. While .pdb or .sdf format are the most stable formats, we are always improving our parser’s ability to handle anomalies.
 
@@ -50,7 +58,9 @@ Structures may be imported directly from RCSB Protein Data Bank, PubChem, DrugBa
 
 We recommend setting Nanome as your default software for opening .pdb files. Double-clicking on any local .pdb will automatically open the file with the Nanome software.
 
-## What are the supported files and limitations of Trajectory / Molecular Dynamics files (MD)?
+## What are the supported files and limitations of Trajectory / Molecular Dynamics files (MD)? (v1.26)
+
+*This answer describes Nanome 1.26 (Classic). For trajectory support in Nanome v2, see [Supported File Formats](/nanome_web/fileformats#trajectory-molecular-dynamics).*
 
 | File Type | Description                                      | Source Software      |
 | --------- | ------------------------------------------------ | -------------------- |
