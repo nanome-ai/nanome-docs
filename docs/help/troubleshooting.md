@@ -124,6 +124,20 @@ If you installed Nanome using Steam, right click on Nanome in the library and cl
 
 #### 4. Click OK and then click the Close button to close the Windows Firewall window.
 
+### "SSL CA certificate error" is not a firewall problem
+
+If a headset shows `Error NetworkError:SSL CA certificate error`, opening firewall
+ports will not fix it. A firewall blocks a whole site or network, so it affects
+every device on it. This error is certificate trust, and it can affect one device,
+or one account on one device, while others on the same network work normally.
+
+It applies to on-prem and private-cloud deployments, where the server presents
+certificates each device has to trust.
+
+When reporting it, say which account and device fail **and which ones on the same
+network still work**. That difference is the diagnostic, and it is the fastest way
+to separate this from a network block.
+
 ## Having Trouble Hearing Anything?
 
 #### Windows Audio Troubleshooting
