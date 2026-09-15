@@ -73,5 +73,6 @@ Two rules are worth knowing before writing a page:
   `docs/.vitepress/theme/styles/tokens.css`. Hard-coded hex values break dark
   mode.
 
-See [MIGRATION.md](MIGRATION.md) for the plan to bring the Getting Started and
-Session Guide chapters over from the nanome.ai site.
+The Getting Started and Session Guide chapters under Nanome were ported from
+the nanome.ai site. See [MIGRATION.md](MIGRATION.md) for what came from where,
+where the two copies deliberately differ, and how to re-sync them.

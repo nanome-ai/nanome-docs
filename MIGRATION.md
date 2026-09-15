@@ -1,128 +1,103 @@
-# Porting the Getting Started and Session Guide chapters
+# Keeping the guides in step with nanome.ai
 
-The docs theme now carries the interactive components these two guides need.
-The content itself is still on two open pull requests against `nanome.ai`, so
-it has not been copied here yet — copying from a branch that can still change
-would mean reconciling two diverging copies later.
+Getting Started and Session Guide were ported from two pull requests on the
+`nanome.ai` site while both were still open:
 
-- **PR 85** — `feature/setup-onboarding`, rebuilds `/setup` as a 7-chapter
-  onboarding guide.
-- **PR 86** — `feature/session-playbook`, adds `/session-guide` in 8 chapters.
-  It branches off PR 85, so that branch holds both.
+| Docs section | Source | Branch | Commit |
+| --- | --- | --- | --- |
+| Nanome › Getting Started | [nanome-ai/nanome.ai#85](https://github.com/nanome-ai/nanome.ai/pull/85) | `feature/setup-onboarding` | `0682fa4` |
+| Nanome › Session Guide | [nanome-ai/nanome.ai#86](https://github.com/nanome-ai/nanome.ai/pull/86) | `feature/session-playbook` | `ac6eb48` |
 
-When both land on `master`, do the port described below.
+PR 86 branches off PR 85 but has not picked up its last 7 commits, so the two
+guides came from different tips: the setup chapters from 85, which has the
+newer MDM picker and a third fact-check pass, and the session chapters from 86,
+which is the only place they exist.
+
+**Both PRs were still open when this landed.** Anything that changed on either
+branch afterwards, or during review before merge, is not reflected here.
 
 ## What maps to what
 
-Each chapter on the website becomes one page here, which is why the sidebar
-groups below are nested. The website renders a chapter as a Vue component under
-`app/components/pages/`; here the same content is markdown plus the components
-documented at [/contributing/components](docs/contributing/components.md).
+Each chapter on the website is one page here. The website renders a chapter as a
+Vue component; here it is markdown plus the components documented at
+[/contributing/components](docs/contributing/components.md).
 
-### Nanome › Getting Started
+### Getting Started
 
-| Page | Source component | Interactive parts |
-| --- | --- | --- |
-| `docs/getting-started/hardware.md` | `setup/SetupHardware.vue` | `CardGrid` of headsets, `Card` for each reseller |
-| `docs/getting-started/choose-an-mdm.md` | `setup/SetupMdm.vue` | `Chooser` (`param="mdm"`), `Accordion` for the comparison |
-| `docs/getting-started/mdm-setup.md` | `setup/SetupMdmGuides.vue` | `Tabs`, one per vendor |
-| `docs/getting-started/network.md` | `setup/SetupNetwork.vue` | `AccordionGroup` of 6 checks, `CopyBlock` for the allowlist |
-| `docs/getting-started/install.md` | `setup/SetupInstall.vue` | `Chooser` (`param="install"`), `Steps` per method |
-| `docs/getting-started/accounts.md` | `setup/SetupAccount.vue` | `AccordionGroup` of 4 steps |
-| `docs/getting-started/log-in.md` | `setup/SetupLogin.vue` | `AccordionGroup` of 2 rows |
+| Page | Source component |
+| --- | --- |
+| `docs/getting-started/hardware.md` | `setup/SetupHardware.vue` |
+| `docs/getting-started/choose-an-mdm.md` | `setup/SetupMdm.vue` |
+| `docs/getting-started/mdm-setup.md` | `setup/SetupMdmGuides.vue` |
+| `docs/getting-started/network.md` | `setup/SetupNetwork.vue` |
+| `docs/getting-started/install.md` | `setup/SetupInstall.vue` |
+| `docs/getting-started/accounts.md` | `setup/SetupAccount.vue` |
+| `docs/getting-started/log-in.md` | `setup/SetupLogin.vue` |
 
-### Nanome › Session Guide
+### Session Guide
 
-| Page | Source component | Interactive parts |
-| --- | --- | --- |
-| `docs/session-guide/plan.md` | `session-guide/SessionPlan.vue` | `CardGrid` |
-| `docs/session-guide/build.md` | `session-guide/SessionBuild.vue` | `YoutubeEmbed`, `Chooser` over the 3 build paths, `CopyBlock` for the MCP commands |
-| `docs/session-guide/scenes.md` | `session-guide/SessionScenes.vue` | screenshots, `Callout` |
-| `docs/session-guide/comfort.md` | `session-guide/SessionComfort.vue` | the comfort table as a markdown table |
-| `docs/session-guide/permissions.md` | `session-guide/SessionRoles.vue` | `CardGrid` of the 4 roles |
-| `docs/session-guide/share.md` | `session-guide/SessionShare.vue` | `Steps` |
-| `docs/session-guide/run-the-session.md` | `session-guide/SessionLive.vue` | `AccordionGroup`, `YoutubeEmbed` |
-| `docs/session-guide/troubleshooting.md` | `session-guide/SessionFixes.vue` | `AccordionGroup` of 6 checks |
+| Page | Source component |
+| --- | --- |
+| `docs/session-guide/plan.md` | `session-guide/SessionPlan.vue` |
+| `docs/session-guide/build.md` | `session-guide/SessionBuild.vue` |
+| `docs/session-guide/scenes.md` | `session-guide/SessionScenes.vue` |
+| `docs/session-guide/comfort.md` | `session-guide/SessionComfort.vue` |
+| `docs/session-guide/permissions.md` | `session-guide/SessionRoles.vue` |
+| `docs/session-guide/share.md` | `session-guide/SessionShare.vue` |
+| `docs/session-guide/run-the-session.md` | `session-guide/SessionLive.vue` |
+| `docs/session-guide/troubleshooting.md` | `session-guide/SessionFixes.vue` |
 
-## Facts worth keeping in one place
+## Where the two copies deliberately differ
 
-Links, download URLs, MDM pricing, allowlist hosts and the comfort numbers live
-in three files on the website branch:
+Nine things could not carry over as they were. Each is a decision worth
+revisiting rather than a gap to close silently.
 
-- `app/data/setup-guide.js`
-- `app/data/setup-devices.js`
-- `app/data/session-guide.js`
+1. **Download URLs.** The website reads the latest build from the CMS, so its
+   buttons update on release. There is no CMS here, so every download button
+   points at [nanome.ai/versions](https://nanome.ai/versions) — which is also
+   where the website's own picker falls back to when the CMS has no URL.
+2. **Query parameters.** The website uses one compact key per picker
+   (`?mdm=meta-paid`). Here each question gets its own
+   (`?mdm-device=meta&mdm-fleet=many&mdm-budget=paid`), which is what the
+   `Chooser` component does everywhere. Old `?mdm=` links do not carry over.
+3. **Chapter rail.** The website is one long page with a sticky chapter rail.
+   Here each chapter is a page, so the left sidebar does that job and the right
+   rail lists headings within the chapter.
+4. **Unavailable install combinations.** The website greys out a device that a
+   method cannot reach. `Chooser` has no disabled state, so picking an
+   impossible pair shows the explanation instead — the same copy the website
+   shows once the pair is selected.
+5. **Icons.** The website uses PrimeIcons throughout. There is no icon font
+   here; components draw their own inline SVG and prose does without.
+6. **Links back into the docs.** Anything pointing at `help.nanome.ai` became a
+   relative link, so it stays inside the site.
+7. **Screenshots.** 11 of the 15 session-guide images were already in the docs
+   under `nanome-v2/` — the website had pulled them from help.nanome.ai in the
+   first place. Those pages reference the existing copies. The 4 MCP blog
+   screenshots PR 86 commits are not referenced by any component on that branch
+   either, so they were left behind.
+8. **Nanome Classic and /versions.** PR 85 also rebuilds the website's
+   `/versions` page. That is marketing-site material and was not ported; the
+   docs already cover Classic under Nanome Classic (v1.24).
+9. **Network facts.** The hosts, ports and generated allowlist live in
+   `docs/.vitepress/data/setup-network.js`, copied from the website's
+   `app/data/setup-guide.js`. They change more often than the prose, so they sit
+   in one file rather than spread across the markdown. **Keep the two copies in
+   step.**
 
-These change more often than the prose does. Copy them into
-`docs/.vitepress/data/` and import them from a page's `<script setup>` block
-rather than inlining the values across a dozen markdown pages:
+## Re-syncing after the PRs merge
 
-```md
-<script setup>
-import { SETUP_LINKS } from '../.vitepress/data/setup-guide.js'
-</script>
+```bash
+git -C /path/to/nanome.ai log --oneline 0682fa4..master -- app/components/pages/setup app/data/setup-guide.js
+git -C /path/to/nanome.ai log --oneline ac6eb48..master -- app/components/pages/session-guide app/data/session-guide.js
 ```
 
-## Things that do not carry over
+Anything those list is a change made after this port, and needs applying by hand
+to the matching page above.
 
-The website is Nuxt and the docs are VitePress, so four things need swapping as
-you port each component:
+## The overlap worth deciding
 
-1. **Icons.** The website uses PrimeIcons (`<i class="pi pi-check" />`). There
-   is no icon font here — the components draw their own inline SVG, and prose
-   should do without.
-2. **Nuxt helpers.** `useHead` becomes page frontmatter, `navigateTo` becomes a
-   plain link, and `<n-card>` becomes `<Card>`.
-3. **SCSS variables.** `$text-link`, `$bg-page` and the rest resolve to nothing
-   here. The components already read `--n-*` custom properties instead, which
-   is what makes them work in light and dark.
-4. **Light-only colour.** The website guide is light-mode only. Anything ported
-   has to be checked in dark mode too, since the docs default to it.
-
-## Images
-
-PR 86 commits 15 screenshots under `app/assets/img/session-guide/`, and PR 85
-adds 4 under `app/assets/img/setup/accounts/`. Copy them to
-`docs/public/assets/original/session-guide/` and
-`docs/public/assets/original/setup/`, then run `npm run docs:compress`.
-
-## Sidebar
-
-Add these two entries at the top of the existing `Nanome` group in
-`docs/.vitepress/config.mjs`, above `Login`:
-
-```js
-{
-  text: 'Getting Started',
-  collapsed: true,
-  items: [
-    { text: 'Hardware', link: '/getting-started/hardware' },
-    { text: 'Choose an MDM', link: '/getting-started/choose-an-mdm' },
-    { text: 'MDM setup guides', link: '/getting-started/mdm-setup' },
-    { text: 'Wi-Fi & network', link: '/getting-started/network' },
-    { text: 'Download & install', link: '/getting-started/install' },
-    { text: 'Accounts & licenses', link: '/getting-started/accounts' },
-    { text: 'Log in', link: '/getting-started/log-in' }
-  ]
-},
-{
-  text: 'Session Guide',
-  collapsed: true,
-  items: [
-    { text: 'Plan the session', link: '/session-guide/plan' },
-    { text: 'Build the workspace', link: '/session-guide/build' },
-    { text: 'Scenes', link: '/session-guide/scenes' },
-    { text: 'Keep it comfortable', link: '/session-guide/comfort' },
-    { text: 'Permissions', link: '/session-guide/permissions' },
-    { text: 'Share the workspace', link: '/session-guide/share' },
-    { text: 'Run the session', link: '/session-guide/run-the-session' },
-    { text: 'Troubleshooting', link: '/session-guide/troubleshooting' }
-  ]
-},
-```
-
-## Overlap with the website
-
-`/setup` and `/session-guide` stay on nanome.ai as marketing pages. Once these
-chapters exist here, decide which copy is canonical — two full copies of the
-same guide will drift within a release or two.
+`/setup` and `/session-guide` stay on nanome.ai as marketing pages, so the same
+guide now exists twice. Two copies of 15 chapters will drift within a release or
+two. Worth settling which one is canonical, and whether the other should link to
+it rather than repeat it.
