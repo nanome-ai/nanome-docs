@@ -1,0 +1,381 @@
+/* =========================================================================
+   Nanome docs — running prose.
+   Everything markdown renders lands inside `.vp-doc`. Headings keep their
+   VitePress ids and `.VPDoc` wrapper so the right-hand outline can find them.
+   ========================================================================= */
+
+.vp-doc {
+  font-size: var(--n-text-body);
+  line-height: var(--n-leading-body);
+  color: var(--n-text-muted);
+}
+
+/* --- Headings ----------------------------------------------------------- */
+
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4,
+.vp-doc h5,
+.vp-doc h6 {
+  position: relative;
+  color: var(--n-text);
+  font-weight: 600;
+  letter-spacing: var(--n-tracking-tight);
+  scroll-margin-top: calc(var(--n-nav-height) + 24px);
+}
+
+.vp-doc h1 {
+  margin: 0 0 12px;
+  font-size: var(--n-text-2xl);
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+
+.vp-doc h2 {
+  margin: 56px 0 18px;
+  padding-top: 28px;
+  border-top: 1px solid var(--n-border-soft);
+  font-size: var(--n-text-xl);
+  line-height: 1.35;
+}
+
+.vp-doc h3 {
+  margin: 36px 0 12px;
+  font-size: var(--n-text-lg);
+  line-height: 1.4;
+}
+
+.vp-doc h4 {
+  margin: 28px 0 10px;
+  font-size: 1.0625rem;
+}
+
+.vp-doc h5,
+.vp-doc h6 {
+  margin: 24px 0 8px;
+  font-size: var(--n-text-base);
+}
+
+/* First heading on a page shouldn't push itself off the top. */
+.vp-doc > :first-child {
+  margin-top: 0;
+}
+
+/* Anchor links appear on hover, in the gutter, so they never shift the text. */
+.vp-doc .header-anchor {
+  position: absolute;
+  top: 0;
+  left: -0.75em;
+  padding-top: inherit;
+  color: var(--n-text-faint);
+  font-weight: 400;
+  opacity: 0;
+  transition: opacity var(--n-transition), color var(--n-transition);
+}
+
+.vp-doc .header-anchor:hover {
+  color: var(--n-accent);
+}
+
+.vp-doc h1:hover .header-anchor,
+.vp-doc h2:hover .header-anchor,
+.vp-doc h3:hover .header-anchor,
+.vp-doc h4:hover .header-anchor,
+.vp-doc .header-anchor:focus-visible {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .vp-doc .header-anchor {
+    display: none;
+  }
+}
+
+/* --- Text --------------------------------------------------------------- */
+
+.vp-doc p {
+  margin: 0 0 20px;
+}
+
+.vp-doc strong {
+  color: var(--n-text);
+  font-weight: 600;
+}
+
+.vp-doc a:not(.btn):not(.n-card) {
+  color: var(--n-accent);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--n-accent) 35%, transparent);
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--n-transition);
+}
+
+.vp-doc a:not(.btn):not(.n-card):hover {
+  text-decoration-color: var(--n-accent);
+}
+
+.vp-doc hr {
+  margin: 44px 0;
+  border: 0;
+  border-top: 1px solid var(--n-border-soft);
+}
+
+.vp-doc blockquote {
+  margin: 24px 0;
+  padding: 2px 0 2px 20px;
+  border-left: 2px solid var(--n-border-strong);
+  color: var(--n-text-faint);
+}
+
+.vp-doc blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Lists -------------------------------------------------------------- */
+
+.vp-doc ul,
+.vp-doc ol {
+  margin: 0 0 20px;
+  padding-left: 1.4em;
+}
+
+.vp-doc li {
+  margin-bottom: 8px;
+}
+
+.vp-doc li > ul,
+.vp-doc li > ol {
+  margin: 8px 0 0;
+}
+
+.vp-doc ul {
+  list-style: none;
+  padding-left: 1.25em;
+}
+
+.vp-doc ul > li {
+  position: relative;
+}
+
+.vp-doc ul > li::before {
+  content: '';
+  position: absolute;
+  top: 0.7em;
+  left: -1em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--n-text-faint);
+}
+
+.vp-doc ol {
+  list-style: decimal;
+}
+
+.vp-doc ol > li::marker {
+  color: var(--n-text-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Code --------------------------------------------------------------- */
+
+.vp-doc :not(pre) > code {
+  padding: 0.15em 0.4em;
+  border: 1px solid var(--n-border-soft);
+  border-radius: var(--n-radius-sm);
+  background: var(--n-surface-sunken);
+  color: var(--n-text);
+  font-family: var(--n-font-mono);
+  font-size: 0.875em;
+}
+
+.vp-doc div[class*='language-'] {
+  position: relative;
+  margin: 24px 0;
+  border: 1px solid var(--n-border);
+  border-radius: var(--n-radius);
+  background: var(--n-surface-sunken);
+  overflow: hidden;
+}
+
+.vp-doc div[class*='language-'] pre {
+  margin: 0;
+  padding: 18px 20px;
+  overflow-x: auto;
+  background: transparent;
+}
+
+.vp-doc div[class*='language-'] code {
+  font-family: var(--n-font-mono);
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+
+.vp-doc div[class*='language-'] .lang {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  color: var(--n-text-faint);
+  font-size: var(--n-text-xs);
+  font-family: var(--n-font-mono);
+  pointer-events: none;
+}
+
+/* --- Tables ------------------------------------------------------------- */
+
+.vp-doc table {
+  display: block;
+  margin: 24px 0;
+  border-collapse: collapse;
+  overflow-x: auto;
+  font-size: var(--n-text-base);
+}
+
+.vp-doc th,
+.vp-doc td {
+  padding: 11px 16px;
+  border: 1px solid var(--n-border-soft);
+  text-align: left;
+  vertical-align: top;
+}
+
+.vp-doc th {
+  background: var(--n-surface-sunken);
+  color: var(--n-text);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* --- Media -------------------------------------------------------------- */
+
+.vp-doc img {
+  display: block;
+  margin: 24px 0;
+  border: 1px solid var(--n-border-soft);
+  border-radius: var(--n-radius);
+}
+
+.vp-doc p > img:only-child {
+  margin-inline: auto;
+}
+
+/* --- Custom containers (::: tip / warning / danger) --------------------- */
+
+.vp-doc .custom-block {
+  margin: 24px 0;
+  padding: 16px 20px;
+  border: 1px solid var(--n-border);
+  border-radius: var(--n-radius);
+  background: var(--n-surface);
+  font-size: var(--n-text-base);
+}
+
+.vp-doc .custom-block p:last-child {
+  margin-bottom: 0;
+}
+
+.vp-doc .custom-block-title {
+  margin-bottom: 6px;
+  color: var(--n-text);
+  font-weight: 600;
+}
+
+.vp-doc .custom-block.tip,
+.vp-doc .custom-block.info {
+  border-color: var(--n-accent-border);
+  background: var(--n-accent-soft);
+}
+
+.vp-doc .custom-block.tip .custom-block-title,
+.vp-doc .custom-block.info .custom-block-title {
+  color: var(--n-accent);
+}
+
+.vp-doc .custom-block.warning {
+  border-color: color-mix(in srgb, var(--n-warn) 35%, transparent);
+  background: var(--n-warn-soft);
+}
+
+.vp-doc .custom-block.warning .custom-block-title {
+  color: var(--n-warn);
+}
+
+.vp-doc .custom-block.danger {
+  border-color: color-mix(in srgb, var(--n-bad) 35%, transparent);
+  background: var(--n-bad-soft);
+}
+
+.vp-doc .custom-block.danger .custom-block-title {
+  color: var(--n-bad);
+}
+
+/* --- Legacy helpers carried over from the old theme ---------------------- */
+
+.vp-doc .btn {
+  display: inline-block;
+  padding: 0.55em 1.15em;
+  border-radius: var(--n-radius-pill);
+  background: var(--n-accent);
+  color: #fff !important;
+  font-size: var(--n-text-base);
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: background var(--n-transition);
+}
+
+.vp-doc .btn:hover {
+  background: var(--n-accent-hover);
+}
+
+.vp-doc .btn:disabled,
+.vp-doc .btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.home-video {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  border-radius: var(--n-radius-lg);
+  overflow: hidden;
+}
+
+.home-video iframe,
+.home-video video,
+.home-video img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: 0;
+  object-fit: cover;
+}
+
+.vimg {
+  position: relative;
+  display: inline-block;
+}
+
+.vimg__play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 7rem;
+  text-shadow: 0 0 10px #000;
+  pointer-events: none;
+}
+
+/* Outbound-link icon stays hidden, as it was before. */
+.vp-external-link-icon::after {
+  display: none !important;
+}

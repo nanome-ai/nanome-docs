@@ -1,0 +1,139 @@
+/* =========================================================================
+   Nanome docs — base layer.
+   Page canvas, scroll behaviour, and the handful of VitePress pieces the
+   custom layout still borrows (search dialog, backdrop).
+   ========================================================================= */
+
+html {
+  scroll-behavior: smooth;
+  /* Anchored headings land below the fixed nav bar. */
+  scroll-padding-top: calc(var(--n-nav-height) + 24px);
+  background: var(--n-bg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--n-bg);
+  color: var(--n-text);
+  font-family: var(--n-font);
+  font-size: var(--n-text-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+:focus-visible {
+  outline: 2px solid var(--n-accent);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+input,
+select,
+textarea,
+button {
+  font: inherit;
+  color: inherit;
+}
+
+input,
+select,
+textarea {
+  background: transparent;
+}
+
+/* Skip link — first thing a keyboard reaches on every page. */
+.n-skip {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 200;
+  padding: 10px 16px;
+  border-radius: var(--n-radius);
+  background: var(--n-accent);
+  color: #fff;
+  font-size: var(--n-text-sm);
+  font-weight: 600;
+  transform: translateY(-160%);
+  transition: transform var(--n-transition);
+}
+
+.n-skip:focus {
+  transform: translateY(0);
+}
+
+/* Scrollbars inside the two rails stay out of the way until hovered. */
+.n-scroll {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.n-scroll:hover {
+  scrollbar-color: var(--n-border-strong) transparent;
+}
+
+.n-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.n-scroll::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 3px;
+}
+
+.n-scroll:hover::-webkit-scrollbar-thumb {
+  background: var(--n-border-strong);
+}
+
+/* --- Borrowed VitePress pieces ------------------------------------------ */
+
+/* The local search dialog is the default theme's; give it our surface. */
+.VPLocalSearchBox .shell {
+  background: var(--n-surface-raised);
+  border: 1px solid var(--n-border);
+  border-radius: var(--n-radius-lg);
+  box-shadow: var(--n-shadow-lg);
+}
+
+.VPLocalSearchBox .backdrop {
+  backdrop-filter: blur(4px);
+}
+
+.VPLocalSearchBox .result {
+  border-radius: var(--n-radius);
+}
+
+/* medium-zoom sits above the fixed chrome. */
+.medium-zoom-overlay,
+.medium-zoom-image {
+  z-index: 9999;
+}
+
+.medium-zoom-overlay {
+  background: var(--n-bg) !important;
+}

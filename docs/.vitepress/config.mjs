@@ -193,6 +193,13 @@ export default defineConfig({
           { text: 'FAQ', link: '/help/faq' },
           { text: 'Contact', link: '/help/contact' }
         ]
+      },
+      {
+        text: 'For editors',
+        collapsed: true,
+        items: [
+          { text: 'Interactive components', link: '/contributing/components' }
+        ]
       }
     ],
 

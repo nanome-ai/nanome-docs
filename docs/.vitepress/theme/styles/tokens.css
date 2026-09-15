@@ -1,0 +1,145 @@
+/* =========================================================================
+   Nanome docs — design tokens.
+
+   One layer on top of VitePress's own variables: everything here is a plain
+   custom property so a component can read it, and the VitePress `--vp-*`
+   names are reassigned at the bottom so the parts of the default theme we
+   still use (search dialog, code blocks, badges) follow the same palette.
+   ========================================================================= */
+
+:root {
+  /* --- Brand ------------------------------------------------------------ */
+  --n-accent: #0b7fe8;
+  --n-accent-hover: #0668bd;
+  --n-accent-soft: rgba(11, 127, 232, 0.1);
+  --n-accent-border: rgba(11, 127, 232, 0.28);
+
+  /* --- Surfaces --------------------------------------------------------- */
+  --n-bg: #ffffff;
+  --n-bg-alt: #f7f7f8;
+  --n-surface: #ffffff;
+  --n-surface-raised: #ffffff;
+  --n-surface-hover: rgba(0, 0, 0, 0.04);
+  --n-surface-sunken: #f2f2f3;
+
+  /* --- Lines ------------------------------------------------------------ */
+  --n-border: rgba(0, 0, 0, 0.1);
+  --n-border-soft: rgba(0, 0, 0, 0.06);
+  --n-border-strong: rgba(0, 0, 0, 0.18);
+
+  /* --- Text ------------------------------------------------------------- */
+  --n-text: #0d0d0d;
+  --n-text-muted: #5d5d5d;
+  --n-text-faint: #8f8f8f;
+  --n-text-inverse: #ffffff;
+
+  /* --- Status ----------------------------------------------------------- */
+  --n-good: #1a8a4a;
+  --n-warn: #b26a00;
+  --n-bad: #c1372c;
+  --n-good-soft: rgba(26, 138, 74, 0.1);
+  --n-warn-soft: rgba(178, 106, 0, 0.1);
+  --n-bad-soft: rgba(193, 55, 44, 0.1);
+
+  /* --- Type ------------------------------------------------------------- */
+  --n-font: 'Inter var', 'Inter', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --n-font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
+    'Liberation Mono', monospace;
+
+  --n-text-xs: 0.75rem;    /* 12px — rail section labels */
+  --n-text-sm: 0.875rem;   /* 14px — nav links, meta */
+  --n-text-base: 0.9375rem;/* 15px — UI */
+  --n-text-body: 1.0625rem;/* 17px — running prose */
+  --n-text-lg: 1.25rem;
+  --n-text-xl: 1.5rem;
+  --n-text-2xl: 1.875rem;  /* 30px — h1 */
+
+  --n-leading-body: 1.7;
+  --n-tracking-tight: -0.02em;
+
+  /* --- Geometry --------------------------------------------------------- */
+  --n-radius-sm: 6px;
+  --n-radius: 10px;
+  --n-radius-lg: 14px;
+  --n-radius-xl: 18px;
+  --n-radius-pill: 999px;
+
+  --n-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --n-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --n-shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.12);
+
+  /* --- Layout ----------------------------------------------------------- */
+  --n-nav-height: 56px;
+  --n-sidebar-width: 244px;
+  --n-outline-width: 232px;
+  --n-content-max: 768px;
+  --n-gutter: 40px;
+
+  --n-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --n-transition: 160ms var(--n-ease);
+}
+
+.dark {
+  --n-accent: #37a7ff;
+  --n-accent-hover: #63bcff;
+  --n-accent-soft: rgba(55, 167, 255, 0.14);
+  --n-accent-border: rgba(55, 167, 255, 0.34);
+
+  --n-bg: #000000;
+  --n-bg-alt: #0a0a0a;
+  --n-surface: #111111;
+  --n-surface-raised: #161616;
+  --n-surface-hover: rgba(255, 255, 255, 0.06);
+  --n-surface-sunken: #080808;
+
+  --n-border: rgba(255, 255, 255, 0.11);
+  --n-border-soft: rgba(255, 255, 255, 0.07);
+  --n-border-strong: rgba(255, 255, 255, 0.2);
+
+  --n-text: #ffffff;
+  --n-text-muted: #b9b9b9;
+  --n-text-faint: #7d7d7d;
+  --n-text-inverse: #0d0d0d;
+
+  --n-good: #4ade80;
+  --n-warn: #fbbf24;
+  --n-bad: #f87171;
+  --n-good-soft: rgba(74, 222, 128, 0.12);
+  --n-warn-soft: rgba(251, 191, 36, 0.12);
+  --n-bad-soft: rgba(248, 113, 113, 0.12);
+
+  --n-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --n-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  --n-shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.7);
+}
+
+/* Hand the palette to the VitePress pieces we keep: the search dialog, code
+   blocks, custom containers and badges all read `--vp-*` directly. */
+:root,
+.dark {
+  --vp-c-bg: var(--n-bg);
+  --vp-c-bg-alt: var(--n-bg-alt);
+  --vp-c-bg-soft: var(--n-surface);
+  --vp-c-bg-elv: var(--n-surface-raised);
+
+  --vp-c-divider: var(--n-border);
+  --vp-c-border: var(--n-border);
+  --vp-c-gutter: var(--n-border);
+
+  --vp-c-text-1: var(--n-text);
+  --vp-c-text-2: var(--n-text-muted);
+  --vp-c-text-3: var(--n-text-faint);
+
+  --vp-c-brand-1: var(--n-accent);
+  --vp-c-brand-2: var(--n-accent-hover);
+  --vp-c-brand-3: var(--n-accent);
+  --vp-c-brand-soft: var(--n-accent-soft);
+
+  --vp-font-family-base: var(--n-font);
+  --vp-font-family-mono: var(--n-font-mono);
+
+  --vp-nav-height: var(--n-nav-height);
+  --vp-layout-max-width: 100%;
+  --vp-c-shadow-3: var(--n-shadow-lg);
+}
