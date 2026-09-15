@@ -34,7 +34,15 @@ This generates optimized versions in `docs/public/assets/compressed/`. Do not ma
 
 ```
 docs/
-├── .vitepress/       # VitePress config and theme
+├── .vitepress/
+│   ├── config.mjs            # Site config and the sidebar
+│   └── theme/
+│       ├── Layout.vue        # Page shell: nav bar and the two rails
+│       ├── layout/           # Nav bar, section rail, in-page rail, footer
+│       ├── components/
+│       │   └── interactive/  # Chooser, Accordion, Tabs, Card, Steps…
+│       └── styles/           # Tokens, base, prose, component glue
+├── contributing/     # How to use the interactive components
 ├── nanome1x/         # Nanome 1.24 (1st Gen) docs
 ├── nanome_v2/        # Nanome v2 (2nd Gen) docs
 ├── mara/             # MARA docs
@@ -42,3 +50,28 @@ docs/
 ├── help/             # Troubleshooting, hardware, FAQ
 └── index.md          # Landing page
 ```
+
+## Theme
+
+The site uses a custom VitePress theme: a fixed nav bar, a section rail on the
+left, and an in-page heading rail on the right. It extends the default theme
+rather than replacing it, so the local search dialog, code-group tabs and
+`<Badge>` still work.
+
+Pages are markdown, and markdown pages can use the interactive components —
+a guided picker whose answers live in the query string, collapsible rows with
+"Expand all", tabs, cards, numbered steps, and copyable blocks. They are
+documented, with working examples, at
+[/contributing/components](docs/contributing/components.md).
+
+Two rules are worth knowing before writing a page:
+
+- **Headings belong in markdown.** The right-hand rail is built from the
+  headings on the page, so a heading rendered inside a component is one a
+  reader cannot navigate to.
+- **Colours come from `--n-*` custom properties**, defined in
+  `docs/.vitepress/theme/styles/tokens.css`. Hard-coded hex values break dark
+  mode.
+
+See [MIGRATION.md](MIGRATION.md) for the plan to bring the Getting Started and
+Session Guide chapters over from the nanome.ai site.
