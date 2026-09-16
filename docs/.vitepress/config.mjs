@@ -65,33 +65,8 @@ export default defineConfig({
           { text: 'Wrist Menu', link: '/nanome_v2/wristmenu' },
           { text: 'Collaboration', link: '/nanome_v2/collaboration' },
           { text: 'Sample Workflows', link: '/nanome_v2/sampleworkflows' },
-          {
-            text: 'Getting Started',
-            collapsed: true,
-            items: [
-              { text: 'Hardware', link: '/getting-started/hardware' },
-              { text: 'Choose an MDM', link: '/getting-started/choose-an-mdm' },
-              { text: 'MDM setup guides', link: '/getting-started/mdm-setup' },
-              { text: 'Wi-Fi & network', link: '/getting-started/network' },
-              { text: 'Download & install', link: '/getting-started/install' },
-              { text: 'Accounts & licenses', link: '/getting-started/accounts' },
-              { text: 'Log in', link: '/getting-started/log-in' }
-            ]
-          },
-          {
-            text: 'Session Guide',
-            collapsed: true,
-            items: [
-              { text: 'Plan the session', link: '/session-guide/plan' },
-              { text: 'Build the workspace', link: '/session-guide/build' },
-              { text: 'Scenes', link: '/session-guide/scenes' },
-              { text: 'Keep it comfortable', link: '/session-guide/comfort' },
-              { text: 'Permissions', link: '/session-guide/permissions' },
-              { text: 'Share the workspace', link: '/session-guide/share' },
-              { text: 'Run the session', link: '/session-guide/run-the-session' },
-              { text: 'Troubleshooting', link: '/session-guide/troubleshooting' }
-            ]
-          },
+          { text: 'Getting Started', link: '/getting-started' },
+          { text: 'Session Guide', link: '/session-guide' },
           { text: 'Tips', link: '/nanome_v2/tips' }
         ]
       },

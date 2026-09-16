@@ -18,34 +18,36 @@ branch afterwards, or during review before merge, is not reflected here.
 
 ## What maps to what
 
-Each chapter on the website is one page here. The website renders a chapter as a
-Vue component; here it is markdown plus the components documented at
+Each guide is one page, as it is on the website, with each chapter as a section.
+Chapter anchors match the website's, so `/setup#network` on nanome.ai and
+`/getting-started#network` here point at the same chapter. The website renders a
+chapter as a Vue component; here it is markdown plus the components documented at
 [/contributing/components](docs/contributing/components.md).
 
-### Getting Started
+### `docs/getting-started.md`
 
-| Page | Source component |
-| --- | --- |
-| `docs/getting-started/hardware.md` | `setup/SetupHardware.vue` |
-| `docs/getting-started/choose-an-mdm.md` | `setup/SetupMdm.vue` |
-| `docs/getting-started/mdm-setup.md` | `setup/SetupMdmGuides.vue` |
-| `docs/getting-started/network.md` | `setup/SetupNetwork.vue` |
-| `docs/getting-started/install.md` | `setup/SetupInstall.vue` |
-| `docs/getting-started/accounts.md` | `setup/SetupAccount.vue` |
-| `docs/getting-started/log-in.md` | `setup/SetupLogin.vue` |
+| Section | Anchor | Source component |
+| --- | --- | --- |
+| Hardware | `#hardware` | `setup/SetupHardware.vue` |
+| Choose an MDM | `#mdm` | `setup/SetupMdm.vue` |
+| MDM setup guides | `#mdm-setup` | `setup/SetupMdmGuides.vue` |
+| Wi-Fi & network | `#network` | `setup/SetupNetwork.vue` |
+| Download & install | `#install` | `setup/SetupInstall.vue` |
+| Accounts & licenses | `#account` | `setup/SetupAccount.vue` |
+| Log in | `#login` | `setup/SetupLogin.vue` |
 
-### Session Guide
+### `docs/session-guide.md`
 
-| Page | Source component |
-| --- | --- |
-| `docs/session-guide/plan.md` | `session-guide/SessionPlan.vue` |
-| `docs/session-guide/build.md` | `session-guide/SessionBuild.vue` |
-| `docs/session-guide/scenes.md` | `session-guide/SessionScenes.vue` |
-| `docs/session-guide/comfort.md` | `session-guide/SessionComfort.vue` |
-| `docs/session-guide/permissions.md` | `session-guide/SessionRoles.vue` |
-| `docs/session-guide/share.md` | `session-guide/SessionShare.vue` |
-| `docs/session-guide/run-the-session.md` | `session-guide/SessionLive.vue` |
-| `docs/session-guide/troubleshooting.md` | `session-guide/SessionFixes.vue` |
+| Section | Anchor | Source component |
+| --- | --- | --- |
+| Plan the session | `#plan` | `session-guide/SessionPlan.vue` |
+| Build the workspace | `#build` | `session-guide/SessionBuild.vue` |
+| Scenes | `#scenes` | `session-guide/SessionScenes.vue` |
+| Keep it comfortable | `#comfort` | `session-guide/SessionComfort.vue` |
+| Permissions | `#roles` | `session-guide/SessionRoles.vue` |
+| Share the workspace | `#share` | `session-guide/SessionShare.vue` |
+| Run the session | `#live` | `session-guide/SessionLive.vue` |
+| Troubleshooting | `#fixes` | `session-guide/SessionFixes.vue` |
 
 ## Where the two copies deliberately differ
 
@@ -60,9 +62,9 @@ revisiting rather than a gap to close silently.
    (`?mdm=meta-paid`). Here each question gets its own
    (`?mdm-device=meta&mdm-fleet=many&mdm-budget=paid`), which is what the
    `Chooser` component does everywhere. Old `?mdm=` links do not carry over.
-3. **Chapter rail.** The website is one long page with a sticky chapter rail.
-   Here each chapter is a page, so the left sidebar does that job and the right
-   rail lists headings within the chapter.
+3. **Chapter rail.** The website has its own sticky chapter rail with progress
+   markers. Here the right-hand rail does that job, listing each chapter and
+   the sections inside it.
 4. **Unavailable install combinations.** The website greys out a device that a
    method cannot reach. `Chooser` has no disabled state, so picking an
    impossible pair shows the explanation instead — the same copy the website
@@ -93,7 +95,7 @@ git -C /path/to/nanome.ai log --oneline ac6eb48..master -- app/components/pages/
 ```
 
 Anything those list is a change made after this port, and needs applying by hand
-to the matching page above.
+to the matching section above.
 
 ## The overlap worth deciding
 

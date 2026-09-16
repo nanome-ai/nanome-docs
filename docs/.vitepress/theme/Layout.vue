@@ -19,7 +19,7 @@ import Outline from './layout/Outline.vue'
 import LocalNav from './layout/LocalNav.vue'
 import DocFooter from './layout/DocFooter.vue'
 
-const { frontmatter, isDark } = useData()
+const { frontmatter, isDark, page } = useData()
 const route = useRoute()
 
 const {
@@ -106,7 +106,7 @@ const showAside = computed(() => hasAside.value && !isHome.value)
             <div class="vp-doc">
               <Content />
             </div>
-            <DocFooter v-if="!isHome" />
+            <DocFooter v-if="!isHome && !page.isNotFound" />
           </div>
         </main>
 

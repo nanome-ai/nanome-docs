@@ -379,3 +379,14 @@
 .vp-external-link-icon::after {
   display: none !important;
 }
+
+/* --- Guide chapters ------------------------------------------------------ */
+
+/* The line under a chapter heading on a one-page guide: where the chapter
+   sits in the sequence, and the chapter's own title. */
+.vp-doc .chapter-kicker {
+  margin: -8px 0 16px;
+  color: var(--n-accent);
+  font-size: var(--n-text-sm);
+  font-weight: 600;
+}

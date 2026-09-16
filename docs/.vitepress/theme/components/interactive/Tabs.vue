@@ -7,7 +7,7 @@
  *     <Tab>…</Tab><Tab>…</Tab><Tab>…</Tab>
  *   </Tabs>
  */
-import { computed, provide, ref } from 'vue'
+import { computed, provide, ref, useId } from 'vue'
 
 const props = defineProps({
   labels: { type: Array, required: true },
@@ -26,8 +26,10 @@ provide('n-tabs', {
   },
 })
 
-const tabId = (i) => `n-tab-${i}`
-const panelId = (i) => `n-tabpanel-${i}`
+// Unique per instance: a long guide page can hold more than one tab set.
+const uid = useId()
+const tabId = (i) => `${uid}-tab-${i}`
+const panelId = (i) => `${uid}-panel-${i}`
 
 const count = computed(() => props.labels.length)
 

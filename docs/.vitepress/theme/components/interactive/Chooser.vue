@@ -21,7 +21,7 @@
  * Answers live in the query string, so any state of the picker is a link
  * someone can paste into a ticket.
  */
-import { computed, onMounted, provide, reactive, ref, watch } from 'vue'
+import { computed, nextTick, onMounted, provide, reactive, ref, watch } from 'vue'
 import { useRoute } from 'vitepress'
 import { CHOOSER_KEY, matches, readQuery, writeQuery } from './chooser.js'
 
@@ -94,7 +94,18 @@ function hydrate() {
 
 // The query string is only readable in the browser, so the first paint is the
 // unanswered picker and hydration fills it in.
-onMounted(hydrate)
+onMounted(async () => {
+  hydrate()
+  // A restored answer adds height above anything further down the page, so a
+  // link like `?install-device=meta#install` would land short of its heading.
+  // Once results render, put the hash target back at the top.
+  if (!window.location.hash || !Object.values(answers).some(Boolean)) return
+  await nextTick()
+  requestAnimationFrame(() => {
+    const target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)))
+    target?.scrollIntoView({ block: 'start', behavior: 'instant' })
+  })
+})
 watch(() => route.path, hydrate)
 
 watch(answers, () => {
