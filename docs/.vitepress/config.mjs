@@ -65,6 +65,8 @@ export default defineConfig({
           { text: 'Wrist Menu', link: '/nanome_v2/wristmenu' },
           { text: 'Collaboration', link: '/nanome_v2/collaboration' },
           { text: 'Sample Workflows', link: '/nanome_v2/sampleworkflows' },
+          { text: 'Getting Started', link: '/getting-started' },
+          { text: 'Session Guide', link: '/session-guide' },
           { text: 'Tips', link: '/nanome_v2/tips' }
         ]
       },
@@ -188,10 +190,18 @@ export default defineConfig({
           { text: 'Hardware Requirements', link: '/help/hardwarerequirements' },
           { text: 'PC Hardware', link: '/help/pchardware' },
           { text: 'Choosing Hardware', link: '/help/choosinghardware' },
+          { text: 'Choosing Hardware (Nanome Classic)', link: '/help/choosinghardware-classic' },
           { text: 'Quest for Business', link: '/help/questforbusiness' },
           { text: 'Enterprise', link: '/help/enterprise' },
           { text: 'FAQ', link: '/help/faq' },
           { text: 'Contact', link: '/help/contact' }
+        ]
+      },
+      {
+        text: 'For editors',
+        collapsed: true,
+        items: [
+          { text: 'Interactive components', link: '/contributing/components' }
         ]
       }
     ],

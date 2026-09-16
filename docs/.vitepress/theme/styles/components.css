@@ -1,0 +1,59 @@
+/* =========================================================================
+   Nanome docs — glue for the interactive components.
+   Each component styles itself in a scoped block; what's left here is the
+   handful of rules that have to cross the boundary between markdown-rendered
+   prose and a component that wraps it.
+   ========================================================================= */
+
+/* Markdown rendered into a component slot inherits `.vp-doc`'s bullet and
+   spacing rules, which are sized for running prose. Inside a card or an
+   accordion the same list wants to be tighter. */
+.n-card__body ul,
+.n-card__body ol,
+.n-accordion__body ul,
+.n-accordion__body ol,
+.n-callout__body ul,
+.n-callout__body ol,
+.n-result__body ul,
+.n-result__body ol {
+  margin-bottom: 12px;
+}
+
+.n-card__body li,
+.n-accordion__body li,
+.n-callout__body li,
+.n-result__body li {
+  margin-bottom: 5px;
+}
+
+/* An image dropped into a card or a result shouldn't keep the 24px margin it
+   gets in running prose. */
+.n-card__body img,
+.n-accordion__body img,
+.n-result__body img {
+  margin: 12px 0;
+}
+
+/* Components are laid out by their own margins; a wrapping <p> from markdown
+   would add a second one. */
+.vp-doc p:has(> .n-chooser),
+.vp-doc p:has(> .n-accordions),
+.vp-doc p:has(> .n-cardgrid),
+.vp-doc p:has(> .n-tabs) {
+  margin: 0;
+}
+
+/* Two components in a row shouldn't double their gap. */
+.n-chooser + .n-chooser,
+.n-accordions + .n-accordions,
+.n-cardgrid + .n-cardgrid {
+  margin-top: 16px;
+}
+
+/* A heading straight after a component needs its top rule to breathe. */
+.n-chooser + h2,
+.n-accordions + h2,
+.n-cardgrid + h2,
+.n-tabs + h2 {
+  margin-top: 48px;
+}
