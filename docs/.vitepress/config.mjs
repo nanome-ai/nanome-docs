@@ -56,6 +56,15 @@ export default defineConfig({
         text: 'Nanome',
         collapsed: true,
         items: [
+          { text: 'Login', link: '/nanome_v2/login' },
+          { text: 'Environment', link: '/nanome_v2/environment' },
+          { text: 'Main Panel', link: '/nanome_v2/mainpanel' },
+          { text: 'Scenes Panel', link: '/nanome_v2/scenespanel' },
+          { text: 'Sequence Panel', link: '/nanome_v2/sequencepanel' },
+          { text: 'Tools Panel', link: '/nanome_v2/toolspanel' },
+          { text: 'Wrist Menu', link: '/nanome_v2/wristmenu' },
+          { text: 'Collaboration', link: '/nanome_v2/collaboration' },
+          { text: 'Sample Workflows', link: '/nanome_v2/sampleworkflows' },
           {
             text: 'Getting Started',
             collapsed: true,
@@ -83,15 +92,6 @@ export default defineConfig({
               { text: 'Troubleshooting', link: '/session-guide/troubleshooting' }
             ]
           },
-          { text: 'Login', link: '/nanome_v2/login' },
-          { text: 'Environment', link: '/nanome_v2/environment' },
-          { text: 'Main Panel', link: '/nanome_v2/mainpanel' },
-          { text: 'Scenes Panel', link: '/nanome_v2/scenespanel' },
-          { text: 'Sequence Panel', link: '/nanome_v2/sequencepanel' },
-          { text: 'Tools Panel', link: '/nanome_v2/toolspanel' },
-          { text: 'Wrist Menu', link: '/nanome_v2/wristmenu' },
-          { text: 'Collaboration', link: '/nanome_v2/collaboration' },
-          { text: 'Sample Workflows', link: '/nanome_v2/sampleworkflows' },
           { text: 'Tips', link: '/nanome_v2/tips' }
         ]
       },
