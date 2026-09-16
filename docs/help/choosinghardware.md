@@ -166,6 +166,10 @@ also note the following:
 5. Samsung Galaxy XR's Snapdragon XR2+ Gen 2 carries the same GPU as the
    Quest 3 clocked 15% higher, and its 16 GB of memory (Quest 3: 8 GB) helps
    large structures load.
+6. Apple Vision Pro with M5 ratings are projected from the M2 model. The M5's
+   10-core GPU rates about 1.4 times the M2's, and reviews describe the M2
+   model as GPU-bound where the M5 is not; the M5 also renders 10% more pixels.
+   Net, that is roughly 1.4 to 1.5 times the headroom.
 
 ### Comfort Legend
 
@@ -186,56 +190,73 @@ also note the following:
 ### Comfort Comparison XR
 
 <table class="comfort">
+  <colgroup>
+    <col style="width: 16%" />
+    <col style="width: 21%" />
+    <col style="width: 21%" />
+    <col style="width: 21%" />
+    <col style="width: 21%" />
+  </colgroup>
   <thead>
     <tr>
-      <th>Shown Atom Count<sup>1,2</sup></th>
-      <th>Meta Quest 3 / 3S</th>
-      <th>Samsung Galaxy XR<sup>5</sup></th>
-      <th>Apple Vision Pro</th>
+      <th rowspan="2">Shown Atom Count<sup>1,2</sup></th>
+      <th rowspan="2">Meta Quest 3 / 3S</th>
+      <th rowspan="2">Samsung Galaxy XR<sup>5</sup></th>
+      <th colspan="2">Apple Vision Pro</th>
+    </tr>
+    <tr>
+      <th>M2 (first generation, 2024)</th>
+      <th>M5 (second generation, 2025)<sup>6</sup></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>7,500</td>
-      <td class="rate-good">Comfortable</td>
-      <td class="rate-good">Comfortable</td>
-      <td class="rate-good">Comfortable</td>
+      <td class="rate-good" colspan="4">Comfortable</td>
     </tr>
     <tr>
       <td>10,000</td>
-      <td class="rate-ok">Moderate</td>
-      <td class="rate-ok">Moderate</td>
-      <td class="rate-good">Comfortable</td>
+      <td class="rate-ok" colspan="2">Moderate</td>
+      <td class="rate-good" colspan="2">Comfortable</td>
     </tr>
     <tr>
       <td>15,000</td>
       <td class="rate-bad">Not recommended</td>
       <td class="rate-ok">Moderate</td>
-      <td class="rate-good">Comfortable</td>
+      <td class="rate-good" colspan="2">Comfortable</td>
     </tr>
     <tr>
       <td>20,000</td>
-      <td class="rate-bad">Not recommended</td>
-      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad" colspan="2">Not recommended</td>
+      <td class="rate-good" colspan="2">Comfortable</td>
+    </tr>
+    <tr>
+      <td>25,000</td>
+      <td class="rate-bad" colspan="2">Not recommended</td>
+      <td class="rate-ok">Moderate</td>
       <td class="rate-good">Comfortable</td>
     </tr>
     <tr>
       <td>30,000</td>
-      <td class="rate-bad">Not recommended</td>
-      <td class="rate-bad">Not recommended</td>
-      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad" colspan="3">Not recommended</td>
+      <td class="rate-good">Comfortable</td>
+    </tr>
+    <tr>
+      <td>40,000</td>
+      <td class="rate-bad" colspan="3">Not recommended</td>
+      <td class="rate-ok">Moderate</td>
+    </tr>
+    <tr>
+      <td>50,000</td>
+      <td class="rate-bad" colspan="4">Not recommended</td>
     </tr>
     <tr>
       <td>100,000</td>
-      <td class="rate-bad">Not recommended</td>
-      <td class="rate-bad">Not recommended</td>
-      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad" colspan="4">Not recommended</td>
     </tr>
     <tr>
       <td>100,000+</td>
-      <td class="rate-bad">Not recommended</td>
-      <td class="rate-bad">Not recommended</td>
-      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad" colspan="4">Not recommended</td>
     </tr>
   </tbody>
 </table>
@@ -243,6 +264,12 @@ also note the following:
 ### Comfort Comparison PC & Web
 
 <table class="comfort">
+  <colgroup>
+    <col style="width: 16%" />
+    <col style="width: 28%" />
+    <col style="width: 28%" />
+    <col style="width: 28%" />
+  </colgroup>
   <thead>
     <tr>
       <th></th>
