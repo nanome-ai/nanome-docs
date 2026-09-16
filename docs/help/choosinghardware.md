@@ -212,51 +212,73 @@ also note the following:
   <tbody>
     <tr>
       <td>7,500</td>
-      <td class="rate-good" colspan="4">Comfortable</td>
+      <td class="rate-good">Comfortable</td>
+      <td class="rate-good">Comfortable</td>
+      <td class="rate-good">Comfortable</td>
+      <td class="rate-good">Comfortable</td>
     </tr>
     <tr>
       <td>10,000</td>
-      <td class="rate-ok" colspan="2">Moderate</td>
-      <td class="rate-good" colspan="2">Comfortable</td>
+      <td class="rate-ok">Moderate</td>
+      <td class="rate-ok">Moderate</td>
+      <td class="rate-good">Comfortable</td>
+      <td class="rate-good">Comfortable</td>
     </tr>
     <tr>
       <td>15,000</td>
       <td class="rate-bad">Not recommended</td>
       <td class="rate-ok">Moderate</td>
-      <td class="rate-good" colspan="2">Comfortable</td>
+      <td class="rate-good">Comfortable</td>
+      <td class="rate-good">Comfortable</td>
     </tr>
     <tr>
       <td>20,000</td>
-      <td class="rate-bad" colspan="2">Not recommended</td>
-      <td class="rate-good" colspan="2">Comfortable</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-good">Comfortable</td>
+      <td class="rate-good">Comfortable</td>
     </tr>
     <tr>
       <td>25,000</td>
-      <td class="rate-bad" colspan="2">Not recommended</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended</td>
       <td class="rate-ok">Moderate</td>
       <td class="rate-good">Comfortable</td>
     </tr>
     <tr>
       <td>30,000</td>
-      <td class="rate-bad" colspan="3">Not recommended</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended</td>
       <td class="rate-good">Comfortable</td>
     </tr>
     <tr>
       <td>40,000</td>
-      <td class="rate-bad" colspan="3">Not recommended</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended</td>
       <td class="rate-ok">Moderate</td>
     </tr>
     <tr>
       <td>50,000</td>
-      <td class="rate-bad" colspan="4">Not recommended</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended</td>
     </tr>
     <tr>
       <td>100,000</td>
-      <td class="rate-bad" colspan="4">Not recommended</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended</td>
     </tr>
     <tr>
       <td>100,000+</td>
-      <td class="rate-bad" colspan="4">Not recommended</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended</td>
     </tr>
   </tbody>
 </table>
