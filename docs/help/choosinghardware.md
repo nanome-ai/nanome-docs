@@ -185,21 +185,74 @@ also note the following:
   </tbody>
 </table>
 
-### Comfort Comparison
+### Comfort Comparison XR
 
 <table class="comfort">
   <thead>
-    <tr>
-      <th></th>
-      <th colspan="3">All-in-one headsets (no PC)</th>
-      <th>PCVR</th>
-      <th colspan="2">Web</th>
-    </tr>
     <tr>
       <th>Shown Atom Count<sup>1,2</sup></th>
       <th>Meta Quest 3 / 3S</th>
       <th>Samsung Galaxy XR<sup>5</sup></th>
       <th>Apple Vision Pro</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>7,500</td>
+      <td class="rate-good">Comfortable</td>
+      <td class="rate-good">Comfortable (projected)</td>
+      <td class="rate-good">Comfortable</td>
+    </tr>
+    <tr>
+      <td>10,000</td>
+      <td class="rate-ok">Moderate</td>
+      <td class="rate-ok">Moderate (projected)</td>
+      <td class="rate-good">Comfortable</td>
+    </tr>
+    <tr>
+      <td>15,000</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended (projected)</td>
+      <td class="rate-good">Comfortable</td>
+    </tr>
+    <tr>
+      <td>20,000</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended (projected)</td>
+      <td class="rate-good">Comfortable</td>
+    </tr>
+    <tr>
+      <td>30,000</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended (projected)</td>
+      <td class="rate-bad">Not recommended</td>
+    </tr>
+    <tr>
+      <td>100,000</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended (projected)</td>
+      <td class="rate-bad">Not recommended</td>
+    </tr>
+    <tr>
+      <td>100,000+</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended (projected)</td>
+      <td class="rate-bad">Not recommended</td>
+    </tr>
+  </tbody>
+</table>
+
+### Comfort Comparison PC & Web
+
+<table class="comfort">
+  <thead>
+    <tr>
+      <th></th>
+      <th>PCVR</th>
+      <th colspan="2">Web</th>
+    </tr>
+    <tr>
+      <th>Shown Atom Count<sup>1,2</sup></th>
       <th>Windows PC over Meta Link<sup>3</sup></th>
       <th>app.nanome.ai, any computer<sup>4</sup></th>
       <th>Example: Apple M1 Max<sup>4</sup></th>
@@ -209,58 +262,44 @@ also note the following:
     <tr>
       <td>7,500</td>
       <td class="rate-good">Comfortable</td>
-      <td class="rate-good">Comfortable (projected)</td>
+      <td class="rate-gpu">Depends on GPU</td>
       <td class="rate-good">Comfortable</td>
-      <td class="rate-good">Comfortable</td>
-      <td class="rate-gpu">Depends on GPU</td><td class="rate-good">Comfortable</td>
     </tr>
     <tr>
       <td>10,000</td>
-      <td class="rate-ok">Moderate</td>
-      <td class="rate-ok">Moderate (projected)</td>
       <td class="rate-good">Comfortable</td>
+      <td class="rate-gpu">Depends on GPU</td>
       <td class="rate-good">Comfortable</td>
-      <td class="rate-gpu">Depends on GPU</td><td class="rate-good">Comfortable</td>
     </tr>
     <tr>
       <td>15,000</td>
-      <td class="rate-bad">Not recommended</td>
-      <td class="rate-bad">Not recommended (projected)</td>
       <td class="rate-good">Comfortable</td>
+      <td class="rate-gpu">Depends on GPU</td>
       <td class="rate-good">Comfortable</td>
-      <td class="rate-gpu">Depends on GPU</td><td class="rate-good">Comfortable</td>
     </tr>
     <tr>
       <td>20,000</td>
-      <td class="rate-bad">Not recommended</td>
-      <td class="rate-bad">Not recommended (projected)</td>
       <td class="rate-good">Comfortable</td>
+      <td class="rate-gpu">Depends on GPU</td>
       <td class="rate-good">Comfortable</td>
-      <td class="rate-gpu">Depends on GPU</td><td class="rate-good">Comfortable</td>
     </tr>
     <tr>
       <td>30,000</td>
-      <td class="rate-bad">Not recommended</td>
-      <td class="rate-bad">Not recommended (projected)</td>
-      <td class="rate-bad">Not recommended</td>
       <td class="rate-good">Comfortable</td>
-      <td class="rate-gpu">Depends on GPU</td><td class="rate-good">Comfortable</td>
+      <td class="rate-gpu">Depends on GPU</td>
+      <td class="rate-good">Comfortable</td>
     </tr>
     <tr>
       <td>100,000</td>
-      <td class="rate-bad">Not recommended</td>
-      <td class="rate-bad">Not recommended (projected)</td>
-      <td class="rate-bad">Not recommended</td>
       <td class="rate-good">Comfortable</td>
-      <td class="rate-gpu">Depends on GPU</td><td class="rate-ok">Moderate</td>
+      <td class="rate-gpu">Depends on GPU</td>
+      <td class="rate-ok">Moderate</td>
     </tr>
     <tr>
       <td>100,000+</td>
-      <td class="rate-bad">Not recommended</td>
-      <td class="rate-bad">Not recommended (projected)</td>
-      <td class="rate-bad">Not recommended</td>
       <td class="rate-gpu">Depends on GPU model</td>
-      <td class="rate-gpu">Depends on GPU</td><td class="rate-gpu">Depends on GPU model</td>
+      <td class="rate-gpu">Depends on GPU</td>
+      <td class="rate-gpu">Depends on GPU model</td>
     </tr>
   </tbody>
 </table>
