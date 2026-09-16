@@ -244,7 +244,6 @@
   background: var(--n-surface-sunken);
   color: var(--n-text);
   font-weight: 600;
-  white-space: nowrap;
 }
 
 /* --- Media -------------------------------------------------------------- */
@@ -389,4 +388,47 @@
   color: var(--n-accent);
   font-size: var(--n-text-sm);
   font-weight: 600;
+}
+
+/* --- Rated table cells ---------------------------------------------------- */
+
+/* Choosing Hardware colours its comfort tables with inline pastel backgrounds
+   carried over from a spreadsheet. On the dark theme those light fills sit under
+   light grey text and the words vanish. Rather than edit the page, map each
+   colour it uses onto a status token, so the ratings read in both themes. */
+.vp-doc td[style*="#FFFFFF" i] {
+  background: transparent !important;
+  color: var(--n-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.vp-doc td[style*="#CFE2F3" i],
+.vp-doc td[style*="#D9ECD3" i],
+.vp-doc td[style*="#FCE5CD" i],
+.vp-doc td[style*="#F4CCCC" i] {
+  font-weight: 600;
+}
+
+/* Comfortable */
+.vp-doc td[style*="#CFE2F3" i] {
+  background: var(--n-accent-soft) !important;
+  color: var(--n-accent);
+}
+
+/* Depends on hardware */
+.vp-doc td[style*="#D9ECD3" i] {
+  background: var(--n-good-soft) !important;
+  color: var(--n-good);
+}
+
+/* Moderate */
+.vp-doc td[style*="#FCE5CD" i] {
+  background: var(--n-warn-soft) !important;
+  color: var(--n-warn);
+}
+
+/* Not recommended */
+.vp-doc td[style*="#F4CCCC" i] {
+  background: var(--n-bad-soft) !important;
+  color: var(--n-bad);
 }
