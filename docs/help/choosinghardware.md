@@ -295,7 +295,7 @@ also note the following:
     </tr>
     <tr>
       <td>100,000+</td>
-      <td></td>
+      <td class="rate-gpu">Depends on GPU model</td>
       <td class="rate-gpu">Depends on GPU</td>
       <td></td>
     </tr>
