@@ -20,40 +20,33 @@ defineProps({
 </template>
 
 <style scoped>
+/* A flat, lightly shaded block. No border and no coloured edge; the type only
+   colours the title, so a warning still reads as one without shouting. */
 .n-callout {
   margin: 24px 0;
   padding: 14px 18px;
-  border: 1px solid var(--n-border);
-  border-left-width: 3px;
-  border-radius: var(--n-radius);
-  background: var(--n-surface);
+  border-radius: var(--n-radius-sm);
+  background: var(--n-aside-bg);
   font-size: var(--n-text-base);
-}
-
-.n-callout--note {
-  border-left-color: var(--n-border-strong);
-}
-
-.n-callout--tip {
-  border-left-color: var(--n-accent);
-  background: var(--n-accent-soft);
-}
-
-.n-callout--warning {
-  border-left-color: var(--n-warn);
-  background: var(--n-warn-soft);
-}
-
-.n-callout--danger {
-  border-left-color: var(--n-bad);
-  background: var(--n-bad-soft);
 }
 
 .n-callout__title {
   margin: 0 0 4px;
   color: var(--n-text);
-  font-size: var(--n-text-sm);
-  font-weight: 700;
+  font-size: var(--n-text-base);
+  font-weight: 600;
+}
+
+.n-callout--tip .n-callout__title {
+  color: var(--n-accent);
+}
+
+.n-callout--warning .n-callout__title {
+  color: var(--n-warn);
+}
+
+.n-callout--danger .n-callout__title {
+  color: var(--n-bad);
 }
 
 .n-callout__body :deep(> :first-child) {

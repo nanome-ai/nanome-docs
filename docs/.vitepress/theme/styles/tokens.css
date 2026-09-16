@@ -21,6 +21,7 @@
   --n-surface-raised: #ffffff;
   --n-surface-hover: rgba(0, 0, 0, 0.04);
   --n-surface-sunken: #f2f2f3;
+  --n-aside-bg: #f4f4f5;
 
   /* --- Lines ------------------------------------------------------------ */
   --n-border: rgba(0, 0, 0, 0.1);
@@ -92,6 +93,7 @@
   --n-surface-raised: #161616;
   --n-surface-hover: rgba(255, 255, 255, 0.06);
   --n-surface-sunken: #080808;
+  --n-aside-bg: #151515;
 
   --n-border: rgba(255, 255, 255, 0.11);
   --n-border-soft: rgba(255, 255, 255, 0.07);

@@ -308,12 +308,13 @@
 
 /* --- Custom containers (::: tip / warning / danger) --------------------- */
 
+/* Same flat block as <Callout>: shade only, the type colours the title. */
 .vp-doc .custom-block {
   margin: 24px 0;
-  padding: 16px 20px;
-  border: 1px solid var(--n-border);
-  border-radius: var(--n-radius);
-  background: var(--n-surface);
+  padding: 14px 18px;
+  border: 0;
+  border-radius: var(--n-radius-sm);
+  background: var(--n-aside-bg);
   font-size: var(--n-text-base);
 }
 
@@ -322,15 +323,9 @@
 }
 
 .vp-doc .custom-block-title {
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   color: var(--n-text);
   font-weight: 600;
-}
-
-.vp-doc .custom-block.tip,
-.vp-doc .custom-block.info {
-  border-color: var(--n-accent-border);
-  background: var(--n-accent-soft);
 }
 
 .vp-doc .custom-block.tip .custom-block-title,
@@ -338,18 +333,8 @@
   color: var(--n-accent);
 }
 
-.vp-doc .custom-block.warning {
-  border-color: color-mix(in srgb, var(--n-warn) 35%, transparent);
-  background: var(--n-warn-soft);
-}
-
 .vp-doc .custom-block.warning .custom-block-title {
   color: var(--n-warn);
-}
-
-.vp-doc .custom-block.danger {
-  border-color: color-mix(in srgb, var(--n-bad) 35%, transparent);
-  background: var(--n-bad-soft);
 }
 
 .vp-doc .custom-block.danger .custom-block-title {
