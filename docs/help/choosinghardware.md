@@ -163,11 +163,9 @@ also note the following:
    has no single rating. The example column shows an Apple M1 Max (32-core
    GPU); a lower-end laptop GPU will sit a band or two lower, and a desktop GPU
    higher.
-5. Samsung Galaxy XR ratings are a projection, not a measurement. Its chip
-   carries the same GPU as the Quest 3 clocked 15% higher, but drives about
-   three times as many pixels at a 72 Hz default, so the extra headroom goes to
-   the displays. Its 16 GB of memory (Quest 3: 8 GB) helps large structures
-   load, not how many atoms render comfortably.
+5. Samsung Galaxy XR's Snapdragon XR2+ Gen 2 carries the same GPU as the
+   Quest 3 clocked 15% higher, and its 16 GB of memory (Quest 3: 8 GB) helps
+   large structures load.
 
 ### Comfort Legend
 
@@ -200,43 +198,43 @@ also note the following:
     <tr>
       <td>7,500</td>
       <td class="rate-good">Comfortable</td>
-      <td class="rate-good">Comfortable (projected)</td>
+      <td class="rate-good">Comfortable</td>
       <td class="rate-good">Comfortable</td>
     </tr>
     <tr>
       <td>10,000</td>
       <td class="rate-ok">Moderate</td>
-      <td class="rate-ok">Moderate (projected)</td>
+      <td class="rate-ok">Moderate</td>
       <td class="rate-good">Comfortable</td>
     </tr>
     <tr>
       <td>15,000</td>
       <td class="rate-bad">Not recommended</td>
-      <td class="rate-bad">Not recommended (projected)</td>
+      <td class="rate-ok">Moderate</td>
       <td class="rate-good">Comfortable</td>
     </tr>
     <tr>
       <td>20,000</td>
       <td class="rate-bad">Not recommended</td>
-      <td class="rate-bad">Not recommended (projected)</td>
+      <td class="rate-bad">Not recommended</td>
       <td class="rate-good">Comfortable</td>
     </tr>
     <tr>
       <td>30,000</td>
       <td class="rate-bad">Not recommended</td>
-      <td class="rate-bad">Not recommended (projected)</td>
+      <td class="rate-bad">Not recommended</td>
       <td class="rate-bad">Not recommended</td>
     </tr>
     <tr>
       <td>100,000</td>
       <td class="rate-bad">Not recommended</td>
-      <td class="rate-bad">Not recommended (projected)</td>
+      <td class="rate-bad">Not recommended</td>
       <td class="rate-bad">Not recommended</td>
     </tr>
     <tr>
       <td>100,000+</td>
       <td class="rate-bad">Not recommended</td>
-      <td class="rate-bad">Not recommended (projected)</td>
+      <td class="rate-bad">Not recommended</td>
       <td class="rate-bad">Not recommended</td>
     </tr>
   </tbody>
@@ -297,9 +295,9 @@ also note the following:
     </tr>
     <tr>
       <td>100,000+</td>
-      <td class="rate-gpu">Depends on GPU model</td>
+      <td></td>
       <td class="rate-gpu">Depends on GPU</td>
-      <td class="rate-gpu">Depends on GPU model</td>
+      <td></td>
     </tr>
   </tbody>
 </table>
