@@ -247,7 +247,18 @@
 
 .vp-doc table:has(tr > :nth-child(6)) td,
 .vp-doc table:has(tr > :nth-child(6)) th {
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Below a wide desktop there is not enough room to share out, so a wide table
+   scrolls sideways rather than breaking every word in half. */
+@media (max-width: 1279px) {
+  .vp-doc table:has(tr > :nth-child(6)) {
+    display: block;
+    table-layout: auto;
+    overflow-x: auto;
+  }
 }
 
 /* Dense comparison tables: a size down, and the row label column stays put. */
