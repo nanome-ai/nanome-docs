@@ -225,11 +225,47 @@
 /* --- Tables ------------------------------------------------------------- */
 
 .vp-doc table {
-  display: block;
+  display: table;
+  width: 100%;
   margin: 24px 0;
   border-collapse: collapse;
-  overflow-x: auto;
   font-size: var(--n-text-base);
+}
+
+@media (max-width: 767px) {
+  .vp-doc table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+/* Six or more columns: share the width out evenly and break long words, so
+   the table fits the column instead of running under the right-hand rail. */
+.vp-doc table:has(tr > :nth-child(6)) {
+  table-layout: fixed;
+}
+
+.vp-doc table:has(tr > :nth-child(6)) td,
+.vp-doc table:has(tr > :nth-child(6)) th {
+  overflow-wrap: anywhere;
+}
+
+/* Dense comparison tables: a size down, and the row label column stays put. */
+.vp-doc table.matrix,
+.vp-doc table.comfort {
+  font-size: var(--n-text-sm);
+}
+
+.vp-doc table.matrix tbody th,
+.vp-doc table.comfort tbody td:first-child {
+  width: 15%;
+  font-weight: 600;
+  white-space: normal;
+}
+
+.vp-doc table.legend {
+  width: auto;
+  min-width: 320px;
 }
 
 .vp-doc th,
@@ -405,29 +441,37 @@
 .vp-doc td[style*="#CFE2F3" i],
 .vp-doc td[style*="#D9ECD3" i],
 .vp-doc td[style*="#FCE5CD" i],
-.vp-doc td[style*="#F4CCCC" i] {
+.vp-doc td[style*="#F4CCCC" i],
+.vp-doc td.rate-good,
+.vp-doc td.rate-ok,
+.vp-doc td.rate-bad,
+.vp-doc td.rate-gpu {
   font-weight: 600;
 }
 
 /* Comfortable */
+.vp-doc td.rate-good,
 .vp-doc td[style*="#CFE2F3" i] {
   background: var(--n-accent-soft) !important;
   color: var(--n-accent);
 }
 
 /* Depends on hardware */
+.vp-doc td.rate-gpu,
 .vp-doc td[style*="#D9ECD3" i] {
   background: var(--n-good-soft) !important;
   color: var(--n-good);
 }
 
 /* Moderate */
+.vp-doc td.rate-ok,
 .vp-doc td[style*="#FCE5CD" i] {
   background: var(--n-warn-soft) !important;
   color: var(--n-warn);
 }
 
 /* Not recommended */
+.vp-doc td.rate-bad,
 .vp-doc td[style*="#F4CCCC" i] {
   background: var(--n-bad-soft) !important;
   color: var(--n-bad);

@@ -1,289 +1,314 @@
 ---
 title: Choosing Hardware
+pageClass: n-wide
 ---
 
 # Choosing Hardware
 
+<Callout type="note" title="Nanome v2, as of v2.6.1">
+
+This page covers the current release of Nanome. For Nanome Classic (v1.24), see
+[Choosing Hardware (Nanome Classic)](/help/choosinghardware-classic).
+
+</Callout>
+
+Nanome v2 runs on Meta Quest 3 and 3S, Apple Vision Pro, Samsung Galaxy XR,
+Windows PCs over Meta Link (PCVR), and in any modern browser at
+[app.nanome.ai](https://app.nanome.ai). Setting up a fleet of headsets is
+covered step by step in [Getting Started](/getting-started).
+
 ## Nanome Headset Comparison Matrix
 
-<table>
-    <col style="width: 15%;" />
-    <!-- <col style="width: 10%;" />
-    <col style="width: 10%;" />
-    <col style="width: 10%;" />
-    <col style="width: 10%;" />
-    <col style="width: 10%;" />
-    <col style="width: 10%;" />
-    <col style="width: 19%;" />
-    <col style="width: 23%;" />
-    <col style="width: 23%;" />
-    <col style="width: 23%;" /> -->
-    <thead>
-        <tr>
-            <th></th>
-            <th colspan=6>All in One Headsets (no PC)</th>
-            <th colspan=2>PCVR</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td></td>
-            <td>Meta Quest Pro</td>
-            <td>Meta Quest 3</td>
-            <td>Meta Quest 2</td>
-            <td>Vive XR Elite</td>
-            <td>Pico Neo 4</td>
-            <td>Pico Neo 3</td>
-            <td>Meta Quest Link (Supports Meta Quest Pro & Meta Quest 2/3)</td>
-            <td>SteamVR (Supports Valve Index, HTC Vive Pro)</td>
-        </tr>
-        <tr>
-            <td>Mixed Reality passthrough compatible</td>
-            <td>Yes, full color & stereoscopic</td>
-            <td>Yes, full color & stereoscopic</td>
-            <td>Yes, black and white & stereoscopic</td>
-            <td>Yes, full color & stereoscopic</td>
-            <td>Yes, full color, not stereoscopic</td>
-            <td>Yes, black and white & stereoscopic</td>
-            <td>N</td>
-            <td>N</td>
-        </tr>
-        <tr>
-            <td>MDM Support</td>
-            <td>Meta QFB</td>
-            <td>Meta QFB</td>
-            <td>Meta QFB</td>
-            <td>ArborXR, ManageXR</td>
-            <td>ArborXR, ManageXR</td>
-            <td>ArborXR</td>
-            <td>Meta QFB</td>
-            <td>None</td>
-        </tr>
-        <tr>
-            <td>MDM Cost</td>
-            <td>With shared mode: $24; With enhanced support: $31</td>
-            <td>With shared mode: $24; With enhanced support: $31</td>
-            <td>With shared mode: $24; With enhanced support: $31</td>
-            <td>ArborXR: $13; ManageXR: $12</td>
-            <td>ArborXR: $13; ManageXR: $12</td>
-            <td>ArborXR: $13</td>
-            <td>With shared mode: $24; With enhanced support: $31</td>
-            <td>N</td>
-        </tr>
-        <tr>
-            <td>Completely offline installation</td>
-            <td>N</td>
-            <td>N</td>
-            <td>N</td>
-            <td>N</td>
-            <td>N</td>
-            <td>N</td>
-            <td>N</td>
-            <td>Y</td>
-        </tr>
-        <tr>
-            <td>VPN Support</td>
-            <td>Partial Support (requires sideloaded APK file)</td>
-            <td>Partial Support (requires sideloaded APK file)</td>
-            <td>Partial Support (requires sideloaded APK file)</td>
-            <td>Yes has Full Support</td>
-            <td>Partial Support (requires sideloaded APK file)</td>
-            <td>Partial Support (requires sideloaded APK file)</td>
-            <td colspan=2 style="text-align: center">Yes, with PC</td>
-        </tr>
-        <tr>
-            <td>Can connect to PC?</td>
-            <td>Y</td>
-            <td>Y</td>
-            <td>Y</td>
-            <td>Y</td>
-            <td>Y</td>
-            <td>Y</td>
-            <td colspan=2 style="text-align: center">---</td>
-        </tr>
-        <tr>
-            <td>Nanome I.T. Team Ease of Deployment Rating (out of 10)</td>
-            <td>7</td>
-            <td>8</td>
-            <td>7</td>
-            <td>5</td>
-            <td>4</td>
-            <td>3</td>
-            <td>6</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>Cost</td>
-            <td>$999</td>
-            <td>$499 + recommended headstrap ($50/pc)</td>
-            <td>$299 + recommended headstrap ($50/pc)</td>
-            <td>$1100, optional vive business annual fee</td>
-            <td>$499</td>
-            <td>$380</td>
-            <td>Link cables can be purchased for $30-$100 + PC</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Procurement (Note: Quest devices can be bundled)</td>
-            <td>Through Nanome Inc. or <a href="https://www.meta.com/quest/Quest-pro">Meta Quest Pro</a></td>
-            <td>Through Nanome Inc. or <a href="https://www.meta.com/quest/quest-3/">Meta Quest 3</a></td>
-            <td>Through Nanome Inc. or <a href="https://www.meta.com/quest/products/quest-2/">Meta Quest 2</a><br></td>
-            <td>Through Nanome Inc. or <a href="https://business.vive.com/eu/solutions/streaming/">HTC</a></td>
-            <td><a href="https://www.picoxr.com/global/products/pico4">PicoXR</a><br></td>
-            <td><a href="https://www.picoxr.com/global/products/pico4">PicoXR</a><br></td>
-            <td><a href="https://www.meta.com/help/quest/articles/headsets-and-accessories/oculus-link/meta-quest-link-compatibility/">Meta Quest Link Cable Requirements</a></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Countries Supported</td>
-            <td>North America, South America, EU, Asia (except India)</td>
-            <td>North America, South America, EU, Asia (except India)</td>
-            <td>North America, South America, EU, Asia (except India)</td>
-            <td>North America, South America, EU, Asia</td>
-            <td>North America, South America, EU, Asia</td>
-            <td>North America, South America, EU, Asia</td>
-            <td>North America, South America, EU, Asia (except India)</td>
-            <td>North America, South America, EU, Asia</td>
-        </tr>
-    </tbody>
+<table class="matrix">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3">All-in-one headsets (no PC)</th>
+      <th>PCVR</th>
+      <th>Web</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Meta Quest 3 / 3S</th>
+      <th>Apple Vision Pro</th>
+      <th>Samsung Galaxy XR</th>
+      <th>Windows PC over Meta Link</th>
+      <th>app.nanome.ai</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Processor</th>
+      <td>Snapdragon XR2 Gen 2</td>
+      <td>Apple M2 (M5 on the late-2025 model)</td>
+      <td>Snapdragon XR2+ Gen 2 (same GPU as Quest 3, clocked 15% higher)</td>
+      <td>PC GPU: GTX 1070 minimum, RTX 3060 recommended</td>
+      <td>Whatever GPU the computer has</td>
+    </tr>
+    <tr>
+      <th>Display, per eye</th>
+      <td>2,064 × 2,208 (3S: 1,832 × 1,920), 72–120 Hz</td>
+      <td>~3,660 × 3,200 micro-OLED, 90–100 Hz (up to 120 Hz on M5)</td>
+      <td>3,552 × 3,840 micro-OLED, 72 Hz default, 90 Hz max</td>
+      <td>Set by the Quest headset</td>
+      <td>Monitor</td>
+    </tr>
+    <tr>
+      <th>Mixed reality passthrough</th>
+      <td>Yes, full colour, stereoscopic (Quest 3 adds a depth sensor)</td>
+      <td>Yes, full colour, stereoscopic</td>
+      <td>Yes, full colour, stereoscopic</td>
+      <td>No</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>How Nanome installs</th>
+      <td>Meta Horizon Store, through an MDM, or a sideloaded APK</td>
+      <td>Apple TestFlight beta</td>
+      <td>APK, through an MDM or sideloaded (not on Google Play)</td>
+      <td>Direct download from nanome.ai/versions</td>
+      <td>Nothing to install</td>
+    </tr>
+    <tr>
+      <th>MDM support</th>
+      <td>Meta Horizon managed services (HMS); ArborXR and ManageXR on top of it</td>
+      <td>Apple Business Manager with an Apple MDM (Jamf, Mosyle, Intune, Omnissa)</td>
+      <td>ArborXR, ManageXR, Samsung Knox Manage</td>
+      <td>Standard Windows endpoint management; headset MDMs do not manage PCs</td>
+      <td>None needed</td>
+    </tr>
+    <tr>
+      <th>MDM cost</th>
+      <td>HMS is free; ArborXR and ManageXR from $7 per headset per month</td>
+      <td>Depends on the MDM; Mosyle Business is free up to 30 devices, Jamf Now for the first 3</td>
+      <td>ArborXR and ManageXR from $7 per headset per month</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <th>Shared headset without a personal store account</th>
+      <td>Yes, HMS Shared Mode</td>
+      <td>Yes, once enrolled through an Apple MDM</td>
+      <td>Yes, once enrolled in an MDM</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <th>Offline installation</th>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>The installer runs offline; signing in needs a network</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>Signing in</th>
+      <td>Code, or username and password</td>
+      <td>Code, or username and password</td>
+      <td>Code, or username and password</td>
+      <td>Code, or username and password</td>
+      <td>Email, Google, Microsoft, Apple, or SSO</td>
+    </tr>
+    <tr>
+      <th>Seat needed</th>
+      <td>Collab or Full</td>
+      <td>Collab or Full</td>
+      <td>Collab or Full</td>
+      <td>Collab or Full</td>
+      <td>Free Web Seat covers 3 workspaces and view-only collaboration</td>
+    </tr>
+    <tr>
+      <th>Price (US, September 2026)</th>
+      <td>Quest 3 $599.99; Quest 3S from $349.99</td>
+      <td>From $3,699</td>
+      <td>$1,799</td>
+      <td>A VR-ready PC, a Quest, and a Link cable ($30–100)</td>
+      <td>Free</td>
+    </tr>
+    <tr>
+      <th>Where to buy</th>
+      <td><a href="https://www.meta.com/quest/quest-3/">Meta</a>, Best Buy, Amazon, or preconfigured <a href="https://dashboard.vr-expert.com/order-form/a0jTg00000LTeqnIAD">Nanome kits from VR Expert</a></td>
+      <td><a href="https://www.apple.com/apple-vision-pro/">Apple</a></td>
+      <td><a href="https://www.samsung.com/us/xr/galaxy-xr/">Samsung</a>, or preconfigured <a href="https://dashboard.vr-expert.com/order-form/a0jTg00000LTeqnIAD">Nanome kits from VR Expert</a></td>
+      <td><a href="https://www.meta.com/help/quest/140991407990979/">Meta Link requirements</a></td>
+      <td>—</td>
+    </tr>
+  </tbody>
 </table>
+
+Prices are list prices at the time of writing and change; the links above carry
+the current figure. MDM details, enrollment steps and network requirements are
+in [Getting Started](/getting-started#mdm).
 
 ## Headsets Not Supported
 
-**Meta Quest 1**, originally sold as Oculus Quest, is not supported. It does not appear as
-a supported platform on any current Nanome store listing. Meta Quest 2 is the oldest
-all-in-one headset Nanome supports.
+**Meta Quest 1**, originally sold as Oculus Quest, is not supported. Nanome v2
+targets Meta Quest 3 and 3S; Quest 2 and Quest Pro run Nanome Classic (v1.24),
+covered on the [Classic hardware page](/help/choosinghardware-classic).
 
-## Nanome All-In-One (Quest Pro, Quest 2 & Focus 3) vs PCVR Feature Comparison
+## Nanome All-In-One vs PCVR vs Web Comfort Comparison
 
-The following tables below show brief overviews of the capabilities of the Meta Quest Pro, Meta Quest 2, Vive Focus 3
-vs Desktop VR. Please also note the following:
-1. ‘Shown Atom Count’ only refers to the count of atoms displayed in the workspace and larger
-structures can be loaded within the workspace in the Meta Quest 2 & Vive Focus 3.
-2. Surfaces (on/off), secondary structures (ribbons on/off), and supplemental materials
-(PDF/JPEGs, whiteboards, web browsers, labels) all affect performance in different ways
-significantly. ‘Shown Atom Count’ column is given nothing else is displayed in the scene.
-3. Desktop is assumed to be “VR ready” (Nvidia GTX 1060 or greater).
+The tables below show how much structure each platform shows comfortably. Please
+also note the following:
+
+1. 'Shown Atom Count' only refers to the count of atoms displayed in the
+   workspace. Larger structures can be loaded within the workspace and hidden.
+2. Surfaces (on/off), secondary structures (ribbons on/off), and supplemental
+   materials (PDF/JPEGs, whiteboards, web browsers, labels) all affect
+   performance in different ways significantly. The 'Shown Atom Count' column
+   is given assuming nothing else is displayed in the scene.
+3. Desktop is assumed to be "VR ready"; see the
+   [minimum and recommended PC specs](/help/pchardware).
+4. Web performance depends entirely on the computer's GPU. The Web column uses
+   an Apple M1 Max (32-core GPU) as its reference machine; a lower-end laptop
+   GPU will sit a band or two lower, and a desktop GPU higher.
+5. Samsung Galaxy XR ratings are a projection, not a measurement. Its chip
+   carries the same GPU as the Quest 3 clocked 15% higher, but drives about
+   three times as many pixels at a 72 Hz default, so the extra headroom goes to
+   the displays. Its 16 GB of memory (Quest 3: 8 GB) helps large structures
+   load, not how many atoms render comfortably.
 
 ### Comfort Legend
 
-<table>
-    <thead>
-        <tr>
-            <th>Comfortability</th>
-            <th>Frames Per Second (FPS)</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td style="background-color:#CFE2F3">Comfortable</td>
-            <td style="background-color:#FFFFFF">72 FPS +</td>
-        </tr>
-        <tr>
-            <td style="background-color:#FCE5CD">Moderate</td>
-            <td style="background-color:#FFFFFF">60 FPS +</td>
-        </tr>
-        <tr>
-            <td style="background-color:#F4CCCC">Not recommended</td>
-            <td style="background-color:#FFFFFF">30 FPS or less</td>
-        </tr>
-    </tbody>
+<table class="legend">
+  <thead>
+    <tr>
+      <th>Comfortability</th>
+      <th>Frames Per Second (FPS)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="rate-good">Comfortable</td><td>72 FPS +</td></tr>
+    <tr><td class="rate-ok">Moderate</td><td>60 FPS +</td></tr>
+    <tr><td class="rate-bad">Not recommended</td><td>30 FPS or less</td></tr>
+  </tbody>
 </table>
 
 ### Comfort Comparison
 
-<table>
-    <thead>
-        <tr>
-            <th></th>
-            <th colspan=2>(All-in-One, no PCVR)</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th>Shown Atom Count<sup>1,2</sup></th>
-            <th>Meta Quest Pro & Quest 2</th>
-            <th>HTC Vive Focus 3</th>
-            <th>PCVR, PC Windows App<sup>3</sup></th>
-        </tr>
-        <tr>
-            <td style="background-color:#FFFFFF">2,500</td>
-            <td style="background-color:#CFE2F3">Comfortable</td>
-            <td style="background-color:#CFE2F3">Comfortable</td>
-            <td style="background-color:#CFE2F3">Comfortable</td>
-        </tr>
-        <tr>
-            <td style="background-color:#FFFFFF">5,000</td>
-            <td style="background-color:#FCE5CD">Moderate</td>
-            <td style="background-color:#FCE5CD">Moderate</td>
-            <td style="background-color:#CFE2F3">Comfortable</td>
-        </tr>
-        <tr>
-            <td style="background-color:#FFFFFF">10,000</td>
-            <td style="background-color:#F4CCCC">Not recommended</td>
-            <td style="background-color:#FCE5CD">Moderate</td>
-            <td style="background-color:#CFE2F3">Comfortable</td>
-        </tr>
-        <tr>
-            <td style="background-color:#FFFFFF">20,000</td>
-            <td style="background-color:#F4CCCC">Not recommended</td>
-            <td style="background-color:#F4CCCC">Not recommended</td>
-            <td style="background-color:#CFE2F3">Comfortable</td>
-        </tr>
-        <tr>
-            <td style="background-color:#FFFFFF">100,000</td>
-            <td style="background-color:#F4CCCC">Not recommended</td>
-            <td style="background-color:#F4CCCC">Not recommended</td>
-            <td style="background-color:#CFE2F3">Comfortable</td>
-        </tr>
-        <tr>
-            <td style="background-color:#FFFFFF">100,000+</td>
-            <td style="background-color:#F4CCCC">Not recommended</td>
-            <td style="background-color:#F4CCCC">Not recommended</td>
-            <td style="background-color:#D9ECD3">Depends on GPU model</td>
-        </tr>
-    </tbody>
+<table class="comfort">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3">All-in-one headsets (no PC)</th>
+      <th>PCVR</th>
+      <th>Web</th>
+    </tr>
+    <tr>
+      <th>Shown Atom Count<sup>1,2</sup></th>
+      <th>Meta Quest 3 / 3S</th>
+      <th>Apple Vision Pro</th>
+      <th>Samsung Galaxy XR<sup>5</sup></th>
+      <th>Windows PC over Meta Link<sup>3</sup></th>
+      <th>app.nanome.ai, Apple M1 Max<sup>4</sup></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>7,500</td>
+      <td class="rate-good">Comfortable</td>
+      <td class="rate-good">Comfortable</td>
+      <td class="rate-good">Comfortable (projected)</td>
+      <td class="rate-good">Comfortable</td>
+      <td class="rate-good">Comfortable</td>
+    </tr>
+    <tr>
+      <td>10,000</td>
+      <td class="rate-ok">Moderate</td>
+      <td class="rate-good">Comfortable</td>
+      <td class="rate-ok">Moderate (projected)</td>
+      <td class="rate-good">Comfortable</td>
+      <td class="rate-good">Comfortable</td>
+    </tr>
+    <tr>
+      <td>15,000</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-good">Comfortable</td>
+      <td class="rate-bad">Not recommended (projected)</td>
+      <td class="rate-good">Comfortable</td>
+      <td class="rate-good">Comfortable</td>
+    </tr>
+    <tr>
+      <td>20,000</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-good">Comfortable</td>
+      <td class="rate-bad">Not recommended (projected)</td>
+      <td class="rate-good">Comfortable</td>
+      <td class="rate-good">Comfortable</td>
+    </tr>
+    <tr>
+      <td>30,000</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended (projected)</td>
+      <td class="rate-good">Comfortable</td>
+      <td class="rate-good">Comfortable</td>
+    </tr>
+    <tr>
+      <td>100,000</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended (projected)</td>
+      <td class="rate-good">Comfortable</td>
+      <td class="rate-ok">Moderate</td>
+    </tr>
+    <tr>
+      <td>100,000+</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended (projected)</td>
+      <td class="rate-gpu">Depends on GPU model</td>
+      <td class="rate-gpu">Depends on GPU model</td>
+    </tr>
+  </tbody>
 </table>
 
-### Capability & Plugin Recommendation Comparison
+Keeping a session inside these numbers is covered in
+[Keep it comfortable](/session-guide#comfort): hide what a scene does not need,
+step surfaces down a density, and show one atomistic representation per
+component.
 
-<table>
-    <tbody>
-        <tr>
-            <td><b>Feature</b></td>
-            <td><b>Oculus Quest 2 & HTC Vive Focus 3</b></td>
-            <td><b>Windows Desktop (both 2D and VR)</b></td>
-        </tr>
-        <tr>
-            <td><b>Energy Minimization</b></td>
-            <td>Plugins (Cloud/Remote server)</td>
-            <td>CPU based</td>
-        </tr>
-        <tr>
-            <td><b>Bonding and secondary structures</b></td>
-            <td>Running structure prep plugin strongly recommended</td>
-            <td>No prep needed</td>
-        </tr>
-        <tr>
-            <td><b>Voice Commands</b></td>
-            <td>Not Compatible</td>
-            <td>Compatible (full list here)</td>
-        </tr>
-        <tr>
-            <td><b>in-VR Web browser</b></td>
-            <td>Gecko (Light Firefox)</td>
-            <td>Chromium</td>
-        </tr>
-        <tr>
-            <td><b>Surface Generation</b></td>
-            <td>CPU based (slower, more precise)</td>
-            <td>GPU based (less precise but instantaneous), enables MD simulation playback with surfaces</td>
-        </tr>
-        <tr>
-            <td><b>File saving/loading</b></td>
-            <td>Vault plugin strongly recommended</td>
-            <td>Vault & local desktop saving/loading</td>
-        </tr>
-    </tbody>
+### Capability Comparison
+
+<table class="matrix">
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>Headsets (Quest 3 / 3S, Vision Pro, Galaxy XR)</th>
+      <th>Windows PC over Meta Link</th>
+      <th>Web (app.nanome.ai)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Loading structures</th>
+      <td>By PDB code from RCSB. Other formats and local files load in the web app first, then open in the headset.</td>
+      <td>By PDB code, or from the local disk</td>
+      <td>By PDB code, or drag a file in. See <a href="/nanome_web/fileformats">Supported File Formats</a>.</td>
+    </tr>
+    <tr>
+      <th>Building a workspace</th>
+      <td>Possible, suited to a workspace that grows during a discussion</td>
+      <td>Yes</td>
+      <td>Recommended. Everything built here opens on every other platform, and the <a href="/session-guide#build">Nanome MCP server</a> can build it from a description.</td>
+    </tr>
+    <tr>
+      <th>MD trajectory playback</th>
+      <td>Streams from the web app to standalone headsets</td>
+      <td>Yes</td>
+      <td>Yes. See <a href="/nanome_web/mdplayback">MD Trajectory Playback</a>.</td>
+    </tr>
+    <tr>
+      <th>Collaboration</th>
+      <td>Spotlight, follow, pointers, voice, scenes</td>
+      <td>Spotlight, follow, pointers, voice, scenes</td>
+      <td>Same workspaces and scenes; can spotlight and follow users in headsets</td>
+    </tr>
+    <tr>
+      <th>Surfaces</th>
+      <td>Wire, Sheer, Semi and Opaque densities; each step down buys frames</td>
+      <td>All densities</td>
+      <td>All densities</td>
+    </tr>
+  </tbody>
 </table>

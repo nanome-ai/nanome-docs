@@ -190,6 +190,7 @@ export default defineConfig({
           { text: 'Hardware Requirements', link: '/help/hardwarerequirements' },
           { text: 'PC Hardware', link: '/help/pchardware' },
           { text: 'Choosing Hardware', link: '/help/choosinghardware' },
+          { text: 'Choosing Hardware (Nanome Classic)', link: '/help/choosinghardware-classic' },
           { text: 'Quest for Business', link: '/help/questforbusiness' },
           { text: 'Enterprise', link: '/help/enterprise' },
           { text: 'FAQ', link: '/help/faq' },

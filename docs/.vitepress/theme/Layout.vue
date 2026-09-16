@@ -154,7 +154,8 @@ const showAside = computed(() => hasAside.value && !isHome.value)
 /* A page that turns the outline off (the home page, `aside: false`) is laying
    itself out rather than running prose, so give it the full measure instead of
    the 768px one that keeps body copy readable. */
-.n-layout:not(.has-aside) .n-column {
+.n-layout:not(.has-aside) .n-column,
+.n-layout.n-wide .n-column {
   max-width: 1200px;
 }
 
