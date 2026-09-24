@@ -42,7 +42,7 @@ docs/
 │       ├── components/
 │       │   └── interactive/  # Chooser, Accordion, Tabs, Card, Steps…
 │       └── styles/           # Tokens, base, prose, component glue
-├── contributing/     # How to use the interactive components
+├── contributing/     # Editor-only pages; served by docs:dev, left out of the build
 ├── nanome1x/         # Nanome 1.24 (1st Gen) docs
 ├── nanome_v2/        # Nanome v2 (2nd Gen) docs
 ├── mara/             # MARA docs
@@ -62,7 +62,9 @@ Pages are markdown, and markdown pages can use the interactive components —
 a guided picker whose answers live in the query string, collapsible rows with
 "Expand all", tabs, cards, numbered steps, and copyable blocks. They are
 documented, with working examples, at
-[/contributing/components](docs/contributing/components.md).
+[/contributing/components](docs/contributing/components.md). That page is for
+editors only: `npm run docs:dev` serves it under **For editors** in the sidebar,
+and `npm run docs:build` leaves it out, so it never goes live.
 
 Two rules are worth knowing before writing a page:
 

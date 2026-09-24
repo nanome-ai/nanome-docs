@@ -1,9 +1,15 @@
 import { defineConfig } from 'vitepress'
 
+// Pages for people editing the docs. `docs:dev` serves them; `docs:build` leaves
+// them out, so they never reach docs.nanome.ai, its sitemap or its search index.
+const isProduction = process.env.NODE_ENV === 'production'
+
 export default defineConfig({
   title: 'Help & Documentation',
   description: 'Documentation site for Nanome software.',
   cleanUrls: true,
+
+  srcExclude: isProduction ? ['contributing/**'] : [],
 
   head: [
     ['link', { rel: 'icon', href: '/assets/favicon.ico' }],
@@ -197,13 +203,13 @@ export default defineConfig({
           { text: 'Contact', link: '/help/contact' }
         ]
       },
-      {
+      ...(isProduction ? [] : [{
         text: 'For editors',
         collapsed: true,
         items: [
           { text: 'Interactive components', link: '/contributing/components' }
         ]
-      }
+      }])
     ],
 
     sidebarDepth: 2
