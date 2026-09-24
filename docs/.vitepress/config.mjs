@@ -1,9 +1,15 @@
 import { defineConfig } from 'vitepress'
 
+// Pages for people editing the docs. `docs:dev` serves them; `docs:build` leaves
+// them out, so they never reach docs.nanome.ai, its sitemap or its search index.
+const isProduction = process.env.NODE_ENV === 'production'
+
 export default defineConfig({
   title: 'Help & Documentation',
   description: 'Documentation site for Nanome software.',
   cleanUrls: true,
+
+  srcExclude: isProduction ? ['contributing/**'] : [],
 
   head: [
     ['link', { rel: 'icon', href: '/assets/favicon.ico' }],
@@ -65,6 +71,8 @@ export default defineConfig({
           { text: 'Wrist Menu', link: '/nanome_v2/wristmenu' },
           { text: 'Collaboration', link: '/nanome_v2/collaboration' },
           { text: 'Sample Workflows', link: '/nanome_v2/sampleworkflows' },
+          { text: 'Getting Started', link: '/getting-started' },
+          { text: 'Session Guide', link: '/session-guide' },
           { text: 'Tips', link: '/nanome_v2/tips' }
         ]
       },
@@ -188,12 +196,20 @@ export default defineConfig({
           { text: 'Hardware Requirements', link: '/help/hardwarerequirements' },
           { text: 'PC Hardware', link: '/help/pchardware' },
           { text: 'Choosing Hardware', link: '/help/choosinghardware' },
+          { text: 'Choosing Hardware (Nanome Classic)', link: '/help/choosinghardware-classic' },
           { text: 'Quest for Business', link: '/help/questforbusiness' },
           { text: 'Enterprise', link: '/help/enterprise' },
           { text: 'FAQ', link: '/help/faq' },
           { text: 'Contact', link: '/help/contact' }
         ]
-      }
+      },
+      ...(isProduction ? [] : [{
+        text: 'For editors',
+        collapsed: true,
+        items: [
+          { text: 'Interactive components', link: '/contributing/components' }
+        ]
+      }])
     ],
 
     sidebarDepth: 2
