@@ -178,24 +178,18 @@ function toggle(group) {
   list-style: none;
 }
 
-/* An open section sits on a panel that holds everything inside it, and its
-   rows step in on a hairline — the edge of the panel shows where the section
-   starts and ends, and the indent shows what belongs to it. */
-.n-sidenav__group.is-open {
-  padding: 6px 6px 8px;
-  border: 1px solid var(--n-border);
-  border-radius: var(--n-radius);
-  background: var(--n-surface);
-}
-
-.n-sidenav__group.is-open > .n-sidenav__label {
-  margin-bottom: 0;
-}
-
+/* Rows inside an open section step in on a guide line in the accent colour,
+   and the section's arrow takes the same colour. The line runs the full height
+   of the section, so it shows both which section is open and what belongs to
+   it. */
 .n-sidenav__group.is-open > .n-sidenav__list {
   margin: 2px 0 4px 9px;
-  padding-left: 7px;
-  border-left: 1px solid var(--n-border);
+  padding-left: 6px;
+  border-left: 2px solid var(--n-accent);
+}
+
+.n-sidenav__group.is-open > .n-sidenav__label > .n-sidenav__caret {
+  color: var(--n-accent);
 }
 
 /* --- Drawer below 960px -------------------------------------------------- */
