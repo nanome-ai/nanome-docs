@@ -82,7 +82,7 @@
     <div class="requirements">
       <div>
         <h3>
-          <a href="https://docs.nanome.ai/help/pchardware.html">
+          <a href="/help/pchardware">
             Please see minimum and recommended PC requirements here.
           </a>
         </h3>

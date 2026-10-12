@@ -62,30 +62,36 @@ export default defineConfig({
         text: 'Nanome',
         collapsed: true,
         items: [
-          { text: 'Login', link: '/nanome_v2/login' },
-          { text: 'Environment', link: '/nanome_v2/environment' },
-          { text: 'Main Panel', link: '/nanome_v2/mainpanel' },
-          { text: 'Scenes Panel', link: '/nanome_v2/scenespanel' },
-          { text: 'Sequence Panel', link: '/nanome_v2/sequencepanel' },
-          { text: 'Tools Panel', link: '/nanome_v2/toolspanel' },
-          { text: 'Wrist Menu', link: '/nanome_v2/wristmenu' },
-          { text: 'Collaboration', link: '/nanome_v2/collaboration' },
-          { text: 'Sample Workflows', link: '/nanome_v2/sampleworkflows' },
-          { text: 'Getting Started', link: '/getting-started' },
-          { text: 'Session Guide', link: '/session-guide' },
-          { text: 'Tips', link: '/nanome_v2/tips' }
-        ]
-      },
-      {
-        text: 'Nanome Web',
-        collapsed: true,
-        items: [
-          { text: 'Overview', link: '/nanome_web/overview' },
-          { text: 'Web App Basics', link: '/nanome_web/basics' },
-          { text: 'Loading Structures', link: '/nanome_web/loading' },
-          { text: 'Invite & Follow', link: '/nanome_web/collaboration' },
-          { text: 'MD Trajectory Playback', link: '/nanome_web/mdplayback' },
-          { text: 'Supported File Formats', link: '/nanome_web/fileformats' }
+          {
+            text: 'Nanome XR',
+            collapsed: true,
+            items: [
+              { text: 'Login', link: '/nanome_v2/login' },
+              { text: 'Environment', link: '/nanome_v2/environment' },
+              { text: 'Main Panel', link: '/nanome_v2/mainpanel' },
+              { text: 'Scenes Panel', link: '/nanome_v2/scenespanel' },
+              { text: 'Sequence Panel', link: '/nanome_v2/sequencepanel' },
+              { text: 'Tools Panel', link: '/nanome_v2/toolspanel' },
+              { text: 'Wrist Menu', link: '/nanome_v2/wristmenu' },
+              { text: 'Collaboration', link: '/nanome_v2/collaboration' },
+              { text: 'Sample Workflows', link: '/nanome_v2/sampleworkflows' },
+              { text: 'Getting Started', link: '/getting-started' },
+              { text: 'Session Guide', link: '/session-guide' },
+              { text: 'Tips', link: '/nanome_v2/tips' }
+            ]
+          },
+          {
+            text: 'Nanome Web',
+            collapsed: true,
+            items: [
+              { text: 'Overview', link: '/nanome_web/overview' },
+              { text: 'Web App Basics', link: '/nanome_web/basics' },
+              { text: 'Loading Structures', link: '/nanome_web/loading' },
+              { text: 'Invite & Follow', link: '/nanome_web/collaboration' },
+              { text: 'MD Trajectory Playback', link: '/nanome_web/mdplayback' },
+              { text: 'Supported File Formats', link: '/nanome_web/fileformats' }
+            ]
+          }
         ]
       },
       {

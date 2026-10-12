@@ -156,7 +156,7 @@ Cancel the loading of structures from the menu source tab, perfect for if your s
 
 <vimg src="navigating-page/Plugin-List.jpg" />
 
-[Please view the Nanome Stacks page to learn more.](https://docs.nanome.ai/plugins/overview.html)
+[Please view the Nanome Stacks page to learn more.](/nanome1x/plugins/overview)
 
 ## Display
 
@@ -196,7 +196,7 @@ Toggle the visibility of solvent-excluded-surface, change its opacity, or change
 
 <vimg src="navigating-page/mesh-surface.png" />
 
-If you are using PCVR, you also have the option to display a mesh surface. This option can be found in the [Action Menu](https://docs.nanome.ai/navigation/actionmenu.html).
+If you are using PCVR, you also have the option to display a mesh surface. This option can be found in the [Action Menu](/nanome1x/navigation/actionmenu).
 Navigate to Display/Styles > Surface Styles, then check the "Mesh Surface" option.
 
 ### Sub Structure
@@ -341,7 +341,7 @@ Expand or shrink the selection range by physical proximity.
 
 <vimg src="navigating-page/Macro.jpg" />
 
-[Please view the macros page to learn more.](https://docs.nanome.ai/macros.html)
+[Please view the macros page to learn more.](/nanome1x/macros/overview)
 
 ## Content Discovery
 
@@ -351,7 +351,7 @@ Tutorials of advanced concepts and features in Nanome, presented using spatial r
 
 ## Advanced Tutorials
 
-See [Content Discovery](https://docs.nanome.ai/navigation/menus.html#content-discovery).
+See [Content Discovery](#content-discovery).
 
 ## Spatial Recordings
 
@@ -359,7 +359,7 @@ See [Content Discovery](https://docs.nanome.ai/navigation/menus.html#content-dis
 
 Record your entire workspace, including structures, menus, and virtual movements; then, playback at a later time. During the playback you can pause and even interact with the structures in the recording.
 
-Spatial recordings can be accessed from either the Wrist Menu (see below) or the [Action Menu](https://docs.nanome.ai/navigation/actionmenu.html).
+Spatial recordings can be accessed from either the Wrist Menu (see below) or the [Action Menu](/nanome1x/navigation/actionmenu).
 
 <vimg src="navigating-page/wrist_menu_spatrec.png" />
 

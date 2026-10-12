@@ -40,4 +40,4 @@ The control scheme can be accessed at any time by pressing the [H] key on the ke
 
 ## Nanome 2D Controller Bindings
 
-Nanome also supports the use of a controller in 2D mode. You can find the controller bindings [here](https://docs.nanome.ai/controls/overview.html#_2d-controller-bindings).
+Nanome also supports the use of a controller in 2D mode. You can find the controller bindings [here](/controls/overview#_2d-controller-bindings).

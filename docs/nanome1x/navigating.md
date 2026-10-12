@@ -263,7 +263,7 @@ Recent files loaded in Nanome.
 
 <vimg src="navigating-page/Plugin-List.jpg" />
 
-[Please view the plug in page to learn more.](https://docs.nanome.ai/plugins/overview.html#how-to-use-plugins-enterprise-only)
+[Please view the plug in page to learn more.](/nanome1x/plugins/overview)
 
 ### Display
 
@@ -497,7 +497,7 @@ Expand or shrink the selection range by physical proximity.
 
 <vimg src="navigating-page/Macro.jpg" />
 
-[Please view the macros page to learn more.](https://docs.nanome.ai/macros/overview.html#summary)
+[Please view the macros page to learn more.](/nanome1x/macros/overview#summary)
 
 ## Wrist Menus
 

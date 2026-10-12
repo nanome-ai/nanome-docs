@@ -140,4 +140,4 @@ If you installed Nanome using Steam, right click on Nanome in the library and cl
 
 #### Nanome Audio Troubleshooting
 
-[My Windows and Oculus audio are working, but I can't hear anything in Nanome](https://docs.nanome.ai/navigating.html#settings)
+[My Windows and Oculus audio are working, but I can't hear anything in Nanome](/nanome1x/navigating#settings)

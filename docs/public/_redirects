@@ -3,3 +3,18 @@
 # ships to the host root. Netlify and Cloudflare Pages both read /_redirects.
 /nanome_v2/mainmenus       /nanome_v2/mainpanel  301
 /nanome_v2/mainmenus.html  /nanome_v2/mainpanel  301
+
+# Nanome Classic pages moved under /nanome1x/ when the v2 and MARA sections were
+# added (#91). These send the old docs.nanome.ai paths, which older links still
+# use, to where the pages live now. Anchors survive the redirect.
+/plugins/nanomeplugins       /nanome1x/plugins/overview    301
+/plugins/nanomeplugins.html  /nanome1x/plugins/overview    301
+/features                    /nanome1x/features            301
+/features.html               /nanome1x/features            301
+/navigating                  /nanome1x/navigating          301
+/navigating.html             /nanome1x/navigating          301
+/navigation/*                /nanome1x/navigation/:splat   301
+/plugins/*                   /nanome1x/plugins/:splat      301
+/macros/*                    /nanome1x/macros/:splat       301
+/howto/*                     /nanome1x/howto/:splat        301
+/integration/*               /nanome1x/integration/:splat  301

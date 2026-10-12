@@ -11,7 +11,7 @@ Supported headsets
 <vimg src="gettingStarted-page/SupportedHeadsets2023-2.png" />
 
 #### Recommended specs for a desktop computer
-Please see <a href="https://docs.nanome.ai/help/pchardware.html"> minimum and recommended PC specs here. </a>
+Please see <a href="/help/pchardware"> minimum and recommended PC specs here. </a>
 
 #### Examples of light weight VR ready laptops:
 - MSI GS66 Stealth with RTX 3060

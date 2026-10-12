@@ -18,6 +18,7 @@ import SideNav from './layout/SideNav.vue'
 import Outline from './layout/Outline.vue'
 import LocalNav from './layout/LocalNav.vue'
 import DocFooter from './layout/DocFooter.vue'
+import ClassicBanner from './layout/ClassicBanner.vue'
 
 const { frontmatter, isDark, page } = useData()
 const route = useRoute()
@@ -102,6 +103,7 @@ const showAside = computed(() => hasAside.value && !isHome.value)
 
       <div class="n-main">
         <main id="n-content" class="n-column">
+          <ClassicBanner />
           <div class="VPDoc">
             <div class="vp-doc">
               <Content />

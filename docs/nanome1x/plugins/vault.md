@@ -36,4 +36,4 @@ Whenever you have a prompt to export (e.g. Workspace Session File, Molecule, Ima
 
 This is particularly useful if you have made several ligand design iterations and wanted to upload them to share with other colleagues.
 
-You can also access the Scene Viewer from Vault, which allows you to arrange content in Nanome. More information on the Scene Viewer can be found [here](https://docs.nanome.ai/plugins/sceneviewer.html).
+You can also access the Scene Viewer from Vault, which allows you to arrange content in Nanome. More information on the Scene Viewer can be found [here](/nanome1x/plugins/sceneviewer).

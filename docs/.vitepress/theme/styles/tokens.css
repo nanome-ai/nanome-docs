@@ -48,7 +48,7 @@
   --n-font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
     'Liberation Mono', monospace;
 
-  --n-text-xs: 0.75rem;    /* 12px — rail section labels */
+  --n-text-xs: 0.75rem;    /* 12px — fine print */
   --n-text-sm: 0.875rem;   /* 14px — nav links, meta */
   --n-text-base: 0.9375rem;/* 15px — UI */
   --n-text-body: 1.0625rem;/* 17px — running prose */
