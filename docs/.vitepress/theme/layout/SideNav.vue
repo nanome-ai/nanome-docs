@@ -60,7 +60,7 @@ function toggle(group) {
         v-for="group in groups"
         :key="group.text || 'top'"
         class="n-sidenav__group"
-        :class="{ 'is-active': group.active }"
+        :class="{ 'is-active': group.active, 'is-open': group.collapsible && isOpen(group) }"
       >
         <button
           v-if="group.collapsible"
@@ -127,12 +127,13 @@ function toggle(group) {
   padding: 5px 8px;
   border: 0;
   background: none;
-  color: var(--n-text-faint);
-  font-size: var(--n-text-xs);
+  /* One step above the rows it holds, so a section never reads as smaller
+     than its own subsections. */
+  color: var(--n-text-muted);
+  font-size: var(--n-text-base);
   font-weight: 600;
   line-height: 1.4;
   text-align: left;
-  letter-spacing: 0.01em;
   /* Config labels carry a literal newline for a second line. */
   white-space: pre-line;
 }
@@ -152,8 +153,10 @@ function toggle(group) {
   color: var(--n-text);
 }
 
-/* The section holding the current page reads a shade louder than the rest. */
-.n-sidenav__group.is-active > .n-sidenav__label {
+/* An open section, and the one holding the current page, read a shade louder
+   than the rest — a heading should not be dimmer than the rows under it. */
+.n-sidenav__group.is-active > .n-sidenav__label,
+.n-sidenav__group.is-open > .n-sidenav__label {
   color: var(--n-text);
 }
 
