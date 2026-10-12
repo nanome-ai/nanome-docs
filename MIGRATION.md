@@ -5,8 +5,8 @@ Getting Started and Session Guide were ported from two pull requests on the
 
 | Docs section | Source | Branch | Commit |
 | --- | --- | --- | --- |
-| Nanome › Getting Started | [nanome-ai/nanome.ai#85](https://github.com/nanome-ai/nanome.ai/pull/85) | `feature/setup-onboarding` | `0682fa4` |
-| Nanome › Session Guide | [nanome-ai/nanome.ai#86](https://github.com/nanome-ai/nanome.ai/pull/86) | `feature/session-playbook` | `ac6eb48` |
+| Nanome › Nanome XR › Getting Started | [nanome-ai/nanome.ai#85](https://github.com/nanome-ai/nanome.ai/pull/85) | `feature/setup-onboarding` | `0682fa4` |
+| Nanome › Nanome XR › Session Guide | [nanome-ai/nanome.ai#86](https://github.com/nanome-ai/nanome.ai/pull/86) | `feature/session-playbook` | `ac6eb48` |
 
 PR 86 branches off PR 85 but has not picked up its last 7 commits, so the two
 guides came from different tips: the setup chapters from 85, which has the
