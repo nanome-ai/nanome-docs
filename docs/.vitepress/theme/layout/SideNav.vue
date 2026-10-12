@@ -74,12 +74,12 @@ function toggle(group) {
             class="n-sidenav__caret"
             :class="{ 'is-open': isOpen(group) }"
             viewBox="0 0 16 16"
-            width="12"
-            height="12"
+            width="14"
+            height="14"
             aria-hidden="true"
           >
             <path
-              d="M4 6l4 4 4-4"
+              d="M6 4l4 4-4 4"
               fill="none"
               stroke="currentColor"
               stroke-width="1.7"
@@ -162,17 +162,40 @@ function toggle(group) {
 
 .n-sidenav__caret {
   flex-shrink: 0;
+  /* Lines up with the arrows on the rows below, which sit in a 22px box. */
+  margin-right: -4px;
+  color: var(--n-text-faint);
   transition: transform var(--n-transition);
 }
 
 .n-sidenav__caret.is-open {
-  transform: rotate(180deg);
+  transform: rotate(90deg);
 }
 
 .n-sidenav__list {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+/* An open section sits on a panel that holds everything inside it, and its
+   rows step in on a hairline — the edge of the panel shows where the section
+   starts and ends, and the indent shows what belongs to it. */
+.n-sidenav__group.is-open {
+  padding: 6px 6px 8px;
+  border: 1px solid var(--n-border);
+  border-radius: var(--n-radius);
+  background: var(--n-surface);
+}
+
+.n-sidenav__group.is-open > .n-sidenav__label {
+  margin-bottom: 0;
+}
+
+.n-sidenav__group.is-open > .n-sidenav__list {
+  margin: 2px 0 4px 9px;
+  padding-left: 7px;
+  border-left: 1px solid var(--n-border);
 }
 
 /* --- Drawer below 960px -------------------------------------------------- */

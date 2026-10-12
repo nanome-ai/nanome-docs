@@ -159,9 +159,10 @@ const isToggleOnly = computed(() => hasChildren.value && !props.item.link)
   font-weight: 600;
 }
 
-.n-nav-item--d0 > .n-nav-row > .n-nav-link.is-parent {
+/* A subsection is lighter than the section label above it, and takes the full
+   text colour once it is open. */
+.n-nav-link.is-parent[aria-expanded='true'] {
   color: var(--n-text);
-  font-weight: 600;
 }
 
 .n-nav-caret {
@@ -192,9 +193,9 @@ const isToggleOnly = computed(() => hasChildren.value && !props.item.link)
 
 /* Nested lists sit on a hairline so depth reads at a glance. */
 .n-nav-children {
-  margin: 2px 0 2px 9px;
-  padding-left: 9px;
-  border-left: 1px solid var(--n-border-soft);
+  margin: 2px 0 4px 9px;
+  padding-left: 7px;
+  border-left: 1px solid var(--n-border);
   list-style: none;
 }
 
