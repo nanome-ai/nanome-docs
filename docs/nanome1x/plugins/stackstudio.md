@@ -69,7 +69,7 @@ Here in content tab, you can change the properties of a node's content. The prop
 
 <vimg src="plugins-page/pluginator/button_content.JPG" />
 
-When a node is assigned a content type, you can view and edit its properties, such as name and padding. The picture above shows the properties of a button. To learn more about what properties are available, check out the [UI Components](https://docs.nanome.ai/plugins/stackstudio.html#ui-components) section.
+When a node is assigned a content type, you can view and edit its properties, such as name and padding. The picture above shows the properties of a button. To learn more about what properties are available, check out the [UI Components](/nanome1x/plugins/stackstudio#ui-components) section.
 
 #### Window Tab
 

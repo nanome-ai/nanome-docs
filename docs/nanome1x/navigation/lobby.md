@@ -46,7 +46,7 @@ Refresh, Creating a Room, and Settings
 
 ### (1) Join by Meeting ID
 
-Users can join a prescheduled meeting in Nanome by entering the Meeting ID provided by the room host. Find out how to <a href="https://docs.nanome.ai/home.nanome.ai/meetings.html">create meetings here. </a>
+Users can join a prescheduled meeting in Nanome by entering the Meeting ID provided by the room host. Find out how to <a href="/home.nanome.ai/meetings">create meetings here. </a>
 
 ### (2) Creating a Room
 
