@@ -45,6 +45,36 @@ Limitation: Each 'open in headset' action from MARA will create a new workspace.
 
 Once interaction components exist, the Chemical Interactions panel lists every interaction found. Hover over an entry in the list to highlight the corresponding bond in 3D, pin the interactions you want to keep to hand, and toggle clash detection.
 
+## Editing a Binding Pocket
+
+When a structure with a ligand is loaded, Nanome creates a **Pocket** component from the residues within a set distance of the ligand. If a residue you need falls outside that distance, there are two ways to bring it in. Both start from the (...) button on the Pocket component in the [Components Tab](/nanome_v2/mainpanel#components-tab).
+
+<vimg src="nanome-v2/component-more-options.png" />
+
+### Widen the pocket by distance
+
+This takes in every residue within a larger distance of the ligand.
+
+1. Click the (...) button on the **Pocket** component.
+2. Select **Update Distance Filter**.
+3. Drag the **Distance (Å)** slider to the distance you want.
+4. Click **Apply**.
+
+<vimg src="nanome-v2/pocket-distance-filter.png" />
+
+### Add a single residue
+
+This adds one chosen residue and leaves the rest of the pocket as it is.
+
+1. Click the (...) button on the **Pocket** component.
+2. Select **Edit Selection**. The [Sequence Panel](/nanome_v2/sequencepanel) opens with the pocket's residues highlighted and the component's name shown at the bottom.
+3. Click the residue to add. Hovering over a residue shows its name and number at the bottom of the panel, for example "1xka C: TYR 228".
+4. Click **Update**.
+
+<vimg src="nanome-v2/pocket-edit-selection.png" />
+
+Each binding site has two pocket components, **Pocket** and **Pocket + Ligand**. For interactions between the new residue and the ligand to appear, add the residue to both.
+
 ## Aligning Proteins in XR
 
 ### Video: Aligning Proteins

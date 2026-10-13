@@ -16,4 +16,8 @@ The Sequence Panel is opened by clicking the **Sequences** button at the bottom-
 - **Clear** — Clear the current selection.
 - **Create** — Create a new component from the current residue selection.
 
-When a component is active in the sequence panel, an **Update** button appears to update the existing component with the current selection.
+## Editing an Existing Component
+
+To change which residues a component contains, choose **Edit Selection** from the component's (...) menu in the [Components Tab](/nanome_v2/mainpanel#component-more-options). The Sequence Panel opens with that component's residues highlighted and its name shown at the bottom, and an **Update** button appears.
+
+Click the residues to add, then click **Update** to save the change to the component. [Editing a Binding Pocket](/nanome_v2/sampleworkflows#editing-a-binding-pocket) walks through an example.

@@ -63,7 +63,7 @@ For example, an entry might contain:
 - **Water** — displayed as Stick
 - **Site A:50D_501** — a binding site group containing:
   - **Ligand A:50D_501** — the ligand, shown as Stick
-  - **Pocket A:50D_501** — the 5 Å sphere around the ligand
+  - **Pocket A:50D_501** — the residues within a set distance of the ligand. The distance can be changed, and single residues can be added; see [Editing a Binding Pocket](/nanome_v2/sampleworkflows#editing-a-binding-pocket)
   - **Pocket + Ligand A:50D_501** — combined view with multiple representations
 
 ### Representations and Color Options
@@ -150,6 +150,19 @@ Clicking the (...) button on an entry provides:
 
 - **Rename** — Change the display name of the entire entry.
 - **Remove** — Remove the entire entry from the workspace.
+
+### Component More Options
+
+<vimg src="nanome-v2/component-more-options.png" />
+
+Each component has its own (...) button, which opens a longer menu than the one on an entry. Two of its options change which atoms the component contains:
+
+- **Edit Selection** — Opens the [Sequence Panel](/nanome_v2/sequencepanel) with the component loaded, so residues can be added to it by clicking them.
+- **Update Distance Filter** — Sets the distance, in Å, that a Pocket covers around its ligand.
+
+Both are covered step by step in [Editing a Binding Pocket](/nanome_v2/sampleworkflows#editing-a-binding-pocket).
+
+The menu also lists Rename, Remove, Delete Atoms, Copy Component, Duplicate to Entry, Extract to Entry, Set substructure, and Create Distance Component.
 
 ## Ligands Tab
 
