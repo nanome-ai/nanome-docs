@@ -46,6 +46,10 @@ For the current, per-format list of what Nanome v2 supports — including import
 
 In short, v2 imports structures (PDB, mmCIF, SDF, MOL/MOL2, SMILES, XYZ, PQR, PDBQT), session files (MAE, MOE, PSE), trajectories (GRO, XTC, TRR, DCD), and DX electrostatic maps. Molecule export is single-frame, to PDB, SDF, or SMILES.
 
+## How do I add a residue to a binding pocket in Nanome XR?
+
+Open the (...) menu on the Pocket component in the Components Tab. **Update Distance Filter** widens the pocket to a larger distance around the ligand, and **Edit Selection** adds single residues through the Sequence Panel. Step-by-step instructions are in [Editing a Binding Pocket](/nanome_v2/sampleworkflows#editing-a-binding-pocket).
+
 ## What file formats does Nanome support? How can I import them? (v1.26)
 
 *This answer describes Nanome 1.26 (Classic). For Nanome v2, see [Supported File Formats](/nanome_web/fileformats).*
