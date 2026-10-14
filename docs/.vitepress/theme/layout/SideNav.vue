@@ -74,12 +74,12 @@ function toggle(group) {
             class="n-sidenav__caret"
             :class="{ 'is-open': isOpen(group) }"
             viewBox="0 0 16 16"
-            width="12"
-            height="12"
+            width="14"
+            height="14"
             aria-hidden="true"
           >
             <path
-              d="M4 6l4 4 4-4"
+              d="M6 4l4 4-4 4"
               fill="none"
               stroke="currentColor"
               stroke-width="1.7"
@@ -162,17 +162,34 @@ function toggle(group) {
 
 .n-sidenav__caret {
   flex-shrink: 0;
+  /* Lines up with the arrows on the rows below, which sit in a 22px box. */
+  margin-right: -4px;
+  color: var(--n-text-faint);
   transition: transform var(--n-transition);
 }
 
 .n-sidenav__caret.is-open {
-  transform: rotate(180deg);
+  transform: rotate(90deg);
 }
 
 .n-sidenav__list {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+/* Rows inside an open section step in on a guide line in the accent colour,
+   and the section's arrow takes the same colour. The line runs the full height
+   of the section, so it shows both which section is open and what belongs to
+   it. */
+.n-sidenav__group.is-open > .n-sidenav__list {
+  margin: 2px 0 4px 9px;
+  padding-left: 6px;
+  border-left: 2px solid var(--n-accent);
+}
+
+.n-sidenav__group.is-open > .n-sidenav__label > .n-sidenav__caret {
+  color: var(--n-accent);
 }
 
 /* --- Drawer below 960px -------------------------------------------------- */
