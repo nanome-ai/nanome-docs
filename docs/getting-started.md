@@ -744,7 +744,7 @@ organization membership at home.nanome.ai.
 Where users create their Nanome account, with an email or a Google, Microsoft,
 Apple, or SSO sign-in. It's also where the work lives: projects and workspaces,
 structures loaded by PDB ID or dragged in from a computer, and sharing by link,
-8-digit code, or email invite.
+8-character code, or email invite.
 
 New accounts include a 14-day Full license trial.
 
@@ -777,8 +777,9 @@ a headset. Every new account starts with a 14-day Full license trial.
 
 <Accordion title="2. A seat that includes XR" teaser="Headset use takes a Collab or Full seat.">
 
-Working in a headset takes a Collab or Full seat. The Free Web Seat covers 3
-workspaces in the browser and view-only collaboration.
+Working in a headset takes a Collab or Full seat. A free license covers the
+browser, with 1 owned project, 3 owned workspaces and 5 structures per
+workspace, and view-only access to workspaces and projects others share.
 
 </Accordion>
 
@@ -824,8 +825,8 @@ Related pages: [Web App Basics](/nanome_web/basics)
 
 <p class="chapter-kicker">Step 7 of 7 · Signing in on a headset</p>
 
-The headset login screen has 2 tabs: Code, for a short code confirmed from a
-phone or laptop, and Password, for a username and password typed in the headset.
+The headset login screen has 2 tabs: Password, for a username and password typed
+in the headset, and Code, for a short code confirmed from a phone or laptop.
 
 ### Two ways in
 
@@ -837,14 +838,16 @@ phone or laptop, and Password, for a username and password typed in the headset.
 
 1. On the headset's login screen, open the **Code** tab. Nanome shows a short
    code.
-2. On a phone or computer, sign in at app.nanome.ai and choose
-   **Login via Device Code**.
+2. On a phone or computer, visit nanome.ai/activate, or sign in at
+   app.nanome.ai and choose **Login via Device Code**.
 3. Enter the code. The headset signs in to that account.
 
 </Steps>
 
-Each code signs in one user's account. Accounts that use single sign-on (SSO)
-sign in to headsets this way.
+Each code signs in one user's account, and a new code appears every 5 minutes.
+Accounts that use single sign-on (SSO), accounts created with Google,
+Microsoft or Apple, and accounts with two-factor authentication sign in to
+headsets this way.
 
 </Accordion>
 

@@ -6,4 +6,6 @@ title: Tips
 
 - *‘Position Molecules’ should only be used temporarily and turned off.* If it’s on, then the spotlight system will not work properly.
 
-- *Make sure to use the Meta Quest button to reposition the boundary for each user before starting a session.* If the spotlight is off-centered, have the other user use the Meta Quest button.
+- *Use **Recenter Self** to reset your viewing position.* It's in the Scene settings (⚙) of the [Scenes Panel](/nanome_v2/scenespanel#controls), and resets your position as the scene viewing origin.
+
+- *On Meta Quest, the Meta button also repositions the boundary for each user before a session.* If the spotlight is off-center for someone, they can use the Meta button or **Recenter Self**.

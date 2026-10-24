@@ -4,13 +4,32 @@ title: Overview
 
 # Nanome Web
 
-Nanome Web is the browser-based interface to Nanome, available at app.nanome.ai. You can create projects and workspaces, load and represent structures, set permissions and collaborate with colleagues in XR, and stream molecular dynamics trajectories — all without a headset.
+Nanome Web is the browser version of Nanome, at [app.nanome.ai](https://app.nanome.ai). It opens the same projects, workspaces and scenes as the Nanome XR headset app, so a colleague on a laptop and a colleague in a headset can work in one workspace at the same time.
 
-The tutorials in this section walk through the core workflows:
+These pages describe Nanome Web as of release 2.7.1.
 
-- **[Web App Basics](/nanome_web/basics)** — A full walkthrough of the web interface, and the best place to start.
-- **[Loading Structures](/nanome_web/loading)** — Create a project and workspace, then load your first protein from the RCSB, your computer, or a previous MARA chat.
-- **[Invite & Follow](/nanome_web/collaboration)** — Share a workspace, set permissions, and follow a colleague's XR perspective in real time.
-- **[MD Trajectory Playback](/nanome_web/mdplayback)** — Stream molecular dynamics trajectories from the web to standalone XR headsets.
+<vimg src="nanome-web/workspace-overview.jpg" />
 
-More documentation coming soon.
+## Pages in this section
+
+- **[Home, Workspaces & Projects](/nanome_web/home)**: the start page, the workspace and project lists, search, and joining a workspace by code.
+- **[Workspace View](/nanome_web/workspace)**: the layout of an open workspace, the 3D viewer, mouse controls, tools, scenes and the sequence viewer.
+- **[Entries Tab](/nanome_web/entries)**: entries, components, representations, colors and interaction components.
+- **[Ligands Tab](/nanome_web/ligands)**: the ligand table, its property columns, tags and sketching.
+- **[Comments](/nanome_web/comments)**: threaded comments attached to atoms, scenes or the whole workspace.
+- **[Loading Structures](/nanome_web/loading)**: the Import tab, RCSB downloads, file uploads and files from MARA chats.
+- **[Users & Sharing](/nanome_web/collaboration)**: workspace codes, link access, invitations and sending a workspace to a headset.
+- **[MD Trajectory Playback](/nanome_web/mdplayback)**: attaching trajectories and playing them back.
+- **[Account & Settings](/nanome_web/account)**: the account menu, device-code login for headsets, API keys and MCP setup.
+- **[Supported File Formats](/nanome_web/fileformats)**: every format Nanome reads and writes.
+
+The top bar also links to **Conversations** and **Tools**, which are MARA features. They're covered in the [MARA section](/mara/overview).
+
+## Video tutorials
+
+The v2.5 Quick Tips videos still match the overall workflow, although some buttons have moved since they were recorded.
+
+- **[Web App Basics](/nanome_web/basics)**: a full walkthrough of the web interface.
+- **[Loading Structures](/nanome_web/loading)**: creating a project and workspace, then loading a protein.
+- **[Invite & Follow](/nanome_web/collaboration)**: sharing a workspace and following a colleague in XR.
+- **[MD Trajectory Playback](/nanome_web/mdplayback)**: streaming a trajectory to a standalone headset.

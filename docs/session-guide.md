@@ -47,7 +47,7 @@ that works from one that crawls.
 
 - A review this size fits in a single workspace, and letting every user edit keeps the discussion moving.
 - Build 2 or 3 scenes ahead of time for the views the discussion keeps returning to.
-- Keep the shown atom count near 2,500 so the session stays at 72 FPS or better on a Quest.
+- Keep the shown atom count at or under 7,500 so the session stays at 72 FPS or better on a Quest 3.
 
 </ChooserResult>
 
@@ -229,7 +229,7 @@ prepared ahead of a session is usually quicker to assemble in the browser.
 
 <ChooserResult when="surface=mcp" verdict="Describe it, and the agent builds it.">
 
-The Nanome MCP server carries 47 tools for projects, workspaces, scenes,
+The Nanome MCP server has tools for projects, workspaces, scenes,
 components, annotations, entries, and export. It authenticates with an existing
 Nanome account, so there's no second account to create, and Nanome puts setup at
 about 2 minutes.
@@ -431,14 +431,15 @@ workspaces assume.
 Nanome rates comfort against frame rate: Comfortable is 72 FPS or better,
 Moderate is 60 FPS or better, and 30 FPS or less is not recommended.
 
-| Shown atoms | Quest Pro and Quest 2 | Vive Focus 3 | PCVR |
-| --- | --- | --- | --- |
-| 2,500 | Comfortable | Comfortable | Comfortable |
-| 5,000 | Moderate | Moderate | Comfortable |
-| 10,000 | Not recommended | Moderate | Comfortable |
+| Shown atoms | Quest 3 / 3S | Galaxy XR | Vision Pro (M2) | PCVR |
+| --- | --- | --- | --- | --- |
+| 7,500 | Comfortable | Comfortable | Comfortable | Comfortable |
+| 10,000 | Moderate | Moderate | Comfortable | Comfortable |
+| 15,000 | Not recommended | Moderate | Comfortable | Comfortable |
+| 20,000 | Not recommended | Not recommended | Comfortable | Comfortable |
 
-Shown atom count is what's displayed, not what's loaded. Surfaces, ribbons,
-labels, and whiteboards each move the number on their own.
+Shown atom count is what's displayed, not what's loaded. Surfaces, ribbons
+and labels each move the number on their own.
 
 [Comfort comparison →](/help/choosinghardware)
 
@@ -454,17 +455,17 @@ something else.
 
 </Card>
 
-<Card title="Step surfaces down">
+<Card title="Keep surfaces small">
 
-Surfaces come in 4 densities: **Wire**, **Sheer**, **Semi**, and **Opaque**.
-Dropping a density is usually enough, so surfaces rarely have to come off
-entirely.
+Surfaces have 4 display styles: **Wire**, **Sheer**, **Semi**, and **Opaque**.
+They set the opacity of the same surface, so switching between them saves
+little. Keeping a surface to the pocket, or hiding it, saves the most.
 
 </Card>
 
 <Card title="One atomistic look at a time">
 
-Ball and Stick, Sticks, Wire, and VDW are exclusive per component, so the choice
+Ball & Stick, Stick, Wire, and Van der Waals are exclusive per component, so the choice
 is already made once per component. Split a structure into components to mix
 looks across a single entry.
 
@@ -474,7 +475,7 @@ looks across a single entry.
 
 <vimg src="nanome-v2/surface-density-levels.jpg" />
 
-*Surface density: Wire, Sheer, Semi, Opaque. See [Main Panel](/nanome_v2/mainpanel).*
+*Surface styles: Wire, Sheer, Semi, Opaque. See [Main Panel](/nanome_v2/mainpanel).*
 
 <vimg src="nanome-v2/atomistic-representations.jpg" />
 
@@ -482,8 +483,8 @@ looks across a single entry.
 
 <Callout type="note" title="PCVR carries more">
 
-A PC headset carries more: PCVR stays Comfortable at 10,000 shown atoms where a
-standalone Quest is already past its budget. Sessions that need heavy structures
+A PC headset carries more: PCVR stays Comfortable at 20,000 shown atoms, where a
+Quest 3 is already past its budget. Sessions that need heavy structures
 run better with the heavy views on desktop and the walkthrough in XR.
 
 </Callout>
@@ -540,11 +541,11 @@ being built.
 
 <vimg src="nanome-v2/users-tab-permissions-dialog.jpg" />
 
-*Users tab > Permissions. See [Main Panel](/nanome_v2/mainpanel).*
+*Users tab > Share. See [Main Panel](/nanome_v2/mainpanel#share).*
 
 <Steps>
 
-1. Open the **Users** tab and choose **Permissions**. The dialog shows the
+1. Open the **Users** tab and choose **Share**. The dialog shows the
    workspace code and the global level.
 2. Set the global level to **Viewer** for a prepared workspace, or **None** to
    close it entirely.
@@ -597,9 +598,9 @@ workspace, or joined where they already are.
 
 ### Where the code lives
 
-The workspace code sits at the top of the Permissions dialog in the Users tab,
+The workspace code sits at the top of the Share dialog in the Users tab,
 next to the global permission level. It reads as 2 short blocks, like
-**ZJSB-TDF6**, and stays with the workspace.
+**AB12-CD34**, and stays with the workspace.
 
 <Steps>
 
@@ -622,7 +623,7 @@ next to the global permission level. It reads as 2 short blocks, like
 
 <Card title="Named access by email">
 
-**Add people by email** in the Permissions dialog gives one address its own
+**Add people by email** in the Share dialog gives one address its own
 level, Editor or Viewer, separate from whatever the code hands out. The address
 has to match exactly, since the field has no autocomplete.
 
@@ -739,10 +740,10 @@ headsets cannot reach.
 
 <Accordion title="The headset feels slow or uncomfortable" teaser="Almost always the shown atom count, not the network.">
 
-Hide everything, then bring back only what the current scene is about. A Quest is
-Comfortable at about 2,500 shown atoms and past its budget at 10,000, and atoms
-hidden behind an opaque surface still count. Dropping a surface from Opaque to
-Semi or Sheer buys frames without losing the shape.
+Hide everything, then bring back only what the current scene is about. A Quest 3 is
+Comfortable at about 7,500 shown atoms and past its budget at 15,000, and atoms
+hidden behind an opaque surface still count. Keeping a surface to the pocket, or
+hiding it, buys the most frames.
 
 [Keep it comfortable →](#comfort)
 

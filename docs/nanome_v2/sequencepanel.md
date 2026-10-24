@@ -6,7 +6,7 @@ title: Sequence Panel
 
 <vimg src="nanome-v2/sequence-panel.jpg" />
 
-The Sequence Panel is opened by clicking the **Sequences** button at the bottom-right of the [Components Tab](/nanome_v2/mainpanel#components-tab). It displays the amino acid sequences of all loaded structures in a horizontal, scrollable view.
+The Sequence Panel is opened by clicking the **Sequences** button at the bottom-right of the [Components Tab](/nanome_v2/mainpanel#components-tab). It displays the sequences of all loaded structures, protein and nucleic acid chains alike, in a horizontal, scrollable view. The **Filter hidden structures** switch leaves out structures that have no visible representation.
 
 ## Features
 

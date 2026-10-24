@@ -66,12 +66,14 @@ export default defineConfig({
             text: 'Nanome XR',
             collapsed: true,
             items: [
+              { text: "What's New in 2.7", link: '/nanome_v2/whatsnew' },
               { text: 'Login', link: '/nanome_v2/login' },
               { text: 'Environment', link: '/nanome_v2/environment' },
               { text: 'Main Panel', link: '/nanome_v2/mainpanel' },
               { text: 'Scenes Panel', link: '/nanome_v2/scenespanel' },
               { text: 'Sequence Panel', link: '/nanome_v2/sequencepanel' },
               { text: 'Tools Panel', link: '/nanome_v2/toolspanel' },
+              { text: 'Comments & Annotations', link: '/nanome_v2/comments' },
               { text: 'Wrist Menu', link: '/nanome_v2/wristmenu' },
               { text: 'Collaboration', link: '/nanome_v2/collaboration' },
               { text: 'Sample Workflows', link: '/nanome_v2/sampleworkflows' },
@@ -85,10 +87,16 @@ export default defineConfig({
             collapsed: true,
             items: [
               { text: 'Overview', link: '/nanome_web/overview' },
-              { text: 'Web App Basics', link: '/nanome_web/basics' },
+              { text: 'Home, Workspaces & Projects', link: '/nanome_web/home' },
+              { text: 'Workspace View', link: '/nanome_web/workspace' },
+              { text: 'Entries Tab', link: '/nanome_web/entries' },
+              { text: 'Ligands Tab', link: '/nanome_web/ligands' },
+              { text: 'Comments', link: '/nanome_web/comments' },
               { text: 'Loading Structures', link: '/nanome_web/loading' },
-              { text: 'Invite & Follow', link: '/nanome_web/collaboration' },
+              { text: 'Users & Sharing', link: '/nanome_web/collaboration' },
               { text: 'MD Trajectory Playback', link: '/nanome_web/mdplayback' },
+              { text: 'Account & Settings', link: '/nanome_web/account' },
+              { text: 'Web App Basics (Video)', link: '/nanome_web/basics' },
               { text: 'Supported File Formats', link: '/nanome_web/fileformats' }
             ]
           }

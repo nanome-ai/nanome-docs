@@ -44,7 +44,7 @@ Nanome currently supports up to 20 XR collaborators in a room concurrently. Up t
 
 For the current, per-format list of what Nanome v2 supports — including import/export capability, trajectory playback, and per-release changes — see [Supported File Formats](/nanome_web/fileformats).
 
-In short, v2 imports structures (PDB, mmCIF, SDF, MOL/MOL2, SMILES, XYZ, PQR, PDBQT), session files (MAE, MOE, PSE), trajectories (GRO, XTC, TRR, DCD), and DX electrostatic maps. Molecule export is single-frame, to PDB, SDF, or SMILES.
+In short, v2 imports structures (PDB, mmCIF, SDF, SMILES, XYZ, PQR, PDBQT, and MOL/MOL2 through a MARA tool), session files (MAE, MOE, PSE), trajectories (GRO, XTC, TRR, DCD), and DX electrostatic maps. Molecule export is single-frame, to PDB, SDF, or SMILES.
 
 ## What file formats does Nanome support? How can I import them? (v1.26)
 
@@ -66,7 +66,7 @@ We recommend setting Nanome as your default software for opening .pdb files. Dou
 | --------- | ------------------------------------------------ | -------------------- |
 | PDB/MMCIF | Classical Protein file that supports multi-frame | Most MD Softwares    |
 | DCD       | Trajectory File from NAMD                        | NAMD, CHARMM, LAMMPS |
-| Desmond   | GRO                                              | GROMOS96             |
+| GRO       | GROMACS coordinate file                          | GROMACS              |
 | PSF       | Protein Structure File                           | NAMD                 |
 | XTC       | Trajectory File (Compressed)                     | Gromacs              |
 | TRR       | Trajectory File (Lossless) (XDR backend)         | Gromacs              |

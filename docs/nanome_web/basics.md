@@ -16,7 +16,7 @@ The tutorial covers:
 - **Loading structures** — Import entries from the RCSB.
 - **Representations** — Switch between cartoon, beta factor coloring, and surface.
 - **MARA** — Make representation changes using natural language.
-- **Permissions and sharing** — Set access levels and share via link or 8-digit code.
+- **Permissions and sharing** — Set access levels and share via link or 8-character code.
 - **Scenes** — Save scene perspectives.
 - **Ligand editing** — Edit ligands in the sketch tool.
 - **Importing from chat** — Pull files in from previous MARA chats.

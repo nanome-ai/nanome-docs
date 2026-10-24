@@ -9,10 +9,10 @@ hero:
   - img: /assets/carousels/hero/discengine.png
     url: https://blog.matryx.ai/nanome-is-joining-forces-with-discngine-to-greatly-impact-the-sbdd-experience-1af0b83b3057
 newUpdates:
-  title: New LiveDesign Plugin Documentation
-  description: Explore our new LiveDesign plugin that allows you to seamlessly load molecular data from LiveDesign and send ligand poses to LiveReports. Authenticate with tokens, filter entities, and visualize 3D data directly in Nanome.
-  img: /assets/original/plugins-page/livedesign/loaded.jpg
-  url: /nanome1x/plugins/LiveDesign.html
+  title: "What's New in Nanome 2.7"
+  description: Comments tied to the atoms they're about, pocket minimization in the Ligand Builder, a new atom and bond renderer, and hover, select and measure in Nanome Web.
+  img: /assets/original/nanome-web/workspace-overview.jpg
+  url: /nanome_v2/whatsnew.html
 quickTips:
   - title: 'Nanome v2.5 Quick Tips: Web App Basics'
     img: /assets/carousels/quicktips/web-app-basics.jpg
