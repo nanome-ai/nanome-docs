@@ -45,7 +45,7 @@ The panel counts the entries, chains, residues and atoms in the selection, and l
 
 <vimg src="nanome-v2/v2-7/tool-measurement.jpg" />
 
-The Measurement Tool measures between atoms picked in 3D. Its modes are **Distance** (2 atoms, in Å), **Angle** (3 atoms, in degrees), **Dihedral** (4 atoms, in degrees) and **Delete**, which removes measurements by clicking them.
+The Measurement Tool measures between atoms picked in 3D. Its modes are **Distance** (2 atoms, in Å), **Angle** (3 atoms, measured at the second atom, in degrees), **Dihedral** (4 atoms, the torsion around the axis from atom 2 to atom 3, in degrees) and **Delete**, which removes measurements by clicking them. Dihedral angles show from 0° to 180° without a sign, so torsions of −60° and +60° both read 60°.
 
 Each measurement is listed in the panel, with buttons to zoom to it and to delete it. Hovering a row highlights the measurement in 3D.
 

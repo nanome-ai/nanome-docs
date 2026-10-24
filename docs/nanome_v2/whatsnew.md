@@ -34,7 +34,7 @@ Atoms and bonds are drawn as GPU impostors, which stay smooth at any zoom and ra
 
 <DocVideo src="v2-7/web-hover-select-measure.mp4" caption="Hovering, selecting and measuring in Nanome Web, from the v2.7 release." />
 
-Atoms, bonds and residues highlight on hover and select on click. Clicking atoms measures distances and angles, and double-clicking zooms to a residue or an entry. Nanome Web can also create and remove interaction components. See [Workspace View](/nanome_web/workspace).
+Atoms, bonds and residues highlight on hover and select on click. The Selection tool picks atoms, residues or chains, the Measurement tool measures distances, angles and dihedrals, and double-clicking zooms to a residue or an entry. Nanome Web can also create and remove interaction components. See [Tool rail](/nanome_web/workspace#tool-rail).
 
 ## Pointing in XR
 

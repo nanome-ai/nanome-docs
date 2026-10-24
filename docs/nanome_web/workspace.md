@@ -34,22 +34,85 @@ Mouse and trackpad controls in the 3D viewer:
 
 Rotation and zoom pivot on the current selection, or on the highlighted residue under the cursor, so the part being inspected stays in view.
 
-## Hover, select and measure
-
-Atoms, bonds and residues highlight when the cursor passes over them, and a click selects them.
-
-<DocVideo src="v2-7/web-hover-select-measure.mp4" caption="Hovering, selecting and measuring in Nanome Web (from the v2.7 release)." />
-
-<vimg src="nanome-web/hover-highlight.jpg" />
+When the connection to Nanome's server is slow, a warning icon appears at the top left of the viewer. Hovering it shows the ping time.
 
 ## Tool rail
 
-The four buttons on the right edge of the viewer choose what a click does:
+The four buttons on the right edge of the viewer choose what a click in the 3D view does. Hovering a button names it.
 
-- **Default**: hover and select.
-- **Selection**: builds a selection. A floating bar sets whether a click picks an atom, a residue or a chain, and its **×** clears the selection.
-- **Measurement**: clicking atoms measures distances and angles. Measurements are drawn in the viewer with their values.
-- **Add a comment**: starts a comment. See [Comments](/nanome_web/comments).
+| Button | Tool | Modes |
+|--------|------|-------|
+| Droplet | **Default** | none |
+| Lasso | **Selection** | Atom, Residue, Chain |
+| Ruler | **Measurement** | Distance, Angle, Dihedral, Delete |
+| Speech bubble | **Add a comment** | none |
+
+The Selection and Measurement tools show their modes in a bar at the bottom of the viewer, in place of the scene controls. **Exit tool** (**×**) at the end of the bar goes back to the Default tool.
+
+<DocVideo src="v2-7/web-hover-select-measure.mp4" caption="Hovering, selecting and measuring in Nanome Web (from the v2.7 release)." />
+
+### Default
+
+Hovering highlights the whole residue under the cursor, whether the cursor is on an atom, a bond or the ribbon. Clicking adds that residue to the selection, or removes it when it's already selected. Clicking empty space clears the selection, and double-clicking zooms to a residue or an entry.
+
+<vimg src="nanome-web/hover-highlight.jpg" />
+
+### Selection tool
+
+The Selection tool picks atoms at the level set in the bar:
+
+- **Atom**: one atom.
+- **Residue**: the whole residue.
+- **Chain**: the whole chain.
+
+The tool opens in Atom mode. Hovering outlines in blue what a click would pick, here chain A in Chain mode:
+
+<vimg src="nanome-web/selection-chain-hover.jpg" />
+
+Clicking adds it to the selection, or removes it when all of it is already selected. Selected atoms are outlined in white. Clicking empty space clears the selection.
+
+<vimg src="nanome-web/selection-chain-selected.jpg" />
+
+Rotation and zoom pivot on the selection. The [sequence viewer](#sequence-viewer) selects residues too, and its **Create** button turns the selection into a component.
+
+### Measurement tool
+
+The Measurement tool measures between atoms. The bar sets what it measures:
+
+| Mode | Atoms to click | Result |
+|------|----------------|--------|
+| **Distance** | 2 | The distance, in ångströms to two decimal places |
+| **Angle** | 3 | The angle at the second atom, in degrees to one decimal place |
+| **Dihedral** | 4 | The torsion angle around the bond axis from atom 2 to atom 3, in degrees from 0° to 180° |
+| **Delete** | none | Removes the measurement that's clicked |
+
+The tool opens in Distance mode. Hovering an atom rings it and labels it with the entry, chain, residue and atom name. After the first click, a dashed line follows the cursor and shows the value live, and the last click completes the measurement.
+
+<vimg src="nanome-web/measure-distance-preview.jpg" />
+
+Clicking empty space, or an atom that's already picked, cancels the measurement in progress. Only atoms can be picked, so bonds and ribbons don't get in the way, and hidden atoms can't be measured. In Angle mode an arc marks the angle at the second atom:
+
+<vimg src="nanome-web/measure-angle-preview.jpg" />
+
+Finished measurements stay drawn in the viewer with their values:
+
+<vimg src="nanome-web/measure-results.jpg" />
+
+Measurements are saved in the current scene, so everyone in the workspace sees them, in Nanome Web and in [Nanome XR](/nanome_v2/toolspanel#measurement-tool). Saving one needs Editor access. **Export analysis**, in the workspace's **More (...)** menu, includes them in its CSV files.
+
+<Callout type="note" title="Dihedral angles have no sign">
+
+Nanome shows dihedral angles from 0° to 180°. Torsions of −60° and +60° both read 60°, so the direction of the twist has to be read from the structure.
+
+</Callout>
+
+In **Delete** mode, hovering a measurement turns it red, and clicking removes it.
+
+<vimg src="nanome-web/measure-delete.jpg" />
+
+### Add a comment
+
+Starts a comment from the 3D view. See [Comments](/nanome_web/comments).
 
 ## Bottom bar
 

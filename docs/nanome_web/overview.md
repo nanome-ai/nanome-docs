@@ -13,7 +13,7 @@ These pages describe Nanome Web as of release 2.7.1.
 ## Pages in this section
 
 - **[Home, Workspaces & Projects](/nanome_web/home)**: the start page, the workspace and project lists, search, and joining a workspace by code.
-- **[Workspace View](/nanome_web/workspace)**: the layout of an open workspace, the 3D viewer, mouse controls, tools, scenes and the sequence viewer.
+- **[Workspace View](/nanome_web/workspace)**: the layout of an open workspace, the 3D viewer, mouse controls, the Selection and Measurement tools and their modes, scenes and the sequence viewer.
 - **[Entries Tab](/nanome_web/entries)**: entries, components, representations, colors and interaction components.
 - **[Ligands Tab](/nanome_web/ligands)**: the ligand table, its property columns, tags and sketching.
 - **[Comments](/nanome_web/comments)**: threaded comments attached to atoms, scenes or the whole workspace.

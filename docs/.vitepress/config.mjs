@@ -89,6 +89,7 @@ export default defineConfig({
               { text: 'Overview', link: '/nanome_web/overview' },
               { text: 'Home, Workspaces & Projects', link: '/nanome_web/home' },
               { text: 'Workspace View', link: '/nanome_web/workspace' },
+              { text: 'Selection & Measurement', link: '/nanome_web/workspace#tool-rail' },
               { text: 'Entries Tab', link: '/nanome_web/entries' },
               { text: 'Ligands Tab', link: '/nanome_web/ligands' },
               { text: 'Comments', link: '/nanome_web/comments' },
