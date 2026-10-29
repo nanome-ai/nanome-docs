@@ -6,6 +6,8 @@ title: Login Screen
 
 Nanome opens on the login screen. It has two tabs: one for your password, and one for a code you enter on another device.
 
+<ShotRow src="nanome-v2/v2-7/login-password.webp" alt="The Nanome XR login screen on the Password tab">
+
 <IconGrid label="Login screen">
 <IconCard icon="password" title="Password" href="#password">Your Nanome username and password.</IconCard>
 <IconCard icon="key" title="Code" href="#code">A 4-character code, entered on another device.</IconCard>
@@ -13,7 +15,7 @@ Nanome opens on the login screen. It has two tabs: one for your password, and on
 <IconCard icon="alert-triangle" title="Sign-in messages" href="#sign-in-messages">What went wrong, and device and license limits.</IconCard>
 </IconGrid>
 
-<vimg src="nanome-v2/v2-7/login-password.webp" alt="The Nanome XR login screen on the Password tab" />
+</ShotRow>
 
 ## <AppIcon name="password" /> Password {#password}
 
@@ -21,9 +23,9 @@ Enter your Nanome username and password, then <Btn icon="login-2">Log in</Btn>.
 
 ## <AppIcon name="key" /> Code {#code}
 
-The **Code** tab signs you in from another device.
+<ShotRow src="nanome-v2/v2-7/login-code.webp" alt="The Code tab with a 4-character code and the time until a new one">
 
-<vimg src="nanome-v2/v2-7/login-code.webp" alt="The Code tab with a 4-character code and the time until a new one" />
+The **Code** tab signs you in from another device.
 
 <Steps>
 
@@ -31,6 +33,8 @@ The **Code** tab signs you in from another device.
 2. Enter the code at [nanome.ai/activate](https://nanome.ai/activate), or in **Login via Device Code** on [app.nanome.ai](/nanome_web/account#login-via-device-code).
 
 </Steps>
+
+</ShotRow>
 
 <Callout type="note" title="Accounts that sign in with a code">
 

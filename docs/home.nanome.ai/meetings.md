@@ -22,18 +22,24 @@ At home.nanome.ai you can schedule a meeting for later, or make a quick link for
 
 </Steps>
 
+<ShotRow src="home-nanome/dashboard-buttons.webp" alt="Authenticate Device and Schedule meeting at the top right of the dashboard">
+
 You can also start a meeting with **Schedule meeting** at the top right of the dashboard.
 
-<vimg src="home-nanome/dashboard-buttons.webp" alt="Authenticate Device and Schedule meeting at the top right of the dashboard" />
+</ShotRow>
 
 ## <AppIcon name="calendar" /> Scheduled meetings {#scheduled-meetings}
 
-<vimg src="nanome-page/create-scheduled-meeting.png" alt="The form for a scheduled meeting" />
+<ShotRow src="nanome-page/create-scheduled-meeting.png" alt="The form for a scheduled meeting">
 
 A scheduled meeting has a date and time. Add details such as the room name (and an optional password), the event title and a description.
 
+</ShotRow>
+
 ## <AppIcon name="link" /> Quick Links {#quick-link}
 
-<vimg src="nanome-page/create-quick-link.png" alt="The form for a quick link" />
+<ShotRow src="nanome-page/create-quick-link.png" alt="The form for a quick link">
 
 A quick link is a link you send to others so they can join your Nanome session now, or for as long as the link is active.
+
+</ShotRow>
