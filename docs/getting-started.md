@@ -175,8 +175,8 @@ Meta's free service enrolls Quest headsets, pushes Wi-Fi and Nanome to all of
 them, and keeps every headset on the version IT approved. It covers a shared
 lab or classroom without a budget line.
 
-Meta Horizon managed services (HMS) has been free since February 20, 2026,
-and works with Quest 2, 3, 3S, and Pro.
+Meta Horizon managed services (HMS), formerly Quest for Business, has been
+free since February 20, 2026, and works with Quest 2, 3, 3S, and Pro.
 
 - Enrolls Meta Quest headsets and runs them without personal Meta accounts
 - Device presets, Wi-Fi profiles, app and file push, and remote wipe
@@ -248,7 +248,8 @@ with the Nanome team.
 
 <Accordion title="Meta Horizon managed services (HMS)" teaser="Free. Manages Meta Quest only." tag="Free">
 
-Free since February 20, 2026.
+Free since February 20, 2026. HMS was called Quest for Business before Meta
+renamed it.
 
 - Manages Meta Quest headsets only, on Quest 2, 3, 3S, and Pro
 - Quest headsets that are not already enrolled in an MDM enroll through HMS on
