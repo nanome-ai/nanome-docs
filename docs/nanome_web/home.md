@@ -37,7 +37,7 @@ The two buttons at the top right switch between a grid of cards and a list.
 The **All Workspaces** view lists every workspace you can open.
 
 <UiList label="All Workspaces toolbar">
-<UiItem icon="search" name="Search"></UiItem>
+<UiItem icon="search" name="Search">Searches the workspace list.</UiItem>
 <UiItem icon="cube-3d-sphere" name="Join via Code" href="#join-via-code">Opens a workspace from its code.</UiItem>
 <UiItem icon="filter" name="Filter">All, My Workspaces (ones you own), or Shared with me.</UiItem>
 <UiItem icon="arrows-sort" name="Sort">By Name or by Date.</UiItem>

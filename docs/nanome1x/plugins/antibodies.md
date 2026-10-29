@@ -43,9 +43,7 @@ Selection of CDR loops from the Regions table can be used in conjunction with ot
 3.  In the menu, confirm the selection of your protein, the selection of “Selected Atoms/Residues”, and make any adjustment to what interactions to show.
 4.  Click “Calculate”
 
-<vimg src="plugins-page/antibodies/image10.png" />
-
-*Chemical Interactions made by the residues of 2 CDR loops*
+*The 5GGS close-up above shows the result: the dotted lines are the Chemical Interactions made by the residues of the 2 selected CDR loops.*
 
 ### Generate High Quality Surfaces on any selection of CDR loops in 5 steps.
 

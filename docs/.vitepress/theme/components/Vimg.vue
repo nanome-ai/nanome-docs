@@ -85,8 +85,9 @@ function toCopy(src) {
   max-width: var(--vimg-w, 100%);
 }
 
+/* The width and height attributes size the image before it loads, in a table
+   cell too; max-width (base.css) keeps it inside the column. */
 .vimg > img {
-  width: 100%;
   height: auto;
 }
 

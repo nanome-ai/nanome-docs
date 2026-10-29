@@ -68,7 +68,7 @@ Indicates connection to Nanome Public Server or Custom Private Server
 
 <vimg src="navigating-page/1.24.3meetingslobby.png" />
 
-The Meetings tab is the central location for users to manage and join scheduled meetings. <a href="https://blog.matryx.ai/nanome-v1-23-the-meetings-update-6bac8c553d4b">Check out our blog post for more details. </a>
+The Meetings tab is the central location for users to manage and join scheduled meetings.
 
 ### (5) Settings
 
