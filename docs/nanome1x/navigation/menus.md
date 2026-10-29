@@ -144,8 +144,8 @@ Recent files loaded in Nanome.
 <td width="50%" ></td>
 </tr>
 <tr>
-<td><vimg src="navigating-page/loadingtoolong.jpg" /></td>
-<td><vimg src="navigating-page/cancelledload.jpg" /></td>
+<td><vimg src="navigating-page/loadingtoolong.png" /></td>
+<td><vimg src="navigating-page/cancelledload.png" /></td>
 </tr>
 </tbody>
 </table>
