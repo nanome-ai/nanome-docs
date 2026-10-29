@@ -4,51 +4,92 @@ title: Collaboration
 
 # Collaboration and Managing Structures
 
-## Component / Selection / Representation / Scenes
+A workspace holds the structures, their representations, scenes, comments and permissions, and several people can work in it at once. Workspaces are managed from the Workspaces tab of the Main Panel and in Nanome Web.
 
-A few details matter when several people work in the same session:
+<IconGrid label="Working together">
+<IconCard icon="share" title="Permissions" href="#permissions">Viewer, Editor, Owner or None.</IconCard>
+<IconCard icon="users-group" title="Invitations and join requests" href="#invitations-and-join-requests">Invite a colleague in, or ask to join them.</IconCard>
+<IconCard icon="layout-grid" title="Load for All vs. Load for Me" href="#load-for-all-vs-load-for-me">Move everyone to the next workspace, or just you.</IconCard>
+<IconCard icon="crown" title="Spotlight and follow" href="#spotlight-and-follow">Show your view, or step into someone else's.</IconCard>
+<IconCard icon="hierarchy" title="Structures and scenes" href="#structures-and-scenes">What to know when several people share a session.</IconCard>
+</IconGrid>
 
-- Structures are organized into entries and components. See the [Components Tab](/nanome_v2/mainpanel#components-tab).
-- New scenes start with fresh, unset representations, so each entry needs setting up. See the [Scenes Panel](/nanome_v2/scenespanel).
-- A duplicated scene is identical to the scene it came from.
-- **Share selection**, in the [Selection Tool](/nanome_v2/toolspanel#selection-tool), shows your selection to the others in your color.
+## <AppIcon name="share" /> Permissions {#permissions}
 
-## Spotlight / Follow / Free Look
+Permissions decide who can open a workspace and who can change it. They're set with <Btn icon="share">Share</Btn> in the [Users tab](/nanome_v2/mainpanel#share) or the left sidebar.
 
-Content is oriented centrally for everyone. Following another person shows what they're showing. When others follow you, you're the **spotlight**: they see your view and your scene. The controls are under [Spotlight Mode](/nanome_v2/scenespanel#spotlight-mode). Pointers point relative to the structures, so even in free view everyone sees a pointer on the same structural feature.
+<UiList label="Permission levels">
+<UiItem name="Viewer">Can look around, select, point, comment, follow, spotlight their own view and move between scenes.</UiItem>
+<UiItem name="Editor">Can make every change and invite others to view or edit.</UiItem>
+<UiItem name="Owner">The same as Editor, and can delete the workspace.</UiItem>
+<UiItem name="None">The global level for a private workspace. Only people added by email can open it.</UiItem>
+</UiList>
 
-Since release 2.7, followers see the leader's current tool and mode, what they hover and select, and their edits as they happen, including ligand building, torsion changes and rotamers. A follow chain leads to the person at the end of it.
+<Callout type="note" title="What Viewers can't do">
+
+Viewers can't measure, edit structures or representations, or use the Interactions, Builder, Torsion, Residue Editor or MARA tools. A free license has Viewer access to workspaces that others own.
+
+</Callout>
+
+## <AppIcon name="users-group" /> Invitations and join requests {#invitations-and-join-requests}
+
+Both start from **Users in organization**, in the Users tab.
+
+<UiList label="Invitations and join requests">
+<UiItem icon="plus" name="Invite">Beside a colleague: invites them to your workspace.</UiItem>
+<UiItem icon="login" name="Join">Takes you to the colleague's workspace. Without access, it sends the owner a join request.</UiItem>
+</UiList>
+
+An invited colleague sees **Join Workspace?** with <Btn icon="x">Refuse</Btn> or <Btn icon="check">Accept</Btn>. The owner can accept a join request as <Btn icon="eye">Viewer</Btn> or <Btn icon="edit">Editor</Btn>, or <Btn icon="ban">Deny</Btn> it.
+
+## <AppIcon name="layout-grid" /> Load for All vs. Load for Me {#load-for-all-vs-load-for-me}
+
+<UiList label="Loading a workspace">
+<UiItem icon="users-group" name="Load for All">Brings everyone in your current session with you to the next workspace.</UiItem>
+<UiItem icon="user" name="Load">Takes only you, and leaves the others in their current workspace.</UiItem>
+</UiList>
+
+Three popups can appear along the way:
+
+<Tabs :labels="['Need Permissions', 'Loading Workspace', 'Load from Web']">
+<Tab>
+
+When some people in your session don't have access, **Load for All** shows a **Need Permissions** prompt that reads "Some users cannot access the workspace". It offers to add them as <Btn icon="eye">Viewers</Btn> or <Btn icon="edit">Editors</Btn>, or <Btn icon="x">Cancel</Btn>.
+
+</Tab>
+<Tab>
+
+People moving with you see a **Loading Workspace** notice, "[User] is moving all to [Workspace]", with <Btn icon="x">Cancel</Btn> to stay behind or <Btn icon="arrow-right">Go Now</Btn> to go straight away. If they do nothing, they join the new workspace.
+
+</Tab>
+<Tab>
+
+A workspace sent from Nanome Web with **Open in XR** arrives as a **Load from Web** prompt with <Btn icon="user">Just Me</Btn> or <Btn icon="users">Load for All</Btn>.
+
+</Tab>
+</Tabs>
+
+## <AppIcon name="crown" /> Spotlight and follow {#spotlight-and-follow}
 
 <vimg src="nanome-v2/multiuser_view.png" />
 
+Content is oriented centrally for everyone. Following another person shows what they're showing. When others follow you, you're the spotlight: they see your view and your scene. The controls are under [Spotlight Mode](/nanome_v2/scenespanel#spotlight-mode).
+
+Pointers point relative to the structures, so even in free view everyone sees a pointer on the same structural feature.
+
 Nobody has to be the designated presenter. People can move structures, spotlight and follow each other freely, much like editing a shared document. Stepping into a colleague's view shows exactly what they're asking about.
 
-## Workspace / Code / Permissions
+<Accordion title="Changes in 2.7" teaser="Followers see the leader's tools and edits live.">
 
-A workspace holds the structures, their representations, scenes, comments and permissions. Workspaces are managed from the [Workspaces Tab](/nanome_v2/mainpanel#workspaces-tab) and in [Nanome Web](/nanome_web/home).
+Since release 2.7, followers see the leader's current tool and mode, what they hover and select, and their edits as they happen, including ligand building, torsion changes and rotamers. A follow chain leads to the person at the end of it.
 
-### Permissions
+</Accordion>
 
-Permissions decide who can open a workspace and who can change it. They're set with the **Share** button in the [Users Tab](/nanome_v2/mainpanel#share) or the left sidebar.
+## <AppIcon name="hierarchy" /> Structures and scenes {#structures-and-scenes}
 
-- **Viewer**: can look around, select, point, comment, follow, spotlight their own view and move between scenes. Viewers can't measure, edit structures or representations, or use the Interactions, Builder, Torsion, Residue Editor or MARA tools.
-- **Editor**: can make every change and invite others to view or edit.
-- **Owner**: the same as Editor, and can delete the workspace.
-- **None**: the global level for a private workspace. Only people added by email can open it.
+A few details matter when several people work in the same session:
 
-A free license has Viewer access to workspaces that others own.
-
-### Invitations and join requests
-
-The **(+)** button beside a colleague in **Users in organization** invites them. They see **Join Workspace?** with **Refuse** or **Accept**. **Join** goes the other way: it takes you to a colleague's workspace, and when you don't have access it sends a join request that the owner can accept as Viewer or Editor, or deny.
-
-### Load for All vs. Load for Me
-
-- **Load for All** brings everyone in your current session with you to the next workspace.
-  - When some of them don't have access, a **Need Permissions** prompt reads "Some users cannot access the workspace" and offers to add them as **Viewers** or **Editors**, or **Cancel**.
-
-- People moving with you see a **Loading Workspace** notice, "[User] is moving all to [Workspace]", with **Cancel** to stay behind or **Go Now** to go straight away. If they do nothing, they join the new workspace.
-
-- **Load** takes only you, and leaves the others in their current workspace.
-
-A workspace sent from Nanome Web with **Open in XR** arrives as a **Load from Web** prompt with **Just Me** or **Load for All**.
+- Structures are organized into entries and components, listed in the Components tab.
+- New scenes start with fresh, unset representations, so each entry needs setting up.
+- A duplicated scene is identical to the scene it came from.
+- **Share selection**, in the Selection Tool, shows your selection to the others in your color.

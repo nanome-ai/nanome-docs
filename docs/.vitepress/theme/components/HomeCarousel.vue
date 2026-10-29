@@ -3,7 +3,7 @@
     <h2>{{ title }}</h2>
     <SimpleCarousel
       :items="slides"
-      :slides-to-show="numSlides"
+      :slides-to-show="shown"
       :show-arrows="true"
       :show-dots="false"
     >
@@ -41,11 +41,20 @@ const props = defineProps({
   }
 })
 
+// Fewer slides on narrow screens, so each stays readable.
+const shown = ref(props.numSlides)
+function fit() {
+  const w = window.innerWidth
+  shown.value = w < 640 ? 1 : w < 960 ? Math.min(2, props.numSlides) : props.numSlides
+}
+
 const isNanome = ref(false)
 const version = ref('1.22')
 let btoa = (x) => x
 
 onMounted(() => {
+  fit()
+  window.addEventListener('resize', fit)
   if (!window.navigator) return
   btoa = window.btoa.bind(window)
 

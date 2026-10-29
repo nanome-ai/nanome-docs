@@ -66,19 +66,20 @@ export default defineConfig({
             text: 'Nanome XR',
             collapsed: true,
             items: [
+              { text: 'Overview', link: '/nanome_v2/overview' },
+              { text: 'Getting Started', link: '/getting-started' },
               { text: "What's New in 2.7", link: '/nanome_v2/whatsnew' },
               { text: 'Login', link: '/nanome_v2/login' },
-              { text: 'Environment', link: '/nanome_v2/environment' },
               { text: 'Main Panel', link: '/nanome_v2/mainpanel' },
-              { text: 'Scenes Panel', link: '/nanome_v2/scenespanel' },
-              { text: 'Sequence Panel', link: '/nanome_v2/sequencepanel' },
               { text: 'Tools Panel', link: '/nanome_v2/toolspanel' },
-              { text: 'Comments & Annotations', link: '/nanome_v2/comments' },
+              { text: 'Scenes Panel', link: '/nanome_v2/scenespanel' },
               { text: 'Wrist Menu', link: '/nanome_v2/wristmenu' },
+              { text: 'Comments & Annotations', link: '/nanome_v2/comments' },
+              { text: 'Sequence Panel', link: '/nanome_v2/sequencepanel' },
+              { text: 'Environment', link: '/nanome_v2/environment' },
               { text: 'Collaboration', link: '/nanome_v2/collaboration' },
-              { text: 'Sample Workflows', link: '/nanome_v2/sampleworkflows' },
-              { text: 'Getting Started', link: '/getting-started' },
               { text: 'Session Guide', link: '/session-guide' },
+              { text: 'Sample Workflows', link: '/nanome_v2/sampleworkflows' },
               { text: 'Tips', link: '/nanome_v2/tips' }
             ]
           },
@@ -87,17 +88,17 @@ export default defineConfig({
             collapsed: true,
             items: [
               { text: 'Overview', link: '/nanome_web/overview' },
+              { text: 'Web App Basics (Video)', link: '/nanome_web/basics' },
               { text: 'Home, Workspaces & Projects', link: '/nanome_web/home' },
               { text: 'Workspace View', link: '/nanome_web/workspace' },
               { text: 'Selection & Measurement', link: '/nanome_web/workspace#tool-rail' },
+              { text: 'Loading Structures', link: '/nanome_web/loading' },
               { text: 'Entries Tab', link: '/nanome_web/entries' },
               { text: 'Ligands Tab', link: '/nanome_web/ligands' },
-              { text: 'Comments', link: '/nanome_web/comments' },
-              { text: 'Loading Structures', link: '/nanome_web/loading' },
               { text: 'Users & Sharing', link: '/nanome_web/collaboration' },
+              { text: 'Comments', link: '/nanome_web/comments' },
               { text: 'MD Trajectory Playback', link: '/nanome_web/mdplayback' },
               { text: 'Account & Settings', link: '/nanome_web/account' },
-              { text: 'Web App Basics (Video)', link: '/nanome_web/basics' },
               { text: 'Supported File Formats', link: '/nanome_web/fileformats' }
             ]
           }
@@ -108,11 +109,10 @@ export default defineConfig({
         collapsed: true,
         items: [
           { text: 'Overview', link: '/mara/overview' },
-          { text: 'Navigation', link: '/mara/navigation' },
           { text: 'Features', link: '/mara/features' },
-          { text: 'Resources', link: '/mara/resources' },
-          { text: 'Deployment', link: '/mara/deployment' },
-          { text: 'Technical', link: '/mara/technical' }
+          { text: 'Navigation', link: '/mara/navigation' },
+          { text: 'Technical', link: '/mara/technical' },
+          { text: 'Resources', link: '/mara/resources' }
         ]
       },
       {
@@ -182,6 +182,17 @@ export default defineConfig({
             ]
           },
           {
+            text: 'Hardware & Deployment',
+            collapsed: true,
+            items: [
+              { text: 'Choosing Hardware (Classic)', link: '/help/choosinghardware-classic' },
+              { text: 'Hardware Requirements', link: '/help/hardwarerequirements' },
+              { text: 'PC Hardware', link: '/help/pchardware' },
+              { text: 'Enterprise Deployment', link: '/help/enterprise' },
+              { text: 'Quest for Business', link: '/help/questforbusiness' }
+            ]
+          },
+          {
             text: 'Open in Nanome button',
             collapsed: true,
             items: [
@@ -192,29 +203,24 @@ export default defineConfig({
         ]
       },
       {
-        text: 'Account Management\nhome.nanome.ai',
+        text: 'Accounts & Licenses',
         collapsed: true,
         items: [
           { text: 'Overview', link: '/home.nanome.ai/overview_home_nanome' },
-          { text: 'Account Tiers', link: '/home.nanome.ai/accounttiers' },
-          { text: 'Invoice', link: '/home.nanome.ai/invoice' },
           { text: 'Licenses', link: '/home.nanome.ai/licenses' },
-          { text: 'Meetings', link: '/home.nanome.ai/meetings' },
-          { text: 'Two Factor Auth', link: '/home.nanome.ai/twofactorauth' }
+          { text: 'Two Factor Auth', link: '/home.nanome.ai/twofactorauth' },
+          { text: 'Invoice', link: '/home.nanome.ai/invoice' },
+          { text: 'Account Tiers', link: '/home.nanome.ai/accounttiers' },
+          { text: 'Meetings', link: '/home.nanome.ai/meetings' }
         ]
       },
       {
         text: 'Help',
         collapsed: true,
         items: [
-          { text: 'Troubleshooting', link: '/help/troubleshooting' },
-          { text: 'Hardware Requirements', link: '/help/hardwarerequirements' },
-          { text: 'PC Hardware', link: '/help/pchardware' },
-          { text: 'Choosing Hardware', link: '/help/choosinghardware' },
-          { text: 'Choosing Hardware (Nanome Classic)', link: '/help/choosinghardware-classic' },
-          { text: 'Quest for Business', link: '/help/questforbusiness' },
-          { text: 'Enterprise', link: '/help/enterprise' },
           { text: 'FAQ', link: '/help/faq' },
+          { text: 'Troubleshooting', link: '/help/troubleshooting' },
+          { text: 'Choosing Hardware', link: '/help/choosinghardware' },
           { text: 'Contact', link: '/help/contact' }
         ]
       },

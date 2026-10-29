@@ -4,63 +4,128 @@ title: FAQ
 
 # FAQ
 
-## What is Nanome?
+<IconGrid label="FAQ topics" :cols="3">
+<IconCard icon="info-circle" title="About Nanome" href="#about">What Nanome is, and how many people can join.</IconCard>
+<IconCard icon="device-vision-pro" title="Hardware and setup" href="#hardware">Headsets, PC specs, Mac, 2D mode, internet.</IconCard>
+<IconCard icon="download" title="Download and updates" href="#download">Where to get Nanome and how to update it.</IconCard>
+<IconCard icon="files" title="File formats" href="#file-formats">Supported files, trajectories and Vault limits.</IconCard>
+<IconCard icon="license" title="Licenses and purchasing" href="#licenses">Trials, academic use, site licenses and coupons.</IconCard>
+<IconCard icon="bug" title="Logs and support" href="#support">Log files, feature requests and your data.</IconCard>
+</IconGrid>
 
-Nanome is a collaborative virtual-reality molecular modelling tool made for professional researchers working on structures and proteins at the nano scale. Analyze the 3D arrangement of molecules while inside of a protein binding pocket, surround yourself in crystal data, or communicate your ligand design to your colleagues in the same virtual room. No matter what you do, Nanome empowers your research and enhances your understanding like no other tools have before. Whether you are a structural biologist, crystallographer, computational chemist, medicinal chemist, or a protein engineer, you will find your daily workflow much more intriguing and effective in Nanome because of the power of VR.
+<Callout type="note" title="Nanome XR, Nanome Web and Nanome Classic">
 
-## What VR headsets does Nanome support?
+Answers tagged **Classic** describe Nanome Classic (v1.24 and v1.26), the older PC VR app. For Nanome XR and Nanome Web, start with [Getting Started](/getting-started).
 
-Check out the full list on our <a href="/help/hardwarerequirements">hardware requirements page.</a>
+</Callout>
 
-## Where can I download Nanome?
+## <AppIcon name="info-circle" /> About Nanome {#about}
 
-Nanome can be downloaded for free from all major Virtual Reality stores including [Oculus](https://nanome.ai/pricing/), [Steam](https://nanome.ai/pricing/), and [VivePort](https://www.viveport.com/apps/0a467f78-2ed2-43eb-ada8-9d677d5acf54/Nanome/), or directly from [https://home.nanome.ai/setup](https://home.nanome.ai/setup). Premium versions with upgraded features are available for purchase from our website at [https://nanome.ai/pricing/](https://nanome.ai/pricing/).
+<AccordionGroup label="2 questions">
 
-## How do I update Nanome to the latest version?
+<Accordion title="What is Nanome?" teaser="Collaborative VR molecular modelling for researchers.">
 
-Please download our [Nanome update guide](https://drive.google.com/file/d/1x6LEc1-kV3yp9XYgSqxnIsU8iv1ou4fk/view?usp=sharing) and follow the instructions to update your Nanome software.
+Nanome is a collaborative virtual-reality molecular modelling tool made for professional researchers working on structures and proteins at the nano scale. You can analyze the 3D arrangement of molecules from inside a protein binding pocket, surround yourself with crystal data, or show your ligand design to colleagues in the same virtual room. It's made for structural biologists, crystallographers, computational chemists, medicinal chemists and protein engineers.
 
-## If I don’t have a VR device, can I still use Nanome?
+</Accordion>
 
-Yes, Nanome has a 2D desktop mode for users without VR devices. In 2D mode, users may join a Nanome room from a 2D interface. A 2D user moves a camera with their mouse and keyboard, enabling them to spectate and record sessions, but cannot interact with structures. 2D mode can be accessed on [Steam](https://nanome.ai/pricing/) or if Nanome is downloaded on our [website](https://home.nanome.ai/setup). While 2D mode can also be accessed on Oculus, you’ll need to have a headset connected.
+<Accordion title="How many users can join a Nanome session at the same time?" teaser="In Classic: up to 20 in VR, and 50 more in 2D mode." tag="Classic">
 
-## What are the System Requirements to run Nanome in VR?
+Nanome currently supports up to 20 XR collaborators in a room at once. Up to 50 more users can join through Nanome's 2D mode.
 
-Please see <a href="/help/pchardware">minimum and recommended specs here. </a>
+</Accordion>
 
-## Can I use Nanome on Mac/Linux?
+</AccordionGroup>
 
-Nanome does not currently support Mac or Linux. Windows is the primary operating system for using VR headsets and represents the best way to use Nanome using a PC. Alternatively, users can use all-in-one headsets such as the Meta Quest Pro, Meta Quest 2, or Vive Focus 3 devices.
+## <AppIcon name="device-vision-pro" /> Hardware and setup {#hardware}
 
-## Do I need an Internet connection to use Nanome?
+<AccordionGroup label="5 questions">
 
-A stable Internet connection is highly recommended when using Nanome, especially when collaborating with other users. Access to the web is also necessary to download structures from databases like RCSB and DrugBank Databases. For solo users with structures stored on their local machines, internet access is not required.
+<Accordion title="What VR headsets does Nanome support?" teaser="Meta Quest 3 and 3S, Samsung Galaxy XR, Apple Vision Pro, and Windows PCs over Meta Link.">
 
-## How many users can join a Nanome session at the same time?
+Nanome XR runs on Meta Quest 3 and 3S, Samsung Galaxy XR, Apple Vision Pro, and Windows PCs over Meta Link. [Choosing Hardware](/help/choosinghardware) compares them. The older list for Nanome Classic is on [Hardware Requirements](/help/hardwarerequirements).
 
-Nanome currently supports up to 20 XR collaborators in a room concurrently. Up to 50 more users can join via Nanome's 2D mode.
+</Accordion>
 
-## What file formats does Nanome v2 support?
+<Accordion title="What are the system requirements to run Nanome in VR?" teaser="Minimum and recommended PC specs." tag="Classic">
 
-For the current, per-format list of what Nanome v2 supports — including import/export capability, trajectory playback, and per-release changes — see [Supported File Formats](/nanome_web/fileformats).
+The minimum and recommended specs are on [PC Hardware](/help/pchardware).
+
+</Accordion>
+
+<Accordion title="Can I use Nanome on Mac or Linux?" teaser="Yes, with Nanome Web in a browser.">
+
+[Nanome Web](/nanome_web/overview) runs in a web browser at app.nanome.ai, so a Mac or Linux computer can open the same workspaces as a headset.
+
+Nanome Classic ran on Windows for PC VR, and on all-in-one headsets such as the Meta Quest Pro, Meta Quest 2 or Vive Focus 3.
+
+</Accordion>
+
+<Accordion title="If I don't have a VR device, can I still use Nanome?" teaser="Yes, with Nanome Web in a browser.">
+
+Yes. [Nanome Web](/nanome_web/overview) at app.nanome.ai opens the same workspaces in a browser, and works alongside people in headsets.
+
+Nanome Classic had a 2D desktop mode for users without VR devices: you joined a room from a 2D interface and moved a camera with the mouse and keyboard, to spectate and record sessions without interacting with structures. It's on Steam, and in Nanome Classic downloaded from our website. It's on Oculus too, but needs a headset connected.
+
+</Accordion>
+
+<Accordion title="Do I need an internet connection to use Nanome?" teaser="Highly recommended, and needed to collaborate or use online databases.">
+
+A stable internet connection is highly recommended, especially when collaborating with other users. You also need the web to download structures from databases like RCSB and DrugBank. Solo users with structures stored on their own machine don't need internet access.
+
+</Accordion>
+
+</AccordionGroup>
+
+## <AppIcon name="download" /> Download and updates {#download}
+
+<AccordionGroup label="2 questions">
+
+<Accordion title="Where can I download Nanome?" teaser="See Download &amp; install in Getting Started.">
+
+[Download &amp; install](/getting-started#install) covers Nanome XR on each headset.
+
+Nanome Classic is free to download from all major VR stores, including Oculus, Steam and VivePort, or directly from [home.nanome.ai/setup](https://home.nanome.ai/setup). Premium versions with upgraded features are for sale on our website.
+
+</Accordion>
+
+<Accordion title="How do I update Nanome to the latest version?" teaser="Follow the Nanome update guide.">
+
+Download the [Nanome update guide](https://drive.google.com/file/d/1x6LEc1-kV3yp9XYgSqxnIsU8iv1ou4fk/view?usp=sharing) and follow its instructions.
+
+</Accordion>
+
+</AccordionGroup>
+
+## <AppIcon name="files" /> File formats {#file-formats}
+
+<AccordionGroup label="4 questions">
+
+<Accordion title="What file formats does Nanome v2 support?" teaser="Structures, session files, trajectories and DX maps.">
 
 In short, v2 imports structures (PDB, mmCIF, SDF, SMILES, XYZ, PQR, PDBQT, and MOL/MOL2 through a MARA tool), session files (MAE, MOE, PSE), trajectories (GRO, XTC, TRR, DCD), and DX electrostatic maps. Molecule export is single-frame, to PDB, SDF, or SMILES.
 
-## What file formats does Nanome support? How can I import them? (v1.26)
+The full per-format list, with import and export capability, trajectory playback and per-release changes, is on [Supported File Formats](/nanome_web/fileformats).
 
-*This answer describes Nanome 1.26 (Classic). For Nanome v2, see [Supported File Formats](/nanome_web/fileformats).*
+</Accordion>
 
-Nanome supports .pdb, .sdf, and features limited compatibility with other atomic coordinate files, like .cif. While .pdb or .sdf format are the most stable formats, we are always improving our parser’s ability to handle anomalies.
+<Accordion title="What file formats does Nanome support, and how do I import them?" teaser="PDB and SDF are the most stable, plus many more." tag="v1.26">
 
-An exhaustive list of supported file formats includes: .pdb, .cif, .mmcif, .sdf, .mol, .xyz, .mol2, .ccp4, .dsn6, .dcd, .gro, .pqr, .trr, .xtc, .psf, .pse, .nanome, .png, .jpg, .jpeg, .pdf
+*This answer describes Nanome 1.26 (Classic).*
 
-Structures may be imported directly from RCSB Protein Data Bank, PubChem, DrugBank, and other online databases from the VR Molecular Loading Menu.
+Nanome supports .pdb and .sdf, and has limited compatibility with other atomic coordinate files, like .cif. The .pdb and .sdf formats are the most stable, and we keep improving the parser's handling of anomalies.
 
-We recommend setting Nanome as your default software for opening .pdb files. Double-clicking on any local .pdb will automatically open the file with the Nanome software.
+The full list of supported file formats: .pdb, .cif, .mmcif, .sdf, .mol, .xyz, .mol2, .ccp4, .dsn6, .dcd, .gro, .pqr, .trr, .xtc, .psf, .pse, .nanome, .png, .jpg, .jpeg, .pdf
 
-## What are the supported files and limitations of Trajectory / Molecular Dynamics files (MD)? (v1.26)
+Structures can be imported directly from the RCSB Protein Data Bank, PubChem, DrugBank and other online databases from the VR Molecular Loading Menu.
 
-*This answer describes Nanome 1.26 (Classic). For trajectory support in Nanome v2, see [Supported File Formats](/nanome_web/fileformats#trajectory-molecular-dynamics).*
+We recommend making Nanome the default software for .pdb files. Double-clicking a local .pdb then opens it in Nanome.
+
+</Accordion>
+
+<Accordion title="What are the supported files and limits for trajectory (MD) files?" teaser="Formats, the 500-frame subsample, and atom counts by device." tag="v1.26">
+
+*This answer describes Nanome 1.26 (Classic). For trajectories in Nanome XR and Nanome Web, see [Supported File Formats](/nanome_web/fileformats#trajectory-molecular-dynamics).*
 
 | File Type | Description                                      | Source Software      |
 | --------- | ------------------------------------------------ | -------------------- |
@@ -71,97 +136,155 @@ We recommend setting Nanome as your default software for opening .pdb files. Dou
 | XTC       | Trajectory File (Compressed)                     | Gromacs              |
 | TRR       | Trajectory File (Lossless) (XDR backend)         | Gromacs              |
 
-It’s important to note that most molecular dynamics files contain two files to be loaded in parallel, the topology file and the position coordinate file.
+Most molecular dynamics data comes as 2 files loaded in parallel: the topology file and the position coordinate file. Trajectories play back from the Advanced Menu of the Entry list for the loaded trajectory.
 
-These trajectory files are able to be played back in the Advanced Menu of the Entry list for the corresponding loaded trajectory.
+Nanome subsamples a molecular dynamics file to 500 frames. How many atoms a system can have depends on the device's hardware. A PCVR setup can play back rather large simulated systems at 500 frames (e.g., 200k-300k atoms), while a standalone headset supports a much smaller system (e.g., 5000-6000 atoms).
 
-Nanome subsamples the number of molecular frames that are a part of the molecular dynamics file to be 500 frames, and the limitation of the number of atom systems depends on the client device’s hardware limitations. In PCVR setups, rather large atomic systems simulated can be played back at 500 frames (e.g., 200k-300k atoms), whereas a standalone headset supports a much smaller atomic system (e.g., 5000-6000 atoms).
+The whole trajectory has to be stored in memory and also sent over the network to other users. So on standalone headsets, larger MD files can't load into the small amount of memory of a device equivalent to a smartphone, and other users wait longer to receive all of the data and render it.
 
-Note that the entire trajectory file’s contents need to be both stored in memory and also be networked to other users. This means that for standalone headsets, larger MD files are not able to be loaded on the small amount of system memory on a device equivalent to a smartphone. Since these files also need to be propagated over the network, there is a longer latency for other users to receive all of the molecular dynamics file data and then render it on their device.
+A PCVR system can load much larger simulations, but in a collaborative room that data still goes over the network and each user downloads it before rendering. There can be a large delay between the structure rendering for the presenter and for the rest of the guests.
 
-In a PCVR system, while you can load much larger molecular dynamics simulations, in a collaborative room, that data still needs to go over the network and be downloaded by each user before rendering, thus there can be scenarios where there is a large latency between the rendering of the structure for the presenter vs. the rest of the guests.
+We recommend keeping systems small, with only the atoms relevant to the collaborative inspection, and keeping the MD short, focused on the frames most relevant to your protein ensemble state.
 
-In general, our recommendation is to keep the atomic systems small in terms of only including atoms that are relevant for collaborative inspection as well as keeping the duration of the MD to be low and focusing on frames most relevant to your protein ensemble state.
+</Accordion>
 
-## Are there any limitations for the Nanome Vault file storage?
+<Accordion title="Are there any limitations for Nanome Vault file storage?" teaser="No file size limit, but the client has to load what you store.">
 
-While Nanome Vault does not have any particular file size limitations. The limitations come from the Nanome Client Application trying to load files that are either too large in terms of number of atoms/bonds or sheer file size.
+Nanome Vault has no particular file size limit. The limits come from the Nanome client loading files that are too large, in number of atoms and bonds or in sheer file size.
 
-Loading from Nanome Vault also has more latency in comparison to loading locally, which is expected.
+- Loading from Nanome Vault has more latency than loading locally, which is expected.
+- Only files the Nanome client officially supports can be uploaded to Nanome Vault.
+- Some larger OBJ files loaded through Nanome Vault struggle or fail to load. We recommend keeping OBJ files under 100,000 vertices.
 
-Nanome Vault only can have files uploaded that are officially supported by the Nanome Client Application.
+</Accordion>
 
-With respect to OBJ files loaded through the Nanome Vault, some larger files will struggle or fail to load within Nanome. Our recommendation is to keep OBJ files under 100,000 vertices.
+</AccordionGroup>
 
-## What services do you offer once I purchase a license? [Enterprise Only]
+## <AppIcon name="license" /> Licenses and purchasing {#licenses}
+
+<AccordionGroup label="8 questions">
+
+<Accordion title="How does the Nanome licensing system work? Isn't Nanome free?" teaser="A limited version is free. Premium licenses are sold.">
+
+A limited version of Nanome is free for all users, from any major VR store or from home.nanome.ai/setup. Licenses for premium capabilities are sold on the [Nanome website](https://nanome.ai/pricing/).
+
+</Accordion>
+
+<Accordion title="Can my team get a free trial?" teaser="Yes. Every new account starts with a 14-day trial.">
+
+Every new account at app.nanome.ai starts with a 14-day Full license trial. For a trial for your team, whether for research, training or presentations, email sales@nanome.ai. To schedule a demo with one of our team, [request one here](https://nanome.ai/demo/).
+
+</Accordion>
+
+<Accordion title="Can I use this for my school?" teaser="Yes, through the academic program.">
+
+Yes. [home.nanome.ai/academic](https://home.nanome.ai/academic) explains how.
+
+</Accordion>
+
+<Accordion title="Do you have a site subscription license?" teaser="Yes. Contact sales@nanome.ai.">
+
+Yes. For Nanome site licenses, contact sales@nanome.ai.
+
+</Accordion>
+
+<Accordion title="What services do you offer once I purchase a license?" teaser="Security, integration and plugin support." tag="Enterprise">
 
 We provide full support for private data security, database integration, computational plugin integration, plugin development and customization.
 
-## Do you have a site subscription license?
+</Accordion>
 
-Yes, for Nanome site licenses please contact sales@nanome.ai.
+<Accordion title="Can I use plugins with an Academic License?" teaser="Plugins are Enterprise only for now.">
 
-## My company and I are looking to incorporate VR technology into our workflow (research, training, presentations, etc.) and we are interested in trying Nanome. Would it be possible to get a free trial so that our team can experiment with your software and see if it meets our needs?
+Plugins are only available with an Enterprise license for now. We may open them up to early adopters in academic institutions. To ask about the Nanome Developer Program, email support@nanome.ai.
 
-Of course! We understand that integrating new technologies into existing procedures can take some time. Just email us at sales@nanome.ai so that we can initiate a trial for you. If you'd like to schedule a demo with one of our team members, you can submit a request [here](https://nanome.ai/demo/).
+</Accordion>
 
-## Can I use this for my school?
+<Accordion title="If I purchase multiple licenses, how can I administer them in my class or lab?" teaser="Use one license administrator account that owns them all.">
 
-Yes, please visit [https://home.nanome.ai/academic](https://home.nanome.ai/academic) to learn how.
+One workflow we recommend:
 
-## Can I use plugins with an Academic License?
+<Steps>
 
-Currently, plugins are only available with an Enterprise license. We may open up plugins to early adopters in Academic Institutions. Please email support@nanome.ai to inquire about the Nanome Developer Program
+1. Choose a Nanome account to act as the "license administrator". It can be your own account, or one your department or lab maintains together. It doesn't need a license assigned to it, but it will own all the licenses you intend to use.
+2. Buy the licenses from that account. If you [request a quote](https://home.nanome.ai/quote), give the email address of the license administrator account.
+3. Once the licenses are allocated, they show in the Licenses section on home.nanome.ai. [Assign them to other users](/home.nanome.ai/licenses#assign-licenses).
 
-## How does the Nanome licensing system work? Isn’t Nanome free?
+</Steps>
 
-A limited version of Nanome is free for all users which can be downloaded at any major Virtual Reality store including [Oculus](https://nanome.ai/pricing/), [Steam](https://nanome.ai/pricing/), and [VivePort](https://www.viveport.com/apps/0a467f78-2ed2-43eb-ada8-9d677d5acf54/Nanome/), or directly from [https://home.nanome.ai/setup](https://home.nanome.ai/setup). Licenses for premium capabilities can be purchased from the Nanome website [https://nanome.ai/pricing/](https://nanome.ai/pricing/).
+One of the licenses is assigned to the admin account automatically, but you can reassign it. If you don't have user accounts yet, you can create new Nanome accounts (e.g. "student-1", "student-2", etc.) and assign the licenses to them.
 
-## If I purchase multiple licenses, how can I administer them in my class or lab?
+</Accordion>
 
-One workflow we can recommend is the following: you need to have a Nanome account that acts as the "license administrator". This can be your own Nanome account, or maybe an account mutually maintained by your department or lab. This license administrator Nanome account is not required to have a license assigned to it, but it will own all the licenses you intend to use.
+<Accordion title="I have a coupon code. How do I redeem it?" teaser="Choose the plan your coupon covers, then enter the code at checkout.">
 
-You should purchase the licenses from the license administrator Nanome account, or if you need to [request a quote from us](https://home.nanome.ai/quote) then be sure to indicate the email address for the license administrator Nanome account. Once your licenses have been allocated (they will be visible in the Licenses section on [home.nanome.ai](https://home.nanome.ai/)), then follow the instructions [here](/home.nanome.ai/licenses#assign-licenses) to assign these licenses to other users. One of the licenses will automatically be assigned to this admin account, but it can be re-assigned to another user. If you don't have existing user accounts, you can also create new Nanome accounts (e.g. "student-1", "student-2", etc.) and then assign the licenses to these accounts.
+<Steps>
 
-## I have a coupon code. How do I redeem it?
+1. Create an account or log in at [nanome.ai/pricing](https://nanome.ai/pricing/).
+2. In the sidebar on the right, click plans and products. The premium tiers show, with annual and monthly plans on top.
+3. Select the plan your coupon covers.
+4. On the next menu, enter your credit card information and type your coupon in the blank. You have to enter card details, but the coupon should cancel any actual fee.
 
-First, create an account or login at [https://nanome.ai/pricing/](https://nanome.ai/pricing/). Once you are logged in, you will notice a sidebar on the right with various options. Click plans and products and you will see our different premium tiers along with annual and monthly plans on top. Select the plan that your coupon covers. On the next menu, you'll see a form for credit card information as well as a blank to type in your coupon. You will have to put in your credit card information, but the coupon should neglect any actual fee. If your card was charged after the transaction, please contact us directly at support@nanome.ai and we will issue a refund immediately.
+</Steps>
 
-## How to find the log file (Logs) of Nanome sessions for PC-tethered VR
+If your card was charged after the transaction, contact us at support@nanome.ai and we'll issue a refund immediately.
 
-If you experience an issue with Nanome, please be sure to send us the logs for the event (both messages.txt and details.txt) so that we can investigate the issue. Feel free to email your bug report to support@nanome.ai.
+</Accordion>
 
-If you are using PC 2D mode or PC-tethered VR headsets, the logs for your session will be on your computer. If you open up your file explorer, please navigate to the following path:
+</AccordionGroup>
 
-`C:\Users\\[USERNAME]\AppData\LocalLow\Nanome Inc_\Nanome\History`
+## <AppIcon name="bug" /> Logs and support {#support}
 
-A log file's name follows the format of "YYYY-MM-DD_HH-MM-SS_details.txt" and is determined by the starting time of the session.
+When something goes wrong in Nanome, send us the logs for the event (both messages.txt and details.txt) so we can investigate. Email your bug report to support@nanome.ai.
 
-For frequent users of Nanome, we recommend favoriting this path in your Windows File Explorer to quickly come back to later.
+<AccordionGroup label="4 questions">
 
-## How to find the log file (Logs) of Nanome sessions for All-in-One VR (e.g. Quest 2/Vive Focus 3)
+<Accordion title="Where are the log files for PC-tethered VR?" teaser="In AppData on your computer.">
 
-If you experience an issue with Nanome, please be sure to send us the logs for the event (both messages.txt and details.txt) so that we can investigate the issue. Feel free to email your bug report to support@nanome.ai.
+With PC 2D mode or a PC-tethered VR headset, the logs for your session are on your computer. In File Explorer, go to:
 
-### NOTE:
+`C:\Users\[USERNAME]\AppData\LocalLow\Nanome Inc_\Nanome\History`
 
-- #### The VR headset needs to be turned on during this process.
-- #### The computer you are connecting the headset to does not need to be VR-Ready. It can be a generic low spec computer.
+A log file is named "YYYY-MM-DD_HH-MM-SS_details.txt", after the time the session started. If you use Nanome often, add this path to your favorites in Windows File Explorer.
 
-All-in-one VR headsets such as the Quest 2 or the Vive Focus 3 are Android based operating systems and log files are saved directly onto the headset. In order to move them or make a copy, you will need to connect your VR device to your computer via a USB-C cable. After plugging in your headset via USB-C to your computer, make sure to turn on the headset and put it on. You will be prompted in-VR to click "Allow" to let the computer read the headset's files.
+</Accordion>
 
-Note that some USB-C cables are charging only cables and you will need one that can transmit data.
+<Accordion title="Where are the log files for all-in-one VR (e.g. Quest 2 or Vive Focus 3)?" teaser="On the headset. Copy them over a USB-C data cable.">
 
-Now that the computer has access to read the VR headset's storage, there are two methods depending on if you are on Windows or Mac.
+All-in-one headsets such as the Quest 2 and Vive Focus 3 run Android-based operating systems and save log files on the headset. To move or copy them, connect the headset to your computer with a USB-C cable.
 
-### Windows
+<Callout type="note" title="Before you start">
 
-Open your Windows File Explorer and look to the left panel. There you can see Storage Devices that are connected to your computer. You will see an item to the left that lists the associated File Storage for the VR headset. Sometimes it is named "Quest" or "Oculus".
+- The headset needs to be turned on during this process.
+- The computer doesn't need to be VR-ready. A generic low-spec computer works.
+- Some USB-C cables only charge. You need one that transmits data.
 
-## I have requests/ideas for new features, where can I send them?
+</Callout>
 
-Please email your requests to support@nanome.ai. We take all our users' feedback seriously, and your idea just might turn into the next big feature in Nanome.
+<Steps>
 
-## I am from a country with GDPR, How do I request to Delete or Request to View my customer data?
+1. Plug the headset into your computer with the USB-C cable.
+2. Turn on the headset and put it on.
+3. In VR, click "Allow" to let the computer read the headset's files.
 
-Please contact support@nanome.ai to Request for the deletion of your customer data or a downloadable version. Please note this is a manual process and will take 2-3 weeks to procure.
+</Steps>
+
+The computer can now read the headset's storage. The next step depends on whether you're on Windows or Mac.
+
+On Windows, open File Explorer and look at the left panel, which lists the storage devices connected to your computer. One of them is the headset's file storage, sometimes named "Quest" or "Oculus".
+
+</Accordion>
+
+<Accordion title="I have requests or ideas for new features. Where can I send them?" teaser="Email support@nanome.ai.">
+
+Email your requests to support@nanome.ai. We take all our users' feedback seriously.
+
+</Accordion>
+
+<Accordion title="I'm in a country with GDPR. How do I ask to delete or view my customer data?" teaser="Email support@nanome.ai. It takes 2-3 weeks.">
+
+Contact support@nanome.ai to request the deletion of your customer data, or a downloadable copy. This is a manual process and takes 2-3 weeks.
+
+</Accordion>
+
+</AccordionGroup>

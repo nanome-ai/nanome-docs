@@ -12,7 +12,13 @@ release, see [Choosing Hardware](/help/choosinghardware).
 
 </Callout>
 
-## Nanome Classic (v1.24) Headset Comparison Matrix
+<IconGrid label="Choosing hardware for Nanome Classic" :cols="3">
+<IconCard icon="device-vision-pro" title="Comparison matrix" href="#nanome-classic-v1-24-headset-comparison-matrix">Passthrough, MDM, VPN, deployment rating and cost.</IconCard>
+<IconCard icon="ban" title="Not supported" href="#headsets-not-supported">Headsets Nanome Classic doesn't run on.</IconCard>
+<IconCard icon="mood-smile" title="Comfort and capability" href="#comfort-comparison">Atom counts and features, all-in-one vs PCVR.</IconCard>
+</IconGrid>
+
+## <AppIcon name="device-vision-pro" /> Headset comparison matrix {#nanome-classic-v1-24-headset-comparison-matrix}
 
 <table>
     <col style="width: 15%;" />
@@ -156,16 +162,18 @@ release, see [Choosing Hardware](/help/choosinghardware).
     </tbody>
 </table>
 
-## Headsets Not Supported
+## <AppIcon name="ban" /> Headsets not supported {#headsets-not-supported}
 
 **Meta Quest 1**, originally sold as Oculus Quest, is not supported. It does not appear as
 a supported platform on any current Nanome store listing. Meta Quest 2 is the oldest
 all-in-one headset Nanome supports.
 
-## Nanome Classic (v1.24): All-In-One (Quest Pro, Quest 2 & Focus 3) vs PCVR Feature Comparison
+## <AppIcon name="mood-smile" /> All-in-one (Quest Pro, Quest 2 and Focus 3) vs PCVR {#comfort-comparison}
 
-The following tables below show brief overviews of the capabilities of the Meta Quest Pro, Meta Quest 2, Vive Focus 3
-vs Desktop VR. Please also note the following:
+The tables below give a brief overview of what the Meta Quest Pro, Meta Quest 2 and Vive Focus 3 can do compared with desktop VR.
+
+<Accordion title="Notes 1 to 3 on the tables" teaser="What the atom counts assume, and what counts as VR-ready.">
+
 1. ‘Shown Atom Count’ only refers to the count of atoms displayed in the workspace and larger
 structures can be loaded within the workspace in the Meta Quest 2 & Vive Focus 3.
 2. Surfaces (on/off), secondary structures (ribbons on/off), and supplemental materials
@@ -173,7 +181,9 @@ structures can be loaded within the workspace in the Meta Quest 2 & Vive Focus 3
 significantly. ‘Shown Atom Count’ column is given nothing else is displayed in the scene.
 3. Desktop is assumed to be “VR ready” (Nvidia GTX 1060 or greater).
 
-### Comfort Legend (Nanome Classic v1.24)
+</Accordion>
+
+### Comfort legend {#comfort-legend-nanome-classic-v1-24}
 
 <table>
     <thead>
@@ -198,7 +208,7 @@ significantly. ‘Shown Atom Count’ column is given nothing else is displayed 
     </tbody>
 </table>
 
-### Comfort Comparison (Nanome Classic v1.24)
+### Comfort comparison {#comfort-comparison-nanome-classic-v1-24}
 
 <table>
     <thead>
@@ -254,7 +264,7 @@ significantly. ‘Shown Atom Count’ column is given nothing else is displayed 
     </tbody>
 </table>
 
-### Capability & Plugin Recommendation Comparison (Nanome Classic v1.24)
+### Capability and plugin recommendations {#capability-plugin-recommendation-comparison-nanome-classic-v1-24}
 
 <table>
     <tbody>

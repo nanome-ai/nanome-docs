@@ -1,75 +1,117 @@
+---
+title: Features
+---
+
 # Features
 
-## Chat
+MARA's main features are its chat, data tables, and 3D molecular visualization.
 
-This is the primary interface for interacting with MARA. It is a chat interface that can help you analyze and reason about molecular data by constructing workflows of tools to achieve a specific goal.
-<vimg src="mara/mara-chat.png" />
+<IconGrid label="MARA features" :cols="3">
+<IconCard icon="messages" title="Chat" href="#chat">Ask in plain language, and MARA builds a workflow of tools.</IconCard>
+<IconCard icon="table" title="Data Table" href="#data-table">Query, filter, plot and export CSV data.</IconCard>
+<IconCard icon="atom" title="Molecular Visualization" href="#molecular-visualization">View structures in 3D and restyle them by asking.</IconCard>
+</IconGrid>
 
- Here are some examples of the types of tasks MARA can accomplish:
-* **Data Retrieval:**
-    - Downloading PDB files for specific proteins.
-    - Retrieving SMILES strings for given compounds.
-    - Extracting protein sequences from PDB or mmCIF files.
-* **Data Conversion:**
-    - Converting PDB files to mmCIF files and vice versa.
-    - Converting SMILES strings to 3D structures.
-    - Converting molecular dynamics (MD) trajectories to PDB files.
-* **Informatics:**
-    - Calculating chemical descriptors for lists of SMILES.
-    - Finding similar compounds in databases like ChEMBL using SMILES strings.
-    - Generating molecular fingerprints from SMILES.
-* **Analysis:**
-    - Aligning reference polymer structures to sets of mobile structures.
-    - Computing solvent accessible surface area (SASA) of proteins.
-    - Calculating RMSD from MD trajectories.
-* **Visualization:**
-    - Drawing 2D structures of molecules from SMILES strings.
-    - Generating 3D conformers for given molecules.
-    - Displaying protein sequences and alignments visually.
+## <AppIcon name="messages" /> Chat {#chat}
 
-### Chat Input
-<vimg src="mara/chat-input.png" />
-Along with natural language, prompts can be augmented with files, or a SMILES can be drawn using a Ketcher chemical structure editor.
+The chat is the main way to work with MARA. It helps you analyze and reason about molecular data by building workflows of tools to reach a goal.
 
-- Hexagon button opens the chemical structure drawing tool
+<vimg src="mara/mara-chat.png" alt="A chat with MARA" />
 
-- Upload buttons opens a file picker to select files to upload
+Some of the tasks MARA can do:
 
-(December 2024) MAE, MOE, and PSE session files can also be uploaded to a chat prompt.
+<Tabs :labels="['Data retrieval', 'Data conversion', 'Informatics', 'Analysis', 'Visualization']">
+<Tab>
 
-## Data Table
-With the MARA data table, you can perform a variety of tasks to analyze and manipulate your data.
+- Downloading PDB files for specific proteins.
+- Retrieving SMILES strings for given compounds.
+- Extracting protein sequences from PDB or mmCIF files.
 
-<vimg src="mara/data-table.png" />
+</Tab>
+<Tab>
 
-Here are some of the key functionalities:
+- Converting PDB files to mmCIF files and vice versa.
+- Converting SMILES strings to 3D structures.
+- Converting molecular dynamics (MD) trajectories to PDB files.
 
-- **Query and Extract Data from Table:** You can ask natural language queries to extract specific data from a CSV file. This is useful for quick insights without manual analysis.
-- **Generate a 2D or 3D Scatter Plot:** You can create scatter plots from your CSV data, which can be either 2D or 3D. This helps in visualizing the relationships between different data points.
-- **Export Data to CSV File:** You can write data into a CSV file, creating or overwriting it as needed. This is ideal for exporting processed or analyzed data into a CSV format.
-- **Filter and Extract CSV Data Based on a Query:** You can filter and extract specific rows from a CSV file based on a query, allowing you to focus on the most relevant data.
-- **Show Distributions of Numerical Data:** You can visualize the distribution of numerical data from a CSV file, which can help in understanding the spread and central tendencies of your data.
-- **Understand CSV File Content:** You can get a summary or overview of the contents of a CSV file, which can be useful for initial data exploration.
+</Tab>
+<Tab>
 
-These tools provide a comprehensive suite for handling and analyzing data tables, making it easier to derive meaningful insights from your datasets.
+- Calculating chemical descriptors for lists of SMILES.
+- Finding similar compounds in databases like ChEMBL using SMILES strings.
+- Generating molecular fingerprints from SMILES.
 
-### Creating Tables
-You can create a table by uploading a CSV file through the Chat input, or by dragging and dropping a file into the interface.
-<vimg src="mara/drag-drop.png" />
-The drag and drop interface contains two drop zones; the left side will upload the file to the chat, and the right side will upload the file and create a new table using that data.
+</Tab>
+<Tab>
 
-Supported file types for tables: `.csv`, `.xlsx`
-## Molecular Visualization
-MARA allows you to visualize structures in 3D using Molstar, and update the representation using natural language.
+- Aligning reference polymer structures to sets of mobile structures.
+- Computing solvent accessible surface area (SASA) of proteins.
+- Calculating RMSD from MD trajectories.
 
-<vimg src="mara/mol-viz.png" />
+</Tab>
+<Tab>
 
-Example Prompts:
-* Show all residues in chain D as ball and stick
-* Color residues 101-207 blue
-* Hide waters
-* Spin the molecule
-* Focus on ligand 50D
-* Download as [molx | stl | obj | glb | usdz]
-* Highlight residues 149-150 in green
-* Set style to illustrative
+- Drawing 2D structures of molecules from SMILES strings.
+- Generating 3D conformers for given molecules.
+- Displaying protein sequences and alignments visually.
+
+</Tab>
+</Tabs>
+
+### Chat input {#chat-input}
+
+Besides plain language, a prompt can carry files, or a SMILES drawn in the Ketcher chemical structure editor.
+
+<UiList label="Chat input">
+<UiItem icon="paperclip" name="Attach file">Opens a file picker to choose files to upload.</UiItem>
+<UiItem icon="hexagon" name="Draw SMILES">Opens the chemical structure drawing tool.</UiItem>
+<UiItem icon="tool" name="Run tool">Picks a MARA tool to run.</UiItem>
+<UiItem icon="route" name="Run workflow">Picks a workflow to run.</UiItem>
+<UiItem icon="arrow-up" name="Send">Sends your message.</UiItem>
+</UiList>
+
+<vimg src="nanome-web/mara-tab.webp" alt="The chat input, here in a workspace's MARA tab" />
+
+Since December 2024, MAE, MOE and PSE session files can also be uploaded to a chat prompt.
+
+## <AppIcon name="table" /> Data Table {#data-table}
+
+<vimg src="mara/data-table.png" alt="A MARA data table" />
+
+With a MARA data table, you can:
+
+- Ask in plain language to query and extract specific data from a CSV file.
+- Make a 2D or 3D scatter plot from CSV data, to see how data points relate.
+- Write data to a CSV file, creating or overwriting it, to export processed or analyzed data.
+- Filter and extract rows from a CSV file based on a query.
+- Show the distribution of numerical data from a CSV file, its spread and central tendencies.
+- Get a summary of a CSV file's contents, for a first look at the data.
+
+### Creating tables {#creating-tables}
+
+Upload a CSV file through the chat input, or drag and drop a file into the interface. The drop area has 2 zones: the left one uploads the file to the chat, and the right one uploads it and makes a new table from it.
+
+<vimg src="mara/drag-drop.png" alt="The two drop zones" />
+
+<Callout type="note" title="Supported file types for tables">
+
+`.csv` and `.xlsx`
+
+</Callout>
+
+## <AppIcon name="atom" /> Molecular Visualization {#molecular-visualization}
+
+MARA shows structures in 3D with Molstar, and you can change the representation by asking in plain language.
+
+<vimg src="mara/mol-viz.png" alt="A structure in MARA's 3D viewer" />
+
+Example prompts:
+
+- Show all residues in chain D as ball and stick
+- Color residues 101-207 blue
+- Hide waters
+- Spin the molecule
+- Focus on ligand 50D
+- Download as [molx | stl | obj | glb | usdz]
+- Highlight residues 149-150 in green
+- Set style to illustrative

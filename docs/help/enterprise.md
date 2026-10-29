@@ -2,82 +2,82 @@
 title: Enterprise
 ---
 
-# Enterprise Deployment Information - Nanome 1.x ONLY
+# Enterprise Deployment (Nanome 1.x)
 
-This section provides additional information and resources for on-prem enterprise deployments. For assistance with setting up or managing your environments, please reach out to your dedicated Nanome representative.
+<Callout type="warning" title="Nanome 1.x only">
 
-NOTE: THIS IS FOR NANOME 1.X ONLY. Please contact your enterprise account manager for MARA or NanomeAI deployment information.
+This page is for Nanome 1.x only. For MARA or NanomeAI deployment information, contact your enterprise account manager.
 
-## Recommended Infrastructure
+</Callout>
 
-The following diagram illustrates how network traffic in Nanome works, as well as what we recommend for your enterprise network infrastructure.
+Information and resources for on-prem enterprise deployments. For help setting up or managing your environments, reach out to your dedicated Nanome representative.
 
-<vimg src="help/recommended_infrastructure.png" />
+<IconGrid label="Enterprise deployment">
+<IconCard icon="topology-star-3" title="Recommended infrastructure" href="#recommended-infrastructure">How network traffic flows in Nanome.</IconCard>
+<IconCard icon="server" title="Virtual machines" href="#virtual-machines">Specs for the Private Server and Plugins VMs.</IconCard>
+<IconCard icon="wifi" title="Ports" href="#ports">Inbound and outbound ports to open.</IconCard>
+<IconCard icon="terminal-2" title="Plugin deployment" href="#plugin-deployment">Deploy plugins, DNS entries and HTTPS.</IconCard>
+</IconGrid>
 
-## IT & Networking Requirements
+## <AppIcon name="topology-star-3" /> Recommended infrastructure {#recommended-infrastructure}
 
-### Virtual Machine #1:
+How network traffic in Nanome works, and the enterprise network infrastructure we recommend:
 
-The recommended specs for the Private Server VM are:
-- _Amazon AWS T2.Medium EC2 Windows 2012 Server or greater_ **or** _equivalent_
-- 1 quad core CPU (e.g., Intel Xeon 3440, E3-1230 etc.) 4 GB RAM 1 GBps NIC / uplink port speed
-- Windows Server 2012 and above
-- 10GB + of storage space
+<vimg src="help/recommended_infrastructure.png" alt="Recommended infrastructure for an enterprise deployment" />
 
-### Virtual Machine #2:
+## <AppIcon name="server" /> Virtual machines {#virtual-machines}
 
-The recommended specs for the Dedicated Plugins VM are:
-- _Amazon AWS T2.Large EC2 Linux machine with 30 GB of disk storage_ **or** _equivalent_
-- 1 GBps NIC / uplink port speed
-- A Linux based operating system (Ubuntu or CentOS)
-- 4 CPU - equiv. to an Intel Broadwell E5-2686v4 or higher
-- 8GB of RAM
-- 90GB of Storage space
-- 1 GBps NIC /uplink port speed
+Recommended specs:
 
-### Inbound Ports
+| | VM #1: Private Server | VM #2: Dedicated Plugins |
+| --- | --- | --- |
+| Instance | Amazon AWS T2.Medium EC2 Windows 2012 Server or greater, or equivalent | Amazon AWS T2.Large EC2 Linux machine with 30 GB of disk storage, or equivalent |
+| CPU | 1 quad core CPU (e.g., Intel Xeon 3440, E3-1230 etc.) | 4 CPU, equiv. to an Intel Broadwell E5-2686v4 or higher |
+| RAM | 4 GB | 8GB |
+| Network | 1 GBps NIC / uplink port speed | 1 GBps NIC / uplink port speed |
+| Operating system | Windows Server 2012 and above | A Linux based operating system (Ubuntu or CentOS) |
+| Storage | 10GB + | 90GB |
 
-The following inbound ports are required for VM #1 to connect to the VR devices:
-- UDP 5055, 5056
-- TCP 443, 80, 8888
+## <AppIcon name="wifi" /> Ports {#ports}
 
-The following inbound ports are required for VM #2 to allow connection to plugin webpages (like Vault and Data Table):
-- TCP 80, 443
+### Inbound
 
-### Outbound Ports
+| To | Ports | So that |
+| --- | --- | --- |
+| VM #1 | UDP 5055, 5056; TCP 443, 80, 8888 | VM #1 can connect to the VR devices |
+| VM #2 | TCP 80, 443 | Plugin webpages (like Vault and Data Table) can connect |
 
-The following outbound ports are needed on each of the VR devices for internal collaboration:
-- UDP Ports: 5055, 5056 towards VM #1
-- TCP Ports 8888 towards the VM #1
-- TCP Ports 80 & 443 towards VM #2
-- TCP Port 443 open for ”api.nanome.ai”
-- TCP Port 443 open for “home.nanome.ai”
-- TCP Port 443 open for “cms.nanome.ai”
+### Outbound, from each VR device
 
+For internal collaboration:
 
-### Nanome Collaboration for training sessions
+- UDP ports 5055, 5056 towards VM #1
+- TCP port 8888 towards VM #1
+- TCP ports 80 and 443 towards VM #2
+- TCP port 443 open for "api.nanome.ai", "home.nanome.ai" and "cms.nanome.ai"
 
-The following outbound ports are needed on each of the VR devices for external training sessions with Nanome:
-- UDP 5055, 5056 towards the DNS “collaboration.nanome.ai”
-- TCP 8888 towards DNS “plugins.nanome.ai”
+For external training sessions with Nanome:
 
+- UDP 5055, 5056 towards the DNS "collaboration.nanome.ai"
+- TCP 8888 towards the DNS "plugins.nanome.ai"
 
-## Plugin Deployment Procedure & Security Info
+## <AppIcon name="terminal-2" /> Plugin deployment {#plugin-deployment}
 
-### Steps for Deployment
+The [Nanome Plugin Deployer README](https://github.com/nanome-ai/nanome-plugin-deployer) has more detail on each step.
 
-(See our [_README doc_](https://github.com/nanome-ai/nanome-plugin-deployer) for more details.)
+<Steps>
 
-- Step 1: Provision the Dedicated Plugins Virtual Machine.
-- Step 2: SSH into the VM + Install Git & Docker.
-- Step 3: Pull the Nanome Plugin Deployer and run it.
-- Step 4: Docker Container Health Check.
-- Step 5: Validate the connection from the VR client.
+1. Provision the Dedicated Plugins Virtual Machine.
+2. SSH into the VM, and install Git and Docker.
+3. Pull the Nanome Plugin Deployer and run it.
+4. Run a Docker container health check.
+5. Validate the connection from the VR client.
 
+</Steps>
 
-### Plugins that Require DNS Entries
+### Plugins that need DNS entries {#plugins-that-require-dns-entries}
 
-The Data Table, Vault, and Quickdrop plugins will be hosted differently than other plugins and will exist as DNS entries under your domain.
+The Data Table, Vault and Quickdrop plugins are hosted differently from other plugins, as DNS entries under your domain.
 
 ```
 NTS_IP=<NTS_IP>
@@ -88,6 +88,6 @@ NTS_IP=<NTS_IP>
   --service quickdrop --nginx --url nanome-quickdrop.example.com
 ```
 
-### HTTPS for Web Plugins and Services:
+### HTTPS for web plugins and services {#https-for-web-plugins-and-services}
 
-By default, self-signed certs in the nginx/certs folder are used, but if you'd like to provide your own certs, simply replace _default.crt_ and _default.key_ with your own certs.
+By default, the self-signed certs in the nginx/certs folder are used. To use your own certs, replace *default.crt* and *default.key* with them.

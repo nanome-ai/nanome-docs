@@ -4,44 +4,50 @@ title: Ligands Tab
 
 # Ligands Tab
 
-The **Ligands** tab is a table of every ligand in the workspace, with a 2D drawing and calculated properties for each. It's the same ligand list as the [Ligands tab](/nanome_v2/mainpanel#ligands-tab) in Nanome XR.
+The **Ligands** tab is a table of every ligand in the workspace, with a 2D drawing and calculated properties for each. It's the same ligand list as the **Ligands** tab in Nanome XR.
 
 <vimg src="nanome-web/ligands-tab.webp" alt="The Ligands tab" />
 
-## Toolbar
+## <AppIcon name="filter" /> Toolbar {#toolbar}
 
-- **Filter ligands**: narrows the table. The button shows how many ligands are listed out of the total, for example **2/2**.
-- **Select property columns**: chooses which properties appear as columns. See [Property columns](#property-columns).
-- **View presets**: preset sets of columns.
-- **Search ligands**: filters by name.
-- **Fullscreen**: opens the table in a larger window.
+<UiList label="Ligands toolbar">
+<UiItem icon="filter" name="Filter ligands">Narrows the table. The button shows how many ligands are listed out of the total, for example 2/2.</UiItem>
+<UiItem icon="columns-3" name="Select property columns" href="#property-columns">Chooses which properties appear as columns.</UiItem>
+<UiItem icon="bookmark" name="View presets">Preset sets of columns.</UiItem>
+<UiItem name="Search ligands">Filters by name.</UiItem>
+<UiItem icon="window-maximize" name="Fullscreen">Opens the table in a larger window.</UiItem>
+</UiList>
 
-## The table
+## The table {#the-table}
 
-Each row shows the ligand's 2D drawing, its entry, its name, and the chosen property columns. **Atoms** and **MW** are shown by default. Column headers with arrows sort the table. The ⓘ beside a column name shows what the column means.
+Each row shows the ligand's 2D drawing, its entry, its name, and the chosen property columns. **Atoms** and **MW** are shown by default. Column headers with arrows sort the table. The <AppIcon name="info-circle" /> beside a column name shows what the column means.
+
+In the fullscreen table, each row has a checkbox and a <AppIcon name="dots-vertical" /> menu:
+
+<UiList label="Ligand row menu">
+<UiItem name="Download SDF">Downloads the ligand as an SDF file.</UiItem>
+<UiItem name="Sketch variant">Opens the ligand in the 2D sketcher to draw a variant.</UiItem>
+<UiItem name="Properties">Shows the ligand's calculated properties.</UiItem>
+<UiItem name="Tag">Hit, Lead, Add to Synthesis, or New tag... for a custom tag. The tag appears in the Tag column.</UiItem>
+</UiList>
 
 <vimg src="nanome-web/ligands-fullscreen.webp" alt="The Ligands table in full screen" />
-
-In the fullscreen table, each row has a checkbox and a **(⋮)** menu:
-
-- **Download SDF**: downloads the ligand as an SDF file.
-- **Sketch variant**: opens the ligand in the 2D sketcher to draw a variant.
-- **Properties**: shows the ligand's calculated properties.
-- **Tag**: **Hit**, **Lead**, **Add to Synthesis**, or **New tag...** for a custom tag. The tag appears in the **Tag** column.
 
 <vimg src="nanome-web/ligand-row-menu.webp" alt="A ligand row's menu" />
 
 Along the bottom of the tab:
 
-- **Preview all**: opens a 3D preview that steps through the listed ligands one model at a time, with a download button for each.
-- **Download all**: downloads the listed ligands.
-- **Sketch new**: opens the 2D sketcher to draw a new ligand.
+<UiList label="Ligands tab bottom bar">
+<UiItem icon="eye" name="Preview all">Opens a 3D preview that steps through the listed ligands one model at a time, with a download button for each.</UiItem>
+<UiItem icon="cloud-download" name="Download all">Downloads the listed ligands.</UiItem>
+<UiItem icon="hexagon-plus-2" name="Sketch new">Opens the 2D sketcher to draw a new ligand.</UiItem>
+</UiList>
 
 <vimg src="nanome-web/ligand-preview.webp" alt="A ligand preview" />
 
-## Property columns
+## <AppIcon name="columns-3" /> Property columns {#property-columns}
 
-Nanome calculates these properties with [RDKit](https://www.rdkit.org/) on its server. SDF data fields from the source file can also be shown as columns.
+Nanome calculates these properties with RDKit on its server. SDF data fields from the source file can also be shown as columns.
 
 <vimg src="nanome-web/ligand-columns.webp" alt="The ligand property column picker" />
 
@@ -70,4 +76,8 @@ The **MolWeight** column (shown as **MW**) holds the monoisotopic mass, the sum 
 
 </Callout>
 
+<Accordion title="Hydrogens and bond orders" teaser="Where ligand bonds come from, which the calculated values depend on.">
+
 Calculated values depend on the hydrogens and bond orders in the loaded structure. For a PDB or mmCIF file that carries a PDB ID, ligand bonds come from the Chemical Component Dictionary (fetched from the RCSB since 2.7, and from PDBe before that), with any bonds written in the file applied too. Without an ID, the remaining bonds are inferred from the coordinates.
+
+</Accordion>

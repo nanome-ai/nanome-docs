@@ -4,77 +4,137 @@ title: Scenes Panel
 
 # Scenes Panel
 
+The Scenes Panel sits in the left sidebar, beside the Main Panel. A scene is a saved view of the workspace: its components, annotations, molecule positions and point of view. A workspace can hold up to 50 scenes.
+
+<IconGrid label="Left sidebar">
+<IconCard icon="layout-grid" title="Workspace header" href="#workspace-header">The workspace name, network health and access.</IconCard>
+<IconCard icon="box" title="Scene controls" href="#controls">Create, step through and play scenes.</IconCard>
+<IconCard icon="dots" title="Scene menu" href="#scene-menu">Rename, duplicate, copy a POV or add a recording.</IconCard>
+<IconCard icon="video" title="Recording a scene" href="#recording-a-scene">A presenter's voice and pointer, played back in the scene.</IconCard>
+<IconCard icon="users" title="Users" href="#users-section">Who's in the workspace, Share and Spotlight Me.</IconCard>
+<IconCard icon="crown" title="Spotlight Mode" href="#spotlight-mode">Share your view, or follow someone else's.</IconCard>
+</IconGrid>
+
+<vimg src="nanome-v2/v2-7/scenes-panel.webp" alt="The left sidebar with the Scenes Panel controls labelled" />
+
+## <AppIcon name="layout-grid" /> Workspace header {#workspace-header}
+
+The top of the sidebar shows the workspace name and two icons:
+
+<UiList label="Workspace header">
+<UiItem icon="alert-triangle" name="Network health">Appears when the connection degrades, showing High ping, Reconnecting or Connection lost.</UiItem>
+<UiItem icon="lock" name="Access">Shows whether the workspace is private or shared, its project and its code.</UiItem>
+</UiList>
+
+## <AppIcon name="box" /> Controls {#controls}
+
+<UiList label="Scene controls">
+<UiItem icon="plus" name="Create scene">Adds a scene.</UiItem>
+<UiItem icon="settings" name="Scene settings" href="#scene-settings">Recenter Self, Set scene POV, and Enable/disable scene POVs.</UiItem>
+<UiItem icon="arrow-left" name="Previous scene">Steps back through the scenes.</UiItem>
+<UiItem icon="arrow-right" name="Next scene">Steps forward through the scenes.</UiItem>
+<UiItem icon="player-play" name="Play scenes">Plays the scenes, with their recordings.</UiItem>
+<UiItem name="Drag handle (=)">Dragging it reorders the scenes.</UiItem>
+</UiList>
+
+### <AppIcon name="settings" /> Scene settings {#scene-settings}
+
+<UiList label="Scene settings">
+<UiItem icon="target" name="Recenter Self">Resets your position as the viewing origin.</UiItem>
+<UiItem icon="scan-eye" name="Set scene POV">Saves your current perspective as the scene's point of view.</UiItem>
+<UiItem icon="perspective" name="Enable/disable scene POVs">Sets whether switching scenes moves your view to each scene's point of view.</UiItem>
+</UiList>
+
+<vimg src="nanome-v2/v2-7/scenes-settings.webp" alt="The scene settings menu" />
+
+### <AppIcon name="dots" /> Scene menu {#scene-menu}
+
+<UiList label="Scene More options">
+<UiItem icon="pencil" name="Rename">Renames the scene.</UiItem>
+<UiItem icon="copy" name="Duplicate">Copies the scene with its representations and settings.</UiItem>
+<UiItem icon="trash" name="Delete">Deletes the scene, after a confirmation.</UiItem>
+<UiItem icon="list-check" name="Copy Scene POV">Copies this scene's point of view to other scenes.</UiItem>
+<UiItem icon="video" name="Add Recording" href="#recording-a-scene">Records a presentation in this scene.</UiItem>
+<UiItem icon="trash" name="Delete recording">Deletes the scene's recording.</UiItem>
+</UiList>
+
+<vimg src="nanome-v2/v2-7/scenes-more-options.webp" alt="A scene's More options menu" />
+
 ### Video: Working with Scenes
 
 <YoutubeEmbed videoId="vngy1zlFvRA" title="Nanome v2.4 Quick Tips: Working with Scenes" />
 
-The Scenes Panel sits in the left sidebar, beside the [Main Panel](/nanome_v2/mainpanel). A scene is a saved view of the workspace: its components, annotations, molecule positions and point of view. A workspace can hold up to 50 scenes.
-
-<vimg src="nanome-v2/v2-7/scenes-panel.webp" alt="The left sidebar with the Scenes Panel controls labelled" />
-
-## Workspace header
-
-The top of the sidebar shows the workspace name and two icons:
-
-- **Network health**: appears when the connection degrades, showing **High ping**, **Reconnecting** or **Connection lost**.
-- **Access**: shows whether the workspace is private or shared, its project and its code.
-
-## Controls
-
-- **Create scene (+)**: adds a scene.
-- **Scene settings (⚙)**: **Recenter Self** resets your position as the viewing origin, **Set scene POV** saves your current perspective as the scene's point of view, and **Enable/disable scene POVs** sets whether switching scenes moves your view to each scene's point of view.
-- **Previous scene** and **Next scene**: step through the scenes.
-- **Play scenes**: plays the scenes, with their recordings.
-- **(=)**: drag to reorder scenes.
-
-<vimg src="nanome-v2/v2-7/scenes-settings.webp" alt="The scene settings menu" />
-
-Each scene's **(...)** menu has:
-
-- **Rename**
-- **Duplicate**: copies the scene with its representations and settings.
-- **Delete**, after a confirmation.
-- **Copy Scene POV**: copies this scene's point of view to other scenes.
-- **Add Recording**: records a presentation in this scene. See [Recording a scene](#recording-a-scene).
-- **Delete recording**
-
-<vimg src="nanome-v2/v2-7/scenes-more-options.webp" alt="A scene's More options menu" />
-
-## Recording a scene
+## <AppIcon name="video" /> Recording a scene {#recording-a-scene}
 
 Since release 2.6, a scene can hold a recorded presentation: the presenter's voice and pointer movements, played back in the scene.
 
-**Add Recording** opens the recording options: **My Voice**, **My Cursors**, **Others' Voice** and **Others' Cursors**. Other people have to unmute themselves to be heard in the recording.
+<Steps>
 
-While recording, a **Recording in progress** banner shows the time, a mute button and **Stop recording**. Stopping asks whether to **Save** or **Discard** the recording. Switching scenes stops the recording, after a confirmation.
+1. In the scene's <AppIcon name="dots" /> menu, choose <Btn icon="video">Add Recording</Btn>. The recording options are **My Voice**, **My Cursors**, **Others' Voice** and **Others' Cursors**. Other people have to unmute themselves to be heard in the recording.
+2. Start with <Btn icon="video">Begin</Btn>. While recording, a **Recording in progress** banner shows the time, a mute button and <Btn icon="player-stop">Stop recording</Btn>.
+3. Stopping asks whether to <Btn icon="device-floppy">Save</Btn> or <Btn icon="trash">Discard</Btn> the recording.
 
-A scene with a recording shows its length in the scene list. **Play scenes** opens a playback bar with **Previous**, **Next**, **Play**, **Stop playback** and **Recenter**.
+</Steps>
+
+Switching scenes stops the recording, after a confirmation. A scene with a recording shows <AppIcon name="video" /> and its length in the scene list.
+
+**Play scenes** opens a playback bar: <Btn icon="arrow-left">Previous</Btn> <Btn icon="arrow-right">Next</Btn> <Btn icon="player-play">Play</Btn> <Btn icon="player-stop">Stop playback</Btn> <Btn icon="analyze-filled">Recenter</Btn>
+
+<Callout type="note" title="A recording locks the workspace">
 
 A workspace that holds a recording is locked against changes, with a banner that reads **This workspace is locked because it contains a recording**. **Modify anyway** unlocks it, with a warning that changes could break the recording.
 
-## Users section
+</Callout>
 
-At the bottom of the sidebar, the **Users** section shows who's in the workspace. Each person has a personal color, shown on their name chip and their crown. Selecting a chip follows that person. **Share** opens the [Share dialog](/nanome_v2/mainpanel#share), and **Spotlight Me** starts Spotlight Mode. The **»** at the bottom collapses the sidebar.
+## <AppIcon name="users" /> Users section {#users-section}
 
-## Multi-User Scene Indicators
+At the bottom of the sidebar, the **Users** section shows who's in the workspace. Each person has a personal color, shown on their name chip and their crown. Selecting a chip follows that person.
+
+<UiList label="Users section">
+<UiItem icon="share" name="Share" href="/nanome_v2/mainpanel#share">Opens the Share dialog.</UiItem>
+<UiItem icon="crown" name="Spotlight Me" href="#spotlight-mode">Starts Spotlight Mode.</UiItem>
+<UiItem icon="chevrons-right" name="Collapse sidebar">Collapses the sidebar.</UiItem>
+</UiList>
+
+### Multi-User Scene Indicators
 
 <vimg src="nanome-v2/scenes-panel-multiuser-indicators.jpg" />
 
-With several people in a workspace, colored dots on each scene show who's viewing it. Each person's color matches their name chip and their crown.
+With several people in a workspace, colored dots on each scene show who's viewing it, in each person's color.
 
-## Spotlight Mode
+## <AppIcon name="crown" /> Spotlight Mode {#spotlight-mode}
 
 <vimg src="nanome-v2/scenes-panel-spotlight-mode.jpg" />
 
 **Spotlight Me** makes your view the shared perspective for everyone who follows you.
 
-- **Spotlighter's view**: **Spotlighting 1/1** shows that Spotlight Mode is on and how many people follow. Followers are listed with an eye icon beside their name.
-- **Follower's view**: the spotlighter's name with a crown, a **Reset orientation** button, and **Stop** to stop following.
+<Tabs :labels="['Spotlighter', 'Follower']">
+<Tab>
 
-People in Nanome XR see a prompt for about 6 seconds, with **Not now** to decline, before they follow a new spotlight. Since release 2.7, Nanome Web viewers follow straight away. A **You are following** popup has **Stop Following** and **Resume Following**, and holding the grip also stops following.
+<UiList label="Spotlighter's view">
+<UiItem icon="crown" name="Spotlighting 1/1">Shows that Spotlight Mode is on and how many people follow.</UiItem>
+</UiList>
 
-Since release 2.7:
+Followers are listed with an <AppIcon name="eye" /> eye icon beside their name.
+
+</Tab>
+<Tab>
+
+<UiList label="Follower's view">
+<UiItem icon="crown" name="Spotlighter's name">Shows who you're following.</UiItem>
+<UiItem icon="analyze-filled" name="Reset orientation">Resets your orientation.</UiItem>
+<UiItem name="Stop">Stops following.</UiItem>
+</UiList>
+
+</Tab>
+</Tabs>
+
+People in Nanome XR see a prompt for about 6 seconds, with **Not now** to decline, before they follow a new spotlight. Since release 2.7, Nanome Web viewers follow straight away. A **You are following** popup has **Stop Following**. After you stop, a **You stopped following** popup offers **Resume Following** for 3 seconds. Holding the grip also stops following.
+
+<Accordion title="Changes in 2.7" teaser="Joining mid-spotlight, live edits and follow chains.">
 
 - People who join or reconnect while a spotlight is on follow it automatically, and a presenter who briefly disconnects comes back as the same participant.
 - Following shows the leader's current tool and mode, what they hover and select, and their edits as they make them. Ligand building, torsion changes and rotamers appear live, before they're saved.
 - Following someone who's following another person leads to the person at the end of the chain.
+
+</Accordion>

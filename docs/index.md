@@ -8,6 +8,31 @@ hero:
     url: https://drive.google.com/file/d/1tUNxT72rwmFEDi40arh8BAPsOEodpBw6/view
   - img: /assets/carousels/hero/discengine.png
     url: https://blog.matryx.ai/nanome-is-joining-forces-with-discngine-to-greatly-impact-the-sbdd-experience-1af0b83b3057
+start:
+  - icon: device-vision-pro
+    title: Nanome XR
+    description: In a headset. The Main Panel, the tools and scenes.
+    url: /nanome_v2/overview
+  - icon: device-laptop
+    title: Nanome Web
+    description: In a browser at app.nanome.ai.
+    url: /nanome_web/overview
+  - icon: sparkles
+    title: MARA
+    description: Chat, tools and workflows for your structures.
+    url: /mara/overview
+  - icon: headset
+    title: Set up headsets
+    description: Hardware, device management, install and first login.
+    url: /getting-started
+  - icon: key
+    title: Accounts & licenses
+    description: Seats, invoices and two-factor sign-in.
+    url: /home.nanome.ai/overview_home_nanome
+  - icon: help
+    title: Help
+    description: FAQ, troubleshooting and contact.
+    url: /help/faq
 newUpdates:
   title: "What's New in Nanome 2.7"
   description: Comments tied to the atoms they're about, pocket minimization in the Ligand Builder, a new atom and bond renderer, and hover, select and measure in Nanome Web.
@@ -43,57 +68,6 @@ quickTips:
     description: Create polymer interaction components and explore the interactions report in VR
     url: https://youtu.be/YHOGQq1dUck
 carousels:
-  - title: v1.24 Videos of Spatial Recordings
-    numSlides: 4
-    slides:
-      #- title: Deep dive into Nanome’s tools
-      #  img: https://i.ytimg.com/vi/pVHMNvSBJAA/hqdefault.jpg
-      #  description: An overview of Nanome's tools
-      #  url: https://youtu.be/zvFNUMnCSkM
-      #- title: Quick tips!
-      #  img: https://i.ytimg.com/vi/zvFNUMnCSkM/hqdefault.jpg
-      #  description: Helpful tips on some of the basic yet helpful functions of Nanome
-      #  url: https://youtu.be/zvFNUMnCSkM
-      #- title: Web Browser
-      #  img: https://i.ytimg.com/vi/n_i7aZoZNew/hqdefault.jpg
-      #  description: Learn about the web browser and how to use it effectively
-      #  url: https://youtu.be/n_i7aZoZNew
-      #- title: Medchem Workflow
-      #  img: https://i.ytimg.com/vi/NXmhhNbMFfI/hqdefault.jpg
-      #  description: Deep dive into a medicinal chemist's workflow
-      #  file: https://youtu.be/NXmhhNbMFfI
-      #- title: Building Molecules
-      #  img: https://i.ytimg.com/vi/HOSVatwMjms/hqdefault.jpg
-      #  description: How to design small molecules with the Medchem tool and periodic table
-      #  file: https://youtu.be/HOSVatwMjms
-      #- title: Mutations and Advanced Selection
-      #  img: https://i.ytimg.com/vi/E0fIxc_-qwc/hqdefault.jpg
-      #  description: Mutate residues on a protein and use advanced selection techniques
-      #  file: https://youtu.be/E0fIxc_-qwc
-      - title: Tools
-        img: /assets/carousels/advanced-tutorials/tools.png
-        description: Building blocks at nanoscale with atoms and molecules
-        url: https://youtu.be/pVHMNvSBJAA
-      - title: Building Molecules
-        img: /assets/carousels/advanced-tutorials/building-molecules.png
-        description: Select elements from the periodic table to design small molecules
-        url: https://youtu.be/HOSVatwMjms
-      - title: Docking
-        img: /assets/carousels/advanced-tutorials/docking.png
-        description: A demonstration of docking using the Autodock Smina Plugin
-        url: https://youtu.be/KpXwyNjJsqM
-      - title: Medchem Workflow
-        img: /assets/carousels/advanced-tutorials/medchem-workflow.png
-        description: The golden path of the Medchemist Workflow
-        url: https://youtu.be/NXmhhNbMFfI
-      - title: RMSD
-        img: /assets/carousels/advanced-tutorials/rmsd.png
-        description: Learn to superimpose molecules with this structural alignment plugin
-        url: https://youtu.be/z1vab9HXglo
-      - title: Real-Time Atom Scoring
-        img: /assets/carousels/advanced-tutorials/rtas.png
-        description: Visualize individual atomic binding affinity using our plugin leveraging DSX
-        url: https://youtu.be/fe8aNK3FR-s
   - title: Nanome Youtube Channel
     numSlides: 4
     slides:

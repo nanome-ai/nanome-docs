@@ -5,17 +5,25 @@ outline: [2, 3]
 
 # Running a session in Nanome
 
-Setup is done and users can reach a workspace, in a browser or a headset. This is what to do with it: building the workspace, telling it with scenes, setting permissions, sharing it, and keeping a session comfortable once a group is in there together.
+Once users can reach a workspace, in a browser or a headset, these steps take a group from an empty workspace to a working session.
 
-Still setting up hardware? Start with [Getting Started](/getting-started).
+<IconGrid label="Session steps">
+<IconCard icon="list-check" title="Plan" href="#plan">How many users, joining from what, with how much on screen.</IconCard>
+<IconCard icon="cube-3d-sphere" title="Build" href="#build">In the web app, with a coding agent, or in a headset.</IconCard>
+<IconCard icon="box" title="Scenes" href="#scenes">Saved views the group moves through together.</IconCard>
+<IconCard icon="mood-smile" title="Comfort" href="#comfort">How much structure a headset can show.</IconCard>
+<IconCard icon="lock" title="Permissions" href="#roles">Who can change what.</IconCard>
+<IconCard icon="share" title="Share" href="#share">Get the group into the same workspace.</IconCard>
+<IconCard icon="crown" title="Run the session" href="#live">Spotlight, follow, and move the group.</IconCard>
+<IconCard icon="alert-triangle" title="Troubleshooting" href="#fixes">What to check when something feels wrong.</IconCard>
+</IconGrid>
 
-## Plan the session {#plan}
+## <AppIcon name="list-check" /> Plan the session {#plan}
 
 <p class="chapter-kicker">Step 1 of 8 · What to settle before anyone joins</p>
 
 A session runs on 3 things: how many users join, what they join from, and how
-much structure is on screen. Settling those first is what separates a session
-that works from one that crawls.
+much structure is on screen. Settle those first.
 
 ### Find the shape of your session
 
@@ -118,7 +126,7 @@ that works from one that crawls.
 
 </Chooser>
 
-### Why splitting works
+<Accordion title="Why splitting works" teaser="Past one conversation, give each group its own workspace.">
 
 A single workspace holds up while the group fits in one conversation. Past
 that, split the group and give each part its own workspace built from the same
@@ -128,6 +136,8 @@ group instead of landing in front of every user at once.
 It also keeps each session light. A workspace carrying the whole cohort is
 doing more work than several smaller ones, and the headsets feel it first.
 
+</Accordion>
+
 <Callout type="note">
 
 Prepared material is what makes a session start on time. The workspace, its
@@ -136,7 +146,7 @@ during a live session.
 
 </Callout>
 
-## Build the workspace {#build}
+## <AppIcon name="cube-3d-sphere" /> Build the workspace {#build}
 
 <p class="chapter-kicker">Step 2 of 8 · Three ways to build a workspace</p>
 
@@ -334,7 +344,7 @@ anchor to atoms instead of sitting in text.
 
 <YoutubeEmbed videoId="wdECz2HmR3o" title="Nanome v2.4 Quick Tips: Changing Molecular Representations" />
 
-## Scenes {#scenes}
+## <AppIcon name="box" /> Scenes {#scenes}
 
 <p class="chapter-kicker">Step 3 of 8 · Telling the story with scenes</p>
 
@@ -342,12 +352,11 @@ Scenes are saved views inside a workspace. Instead of showing everything at once
 and hiding the parts nobody needs yet, each scene shows one step and the group
 moves through them together.
 
-<Callout type="tip">
+<Callout type="tip" title="A new scene starts empty on purpose">
 
-**A new scene starts empty on purpose.** New scenes have fresh, unset
-representations, so each entry gets set up deliberately. Duplicating a scene
-copies it exactly, which makes a small variation cheap and a clean slate equally
-cheap.
+New scenes have fresh, unset representations, so each entry gets set up
+deliberately. Duplicating a scene copies it exactly, which makes a small
+variation cheap and a clean slate equally cheap.
 
 </Callout>
 
@@ -355,14 +364,15 @@ cheap.
 
 <vimg src="nanome-v2/v2-7/scenes-panel.webp" alt="The Scenes Panel controls, labelled" />
 
-*Scenes Panel controls. See [Scenes Panel](/nanome_v2/scenespanel).*
+*Scenes Panel controls. Every button is described on [Scenes Panel](/nanome_v2/scenespanel).*
 
 <Steps>
 
-1. Set the view, then **Create Scene**. The scene keeps the representations and
-   visibility exactly as they are at that moment.
-2. Use **Set Scene POV** so switching to the scene lands every user in the same
-   framing, and leave **Enable Scene POV** on for the session.
+1. Set the view, then <Btn icon="plus">Create Scene</Btn>. The scene keeps the
+   representations and visibility exactly as they are at that moment.
+2. Use <Btn icon="scan-eye">Set Scene POV</Btn> so switching to the scene lands
+   every user in the same framing, and leave
+   <Btn icon="perspective">Enable Scene POV</Btn> on for the session.
 3. **Duplicate Scene** for the next step, change one thing, and keep going. Each
    scene reveals a little more than the one before it.
 4. **Reorder Scenes** by dragging, and rename from **Scene Options**, so the
@@ -377,9 +387,8 @@ cheap.
 <Accordion title="Hide what the scene doesn't need" teaser="Anything left on still costs frames, even behind a surface.">
 
 A scene that shows every atom and then covers them with an opaque surface still
-renders every atom. Hide the components the scene isn't about with
-**Hide/Show Entry**, or clear the view with **Hide/Show All** and bring back
-only what belongs.
+renders every atom. Hiding what the scene isn't about is covered under
+[Keep it comfortable](#comfort).
 
 </Accordion>
 
@@ -398,9 +407,9 @@ Each user in a workspace gets a personal color, shown on their name tag and as a
 dot on whichever scene they're viewing. A glance at the panel says whether the
 group is together or scattered across scenes.
 
-<vimg src="nanome-v2/scenes-panel-multiuser-indicators.jpg" />
+<vimg src="nanome-v2/scenes-panel-multiuser-indicators.jpg" alt="Colored dots on each scene show which users are viewing it" />
 
-*Per-user color dots on each scene. See [Scenes Panel](/nanome_v2/scenespanel).*
+*Per-user color dots on each scene.*
 
 </Accordion>
 
@@ -418,13 +427,12 @@ the handful of views the discussion needs and add scenes as questions come up.
 
 <YoutubeEmbed videoId="vngy1zlFvRA" title="Nanome v2.4 Quick Tips: Working with Scenes" />
 
-## Keep it comfortable {#comfort}
+## <AppIcon name="mood-smile" /> Keep it comfortable {#comfort}
 
 <p class="chapter-kicker">Step 4 of 8 · How much structure a headset can show</p>
 
 Comfort in a headset tracks frame rate, and frame rate tracks how many atoms are
-on screen. Nanome publishes the numbers, and they are lower than most first
-workspaces assume.
+on screen.
 
 ### Comfort by shown atom count
 
@@ -475,33 +483,30 @@ looks across a single entry.
 
 <vimg src="nanome-v2/v2-7/surface-styles.webp" alt="Surface styles: Wire, Sheer, Semi and Opaque" />
 
-*Surface styles: Wire, Sheer, Semi, Opaque. See [Main Panel](/nanome_v2/mainpanel).*
+*Surface styles: Wire, Sheer, Semi, Opaque.*
 
 <vimg src="nanome-v2/v2-7/atom-representations.webp" alt="Ball & Stick, Stick, Wire and Van der Waals" />
 
-*Atomistic representations. See [Main Panel](/nanome_v2/mainpanel).*
+*Atomistic representations.*
 
 <Callout type="note" title="PCVR carries more">
 
-A PC headset carries more: PCVR stays Comfortable at 20,000 shown atoms, where a
-Quest 3 is already past its budget. Sessions that need heavy structures
-run better with the heavy views on desktop and the walkthrough in XR.
+PCVR stays Comfortable at 20,000 shown atoms, where a Quest 3 is already past
+its budget. Sessions that need heavy structures run better with the heavy views
+on desktop and the walkthrough in XR.
 
 </Callout>
 
-## Permissions {#roles}
+## <AppIcon name="lock" /> Permissions {#roles}
 
 <p class="chapter-kicker">Step 5 of 8 · Deciding who can change what</p>
 
-Permissions are set per workspace, before anyone joins. A Viewer can explore,
-spotlight, follow, and move through scenes. An Editor can change the workspace
-itself.
+Permissions are set per workspace, before anyone joins.
 
-<Callout type="tip">
+<Callout type="tip" title="Set the level before the code goes out">
 
-**Set the level before the code goes out.** A workspace's global permission
-applies to anyone who joins with the code, so deciding it first is what keeps
-prepared material intact.
+A workspace's global permission applies to anyone who joins with the code, so
+deciding it first keeps prepared material intact.
 
 </Callout>
 
@@ -541,115 +546,75 @@ being built.
 
 <vimg src="nanome-v2/v2-7/users-tab-share-dialog.webp" alt="The Share dialog" />
 
-*Users tab > Share. See [Main Panel](/nanome_v2/mainpanel#share).*
+*Users tab > Share.*
 
 <Steps>
 
-1. Open the **Users** tab and choose **Share**. The dialog shows the
-   workspace code and the global level.
+1. Open the **Users** tab and choose <Btn icon="share">Share</Btn>. The dialog
+   shows the workspace code and the global level.
 2. Set the global level to **Viewer** for a prepared workspace, or **None** to
    close it entirely.
 3. Add named users by email with their own level. The address has to match
    exactly, since the field has no autocomplete.
-4. Change one user later from the **(...)** menu next to their name, which
-   offers **Make Editor** and **Remove User**.
+4. Change one user later from the <AppIcon name="dots" /> menu next to their
+   name, which offers **Make Editor** and **Remove User**.
 
 </Steps>
 
-<Callout type="note">
-
-Give each group its own workspace when they need to change things. Prepared
-material stays as it was, and a change one group makes stops at that group
-instead of reaching every user in the session.
-
-</Callout>
-
-## Share the workspace {#share}
+## <AppIcon name="share" /> Share the workspace {#share}
 
 <p class="chapter-kicker">Step 6 of 8 · Getting the group into the same workspace</p>
 
-A workspace reaches other users 3 ways: the workspace code, an emailed invite,
-and a direct invitation to anyone in the organization who is already online.
+A workspace reaches other users 3 ways:
 
-<CardGrid :cols="3">
+<IconGrid label="Ways to share a workspace" :cols="3">
+<IconCard icon="share" title="The workspace code" href="#workspace-code">Anyone who enters it joins at the global level.</IconCard>
+<IconCard icon="mail" title="An emailed invite" href="#named-access">One address gets its own level.</IconCard>
+<IconCard icon="users" title="The org list" href="#org-list">Invite colleagues who are online, or join them.</IconCard>
+</IconGrid>
 
-<Card title="The workspace code">
+### <AppIcon name="share" /> The workspace code {#workspace-code}
 
-Every workspace has a short code. Any user who enters it joins at whatever
-global level the workspace is set to, from a browser or a headset.
-
-</Card>
-
-<Card title="An emailed invite">
-
-Named users get their own permission level by email address, which is how one
-user edits while the rest stay Viewers.
-
-</Card>
-
-<Card title="Straight from the org list">
-
-Members of the same organization who are online can be invited into the current
-workspace, or joined where they already are.
-
-</Card>
-
-</CardGrid>
-
-### Where the code lives
-
-The workspace code sits at the top of the Share dialog in the Users tab,
-next to the global permission level. It reads as 2 short blocks, like
-**AB12-CD34**, and stays with the workspace.
+Every workspace has a short code. It sits at the top of the Share dialog in the
+Users tab, next to the global permission level, reads as 2 short blocks, like
+`AB12-CD34`, and stays with the workspace. Any user who enters it joins at
+whatever global level the workspace is set to, from a browser or a headset.
 
 <Steps>
 
 1. Set the global level first. A code shared while the workspace is on **None**
    lets nobody in.
-2. Read the code out, paste it into a calendar invite, or send it in chat. Any
-   user with the code joins at the global level.
+2. Read the code out, paste it into a calendar invite, or send it in chat.
 3. In a headset, users enter it under **Join Workspace** in the Workspaces tab.
    In a browser, it goes in the same place at app.nanome.ai.
 
 </Steps>
 
-### Named access, and pulling users in
+### <AppIcon name="mail" /> Named access by email {#named-access}
 
-<CardGrid :cols="2">
+**Add people by email** in the Share dialog gives one address its own level,
+Editor or Viewer, separate from whatever the code hands out. Use it when the
+workspace should stay closed to the rest of the organization, or when one user
+needs to edit while the rest only watch.
 
-<Card title="Named access by email">
+### <AppIcon name="users" /> Users already online {#org-list}
 
-**Add people by email** in the Share dialog gives one address its own
-level, Editor or Viewer, separate from whatever the code hands out. The address
-has to match exactly, since the field has no autocomplete.
+**Users in organization** lists the members currently online.
 
-Named access is what to use when the workspace should stay closed to the rest of
-the organization, or when one user needs to edit while the rest only watch.
+<UiList label="Users in organization">
+<UiItem icon="plus" name="Invite">Invites that user into the current workspace.</UiItem>
+<UiItem icon="login" name="Join">Goes the other way, into whichever workspace they are in.</UiItem>
+</UiList>
 
-</Card>
-
-<Card title="Pulling in a user already online">
-
-**Users in organization** lists the members currently online. The **(+)** beside
-a name invites that user into the current workspace, and **Join** goes the other
-way, into whichever workspace they are in.
-
-Once a session is running, **Load for All** takes the whole group to another
-workspace together, prompting for permissions where a user has none.
-
-</Card>
-
-</CardGrid>
-
-<Callout type="note">
+<Callout type="note" title="Taking access back">
 
 Access can be pulled back at any point. The global level can drop to **None**,
-and one user can be changed or removed from the **(...)** menu beside their name
-without affecting anyone else.
+and one user can be changed or removed from the <AppIcon name="dots" /> menu
+beside their name without affecting anyone else.
 
 </Callout>
 
-## Run the session {#live}
+## <AppIcon name="crown" /> Run the session {#live}
 
 <p class="chapter-kicker">Step 7 of 8 · Spotlight, follow, and moving the group</p>
 
@@ -659,17 +624,15 @@ points where.
 
 ### Spotlight and follow
 
-<vimg src="nanome-v2/scenes-panel-spotlight-mode.jpg" />
+*Spotlighting, seen from both sides.*
 
-*Spotlighting, seen from both sides. See [Scenes Panel](/nanome_v2/scenespanel).*
+<UiList label="Spotlight and follow">
+<UiItem icon="crown" name="Spotlight Me">Makes your view the shared view. Followers see it with a crown icon.</UiItem>
+<UiItem name="Stop">Lets a follower break away.</UiItem>
+<UiItem icon="analyze-filled" name="Reset Orientation">Brings back a follower who got turned around.</UiItem>
+</UiList>
 
-**Spotlight Me** makes one view the shared view, and every follower sees it with
-a crown icon and a **Stop** button to break away. A follower who gets turned
-around has **Reset Orientation** to come back.
-
-Any user can spotlight and any user can follow, so the session moves without a
-designated presenter. Handing it over is a matter of who starts spotlighting
-next.
+<vimg src="nanome-v2/scenes-panel-spotlight-mode.jpg" alt="Spotlighting, seen by the user spotlighting and by a follower" />
 
 Pointers sit relative to the structure, so a pointer at a residue lands on that
 residue for every user, even those looking from their own angle.
@@ -680,9 +643,9 @@ residue for every user, even those looking from their own angle.
 
 <Accordion title="Turn Position Molecules off" teaser="Spotlight doesn't work properly while it's on.">
 
-**Position Molecules** moves structures independently of the workspace. The docs
-state plainly that the spotlight system will not work properly while it's on, so
-it belongs off for anything collaborative.
+**Position Molecules** moves structures independently of the workspace. The
+spotlight system will not work properly while it's on, so it belongs off for
+anything collaborative.
 
 </Accordion>
 
@@ -702,7 +665,7 @@ button for the moments between speaking.
 
 <vimg src="nanome-v2/v2-7/users-tab-annotated.webp" alt="The Users tab, labelled" />
 
-*Users tab. See [Main Panel](/nanome_v2/mainpanel).*
+*Users tab.*
 
 </Accordion>
 
@@ -724,7 +687,7 @@ they are.
 
 <YoutubeEmbed videoId="6v7xlQNzzoY" title="Nanome v2.5 Quick Tips: Invite Users & Follow from the Web" />
 
-## Troubleshooting {#fixes}
+## <AppIcon name="alert-triangle" /> Troubleshooting {#fixes}
 
 <p class="chapter-kicker">Step 8 of 8 · What to check when something feels wrong</p>
 
@@ -736,10 +699,8 @@ headsets cannot reach.
 
 <Accordion title="The headset feels slow or uncomfortable" teaser="Almost always the shown atom count, not the network.">
 
-Hide everything, then bring back only what the current scene is about. A Quest 3 is
-Comfortable at about 7,500 shown atoms and past its budget at 15,000, and atoms
-hidden behind an opaque surface still count. Keeping a surface to the pocket, or
-hiding it, buys the most frames.
+Hide everything, then bring back only what the current scene is about. Keeping a
+surface to the pocket, or hiding it, buys the most frames.
 
 [Keep it comfortable →](#comfort)
 
@@ -755,8 +716,8 @@ because structures are moving independently of the workspace all users share.
 <Accordion title="A user can't change anything" teaser="Their permission is Viewer, which is usually on purpose.">
 
 **My Permission** at the top of the Users tab shows the current level. An Editor
-or Owner can promote one user from the **(...)** menu beside their name, which is
-enough for the moment they need to change something.
+or Owner can promote one user from the <AppIcon name="dots" /> menu beside their
+name, which is enough for the moment they need to change something.
 
 </Accordion>
 

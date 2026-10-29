@@ -4,26 +4,65 @@ title: Login Screen
 
 # Login Screen
 
+Nanome opens on the login screen. It has two tabs: one for your password, and one for a code you enter on another device.
+
+<IconGrid label="Login screen">
+<IconCard icon="password" title="Password" href="#password">Your Nanome username and password.</IconCard>
+<IconCard icon="key" title="Code" href="#code">A 4-character code, entered on another device.</IconCard>
+<IconCard icon="user-plus" title="Create Account" href="#create-account">A new account, made from the headset.</IconCard>
+<IconCard icon="alert-triangle" title="Sign-in messages" href="#sign-in-messages">What went wrong, and device and license limits.</IconCard>
+</IconGrid>
+
+<vimg src="nanome-v2/v2-7/login-password.webp" alt="The Nanome XR login screen on the Password tab" />
+
+## <AppIcon name="password" /> Password {#password}
+
+Enter your Nanome username and password, then <Btn icon="login-2">Log in</Btn>.
+
+## <AppIcon name="key" /> Code {#code}
+
+The **Code** tab signs you in from another device.
+
+<vimg src="nanome-v2/v2-7/login-code.webp" alt="The Code tab with a 4-character code and the time until a new one" />
+
+<Steps>
+
+1. The headset shows a 4-character code. A new code appears every 5 minutes.
+2. Enter the code at [nanome.ai/activate](https://nanome.ai/activate), or in **Login via Device Code** on [app.nanome.ai](/nanome_web/account#login-via-device-code).
+
+</Steps>
+
+<Callout type="note" title="Accounts that sign in with a code">
+
+Accounts created with Google, Microsoft or Apple, accounts that use single sign-on (SSO), and accounts with two-factor authentication sign in with the **Code** tab.
+
+</Callout>
+
+## <AppIcon name="user-plus" /> Create Account {#create-account}
+
+**Create Account** makes a new account from the headset.
+
+<UiList label="Create Account">
+<UiItem name="Email">The account's email address.</UiItem>
+<UiItem name="Username">6 to 120 characters: lowercase letters, numbers, dots, underscores and hyphens.</UiItem>
+<UiItem name="Password">8 to 250 characters, with an uppercase letter, a lowercase letter and a symbol.</UiItem>
+</UiList>
+
 ### Video: Creating Your Account
 
 <YoutubeEmbed videoId="cB82b8xIZoY" title="Nanome v2.4 Quick Tips: Creating Your Account" />
 
-<vimg src="nanome-v2/loginscreen.jpg" />
+## <AppIcon name="info-small" /> Also on the screen {#also-on-the-screen}
 
-Nanome opens on the login screen. It has two tabs:
+<UiList label="Login screen">
+<UiItem name="Remember Me">Keeps you signed in on the headset.</UiItem>
+<UiItem name="Close">Closes the tutorial banner on the left, which helps new users get started. Show tutorial guides in the Settings tab turns it back on.</UiItem>
+<UiItem icon="wifi" name="Network status">Shows the network status.</UiItem>
+<UiItem name="Version">Shows the Nanome version.</UiItem>
+<UiItem icon="maximize" name="Passthrough">Below the login screen. On by default on headsets that support passthrough.</UiItem>
+</UiList>
 
-- **Password**: your Nanome username and password.
-- **Code**: a 4-character code for signing in from another device. The headset shows the code and asks for it to be entered at [nanome.ai/activate](https://nanome.ai/activate), or in **Login via Device Code** on [app.nanome.ai](/nanome_web/account#login-via-device-code). A new code appears every 5 minutes. **Remember Me** keeps you signed in on the headset.
-
-Accounts created with Google, Microsoft or Apple, accounts that use single sign-on (SSO), and accounts with [two-factor authentication](/home.nanome.ai/twofactorauth) sign in with the **Code** tab.
-
-**Create Account** makes a new account from the headset, with an email, a username (6 to 120 characters: lowercase letters, numbers, `.`, `_` and `-`) and a password (8 to 250 characters, with an uppercase letter, a lowercase letter and a symbol).
-
-A tutorial banner on the left helps new users get started. It can be closed, and turned back on with **Show tutorial guides** in the [Settings tab](/nanome_v2/mainpanel#settings-tab). The screen also shows the network status and the Nanome version.
-
-Below the login screen is the passthrough toggle. It's on by default on headsets that support passthrough.
-
-## Sign-in messages
+## <AppIcon name="alert-triangle" /> Sign-in messages {#sign-in-messages}
 
 Since release 2.7, sign-in errors say what went wrong, with a **Details** button that shows the error code, HTTP status and time. The messages cover:
 

@@ -9,10 +9,11 @@
 
 :root {
   /* --- Brand ------------------------------------------------------------ */
-  --n-accent: #0b7fe8;
-  --n-accent-hover: #0668bd;
-  --n-accent-soft: rgba(11, 127, 232, 0.1);
-  --n-accent-border: rgba(11, 127, 232, 0.28);
+  /* Dark enough for 4.5:1 text contrast on the light backgrounds. */
+  --n-accent: #0a6fd0;
+  --n-accent-hover: #0858a6;
+  --n-accent-soft: rgba(10, 111, 208, 0.1);
+  --n-accent-border: rgba(10, 111, 208, 0.28);
 
   /* --- Surfaces --------------------------------------------------------- */
   --n-bg: #ffffff;
@@ -31,7 +32,7 @@
   /* --- Text ------------------------------------------------------------- */
   --n-text: #0d0d0d;
   --n-text-muted: #5d5d5d;
-  --n-text-faint: #8f8f8f;
+  --n-text-faint: #6e6e73; /* 4.5:1 on the sunken surface, for teasers and meta text */
   --n-text-inverse: #ffffff;
 
   /* --- Status ----------------------------------------------------------- */

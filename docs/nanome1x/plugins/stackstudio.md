@@ -137,7 +137,7 @@ Integrating a menu created with Stack Studio into a plugin is simple:
 
 ### 1. Export the plugin menu as a JSON file
 
-<vimg src="plugins-page/pluginator/export.JPG" />
+<vimg src="plugins-page/pluginator/export.jpg" />
 
 Open the file dropdown menu and select [Export].
 

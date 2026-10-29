@@ -2,10 +2,12 @@
 title: Tips
 ---
 
-# Helpful Tips for Working in Nanome v2
+# Helpful Tips for Working in Nanome XR
 
-- *‘Position Molecules’ should only be used temporarily and turned off.* If it’s on, then the spotlight system will not work properly.
+Three controls that keep everyone's view and the spotlight lined up.
 
-- *Use **Recenter Self** to reset your viewing position.* It's in the Scene settings (⚙) of the [Scenes Panel](/nanome_v2/scenespanel#controls), and resets your position as the scene viewing origin.
-
-- *On Meta Quest, the Meta button also repositions the boundary for each user before a session.* If the spotlight is off-center for someone, they can use the Meta button or **Recenter Self**.
+<UiList label="Tips">
+<UiItem name="Position Molecules">Turn it on only for a moment, then off again. While it's on, the spotlight system won't work properly.</UiItem>
+<UiItem icon="target" name="Recenter Self" href="/nanome_v2/scenespanel#scene-settings">In the Scene settings of the Scenes Panel: resets your position as the scene viewing origin.</UiItem>
+<UiItem name="Meta button">On Meta Quest, it also repositions the boundary for each user before a session. If the spotlight is off-center for someone, they can use the Meta button or Recenter Self.</UiItem>
+</UiList>

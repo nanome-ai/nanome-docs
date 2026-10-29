@@ -4,9 +4,12 @@ title: Account Tiers
 
 # Account Tiers
 
-## Personal
+Each tier includes everything in the one before it.
 
-[Download](https://home.nanome.ai/setup)
+<CardGrid :cols="3">
+
+<Card title="Personal" href="https://home.nanome.ai/setup" cta="Download">
+
 - Load structures from RCSB
 - Host public workspaces
 - Join public workspaces
@@ -14,10 +17,10 @@ title: Account Tiers
 - Basic molecular views
 - Basic editing features
 
-## Academic
+</Card>
 
-[Purchase](https://home.nanome.ai/purchase?plan=early-adopter-edu)
-- Includes everything in Personal
+<Card title="Academic" meta="Everything in Personal, plus:" href="https://home.nanome.ai/purchase?plan=early-adopter-edu" cta="Purchase">
+
 - Load from PubChem, Drugbank
 - Load from your local computer
 - Host private workspaces with passwords
@@ -30,10 +33,10 @@ title: Account Tiers
 - Electron Density Map Support (CCP4 & DSN6)
 - Load unlimited molecules
 
-## Enterprise
+</Card>
 
-[Request a Quote](https://home.nanome.ai/quote)
-- Includes everything in Academic
+<Card title="Enterprise" meta="Everything in Academic, plus:" href="https://home.nanome.ai/quote" cta="Request a Quote">
+
 - Private server deployment
 - Plugin server deployment
 - Plugin integration support
@@ -41,3 +44,7 @@ title: Account Tiers
 - Internal database integration
 - Custom development
 - Premium customer support
+
+</Card>
+
+</CardGrid>

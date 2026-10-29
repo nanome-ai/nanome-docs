@@ -191,7 +191,9 @@ const showAside = computed(() => hasAside.value && !isHome.value)
 
 <style>
 /* The view-transition cross-fade needs the old and new snapshots stacked
-   rather than blended, so the expanding circle reads as a wipe. */
+   rather than blended, so the expanding circle reads as a wipe. The new
+   theme always sits on top, because the circle that grows is on the new
+   snapshot; that keeps the wipe the same in both directions. */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
@@ -204,13 +206,5 @@ const showAside = computed(() => hasAside.value && !isHome.value)
 
 ::view-transition-new(root) {
   z-index: 2;
-}
-
-.dark::view-transition-old(root) {
-  z-index: 2;
-}
-
-.dark::view-transition-new(root) {
-  z-index: 1;
 }
 </style>

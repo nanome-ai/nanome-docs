@@ -2,16 +2,22 @@
 title: Get a Copy of Your Invoice
 ---
 
-# How to Get a Copy of Your Receipt/Invoice
+# Get a copy of your receipt or invoice
 
-## Step 1: Log into your account at https://home.nanome.ai
+Your invoices are under **Billing** at [home.nanome.ai](https://home.nanome.ai).
 
-<vimg src="nanome-page/Step1.png" />
+<Steps>
 
-## Step 2: On the dashboard, navigate to the left hand side and click on “Billing”
+1. Log in to your account at home.nanome.ai.
 
-<vimg src="nanome-page/Step2.png" />
+   <vimg src="nanome-page/Step1.png" alt="The home.nanome.ai login page" />
 
-## Step 3: Now under “Invoices”, click the cloud button to view your invoice!
+2. On the dashboard, choose **Billing** on the left.
 
-<vimg src="nanome-page/Step3.png" />
+   <vimg src="nanome-page/Step2.png" alt="Billing in the dashboard's left menu" />
+
+3. Under **Invoices**, click the cloud button to view your invoice.
+
+   <vimg src="nanome-page/Step3.png" alt="The cloud button beside an invoice" />
+
+</Steps>

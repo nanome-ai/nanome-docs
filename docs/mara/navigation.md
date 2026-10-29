@@ -2,66 +2,80 @@
 title: Navigation
 ---
 
-# Navigating the MARA Environment
+# Navigating MARA
 
-## Main Page
+MARA's main page shows the latest examples and suggested prompts to try. The menu on the left leads to everything else.
 
-<vimg src="mara/mara_main_page.png" />
+<UiList label="Navigation menu">
+<UiItem icon="messages" name="Chat History" href="#chat-history">A record of your previous chats.</UiItem>
+<UiItem icon="triangle-square-circle" name="Integrations" href="#integrations">All, custom and installed integrations.</UiItem>
+<UiItem icon="tool" name="Tools" href="#tools">Every tool in MARA, and custom tools.</UiItem>
+<UiItem icon="file-info" name="Knowledge" href="#knowledge">Org knowledge, base knowledge and queries.</UiItem>
+<UiItem icon="route" name="Workflows" href="#workflows">The workflows you've created.</UiItem>
+<UiItem name="Workspaces" href="#workspaces">Create and manage Nanome v2 workspaces. For XR only.</UiItem>
+<UiItem name="Quick Drop" href="#quick-drop">Upload structures and session files into a Nanome v2 workspace. For XR only.</UiItem>
+<UiItem name="Feedback and Bugs" href="#feedback-and-bugs">Send feedback or report a bug.</UiItem>
+<UiItem name="Settings" href="#settings">The API keys you've generated.</UiItem>
+</UiList>
 
-This is the MARA App Landing page, here you can see the latest examples or suggested prompts for you to try out for yourself.
+<vimg src="mara/mara_main_page.png" alt="MARA's main page with example prompts" />
 
-## Left Navigation Menu
+<vimg src="mara/left_navigation_menu.png" alt="MARA's navigation menu" />
 
-<vimg src="mara/left_navigation_menu.png" />
-
-### Chat History
+## <AppIcon name="messages" /> Chat History {#chat-history}
 
 MARA keeps a record of your previous chats, so you can refer back to them later.
 
-<vimg src="mara/chat_history.png" />
+<vimg src="mara/chat_history.png" alt="Chat History" />
 
-### Integrations
+## <AppIcon name="triangle-square-circle" /> Integrations {#integrations}
 
-<vimg src="mara/integrations.png" />
+<vimg src="mara/integrations.png" alt="The Integrations page with the All, Custom and Installed tabs" />
 
-### Tools
+## <AppIcon name="tool" /> Tools {#tools}
 
-The Tools sections display all of the tools currently available in MARA. You can sort by All or Custom tools, or you can query the list to see if a tool is available.
+Every tool currently available in MARA.
 
-You can currently create custom tools using Python snippets, HTML endpoints, or SQL queries. For more information on tool creation, see [here.](https://nanome.ai/blog/introduction-to-mara-tool-creation/)
+<UiList label="Tools tabs">
+<UiItem name="All">Every tool.</UiItem>
+<UiItem name="Custom">Custom tools only.</UiItem>
+<UiItem name="Query">Query the list to see if a tool is available.</UiItem>
+</UiList>
 
-<vimg src="mara/tools_all.png" />
+<vimg src="mara/tools_all.png" alt="The Tools page" />
 
-### Knowledge
+You can create custom tools from Python snippets, HTML endpoints or SQL queries. Nanome's blog has an [introduction to MARA tool creation](https://nanome.ai/blog/introduction-to-mara-tool-creation/).
 
-<vimg src="mara/knowledge.png" />
+## <AppIcon name="file-info" /> Knowledge {#knowledge}
 
-### Workflows
+<vimg src="mara/knowledge.png" alt="The Knowledge page with the Org knowledge, Base knowledge and Query tabs" />
 
-You can view workflows that you've created here. A workflow is a sequence of tools that you define.
+## <AppIcon name="route" /> Workflows {#workflows}
 
-<vimg src="mara/workflows.png" />
+The workflows you've created. A workflow is a sequence of tools that you define.
 
-### Workspace Management (for use with XR only)
+<vimg src="mara/workflows.png" alt="The Workflows page" />
 
-You can create and manage Nanome v2 workspaces here.
+## <AppIcon name="device-vision-pro" /> Workspaces (XR only) {#workspaces}
 
-<vimg src="mara/v2_workspaces.png" />
+Create and manage Nanome v2 workspaces.
 
-### Quick Drop (for use with XR only)
+<vimg src="mara/v2_workspaces.png" alt="Nanome v2 workspaces in MARA" />
 
-The Quick Drop area allows you to easily upload structures and session files into a Nanome v2 workspace.
+## <AppIcon name="upload" /> Quick Drop (XR only) {#quick-drop}
 
-<vimg src="mara/v2_quickdrop.png" />
+Upload structures and session files into a Nanome v2 workspace.
 
-### Feedback and Bugs
+<vimg src="mara/v2_quickdrop.png" alt="The Quick Drop area" />
 
-If you have any feedback on MARA or want to report a bug, please submit it to us using this form. We value your input!
+## <AppIcon name="bug" /> Feedback and Bugs {#feedback-and-bugs}
 
-<vimg src="mara/feedback_bugs.png" />
+Send us feedback on MARA or report a bug with this form. We value your input.
 
-### Settings
+<vimg src="mara/feedback_bugs.png" alt="The Feedback and Bugs form" />
 
-In this section, you can see API keys that you've generated.
+## <AppIcon name="settings" /> Settings {#settings}
 
-<vimg src="mara/settings.png" />
+The API keys you've generated.
+
+<vimg src="mara/settings.png" alt="Settings with API Keys" />

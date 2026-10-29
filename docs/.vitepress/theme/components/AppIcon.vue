@@ -1,10 +1,14 @@
 <script setup>
 /**
- * An icon from the Nanome app, drawn inline so it follows the text colour.
- * `button` draws it the way the app draws its round tool buttons.
+ * An icon from the Nanome apps, in the text colour.
+ *
+ * The glyphs are Tabler icons saved one per file in public/assets/icons (see
+ * the LICENSE there), so a page only downloads the icons it shows. `name` is
+ * the Tabler name, the same one the app uses. `button` draws the icon the way
+ * the apps draw a round icon button.
  */
 import { computed } from 'vue'
-import { appIcons } from './appIcons.js'
+import { withBase } from 'vitepress'
 
 const props = defineProps({
   name: { type: String, required: true },
@@ -15,7 +19,9 @@ const props = defineProps({
   label: { type: String, default: '' },
 })
 
-const path = computed(() => appIcons[props.name] || '')
+const glyph = computed(() => ({
+  '--n-appicon-src': `url("${withBase(`/assets/icons/${props.name}.svg`)}")`,
+}))
 </script>
 
 <template>
@@ -27,9 +33,7 @@ const path = computed(() => appIcons[props.name] || '')
     :aria-label="label || undefined"
     :aria-hidden="label ? undefined : 'true'"
   >
-    <svg viewBox="0 0 1000 1000" focusable="false">
-      <path :d="path" fill="currentColor" />
-    </svg>
+    <span class="n-appicon__glyph" :style="glyph" />
   </span>
 </template>
 
@@ -44,9 +48,13 @@ const path = computed(() => appIcons[props.name] || '')
   vertical-align: -0.2em;
 }
 
-.n-appicon svg {
+/* The SVG is a mask, so the glyph takes the current text colour in either theme. */
+.n-appicon__glyph {
   width: 100%;
   height: 100%;
+  background: currentColor;
+  -webkit-mask: var(--n-appicon-src) center / contain no-repeat;
+  mask: var(--n-appicon-src) center / contain no-repeat;
 }
 
 .n-appicon.is-button {

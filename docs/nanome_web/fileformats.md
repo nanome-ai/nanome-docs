@@ -2,11 +2,9 @@
 title: Supported File Formats
 ---
 
-# Supported File Formats (Nanome v2)
+# Supported File Formats
 
-This page lists the file formats supported in Nanome v2, current through 2.7.1. Per-release changes are in the [version history](#version-history) below.
-
-All parsing is server-side, and the format is detected by file extension.
+Current through release 2.7.1. All parsing is server-side, and the format is detected by file extension.
 
 Capability key: 👁 view static · ▶️ animates (substrate noted) · ✏️ editable · 💾 exportable · 🆕 new or changed in 2.7 · † loads via a MARA tool, not directly in a workspace (see below).
 
@@ -25,7 +23,11 @@ Small molecule and macromolecule formats.
 | **PQR** | `.pqr` | 👁 ✏️ (charges and radii are discarded) | — | — |
 | **PDBQT** | `.pdbqt` | 👁 (charges, occupancy and B-factors are discarded, the torsion tree is ignored, and bonds are inferred) | ▶️ model-index (each MODEL) | — |
 
-> **† Requires a MARA tool.** A Nanome workspace on its own cannot load `.bcif`, `.mcif`, `.sd`, `.mol`, or `.mol2` directly. Files such as these — and others — require a [MARA](/mara/overview) tool that supports them, which loads or converts the file into your workspace. The rest of the structure formats above load directly.
+<Callout type="note" title="† Requires a MARA tool">
+
+A Nanome workspace on its own can't load `.bcif`, `.mcif`, `.sd`, `.mol` or `.mol2` directly. These and some other files need a MARA tool that supports them, which loads or converts the file into your workspace. The rest of the structure formats above load directly.
+
+</Callout>
 
 ## Session and proprietary
 
@@ -36,9 +38,9 @@ Small molecule and macromolecule formats.
 | **MOE** | `.moe` | 👁 | CCG's Molecular Operating Environment. |
 | **PSE (PyMOL session)** | `.pse` | 👁 | QM/MM link atoms can break loading. |
 
-## Trajectory / Molecular Dynamics
+## Trajectory / Molecular Dynamics {#trajectory-molecular-dynamics}
 
-Frame-trajectory formats. See [How animation works](#how-animation-works) for the difference between a frame trajectory and a multi-model file.
+Frame-trajectory formats.
 
 | Format | Extensions | Import | Animates? | Limits |
 |--------|------------|--------|-----------|--------|
@@ -57,7 +59,7 @@ Frame-trajectory formats. See [How animation works](#how-animation-works) for th
 
 Molecule export is single-frame, to **PDB, SDF, or SMILES**. PDB and SDF are offered on every export surface. SMILES (new in 2.6.0) is produced through the WorkspaceAPI/MCP `export_entry` route, and is not yet a download option in the client or MARA. The WorkspaceAPI also exports sequences as FASTA.
 
-Since 2.7.0, **Export analysis** in [Nanome Web](/nanome_web/home#workspaces) downloads a workspace's chemical interactions, measurements and minimization history as a ZIP of CSV files.
+Since 2.7.0, **Export analysis** in Nanome Web downloads a workspace's chemical interactions, measurements and minimization history as a ZIP of CSV files.
 
 ## Import and export surfaces
 
@@ -72,10 +74,10 @@ Every surface funnels into the same server-side parser.
 
 ## Not supported
 
-- **Electron density maps** — CCP4, MRC, and DSN6 are not supported.
+- **Electron density maps**: CCP4, MRC and DSN6 are not supported.
 - **LAMMPS** native trajectories (`.lammpstrj` / dump) are not read directly. LAMMPS can write DCD or XTC, which attach to a structure with the same atom count.
-- **No workspace-file export** — workspaces live in the database; there is no portable workspace file.
-- **No trajectory export** — export is single-frame only.
+- **No workspace-file export**: workspaces live in the database, and there's no portable workspace file.
+- **No trajectory export**: export is single-frame only.
 - **No export** for mmCIF, MAE, MOE, or PSE (import-only).
 - **Surfaces are held during trajectory playback.** Surface controls are disabled while frames play, and changes apply when playback stops.
 
@@ -90,11 +92,9 @@ Both animation types are driven by the same play, pause, and scrub controls, but
 
 There's no frame limit. An attached trajectory file can be up to **200 MB**, and every frame's atom count must equal the host model's.
 
-A helpful way to keep the terms straight:
-
-- **Multi-entry** — several separate structures in the workspace (they don't animate together).
-- **Multi-model** — one entry holding many models, each a full topology; animates by stepping through models.
-- **Multi-frame** — one model with many coordinate frames; animates by stepping through frames.
+- **Multi-entry**: several separate structures in the workspace (they don't animate together).
+- **Multi-model**: one entry holding many models, each a full topology. It animates by stepping through models.
+- **Multi-frame**: one model with many coordinate frames. It animates by stepping through frames.
 
 ## Version history
 
@@ -108,6 +108,6 @@ Each row names the format or IO capability that changed in that release.
 | 2.3.0 | **PDB export** (`.pdb`); mmCIF parser refactor; multi-model annotations |
 | 2.4.x | **XYZ import** (`.xyz`); component export as PDB / SDF; **model-index playback** for multi-model files |
 | 2.5.0 | **MAE / PSE / MOE** as entries; **PQR import** (`.pqr`); **frame-trajectory playback** (GRO / XTC / TRR / DCD); **DX map** overlay |
-| 2.5.1 | WebGL instanced rendering — real-time playback of 20k+ atom MD trajectories |
+| 2.5.1 | WebGL instanced rendering: real-time playback of 20k+ atom MD trajectories |
 | **2.6.0** | **PDBQT import** (`.pdbqt` → PDB, charges dropped); **SMILES export** (`.smi`, via MCP `export_entry`); **multi-block XYZ playback fixed**; frame-trajectory cap removed; attached trajectory files limited to 200 MB |
 | **2.7.0** | **CCD ligand bonds** fetched from the RCSB instead of PDBe, for PDB and mmCIF files that carry a PDB ID; CCD bonds flagged as metal coordination no longer drawn as covalent bonds; covalently bound ligands keep their protein bond, and modified residues with an attached group are split; faster DNA/RNA loading with corrected bonds and charges; **GRO** loads much faster, splits into chains where residue numbering restarts, and keeps ACE/NME/NH2 caps in the protein; faster, smaller MD trajectories; **Export analysis** ZIP of CSVs; file load errors give a short readable message and, where the parser can give one, a line number |

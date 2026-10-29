@@ -8,11 +8,16 @@ Comments, added in release 2.7, are threaded discussions stored inside a workspa
 
 <DocVideo src="v2-7/comments.mp4" caption="Comments in Nanome Web, from the v2.7 release video. The Agent tag in the video is for illustration." />
 
-## The Comments tab
+## <AppIcon name="message" /> The Comments tab {#the-comments-tab}
 
-The **Comments** tab in the workspace panel lists the workspace's comments. The filters at the top show **All** comments, only those on the **Workspace**, or only those on the **Current Scene**.
+The **Comments** tab in the workspace panel lists the workspace's comments.
 
-The box at the bottom, **Comment on this workspace**, posts a new comment.
+<UiList label="Comments tab">
+<UiItem name="All">Shows all comments.</UiItem>
+<UiItem name="Workspace">Shows only the comments on the workspace.</UiItem>
+<UiItem name="Current Scene">Shows only the comments on the current scene.</UiItem>
+<UiItem name="Comment on this workspace">The box at the bottom: posts a new comment.</UiItem>
+</UiList>
 
 <vimg src="nanome-web/comments-tab.webp" alt="The Comments tab" />
 
@@ -25,9 +30,9 @@ The box at the bottom, **Comment on this workspace**, posts a new comment.
 
 When atoms are selected in the viewer, the comment box shows an **Anchor to** chip for them, and the new comment is attached to those atoms.
 
-## Adding a comment from the viewer
+## <AppIcon name="message" /> Adding a comment from the viewer {#adding-a-comment-from-the-viewer}
 
-The **Add a comment** button on the viewer's tool rail starts a comment from the 3D view. See [Workspace View](/nanome_web/workspace#tool-rail).
+The <Btn icon="message">Add a comment</Btn> button on the viewer's tool rail starts a comment from the 3D view.
 
 ## Unread comments
 
