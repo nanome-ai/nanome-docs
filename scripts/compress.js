@@ -27,7 +27,7 @@ const compressedDir = path.join(__dirname, '../docs/public/assets/compressed')
 const manifestFile = path.join(__dirname, '../docs/.vitepress/theme/image-variants.json')
 const widthsFile = path.join(__dirname, '../docs/.vitepress/theme/image-widths.json')
 
-const HIDPI = /^(nanome-web|nanome-v2\/v2-7)\//
+const HIDPI = /^(nanome-web|nanome-v2\/v2-7|home-nanome)\//
 const MAX_WIDTH = 1600
 const QUALITY = 80
 const force = process.argv.includes('--force')

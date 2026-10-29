@@ -14,11 +14,11 @@ You assign your licenses to people, and take them back, at [home.nanome.ai](http
 
 2. On the dashboard, choose **Licenses** on the left.
 
-   <vimg src="nanome-page/Licenses1.png" alt="Licenses in the dashboard's left menu" />
+   <vimg src="home-nanome/dashboard-menu.webp" alt="Licenses in the dashboard's left menu" />
 
 3. Under **Licenses**, choose **Assign Users** to start managing licenses.
 
-   <vimg src="nanome-page/Licenses2.png" alt="The Assign Users button" />
+   <vimg src="home-nanome/licenses-owned.webp" alt="The Owned licenses table, with Assign Users at the top right" />
 
 4. Assign or unassign licenses (below), then choose **Done** to finalize the changes.
 

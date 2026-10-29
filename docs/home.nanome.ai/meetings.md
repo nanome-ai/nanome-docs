@@ -14,17 +14,17 @@ At home.nanome.ai you can schedule a meeting for later, or make a quick link for
 
 2. On the dashboard, choose **Meetings** on the left.
 
-   <vimg src="nanome-page/dashboard-go-to-meetings.png" alt="Meetings in the dashboard's left menu" />
+   <vimg src="home-nanome/dashboard-menu.webp" alt="Meetings in the dashboard's left menu" />
 
 3. Choose **Create One** in the section you need: **Meetings** to schedule a meeting for later, or **Quick Links** to set up a meeting link.
 
-   <vimg src="nanome-page/meetings-section.png" alt="The Meetings and Quick Links sections" />
+   <vimg src="home-nanome/meetings.webp" alt="The Meetings and Quick Links sections, each with Create One" />
 
 </Steps>
 
 You can also start a meeting with **Schedule meeting** at the top right of the dashboard.
 
-<vimg src="nanome-page/dashboard-schedule-meetings-button.png" alt="The Schedule meeting button on the dashboard" />
+<vimg src="home-nanome/dashboard-buttons.webp" alt="Authenticate Device and Schedule meeting at the top right of the dashboard" />
 
 ## <AppIcon name="calendar" /> Scheduled meetings {#scheduled-meetings}
 

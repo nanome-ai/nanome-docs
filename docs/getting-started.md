@@ -829,7 +829,7 @@ authentication.
 
 </CardGrid>
 
-<vimg src="setup/accounts/enable-2fa.jpg" alt="Two-factor authentication under Account Settings, Security, at home.nanome.ai" />
+<vimg src="home-nanome/account-security.webp" alt="Two-factor authentication under Account Settings, Security, at home.nanome.ai" />
 
 *Account Settings > Security.*
 
@@ -870,7 +870,7 @@ An admin assigns licenses in home.nanome.ai under **Licenses** >
 **Assign Users**, using each user's account email. The license activates once
 that user confirms the email Nanome sends.
 
-<vimg src="setup/accounts/assign-licenses.jpg" alt="Licenses, Assign Users at home.nanome.ai" />
+<vimg src="home-nanome/licenses-owned.webp" alt="The Owned licenses table, with Assign Users at the top right, at home.nanome.ai" />
 
 *Licenses > Assign Users. Step by step: [Manage Licenses](/home.nanome.ai/licenses).*
 

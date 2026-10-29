@@ -10,11 +10,11 @@ With 2FA on, you enter a 6-digit code from an authenticator app every time you l
 
 1. Log in to your Nanome account at [home.nanome.ai](https://home.nanome.ai) and open **Account Settings**.
 
-   <vimg src="nanome-page/account-settings.png" alt="Account Settings at home.nanome.ai" />
+   <vimg src="home-nanome/account-details.webp" alt="Account Details on the Account Settings page at home.nanome.ai" />
 
 2. In the **Security** section, choose **Enable 2FA**.
 
-   <vimg src="nanome-page/enable2fa.png" alt="The Enable 2FA button in the Security section" />
+   <vimg src="home-nanome/account-security.webp" alt="The Enable 2FA button in the Security section" />
 
 3. Scan the QR code with your authenticator app, then enter a 6-digit code to confirm. Download the recovery codes too.
 
