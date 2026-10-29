@@ -53,7 +53,3 @@ MARA brings traditional databases, experimental data and analysis tools together
 </Accordion>
 
 </AccordionGroup>
-
-## <AppIcon name="building" /> Getting access {#getting-access}
-
-MARA is available in closed beta partnerships for pharmaceutical and biotech companies. Enterprise deployments can be customized and integrated to fit an organization's scientific environment. To explore it, [contact us](/help/contact).
