@@ -14,7 +14,7 @@ The **Comments** tab in the workspace panel lists the workspace's comments. The 
 
 The box at the bottom, **Comment on this workspace**, posts a new comment.
 
-<vimg src="nanome-web/comments-tab.jpg" />
+<vimg src="nanome-web/comments-tab.webp" alt="The Comments tab" />
 
 ## What a comment can hold
 

@@ -10,7 +10,7 @@ title: Scenes Panel
 
 The Scenes Panel sits in the left sidebar, beside the [Main Panel](/nanome_v2/mainpanel). A scene is a saved view of the workspace: its components, annotations, molecule positions and point of view. A workspace can hold up to 50 scenes.
 
-<vimg src="nanome-v2/v2-7/left-sidebar.jpg" />
+<vimg src="nanome-v2/v2-7/scenes-panel.webp" alt="The left sidebar with the Scenes Panel controls labelled" />
 
 ## Workspace header
 
@@ -27,7 +27,7 @@ The top of the sidebar shows the workspace name and two icons:
 - **Play scenes**: plays the scenes, with their recordings.
 - **(=)**: drag to reorder scenes.
 
-<vimg src="nanome-v2/v2-7/scenes-settings.jpg" />
+<vimg src="nanome-v2/v2-7/scenes-settings.webp" alt="The scene settings menu" />
 
 Each scene's **(...)** menu has:
 
@@ -38,7 +38,7 @@ Each scene's **(...)** menu has:
 - **Add Recording**: records a presentation in this scene. See [Recording a scene](#recording-a-scene).
 - **Delete recording**
 
-<vimg src="nanome-v2/v2-7/scenes-more-options.jpg" />
+<vimg src="nanome-v2/v2-7/scenes-more-options.webp" alt="A scene's More options menu" />
 
 ## Recording a scene
 

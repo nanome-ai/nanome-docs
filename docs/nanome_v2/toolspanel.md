@@ -4,23 +4,31 @@ title: Tools Panel
 
 # Tools Panel
 
-The Tools Panel is the column of buttons on the right side of the Main Panel. Choosing a tool changes what the controller does in 3D and opens that tool's panel. From top to bottom:
+The Tools Panel is the column of buttons on the right side of the Main Panel. Choosing a tool changes what the controller does in 3D and opens that tool's panel. The tools, from top to bottom:
 
-- **Pointer**: hover over and select residues and atoms.
-- **Selection Tool**: build a selection by clicking or dragging over atoms.
-- **Measurement Tool**: measure distances, angles and dihedrals.
-- **Comments**: comments, text notes and sound notes. See [Comments & Annotations](/nanome_v2/comments).
-- **Interactions Tool**: browse, pin and label the interactions in the workspace.
-- **Builder Tool**: build and edit ligands, and minimize them, alone or in a binding pocket.
-- **Torsion Tool**: rotate bonds and see torsional strain.
-- **Residue Editor**: mutate residues and choose side-chain rotamers.
-- **MARA Tools**: run MARA tools from the headset.
+<ToolGrid>
+  <ToolLink icon="droplet" title="Pointer" href="#pointer">Hover over and select residues and atoms.</ToolLink>
+  <ToolLink icon="lasso" title="Selection Tool" href="#selection-tool">Build a selection by clicking or dragging over atoms.</ToolLink>
+  <ToolLink icon="ruler-2" title="Measurement Tool" href="#measurement-tool">Measure distances, angles and dihedrals.</ToolLink>
+  <ToolLink icon="message" title="Comments" href="#comments">Comments, text notes and sound notes.</ToolLink>
+  <ToolLink icon="link" title="Interactions Tool" href="#interactions-tool">Browse, pin and label the interactions in the workspace.</ToolLink>
+  <ToolLink icon="hexagon-plus-2" title="Builder Tool" href="#builder-tool">Build and edit ligands, and minimize them, alone or in a binding pocket.</ToolLink>
+  <ToolLink icon="rotate-360" title="Torsion Tool" href="#torsion-tool">Rotate bonds and see torsional strain.</ToolLink>
+  <ToolLink icon="arrow-rotary-first-left" title="Residue Editor" href="#residue-editor">Mutate residues and choose side-chain rotamers.</ToolLink>
+  <ToolLink icon="tool" title="MARA Tools" href="#mara-tools">Run MARA tools from the headset.</ToolLink>
+</ToolGrid>
 
-Below them are **Load Structure** (load a PDB entry from the RCSB by its code), **Open MARA** and **Report a problem**.
+Below the tools are three more buttons:
+
+<ToolGrid>
+  <ToolLink icon="download" title="Load Structure" href="#load-structure">Load a PDB entry from the RCSB by its code.</ToolLink>
+  <ToolLink icon="sparkles" title="Open MARA" href="/mara/overview">Talk to MARA, Nanome's AI assistant.</ToolLink>
+  <ToolLink icon="bug" title="Report a problem" href="#report-a-problem">Send a bug report to Nanome.</ToolLink>
+</ToolGrid>
 
 Viewers can use the Pointer and the Selection Tool, and can post comments, though the Comments tool's Text, Sound and Delete modes need Editor access. The other tools, Load Structure and Open MARA need Editor access too.
 
-## Pointer
+## <AppIcon name="droplet" /> Pointer {#pointer}
 
 The Pointer is the default tool. It highlights whole residues as it passes over them, and a trigger pull adds the hovered residue to the selection, or removes it. Pointing at empty space and pulling the trigger clears the selection.
 
@@ -28,9 +36,9 @@ Pointing at an interaction, a measurement or a text note shows a tooltip with it
 
 The off-hand controller always works as a pointer for hovering and selecting, whatever tool the main hand holds.
 
-## Selection Tool
+## <AppIcon name="lasso" /> Selection Tool {#selection-tool}
 
-<vimg src="nanome-v2/v2-7/tool-selection.jpg" />
+<vimg src="nanome-v2/v2-7/tool-selection.webp" alt="The Selection Tool panel" />
 
 The Selection Tool selects by clicking on atoms, or by dragging over them. The three buttons at the top set what a click picks: a **chain**, a **residue** or an **atom**.
 
@@ -41,35 +49,35 @@ The panel counts the entries, chains, residues and atoms in the selection, and l
 - **Clear**: clears the selection.
 - **Create**: creates a component from the selection.
 
-## Measurement Tool
+## <AppIcon name="ruler-2" /> Measurement Tool {#measurement-tool}
 
-<vimg src="nanome-v2/v2-7/tool-measurement.jpg" />
+<vimg src="nanome-v2/v2-7/tool-measurement.webp" alt="The Measurement Tool panel" />
 
 The Measurement Tool measures between atoms picked in 3D. Its modes are **Distance** (2 atoms, in Å), **Angle** (3 atoms, measured at the second atom, in degrees), **Dihedral** (4 atoms, the torsion around the axis from atom 2 to atom 3, in degrees) and **Delete**, which removes measurements by clicking them. Dihedral angles show from 0° to 180° without a sign, so torsions of −60° and +60° both read 60°.
 
 Each measurement is listed in the panel, with buttons to zoom to it and to delete it. Hovering a row highlights the measurement in 3D.
 
-<vimg src="nanome-v2/measurement-tool-types.jpg" />
+<vimg src="nanome-v2/v2-7/measurement-types.webp" alt="A distance, a dihedral and an angle measured on the 1KV2 ligand" />
 
-## Comments
+## <AppIcon name="message" /> Comments {#comments}
 
-<vimg src="nanome-v2/v2-7/tool-comments.jpg" />
+<vimg src="nanome-v2/v2-7/tool-comments.webp" alt="The Comments tool panel" />
 
 The Comments tool holds the workspace's comments and its text and sound notes. Its modes are **Text**, **Sound** and **Delete**. It's covered on [Comments & Annotations](/nanome_v2/comments).
 
-## Interactions Tool
+## <AppIcon name="link" /> Interactions Tool {#interactions-tool}
 
-<vimg src="nanome-v2/v2-7/tool-interactions.jpg" />
+<vimg src="nanome-v2/v2-7/tool-interactions.webp" alt="The Interactions Tool listing hydrogen bonds in 1KV2" />
 
-The Interactions Tool lists the interactions in the workspace, grouped by entry and interaction type. Each row names the two atoms, such as `A'SER'133:N—A'50D'501:F21`. The tabs show **Visible** interactions, **Pinned** ones, or **All**.
+The Interactions Tool lists the interactions in the workspace, grouped by entry and interaction type. Each row names the two atoms, such as `A'MET'109:N—A'B96'391:O47`. The tabs show **Visible** interactions, **Pinned** ones, or **All**.
 
 Each row has a button to zoom to the interaction and a menu with **Pin**. For a pinned interaction, the menu has **Unpin**, **Label**, and **Show Label** or **Hide Label**. Hovering a row highlights the interaction in 3D. Interaction types and how they're detected are on the [Main Panel](/nanome_v2/mainpanel#interactions) page.
 
-## Builder Tool
+## <AppIcon name="hexagon-plus-2" /> Builder Tool {#builder-tool}
 
 <DocVideo src="v2-7/builder-minimization-settings.mp4" caption="Auto relax and the minimization settings in the Builder Tool, from the v2.7 release." />
 
-<vimg src="nanome-v2/v2-7/tool-builder.jpg" />
+<vimg src="nanome-v2/v2-7/tool-builder.webp" alt="The Builder Tool panel before a ligand is picked" />
 
 The Builder Tool builds new ligands and edits existing ones. On opening, the panel reads **Select a ligand in 3D space or use the list below to edit**: picking a ligand in 3D or in the list opens it for editing, and **Create New** starts a new one. A long press, shown as **Hold to build new ligand**, also starts one.
 
@@ -80,7 +88,9 @@ The Builder Tool builds new ligands and edits existing ones. On opening, the pan
 - **Bond**: clicking two atoms bonds them, and clicking a bond changes its order.
 - **Delete**: clicking atoms or bonds deletes them.
 
-<vimg src="nanome-v2/builder-tool-group-categories.jpg" />
+<vimg src="nanome-v2/v2-7/builder-edit.webp" alt="The Builder Tool editing a ligand, with its controls labelled" />
+
+<vimg src="nanome-v2/v2-7/builder-categories.webp" alt="The six fragment categories in the Builder Tool" />
 
 ### Attachment points
 
@@ -92,7 +102,7 @@ Since release 2.7, each atom offers attachment points that follow its valence an
 
 ### Minimize
 
-<vimg src="nanome-v2/v2-7/builder-minimization-settings.jpg" />
+<vimg src="nanome-v2/v2-7/builder-minimization-settings.webp" alt="The minimization settings with no receptor" />
 
 **Minimize** runs a force-field minimization on the ligand. The **Minimization settings** button (the gear) opens:
 
@@ -113,7 +123,7 @@ In vacuum, the energy is the force field's conformational energy for the ligand.
 
 <DocVideo src="v2-7/pocket-minimization.mp4" caption="Pocket minimization in Nanome XR, from the v2.7 release." />
 
-<vimg src="nanome-v2/v2-7/builder-pocket-minimization-settings.jpg" />
+<vimg src="nanome-v2/v2-7/builder-pocket-minimization-settings.webp" alt="The minimization settings with 1KV2 chosen as the receptor" />
 
 Since release 2.7, a ligand can be minimized in place inside a receptor's binding site. Choosing a receptor entry shows what the minimization runs with: OpenMM, using the Amber14 and OpenFF force fields and TIP3P water parameters, with ligand partial charges from OpenFF NAGL.
 
@@ -137,30 +147,32 @@ A run can be cancelled or undone. Ligands that contain metal atoms can't be mini
 
 **Save** keeps the changes. A ligand that started from **Create New** is saved as a new ligand. An existing ligand can be saved with **Add new ligand** or **Update current ligand**. **Cancel** discards the changes.
 
-<vimg src="nanome-v2/builder-tool-save-options.jpg" />
+<vimg src="nanome-v2/v2-7/builder-save-options.webp" alt="The Save menu with Add new ligand and Update current ligand" />
 
-## Torsion Tool
+## <AppIcon name="rotate-360" /> Torsion Tool {#torsion-tool}
 
 ### Video: Torsion Tool (Beta)
 
 <YoutubeEmbed videoId="IBQeKcSOJ8A" title="Nanome v2.5 Quick Tips: Torsion Tool (Beta)" />
 
-<vimg src="nanome-v2/torsion-tool-overview.jpg" />
+<vimg src="nanome-v2/v2-7/tool-torsion.webp" alt="The Torsion Tool panel with its structure list" />
 
 The Torsion Tool rotates bonds to change a structure's conformation. A structure is chosen in 3D, or from the list:
 
 - **All Chains**: every residue in every chain.
 - **All Ligands**: every ligand.
 - **Chain A**: every residue in one chain.
-- **A:50D_501**: one ligand.
+- **A:B96_391**: one ligand.
 
 Clicking and holding on a bond rotates the atoms on one side of it. **Display torsion strain for the entire structure** colors atoms by an estimate of the torsional strain in the rotatable single bonds around them. The estimate is a simple cosine term for the dihedral angle (3-fold for sp³-sp³ bonds, 1-fold otherwise), useful for spotting eclipsed or strained bonds. It isn't a force-field energy.
 
+<vimg src="nanome-v2/v2-7/torsion-after.webp" alt="The Torsion Tool with Display torsion strain turned on for 1KV2" />
+
 **Undo** and **Redo** step through changes, **Save** commits them and **Cancel** discards them.
 
-## Residue Editor
+## <AppIcon name="arrow-rotary-first-left" /> Residue Editor {#residue-editor}
 
-<vimg src="nanome-v2/v2-7/tool-residue-editor.jpg" />
+<vimg src="nanome-v2/v2-7/tool-residue-editor.webp" alt="The Residue Editor panel" />
 
 The Residue Editor mutates protein residues and picks their side-chain rotamers. Its rotamer library is the 2010 backbone-dependent library from the Dunbrack lab.
 
@@ -169,16 +181,16 @@ The Residue Editor mutates protein residues and picks their side-chain rotamers.
 3. Moving the thumbstick left or right previews the rotamers, scored for clashes and hydrogen bonds. **Score against** sets whether the scoring counts **Visible atoms** only or **All atoms**.
 4. **Save** keeps the change, and **Cancel** discards it.
 
-## MARA Tools
+## <AppIcon name="tool" /> MARA Tools {#mara-tools}
 
-<vimg src="nanome-v2/v2-7/tool-mara.jpg" />
+<vimg src="nanome-v2/v2-7/tool-mara.webp" alt="The MARA Tools list" />
 
 MARA Tools runs your MARA tools from the headset. The panel opens with a notice: MARA Tools in XR are in beta, and some tools rely on inputs or outputs that XR doesn't support yet. **Continue** opens the tool list, with **Search**, **Run**, **Reset** and **Back**. Tools are managed on the Tools page in [Nanome Web](https://app.nanome.ai/tools).
 
-## Load Structure
+## <AppIcon name="download" /> Load Structure {#load-structure}
 
 **Load Structure** opens a box for a PDB code. **Load from RCSB** downloads the entry into the workspace. Other formats are loaded in [Nanome Web](/nanome_web/loading).
 
-## Report a problem
+## <AppIcon name="bug" /> Report a problem {#report-a-problem}
 
 **Report a problem** opens a message box of up to 1,000 characters. A screenshot and technical details (app version, workspace, scene and recent errors) are sent with the message.

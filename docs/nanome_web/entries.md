@@ -6,7 +6,7 @@ title: Entries Tab
 
 The **Entries** tab lists every structure in the workspace and the components that control how each one is drawn. It works the same way as the [Components tab](/nanome_v2/mainpanel#components-tab) in Nanome XR, and changes made in one show up in the other.
 
-<vimg src="nanome-web/workspace-overview.jpg" />
+<vimg src="nanome-web/entries-tab.webp" alt="The Entries tab for 4ceo" />
 
 ## Entries and components
 
@@ -34,7 +34,7 @@ Entry rows also have a **Structure actions** button. See [below](#structure-acti
 
 The representation chip on a component opens the representation panel. Each representation has its own switch and a palette button for its colors.
 
-<vimg src="nanome-web/representation-panel.jpg" />
+<vimg src="nanome-web/representation-panel.webp" alt="The representation panel for a component" />
 
 **Atomistic:**
 
@@ -67,7 +67,7 @@ The palette button beside a representation opens its color schemes:
 
 **Carbons only** applies the scheme to carbon atoms and keeps element colors on the other atoms.
 
-<vimg src="nanome-web/color-schemes.jpg" />
+<vimg src="nanome-web/color-schemes.webp" alt="The color scheme menu for a component" />
 
 ### Interactions
 
@@ -82,7 +82,7 @@ Components that hold interactions, such as **Pocket + Ligand**, show an **Intera
 - **Hydrophobic**
 - **Metal Coordination**
 
-<vimg src="nanome-web/interactions-list.jpg" />
+<vimg src="nanome-web/interactions-list.webp" alt="The Interactions list for a component" />
 
 Clash markers grow larger and brighter the more two atoms overlap. Metal coordination is drawn as an interaction, separately from covalent bonds.
 
@@ -96,7 +96,7 @@ The Structure actions button on an entry row opens:
 - **Reset components**: restores the entry's default components.
 - **Remove components**: removes the entry's components.
 
-<vimg src="nanome-web/entry-structure-actions.jpg" />
+<vimg src="nanome-web/entry-structure-actions.webp" alt="The Structure actions menu for an entry" />
 
 ### Interaction components
 
@@ -107,7 +107,7 @@ The Structure actions button on an entry row opens:
 
 **Create** adds the components, and **Close** leaves without changes.
 
-<vimg src="nanome-web/create-interactions-polymer-ligand.jpg" />
+<vimg src="nanome-web/create-interactions.webp" alt="Create interaction components, on the Polymer-Ligand tab" />
 
 ## More options
 
@@ -119,7 +119,7 @@ The **(...)** menu on an **entry** has:
 - **Load trajectory**: attaches a trajectory to the entry. See [MD Trajectory Playback](/nanome_web/mdplayback).
 - **Delete**: removes the entry from the workspace.
 
-<vimg src="nanome-web/entry-more-options.jpg" />
+<vimg src="nanome-web/entry-more-options.webp" alt="An entry's More options menu" />
 
 The **(...)** menu on a **component** has:
 
@@ -128,6 +128,6 @@ The **(...)** menu on a **component** has:
 - **Edit selection**: changes which atoms the component contains.
 - **Delete**: removes the component.
 
-<vimg src="nanome-web/component-more-options.jpg" />
+<vimg src="nanome-web/component-more-options.webp" alt="A component's More options menu" />
 
 File types for **Export file** and the trajectory and map formats are listed on [Supported File Formats](/nanome_web/fileformats).

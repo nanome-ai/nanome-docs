@@ -6,7 +6,7 @@ title: Account & Settings
 
 The account menu sits at the right end of the top bar, under your initial. It shows your username and email, and links to the account pages.
 
-<vimg src="nanome-web/account-menu.jpg" />
+<vimg src="nanome-web/account-menu.webp" alt="The account menu" />
 
 - **Login via Device Code**: signs a headset in. See [below](#login-via-device-code).
 - **Account**, **Billing** and **Organization**: open those pages.
@@ -19,7 +19,7 @@ The last line of the menu shows the version of the web app.
 
 Nanome XR can sign in with a 4-character code. The headset's login page shows the code, and entering it in **Login via Device Code** on Nanome Web signs the headset in to the same account. The same dialog opens from the lock icon in the top bar.
 
-<vimg src="nanome-web/login-device-code.jpg" />
+<vimg src="nanome-web/login-device-code.webp" alt="The Login via Device Code dialog" />
 
 See [Login](/nanome_v2/login) for the headset side.
 
@@ -35,7 +35,7 @@ Your **Nanome ID**, **Username**, **Email** and **Organization**, a **Change pas
 
 **API Keys** authenticate requests to Nanome's server from tool routes and the `mara-client` Python package. **+ Create** makes a new key. Each key shows only its last characters and its expiry date, with buttons to reveal, copy or delete it.
 
-<vimg src="nanome-web/settings-api-keys.jpg" />
+<vimg src="nanome-web/settings-api-keys.webp" alt="API Keys in System settings" />
 
 ### MCP setup
 
@@ -55,7 +55,7 @@ The assistant asks you to sign in and approve access in a browser the first time
 - **Hide Credits**: hides the credits display.
 - **Reset chats**: **Delete all** permanently deletes all MARA chats and uploaded files.
 
-<vimg src="nanome-web/settings-preferences.jpg" />
+<vimg src="nanome-web/settings-preferences.webp" alt="The preference switches in System settings" />
 
 ## Licenses and sign-in
 

@@ -8,7 +8,7 @@ Since release 2.7, comments and annotations share one panel: the **Comments** to
 
 <DocVideo src="v2-7/comments.mp4" caption="Comments, from the v2.7 release video. The Agent tag in the video is for illustration." />
 
-<vimg src="nanome-v2/v2-7/tool-comments.jpg" />
+<vimg src="nanome-v2/v2-7/tool-comments.webp" alt="The Comments tool panel" />
 
 ## The panel
 

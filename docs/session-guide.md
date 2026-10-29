@@ -353,7 +353,7 @@ cheap.
 
 ### Building a sequence
 
-<vimg src="nanome-v2/scenes-panel-controls.jpg" />
+<vimg src="nanome-v2/v2-7/scenes-panel.webp" alt="The Scenes Panel controls, labelled" />
 
 *Scenes Panel controls. See [Scenes Panel](/nanome_v2/scenespanel).*
 
@@ -473,11 +473,11 @@ looks across a single entry.
 
 </CardGrid>
 
-<vimg src="nanome-v2/surface-density-levels.jpg" />
+<vimg src="nanome-v2/v2-7/surface-styles.webp" alt="Surface styles: Wire, Sheer, Semi and Opaque" />
 
 *Surface styles: Wire, Sheer, Semi, Opaque. See [Main Panel](/nanome_v2/mainpanel).*
 
-<vimg src="nanome-v2/atomistic-representations.jpg" />
+<vimg src="nanome-v2/v2-7/atom-representations.webp" alt="Ball & Stick, Stick, Wire and Van der Waals" />
 
 *Atomistic representations. See [Main Panel](/nanome_v2/mainpanel).*
 
@@ -539,7 +539,7 @@ being built.
 
 ### Setting them
 
-<vimg src="nanome-v2/users-tab-permissions-dialog.jpg" />
+<vimg src="nanome-v2/v2-7/users-tab-share-dialog.webp" alt="The Share dialog" />
 
 *Users tab > Share. See [Main Panel](/nanome_v2/mainpanel#share).*
 
@@ -612,10 +612,6 @@ next to the global permission level. It reads as 2 short blocks, like
    In a browser, it goes in the same place at app.nanome.ai.
 
 </Steps>
-
-<vimg src="nanome-v2/users-tab-permissions-dialog.jpg" />
-
-*The workspace code, beside the global level.*
 
 ### Named access, and pulling users in
 
@@ -704,7 +700,7 @@ The **Users** tab shows a mic input level, a display name anyone can change, and
 a per-user menu for muting another user locally. The Wrist Menu carries a mute
 button for the moments between speaking.
 
-<vimg src="nanome-v2/users-tab-overview.jpg" />
+<vimg src="nanome-v2/v2-7/users-tab-annotated.webp" alt="The Users tab, labelled" />
 
 *Users tab. See [Main Panel](/nanome_v2/mainpanel).*
 

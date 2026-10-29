@@ -6,7 +6,7 @@ title: Users & Sharing
 
 The **Users** tab of a workspace controls who can open it and what they can change. It also sends the workspace to colleagues in Nanome XR.
 
-<vimg src="nanome-web/users-tab.jpg" />
+<vimg src="nanome-web/users-tab.webp" alt="The Users tab" />
 
 ## Join via Code
 
@@ -20,7 +20,7 @@ Every workspace has an 8-character code, shown at the top of the tab in the form
 - **Anyone can view**: anyone with the code or link can open it as a Viewer.
 - **Anyone can edit**: anyone with the code or link can open it as an Editor.
 
-<vimg src="nanome-web/users-link-access.jpg" />
+<vimg src="nanome-web/users-link-access.webp" alt="Link access levels in the Users tab" />
 
 **Public workspace** (Allow anonymous viewers) lets people open the workspace without signing in.
 
@@ -34,7 +34,7 @@ Every workspace has an 8-character code, shown at the top of the tab in the form
 
 The **Workspace** tab under the sharing settings lists the people added to this workspace and their role. **Add people by email** takes an email address, the role menu beside it sets **Viewer** or **Editor**, and **+ Add** invites them. The address has to match their Nanome account exactly.
 
-<vimg src="nanome-web/users-invite-role.jpg" />
+<vimg src="nanome-web/users-invite-role.webp" alt="Inviting a person by email with a role" />
 
 The **My Org** tab lists colleagues in your organization.
 

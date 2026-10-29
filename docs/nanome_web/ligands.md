@@ -6,7 +6,7 @@ title: Ligands Tab
 
 The **Ligands** tab is a table of every ligand in the workspace, with a 2D drawing and calculated properties for each. It's the same ligand list as the [Ligands tab](/nanome_v2/mainpanel#ligands-tab) in Nanome XR.
 
-<vimg src="nanome-web/ligands-tab.jpg" />
+<vimg src="nanome-web/ligands-tab.webp" alt="The Ligands tab" />
 
 ## Toolbar
 
@@ -20,7 +20,7 @@ The **Ligands** tab is a table of every ligand in the workspace, with a 2D drawi
 
 Each row shows the ligand's 2D drawing, its entry, its name, and the chosen property columns. **Atoms** and **MW** are shown by default. Column headers with arrows sort the table. The ⓘ beside a column name shows what the column means.
 
-<vimg src="nanome-web/ligands-fullscreen.jpg" />
+<vimg src="nanome-web/ligands-fullscreen.webp" alt="The Ligands table in full screen" />
 
 In the fullscreen table, each row has a checkbox and a **(⋮)** menu:
 
@@ -29,7 +29,7 @@ In the fullscreen table, each row has a checkbox and a **(⋮)** menu:
 - **Properties**: shows the ligand's calculated properties.
 - **Tag**: **Hit**, **Lead**, **Add to Synthesis**, or **New tag...** for a custom tag. The tag appears in the **Tag** column.
 
-<vimg src="nanome-web/ligand-row-menu.jpg" />
+<vimg src="nanome-web/ligand-row-menu.webp" alt="A ligand row's menu" />
 
 Along the bottom of the tab:
 
@@ -37,13 +37,13 @@ Along the bottom of the tab:
 - **Download all**: downloads the listed ligands.
 - **Sketch new**: opens the 2D sketcher to draw a new ligand.
 
-<vimg src="nanome-web/ligand-preview.jpg" />
+<vimg src="nanome-web/ligand-preview.webp" alt="A ligand preview" />
 
 ## Property columns
 
 Nanome calculates these properties with [RDKit](https://www.rdkit.org/) on its server. SDF data fields from the source file can also be shown as columns.
 
-<vimg src="nanome-web/ligand-columns.jpg" />
+<vimg src="nanome-web/ligand-columns.webp" alt="The ligand property column picker" />
 
 | Column | What it is |
 |--------|------------|

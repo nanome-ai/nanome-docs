@@ -40,7 +40,7 @@ defineProps({
 .n-outline__link {
   display: block;
   padding: 4px 0;
-  color: var(--n-text-faint);
+  color: var(--n-text-muted);
   font-size: var(--n-text-sm);
   line-height: 1.45;
   text-decoration: none;
@@ -55,7 +55,7 @@ defineProps({
 
 /* `useActiveAnchor` adds `.active` to the matching link as the page scrolls. */
 .n-outline__link.active {
-  color: var(--n-text);
-  font-weight: 500;
+  color: var(--n-accent);
+  font-weight: 600;
 }
 </style>

@@ -59,14 +59,25 @@ const hasHeaders = computed(() => headers.value.length > 0)
 }
 
 .n-outline__title {
-  margin: 0 0 8px;
-  color: var(--n-text-faint);
-  font-size: var(--n-text-xs);
-  font-weight: 500;
+  margin: 0 0 10px;
+  color: var(--n-text);
+  font-size: var(--n-text-sm);
+  font-weight: 600;
 }
 
 .n-outline__body {
   position: relative;
+}
+
+/* The track the active marker slides along, so the rail reads as a navigator. */
+.n-outline__body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -20px;
+  width: 1px;
+  background: var(--n-border);
 }
 
 /* Sits in the 20px left padding, level with the active link. `useActiveAnchor`

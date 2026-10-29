@@ -6,7 +6,7 @@ title: Loading Structures
 
 Structures come into a workspace through the **Import** tab of the workspace panel. It has three sources: the RCSB Protein Data Bank, files from your computer, and files from MARA chats.
 
-<vimg src="nanome-web/import-tab.jpg" />
+<vimg src="nanome-web/import-tab.webp" alt="The Import tab" />
 
 ## Import from RCSB
 
@@ -26,7 +26,7 @@ Trajectories and DX maps attach to an entry that's already loaded. They're added
 
 **Import from Chat** lists files from your MARA conversations, with the chat each came from and its date. The search button and the sort menu help find a file, and the checkboxes select files. Each row's **(...)** menu has **Go to chat** and **Download**.
 
-<vimg src="nanome-web/import-chat-menu.jpg" />
+<vimg src="nanome-web/import-chat-menu.webp" alt="Import from Chat with a file row menu open" />
 
 ## File loading changes in 2.7
 

@@ -1,125 +1,92 @@
+// Builds the web copies of every image in docs/public/assets/original.
+//
+// Pages show the copy in docs/public/assets/compressed (via <Vimg>), and
+// clicking it opens the original. The copy is a WebP no wider than
+// MAX_WIDTH, which is twice the 768px content column, so screenshots stay
+// sharp on high-density screens.
+//
+// A copy is rebuilt whenever its original is newer, so replacing a
+// screenshot and running `npm run docs:compress` is enough. Pass --force to
+// rebuild everything.
+//
+// A screenshot can have a dark-mode twin saved beside it as
+// `<name>.dark.<ext>`. The script lists those pairs in
+// docs/.vitepress/theme/image-variants.json, and <Vimg> shows the twin while
+// the site is in dark mode. Markdown only ever names the light image.
+//
+// It also records the width of each 2x screenshot (the folders in HIDPI) in
+// image-widths.json, so <Vimg> shows them at their on-screen size instead of
+// stretching a narrow panel across the content column.
+
 const sharp = require('sharp')
-// const imagemin = require('imagemin');
-// const imageminGifsicle = require('imagemin-gifsicle');
 const fs = require('fs')
+const path = require('path')
 
-const assetDir = __dirname + '/../docs/public/assets/original'
-const compressedDir = __dirname + '/../docs/public/assets/compressed'
+const assetDir = path.join(__dirname, '../docs/public/assets/original')
+const compressedDir = path.join(__dirname, '../docs/public/assets/compressed')
+const manifestFile = path.join(__dirname, '../docs/.vitepress/theme/image-variants.json')
+const widthsFile = path.join(__dirname, '../docs/.vitepress/theme/image-widths.json')
 
-const regex = {
-  file: /^(.+)\.(\w+)$/
-}
+const HIDPI = /^(nanome-web|nanome-v2\/v2-7)\//
+const MAX_WIDTH = 1600
+const QUALITY = 80
+const force = process.argv.includes('--force')
 
-;(async function() {
-  console.log('Compressing images and gifs')
-  await recursiveCompress('')
-  console.log('Done compressing')
-})()
+;(async function () {
+  console.log('Compressing images')
+  let built = 0
+  for (const file of walk(assetDir)) {
+    const rel = path.relative(assetDir, file)
+    if (!/\.(png|jpe?g|gif|webp)$/i.test(rel)) continue
 
-async function recursiveCompress(parent) {
-  await compressDir(parent)
-
-  const dirs = await getDirs(`${assetDir}/${parent}`)
-
-  if (!fs.existsSync(compressedDir)) {
-    fs.mkdirSync(compressedDir)
-  }
-
-  for (const dir of dirs) {
-    await recursiveCompress(`${parent}/${dir}`)
-  }
-}
-
-async function compressDir(dir) {
-  // Check if directory exists in compressed folder. If not, make it
-  if (!fs.existsSync(`${compressedDir}/${dir}`)) {
-    fs.mkdirSync(`${compressedDir}/${dir}`)
-  }
-
-  const files = await getFiles(`${assetDir}/${dir}`)
-
-  // Loop through all files in dir
-  for (const file of files) {
-    const match = file.match(regex.file)
-    if (!match) continue
-    const [, fileName, format] = match
-
-    // If file type is a match
-    if (/png|jpg|jpeg|gif/i.test(format)) {
-      if (fs.existsSync(`${compressedDir}${dir}/${fileName}.jpg`)) {
-        continue
-      }
-
-      let image = await sharp(`${assetDir}/${dir}/${file}`)
-      const data = await image.metadata()
-
-      // If needs to be compressed
-      let { width, height } = data
-      if (width > 450) {
-        const ratio = 450 / width
-        width *= ratio
-        height *= ratio
-      }
-      if (height > 450) {
-        const ratio = 450 / height
-        width *= ratio
-        height *= ratio
-      }
-
-      // Convert from float to int
-      width = parseInt(width)
-      height = parseInt(height)
-
-      // If needs resizing
-      if (width < data.width || height < data.height) {
-        image = await image.resize(width, height)
-      }
-
-      await image
-        .toFormat('jpeg')
-        .toFile(`${compressedDir}/${dir}/${fileName}.jpg`)
+    const out = path.join(compressedDir, rel.replace(/\.\w+$/, '.webp'))
+    if (!force && fs.existsSync(out) && fs.statSync(out).mtimeMs >= fs.statSync(file).mtimeMs) {
+      continue
     }
 
-    // If file type is gif, compress
-    // if (/gif/i.test(format)) {
-    //   if (fs.existsSync(`${compressedDir}${dir}/${fileName}.gif`)) {
-    //     continue;
-    //   }
-
-    //   await imagemin(
-    //     [`docs/.vuepress/public/assets/original/${dir}/${fileName}.gif`],
-    //     {
-    //       destination: `docs/.vuepress/public/assets/compressed/${dir}`,
-    //       plugins: [
-    //         imageminGifsicle({
-    //           optimizationLevel: 3,
-    //           colors: 128
-    //         })
-    //       ]
-    //     }
-    //   );
-    // }
-
-    console.log(`- Compressed ${dir}/${file}`)
+    fs.mkdirSync(path.dirname(out), { recursive: true })
+    // GIFs get a still of their first frame; the original plays on click.
+    await sharp(file, { pages: 1 })
+      .resize({ width: MAX_WIDTH, withoutEnlargement: true })
+      .webp({ quality: QUALITY })
+      .toFile(out)
+    built++
+    console.log(`- ${rel}`)
   }
-}
+  console.log(`Done compressing (${built} rebuilt)`)
 
-// Get all directories by directory name
-function getDirs(dirname) {
-  return fs
-    .readdirSync(dirname, {
-      withFileTypes: true
-    })
-    .filter(item => item.isDirectory())
-    .map(item => item.name)
-}
+  // Light image -> its dark twin, for <Vimg>.
+  const files = walk(assetDir).map((f) => path.relative(assetDir, f).split(path.sep).join('/'))
+  const darkByBase = new Map(
+    files
+      .filter((f) => /\.dark\.\w+$/.test(f))
+      .map((f) => [f.replace(/\.dark\.\w+$/, ''), f])
+  )
+  const variants = {}
+  for (const f of files) {
+    if (/\.dark\.\w+$/.test(f)) continue
+    const dark = darkByBase.get(f.replace(/\.\w+$/, ''))
+    if (dark) variants[f] = dark
+  }
+  fs.writeFileSync(manifestFile, JSON.stringify(variants, null, 2) + '\n')
+  console.log(`${Object.keys(variants).length} images have a dark version`)
 
-// Get all files by directory name
-function getFiles(dirname) {
+  // Light 2x screenshot -> its width in pixels. Reading the header is enough.
+  const widths = {}
+  for (const f of files) {
+    if (!HIDPI.test(f) || /\.dark\.\w+$/.test(f)) continue
+    const { width } = await sharp(path.join(assetDir, f)).metadata()
+    widths[f] = width
+  }
+  fs.writeFileSync(widthsFile, JSON.stringify(widths, null, 2) + '\n')
+})()
+
+function walk(dir) {
   return fs
-    .readdirSync(dirname, {
-      withFileTypes: true
-    })
-    .filter(item => !item.isDirectory())
-    .map(item => item.name)
+    .readdirSync(dir, { withFileTypes: true })
+    .flatMap((entry) =>
+      entry.isDirectory()
+        ? walk(path.join(dir, entry.name))
+        : [path.join(dir, entry.name)]
+    )
 }

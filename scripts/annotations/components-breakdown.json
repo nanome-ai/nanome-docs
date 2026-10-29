@@ -1,0 +1,135 @@
+{
+  "source": "components-breakdown.webp",
+  "output": "nanome-v2/v2-7/components-breakdown.webp",
+  "pad": [
+    0,
+    760,
+    0,
+    760
+  ],
+  "radius": 14,
+  "display": 768,
+  "callouts": [
+    {
+      "text": "Entry: one loaded structure",
+      "at": [
+        38,
+        314
+      ],
+      "label": [
+        -50,
+        314
+      ],
+      "align": "right"
+    },
+    {
+      "text": "Component",
+      "at": [
+        38,
+        437
+      ],
+      "label": [
+        -50,
+        437
+      ],
+      "align": "right"
+    },
+    {
+      "text": "Group: one binding site",
+      "at": [
+        38,
+        561
+      ],
+      "label": [
+        -50,
+        561
+      ],
+      "align": "right"
+    },
+    {
+      "text": "Ligand",
+      "at": [
+        38,
+        684
+      ],
+      "label": [
+        -50,
+        684
+      ],
+      "align": "right"
+    },
+    {
+      "text": "Pocket: residues within 4 Å",
+      "at": [
+        38,
+        807
+      ],
+      "label": [
+        -50,
+        807
+      ],
+      "align": "right"
+    },
+    {
+      "text": "Structure actions",
+      "at": [
+        1031,
+        314
+      ],
+      "label": [
+        1361,
+        70
+      ],
+      "align": "left"
+    },
+    {
+      "text": "Zoom to",
+      "at": [
+        1120,
+        314
+      ],
+      "label": [
+        1361,
+        195
+      ],
+      "align": "left"
+    },
+    {
+      "text": "More options",
+      "at": [
+        1210,
+        314
+      ],
+      "label": [
+        1361,
+        320
+      ],
+      "align": "left"
+    },
+    {
+      "text": "Representations",
+      "at": [
+        1070,
+        437
+      ],
+      "label": [
+        1361,
+        445
+      ],
+      "align": "left",
+      "tone": "green"
+    },
+    {
+      "text": "Sequence viewer",
+      "at": [
+        1262,
+        1329
+      ],
+      "label": [
+        1361,
+        1329
+      ],
+      "align": "left"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "source": "measurement-types.webp",
+  "output": "nanome-v2/v2-7/measurement-types.webp",
+  "pad": [
+    110,
+    0,
+    0,
+    0
+  ],
+  "radius": 14,
+  "display": 768,
+  "callouts": [
+    {
+      "text": "Distance (2 atoms)",
+      "at": [
+        660,
+        880
+      ],
+      "label": [
+        420,
+        -60
+      ],
+      "align": "center"
+    },
+    {
+      "text": "Dihedral (4 atoms)",
+      "at": [
+        2140,
+        480
+      ],
+      "label": [
+        2000,
+        -60
+      ],
+      "align": "center",
+      "tone": "green"
+    },
+    {
+      "text": "Angle (3 atoms)",
+      "at": [
+        2360,
+        690
+      ],
+      "label": [
+        2800,
+        -60
+      ],
+      "align": "center",
+      "tone": "red"
+    }
+  ]
+}

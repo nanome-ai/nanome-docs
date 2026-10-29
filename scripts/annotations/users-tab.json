@@ -1,0 +1,99 @@
+{
+  "source": "users-tab.webp",
+  "output": "nanome-v2/v2-7/users-tab-annotated.webp",
+  "pad": [
+    0,
+    760,
+    0,
+    640
+  ],
+  "radius": 14,
+  "display": 768,
+  "callouts": [
+    {
+      "text": "Your access level",
+      "at": [
+        24,
+        174
+      ],
+      "label": [
+        -50,
+        174
+      ],
+      "align": "right"
+    },
+    {
+      "text": "Display name",
+      "at": [
+        64,
+        356
+      ],
+      "label": [
+        -50,
+        356
+      ],
+      "align": "right"
+    },
+    {
+      "text": "Users in workspace",
+      "at": [
+        72,
+        526
+      ],
+      "label": [
+        -50,
+        526
+      ],
+      "align": "right"
+    },
+    {
+      "text": "Share settings",
+      "at": [
+        1272,
+        174
+      ],
+      "label": [
+        1360,
+        120
+      ],
+      "align": "left"
+    },
+    {
+      "text": "Mute or unmute",
+      "at": [
+        1146,
+        330
+      ],
+      "label": [
+        1360,
+        260
+      ],
+      "align": "left",
+      "tone": "red"
+    },
+    {
+      "text": "Mic level",
+      "at": [
+        1252,
+        380
+      ],
+      "label": [
+        1360,
+        390
+      ],
+      "align": "left"
+    },
+    {
+      "text": "Users in organization",
+      "at": [
+        1243,
+        526
+      ],
+      "label": [
+        1360,
+        526
+      ],
+      "align": "left"
+    }
+  ]
+}

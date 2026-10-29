@@ -1,0 +1,106 @@
+{
+  "source": "sequence-panel.webp",
+  "output": "nanome-v2/v2-7/sequence-viewer.webp",
+  "crop": [
+    1,
+    0,
+    2044,
+    376
+  ],
+  "pad": [
+    230,
+    80,
+    230,
+    220
+  ],
+  "radius": 14,
+  "display": 768,
+  "callouts": [
+    {
+      "text": "Entry",
+      "at": [
+        84,
+        98
+      ],
+      "label": [
+        84,
+        -130
+      ],
+      "align": "center"
+    },
+    {
+      "text": "Chain",
+      "at": [
+        233,
+        36
+      ],
+      "label": [
+        420,
+        -130
+      ],
+      "align": "center"
+    },
+    {
+      "text": "Residue numbers",
+      "at": [
+        700,
+        78
+      ],
+      "label": [
+        800,
+        -130
+      ],
+      "align": "center"
+    },
+    {
+      "text": "Selected residues",
+      "at": [
+        1009,
+        132
+      ],
+      "label": [
+        1250,
+        -130
+      ],
+      "align": "center",
+      "tone": "purple"
+    },
+    {
+      "text": "Filter hidden structures",
+      "at": [
+        521,
+        330
+      ],
+      "label": [
+        521,
+        500
+      ],
+      "align": "center"
+    },
+    {
+      "text": "Clear the selection",
+      "at": [
+        1746,
+        334
+      ],
+      "label": [
+        1440,
+        500
+      ],
+      "align": "center"
+    },
+    {
+      "text": "Create a component",
+      "at": [
+        1922,
+        334
+      ],
+      "label": [
+        1900,
+        500
+      ],
+      "align": "center",
+      "tone": "green"
+    }
+  ]
+}

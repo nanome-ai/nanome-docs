@@ -20,6 +20,9 @@ import HomeCarousel from './components/HomeCarousel.vue'
 import SimpleCarousel from './components/SimpleCarousel.vue'
 import YoutubeEmbed from './components/YoutubeEmbed.vue'
 import DocVideo from './components/DocVideo.vue'
+import AppIcon from './components/AppIcon.vue'
+import ToolGrid from './components/ToolGrid.vue'
+import ToolLink from './components/ToolLink.vue'
 
 // Interactive building blocks, usable from any markdown page.
 import Chooser from './components/interactive/Chooser.vue'
@@ -51,6 +54,9 @@ export default {
     app.component('SimpleCarousel', SimpleCarousel)
     app.component('YoutubeEmbed', YoutubeEmbed)
     app.component('DocVideo', DocVideo)
+    app.component('AppIcon', AppIcon)
+    app.component('ToolGrid', ToolGrid)
+    app.component('ToolLink', ToolLink)
 
     app.component('Chooser', Chooser)
     app.component('ChooserResult', ChooserResult)

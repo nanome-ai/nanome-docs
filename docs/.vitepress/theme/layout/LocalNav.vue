@@ -36,6 +36,21 @@ const hasHeaders = computed(() => headers.value.length > 0)
       :aria-expanded="String(open)"
       @click="open = !open"
     >
+      <svg
+        viewBox="0 0 16 16"
+        width="15"
+        height="15"
+        class="n-localnav__list-icon"
+        aria-hidden="true"
+      >
+        <path
+          d="M5.5 4h8M5.5 8h8M5.5 12h8M2.5 4h.01M2.5 8h.01M2.5 12h.01"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+        />
+      </svg>
       <span>{{ label }}</span>
       <svg
         viewBox="0 0 16 16"
@@ -75,16 +90,27 @@ const hasHeaders = computed(() => headers.value.length > 0)
 .n-localnav__button {
   display: flex;
   align-items: center;
-  gap: 6px;
-  width: 100%;
-  padding: 11px 20px;
-  border: 0;
-  background: none;
-  color: var(--n-text-muted);
+  gap: 8px;
+  margin: 8px 20px;
+  padding: 7px 12px 7px 10px;
+  border: 1px solid var(--n-border);
+  border-radius: var(--n-radius-pill);
+  background: var(--n-surface);
+  color: var(--n-text);
   font-size: var(--n-text-sm);
-  font-weight: 500;
+  font-weight: 600;
   text-align: left;
   cursor: pointer;
+  transition: border-color var(--n-transition), background var(--n-transition);
+}
+
+.n-localnav__button:hover {
+  border-color: var(--n-accent-border);
+  background: var(--n-surface-hover);
+}
+
+.n-localnav__list-icon {
+  color: var(--n-accent);
 }
 
 .n-localnav__caret {

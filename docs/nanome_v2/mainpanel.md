@@ -8,7 +8,7 @@ The Main Panel is where structures, ligands, workspaces, users and settings are 
 
 These pages describe Nanome XR as of release 2.7.1.
 
-<vimg src="nanome-v2/v2-7/desktop-layout.jpg" />
+<vimg src="nanome-v2/v2-7/desktop-layout.webp" alt="Nanome XR with the left sidebar, the Main Panel, the Tools Panel and 1KV2" />
 
 Two sidebars sit beside the Main Panel:
 
@@ -21,7 +21,7 @@ The buttons at the top right of the panel change its size (**Increase menu size*
 
 The Components tab lists every structure in the workspace and the components that control how each is drawn. It's the same list as the [Entries tab](/nanome_web/entries) in Nanome Web.
 
-<vimg src="nanome-v2/v2-7/components-tab.jpg" />
+<vimg src="nanome-v2/v2-7/components-tab.webp" alt="The Components tab with 1KV2 and its components" />
 
 ### Toolbar
 
@@ -33,6 +33,10 @@ The Components tab lists every structure in the workspace and the components tha
 - **Search**: filters entries and components by name.
 
 At the bottom of the tab, **Position Molecules** lets structures be moved independently, and **Sequences** opens the [Sequence Panel](/nanome_v2/sequencepanel). While a structure is loading, a progress bar appears here, and a load can be cancelled.
+
+When the server has notes on a file, a **Loading Report** lists them as warnings or errors, with the line number when it's known. A report with only warnings closes with **Dismiss**. When a problem can be fixed, **Resolve** carries on with the fix and **Cancel** stops the load. A file with errors that can't be fixed shows **Fatal Loading Errors**, with **Cancel** only.
+
+<vimg src="nanome-v2/v2-7/loading-report.webp" alt="A Loading Report noting that bonding for ligand B96 is assigned from the PDB Chemical Component Dictionary" />
 
 ### Entry rows
 
@@ -46,7 +50,7 @@ Each entry row has:
 
 Hovering a row shows how many atoms it holds, and an empty component is grayed out. An icon marks an entry that has an electrostatic map loaded.
 
-<vimg src="nanome-v2/v2-7/entry-more-options.jpg" />
+<vimg src="nanome-v2/v2-7/entry-more-options.webp" alt="An entry's More options menu with Rename, Duplicate and Delete" />
 
 ### Entries and Components
 
@@ -54,26 +58,24 @@ Hovering a row shows how many atoms it holds, and an empty component is grayed o
 
 <YoutubeEmbed videoId="5uikQlDO7FA" title="Nanome v2.5 Quick Tips: Load Structures, Invite & Follow from XR" />
 
-<vimg src="nanome-v2/entries-and-components.jpg" />
-
-Structures are organized as **entries**, such as the PDB entries 5CEO and 5CEN. Each entry holds **components**: named parts of the structure with their own representations.
+Structures are organized as **entries**, such as the PDB entries 1KV2 and 1A9U. Each entry holds **components**: named parts of the structure with their own representations.
 
 From within XR, structures are loaded by PDB code from the RCSB with **Load Structure** in the right sidebar. Other file types are loaded in [Nanome Web](/nanome_web/loading), which accepts every [supported file format](/nanome_web/fileformats), and the workspace then updates in XR. Some formats, such as `.bcif`, `.mcif`, `.sd`, `.mol` and `.mol2`, need a [MARA](/mara/overview) tool that supports them.
 
-<vimg src="nanome-v2/entry-component-breakdown.jpg" />
+<vimg src="nanome-v2/v2-7/components-breakdown.webp" alt="The default components of 1KV2, labelled" />
 
 A structure with a bound ligand loads with a default breakdown, for example:
 
 - **Protein**: displayed as Cartoon
-- **Water**: Stick, hidden by default
-- **Site A:50D_501**: a binding-site group containing:
-  - **Ligand A:50D_501**: the ligand, shown as Stick
-  - **Pocket A:50D_501**: every whole residue with an atom within 4 Å of the ligand, shown as Wire with a surface
-  - **Pocket + Ligand A:50D_501**: the pocket and the ligand together, carrying their interactions
+- **Water** and **Ion**, when the file has them: Stick, hidden by default
+- **Site A:B96_391**: a binding-site group containing:
+  - **Ligand A:B96_391**: the ligand, shown as Stick
+  - **Pocket A:B96_391**: every whole residue with an atom within 4 Å of the ligand, shown as Wire with a surface
+  - **Pocket + Ligand A:B96_391**: the pocket and the ligand together, carrying their interactions
 
 The **(...)** menu on a component has **Rename**, **Remove**, **Delete Atoms**, **Edit Selection**, **Copy Component**, **Duplicate to Entry**, **Extract to Entry**, **Set substructure** and **Create Distance Component**. **Delete Atoms** permanently deletes the component's atoms from the entry, after a confirmation. **Extract to Entry** moves the atoms to a new entry.
 
-<vimg src="nanome-v2/v2-7/component-more-options.jpg" />
+<vimg src="nanome-v2/v2-7/component-more-options.webp" alt="A component's More options menu" />
 
 A **distance component** holds the atoms within a set distance of another component. Its popup has **Distance (Å)**, **Whole residues**, **Ignore self**, **Include ligands** (off by default) and **All entries**, which includes atoms from every entry in the workspace.
 
@@ -83,7 +85,7 @@ A **distance component** holds the atoms within a set distance of another compon
 
 <YoutubeEmbed videoId="wdECz2HmR3o" title="Nanome v2.4 Quick Tips: Changing Molecular Representations" />
 
-<vimg src="nanome-v2/v2-7/representation-popup.jpg" />
+<vimg src="nanome-v2/v2-7/representation-popup.webp" alt="The representation panel for the Protein component" />
 
 The representation button on a component, labelled with its current style, opens the representation panel. One atomistic style can be active per component. The palette button beside each style opens its colors.
 
@@ -96,6 +98,8 @@ The representation button on a component, labelled with its current style, opens
 
 The hydrogen row shows **None**, **Polar** (every hydrogen except those bonded to carbon) or **All**.
 
+<vimg src="nanome-v2/v2-7/atom-representations.webp" alt="The 1KV2 ligand as Ball & Stick, Stick, Wire and Van der Waals" />
+
 **Macromolecular:**
 
 - **Cartoon**: secondary structure ribbons, with helices, sheets and loops.
@@ -106,7 +110,7 @@ The hydrogen row shows **None**, **Polar** (every hydrogen except those bonded t
   - **Semi**: 50% opacity
   - **Opaque**: fully opaque
 
-<vimg src="nanome-v2/surface-density-levels.jpg" />
+<vimg src="nanome-v2/v2-7/surface-styles.webp" alt="The 1KV2 pocket surface drawn as Wire, Sheer, Semi and Opaque" />
 
 ### Interactions
 
@@ -145,7 +149,7 @@ Anion-π, CH-π and water-bridged interactions aren't detected.
 
 ### Color Schemes
 
-<vimg src="nanome-v2/representation-panel.jpg" />
+<vimg src="nanome-v2/v2-7/color-schemes.webp" alt="The color scheme list and the Uniform color swatches" />
 
 The palette offers **Element Type**, **Residue Type**, **Chain Name**, **Secondary Structure**, **Potential Interactions**, **BFactor**, **Occupancy**, **Uniform**, **Chain Instance**, **Model Instance** and **Electrostatic**. **Carbons only** applies the scheme to carbon atoms and keeps element colors on the rest. **Uniform** opens a color picker with a hex field and swatches.
 
@@ -153,7 +157,7 @@ The palette offers **Element Type**, **Residue Type**, **Chain Name**, **Seconda
 
 ### Structure Actions
 
-<vimg src="nanome-v2/v2-7/structure-actions.jpg" />
+<vimg src="nanome-v2/v2-7/structure-actions.webp" alt="The Structure actions menu for 1KV2" />
 
 The **Structure actions** button on an entry opens:
 
@@ -166,11 +170,11 @@ The **Structure actions** button on an entry opens:
 - **Copy position**: copies the entry's position to other scenes.
 - **Reset position**: returns the entry to its original coordinates, for example after moving it with **Position Molecules**.
 
-<vimg src="nanome-v2/structure-actions-align-proteins.jpg" />
+<vimg src="nanome-v2/v2-7/align-proteins.webp" alt="Align proteins to this, with 1A9U aligned to 1KV2 by CE-Align" />
 
-<vimg src="nanome-v2/structure-actions-create-component.jpg" />
+<vimg src="nanome-v2/v2-7/create-component.webp" alt="The Create component options" />
 
-<vimg src="nanome-v2/structure-actions-create-interactions.jpg" />
+<vimg src="nanome-v2/v2-7/create-interactions.webp" alt="Create interaction components, on the Polymer-Ligand tab" />
 
 #### Video: Building Custom Components
 
@@ -182,7 +186,7 @@ Entries with several models, such as a multi-MODEL PDB, and entries with an atta
 
 ## Ligands Tab
 
-<vimg src="nanome-v2/v2-7/ligands-tab.jpg" />
+<vimg src="nanome-v2/v2-7/ligands-tab.webp" alt="The Ligands tab" />
 
 The Ligands tab is a table of every ligand in the workspace. It matches the [Ligands tab](/nanome_web/ligands) in Nanome Web.
 
@@ -203,7 +207,7 @@ Each row shows the 2D structure and the chosen columns. Its buttons:
 - **Edit** (pencil): opens the ligand in the [Builder Tool](/nanome_v2/toolspanel#builder-tool).
 - **Set Tag**: tags the ligand, for example as Hit or Lead. The menu also has **Remove Tag**, **Edit list** and **Show 3D tag**, which shows the tag beside the ligand in 3D.
 
-<vimg src="nanome-v2/ligand-property-columns.jpg" />
+<vimg src="nanome-v2/v2-7/ligand-property-columns.webp" alt="The property column picker" />
 
 Properties are calculated with RDKit on Nanome's server. **MolWeight** is the monoisotopic (exact) mass, which is usually slightly lower than the average molecular weight. **Rating** is a value people enter. SDF data fields from the source file can be shown as columns too.
 
@@ -213,7 +217,7 @@ Properties are calculated with RDKit on Nanome's server. **MolWeight** is the mo
 
 <YoutubeEmbed videoId="5uikQlDO7FA" title="Nanome v2.5 Quick Tips: Load Structures, Invite & Follow from XR" />
 
-<vimg src="nanome-v2/v2-7/workspaces-tab.jpg" />
+<vimg src="nanome-v2/v2-7/workspaces-tab.webp" alt="The Workspaces tab" />
 
 The Workspaces tab moves between workspaces.
 
@@ -228,7 +232,7 @@ A workspace sent from Nanome Web with **Open in XR** shows a **Load from Web** p
 
 ### Projects
 
-<vimg src="nanome-v2/v2-7/workspaces-tab-projects.jpg" />
+<vimg src="nanome-v2/v2-7/workspaces-tab-projects.webp" alt="The Projects list in the Workspaces tab" />
 
 The **Projects** tab lists projects with their name, workspace count, owner and modified date. Choosing a project filters the workspace list to it. Project details are edited in [Nanome Web](/nanome_web/home#projects).
 
@@ -236,7 +240,7 @@ Free licenses are limited to 1 owned project, 3 owned workspaces and 5 structure
 
 ## Users Tab
 
-<vimg src="nanome-v2/v2-7/users-tab.jpg" />
+<vimg src="nanome-v2/v2-7/users-tab-annotated.webp" alt="The Users tab with its controls labelled" />
 
 The Users tab manages people, audio and access in the workspace. Your own access is shown at the top as **My Permission**.
 
@@ -251,8 +255,6 @@ Lists the people in the workspace, with their mute status. Their **(...)** menu 
 
 ### Users in organization
 
-<vimg src="nanome-v2/users-tab-org-users.jpg" />
-
 Lists colleagues in your organization who are online.
 
 - **Join**: goes to their workspace. When you don't have access, it sends a join request, and the owner can let you in as a Viewer or Editor, or deny it.
@@ -260,7 +262,7 @@ Lists colleagues in your organization who are online.
 
 ### Share
 
-<vimg src="nanome-v2/v2-7/users-tab-share-dialog.jpg" />
+<vimg src="nanome-v2/v2-7/users-tab-share-dialog.webp" alt="The Share dialog with the workspace code and the people with access" />
 
 The **Share** button at the top right opens the sharing dialog. It shows the workspace code and has:
 
@@ -272,7 +274,7 @@ Viewers can look around, select, point and comment. Measurement, Interactions, B
 
 ## Settings Tab
 
-<vimg src="nanome-v2/v2-7/settings-tab.jpg" />
+<vimg src="nanome-v2/v2-7/settings-tab.webp" alt="The Settings tab" />
 
 The top row of the Settings tab has:
 
@@ -291,16 +293,12 @@ The switches below:
 - **Show tutorial guides**: shows the in-headset tutorial guides.
 - **Show structure box on hover**: draws a labelled box around an entry when it's hovered.
 
-<vimg src="nanome-v2/v2-7/settings-tab-bottom.jpg" />
+<vimg src="nanome-v2/v2-7/settings-tab-bottom.webp" alt="The bottom of the Settings tab with Log Out and the version" />
 
 The bottom of the tab shows the signed-in username with **Log Out**, and the version with an **About** button. **Change Server** appears when more than one server is configured.
 
 ### Day/Night Mode and Themes
 
-<vimg src="nanome-v2/settings-tab-day-night.jpg" />
+Each skybox theme has a day and a night version. Night mode switches between them.
 
-<vimg src="nanome-v2/settings-tab-themes-night.jpg" />
-
-<vimg src="nanome-v2/settings-tab-themes-day.jpg" />
-
-These theme images show the skyboxes from before release 2.7.
+<vimg src="nanome-v2/v2-7/skybox-themes.webp" alt="The seven skybox themes, by day and by night" />
