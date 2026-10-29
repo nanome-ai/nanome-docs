@@ -45,7 +45,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Nanome.ai', link: 'https://nanome.ai/' },
-      { text: 'Download', link: 'https://home.nanome.ai/setup' },
+      { text: 'Download', link: '/getting-started#install' },
       { text: 'Contact', link: '/help/contact' },
     ],
 
