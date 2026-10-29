@@ -392,7 +392,16 @@
 
 .vimg {
   position: relative;
-  display: inline-block;
+}
+
+/* A screenshot row at the top level of a page also takes the space beside
+   the text column on a wide screen, up to 1040px, so the image and its legend
+   both have room. */
+@media (min-width: 1280px) {
+  .n-layout.has-sidebar.has-aside .vp-doc > div > div > .n-shotrow {
+    --n-room: min(100vw - var(--n-sidebar-width) - var(--n-outline-width) - 2 * var(--n-gutter) - 16px, 1040px);
+    margin-inline: min(0px, (100% - var(--n-room)) / 2);
+  }
 }
 
 .vimg__play-btn {

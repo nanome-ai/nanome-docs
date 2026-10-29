@@ -18,6 +18,8 @@ The panel's six tabs are the workspace's main menus:
 <IconCard icon="users" title="Users" href="/nanome_web/collaboration">Sharing and sending to a headset.</IconCard>
 </IconGrid>
 
+<ShotRow src="nanome-web/workspace-overview.webp" alt="A workspace in Nanome Web">
+
 Around the 3D view:
 
 <IconGrid label="Around the 3D view" :cols="3">
@@ -29,7 +31,7 @@ Around the 3D view:
 <IconCard icon="cube-3d-sphere" title="Workspace tabs" href="#workspace-tabs">One tab for each open workspace, under the top bar.</IconCard>
 </IconGrid>
 
-<vimg src="nanome-web/workspace-overview.webp" alt="A workspace in Nanome Web" />
+</ShotRow>
 
 ## <AppIcon name="chevrons-right" /> Workspace panel {#workspace-panel}
 
@@ -45,6 +47,8 @@ The panel shows the workspace name, project and description above its six tabs. 
 
 The **MARA** tab is a MARA chat inside the workspace, beside the 3D view.
 
+<ShotRow src="nanome-web/mara-tab.webp" alt="The MARA tab with no chats yet">
+
 <UiList label="MARA tab">
 <UiItem icon="messages" name="Chat History">The chats started in this workspace.</UiItem>
 <UiItem icon="files" name="Files">The current chat's files. Grayed out until a chat is open.</UiItem>
@@ -56,7 +60,7 @@ The **MARA** tab is a MARA chat inside the workspace, beside the 3D view.
 <UiItem icon="arrow-up" name="Send">Sends your message.</UiItem>
 </UiList>
 
-<vimg src="nanome-web/mara-tab.webp" alt="The MARA tab with no chats yet" />
+</ShotRow>
 
 More on what MARA can do is in the [MARA section](/mara/overview).
 
@@ -77,11 +81,15 @@ The Selection and Measurement tools show their modes in a bar at the bottom of t
 
 ### <AppIcon name="droplet" /> Default {#default}
 
+<ShotRow src="nanome-web/hover-highlight.webp" alt="An atom highlighted and labelled on hover">
+
 Hovering highlights the whole residue under the cursor, whether the cursor is on an atom, a bond or the ribbon. Clicking adds that residue to the selection, or removes it when it's already selected. Clicking empty space clears the selection, and double-clicking zooms to a residue or an entry.
 
-<vimg src="nanome-web/hover-highlight.webp" alt="An atom highlighted and labelled on hover" />
+</ShotRow>
 
 ### <AppIcon name="lasso" /> Selection tool {#selection-tool}
+
+<ShotRow src="nanome-web/selection-chain-selected.webp" alt="Chain A selected in Chain mode, outlined in white">
 
 The Selection tool picks atoms at the level set in the bar:
 
@@ -94,22 +102,13 @@ The Selection tool picks atoms at the level set in the bar:
 
 Hovering outlines in blue what a click would pick. Clicking adds it to the selection, or removes it when all of it is already selected. Selected atoms are outlined in white. Clicking empty space clears the selection.
 
-<Tabs :labels="['Chain A on hover, in Chain mode', 'Chain A selected']">
-<Tab>
-
-<vimg src="nanome-web/selection-chain-hover.webp" alt="A chain highlighted on hover in Chain mode" />
-
-</Tab>
-<Tab>
-
-<vimg src="nanome-web/selection-chain-selected.webp" alt="A selected chain outlined in white" />
-
-</Tab>
-</Tabs>
+</ShotRow>
 
 Rotation and zoom pivot on the selection. The [sequence viewer](#sequence-viewer) selects residues too, and its **Create** button turns the selection into a component.
 
 ### <AppIcon name="ruler-2" /> Measurement tool {#measurement-tool}
+
+<ShotRow src="nanome-web/measure-results.webp" alt="A finished distance and angle on the 4CEO ligand">
 
 The Measurement tool measures between atoms. The bar sets what it measures:
 
@@ -129,23 +128,7 @@ The Measurement tool measures between atoms. The bar sets what it measures:
 
 </Steps>
 
-<Tabs :labels="['Distance in progress', 'Angle in progress', 'Finished']">
-<Tab>
-
-<vimg src="nanome-web/measure-distance-preview.webp" alt="A distance measurement in progress" />
-
-</Tab>
-<Tab>
-
-<vimg src="nanome-web/measure-angle-preview.webp" alt="An angle measurement in progress" />
-
-</Tab>
-<Tab>
-
-<vimg src="nanome-web/measure-results.webp" alt="A finished distance and angle" />
-
-</Tab>
-</Tabs>
+</ShotRow>
 
 - Clicking empty space, or an atom that's already picked, cancels the measurement in progress.
 - Only atoms can be picked, so bonds and ribbons don't get in the way, and hidden atoms can't be measured.
@@ -159,8 +142,6 @@ Nanome shows dihedral angles from 0° to 180°. Torsions of −60° and +60° bo
 </Callout>
 
 In **Delete** mode, hovering a measurement turns it red, and clicking removes it.
-
-<vimg src="nanome-web/measure-delete.webp" alt="A distance measurement highlighted for deletion" />
 
 ### <AppIcon name="message" /> Add a comment {#add-a-comment}
 
@@ -194,30 +175,36 @@ When the connection to Nanome's server is slow, a warning icon <AppIcon name="wi
 
 ### <AppIcon name="settings" /> Viewer settings {#viewer-settings}
 
+<ShotRow src="nanome-web/viewer-settings-themes.webp" alt="The viewer theme list">
+
 <UiList label="Viewer settings">
 <UiItem icon="moon" name="Day and night toggle">Switches between day and night.</UiItem>
 <UiItem name="Environment theme">Default, Arctic Cyan, Aurora Green, Black & White, Gold Orange, Island or Pure Black.</UiItem>
-<UiItem name="Fullscreen"></UiItem>
+<UiItem name="Fullscreen">Shows the viewer full screen.</UiItem>
 </UiList>
 
 The seven themes match the themes in Nanome XR.
 
-<vimg src="nanome-web/viewer-settings-themes.webp" alt="The viewer theme list" />
+</ShotRow>
 
 ## <AppIcon name="mist" /> Sequence viewer {#sequence-viewer}
 
 The **Sequence** button at the bottom right of the viewer opens the sequences of every entry in the workspace, one row per entry, with chain labels and residue numbers above the letters. Hovering a residue highlights it in 3D and names it at the top right of the sequence viewer (for example, `4ceo A: GLY 59`). Clicking residues selects them.
+
+<ShotRow src="nanome-web/sequence-panel.webp" alt="The sequence viewer">
 
 <UiList label="Sequence viewer">
 <UiItem name="Create">Makes a component from the selection.</UiItem>
 <UiItem name="Clear">Empties the selection.</UiItem>
 </UiList>
 
-<vimg src="nanome-web/sequence-panel.webp" alt="The sequence viewer" />
+</ShotRow>
 
 ## <AppIcon name="box" /> Scenes {#scenes}
 
 A scene is a saved view of the workspace: its components, annotations, molecule positions and point of view. The rail lists scenes by number.
+
+<ShotRow src="nanome-web/scenes-panel-menu.webp" alt="The Scenes panel with a scene menu open">
 
 <UiList label="Scenes rail">
 <UiItem icon="chevrons-right" name="Expand">At the top: expands the rail to show the scene names.</UiItem>
@@ -226,7 +213,7 @@ A scene is a saved view of the workspace: its components, annotations, molecule 
 <UiItem icon="video" name="Recording">With a time, such as 0:37, marks a scene that holds a recording and shows its length.</UiItem>
 </UiList>
 
-<vimg src="nanome-web/scenes-panel-menu.webp" alt="The Scenes panel with a scene menu open" />
+</ShotRow>
 
 ## <AppIcon name="cube-3d-sphere" /> Workspace tabs {#workspace-tabs}
 

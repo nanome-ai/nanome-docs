@@ -25,6 +25,12 @@ While a trajectory is open, its entry row shows the current frame out of the tot
 
 Several people on different devices, such as Quest 3, Vision Pro, phones and desktops, can watch the same trajectory together.
 
+<Callout type="note" title="In practice: Resonac">
+
+Resonac's computational and experimental chemists reviewed their GROMACS trajectories together in Nanome, and one experimental cycle went from about 6 months to 2 to 3 days. [Read the case study](https://nanome.ai/blog/how-resonac-turned-two-years-of-misaligned-randd-into-a-single-afternoon-breakthrough).
+
+</Callout>
+
 <Accordion title="Playback since release 2.7" teaser="Frame computing, what stays visible, and load speed.">
 
 - In Nanome XR, upcoming frames are computed in the background, so playback is smoother. Nanome Web computes each frame as it plays.

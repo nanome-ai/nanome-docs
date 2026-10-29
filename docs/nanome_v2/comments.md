@@ -6,6 +6,8 @@ title: Comments & Annotations
 
 Since release 2.7, comments and annotations share one panel: the <AppIcon name="message" /> **Comments** tool in the Tools Panel. A comment can belong to the whole workspace, to a scene or to an annotation, and it can point at specific atoms. Comments appear for everyone in the workspace as they're posted, in Nanome XR and in Nanome Web.
 
+<ShotRow src="nanome-v2/v2-7/tool-comments.webp" alt="The Comments tool panel">
+
 <IconGrid label="Comments">
 <IconCard icon="message" title="The panel" href="#the-panel">Modes, the filter and the comment box.</IconCard>
 <IconCard icon="messages" title="Threads" href="#threads">Replies, mentions, reactions and atom chips.</IconCard>
@@ -13,7 +15,7 @@ Since release 2.7, comments and annotations share one panel: the <AppIcon name="
 <IconCard icon="eye" title="Hiding annotations" href="#hiding-annotations">Hide one annotation, or all of them.</IconCard>
 </IconGrid>
 
-<vimg src="nanome-v2/v2-7/tool-comments.webp" alt="The Comments tool panel" />
+</ShotRow>
 
 <DocVideo src="v2-7/comments.mp4" caption="Comments, from the v2.7 release video. The Agent tag in the video is for illustration." />
 

@@ -6,9 +6,9 @@ title: Ligands Tab
 
 The **Ligands** tab is a table of every ligand in the workspace, with a 2D drawing and calculated properties for each. It's the same ligand list as the **Ligands** tab in Nanome XR.
 
-<vimg src="nanome-web/ligands-tab.webp" alt="The Ligands tab" />
-
 ## <AppIcon name="filter" /> Toolbar {#toolbar}
+
+<ShotRow src="nanome-web/ligands-tab.webp" alt="The Ligands tab">
 
 <UiList label="Ligands toolbar">
 <UiItem icon="filter" name="Filter ligands">Narrows the table. The button shows how many ligands are listed out of the total, for example 2/2.</UiItem>
@@ -18,9 +18,17 @@ The **Ligands** tab is a table of every ligand in the workspace, with a 2D drawi
 <UiItem icon="window-maximize" name="Fullscreen">Opens the table in a larger window.</UiItem>
 </UiList>
 
+</ShotRow>
+
 ## The table {#the-table}
 
+<ShotRow src="nanome-web/ligands-fullscreen.webp" alt="The Ligands table in full screen">
+
 Each row shows the ligand's 2D drawing, its entry, its name, and the chosen property columns. **Atoms** and **MW** are shown by default. Column headers with arrows sort the table. The <AppIcon name="info-circle" /> beside a column name shows what the column means.
+
+</ShotRow>
+
+<ShotRow src="nanome-web/ligand-row-menu.webp" alt="A ligand row's menu">
 
 In the fullscreen table, each row has a checkbox and a <AppIcon name="dots-vertical" /> menu:
 
@@ -31,9 +39,9 @@ In the fullscreen table, each row has a checkbox and a <AppIcon name="dots-verti
 <UiItem name="Tag">Hit, Lead, Add to Synthesis, or New tag... for a custom tag. The tag appears in the Tag column.</UiItem>
 </UiList>
 
-<vimg src="nanome-web/ligands-fullscreen.webp" alt="The Ligands table in full screen" />
+</ShotRow>
 
-<vimg src="nanome-web/ligand-row-menu.webp" alt="A ligand row's menu" />
+<ShotRow src="nanome-web/ligand-preview.webp" alt="A ligand preview">
 
 Along the bottom of the tab:
 
@@ -43,13 +51,15 @@ Along the bottom of the tab:
 <UiItem icon="hexagon-plus-2" name="Sketch new">Opens the 2D sketcher to draw a new ligand.</UiItem>
 </UiList>
 
-<vimg src="nanome-web/ligand-preview.webp" alt="A ligand preview" />
+</ShotRow>
 
 ## <AppIcon name="columns-3" /> Property columns {#property-columns}
 
+<ShotRow src="nanome-web/ligand-columns.webp" alt="The ligand property column picker">
+
 Nanome calculates these properties with RDKit on its server. SDF data fields from the source file can also be shown as columns.
 
-<vimg src="nanome-web/ligand-columns.webp" alt="The ligand property column picker" />
+</ShotRow>
 
 | Column | What it is |
 |--------|------------|
