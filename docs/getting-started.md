@@ -4,7 +4,7 @@ outline: [2, 3]
 ---
 
 <script setup>
-import { NANOME_HOSTS, NETWORK_ALLOWLIST, ONPREM_DNS, ONPREM_ALLOWLIST } from './.vitepress/data/setup-network.js'
+import { NANOME_HOSTS, NETWORK_ALLOWLIST, ONPREM_DNS, ONPREM_OUTBOUND, ONPREM_ALLOWLIST } from './.vitepress/data/setup-network.js'
 </script>
 
 # Getting started with Nanome XR
@@ -438,7 +438,10 @@ can't reach Meta, before Nanome ever opens.
 
 Allow outbound TCP 443 to `*.nanome.ai` and `*.nanome.com`. Nanome's servers
 run on Cloudflare and AWS, where IP addresses change, so IP-based rules
-eventually break.
+eventually break. Collaboration and voice run over a secure WebSocket on the
+same port, so Nanome needs no UDP ports, and it doesn't accept incoming
+connections. Headsets also load structures by PDB ID straight from
+files.rcsb.org.
 
 <ul class="hosts">
   <li v-for="entry in NANOME_HOSTS" :key="entry.host">
@@ -502,12 +505,14 @@ These apply only when Nanome v2 runs on the organization's own Linux VM. Nanome
 cloud users don't need any of them. Installation is covered in Nanome's
 [v2 deployment guide](https://nanome.ai/deploy).
 
-<AccordionGroup label="5 checks for on-prem">
+<AccordionGroup label="6 checks for on-prem">
 
 <Accordion title="Ports on the VM" teaser="TCP 80, and TCP 443 when SSL certificates are provisioned.">
 
 The VM needs TCP 80 (HTTP) open, and TCP 443 (HTTPS) when SSL certificates are
-provisioned.
+provisioned. An nginx proxy on the VM routes each DNS name to its service, so
+headsets and browsers reach the VM only through those names, and no other port
+on it needs to be reachable from them.
 
 </Accordion>
 
@@ -520,7 +525,7 @@ organization's licenses:
 <ul class="hosts">
   <li v-for="entry in ONPREM_DNS" :key="entry.host">
     <code>{{ entry.host }}</code>
-    <span v-if="entry.purpose">{{ entry.purpose }}</span>
+    <span>{{ entry.purpose }}</span>
   </li>
 </ul>
 
@@ -528,14 +533,20 @@ If the VM already has an A record, add CNAME records for these names that
 point to it. Otherwise, create A records that point to the VM's IP address.
 With HTTPS, the SSL certificate covers `*.company.com`, or each name.
 
+The deployment guide marks nanome-auth as optional. The deployer asks for it
+whenever it sets up workspaces, and headsets only need it when they can't
+reach api.nanome.com.
+
 </Accordion>
 
 <Accordion title="Headsets without internet access" teaser="An auth proxy on the VM, set up through the MDM.">
 
-Headsets sign in and check licenses through Nanome's API. When the internal
-network stops headsets from reaching the internet, for example api.nanome.ai,
-the auth proxy on the VM routes those requests instead. It starts on the VM
-during deployment and uses the nanome-auth name.
+Headsets sign in and check licenses through Nanome's API at api.nanome.com,
+even on an on-prem deployment. When the internal network stops headsets from
+reaching the internet, the auth proxy on the VM takes those requests and
+forwards them to api.nanome.com. It starts on the VM during deployment and
+uses the nanome-auth name. Meta Quest and Galaxy XR read the setting from a
+file the MDM puts on the headset.
 
 <Steps>
 
@@ -558,6 +569,14 @@ AI features in Nanome and the web app need access to an LLM provider:
 Anthropic, OpenAI, AWS Bedrock or Microsoft Foundry. Have the provider's URL
 and API key, or other auth details, ready before installation. For another
 provider, ask [support@nanome.ai](mailto:support@nanome.ai).
+
+</Accordion>
+
+<Accordion title="What the VM connects to" teaser="Nanome's API, image registries, the LLM provider and science data sources.">
+
+<ul>
+  <li v-for="item in ONPREM_OUTBOUND" :key="item">{{ item }}</li>
+</ul>
 
 </Accordion>
 

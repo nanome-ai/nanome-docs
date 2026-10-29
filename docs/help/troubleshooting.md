@@ -64,6 +64,8 @@ These checks narrow down most connection problems.
 
 </Steps>
 
+Collaboration and voice use the same secure WebSocket connection on TCP 443, so no UDP ports are involved. Nanome XR on Windows only makes outbound connections and doesn't listen for incoming ones, so Windows Firewall needs no inbound rule for it. The [Windows Firewall steps](#firewall) further down are for Nanome Classic.
+
 ### <AppIcon name="server" /> On-prem or private VM {#network-on-prem}
 
 Only for Nanome v2 running on the organization's own VM. Its ports, DNS names and auth proxy are in [Getting Started: On-prem or private VM](/getting-started#on-prem), and installation is in Nanome's [v2 deployment guide](https://nanome.ai/deploy).
@@ -72,7 +74,7 @@ Only for Nanome v2 running on the organization's own VM. Its ports, DNS names an
 
 <Accordion title="A headset can't reach Nanome's servers" teaser="Without internet access, headsets sign in through the auth proxy.">
 
-Headsets sign in and check licenses through Nanome's API. On an internal network that stops them from reaching the internet, point them at the auth proxy on the VM with a config file from the MDM: [auth proxy setup](/getting-started#on-prem). Once the file is on the headset, Nanome says it's unable to reach Nanome servers and offers a button that enables local config access.
+Headsets sign in and check licenses through Nanome's API at api.nanome.com. On an internal network that stops them from reaching it, point Meta Quest and Galaxy XR headsets at the auth proxy on the VM with a config file from the MDM: [auth proxy setup](/getting-started#on-prem). The proxy forwards their requests to api.nanome.com. Once the file is on the headset, Nanome says it's unable to reach Nanome servers and offers a button that enables local config access.
 
 </Accordion>
 
