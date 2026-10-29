@@ -38,7 +38,8 @@ Viewers can use <Btn icon="droplet">Pointer</Btn> and <Btn icon="lasso">Selectio
 The Pointer is the default tool.
 
 - It highlights whole residues as it passes over them.
-- A trigger pull adds the hovered residue to the selection, or removes it. Pulling the trigger while pointing at empty space clears the selection.
+- A trigger pull adds the hovered residue to the selection, or removes it.
+- To clear the selection, aim your dominant hand at the sky (within 30° of straight up, with nothing under the pointer) and pull the trigger. A **Deselect all** hint shows while you're aimed there. This works with any tool.
 - Pointing at an interaction, a measurement or a text note shows a tooltip with its details, such as the interaction type, the distance and the groups involved.
 
 The off-hand controller always works as a pointer for hovering and selecting, whatever tool the main hand holds.
