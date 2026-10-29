@@ -1,14 +1,21 @@
 ---
-title: Account Tiers
+title: Account Tiers (Classic)
+classic: true
 ---
 
-# Account Tiers
+# Nanome Classic account tiers
 
-Each tier includes everything in the one before it.
+<Callout type="note" title="Seats for Nanome XR and Nanome Web">
+
+Nanome XR and Nanome Web use seats instead of these tiers. A free license covers the browser, and working in a headset takes a Collab or Full seat. [Accounts & licenses](/getting-started#account) in Getting Started explains how seats are assigned, and [nanome.ai/pricing](https://nanome.ai/pricing) lists what each seat includes.
+
+</Callout>
+
+These tiers apply to Nanome Classic (v1.24). Each tier includes everything in the one before it.
 
 <CardGrid :cols="3">
 
-<Card title="Personal" href="https://home.nanome.ai/setup" cta="Download">
+<Card title="Personal" href="https://nanome.ai/versions" cta="Download">
 
 - Load structures from RCSB
 - Host public workspaces

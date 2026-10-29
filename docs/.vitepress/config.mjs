@@ -188,8 +188,7 @@ export default defineConfig({
               { text: 'Choosing Hardware (Classic)', link: '/help/choosinghardware-classic' },
               { text: 'Hardware Requirements', link: '/help/hardwarerequirements' },
               { text: 'PC Hardware', link: '/help/pchardware' },
-              { text: 'Enterprise Deployment', link: '/help/enterprise' },
-              { text: 'Quest for Business', link: '/help/questforbusiness' }
+              { text: 'Enterprise Deployment', link: '/help/enterprise' }
             ]
           },
           {
@@ -210,7 +209,7 @@ export default defineConfig({
           { text: 'Licenses', link: '/home.nanome.ai/licenses' },
           { text: 'Two Factor Auth', link: '/home.nanome.ai/twofactorauth' },
           { text: 'Invoice', link: '/home.nanome.ai/invoice' },
-          { text: 'Account Tiers', link: '/home.nanome.ai/accounttiers' },
+          { text: 'Account Tiers (Classic)', link: '/home.nanome.ai/accounttiers' },
           { text: 'Meetings', link: '/home.nanome.ai/meetings' }
         ]
       },

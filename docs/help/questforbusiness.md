@@ -1,27 +1,18 @@
 ---
 title: Quest for Business
+search: false
+prev: false
+next: false
 ---
 
 # Quest for Business
 
-Quest for Business (QFB) is Meta's native solution for managing Meta Quest headsets in an organization. You configure devices, deploy apps and manage business accounts from its Admin Web Portal.
+Meta's business offering for Quest has changed since this page was written. Meta stopped selling business editions in February 2026, and its device management service, Meta Horizon managed services (HMS), has been free since February 20, 2026. Organizations now buy the standard headsets and enroll them in HMS.
 
-## Management {#management}
+Getting Started covers managing Quest headsets for Nanome:
 
-The Admin Web Portal handles bulk provisioning, device profiles, device status and Wi-Fi setup.
-
-## Security {#security}
-
-QFB has enterprise-grade security, such as SSO, SOC2 type 2 compliance and certificate-based Wi-Fi, so it works on enterprise-grade networks. Remote wipe and secure access help protect scientists' data and proprietary structures.
-
-## Integration {#integration}
-
-QFB works with major mobile device management (MDM) platforms, including Microsoft Intune, VMware Workspace ONE and Ivanti (formerly MobileIron), so existing device management workflows stay as they are.
-
-## Supported devices {#supported-devices}
-
-- Meta Quest 2
-- Meta Quest Pro
-- Meta Quest 3
-
-More on the [official Quest for Business page](https://forwork.meta.com/quest/business-subscription/).
+<IconGrid label="Device management in Getting Started" :cols="3">
+<IconCard icon="devices" title="Choose an MDM" href="/getting-started#mdm">HMS, ArborXR or ManageXR, by headset and budget.</IconCard>
+<IconCard icon="settings" title="MDM setup guides" href="/getting-started#mdm-setup">Enroll headsets and push Nanome to them.</IconCard>
+<IconCard icon="wifi" title="Wi-Fi & network" href="/getting-started#network">Enterprise Wi-Fi and the hosts IT needs to allow.</IconCard>
+</IconGrid>

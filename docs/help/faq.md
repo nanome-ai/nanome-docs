@@ -85,7 +85,7 @@ A stable internet connection is highly recommended, especially when collaboratin
 
 [Download &amp; install](/getting-started#install) covers Nanome XR on each headset.
 
-Nanome Classic is free to download from all major VR stores, including Oculus, Steam and VivePort, or directly from [home.nanome.ai/setup](https://home.nanome.ai/setup). Premium versions with upgraded features are for sale on our website.
+Nanome Classic is free to download from all major VR stores, including Oculus, Steam and VivePort, or directly from the [Versions page](https://nanome.ai/versions). Premium versions with upgraded features are for sale on our website.
 
 </Accordion>
 
@@ -164,9 +164,9 @@ Nanome Vault has no particular file size limit. The limits come from the Nanome 
 
 <AccordionGroup label="8 questions">
 
-<Accordion title="How does the Nanome licensing system work? Isn't Nanome free?" teaser="A limited version is free. Premium licenses are sold.">
+<Accordion title="How does the Nanome licensing system work? Isn't Nanome free?" teaser="The browser is free. Headsets take a Collab or Full seat.">
 
-A limited version of Nanome is free for all users, from any major VR store or from home.nanome.ai/setup. Licenses for premium capabilities are sold on the [Nanome website](https://nanome.ai/pricing/).
+A free license covers Nanome in the browser at app.nanome.ai, with 1 owned project, 3 owned workspaces and 5 structures per workspace. Working in a headset takes a Collab or Full seat, and every new account starts with a 14-day Full license trial. Seats and prices are on the [Nanome website](https://nanome.ai/pricing/).
 
 </Accordion>
 
