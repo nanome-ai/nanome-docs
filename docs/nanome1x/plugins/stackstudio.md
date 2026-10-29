@@ -23,7 +23,7 @@ Currently, Stack Studio is still in beta and we would love to hear your feedback
 2. Once you extract the file, open StackStudio.exe from the extracted content. Once StackStudio.exe is running, you should be seeing the interface below.
 <vimg src="plugins-page/pluginator/stackstudio.JPG" />
 
-3. Create a JSON file at your preferred location. Copy paste the RMSD plugin menu content from [here](https://raw.githubusercontent.com/nanome-ai/plugin-rmsd/master/nanome_rmsd/rmsd_pluginator.json) into the JSON file.
+3. Create a JSON file at your preferred location. Copy paste the RMSD plugin menu content from [here](https://raw.githubusercontent.com/nanome-ai/plugin-rmsd/master/plugin/rmsd_pluginator.json) into the JSON file.
 
 4. Open file option in Stack Studio and select [Import]. Choose the JSON file that you just created.
 <vimg src="plugins-page/pluginator/import.JPG" />

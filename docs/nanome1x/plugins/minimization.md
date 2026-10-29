@@ -4,7 +4,7 @@ title: Minimization
 
 # Minimization
 
-The minimization plugin optimizes the conformation of the selected molecule or complex to find a geometry where interatomic forces are as close to zero as possible.  The [molecular mechanics](http://openbabel.org/wiki/Molecular_mechanics) methods developed by [OpenBabel](http://openbabel.org/wiki/Main_Page) are employed.
+The minimization plugin optimizes the conformation of the selected molecule or complex to find a geometry where interatomic forces are as close to zero as possible.  The [molecular mechanics](https://open-babel.readthedocs.io/en/latest/Forcefields/Overview.html) methods developed by [Open Babel](https://openbabel.org/) are employed.
 
 <vimg src="plugins-page/minimization_plugin.png" />
 

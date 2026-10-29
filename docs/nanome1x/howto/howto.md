@@ -22,7 +22,7 @@ title: How to
 
 ## How to load a MD trajectory file
 
-<video src="https://user-images.githubusercontent.com/125503369/235212408-5e740ee3-1cb3-49a3-9bd9-0cc5aba5137a.mp4" controls="controls" style="max-width: 720px;" loop muted playsinline></video>
+<video src="https://user-images.githubusercontent.com/125503369/235212408-5e740ee3-1cb3-49a3-9bd9-0cc5aba5137a.mp4" controls="controls" style="width: 100%; max-width: 720px;" loop muted playsinline></video>
 
 Nanome supports the following MD trajectory files (v1.26): .PDB, .PSE, .DCD, .GRO, .XTC, .TRR. For trajectory support in Nanome v2, see [Supported File Formats](/nanome_web/fileformats#trajectory-molecular-dynamics). 
 1. Go to the [Load menu](/nanome1x/navigation/menus#load).
@@ -104,10 +104,6 @@ To view a tutorial on how to capture 2D videos and retrieve them in Oculus Quest
 
 To view a tutorial on how to capture 2D videos on PC, we recommend this PCMag article here: [https://www.pcmag.com/how-to/how-to-capture-video-clips-in-windows-10](https://www.pcmag.com/how-to/how-to-capture-video-clips-in-windows-10)
 
-
-## How to capture mixed reality video on an Oculus system
-
-To view a tutorial on how to capture mixed reality videos on an Oculus system, we recommend this VRfocus article here: [https://www.vrfocus.com/2017/07/a-guide-to-mixed-reality-capture-on-oculus-rift](https://www.vrfocus.com/2017/07/a-guide-to-mixed-reality-capture-on-oculus-rift)
 
 ## How to find the log file of a previous session
 
