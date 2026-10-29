@@ -70,6 +70,7 @@ export default defineConfig({
               { text: 'Getting Started', link: '/getting-started' },
               { text: "What's New in 2.7", link: '/nanome_v2/whatsnew' },
               { text: 'Login', link: '/nanome_v2/login' },
+              { text: 'Controls', link: '/nanome_v2/controls' },
               { text: 'Main Panel', link: '/nanome_v2/mainpanel' },
               { text: 'Tools Panel', link: '/nanome_v2/toolspanel' },
               { text: 'Scenes Panel', link: '/nanome_v2/scenespanel' },

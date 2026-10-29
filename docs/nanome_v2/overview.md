@@ -10,9 +10,10 @@ Nanome XR is Nanome in a headset. It opens the same projects, workspaces and sce
 
 ## Start here
 
-<IconGrid label="Start here" :cols="3">
+<IconGrid label="Start here">
 <IconCard icon="headset" title="Set up a headset" href="/getting-started">Hardware, install and first login.</IconCard>
 <IconCard icon="login-2" title="Log in" href="/nanome_v2/login">With your password, or a code from another device.</IconCard>
+<IconCard icon="hand-grab" title="Controls" href="/nanome_v2/controls">Grab, scale, point and select, with controllers or hands.</IconCard>
 <IconCard icon="sparkles" title="What's new in 2.7" href="/nanome_v2/whatsnew">Comments, pocket minimization and more.</IconCard>
 </IconGrid>
 
