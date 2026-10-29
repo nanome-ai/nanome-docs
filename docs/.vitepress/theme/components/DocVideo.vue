@@ -9,12 +9,20 @@
       playsinline
       controls
       preload="metadata"
+      :style="{ aspectRatio: SIZES[src] || '16 / 9' }"
     ></video>
     <figcaption v-if="caption">{{ caption }}</figcaption>
   </figure>
 </template>
 
 <script setup>
+// Frame sizes of the videos that aren't 16:9, so the page keeps their space
+// before they load (a heading lower down would otherwise move as they do).
+const SIZES = {
+  'v2-7/web-hover-select-measure.mp4': '1280 / 932',
+  'v2-7/web-md-playback.mp4': '1024 / 746',
+}
+
 defineProps({
   src: {
     type: String,

@@ -6,13 +6,15 @@ title: Wrist Menu
 
 The Wrist Menu is a small menu attached to your virtual wrist.
 
+<ShotRow src="nanome-v2/wristmenu.jpg" alt="The Wrist Menu">
+
 <IconGrid label="Wrist Menu buttons" :cols="3">
 <IconCard icon="menu-2" title="Clock and menu" href="#time">The big button. Shows or hides the Main Panel.</IconCard>
 <IconCard icon="sparkles" title="MARA" href="#mara">Opens the MARA assistant.</IconCard>
 <IconCard icon="microphone" title="Mute" href="#mute">Mutes or unmutes your microphone.</IconCard>
 </IconGrid>
 
-<vimg src="nanome-v2/wristmenu.jpg" />
+</ShotRow>
 
 ## <AppIcon name="menu-2" /> Clock and menu {#time}
 

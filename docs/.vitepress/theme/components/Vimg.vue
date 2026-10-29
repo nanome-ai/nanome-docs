@@ -1,15 +1,14 @@
 <template>
   <div>
-    <div
-      class="vimg"
-      :class="{ 'has-dark': !!darkSrc }"
-      :style="maxWidth ? { maxWidth: `${maxWidth}px` } : null"
-    >
+    <div class="vimg" :class="{ 'has-dark': !!darkSrc }" :style="box">
       <img
         class="vimg__light"
         :src="`/assets/compressed/${toCopy(src)}`"
         :data-zoom-src="`/assets/original/${src}`"
         :alt="alt"
+        :width="size?.[0]"
+        :height="size?.[1]"
+        :style="ratio(size)"
         loading="lazy"
         decoding="async"
       />
@@ -19,6 +18,9 @@
         :src="`/assets/compressed/${toCopy(darkSrc)}`"
         :data-zoom-src="`/assets/original/${darkSrc}`"
         :alt="alt"
+        :width="darkSize?.[0]"
+        :height="darkSize?.[1]"
+        :style="ratio(darkSize)"
         loading="lazy"
         decoding="async"
       />
@@ -31,6 +33,7 @@
 import { computed } from 'vue'
 import variants from '../image-variants.json'
 import widths from '../image-widths.json'
+import sizes from '../image-sizes.json'
 
 const props = defineProps({
   src: {
@@ -51,8 +54,25 @@ const isGif = computed(() => {
 // original, and records which images have a `.dark` twin for dark mode.
 const darkSrc = computed(() => variants[props.src] || '')
 
-// 2x screenshots show at half their pixel width, the size they are on screen.
-const maxWidth = computed(() => (widths[props.src] ? Math.round(widths[props.src] / 2) : 0))
+// The copy's width and height, so the page holds the image's space before it
+// loads and a link to a heading lower down lands on it.
+const size = computed(() => sizes[props.src])
+const darkSize = computed(() => sizes[darkSrc.value])
+
+// 2x screenshots show at half their pixel width, the size they are on screen;
+// other images at most at the width of their copy.
+const box = computed(() => {
+  const [w, h] = size.value || []
+  const shown = widths[props.src] ? Math.round(widths[props.src] / 2) : w
+  return {
+    ...(shown ? { '--vimg-w': `${shown}px` } : {}),
+    ...(w ? { '--vimg-ar': (w / h).toFixed(4) } : {}),
+  }
+})
+
+function ratio(wh) {
+  return wh ? { aspectRatio: `${wh[0]} / ${wh[1]}` } : null
+}
 
 function toCopy(src) {
   return src.substr(0, src.lastIndexOf('.')) + '.webp'
@@ -62,7 +82,12 @@ function toCopy(src) {
 <style scoped>
 .vimg {
   position: relative;
-  display: inline-block;
+  max-width: var(--vimg-w, 100%);
+}
+
+.vimg > img {
+  width: 100%;
+  height: auto;
 }
 
 .vimg__play-btn {

@@ -7,6 +7,8 @@ title: Main Panel
 
 The Main Panel is where you manage structures, ligands, workspaces, people and settings. Open it from the [Wrist Menu](/nanome_v2/wristmenu) or with the **Menu** button on your off-hand controller. Everyone in a session has their own.
 
+<ShotRow src="nanome-v2/v2-7/desktop-layout.webp" alt="Nanome XR with the left sidebar, the Main Panel, the Tools Panel and 1KV2">
+
 <IconGrid label="Main Panel tabs">
 <IconCard icon="hierarchy" title="Components" href="#components-tab">The structures in the workspace and how each is drawn.</IconCard>
 <IconCard icon="affiliate" title="Ligands" href="#ligands-tab">Every ligand in a table, with properties and tags.</IconCard>
@@ -15,7 +17,7 @@ The Main Panel is where you manage structures, ligands, workspaces, people and s
 <IconCard icon="settings" title="Settings" href="#settings-tab">Skybox, passthrough, controls and sign-out.</IconCard>
 </IconGrid>
 
-<vimg src="nanome-v2/v2-7/desktop-layout.webp" alt="Nanome XR with the left sidebar, the Main Panel, the Tools Panel and 1KV2" />
+</ShotRow>
 
 The [Scenes Panel](/nanome_v2/scenespanel) sits on the left of the Main Panel and the [Tools Panel](/nanome_v2/toolspanel) on the right. Two buttons at the panel's top right change the panel itself:
 
@@ -28,6 +30,8 @@ The [Scenes Panel](/nanome_v2/scenespanel) sits on the left of the Main Panel an
 
 Every structure in the workspace, and the components that control how it's drawn. It's the same list as the [Entries tab](/nanome_web/entries) in Nanome Web.
 
+<ShotRow src="nanome-v2/v2-7/components-tab.webp" alt="The Components tab with 1KV2 and its components">
+
 <UiList label="Components toolbar">
 <UiItem icon="caret-down-filled" name="Collapse All">Collapses every entry.</UiItem>
 <UiItem icon="eye" name="Hide All">Hides every entry.</UiItem>
@@ -39,7 +43,7 @@ Every structure in the workspace, and the components that control how it's drawn
 <UiItem icon="mist" name="Sequences">At the bottom: opens the Sequence Panel.</UiItem>
 </UiList>
 
-<vimg src="nanome-v2/v2-7/components-tab.webp" alt="The Components tab with 1KV2 and its components" />
+</ShotRow>
 
 While a structure loads, a progress bar appears at the bottom of the tab, and the load can be cancelled.
 
@@ -57,6 +61,8 @@ The report lists warnings and errors, with the line number when it's known.
 
 ### Entry rows
 
+<ShotRow src="nanome-v2/v2-7/entry-more-options.webp" alt="An entry's More options menu with Rename, Duplicate and Delete">
+
 Each structure you load is an **entry**. Its row has these buttons:
 
 <UiList label="Entry row">
@@ -70,15 +76,15 @@ Each structure you load is an **entry**. Its row has these buttons:
 <UiItem icon="paperclip" name="Map loaded">Marks an entry with an electrostatic map.</UiItem>
 </UiList>
 
-Hovering a row shows how many atoms it holds. An empty component is grayed out.
+</ShotRow>
 
-<vimg src="nanome-v2/v2-7/entry-more-options.webp" alt="An entry's More options menu with Rename, Duplicate and Delete" />
+Hovering a row shows how many atoms it holds. An empty component is grayed out.
 
 ### Entries and components
 
-Each entry holds **components**: named parts of the structure, each with its own look. A structure with a ligand loads with a default breakdown:
+<ShotRow src="nanome-v2/v2-7/components-breakdown.webp" alt="The default components of 1KV2, labelled">
 
-<vimg src="nanome-v2/v2-7/components-breakdown.webp" alt="The default components of 1KV2, labelled" />
+Each entry holds **components**: named parts of the structure, each with its own look. A structure with a ligand loads with a default breakdown:
 
 - **Protein**: Cartoon
 - **Water** and **Ion**, when the file has them: Stick, hidden by default
@@ -87,6 +93,8 @@ Each entry holds **components**: named parts of the structure, each with its own
   - **Pocket A:B96_391**: every whole residue with an atom within 4 Å of the ligand, as Wire with a surface
   - **Pocket + Ligand A:B96_391**: both together, carrying their interactions
 
+</ShotRow>
+
 In a headset, **Load Structure** in the Tools Panel loads a structure by PDB code. Other file types are loaded in [Nanome Web](/nanome_web/loading), and the workspace updates in XR.
 
 #### Video: Load Structures, Invite & Follow from XR
@@ -94,6 +102,8 @@ In a headset, **Load Structure** in the Tools Panel loads a structure by PDB cod
 <YoutubeEmbed videoId="5uikQlDO7FA" title="Nanome v2.5 Quick Tips: Load Structures, Invite & Follow from XR" />
 
 ### Component menu
+
+<ShotRow src="nanome-v2/v2-7/component-more-options.webp" alt="A component's More options menu">
 
 <UiList label="Component More options">
 <UiItem icon="pencil" name="Rename">Renames the component.</UiItem>
@@ -107,7 +117,7 @@ In a headset, **Load Structure** in the Tools Panel loads a structure by PDB cod
 <UiItem icon="circle-dashed" name="Create Distance Component">The atoms within a set distance of this component.</UiItem>
 </UiList>
 
-<vimg src="nanome-v2/v2-7/component-more-options.webp" alt="A component's More options menu" />
+</ShotRow>
 
 <Accordion title="Distance components" teaser="The options in the distance popup.">
 
@@ -127,6 +137,8 @@ A distance component holds the atoms within a set distance of another component.
 
 The button on a component that names its current style, such as **Cartoon**, opens its representations. One atomistic style is active at a time, and the <AppIcon name="palette" /> button beside each style sets its colors.
 
+<ShotRow src="nanome-v2/v2-7/representation-popup.webp" alt="The representation panel for the Protein component">
+
 <UiList label="Representations">
 <UiItem icon="line" name="Ball & Stick">Atoms as spheres, joined by cylinders.</UiItem>
 <UiItem icon="slash" name="Stick">Bonds as cylinders.</UiItem>
@@ -138,7 +150,7 @@ The button on a component that names its current style, such as **Cartoon**, ope
 <UiItem icon="egg-fried" name="Surface">The molecular surface, drawn as Wire, Sheer, Semi or Opaque.</UiItem>
 </UiList>
 
-<vimg src="nanome-v2/v2-7/representation-popup.webp" alt="The representation panel for the Protein component" />
+</ShotRow>
 
 <vimg src="nanome-v2/v2-7/atom-representations.webp" alt="The 1KV2 ligand as Ball & Stick, Stick, Wire and Van der Waals" />
 
@@ -200,13 +212,15 @@ Anion-π, CH-π and water-bridged interactions aren't detected.
 
 ### Color schemes
 
-<vimg src="nanome-v2/v2-7/color-schemes.webp" alt="The color scheme list and the Uniform color swatches" />
+<ShotRow src="nanome-v2/v2-7/color-schemes.webp" alt="The color scheme list and the Uniform color swatches">
 
 The <AppIcon name="palette" /> button beside a style opens its colors:
 
 <Btn>Element Type</Btn> <Btn>Residue Type</Btn> <Btn>Chain Name</Btn> <Btn>Secondary Structure</Btn> <Btn>Potential Interactions</Btn> <Btn>BFactor</Btn> <Btn>Occupancy</Btn> <Btn>Uniform</Btn> <Btn>Chain Instance</Btn> <Btn>Model Instance</Btn> <Btn>Electrostatic</Btn>
 
 **Carbons only** colors just the carbon atoms and keeps element colors on the rest. **Uniform** opens a color picker with a hex field and swatches.
+
+</ShotRow>
 
 <Accordion title="Electrostatic coloring" teaser="Appears when the entry has a DX map loaded.">
 
@@ -215,6 +229,8 @@ The <AppIcon name="palette" /> button beside a style opens its colors:
 </Accordion>
 
 ### <AppIcon name="layout-list" /> Structure actions {#structure-actions}
+
+<ShotRow src="nanome-v2/v2-7/structure-actions.webp" alt="The Structure actions menu for 1KV2">
 
 <UiList label="Structure actions">
 <UiItem icon="arrow-left-to-arc" name="Align proteins to this">Superposes other protein entries onto this one.</UiItem>
@@ -227,7 +243,7 @@ The <AppIcon name="palette" /> button beside a style opens its colors:
 <UiItem icon="progress-x" name="Reset position">Moves the entry back to its original coordinates.</UiItem>
 </UiList>
 
-<vimg src="nanome-v2/v2-7/structure-actions.webp" alt="The Structure actions menu for 1KV2" />
+</ShotRow>
 
 <Tabs :labels="['Align proteins', 'Create component', 'Create interactions']">
 <Tab>
@@ -269,6 +285,8 @@ Entries with several models, such as a multi-MODEL PDB, and entries with a traje
 
 Every ligand in the workspace in one table. It matches the [Ligands tab](/nanome_web/ligands) in Nanome Web.
 
+<ShotRow src="nanome-v2/v2-7/ligands-tab.webp" alt="The Ligands tab">
+
 <UiList label="Ligands toolbar">
 <UiItem icon="filter" name="Filter ligands">Filters the table, including by what's visible.</UiItem>
 <UiItem icon="columns-3" name="Select property columns">Chooses the columns.</UiItem>
@@ -279,7 +297,7 @@ Every ligand in the workspace in one table. It matches the [Ligands tab](/nanome
 <UiItem name="Search">Filters by name.</UiItem>
 </UiList>
 
-<vimg src="nanome-v2/v2-7/ligands-tab.webp" alt="The Ligands tab" />
+</ShotRow>
 
 Each row shows the 2D structure and your columns, with these buttons:
 
@@ -290,7 +308,7 @@ Each row shows the 2D structure and your columns, with these buttons:
 <UiItem icon="caret-down-filled" name="Set Tag">Tags it, for example as Hit or Lead. Also Remove Tag, Edit list and Show 3D tag.</UiItem>
 </UiList>
 
-<vimg src="nanome-v2/v2-7/ligand-property-columns.webp" alt="The property column picker" />
+<ShotRow src="nanome-v2/v2-7/ligand-property-columns.webp" alt="The property column picker">
 
 <Callout type="note" title="Where the numbers come from">
 
@@ -298,7 +316,11 @@ Properties are calculated with RDKit on Nanome's server. **MolWeight** is the mo
 
 </Callout>
 
+</ShotRow>
+
 ## <AppIcon name="layout-grid" /> Workspaces tab {#workspaces-tab}
+
+<ShotRow src="nanome-v2/v2-7/workspaces-tab.webp" alt="The Workspaces tab">
 
 <UiList label="Workspaces tab">
 <UiItem name="Join Workspace">Type an 8-character code, shown as XXXX-XXXX, then Go.</UiItem>
@@ -309,7 +331,7 @@ Properties are calculated with RDKit on Nanome's server. **MolWeight** is the mo
 <UiItem icon="user" name="Load">Opens the selected workspace just for you.</UiItem>
 </UiList>
 
-<vimg src="nanome-v2/v2-7/workspaces-tab.webp" alt="The Workspaces tab" />
+</ShotRow>
 
 - Codes use letters (without I and O) and digits.
 - The list shows **Name**, **Owner** and **Last Opened**, and sorts by any column.
@@ -318,17 +340,21 @@ Properties are calculated with RDKit on Nanome's server. **MolWeight** is the mo
 
 ### Projects
 
-<vimg src="nanome-v2/v2-7/workspaces-tab-projects.webp" alt="The Projects list in the Workspaces tab" />
+<ShotRow src="nanome-v2/v2-7/workspaces-tab-projects.webp" alt="The Projects list in the Workspaces tab">
 
 The **Projects** tab lists projects with their workspace count, owner and modified date. Choosing a project filters the workspace list to it. Projects are edited in [Nanome Web](/nanome_web/home#projects).
+
+</ShotRow>
 
 Free licenses are limited to 1 owned project, 3 owned workspaces and 5 structures per workspace, with view-only access to workspaces others share.
 
 ## <AppIcon name="users-group" /> Users tab {#users-tab}
 
-<vimg src="nanome-v2/v2-7/users-tab-annotated.webp" alt="The Users tab with its controls labelled" />
+Who is in the workspace, your mic, and who can open it.
 
 ### User settings {#user-settings}
+
+<ShotRow src="nanome-v2/v2-7/users-tab-annotated.webp" alt="The Users tab with its controls labelled">
 
 <UiList label="Users tab">
 <UiItem name="Display Name">The name others see.</UiItem>
@@ -339,11 +365,15 @@ Free licenses are limited to 1 owned project, 3 owned workspaces and 5 structure
 <UiItem icon="plus" name="Invite">In Users in organization: invites a colleague to your workspace.</UiItem>
 </UiList>
 
+</ShotRow>
+
 - Your access shows at the top as **My Permission**.
 - The off-hand controller's primary button (**X**, or **A** when left-handed) also mutes you.
 - **Users in organization** lists colleagues who are online. When you ask to join, the owner lets you in as a Viewer or Editor, or denies it. An invited colleague sees **Join Workspace?** with **Refuse** or **Accept**.
 
 ### <AppIcon name="share" /> Share {#share}
+
+<ShotRow src="nanome-v2/v2-7/users-tab-share-dialog.webp" alt="The Share dialog with the workspace code and the people with access">
 
 The dialog shows the workspace code, and has:
 
@@ -353,7 +383,7 @@ The dialog shows the workspace code, and has:
 <UiItem icon="dots" name="Email / Permission">The people with access. Each one's menu has Make Editor or Make Viewer, and Remove User for the owner.</UiItem>
 </UiList>
 
-<vimg src="nanome-v2/v2-7/users-tab-share-dialog.webp" alt="The Share dialog with the workspace code and the people with access" />
+</ShotRow>
 
 <Callout type="note" title="Viewer or Editor">
 
@@ -366,6 +396,8 @@ A free license gives Viewer access to workspaces others own.
 </Callout>
 
 ## <AppIcon name="settings" /> Settings tab {#settings-tab}
+
+<ShotRow src="nanome-v2/v2-7/settings-tab.webp" alt="The Settings tab">
 
 <UiList label="Settings">
 <UiItem icon="moon" name="Night mode">Night or day skybox, when passthrough is off.</UiItem>
@@ -384,9 +416,7 @@ A free license gives Viewer access to workspaces others own.
 <UiItem icon="server" name="Change Server">Appears when more than one server is set up.</UiItem>
 </UiList>
 
-<vimg src="nanome-v2/v2-7/settings-tab.webp" alt="The Settings tab" />
-
-<vimg src="nanome-v2/v2-7/settings-tab-bottom.webp" alt="The bottom of the Settings tab with Log Out and the version" />
+</ShotRow>
 
 ### Day/Night mode and themes {#day-night-mode-and-themes}
 

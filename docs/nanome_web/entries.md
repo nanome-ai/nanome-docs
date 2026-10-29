@@ -7,6 +7,8 @@ title: Entries Tab
 
 The **Entries** tab lists every structure in the workspace and the components that control how each one is drawn. It works the same way as the **Components** tab in Nanome XR, and changes made in one show up in the other.
 
+<ShotRow src="nanome-web/entries-tab.webp" alt="The Entries tab for 4ceo">
+
 <IconGrid label="Entries tab" :cols="3">
 <IconCard icon="stack-2" title="Entries and components" href="#entries-and-components">Each structure, its parts, and the buttons on each row.</IconCard>
 <IconCard icon="scribble" title="Representations" href="#representations">How a component is drawn.</IconCard>
@@ -16,7 +18,7 @@ The **Entries** tab lists every structure in the workspace and the components th
 <IconCard icon="dots" title="More options" href="#more-options">Rename, export, load a map or trajectory, delete.</IconCard>
 </IconGrid>
 
-<vimg src="nanome-web/entries-tab.webp" alt="The Entries tab for 4ceo" />
+</ShotRow>
 
 ## <AppIcon name="stack-2" /> Entries and components {#entries-and-components}
 
@@ -51,6 +53,8 @@ The representation chip on a component opens the representation panel. Each repr
 
 **Atomistic:**
 
+<ShotRow src="nanome-web/representation-panel.webp" alt="The representation panel for a component">
+
 <UiList label="Atomistic representations">
 <UiItem icon="line" name="Ball and Stick">Atoms as small spheres, joined by cylinders.</UiItem>
 <UiItem icon="slash" name="Stick">Bonds as cylinders, without atom spheres.</UiItem>
@@ -59,7 +63,7 @@ The representation chip on a component opens the representation panel. Each repr
 <UiItem icon="timeline" name="No H / Polar H / All H">The hydrogen row under the atomistic options.</UiItem>
 </UiList>
 
-<vimg src="nanome-web/representation-panel.webp" alt="The representation panel for a component" />
+</ShotRow>
 
 **Macromolecular:**
 
@@ -82,23 +86,27 @@ The representation chip on a component opens the representation panel. Each repr
 
 The palette button beside a representation opens its color schemes:
 
+<ShotRow src="nanome-web/color-schemes.webp" alt="The color scheme menu for a component">
+
 <UiList label="Color schemes">
 <UiItem name="Element Type">By element (carbon, nitrogen, oxygen and so on).</UiItem>
 <UiItem name="Residue Type">By amino acid or nucleotide.</UiItem>
-<UiItem name="Chain Name">One color per chain.</UiItem>
+<UiItem name="Chain Name">One color per chain name, the same in every entry.</UiItem>
 <UiItem name="Secondary Structure">Helix, strand and loop.</UiItem>
-<UiItem name="Potential Interactions"></UiItem>
+<UiItem name="Potential Interactions">By the interactions each atom can form: acceptors red, donors blue, hydrophobic atoms green, aromatic atoms white, the rest gray. An atom that is both donor and acceptor shows red.</UiItem>
 <UiItem name="BFactor">By the B-factor (atomic displacement parameter) recorded in the file.</UiItem>
 <UiItem name="Occupancy">By the occupancy recorded in the file.</UiItem>
 <UiItem name="Uniform">A single color.</UiItem>
-<UiItem name="Chain Instance"></UiItem>
+<UiItem name="Chain Instance">One color per chain in each entry, so chain A in two entries gets two colors.</UiItem>
 </UiList>
 
 **Carbons only** applies the scheme to carbon atoms and keeps element colors on the other atoms.
 
-<vimg src="nanome-web/color-schemes.webp" alt="The color scheme menu for a component" />
+</ShotRow>
 
 ### <AppIcon name="mist" /> Interactions {#interactions}
+
+<ShotRow src="nanome-web/interactions-list.webp" alt="The Interactions list for a component">
 
 Components that hold interactions, such as **Pocket + Ligand**, show an **Interactions** row with a count. **Show** lists the interaction types, each with its legend color and a switch:
 
@@ -114,7 +122,7 @@ Components that hold interactions, such as **Pocket + Ligand**, show an **Intera
 <UiItem name="Metal Coordination">Drawn as an interaction, separately from covalent bonds.</UiItem>
 </UiList>
 
-<vimg src="nanome-web/interactions-list.webp" alt="The Interactions list for a component" />
+</ShotRow>
 
 <Accordion title="How clashes are counted" teaser="Only between entries, any overlap, hydrogens included.">
 
@@ -126,6 +134,8 @@ Clashes are only computed between entries. Any overlap counts and hydrogens are 
 
 The <AppIcon name="layout-list" /> **Structure actions** button on an entry row opens:
 
+<ShotRow src="nanome-web/entry-structure-actions.webp" alt="The Structure actions menu for an entry">
+
 <UiList label="Structure actions">
 <UiItem icon="arrow-left-to-arc" name="Align proteins to this">Superposes other protein entries onto this one. Grayed out while the workspace holds a single entry.</UiItem>
 <UiItem icon="polygon" name="Create interaction components" href="#interaction-components">Computes interactions and adds components that show them.</UiItem>
@@ -136,9 +146,11 @@ The <AppIcon name="layout-list" /> **Structure actions** button on an entry row 
 
 Nanome runs the alignment on its server with CE-Align. TM-Align is available in Nanome XR.
 
-<vimg src="nanome-web/entry-structure-actions.webp" alt="The Structure actions menu for an entry" />
+</ShotRow>
 
 ### Interaction components
+
+<ShotRow src="nanome-web/create-interactions.webp" alt="Create interaction components, on the Polymer-Ligand tab">
 
 **Create interaction components** opens a dialog with two modes:
 
@@ -149,7 +161,7 @@ Nanome runs the alignment on its server with CE-Align. TM-Align is available in 
 <UiItem name="Close">Leaves without changes.</UiItem>
 </UiList>
 
-<vimg src="nanome-web/create-interactions.webp" alt="Create interaction components, on the Polymer-Ligand tab" />
+</ShotRow>
 
 ## <AppIcon name="dots" /> More options {#more-options}
 

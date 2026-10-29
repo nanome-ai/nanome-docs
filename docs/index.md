@@ -33,6 +33,10 @@ start:
     title: Help
     description: FAQ, troubleshooting and contact.
     url: /help/faq
+classic:
+  text: Looking for Nanome Classic (v1.24), the earlier headset app?
+  link: Nanome Classic docs
+  url: /nanome1x/overview
 newUpdates:
   title: "What's New in Nanome 2.7"
   description: Comments tied to the atoms they're about, pocket minimization in the Ligand Builder, a new atom and bond renderer, and hover, select and measure in Nanome Web.

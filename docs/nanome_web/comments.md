@@ -12,6 +12,8 @@ Comments, added in release 2.7, are threaded discussions stored inside a workspa
 
 The **Comments** tab in the workspace panel lists the workspace's comments.
 
+<ShotRow src="nanome-web/comments-tab.webp" alt="The Comments tab">
+
 <UiList label="Comments tab">
 <UiItem name="All">Shows all comments.</UiItem>
 <UiItem name="Workspace">Shows only the comments on the workspace.</UiItem>
@@ -19,7 +21,7 @@ The **Comments** tab in the workspace panel lists the workspace's comments.
 <UiItem name="Comment on this workspace">The box at the bottom: posts a new comment.</UiItem>
 </UiList>
 
-<vimg src="nanome-web/comments-tab.webp" alt="The Comments tab" />
+</ShotRow>
 
 ## What a comment can hold
 

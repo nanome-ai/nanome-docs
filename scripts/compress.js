@@ -26,6 +26,7 @@ const assetDir = path.join(__dirname, '../docs/public/assets/original')
 const compressedDir = path.join(__dirname, '../docs/public/assets/compressed')
 const manifestFile = path.join(__dirname, '../docs/.vitepress/theme/image-variants.json')
 const widthsFile = path.join(__dirname, '../docs/.vitepress/theme/image-widths.json')
+const sizesFile = path.join(__dirname, '../docs/.vitepress/theme/image-sizes.json')
 
 const HIDPI = /^(nanome-web|nanome-v2\/v2-7|home-nanome)\//
 const MAX_WIDTH = 1600
@@ -79,6 +80,19 @@ const force = process.argv.includes('--force')
     widths[f] = width
   }
   fs.writeFileSync(widthsFile, JSON.stringify(widths, null, 2) + '\n')
+
+  // Every copy's size, light and dark, in image-sizes.json. <Vimg> gives the
+  // <img> its width and height, so the page keeps room for an image before it
+  // loads; otherwise a link to a heading lands short as the images above it
+  // arrive and push the heading down.
+  const sizes = {}
+  for (const f of files) {
+    if (!/\.(png|jpe?g|gif|webp)$/i.test(f)) continue
+    const copy = path.join(compressedDir, f.replace(/\.\w+$/, '.webp'))
+    const { width, height } = await sharp(copy).metadata()
+    sizes[f] = [width, height]
+  }
+  fs.writeFileSync(sizesFile, JSON.stringify(sizes) + '\n')
 })()
 
 function walk(dir) {
