@@ -132,7 +132,7 @@ Windows PCs over Meta Link (PCVR), and in any modern browser at app.nanome.ai.
     <tr>
       <th>Where to buy</th>
       <td><a href="https://www.meta.com/quest/quest-3/">Meta</a>, Best Buy, Amazon, or preconfigured <a href="https://dashboard.vr-expert.com/order-form/a0jTg00000LTeqnIAD">Nanome kits from VR Expert</a></td>
-      <td><a href="https://www.samsung.com/us/xr/galaxy-xr/">Samsung</a>, or preconfigured <a href="https://dashboard.vr-expert.com/order-form/a0jTg00000LTeqnIAD">Nanome kits from VR Expert</a></td>
+      <td><a href="https://www.samsung.com/us/xr/galaxy-xr/galaxy-xr/">Samsung</a>, or preconfigured <a href="https://dashboard.vr-expert.com/order-form/a0jTg00000LTeqnIAD">Nanome kits from VR Expert</a></td>
       <td><a href="https://www.apple.com/apple-vision-pro/">Apple</a></td>
       <td><a href="https://www.meta.com/help/quest/140991407990979/">Meta Link requirements</a></td>
       <td>—</td>
