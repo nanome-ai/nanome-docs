@@ -81,7 +81,8 @@ export default defineConfig({
               { text: 'Collaboration', link: '/nanome_v2/collaboration' },
               { text: 'Session Guide', link: '/session-guide' },
               { text: 'Sample Workflows', link: '/nanome_v2/sampleworkflows' },
-              { text: 'Tips', link: '/nanome_v2/tips' }
+              { text: 'Tips', link: '/nanome_v2/tips' },
+              { text: 'Vision Pro', link: '/nanome_v2/visionpro' }
             ]
           },
           {

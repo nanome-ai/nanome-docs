@@ -77,7 +77,7 @@ The current tool's icon shows on this controller. For a tool with several modes,
 
 <Callout type="note" title="No Menu button on the right">
 
-Nanome reads the Menu button on the off-hand controller. In the same place, the right Quest controller has the Meta button, which the headset keeps for itself. In left-handed mode the Main Panel opens from the Wrist Menu.
+The Menu shortcut follows the off hand. In left-handed mode that's the right controller, which has no Menu button: its button in that spot is the Meta button. So in left-handed mode the Main Panel opens from the Wrist Menu, on the right wrist.
 
 </Callout>
 
@@ -104,7 +104,7 @@ Hand tracking on Galaxy XR needs the headset's hand-tracking permission for Nano
 
 ## <AppIcon name="device-vision-pro" /> Apple Vision Pro {#apple-vision-pro}
 
-Nanome on Vision Pro is a [TestFlight beta](/getting-started#install), and uses the visionOS pinch.
+Nanome on Vision Pro is a beta, and uses the visionOS pinch. Its window and menus are on the [Vision Pro](/nanome_v2/visionpro) page.
 
 <UiList label="Vision Pro gestures">
 <UiItem icon="hand-grab" name="Look and pinch" href="#grab-move-and-scale">Looking at a structure and pinching grabs the workspace, and moving the hand moves it. Reaching out and pinching a structure directly does the same.</UiItem>
