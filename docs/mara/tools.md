@@ -6,6 +6,8 @@ title: Tools
 
 **Tools** in Nanome Web's top bar holds what MARA works with: the tools it runs, the integrations that connect it to other platforms, the workflows that chain tools together, and the knowledge it draws on. The left sidebar switches between them.
 
+<ShotRow src="mara/tools.webp" alt="The Tools page">
+
 <IconGrid label="Tools sidebar">
 <IconCard icon="tool" title="Tools" href="#tools">Every tool MARA can run, including your own.</IconCard>
 <IconCard icon="triangle-square-circle" title="Integrations" href="#integrations">Connections to other platforms, each with its own tools.</IconCard>
@@ -13,7 +15,7 @@ title: Tools
 <IconCard icon="file-info" title="Knowledge" href="#knowledge">Background information MARA uses in its answers.</IconCard>
 </IconGrid>
 
-<vimg src="mara/tools.webp" alt="The Tools page" />
+</ShotRow>
 
 <UiList label="Sidebar">
 <UiItem icon="plus" name="New">Creates an Integration, a Tool or a Workflow.</UiItem>
@@ -45,6 +47,8 @@ Clicking a tool opens its page, with its description, its arguments (**Args**), 
 
 The <AppIcon name="dots" /> **(...)** button at the end of a tool's row opens its settings.
 
+<ShotRow src="mara/tool-menu.webp" alt="A tool's menu">
+
 <UiList label="Tool menu">
 <UiItem name="Enabled for org">On or Off: whether the tool is available to everyone in your organization.</UiItem>
 <UiItem name="Enabled for me">Org, On or Off: follow your organization's setting, or set it just for you.</UiItem>
@@ -54,9 +58,11 @@ The <AppIcon name="dots" /> **(...)** button at the end of a tool's row opens it
 <UiItem icon="trash" name="Delete">Deletes the tool.</UiItem>
 </UiList>
 
-<vimg src="mara/tool-menu.webp" alt="A tool's menu" />
+</ShotRow>
 
 ### Creating a tool {#creating-a-tool}
+
+<ShotRow src="mara/create-menu.webp" alt="The Create menu on the Tools page">
 
 <UiList label="Create menu">
 <UiItem icon="pencil" name="New Tool">Opens the Create Tool form.</UiItem>
@@ -64,7 +70,7 @@ The <AppIcon name="dots" /> **(...)** button at the end of a tool's row opens it
 <UiItem icon="message-2-plus" name="Request a Tool">Asks for a tool you need.</UiItem>
 </UiList>
 
-<vimg src="mara/create-menu.webp" alt="The Create menu on the Tools page" />
+</ShotRow>
 
 <Steps>
 
@@ -82,6 +88,8 @@ The **JSON** tab at the top of the form shows the same tool as JSON. Nanome's bl
 
 An integration connects MARA to another platform, such as CDD Vault, KNIME Server or LiveDesign, and adds that platform's tools. Each row shows how many tools it adds.
 
+<ShotRow src="mara/integrations.webp" alt="The Integrations page">
+
 <UiList label="Integrations page">
 <UiItem icon="search" name="Search">Searches the integrations.</UiItem>
 <UiItem icon="download" name="Import">Imports an integration.</UiItem>
@@ -90,11 +98,13 @@ An integration connects MARA to another platform, such as CDD Vault, KNIME Serve
 <UiItem icon="plus" name="Install">At the end of a row. Installs the integration.</UiItem>
 </UiList>
 
-<vimg src="mara/integrations.webp" alt="The Integrations page" />
+</ShotRow>
 
 ## <AppIcon name="route" /> Workflows {#workflows}
 
 A workflow is a sequence of tools saved as steps, which MARA follows to plan more accurately. To run one, choose <Btn icon="route">Run workflow</Btn> in the [message box](/mara/conversations#message-box).
+
+<ShotRow src="mara/workflows.webp" alt="The Workflows page">
 
 <UiList label="Workflows page">
 <UiItem icon="search" name="Search">Searches the workflows.</UiItem>
@@ -104,7 +114,7 @@ A workflow is a sequence of tools saved as steps, which MARA follows to plan mor
 <UiItem icon="dots" name="More (...)" href="#tool-menu">The same settings as a tool's menu, without Premium.</UiItem>
 </UiList>
 
-<vimg src="mara/workflows.webp" alt="The Workflows page" />
+</ShotRow>
 
 <Steps>
 
@@ -117,10 +127,12 @@ A workflow is a sequence of tools saved as steps, which MARA follows to plan mor
 
 ## <AppIcon name="file-info" /> Knowledge {#knowledge}
 
+<ShotRow src="mara/knowledge.webp" alt="The Base knowledge tab">
+
 <UiList label="Knowledge tabs">
 <UiItem name="Org knowledge">Your organization's notes for MARA, written in Markdown. <strong>Edit</strong> changes them. Headers that group related notes work best.</UiItem>
 <UiItem name="Base knowledge">Nanome's own knowledge base, an example of the format.</UiItem>
 <UiItem name="Query">Searches the knowledge. <strong>Include Base</strong> adds the base knowledge to the search.</UiItem>
 </UiList>
 
-<vimg src="mara/knowledge.webp" alt="The Base knowledge tab" />
+</ShotRow>

@@ -6,13 +6,15 @@ title: Conversations
 
 **Conversations** in Nanome Web's top bar is where you chat with MARA. Its other two tabs collect the comment threads and mentions from your workspaces.
 
+<ShotRow src="mara/conversations.webp" alt="The Conversations page with the Chat tab open and no chat selected">
+
 <IconGrid label="Conversations tabs" :cols="3">
 <IconCard icon="messages" title="Chat" href="#chat">Your MARA chats, and new ones.</IconCard>
 <IconCard icon="message" title="Threads" href="#threads">Comment threads from your workspaces.</IconCard>
 <IconCard icon="at" title="Mentions" href="#mentions">Comments that mention you.</IconCard>
 </IconGrid>
 
-<vimg src="mara/conversations.webp" alt="The Conversations page with the Chat tab open and no chat selected" />
+</ShotRow>
 
 ## <AppIcon name="messages" /> Chat {#chat}
 
@@ -47,6 +49,8 @@ The same message box sits in each workspace's [MARA tab](/nanome_web/workspace#m
 
 **Open Examples** shows one card for each field, with the tasks its example covers. **Open** on a card opens that example chat.
 
+<ShotRow src="mara/open-examples.webp" alt="The four example chat cards">
+
 <UiList label="Example chats">
 <UiItem icon="hexagons" name="Cheminformatics">Calculate molecular properties, analyze SAR data, visualize data.</UiItem>
 <UiItem icon="dna2" name="Bioinformatics">Design protein sequences, align sequences, fold a sequence with ESMFold.</UiItem>
@@ -54,13 +58,13 @@ The same message box sits in each workspace's [MARA tab](/nanome_web/workspace#m
 <UiItem icon="atom" name="Comp Chemistry">Process molecular dynamics trajectories, calculate distances, prepare structures.</UiItem>
 </UiList>
 
-<vimg src="mara/open-examples.webp" alt="The four example chat cards" />
+</ShotRow>
 
 An example chat is marked **Example** and has no message box. **Continue this chat with your own copy**, at the bottom, copies it into your own chats so you can carry on from there.
 
 ## <AppIcon name="messages" /> In a chat {#in-a-chat}
 
-<vimg src="mara/example-chat.webp" alt="The Cheminformatics - PCA example chat, with a tool step, file links and a plot" />
+<ShotRow src="mara/example-chat.webp" alt="The Cheminformatics - PCA example chat, with a tool step, file links and a plot">
 
 <UiList label="Chat header">
 <UiItem icon="pencil" name="Edit title">Next to the chat's title. Renames the chat.</UiItem>
@@ -75,9 +79,13 @@ Above each answer, MARA names the tool or workflow it ran. The <AppIcon name="ch
 <UiItem icon="cloud-download" name="Download">Next to a file's name. Downloads the file.</UiItem>
 </UiList>
 
+</ShotRow>
+
 ### 3D viewer {#3d-viewer}
 
 A structure file opens in a small 3D viewer inside the chat.
+
+<ShotRow src="mara/chat-3d-viewer.webp" alt="Docking poses in the chat's 3D viewer">
 
 <UiList label="3D viewer">
 <UiItem name="First Model / Previous Model / Next Model">Steps through the models in a file with several, such as docking poses. The bar shows which model is on screen.</UiItem>
@@ -85,7 +93,7 @@ A structure file opens in a small 3D viewer inside the chat.
 <UiItem name="Screenshot / State Snapshot">Saves an image or the viewer's state.</UiItem>
 </UiList>
 
-<vimg src="mara/chat-3d-viewer.webp" alt="Docking poses in the chat's 3D viewer" />
+</ShotRow>
 
 ### <AppIcon name="share-2" /> Sharing a chat {#sharing}
 
@@ -100,6 +108,8 @@ A structure file opens in a small 3D viewer inside the chat.
 
 **Files** opens a panel on the right with three sections.
 
+<ShotRow src="mara/files-panel.webp" alt="The Files panel with six files, the Tables section and Context">
+
 <UiList label="Files panel">
 <UiItem name="Files">Every file in the chat, uploaded or made by MARA. Tick files to act on several at once.</UiItem>
 <UiItem icon="dots-vertical" name="More (⋮)">On a file: Add to Workspace and Download.</UiItem>
@@ -110,11 +120,13 @@ A structure file opens in a small 3D viewer inside the chat.
 <UiItem name="Context">Values from tool results and the conversation that MARA keeps for this chat.</UiItem>
 </UiList>
 
-<vimg src="mara/files-panel.webp" alt="The Files panel with six files, the Tables section and Context" />
+</ShotRow>
 
 ## <AppIcon name="message" /> Threads {#threads}
 
 The Threads tab gathers the comment threads from the workspaces you can open. Each row shows who started the thread, the workspace, the first comment and the number of replies. Clicking a row opens the thread on the right.
+
+<ShotRow src="mara/threads.webp" alt="The Threads tab with a thread open">
 
 <UiList label="Threads">
 <UiItem icon="mail" name="Unread">Shows only threads with comments you haven't read.</UiItem>
@@ -123,7 +135,7 @@ The Threads tab gathers the comment threads from the workspaces you can open. Ea
 <UiItem name="Reply in thread" href="/nanome_web/comments">Adds a reply, the same as in the workspace's Comments tab.</UiItem>
 </UiList>
 
-<vimg src="mara/threads.webp" alt="The Threads tab with a thread open" />
+</ShotRow>
 
 ## <AppIcon name="at" /> Mentions {#mentions}
 

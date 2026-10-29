@@ -8,6 +8,8 @@ Signing in to [app.nanome.ai](https://app.nanome.ai) opens the Home page. It lis
 
 A **project** is a folder of workspaces with its own members. A **workspace** is the shared 3D document that holds structures, scenes, comments and permissions. Every workspace belongs to one project.
 
+<ShotRow src="nanome-web/home-recent.webp" alt="The Home page with recent workspaces and projects">
+
 <IconGrid label="Home page" :cols="3">
 <IconCard icon="clock" title="Recent" href="#recent">The workspaces and projects you opened last.</IconCard>
 <IconCard icon="cube-3d-sphere" title="Join via Code" href="#join-via-code">Opens a workspace from its code.</IconCard>
@@ -17,7 +19,7 @@ A **project** is a folder of workspaces with its own members. A **workspace** is
 <IconCard icon="home" title="Top bar" href="#top-bar">Navigation, search and your account, on every page.</IconCard>
 </IconGrid>
 
-<vimg src="nanome-web/home-recent.webp" alt="The Home page with recent workspaces and projects" />
+</ShotRow>
 
 ## <AppIcon name="clock" /> Recent {#recent}
 
@@ -28,13 +30,17 @@ The two buttons at the top right switch between a grid of cards and a list.
 
 ### <AppIcon name="cube-3d-sphere" /> Join via Code {#join-via-code}
 
+<ShotRow src="nanome-web/join-via-code.webp" alt="The Join via Code box">
+
 **Join via Code** opens a box for a workspace code in the form `XXXX-XXXX`. The workspace host can read the code from the **Users** tab of the workspace.
 
-<vimg src="nanome-web/join-via-code.webp" alt="The Join via Code box" />
+</ShotRow>
 
 ## <AppIcon name="cube-3d-sphere" /> Workspaces {#workspaces}
 
 The **All Workspaces** view lists every workspace you can open.
+
+<ShotRow src="nanome-web/workspaces-filter.webp" alt="The workspace filter menu">
 
 <UiList label="All Workspaces toolbar">
 <UiItem icon="search" name="Search"></UiItem>
@@ -44,7 +50,9 @@ The **All Workspaces** view lists every workspace you can open.
 <UiItem name="Grid / List">Switches between a grid of cards and a list.</UiItem>
 </UiList>
 
-<vimg src="nanome-web/workspaces-filter.webp" alt="The workspace filter menu" />
+</ShotRow>
+
+<ShotRow src="nanome-web/workspaces-row-menu.webp" alt="A workspace row's menu">
 
 Right-clicking a workspace row, or clicking its <AppIcon name="dots" /> **(...)** button, opens the same menu that sits in the header of an open workspace:
 
@@ -59,17 +67,21 @@ Right-clicking a workspace row, or clicking its <AppIcon name="dots" /> **(...)*
 <UiItem name="Delete">Deletes the workspace.</UiItem>
 </UiList>
 
-<vimg src="nanome-web/workspaces-row-menu.webp" alt="A workspace row's menu" />
+</ShotRow>
 
 ## <AppIcon name="folder" /> Projects {#projects}
+
+<ShotRow src="nanome-web/projects-row-menu.webp" alt="A project row's menu">
 
 The **All Projects** view lists projects with their workspace count, owner, last update and your access level. It has the same search, filter, sort and layout controls as the All Workspaces view.
 
 The row menu has **Open in new tab**, **Edit info**, **Manage members** and **Delete**.
 
-<vimg src="nanome-web/projects-row-menu.webp" alt="A project row's menu" />
+</ShotRow>
 
 ### Project page
+
+<ShotRow src="nanome-web/project-members.webp" alt="A project's Members tab and Activity feed">
 
 <UiList label="Project page">
 <UiItem name="Description, Focus, Lead">The fields across the top.</UiItem>
@@ -79,17 +91,21 @@ The row menu has **Open in new tab**, **Edit info**, **Manage members** and **De
 <UiItem name="Members">A tab that adds people by email as Editor or Viewer and lists current members with their role.</UiItem>
 </UiList>
 
-<vimg src="nanome-web/project-members.webp" alt="A project's Members tab and Activity feed" />
+</ShotRow>
 
 ## <AppIcon name="plus" /> New {#new}
 
+<ShotRow src="nanome-web/new-menu.webp" alt="The New menu">
+
 The **New** button at the top of the sidebar creates a **Workspace** or a **Project**.
 
-<vimg src="nanome-web/new-menu.webp" alt="The New menu" />
+</ShotRow>
 
 ## <AppIcon name="home" /> Top bar {#top-bar}
 
 The top bar is the same on every page.
+
+<ShotRow src="nanome-web/search.webp" alt="Search results for 4ceo">
 
 <UiList label="Top bar">
 <UiItem name="Home">Returns to this page.</UiItem>
@@ -103,7 +119,7 @@ The top bar is the same on every page.
 <UiItem name="Account menu" href="/nanome_web/account">Your initial: account, billing, organization and settings pages, plus Logout and the web app version.</UiItem>
 </UiList>
 
-<vimg src="nanome-web/search.webp" alt="Search results for 4ceo" />
+</ShotRow>
 
 ## Account limits
 
