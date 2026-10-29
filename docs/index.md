@@ -2,12 +2,12 @@
 title: Home
 aside: false
 hero:
+  - img: /assets/carousels/hero/resonac.webp
+    url: https://nanome.ai/blog/how-resonac-turned-two-years-of-misaligned-randd-into-a-single-afternoon-breakthrough
   - img: /assets/carousels/hero/nimbus.png
-    url: https://drive.google.com/file/d/1TCVhg27YMvh223DH4JLPxKNHe7TqUiaf/view
+    url: https://nanome.ai/case-studies/nimbus-therapeutics
   - img: /assets/carousels/hero/novartis.png
-    url: https://drive.google.com/file/d/1tUNxT72rwmFEDi40arh8BAPsOEodpBw6/view
-  - img: /assets/carousels/hero/discengine.png
-    url: https://blog.matryx.ai/nanome-is-joining-forces-with-discngine-to-greatly-impact-the-sbdd-experience-1af0b83b3057
+    url: https://nanome.ai/case-studies/novartis
 start:
   - icon: device-vision-pro
     title: Nanome XR

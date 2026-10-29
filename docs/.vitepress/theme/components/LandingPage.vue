@@ -48,7 +48,11 @@
     />
 
     <!-- Case studies -->
+    <h2>Case studies</h2>
     <HeroCarousel :slides="data.hero" />
+    <p class="case-studies-all">
+      <a href="https://nanome.ai/case-studies">All case studies</a>
+    </p>
 
   </div>
 </template>
@@ -141,6 +145,12 @@ defineProps({
   .landing-page .update-card img {
     max-width: 100%;
   }
+}
+
+.landing-page .case-studies-all {
+  margin: 0.75rem 0 0;
+  text-align: right;
+  font-weight: 600;
 }
 
 .landing-page .btn {
