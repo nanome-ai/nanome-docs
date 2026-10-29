@@ -11,6 +11,12 @@ import { NANOME_HOSTS, NETWORK_ALLOWLIST } from './.vitepress/data/setup-network
 
 From boxed headsets to a shared session. Nanome is best in VR or MR, but no headset is needed to start: it also runs in any browser at [app.nanome.ai](https://app.nanome.ai).
 
+<Callout type="note" title="Looking for Nanome Classic?">
+
+This guide sets up Nanome XR, version 2. Nanome Classic (v1.24), the earlier headset app, has its own [Nanome Classic docs](/nanome1x/overview). In the Meta Horizon Store, Nanome XR has the purple icon and Classic the blue one.
+
+</Callout>
+
 <IconGrid label="Setup stages" :cols="3">
 <IconCard icon="device-vision-pro" title="Hardware" href="#hardware">Headsets, and where to buy them.</IconCard>
 <IconCard icon="devices" title="MDM" href="#mdm">Choose and set up device management for a fleet.</IconCard>

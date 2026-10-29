@@ -6,6 +6,8 @@ title: Users & Sharing
 
 The **Users** tab of a workspace controls who can open it and what they can change. It also sends the workspace to colleagues in Nanome XR.
 
+<ShotRow src="nanome-web/users-tab.webp" alt="The Users tab">
+
 <IconGrid label="Users tab" :cols="3">
 <IconCard icon="cube-3d-sphere" title="Join via Code" href="#join-via-code">The workspace code and Copy link.</IconCard>
 <IconCard icon="link" title="Link access" href="#link-access">What opening the code or link allows.</IconCard>
@@ -14,7 +16,7 @@ The **Users** tab of a workspace controls who can open it and what they can chan
 <IconCard icon="crown" title="Following from the web" href="#following-from-the-web">Track what someone in Nanome XR sees.</IconCard>
 </IconGrid>
 
-<vimg src="nanome-web/users-tab.webp" alt="The Users tab" />
+</ShotRow>
 
 ## <AppIcon name="cube-3d-sphere" /> Join via Code {#join-via-code}
 
@@ -26,6 +28,8 @@ Every workspace has an 8-character code, shown at the top of the tab in the form
 
 ## <AppIcon name="link" /> Link access {#link-access}
 
+<ShotRow src="nanome-web/users-link-access.webp" alt="Link access levels in the Users tab">
+
 **Link access** sets what happens when someone opens the workspace's code or link:
 
 <UiList label="Link access">
@@ -35,7 +39,7 @@ Every workspace has an 8-character code, shown at the top of the tab in the form
 <UiItem name="Public workspace">Allow anonymous viewers. Lets people open the workspace without signing in.</UiItem>
 </UiList>
 
-<vimg src="nanome-web/users-link-access.webp" alt="Link access levels in the Users tab" />
+</ShotRow>
 
 <Callout type="warning" title="Check sharing before adding unpublished data">
 
@@ -45,6 +49,8 @@ Every workspace has an 8-character code, shown at the top of the tab in the form
 
 ## <AppIcon name="user-plus" /> Adding people {#adding-people}
 
+<ShotRow src="nanome-web/users-invite-role.webp" alt="Inviting a person by email with a role">
+
 <UiList label="Adding people">
 <UiItem name="Workspace">The tab under the sharing settings: the people added to this workspace and their role.</UiItem>
 <UiItem name="Add people by email">Takes an email address. It has to match their Nanome account exactly.</UiItem>
@@ -53,7 +59,7 @@ Every workspace has an 8-character code, shown at the top of the tab in the form
 <UiItem name="My Org">The tab that lists colleagues in your organization.</UiItem>
 </UiList>
 
-<vimg src="nanome-web/users-invite-role.webp" alt="Inviting a person by email with a role" />
+</ShotRow>
 
 Roles:
 

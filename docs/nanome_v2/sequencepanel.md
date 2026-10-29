@@ -6,9 +6,9 @@ title: Sequence Panel
 
 The Sequence Panel shows the sequences of all loaded structures, protein and nucleic acid chains alike, in a horizontal, scrollable view. Open it with <Btn icon="mist">Sequences</Btn> at the bottom-right of the [Components tab](/nanome_v2/mainpanel#components-tab).
 
-<vimg src="nanome-v2/v2-7/sequence-viewer.webp" alt="The Sequence Panel for 1KV2 with its parts labelled" />
-
 ## <AppIcon name="mist" /> Features {#features}
+
+<ShotRow src="nanome-v2/v2-7/sequence-viewer.webp" alt="The Sequence Panel for 1KV2 with its parts labelled">
 
 - Clicking the chain letter, such as "A", selects the whole chain.
 - Clicking residues in the sequence selects them, and selected residues are highlighted.
@@ -20,3 +20,5 @@ The Sequence Panel shows the sequences of all loaded structures, protein and nuc
 <UiItem name="Create">Creates a component from the selected residues.</UiItem>
 <UiItem name="Update">Appears when a component is active in the panel: updates that component with the current selection.</UiItem>
 </UiList>
+
+</ShotRow>

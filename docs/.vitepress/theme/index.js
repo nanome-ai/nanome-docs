@@ -26,6 +26,7 @@ import IconCard from './components/IconCard.vue'
 import UiList from './components/UiList.vue'
 import UiItem from './components/UiItem.vue'
 import Btn from './components/Btn.vue'
+import ShotRow from './components/ShotRow.vue'
 
 // Interactive building blocks, usable from any markdown page.
 import Chooser from './components/interactive/Chooser.vue'
@@ -63,6 +64,7 @@ export default {
     app.component('UiList', UiList)
     app.component('UiItem', UiItem)
     app.component('Btn', Btn)
+    app.component('ShotRow', ShotRow)
 
     app.component('Chooser', Chooser)
     app.component('ChooserResult', ChooserResult)

@@ -17,6 +17,8 @@ The Nanome XR environment is a floor with a skybox around it, with the structure
 
 Since release 2.7 the skyboxes are procedurally generated mountains in the colors of each theme, in day and night versions.
 
+<ShotRow src="nanome-v2/v2-7/skybox-themes.webp" alt="The seven skybox themes, by day and by night">
+
 They're set in the [Settings tab](/nanome_v2/mainpanel#settings-tab):
 
 <UiList label="Environment settings">
@@ -26,7 +28,7 @@ They're set in the [Settings tab](/nanome_v2/mainpanel#settings-tab):
 <UiItem icon="scan-eye" name="Passthrough">Mixed reality: the real room shows around the structures.</UiItem>
 </UiList>
 
-<vimg src="nanome-v2/v2-7/skybox-themes.webp" alt="The seven skybox themes, by day and by night" />
+</ShotRow>
 
 ## <AppIcon name="target" /> Central Structure Area {#central-structure-area}
 

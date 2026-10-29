@@ -362,7 +362,7 @@ variation cheap and a clean slate equally cheap.
 
 ### Building a sequence
 
-<vimg src="nanome-v2/v2-7/scenes-panel.webp" alt="The Scenes Panel controls, labelled" />
+<ShotRow src="nanome-v2/v2-7/scenes-panel.webp" alt="The Scenes Panel controls, labelled">
 
 *Scenes Panel controls. Every button is described on [Scenes Panel](/nanome_v2/scenespanel).*
 
@@ -379,6 +379,8 @@ variation cheap and a clean slate equally cheap.
    order matches how the session runs.
 
 </Steps>
+
+</ShotRow>
 
 ### What makes a sequence work
 
@@ -544,7 +546,7 @@ being built.
 
 ### Setting them
 
-<vimg src="nanome-v2/v2-7/users-tab-share-dialog.webp" alt="The Share dialog" />
+<ShotRow src="nanome-v2/v2-7/users-tab-share-dialog.webp" alt="The Share dialog">
 
 *Users tab > Share.*
 
@@ -560,6 +562,8 @@ being built.
    name, which offers **Make Editor** and **Remove User**.
 
 </Steps>
+
+</ShotRow>
 
 ## <AppIcon name="share" /> Share the workspace {#share}
 
@@ -626,13 +630,15 @@ points where.
 
 *Spotlighting, seen from both sides.*
 
+<ShotRow src="nanome-v2/scenes-panel-spotlight-mode.jpg" alt="Spotlighting, seen by the user spotlighting and by a follower">
+
 <UiList label="Spotlight and follow">
 <UiItem icon="crown" name="Spotlight Me">Makes your view the shared view. Followers see it with a crown icon.</UiItem>
 <UiItem name="Stop">Lets a follower break away.</UiItem>
 <UiItem icon="analyze-filled" name="Reset Orientation">Brings back a follower who got turned around.</UiItem>
 </UiList>
 
-<vimg src="nanome-v2/scenes-panel-spotlight-mode.jpg" alt="Spotlighting, seen by the user spotlighting and by a follower" />
+</ShotRow>
 
 Pointers sit relative to the structure, so a pointer at a residue lands on that
 residue for every user, even those looking from their own angle.

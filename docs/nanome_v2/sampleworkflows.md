@@ -59,6 +59,8 @@ Each user added by email appears in the Share dialog's list. Each user's <AppIco
 
 <YoutubeEmbed videoId="tgocYV6N0X8" title="Nanome v2.4 Quick Tips: Cross-Entry Interaction Components" />
 
+<ShotRow src="nanome-v2/display-interactions.gif" alt="Creating interaction components between two entries">
+
 <Steps>
 
 1. Make sure your structures show up as entries in the Main Panel's Components tab.
@@ -68,7 +70,7 @@ Each user added by email appears in the Share dialog's list. Each user's <AppIco
 
 </Steps>
 
-<vimg src="nanome-v2/display-interactions.gif" />
+</ShotRow>
 
 ### Video: Chemical Interactions Menu
 
@@ -102,6 +104,8 @@ The energy is the force-field energy that the minimization tool reports for the 
 
 <YoutubeEmbed videoId="jNaFAtmfaRE" title="Nanome v2.4 Quick Tips: Aligning Proteins" />
 
+<ShotRow src="nanome-v2/align-proteins.gif" alt="Aligning two proteins with Align proteins to this">
+
 <Steps>
 
 1. Make sure your proteins show up as entries in the Main Panel's Components tab.
@@ -111,4 +115,4 @@ The energy is the force-field energy that the minimization tool reports for the 
 
 </Steps>
 
-<vimg src="nanome-v2/align-proteins.gif" />
+</ShotRow>

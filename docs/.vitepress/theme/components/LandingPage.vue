@@ -13,6 +13,10 @@
           :href="item.url"
         >{{ item.description }}</IconCard>
       </IconGrid>
+      <p v-if="data.classic" class="start__classic">
+        {{ data.classic.text }}
+        <a :href="data.classic.url">{{ data.classic.link }} →</a>
+      </p>
     </section>
 
     <!-- New Updates Section -->
@@ -84,6 +88,20 @@ defineProps({
 .landing-page .start__lede {
   margin: 6px 0 0;
   color: var(--n-text-muted);
+}
+
+.landing-page .start__classic {
+  margin: -12px 0 0;
+  padding: 12px 16px;
+  border: 1px solid var(--n-border);
+  border-radius: var(--n-radius);
+  background: var(--n-surface);
+  color: var(--n-text-muted);
+}
+
+.landing-page .start__classic a {
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .landing-page h2 {

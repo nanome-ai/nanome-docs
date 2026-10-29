@@ -46,6 +46,8 @@ The off-hand controller always works as a pointer for hovering and selecting, wh
 
 ## <AppIcon name="lasso" /> Selection Tool {#selection-tool}
 
+<ShotRow src="nanome-v2/v2-7/tool-selection.webp" alt="The Selection Tool panel">
+
 The Selection Tool selects by clicking on atoms, or by dragging over them. The three buttons at the top set what a click picks:
 
 <UiList label="Selection modes">
@@ -53,8 +55,6 @@ The Selection Tool selects by clicking on atoms, or by dragging over them. The t
 <UiItem icon="hexagons" name="Residue">A click picks a residue.</UiItem>
 <UiItem icon="scribble" name="Chain">A click picks a chain.</UiItem>
 </UiList>
-
-<vimg src="nanome-v2/v2-7/tool-selection.webp" alt="The Selection Tool panel" />
 
 The panel counts the entries, chains, residues and atoms in the selection, and lists the components it touches. Below that:
 
@@ -65,7 +65,11 @@ The panel counts the entries, chains, residues and atoms in the selection, and l
 <UiItem name="Create">Creates a component from the selection.</UiItem>
 </UiList>
 
+</ShotRow>
+
 ## <AppIcon name="ruler-2" /> Measurement Tool {#measurement-tool}
+
+<ShotRow src="nanome-v2/v2-7/tool-measurement.webp" alt="The Measurement Tool panel">
 
 The Measurement Tool measures between atoms picked in 3D. The buttons at the top set the mode:
 
@@ -76,7 +80,7 @@ The Measurement Tool measures between atoms picked in 3D. The buttons at the top
 <UiItem icon="trash" name="Delete">Removes measurements by clicking them.</UiItem>
 </UiList>
 
-<vimg src="nanome-v2/v2-7/tool-measurement.webp" alt="The Measurement Tool panel" />
+</ShotRow>
 
 <Callout type="note" title="Dihedrals have no sign">
 
@@ -84,24 +88,30 @@ Dihedral angles show from 0° to 180° without a sign, so torsions of −60° an
 
 </Callout>
 
-Each measurement is listed in the panel. Hovering a row highlights the measurement in 3D.
+<ShotRow src="nanome-v2/v2-7/measurement-types.webp" alt="A distance, a dihedral and an angle measured on the 1KV2 ligand">
 
 <UiList label="Measurement row">
 <UiItem icon="zoom" name="Zoom">Zooms to the measurement.</UiItem>
 <UiItem icon="trash" name="Delete">Deletes the measurement.</UiItem>
 </UiList>
 
-<vimg src="nanome-v2/v2-7/measurement-types.webp" alt="A distance, a dihedral and an angle measured on the 1KV2 ligand" />
+Each measurement is listed in the panel. Hovering a row highlights the measurement in 3D.
+
+</ShotRow>
 
 ## <AppIcon name="message" /> Comments {#comments}
 
-<vimg src="nanome-v2/v2-7/tool-comments.webp" alt="The Comments tool panel" />
+<ShotRow src="nanome-v2/v2-7/tool-comments.webp" alt="The Comments tool panel">
 
 The Comments tool holds the workspace's comments and its text and sound notes. Its modes are <Btn icon="text-size">Text</Btn>, <Btn icon="volume">Sound</Btn> and <Btn icon="trash">Delete</Btn>. It's covered on [Comments & Annotations](/nanome_v2/comments).
+
+</ShotRow>
 
 ## <AppIcon name="link" /> Interactions Tool {#interactions-tool}
 
 The Interactions Tool lists the interactions in the workspace, grouped by entry and interaction type. Each row names the two atoms, such as `A'MET'109:N—A'B96'391:O47`. Hovering a row highlights the interaction in 3D.
+
+<ShotRow src="nanome-v2/v2-7/tool-interactions.webp" alt="The Interactions Tool listing hydrogen bonds in 1KV2">
 
 <UiList label="Interactions tabs">
 <UiItem icon="eye" name="Visible">The visible interactions.</UiItem>
@@ -109,12 +119,12 @@ The Interactions Tool lists the interactions in the workspace, grouped by entry 
 <UiItem icon="list" name="All">All of them.</UiItem>
 </UiList>
 
-<vimg src="nanome-v2/v2-7/tool-interactions.webp" alt="The Interactions Tool listing hydrogen bonds in 1KV2" />
-
 <UiList label="Interaction row">
 <UiItem icon="zoom" name="Zoom">Zooms to the interaction.</UiItem>
 <UiItem icon="dots" name="More options">Pin. For a pinned interaction: Unpin, Label, and Show Label or Hide Label.</UiItem>
 </UiList>
+
+</ShotRow>
 
 Interaction types and how they're detected are on the [Main Panel](/nanome_v2/mainpanel#interactions) page.
 
@@ -122,11 +132,15 @@ Interaction types and how they're detected are on the [Main Panel](/nanome_v2/ma
 
 <DocVideo src="v2-7/builder-minimization-settings.mp4" caption="Auto relax and the minimization settings in the Builder Tool, from the v2.7 release." />
 
-<vimg src="nanome-v2/v2-7/tool-builder.webp" alt="The Builder Tool panel before a ligand is picked" />
+<ShotRow src="nanome-v2/v2-7/tool-builder.webp" alt="The Builder Tool panel before a ligand is picked">
 
 The Builder Tool builds new ligands and edits existing ones. On opening, the panel reads **Select a ligand in 3D space or use the list below to edit**: picking a ligand in 3D or in the list opens it for editing, and **Create New** starts a new one. A long press, shown as **Hold to build new ligand**, also starts one.
 
+</ShotRow>
+
 ### Modes
+
+<ShotRow src="nanome-v2/v2-7/builder-edit.webp" alt="The Builder Tool editing a ligand, with its controls labelled">
 
 <UiList label="Builder modes">
 <UiItem icon="plus" name="Build">Adds atoms and groups.</UiItem>
@@ -134,12 +148,6 @@ The Builder Tool builds new ligands and edits existing ones. On opening, the pan
 <UiItem icon="line" name="Bond">Clicking two atoms bonds them, and clicking a bond changes its order.</UiItem>
 <UiItem icon="trash" name="Delete">Clicking atoms or bonds deletes them.</UiItem>
 </UiList>
-
-<vimg src="nanome-v2/v2-7/builder-edit.webp" alt="The Builder Tool editing a ligand, with its controls labelled" />
-
-In **Build**, groups come from **Recent**, **Atoms**, **Rings**, **R Groups**, **Amino Acids**, **BioMolecules** and **Functional Groups**. The atoms are H, C, N, O, F, P, S and Cl.
-
-<vimg src="nanome-v2/v2-7/builder-categories.webp" alt="The six fragment categories in the Builder Tool" />
 
 Along the bottom of the panel:
 
@@ -153,6 +161,14 @@ Along the bottom of the panel:
 <UiItem name="Cancel">Discards the changes.</UiItem>
 <UiItem icon="device-floppy" name="Save" href="#saving">Keeps the changes.</UiItem>
 </UiList>
+
+</ShotRow>
+
+<ShotRow src="nanome-v2/v2-7/builder-categories.webp" alt="The six fragment categories in the Builder Tool">
+
+In **Build**, groups come from **Recent**, **Atoms**, **Rings**, **R Groups**, **Amino Acids**, **BioMolecules** and **Functional Groups**. The atoms are H, C, N, O, F, P, S and Cl.
+
+</ShotRow>
 
 <AccordionGroup label="Building details">
 
@@ -178,6 +194,8 @@ When **Replace** fuses a ring fragment onto an existing ring, it merges the atom
 
 ### Minimize
 
+<ShotRow src="nanome-v2/v2-7/builder-minimization-settings.webp" alt="The minimization settings with no receptor">
+
 **Minimize** runs a force-field minimization on the ligand. <Btn icon="settings">Minimization settings</Btn> opens:
 
 <UiList label="Minimization settings">
@@ -188,9 +206,9 @@ When **Replace** fuses a ring fragment onto an existing ring, it merges the atom
 <UiItem name="Apply">Keeps the settings.</UiItem>
 </UiList>
 
-<vimg src="nanome-v2/v2-7/builder-minimization-settings.webp" alt="The minimization settings with no receptor" />
-
 When it finishes, the panel shows the energy in kJ/mol.
+
+</ShotRow>
 
 <Callout type="note" title="Reading the energy">
 
@@ -202,6 +220,8 @@ In vacuum, the energy is the force field's conformational energy for the ligand.
 
 <DocVideo src="v2-7/pocket-minimization.mp4" caption="Pocket minimization in Nanome XR, from the v2.7 release." />
 
+<ShotRow src="nanome-v2/v2-7/builder-pocket-minimization-settings.webp" alt="The minimization settings with 1KV2 chosen as the receptor">
+
 Since release 2.7, a ligand can be minimized in place inside a receptor's binding site. With a receptor entry chosen as the **Receptor**, the settings include:
 
 <UiList label="Pocket minimization settings">
@@ -209,9 +229,9 @@ Since release 2.7, a ligand can be minimized in place inside a receptor's bindin
 <UiItem name="Pocket radius (Å)">How far from the ligand the pocket reaches, from 2 Å to 10 Å, with 4 Å by default.</UiItem>
 </UiList>
 
-<vimg src="nanome-v2/v2-7/builder-pocket-minimization-settings.webp" alt="The minimization settings with 1KV2 chosen as the receptor" />
-
 The result shows the **Energy** in kJ/mol, the **Ligand RMSD** and the **Pocket RMSD**. A run can be cancelled or undone.
+
+</ShotRow>
 
 <Callout type="note" title="Ligands with metals">
 
@@ -253,11 +273,15 @@ The pocket is every whole residue with a heavy atom within the **Pocket radius**
 
 ### Saving
 
+<ShotRow src="nanome-v2/v2-7/builder-save-options.webp" alt="The Save menu with Add new ligand and Update current ligand">
+
 A ligand that started from **Create New** is saved as a new ligand. An existing ligand can be saved with **Add new ligand** or **Update current ligand**.
 
-<vimg src="nanome-v2/v2-7/builder-save-options.webp" alt="The Save menu with Add new ligand and Update current ligand" />
+</ShotRow>
 
 ## <AppIcon name="rotate-360" /> Torsion Tool {#torsion-tool}
+
+<ShotRow src="nanome-v2/v2-7/tool-torsion.webp" alt="The Torsion Tool panel with its structure list">
 
 The Torsion Tool rotates bonds to change a structure's conformation. A structure is chosen in 3D, or from the list:
 
@@ -268,11 +292,11 @@ The Torsion Tool rotates bonds to change a structure's conformation. A structure
 <UiItem name="A:B96_391">One ligand.</UiItem>
 </UiList>
 
-<vimg src="nanome-v2/v2-7/tool-torsion.webp" alt="The Torsion Tool panel with its structure list" />
+</ShotRow>
+
+<ShotRow src="nanome-v2/v2-7/torsion-after.webp" alt="The Torsion Tool with Display torsion strain turned on for 1KV2">
 
 Clicking and holding on a bond rotates the atoms on one side of it. **Display torsion strain for the entire structure** colors atoms by an estimate of the torsional strain in the rotatable single bonds around them.
-
-<vimg src="nanome-v2/v2-7/torsion-after.webp" alt="The Torsion Tool with Display torsion strain turned on for 1KV2" />
 
 <UiList label="Torsion Tool buttons">
 <UiItem icon="arrow-back-up" name="Undo">Steps back through changes.</UiItem>
@@ -280,6 +304,8 @@ Clicking and holding on a bond rotates the atoms on one side of it. **Display to
 <UiItem name="Cancel">Discards the changes.</UiItem>
 <UiItem icon="device-floppy" name="Save">Commits the changes.</UiItem>
 </UiList>
+
+</ShotRow>
 
 <Accordion title="How torsion strain is estimated" teaser="A cosine term for each rotatable bond's dihedral.">
 
@@ -297,6 +323,8 @@ The Residue Editor mutates protein residues and picks their side-chain rotamers.
 
 Select one or more protein residues, then pick one. Moving the thumbstick left or right previews the rotamers, scored for clashes and hydrogen bonds.
 
+<ShotRow src="nanome-v2/v2-7/tool-residue-editor.webp" alt="The Residue Editor panel">
+
 <UiList label="Residue Editor">
 <UiItem name="Mutate">Changes the residue to another amino acid.</UiItem>
 <UiItem name="Score against">Whether the rotamer scoring counts Visible atoms only or All atoms.</UiItem>
@@ -304,7 +332,7 @@ Select one or more protein residues, then pick one. Moving the thumbstick left o
 <UiItem icon="device-floppy" name="Save">Keeps the change.</UiItem>
 </UiList>
 
-<vimg src="nanome-v2/v2-7/tool-residue-editor.webp" alt="The Residue Editor panel" />
+</ShotRow>
 
 <Accordion title="Which residues it works on" teaser="The picked residue and up to 5 of its neighbors.">
 
@@ -316,6 +344,8 @@ The editor works on the picked residue plus up to 5 of the other selected residu
 
 MARA Tools runs your MARA tools from the headset. The panel opens with a notice: MARA Tools in XR are in beta, and some tools rely on inputs or outputs that XR doesn't support yet.
 
+<ShotRow src="nanome-v2/v2-7/tool-mara.webp" alt="The MARA Tools list">
+
 <UiList label="MARA Tools">
 <UiItem name="Continue">Opens the tool list.</UiItem>
 <UiItem name="Search">Searches the tool list.</UiItem>
@@ -324,7 +354,7 @@ MARA Tools runs your MARA tools from the headset. The panel opens with a notice:
 <UiItem icon="arrow-left" name="Back">Returns to the tool list.</UiItem>
 </UiList>
 
-<vimg src="nanome-v2/v2-7/tool-mara.webp" alt="The MARA Tools list" />
+</ShotRow>
 
 Tools are managed on the Tools page in [Nanome Web](https://app.nanome.ai/tools).
 
