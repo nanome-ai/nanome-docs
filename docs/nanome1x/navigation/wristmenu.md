@@ -46,11 +46,11 @@ Click on "Settings Menu" to change additional settings such as sound volumes, en
 
 ### Sound
 
-<vimg src="navigating-page/Wrist_Settings_Sound_2.jpg" />
+<vimg src="navigating-page/Wrist_Settings_Sound_2.png" />
 
 ### User
 
-<vimg src="navigating-page/Wrist_Settings_User_2.jpg" />
+<vimg src="navigating-page/Wrist_Settings_User_2.png" />
 
 - Avatar Customizations
 
@@ -60,19 +60,19 @@ Change your display name, hairstyle, hair color, eyeglasses color, and shirt col
 
 ### Room
 
-<vimg src="navigating-page/Wrist_Settings_Room_2.jpg" />
+<vimg src="navigating-page/Wrist_Settings_Room_2.png" />
 
 ### Stacks
 
-<vimg src="navigating-page/Wrist_Settings_Stacks.jpg" />
+<vimg src="navigating-page/Wrist_Settings_Stacks.png" />
 
 ### Help
 
-<vimg src="navigating-page/Wrist_Settings_Help_2.jpg" />
+<vimg src="navigating-page/Wrist_Settings_Help_2.png" />
 
 ### Controls
 
-<vimg src="navigating-page/Wrist_Settings_Controls_2.jpg" />
+<vimg src="navigating-page/Wrist_Settings_Controls_2.png" />
 
 ## Screenshot Tool
 
@@ -82,7 +82,7 @@ Use the screenshot tool to take a screenshot of your workspace and send it via e
 
 ### Camera as Desktop View
 
-<vimg src="navigating-page/camera_desktop_view.jpg" />
+<vimg src="navigating-page/camera_desktop_view.png" />
 
 This option allows the in-app camera to be mirrored to your desktop (Desktop VR only).
 
@@ -96,8 +96,8 @@ This can be used as a sticky note.
 
 ## In-VR Web Browser
 
-<vimg src="navigating-page/wrist_menu_web_browser.jpg" />
+<vimg src="navigating-page/wrist_menu_web_browser.png" />
 
 This is a web browser that can be accessed from within the virtual environment. The browser may be viewed by only a single user, or shared with everyone in the same workspace. Note: only one browser can be shared at a time.
 
-<vimg src="navigating-page/web_browser_no_keyboard.jpg" /> <vimg src="navigating-page/web_browser_with_keyboard.jpg" />
+<vimg src="navigating-page/web_browser_no_keyboard.png" /> <vimg src="navigating-page/web_browser_with_keyboard.png" />
