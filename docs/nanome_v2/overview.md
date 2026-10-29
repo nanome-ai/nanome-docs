@@ -6,7 +6,11 @@ title: Overview
 
 Nanome XR is Nanome in a headset. It opens the same projects, workspaces and scenes as [Nanome Web](/nanome_web/overview), so people in headsets and in browsers can work in one workspace at the same time.
 
-<vimg src="nanome-v2/v2-7/desktop-layout.webp" alt="Nanome XR with the left sidebar, the Main Panel, the Tools Panel and 1KV2" />
+<Callout type="note" title="Looking for Nanome Classic?">
+
+These pages cover Nanome XR, version 2. Nanome Classic (v1.24), the earlier headset app, has its own [Nanome Classic docs](/nanome1x/overview). In the Meta Horizon Store, Nanome XR has the purple icon and Classic the blue one.
+
+</Callout>
 
 ## Start here
 
@@ -19,6 +23,8 @@ Nanome XR is Nanome in a headset. It opens the same projects, workspaces and sce
 
 ## On screen
 
+<ShotRow src="nanome-v2/v2-7/desktop-layout.webp" alt="Nanome XR with the left sidebar, the Main Panel, the Tools Panel and 1KV2">
+
 <IconGrid label="Nanome XR screens" :cols="3">
 <IconCard icon="hierarchy" title="Main Panel" href="/nanome_v2/mainpanel">Structures, ligands, workspaces, people and settings.</IconCard>
 <IconCard icon="droplet" title="Tools Panel" href="/nanome_v2/toolspanel">Pointer, measuring, building and the other tools.</IconCard>
@@ -28,6 +34,8 @@ Nanome XR is Nanome in a headset. It opens the same projects, workspaces and sce
 <IconCard icon="mist" title="Sequence Panel" href="/nanome_v2/sequencepanel">Sequences of every chain, for selecting residues.</IconCard>
 <IconCard icon="view-360" title="Environment" href="/nanome_v2/environment">The space around you: skybox, floor and passthrough.</IconCard>
 </IconGrid>
+
+</ShotRow>
 
 ## Working together
 

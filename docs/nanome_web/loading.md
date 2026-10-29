@@ -6,13 +6,15 @@ title: Loading Structures
 
 Structures come into a workspace through the **Import** tab of the workspace panel, from three sources.
 
+<ShotRow src="nanome-web/import-tab.webp" alt="The Import tab">
+
 <IconGrid label="Import sources" :cols="3">
 <IconCard icon="download" title="Import from RCSB" href="#import-from-rcsb">The RCSB Protein Data Bank, by PDB ID.</IconCard>
 <IconCard icon="upload" title="Upload from your computer" href="#upload-from-your-computer">Structures, session files, trajectories and maps.</IconCard>
 <IconCard icon="messages" title="Import from Chat" href="#import-from-chat">Files from your MARA chats.</IconCard>
 </IconGrid>
 
-<vimg src="nanome-web/import-tab.webp" alt="The Import tab" />
+</ShotRow>
 
 ## <AppIcon name="download" /> Import from RCSB {#import-from-rcsb}
 
@@ -31,13 +33,15 @@ When a structure has a bound ligand, Nanome builds a binding-site view automatic
 
 **Import from Chat** lists files from your MARA conversations, with the chat each came from and its date. The checkboxes select files.
 
+<ShotRow src="nanome-web/import-chat-menu.webp" alt="Import from Chat with a file row menu open">
+
 <UiList label="Import from Chat">
 <UiItem icon="search" name="Search">Helps find a file.</UiItem>
 <UiItem icon="arrows-sort" name="Sort">Orders the list.</UiItem>
 <UiItem icon="dots" name="More">Each row's menu: Go to chat and Download.</UiItem>
 </UiList>
 
-<vimg src="nanome-web/import-chat-menu.webp" alt="Import from Chat with a file row menu open" />
+</ShotRow>
 
 ## File loading changes in 2.7
 

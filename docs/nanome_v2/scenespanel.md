@@ -6,6 +6,8 @@ title: Scenes Panel
 
 The Scenes Panel sits in the left sidebar, beside the Main Panel. A scene is a saved view of the workspace: its components, annotations, molecule positions and point of view. A workspace can hold up to 50 scenes.
 
+<ShotRow src="nanome-v2/v2-7/scenes-panel.webp" alt="The left sidebar with the Scenes Panel controls labelled">
+
 <IconGrid label="Left sidebar">
 <IconCard icon="layout-grid" title="Workspace header" href="#workspace-header">The workspace name, network health and access.</IconCard>
 <IconCard icon="box" title="Scene controls" href="#controls">Create, step through and play scenes.</IconCard>
@@ -15,7 +17,7 @@ The Scenes Panel sits in the left sidebar, beside the Main Panel. A scene is a s
 <IconCard icon="crown" title="Spotlight Mode" href="#spotlight-mode">Share your view, or follow someone else's.</IconCard>
 </IconGrid>
 
-<vimg src="nanome-v2/v2-7/scenes-panel.webp" alt="The left sidebar with the Scenes Panel controls labelled" />
+</ShotRow>
 
 ## <AppIcon name="layout-grid" /> Workspace header {#workspace-header}
 
@@ -39,15 +41,19 @@ The top of the sidebar shows the workspace name and two icons:
 
 ### <AppIcon name="settings" /> Scene settings {#scene-settings}
 
+<ShotRow src="nanome-v2/v2-7/scenes-settings.webp" alt="The scene settings menu">
+
 <UiList label="Scene settings">
 <UiItem icon="target" name="Recenter Self">Resets your position as the viewing origin.</UiItem>
 <UiItem icon="scan-eye" name="Set scene POV">Saves your current perspective as the scene's point of view.</UiItem>
 <UiItem icon="perspective" name="Enable/disable scene POVs">Sets whether switching scenes moves your view to each scene's point of view.</UiItem>
 </UiList>
 
-<vimg src="nanome-v2/v2-7/scenes-settings.webp" alt="The scene settings menu" />
+</ShotRow>
 
 ### <AppIcon name="dots" /> Scene menu {#scene-menu}
+
+<ShotRow src="nanome-v2/v2-7/scenes-more-options.webp" alt="A scene's More options menu">
 
 <UiList label="Scene More options">
 <UiItem icon="pencil" name="Rename">Renames the scene.</UiItem>
@@ -58,7 +64,7 @@ The top of the sidebar shows the workspace name and two icons:
 <UiItem icon="trash" name="Delete recording">Deletes the scene's recording.</UiItem>
 </UiList>
 
-<vimg src="nanome-v2/v2-7/scenes-more-options.webp" alt="A scene's More options menu" />
+</ShotRow>
 
 ### Video: Working with Scenes
 
@@ -98,15 +104,19 @@ At the bottom of the sidebar, the **Users** section shows who's in the workspace
 
 ### Multi-User Scene Indicators
 
-<vimg src="nanome-v2/scenes-panel-multiuser-indicators.jpg" />
+<ShotRow src="nanome-v2/scenes-panel-multiuser-indicators.jpg" alt="Ana's and Ben's Scenes Panels, with colored dots on Scene 1 showing that both are viewing it">
 
 With several people in a workspace, colored dots on each scene show who's viewing it, in each person's color.
 
+</ShotRow>
+
 ## <AppIcon name="crown" /> Spotlight Mode {#spotlight-mode}
 
-<vimg src="nanome-v2/scenes-panel-spotlight-mode.jpg" />
+<ShotRow src="nanome-v2/scenes-panel-spotlight-mode.jpg" alt="Ben spotlighting with Ana following, as each of them sees it">
 
 **Spotlight Me** makes your view the shared perspective for everyone who follows you.
+
+</ShotRow>
 
 <Tabs :labels="['Spotlighter', 'Follower']">
 <Tab>

@@ -71,9 +71,11 @@ A workspace sent from Nanome Web with **Open in XR** arrives as a **Load from We
 
 ## <AppIcon name="crown" /> Spotlight and follow {#spotlight-and-follow}
 
-<vimg src="nanome-v2/multiuser_view.png" />
+<ShotRow src="nanome-v2/multiuser_view.png" alt="Several people in one workspace, each seeing the shared structures">
 
 Content is oriented centrally for everyone. Following another person shows what they're showing. When others follow you, you're the spotlight: they see your view and your scene. The controls are under [Spotlight Mode](/nanome_v2/scenespanel#spotlight-mode).
+
+</ShotRow>
 
 Pointers point relative to the structures, so even in free view everyone sees a pointer on the same structural feature.
 

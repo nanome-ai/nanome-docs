@@ -6,6 +6,8 @@ title: Account & Settings
 
 The account menu sits at the right end of the top bar, under your initial. It shows your username and email, and links to the account pages. The last line of the menu shows the version of the web app.
 
+<ShotRow src="nanome-web/account-menu.webp" alt="The account menu">
+
 <UiList label="Account menu">
 <UiItem icon="lock-cog" name="Login via Device Code" href="#login-via-device-code">Signs a headset in.</UiItem>
 <UiItem name="Account / Billing / Organization">Open your account, billing and organization pages.</UiItem>
@@ -13,13 +15,15 @@ The account menu sits at the right end of the top bar, under your initial. It sh
 <UiItem name="Logout">Signs out of Nanome Web.</UiItem>
 </UiList>
 
-<vimg src="nanome-web/account-menu.webp" alt="The account menu" />
+</ShotRow>
 
 ## <AppIcon name="lock-cog" /> Login via Device Code {#login-via-device-code}
 
+<ShotRow src="nanome-web/login-device-code.webp" alt="The Login via Device Code dialog">
+
 Nanome XR can sign in with a 4-character code. The headset's login page shows the code, and entering it in **Login via Device Code** on Nanome Web signs the headset in to the same account. The same dialog opens from the <AppIcon name="lock-cog" /> lock icon in the top bar.
 
-<vimg src="nanome-web/login-device-code.webp" alt="The Login via Device Code dialog" />
+</ShotRow>
 
 ## Settings {#settings}
 
@@ -38,9 +42,11 @@ Nanome XR can sign in with a 4-character code. The headset's login page shows th
 
 ### System
 
+<ShotRow src="nanome-web/settings-api-keys.webp" alt="API Keys in System settings">
+
 **API Keys** authenticate requests to Nanome's server from tool routes and the `mara-client` Python package. **+ Create** makes a new key. Each key shows only its last characters and its expiry date, with buttons to reveal, copy or delete it.
 
-<vimg src="nanome-web/settings-api-keys.webp" alt="API Keys in System settings" />
+</ShotRow>
 
 ### MCP setup {#mcp-setup}
 
@@ -54,6 +60,8 @@ The assistant asks you to sign in and approve access in a browser the first time
 
 ### Preferences
 
+<ShotRow src="nanome-web/settings-preferences.webp" alt="The preference switches in System settings">
+
 <UiList label="Preferences">
 <UiItem name="Auto-open Files">Opens supported files in the split view when they're added to a chat.</UiItem>
 <UiItem name="Auto-run Workflows">Runs workflows in chat automatically.</UiItem>
@@ -62,7 +70,7 @@ The assistant asks you to sign in and approve access in a browser the first time
 <UiItem name="Reset chats">Delete all permanently deletes all MARA chats and uploaded files.</UiItem>
 </UiList>
 
-<vimg src="nanome-web/settings-preferences.webp" alt="The preference switches in System settings" />
+</ShotRow>
 
 ## Licenses and sign-in
 
