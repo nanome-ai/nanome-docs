@@ -6,7 +6,7 @@ title: Enterprise
 
 <Callout type="warning" title="Nanome 1.x only">
 
-This page is for Nanome 1.x only. For MARA or NanomeAI deployment information, contact your enterprise account manager.
+This page is for Nanome 1.x only. For Nanome v2 on a private VM, the network requirements are in [Getting Started](/getting-started#on-prem) and installation is in Nanome's [v2 deployment guide](https://nanome.ai/deploy). For help with a deployment, contact your enterprise account manager.
 
 </Callout>
 

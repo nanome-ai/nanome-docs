@@ -11,7 +11,7 @@ Fixes for Nanome XR and Nanome Web: sign-in messages, the device limit, licenses
 <IconCard icon="alert-triangle" title="Sign-in messages" href="#sign-in">What each message means, and what to do next.</IconCard>
 <IconCard icon="devices" title="Device limit" href="#device-limit">One device at a time for each account.</IconCard>
 <IconCard icon="license" title="License" href="#license">No license for Nanome XR, or one about to expire.</IconCard>
-<IconCard icon="wifi" title="Network" href="#network">Checks to run before calling IT.</IconCard>
+<IconCard icon="wifi" title="Network" href="#network">Nanome cloud checks, and on-prem deployments.</IconCard>
 <IconCard icon="volume" title="No sound" href="#audio">Your mic, muted people and device audio.</IconCard>
 <IconCard icon="headset" title="Nanome Classic" href="#classic">Ports, VPN and Windows Firewall for v1.24.</IconCard>
 </IconGrid>
@@ -49,7 +49,11 @@ Every new account starts with a 14-day Full license trial. [Account Tiers](/home
 
 ## <AppIcon name="wifi" /> Network {#network}
 
-These checks narrow down most connection problems. The full checklist and the firewall allowlist for IT are in [Getting Started: Wi-Fi & network](/getting-started#network).
+The full checklist and the firewall allowlist for IT are in [Getting Started: Wi-Fi & network](/getting-started#network).
+
+### <AppIcon name="world" /> Nanome cloud (app.nanome.ai) {#network-cloud}
+
+These checks narrow down most connection problems.
 
 <Steps>
 
@@ -60,11 +64,39 @@ These checks narrow down most connection problems. The full checklist and the fi
 
 </Steps>
 
-<Callout type="note" title="Private and on-premise deployments">
+### <AppIcon name="server" /> On-prem or private VM {#network-on-prem}
 
-Nanome on a private cloud or on-premise server uses its own hosts and ports, covered in the [enterprise deployment guide](https://nanome.ai/deploy).
+Only for Nanome v2 running on the organization's own VM. Its ports, DNS names and auth proxy are in [Getting Started: On-prem or private VM](/getting-started#on-prem), and installation is in Nanome's [v2 deployment guide](https://nanome.ai/deploy).
 
-</Callout>
+<AccordionGroup label="3 on-prem problems">
+
+<Accordion title="A headset can't reach Nanome's servers" teaser="Without internet access, headsets sign in through the auth proxy.">
+
+Headsets sign in and check licenses through Nanome's API. On an internal network that stops them from reaching the internet, point them at the auth proxy on the VM with a config file from the MDM: [auth proxy setup](/getting-started#on-prem). Once the file is on the headset, Nanome says it's unable to reach Nanome servers and offers a button that enables local config access.
+
+</Accordion>
+
+<Accordion title="Error response from daemon: pull access denied" teaser="AWS access on the VM, or aws_login.py skipped before a redeploy.">
+
+On a fresh deployment, the VM's AWS access isn't configured correctly. Check that the Access Key and Secret Key are in `~/.aws/credentials`, run `python aws_login.py`, and try again.
+
+When redeploying, run `python aws_login.py` before `docker compose up -d --wait`.
+
+</Accordion>
+
+<Accordion title="chromadb.errors.InvalidDimensionException" teaser="The embedding model changed, so the old embeddings have to go.">
+
+"Embedding dimension X does not match collection dimensionality Y" appears when a deployment switches to a different text embedding model. Older deployments use text-embedding-ada-002 by default. Clear the old embeddings:
+
+```sh
+docker compose down
+docker volume rm nanome-deployer_mara-embeddings-volume
+docker compose up -d --wait
+```
+
+</Accordion>
+
+</AccordionGroup>
 
 ## <AppIcon name="volume" /> No sound {#audio}
 

@@ -4,7 +4,7 @@ outline: [2, 3]
 ---
 
 <script setup>
-import { NANOME_HOSTS, NETWORK_ALLOWLIST } from './.vitepress/data/setup-network.js'
+import { NANOME_HOSTS, NETWORK_ALLOWLIST, ONPREM_DNS, ONPREM_ALLOWLIST } from './.vitepress/data/setup-network.js'
 </script>
 
 # Getting started with Nanome XR
@@ -413,10 +413,16 @@ those can enroll Quest headsets the same way.
 <p class="chapter-kicker">Step 4 of 7 · A network Nanome can reach</p>
 
 Headsets need Wi-Fi with direct internet access and a short list of hostnames
-allowed through the firewall. The checklist below is written to hand straight
-to IT.
+allowed through the firewall. What IT allows depends on where Nanome runs.
 
-### Six checks for IT
+<IconGrid label="Where Nanome runs" :cols="2">
+<IconCard icon="world" title="Nanome cloud" href="#cloud">app.nanome.ai, run by Nanome. Six checks for IT.</IconCard>
+<IconCard icon="server" title="On-prem or private VM" href="#on-prem">Nanome on the organization's own VM. Ports, DNS and the auth proxy.</IconCard>
+</IconGrid>
+
+### <AppIcon name="world" /> Nanome cloud (app.nanome.ai) {#cloud}
+
+Six checks, written to hand straight to IT.
 
 <AccordionGroup label="6 checks for IT">
 
@@ -490,12 +496,93 @@ both publish network tests that also run in the headset's browser.
 
 </AccordionGroup>
 
-<Callout type="note" title="Private and on-premise deployments">
+### <AppIcon name="server" /> On-prem or private VM {#on-prem}
 
-Running Nanome on a private cloud or on-premise server? Those deployments use
-their own hosts and ports, covered in the
-[enterprise deployment guide](https://nanome.ai/deploy). Samsung Galaxy XR
-fleets managed under Android Enterprise also need
+These apply only when Nanome v2 runs on the organization's own Linux VM. Nanome
+cloud users don't need any of them. Installation is covered in Nanome's
+[v2 deployment guide](https://nanome.ai/deploy).
+
+<AccordionGroup label="5 checks for on-prem">
+
+<Accordion title="Ports on the VM" teaser="TCP 80, and TCP 443 when SSL certificates are provisioned.">
+
+The VM needs TCP 80 (HTTP) open, and TCP 443 (HTTPS) when SSL certificates are
+provisioned.
+
+</Accordion>
+
+<Accordion title="DNS names" teaser="Names under the organization's domain, pointing to the VM.">
+
+The deployment guide writes the organization's domain as company.com. These
+names point to the VM, and the Nanome team needs them to configure the
+organization's licenses:
+
+<ul class="hosts">
+  <li v-for="entry in ONPREM_DNS" :key="entry.host">
+    <code>{{ entry.host }}</code>
+    <span v-if="entry.purpose">{{ entry.purpose }}</span>
+  </li>
+</ul>
+
+If the VM already has an A record, add CNAME records for these names that
+point to it. Otherwise, create A records that point to the VM's IP address.
+With HTTPS, the SSL certificate covers `*.company.com`, or each name.
+
+</Accordion>
+
+<Accordion title="Headsets without internet access" teaser="An auth proxy on the VM, set up through the MDM.">
+
+Headsets sign in and check licenses through Nanome's API. When the internal
+network stops headsets from reaching the internet, for example api.nanome.ai,
+the auth proxy on the VM routes those requests instead. It starts on the VM
+during deployment and uses the nanome-auth name.
+
+<Steps>
+
+1. Create a plain text file named `nanome_config` that contains
+   `auth_proxy=http://nanome-auth.company.com`.
+2. With the MDM, add the file to each headset at
+   `/sdcard/Managed files/nanome_config`.
+3. Open Nanome. It says it's unable to reach Nanome servers. Choose the button
+   that enables local config access, then accept the system prompt to allow
+   file storage access.
+4. Check that you can log in.
+
+</Steps>
+
+</Accordion>
+
+<Accordion title="AI features" teaser="An LLM provider: Anthropic, OpenAI, AWS Bedrock or Microsoft Foundry.">
+
+AI features in Nanome and the web app need access to an LLM provider:
+Anthropic, OpenAI, AWS Bedrock or Microsoft Foundry. Have the provider's URL
+and API key, or other auth details, ready before installation. For another
+provider, ask [support@nanome.ai](mailto:support@nanome.ai).
+
+</Accordion>
+
+<Accordion title="Testing the deployment" teaser="The web app first, then a headset in the same workspace.">
+
+<Steps>
+
+1. Open nanome.company.com in a browser and log in.
+2. Drag a PDB file onto the page, create a workspace, and check the workspace
+   contains the molecule.
+3. Log in to Nanome on a headset and check the workspace shows up with the
+   molecule.
+4. While in XR, check the XR cursors appear in the web preview.
+
+</Steps>
+
+</Accordion>
+
+</AccordionGroup>
+
+<CopyBlock title="On-prem network summary" :text="ONPREM_ALLOWLIST" />
+
+<Callout type="note" title="Samsung Galaxy XR under Android Enterprise">
+
+Galaxy XR fleets managed under Android Enterprise also need
 [Google's endpoints](https://support.google.com/work/android/answer/10513641).
 
 </Callout>

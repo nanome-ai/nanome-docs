@@ -5,6 +5,10 @@
  * Ported verbatim from nanome.ai `app/data/setup-guide.js`. These change more
  * often than the prose does, so they live in one file rather than spread across
  * the markdown. Keep the two copies in step.
+ *
+ * The on-prem block at the end is not on nanome.ai yet. It comes from Nanome's
+ * v2 deployment guide (nanome.ai/deploy) and only applies to deployments on the
+ * organization's own VM, never to Nanome cloud.
  */
 
 const SETUP_LINKS = {
@@ -98,4 +102,34 @@ export const NETWORK_ALLOWLIST = [
   '  clients3.google.com and connectivitycheck.gstatic.com on port 80 (connectivity checks)',
   '  Remote screen streaming: openrelay.metered.ca, stun.relay.metered.ca, and global.relay.metered.ca on ports 80 and 443 (TCP and UDP)',
   `  Full list: ${SETUP_LINKS.manageXrNetwork}`,
+].join('\n')
+
+// From the Nanome v2 deployment guide (https://nanome.ai/deploy). The guide
+// writes the organization's domain as company.com, and only says what two of
+// the names are for.
+export const ONPREM_DNS = [
+  { host: 'nanome.company.com', purpose: 'Web app' },
+  { host: 'nanome-tools.company.com', purpose: '' },
+  { host: 'workspaces.company.com', purpose: '' },
+  { host: 'nanome-auth.company.com', purpose: 'Auth proxy, optional' },
+]
+
+export const ONPREM_ALLOWLIST = [
+  'Nanome v2 on a private VM (on-prem deployments only, not Nanome cloud)',
+  '  VM inbound: TCP 80 (HTTP)',
+  '  VM inbound: TCP 443 (HTTPS), only if SSL certificates are provisioned',
+  '',
+  'DNS A or CNAME records pointing to the VM, shared with the Nanome team',
+  ...ONPREM_DNS.map((d) => `  ${d.host}${d.purpose ? ` (${d.purpose.toLowerCase()})` : ''}`),
+  '  HTTPS: one certificate for *.company.com, or one for each name above',
+  '',
+  'Headsets without internet access',
+  '  Sign-in and licensing go through the auth proxy on the VM.',
+  '  MDM file /sdcard/Managed files/nanome_config containing:',
+  '  auth_proxy=http://nanome-auth.company.com',
+  '',
+  'AI features',
+  '  Access to an LLM provider: Anthropic, OpenAI, AWS Bedrock or Microsoft Foundry',
+  '',
+  'Deployment guide: https://nanome.ai/deploy',
 ].join('\n')
