@@ -9,7 +9,7 @@ Fixes for Nanome XR and Nanome Web: sign-in messages, the device limit, licenses
 
 <IconGrid label="Troubleshooting topics" :cols="3">
 <IconCard icon="alert-triangle" title="Sign-in messages" href="#sign-in">What each message means, and what to do next.</IconCard>
-<IconCard icon="devices" title="Device limit" href="#device-limit">Asked to sign out elsewhere, or signed out here.</IconCard>
+<IconCard icon="devices" title="Device limit" href="#device-limit">One device at a time for each account.</IconCard>
 <IconCard icon="license" title="License" href="#license">No license for Nanome XR, or one about to expire.</IconCard>
 <IconCard icon="wifi" title="Network" href="#network">Checks to run before calling IT.</IconCard>
 <IconCard icon="volume" title="No sound" href="#audio">Your mic, muted people and device audio.</IconCard>
@@ -32,9 +32,9 @@ Since release 2.7, the Nanome XR login screen says why a sign-in failed. **Detai
 
 ## <AppIcon name="devices" /> Device limit {#device-limit}
 
-Each account can run Nanome on a limited number of devices at a time.
+An account can be signed in on one device at a time.
 
-- **A Device Limit screen at sign-in** means the account is already signed in on as many devices as it can be. Sign out of Nanome on one of them, then sign in again.
+- **A Device Limit screen at sign-in** means the account is already signed in on another device. Sign out of Nanome there, then sign in again.
 - **Signed out with a notice** can mean the same account signed in on another device. An expired license also signs out with a notice (see [License](#license)).
 
 On a shared headset, <Btn icon="outbound">Log Out</Btn> at the bottom of the [Settings tab](/nanome_v2/mainpanel#settings-tab) signs you out, so the next person starts with their own account.
