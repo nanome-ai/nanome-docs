@@ -19,7 +19,7 @@ The layout of an enterprise deployment:
 
 ## <AppIcon name="tool" /> Tool creation {#tool-creation}
 
-You can create your own custom tools to integrate with MARA. Nanome's blog has an [introduction to MARA tool creation](https://nanome.ai/blog/introduction-to-mara-tool-creation/).
+You can create your own custom tools to integrate with MARA, from the [Tools page](/mara/tools#creating-a-tool). Nanome's blog has an [introduction to MARA tool creation](https://nanome.ai/blog/introduction-to-mara-tool-creation/).
 
 ## <AppIcon name="key" /> API keys {#api-keys}
 
@@ -27,8 +27,8 @@ API keys let third-party applications work with MARA. With one, developers can i
 
 <Steps>
 
-1. Open the **Settings** page and its **System** tab.
-2. Choose **Create**. MARA gives you a key with an expiration date, which authenticates requests securely.
+1. In Nanome Web, open the account menu (your initial, top right) and choose [Settings](/nanome_web/account#settings), then the **System** tab.
+2. Under **API Keys**, choose **+ Create**. You get a key with an expiry date, which authenticates requests securely.
 
 </Steps>
 
@@ -37,7 +37,6 @@ API keys let third-party applications work with MARA. With one, developers can i
 Keep your API keys private to maintain security.
 
 </Callout>
-
 
 ## <AppIcon name="lock" /> Authentication {#authentication}
 

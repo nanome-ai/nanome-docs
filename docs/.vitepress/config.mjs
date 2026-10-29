@@ -109,8 +109,9 @@ export default defineConfig({
         collapsed: true,
         items: [
           { text: 'Overview', link: '/mara/overview' },
+          { text: 'Conversations', link: '/mara/conversations' },
+          { text: 'Tools', link: '/mara/tools' },
           { text: 'Features', link: '/mara/features' },
-          { text: 'Navigation', link: '/mara/navigation' },
           { text: 'Technical', link: '/mara/technical' },
           { text: 'Resources', link: '/mara/resources' }
         ]

@@ -4,6 +4,11 @@
 /nanome_v2/mainmenus       /nanome_v2/mainpanel  301
 /nanome_v2/mainmenus.html  /nanome_v2/mainpanel  301
 
+# MARA's Navigation page described the stand-alone MARA app. Its sections
+# (Tools, Integrations, Workflows, Knowledge) are now on the Tools page.
+/mara/navigation           /mara/tools           301
+/mara/navigation.html      /mara/tools           301
+
 # Nanome Classic pages moved under /nanome1x/ when the v2 and MARA sections were
 # added (#91). These send the old docs.nanome.ai paths, which older links still
 # use, to where the pages live now. Anchors survive the redirect.

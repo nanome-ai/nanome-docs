@@ -94,7 +94,8 @@ The top bar is the same on every page.
 <UiList label="Top bar">
 <UiItem name="Home">Returns to this page.</UiItem>
 <UiItem name="Workspace">Returns to your open workspace tabs.</UiItem>
-<UiItem name="Conversations / Tools" href="/mara/overview">MARA chat and tools, covered in the MARA section.</UiItem>
+<UiItem name="Conversations" href="/mara/conversations">MARA chats, plus the comment threads and mentions from your workspaces.</UiItem>
+<UiItem name="Tools" href="/mara/tools">MARA's tools, integrations, workflows and knowledge.</UiItem>
 <UiItem icon="infinity" name="Credits">Your account's credit balance. It can be hidden in Settings.</UiItem>
 <UiItem icon="search" name="Search (⌘K)">Searches by name. Workspace results show the project, owner and last-opened date.</UiItem>
 <UiItem icon="cube-3d-sphere" name="Join Workspace via Code">Opens a workspace from its 8-character code, on pages without their own Join via Code button.</UiItem>

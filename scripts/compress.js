@@ -14,9 +14,10 @@
 // docs/.vitepress/theme/image-variants.json, and <Vimg> shows the twin while
 // the site is in dark mode. Markdown only ever names the light image.
 //
-// It also records the width of each 2x screenshot (the folders in HIDPI) in
+// It also records the width of each 2x screenshot (the paths HIDPI matches) in
 // image-widths.json, so <Vimg> shows them at their on-screen size instead of
-// stretching a narrow panel across the content column.
+// stretching a narrow panel across the content column. In mara/ only the WebP
+// screenshots are 2x; the PNG diagrams there are not.
 
 const sharp = require('sharp')
 const fs = require('fs')
@@ -27,7 +28,7 @@ const compressedDir = path.join(__dirname, '../docs/public/assets/compressed')
 const manifestFile = path.join(__dirname, '../docs/.vitepress/theme/image-variants.json')
 const widthsFile = path.join(__dirname, '../docs/.vitepress/theme/image-widths.json')
 
-const HIDPI = /^(nanome-web|nanome-v2\/v2-7)\//
+const HIDPI = /^(nanome-web|nanome-v2\/v2-7)\/|^mara\/.*\.webp$/
 const MAX_WIDTH = 1600
 const QUALITY = 80
 const force = process.argv.includes('--force')

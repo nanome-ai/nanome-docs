@@ -7,12 +7,12 @@ title: MARA Overview
 **MARA** (Molecular Analysis and Reasoning Assistant) is Nanome's AI assistant for scientific informatics. It's an agentic system: you ask in plain language, and MARA builds and runs the workflow of tools that answers it. In Nanome Web, it lives on the **Conversations** and **Tools** pages and in the **MARA** tab of a workspace.
 
 <IconGrid label="Where MARA lives" :cols="3">
-<IconCard icon="messages" title="Conversations" href="/mara/features#chat">Chat with MARA, and go back to earlier chats.</IconCard>
+<IconCard icon="messages" title="Conversations" href="/mara/conversations">Chat with MARA, and go back to earlier chats.</IconCard>
 <IconCard icon="sparkles" title="MARA tab" href="/nanome_web/workspace#mara-tab">Change a workspace's representations in plain language.</IconCard>
-<IconCard icon="tool" title="Tools" href="/mara/navigation#tools">Every tool MARA can use, and your custom tools.</IconCard>
-<IconCard icon="route" title="Workflows" href="/mara/navigation#workflows">Sequences of tools that you define.</IconCard>
-<IconCard icon="triangle-square-circle" title="Integrations" href="/mara/navigation#integrations">Links to your existing tools and data sources.</IconCard>
-<IconCard icon="file-info" title="Knowledge" href="/mara/navigation#knowledge">Org knowledge, base knowledge and queries.</IconCard>
+<IconCard icon="tool" title="Tools" href="/mara/tools">Every tool MARA can use, and your custom tools.</IconCard>
+<IconCard icon="route" title="Workflows" href="/mara/tools#workflows">Sequences of tools that you define.</IconCard>
+<IconCard icon="triangle-square-circle" title="Integrations" href="/mara/tools#integrations">Links to your existing tools and data sources.</IconCard>
+<IconCard icon="file-info" title="Knowledge" href="/mara/tools#knowledge">Org knowledge, base knowledge and queries.</IconCard>
 </IconGrid>
 
 ## <AppIcon name="sparkles" /> What MARA does {#what-mara-does}

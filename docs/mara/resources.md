@@ -11,7 +11,8 @@ Videos and articles to help you get started with MARA.
 ## <AppIcon name="player-play" /> Tutorials {#tutorials}
 
 <IconGrid label="Tutorials">
-<IconCard icon="player-play" title="Welcome to MARA" href="https://youtu.be/7ZVdwAtM_Gg">Onboarding tutorial video.</IconCard>
+<IconCard icon="play" title="Nanome AI walkthrough" href="https://youtu.be/fq8NFAvlavA">The video behind Learn the Basics on the Conversations page.</IconCard>
+<IconCard icon="player-play" title="Welcome to MARA" href="https://youtu.be/7ZVdwAtM_Gg">Onboarding tutorial video. Tutorial on the Tools page opens it at tool creation.</IconCard>
 <IconCard icon="player-play" title="CDD Vault + MARA" href="https://youtu.be/T1mjK3Z8qfQ">An example workflow, on video.</IconCard>
 <IconCard icon="player-play" title="Integrating Nanome and MARA" href="https://youtu.be/hXa2LUorsVM">MARA onboarding video.</IconCard>
 </IconGrid>

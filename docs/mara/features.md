@@ -2,21 +2,17 @@
 title: Features
 ---
 
-# Features
+# What MARA can do
 
-MARA's main features are its chat, data tables, and 3D molecular visualization.
+You ask MARA in plain language, in a [chat](/mara/conversations#chat) or a workspace's [MARA tab](/nanome_web/workspace#mara-tab). It picks the tools that reach your goal, runs them, and returns the results as text, files, tables, plots and 3D structures.
 
 <IconGrid label="MARA features" :cols="3">
-<IconCard icon="messages" title="Chat" href="#chat">Ask in plain language, and MARA builds a workflow of tools.</IconCard>
-<IconCard icon="table" title="Data Table" href="#data-table">Query, filter, plot and export CSV data.</IconCard>
-<IconCard icon="atom" title="Molecular Visualization" href="#molecular-visualization">View structures in 3D and restyle them by asking.</IconCard>
+<IconCard icon="messages" title="Tasks" href="#tasks">What you can ask for, by kind of task.</IconCard>
+<IconCard icon="table" title="Tables" href="#tables">Query, filter, plot and export CSV data.</IconCard>
+<IconCard icon="atom" title="Structures" href="#structures">See results in 3D and send them to a workspace.</IconCard>
 </IconGrid>
 
-## <AppIcon name="messages" /> Chat {#chat}
-
-The chat is the main way to work with MARA. It helps you analyze and reason about molecular data by building workflows of tools to reach a goal.
-
-<vimg src="mara/mara-chat.png" alt="A chat with MARA" />
+## <AppIcon name="messages" /> Tasks {#tasks}
 
 Some of the tasks MARA can do:
 
@@ -58,60 +54,23 @@ Some of the tasks MARA can do:
 </Tab>
 </Tabs>
 
-### Chat input {#chat-input}
+Besides plain language, a message can carry files, a structure drawn with <Btn icon="hexagon">Draw SMILES</Btn>, or a specific tool or workflow to run. MAE, MOE and PSE session files can be attached too. The four [example chats](/mara/conversations#examples) show complete tasks from start to finish.
 
-Besides plain language, a prompt can carry files, or a SMILES drawn in the Ketcher chemical structure editor.
+## <AppIcon name="table" /> Tables {#tables}
 
-<UiList label="Chat input">
-<UiItem icon="paperclip" name="Attach file">Opens a file picker to choose files to upload.</UiItem>
-<UiItem icon="hexagon" name="Draw SMILES">Opens the chemical structure drawing tool.</UiItem>
-<UiItem icon="tool" name="Run tool">Picks a MARA tool to run.</UiItem>
-<UiItem icon="route" name="Run workflow">Picks a workflow to run.</UiItem>
-<UiItem icon="arrow-up" name="Send">Sends your message.</UiItem>
-</UiList>
+With a CSV file in the chat, you can ask MARA to:
 
-<vimg src="nanome-web/mara-tab.webp" alt="The chat input, here in a workspace's MARA tab" />
+- Query and extract specific data.
+- Make a 2D or 3D scatter plot, to see how data points relate.
+- Filter rows that match a condition.
+- Show the distribution of a numerical column, its spread and central tendency.
+- Summarize the file's contents, for a first look at the data.
+- Write the results to a new CSV file, or overwrite one, to export them.
 
-Since December 2024, MAE, MOE and PSE session files can also be uploaded to a chat prompt.
+Tables for the chat live in the **Tables** section of the [Files panel](/mara/conversations#files-panel). Drop a CSV or SDF file there, or ask MARA to make a table from a file in the chat.
 
-## <AppIcon name="table" /> Data Table {#data-table}
+## <AppIcon name="atom" /> Structures {#structures}
 
-<vimg src="mara/data-table.png" alt="A MARA data table" />
+Structures that MARA finds or makes open in the chat's [3D viewer](/mara/conversations#3d-viewer), which steps through multi-model files such as docking poses. To keep working on them, <Btn icon="file-arrow-right">Add to Workspace</Btn> in the Files panel loads them into a Nanome workspace, where you can open them in Nanome Web or Nanome XR.
 
-With a MARA data table, you can:
-
-- Ask in plain language to query and extract specific data from a CSV file.
-- Make a 2D or 3D scatter plot from CSV data, to see how data points relate.
-- Write data to a CSV file, creating or overwriting it, to export processed or analyzed data.
-- Filter and extract rows from a CSV file based on a query.
-- Show the distribution of numerical data from a CSV file, its spread and central tendencies.
-- Get a summary of a CSV file's contents, for a first look at the data.
-
-### Creating tables {#creating-tables}
-
-Upload a CSV file through the chat input, or drag and drop a file into the interface. The drop area has 2 zones: the left one uploads the file to the chat, and the right one uploads it and makes a new table from it.
-
-<vimg src="mara/drag-drop.png" alt="The two drop zones" />
-
-<Callout type="note" title="Supported file types for tables">
-
-`.csv` and `.xlsx`
-
-</Callout>
-
-## <AppIcon name="atom" /> Molecular Visualization {#molecular-visualization}
-
-MARA shows structures in 3D with Molstar, and you can change the representation by asking in plain language.
-
-<vimg src="mara/mol-viz.png" alt="A structure in MARA's 3D viewer" />
-
-Example prompts:
-
-- Show all residues in chain D as ball and stick
-- Color residues 101-207 blue
-- Hide waters
-- Spin the molecule
-- Focus on ligand 50D
-- Download as [molx | stl | obj | glb | usdz]
-- Highlight residues 149-150 in green
-- Set style to illustrative
+Inside a workspace, the [MARA tab](/nanome_web/workspace#mara-tab) changes the workspace's representations when you ask in plain language.
