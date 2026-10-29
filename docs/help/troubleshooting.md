@@ -45,7 +45,7 @@ On a shared headset, <Btn icon="outbound">Log Out</Btn> at the bottom of the [Se
 - **Assigning a seat.** An admin assigns licenses at home.nanome.ai under **Licenses** > **Assign Users**, using each user's account email. The license activates once that user confirms the email Nanome sends. Step by step: [Manage Licenses](/home.nanome.ai/licenses).
 - **Expiring soon.** Nanome warns when a license will expire within 30 days. When it expires, Nanome signs out with a notice.
 
-Every new account starts with a 14-day Full license trial. Seats and prices are on [nanome.ai/pricing](https://nanome.ai/pricing).
+Every new account starts with a 14-day Full license trial. [Account Tiers](/home.nanome.ai/accounttiers) compares the seats and lists prices.
 
 ## <AppIcon name="wifi" /> Network {#network}
 

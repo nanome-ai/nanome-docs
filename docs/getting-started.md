@@ -770,7 +770,8 @@ After the trial, headset access continues on a paid seat. The pricing page
 lists what each seat includes, and the Nanome team quotes volume and academic
 pricing by email.
 
-[Plans and seats](https://nanome.ai/pricing)
+[Compare the seats](/home.nanome.ai/accounttiers)
+· [Plans and pricing](https://nanome.ai/pricing)
 · [Ask for a quote](mailto:support@nanome.ai)
 
 </Accordion>

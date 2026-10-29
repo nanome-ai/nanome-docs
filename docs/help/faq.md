@@ -166,7 +166,7 @@ Nanome Vault has no particular file size limit. The limits come from the Nanome 
 
 <Accordion title="How does the Nanome licensing system work? Isn't Nanome free?" teaser="The browser is free. Headsets take a Collab or Full seat.">
 
-A free license covers Nanome in the browser at app.nanome.ai, with 1 owned project, 3 owned workspaces and 5 structures per workspace. Working in a headset takes a Collab or Full seat, and every new account starts with a 14-day Full license trial. Seats and prices are on the [Nanome website](https://nanome.ai/pricing/).
+A free license covers Nanome in the browser at app.nanome.ai, with 1 owned project, 3 owned workspaces and 5 structures per workspace. Working in a headset takes a Collab or Full seat, and every new account starts with a 14-day Full license trial. [Account Tiers](/home.nanome.ai/accounttiers) compares the seats and lists prices.
 
 </Accordion>
 

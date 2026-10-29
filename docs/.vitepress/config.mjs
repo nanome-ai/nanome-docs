@@ -209,7 +209,7 @@ export default defineConfig({
           { text: 'Licenses', link: '/home.nanome.ai/licenses' },
           { text: 'Two Factor Auth', link: '/home.nanome.ai/twofactorauth' },
           { text: 'Invoice', link: '/home.nanome.ai/invoice' },
-          { text: 'Account Tiers (Classic)', link: '/home.nanome.ai/accounttiers' },
+          { text: 'Account Tiers', link: '/home.nanome.ai/accounttiers' },
           { text: 'Meetings', link: '/home.nanome.ai/meetings' }
         ]
       },
