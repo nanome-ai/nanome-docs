@@ -80,7 +80,7 @@ In the Setting tab, users can adjust various settings.
 
 By selecting the Configuration button in the Setting tab, users can view the Nanome Configuration file, which contains additional settings that cannot be controlled directly from within the app. Newly added are Presentation Setup Options, which enable the presenter to manage guests that join their room. The Configuration file can be located in the same directory as the app build directory.
 
-<vimg src="navigating-page/Lobby-ConfigurationViewer.png" />
+<vimg src="navigating-page/Lobby-ConfigurationViewer.jpg" />
 
 ## Lobby Left Window
 
