@@ -93,7 +93,11 @@ const force = process.argv.includes('--force')
     const { width, height } = await sharp(copy).metadata()
     sizes[f] = [width, height]
   }
-  fs.writeFileSync(sizesFile, JSON.stringify(sizes) + '\n')
+  // One image per line, sorted, so branches that add images merge cleanly.
+  const lines = Object.keys(sizes)
+    .sort()
+    .map((f) => `  ${JSON.stringify(f)}: [${sizes[f].join(', ')}]`)
+  fs.writeFileSync(sizesFile, `{\n${lines.join(',\n')}\n}\n`)
 })()
 
 function walk(dir) {
