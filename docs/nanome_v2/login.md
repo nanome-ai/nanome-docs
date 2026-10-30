@@ -10,7 +10,6 @@ Nanome opens on the login screen. It has two tabs: one for your password, and on
 <MapCard icon="password" title="Password" href="#password" side="top" area="10.6,11.9,13.7,4.6">Your Nanome username and password.</MapCard>
 <MapCard icon="key" title="Code" href="#code" side="top" area="24.6,11.9,13.7,4.6">A 4-character code, entered on another device.</MapCard>
 <MapCard icon="user-plus" title="Create Account" href="#create-account" side="right" area="9.9,55.8,29.1,5.8">A new account, made from the headset.</MapCard>
-<MapCard icon="alert-triangle" title="Sign-in messages" href="#sign-in-messages" side="bottom">What went wrong, and device and license limits.</MapCard>
 </ScreenMap>
 
 ## <AppIcon name="password" /> Password {#password}
