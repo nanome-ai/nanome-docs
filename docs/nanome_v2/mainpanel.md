@@ -114,42 +114,23 @@ In a headset, **Load Structure** in the Tools Panel loads a structure by PDB cod
 
 </ShotRow>
 
-<Accordion title="Distance components" teaser="The options in the distance popup.">
+#### Distance components {#distance-components}
 
-A distance component holds the atoms within a set distance of another component. Its popup has:
+**Create Distance Component** makes a component of the atoms within a set distance of this one, named for it, such as `within 4Å of Ligand A:B96_391`. The copy of its popup below shows what each distance picks around the 1KV2 ligand.
 
-<UiList label="Distance component popup">
-<UiItem name="Distance (Å)">How far to reach. 4 Å to start.</UiItem>
-<UiItem name="Whole residues">Takes whole residues.</UiItem>
-<UiItem name="Ignore self">Leaves out the component's own atoms.</UiItem>
-<UiItem name="Include ligands">Off to start.</UiItem>
-<UiItem name="All entries">Includes atoms from every entry in the workspace.</UiItem>
-</UiList>
+<DistanceDemo />
 
-</Accordion>
+- The distance runs from 2 Å to 10 Å, with 4 Å to start.
+- **Include ligands** is off to start, so other ligands are left out. **All entries** searches every entry in the workspace, and the name then starts with "all within".
+- A distance component's menu also has **Update Distance Filter**, which changes the distance and keeps the other options. The name stays as it was.
 
 ### Representations
 
-The button on a component that names its current style, such as **Cartoon**, opens its representations. One atomistic style is active at a time, and the <AppIcon name="palette" /> button beside each style sets its colors.
+The button on a component that names its current style, such as **Cartoon**, opens its representations: a switch for each style, the hydrogens shown, and the surface's look. The <AppIcon name="palette" /> button beside each style sets its [colors](#color-schemes).
 
-<ShotRow src="nanome-v2/v2-7/representation-popup.webp" alt="The representation panel for the Protein component">
+The copy of the panel below works like the app's: each switch shows 1KV2's binding site drawn that way, rendered in Nanome.
 
-<UiList label="Representations">
-<UiItem icon="line" name="Ball & Stick" area="13.6,33.9,66.7,5.9">Atoms as spheres, joined by cylinders.</UiItem>
-<UiItem icon="slash" name="Stick" area="13.6,39.9,66.7,5.9">Bonds as cylinders.</UiItem>
-<UiItem icon="hexagon" name="Wire" area="13.6,46.0,66.7,5.9">Bonds as thin lines.</UiItem>
-<UiItem icon="color-filter" name="Van der Waals" area="13.6,52.1,66.7,5.9">Space-filling spheres.</UiItem>
-<UiItem icon="timeline" name="Hydrogens" area="13.6,58.2,66.7,5.9">None, Polar or All.</UiItem>
-<UiItem icon="scribble" name="Cartoon" area="13.6,65.0,66.7,6.5">Ribbons for helices, sheets and loops.</UiItem>
-<UiItem icon="tag" name="Residue Label" area="13.6,72.3,66.7,6.5">A label on each residue.</UiItem>
-<UiItem icon="egg-fried" name="Surface" area="13.6,79.6,66.7,12.8">The molecular surface, drawn as Wire, Sheer, Semi or Opaque.</UiItem>
-</UiList>
-
-</ShotRow>
-
-<vimg src="nanome-v2/v2-7/atom-representations.webp" alt="The 1KV2 ligand as Ball & Stick, Stick, Wire and Van der Waals" />
-
-<vimg src="nanome-v2/v2-7/surface-styles.webp" alt="The 1KV2 pocket surface drawn as Wire, Sheer, Semi and Opaque" />
+<RepresentationDemo app="xr" />
 
 <Accordion title="How the styles are drawn" teaser="Radii, hydrogens and the surface probe.">
 
@@ -207,15 +188,11 @@ Anion-π, CH-π and water-bridged interactions aren't detected.
 
 ### Color schemes
 
-<ShotRow src="nanome-v2/v2-7/color-schemes.webp" alt="The color scheme list and the Uniform color swatches">
+The <AppIcon name="palette" /> button beside a style opens its colors. Each scheme in the copy below shows 1KV2 colored that way.
 
-The <AppIcon name="palette" /> button beside a style opens its colors:
+<ColorSchemeDemo app="xr" />
 
-<Btn>Element Type</Btn> <Btn>Residue Type</Btn> <Btn>Chain Name</Btn> <Btn>Secondary Structure</Btn> <Btn>Potential Interactions</Btn> <Btn>BFactor</Btn> <Btn>Occupancy</Btn> <Btn>Uniform</Btn> <Btn>Chain Instance</Btn> <Btn>Model Instance</Btn> <Btn>Electrostatic</Btn>
-
-**Carbons only** colors just the carbon atoms and keeps element colors on the rest. **Uniform** opens a color picker with a hex field and swatches.
-
-</ShotRow>
+**Uniform** opens a color picker with a hex field and swatches.
 
 <Accordion title="Electrostatic coloring" teaser="Appears when the entry has a DX map loaded.">
 
@@ -347,7 +324,7 @@ Properties are calculated with RDKit on Nanome's server. **MolWeight** is the mo
 - Codes use letters (without I and O) and digits.
 - The list shows **Name**, **Owner** and **Last Opened**, and sorts by any column.
 - **Load for All** can first add people who don't have access as Viewers or Editors.
-- A workspace sent from Nanome Web with **Open in XR** shows a **Load from Web** prompt: **Just Me** or **Load for All**.
+- A workspace sent from Nanome Web with **Open in XR** opens straight away when you're alone in the session. With other people there, a **Load from Web** prompt offers **Just Me** or **Load for All**.
 
 ### Projects
 
@@ -432,4 +409,4 @@ When more than one server is set up, a <AppIcon name="server" /> **Change Server
 
 The themes are Default, Arctic Cyan, Aurora Green, Black & White, Gold Orange, Island and Pure Black. Since release 2.7 the skyboxes are procedurally generated mountains in each theme's colors, and Night mode switches each one between its day and night version.
 
-<vimg src="nanome-v2/v2-7/skybox-themes.webp" alt="The seven skybox themes, by day and by night" />
+Each theme, by day and by night, is on the [Environment](/nanome_v2/environment#skybox-and-floor) page.

@@ -65,14 +65,14 @@ title: Nanome Controls
 **Bumpers**
 
 <UiList label="Bumpers">
-<UiItem name="L bumper" area="66.2,9.4,3.6,7.4">Set move axes to low preset.</UiItem>
+<UiItem name="L bumper" area="49.4,10.4,3.4,6.0">Set move axes to low preset.</UiItem>
 <UiItem name="R bumper" area="66.2,9.4,3.6,7.4">Set rotate axes to low preset.</UiItem>
 </UiList>
 
 **Triggers**
 
 <UiList label="Triggers">
-<UiItem name="L trigger" area="63.9,17.1,4.8,9.7">Move Avatar/Camera down.</UiItem>
+<UiItem name="L trigger" area="47.4,15.8,4.4,7.8">Move Avatar/Camera down.</UiItem>
 <UiItem name="R trigger" area="63.9,17.1,4.8,9.7">Move Avatar/Camera up.</UiItem>
 </UiList>
 

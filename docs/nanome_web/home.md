@@ -57,7 +57,7 @@ Right-clicking a workspace row, or clicking its <AppIcon name="dots" /> **(...)*
 <UiItem name="Edit info" area="63.8,30.1,31.5,8.5">Changes the workspace name and description.</UiItem>
 <UiItem name="Copy shareable link" area="63.8,39.3,31.5,8.5">Copies a link to the workspace.</UiItem>
 <UiItem name="Duplicate" area="63.8,48.6,31.5,8.5">Makes a copy of the workspace.</UiItem>
-<UiItem name="Open in XR" area="63.8,57.9,31.5,8.5">Sends the workspace to Nanome XR on your headset, which asks whether to load it just for you or for everyone in your current session.</UiItem>
+<UiItem name="Open in XR" href="/nanome_web/collaboration#sending-a-workspace-to-a-headset" area="63.8,57.9,31.5,8.5">Sends the workspace to Nanome XR on your headset. With other people in the headset's session, it asks whether to load it just for you or for everyone.</UiItem>
 <UiItem name="Move to project" area="63.8,67.2,31.5,8.5">Moves the workspace into another project.</UiItem>
 <UiItem name="Export analysis" area="63.8,76.5,31.5,8.5">A ZIP of CSV files: chemical interactions, measurements and minimization history. Works from an open workspace's menu; grayed out in the list.</UiItem>
 <UiItem name="Delete" area="63.8,85.8,31.5,8.5">Deletes the workspace.</UiItem>
