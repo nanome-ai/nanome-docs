@@ -72,10 +72,13 @@ export default defineConfig({
               { text: 'Login', link: '/nanome_v2/login' },
               { text: 'Controls', link: '/nanome_v2/controls' },
               { text: 'Main Panel', link: '/nanome_v2/mainpanel' },
-              { text: 'Tools Panel', link: '/nanome_v2/toolspanel' },
+              {
+                text: 'Tools Panel',
+                link: '/nanome_v2/toolspanel',
+                items: [{ text: 'Comments & Annotations', link: '/nanome_v2/comments' }]
+              },
               { text: 'Scenes Panel', link: '/nanome_v2/scenespanel' },
               { text: 'Wrist Menu', link: '/nanome_v2/wristmenu' },
-              { text: 'Comments & Annotations', link: '/nanome_v2/comments' },
               { text: 'Sequence Panel', link: '/nanome_v2/sequencepanel' },
               { text: 'Environment', link: '/nanome_v2/environment' },
               { text: 'Collaboration', link: '/nanome_v2/collaboration' },

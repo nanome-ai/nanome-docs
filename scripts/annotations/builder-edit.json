@@ -9,108 +9,11 @@
   ],
   "pad": [
     0,
-    620,
     0,
-    700
+    0,
+    0
   ],
   "radius": 14,
   "display": 768,
-  "callouts": [
-    {
-      "text": "Build, Replace, Bond, Delete",
-      "at": [
-        30,
-        199
-      ],
-      "label": [
-        -40,
-        199
-      ],
-      "align": "right"
-    },
-    {
-      "text": "Fragment categories",
-      "at": [
-        30,
-        388
-      ],
-      "label": [
-        -40,
-        388
-      ],
-      "align": "right"
-    },
-    {
-      "text": "Fragments",
-      "at": [
-        30,
-        880
-      ],
-      "label": [
-        -40,
-        880
-      ],
-      "align": "right"
-    },
-    {
-      "text": "Auto relax",
-      "at": [
-        30,
-        1293
-      ],
-      "label": [
-        -40,
-        1293
-      ],
-      "align": "right"
-    },
-    {
-      "text": "Undo and redo",
-      "at": [
-        30,
-        1541
-      ],
-      "label": [
-        -40,
-        1541
-      ],
-      "align": "right"
-    },
-    {
-      "text": "Minimize",
-      "at": [
-        540,
-        1262
-      ],
-      "label": [
-        746,
-        1190
-      ],
-      "align": "left"
-    },
-    {
-      "text": "Minimization settings",
-      "at": [
-        690,
-        1293
-      ],
-      "label": [
-        746,
-        1320
-      ],
-      "align": "left"
-    },
-    {
-      "text": "Save the ligand",
-      "at": [
-        690,
-        1541
-      ],
-      "label": [
-        746,
-        1541
-      ],
-      "align": "left"
-    }
-  ]
+  "callouts": []
 }

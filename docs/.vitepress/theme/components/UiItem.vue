@@ -5,9 +5,10 @@
  * drawn as the button. `href` makes the row a link to the section about it.
  *
  * Inside a <ShotRow>, `area` ("x,y,w,h", percent of the screenshot) is where
- * the button is: hovering the row lights it up on the image.
+ * the button is: hovering the row lights it up on the image, and clicking that
+ * part of the image follows `href`, or brings the row into view.
  */
-import { computed, inject, onBeforeUnmount } from 'vue'
+import { computed, inject, onBeforeUnmount, ref } from 'vue'
 import AppIcon from './AppIcon.vue'
 import { parseBox } from './image.js'
 
@@ -20,7 +21,8 @@ const props = defineProps({
 
 const shot = inject('n-hotspots', null)
 const box = parseBox(props.area)
-const n = shot && box ? shot.register({ box, label: props.name, href: props.href }) : 0
+const row = ref(null)
+const n = shot && box ? shot.register({ box, label: props.name, href: props.href, el: () => row.value }) : 0
 if (n) onBeforeUnmount(() => shot.unregister(n))
 
 const active = computed(() => n && shot.active.value === n)
@@ -29,7 +31,7 @@ const leave = () => n && shot.leave(n)
 </script>
 
 <template>
-  <li class="n-uiitem" :class="{ 'is-active': active, 'has-area': !!n }">
+  <li ref="row" class="n-uiitem" :class="{ 'is-active': active, 'has-area': !!n }">
     <component
       :is="href ? 'a' : 'div'"
       class="n-uiitem__row"
