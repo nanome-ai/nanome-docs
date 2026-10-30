@@ -1,21 +1,32 @@
 <script setup>
-/** One heading in the right rail, plus its children. */
+/**
+ * One heading in the right rail, plus its children. `active` is the `#link`
+ * of the heading in view, if the list shows one.
+ */
 defineProps({
   headers: { type: Array, required: true },
   depth: { type: Number, default: 0 },
+  active: { type: String, default: null },
 })
 </script>
 
 <template>
   <ul class="n-outline__list" :class="`n-outline__list--d${depth}`">
     <li v-for="header in headers" :key="header.link">
-      <a class="n-outline__link" :href="header.link" :title="header.title">
+      <a
+        class="n-outline__link"
+        :class="{ active: header.link === active }"
+        :href="header.link"
+        :title="header.title"
+        :aria-current="header.link === active ? 'location' : undefined"
+      >
         {{ header.title }}
       </a>
       <OutlineItem
         v-if="header.children?.length"
         :headers="header.children"
         :depth="depth + 1"
+        :active="active"
       />
     </li>
   </ul>
@@ -53,7 +64,7 @@ defineProps({
   color: var(--n-text);
 }
 
-/* `useActiveAnchor` adds `.active` to the matching link as the page scrolls. */
+/* The heading in view, as the page scrolls. */
 .n-outline__link.active {
   color: var(--n-accent);
   font-weight: 600;

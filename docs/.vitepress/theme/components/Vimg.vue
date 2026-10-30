@@ -3,7 +3,7 @@
     <div class="vimg" :class="{ 'has-dark': !!darkSrc }" :style="box">
       <img
         class="vimg__light"
-        :src="`/assets/compressed/${toCopy(src)}`"
+        :src="`/assets/compressed/${toCopy(src)}${version(src)}`"
         :data-zoom-src="`/assets/original/${src}`"
         :alt="alt"
         :width="size?.[0]"
@@ -15,7 +15,7 @@
       <img
         v-if="darkSrc"
         class="vimg__dark"
-        :src="`/assets/compressed/${toCopy(darkSrc)}`"
+        :src="`/assets/compressed/${toCopy(darkSrc)}${version(darkSrc)}`"
         :data-zoom-src="`/assets/original/${darkSrc}`"
         :alt="alt"
         :width="darkSize?.[0]"
@@ -34,6 +34,7 @@ import { computed } from 'vue'
 import variants from '../image-variants.json'
 import widths from '../image-widths.json'
 import sizes from '../image-sizes.json'
+import versions from '../image-versions.json'
 
 const props = defineProps({
   src: {
@@ -76,6 +77,11 @@ function ratio(wh) {
 
 function toCopy(src) {
   return src.substr(0, src.lastIndexOf('.')) + '.webp'
+}
+
+/** The copy's content hash, so a changed image never comes from a stale cache. */
+function version(src) {
+  return versions[src] ? `?v=${versions[src]}` : ''
 }
 </script>
 

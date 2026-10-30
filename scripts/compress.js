@@ -21,12 +21,14 @@
 const sharp = require('sharp')
 const fs = require('fs')
 const path = require('path')
+const crypto = require('crypto')
 
 const assetDir = path.join(__dirname, '../docs/public/assets/original')
 const compressedDir = path.join(__dirname, '../docs/public/assets/compressed')
 const manifestFile = path.join(__dirname, '../docs/.vitepress/theme/image-variants.json')
 const widthsFile = path.join(__dirname, '../docs/.vitepress/theme/image-widths.json')
 const sizesFile = path.join(__dirname, '../docs/.vitepress/theme/image-sizes.json')
+const versionsFile = path.join(__dirname, '../docs/.vitepress/theme/image-versions.json')
 
 const HIDPI = /^(nanome-web|nanome-v2\/v2-7|home-nanome)\//
 const MAX_WIDTH = 1600
@@ -86,17 +88,25 @@ const force = process.argv.includes('--force')
   // loads; otherwise a link to a heading lands short as the images above it
   // arrive and push the heading down.
   const sizes = {}
+  // And a short hash of each copy, which the pages add to its URL, so a
+  // browser or CDN that cached an earlier copy fetches the new one.
+  const versions = {}
   for (const f of files) {
     if (!/\.(png|jpe?g|gif|webp)$/i.test(f)) continue
     const copy = path.join(compressedDir, f.replace(/\.\w+$/, '.webp'))
     const { width, height } = await sharp(copy).metadata()
     sizes[f] = [width, height]
+    versions[f] = crypto.createHash('sha1').update(fs.readFileSync(copy)).digest('hex').slice(0, 8)
   }
   // One image per line, sorted, so branches that add images merge cleanly.
   const lines = Object.keys(sizes)
     .sort()
     .map((f) => `  ${JSON.stringify(f)}: [${sizes[f].join(', ')}]`)
   fs.writeFileSync(sizesFile, `{\n${lines.join(',\n')}\n}\n`)
+  const vlines = Object.keys(versions)
+    .sort()
+    .map((f) => `  ${JSON.stringify(f)}: ${JSON.stringify(versions[f])}`)
+  fs.writeFileSync(versionsFile, `{\n${vlines.join(',\n')}\n}\n`)
 })()
 
 function walk(dir) {

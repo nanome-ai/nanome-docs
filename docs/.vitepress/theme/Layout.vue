@@ -1,7 +1,8 @@
 <script setup>
 /**
  * The page shell: fixed nav bar, left section rail, centre column, right
- * in-page rail.
+ * in-page rail, and the page bar: a sticky strip over the centre column that
+ * holds the breadcrumb, and below 1280px the "On this page" menu.
  *
  * The content wrapper keeps VitePress's `.VPDoc` class. That is not cosmetic —
  * `getHeaders()` in the outline composable selects `.VPDoc :where(h1,…,h6)`,
@@ -17,11 +18,16 @@ import NavBar from './layout/NavBar.vue'
 import SideNav from './layout/SideNav.vue'
 import Outline from './layout/Outline.vue'
 import LocalNav from './layout/LocalNav.vue'
+import Breadcrumb from './layout/Breadcrumb.vue'
 import DocFooter from './layout/DocFooter.vue'
 import ClassicBanner from './layout/ClassicBanner.vue'
+import { provideSectionSpy } from './layout/section-spy.js'
 
 const { frontmatter, isDark, page } = useData()
 const route = useRoute()
+
+// One scroll listener for the rail and the breadcrumb.
+provideSectionSpy()
 
 const {
   isOpen: sidebarOpen,
@@ -67,6 +73,11 @@ provide('toggle-appearance', async ({ clientX: x = innerWidth / 2, clientY: y = 
 
 const isHome = computed(() => frontmatter.value.layout === 'home')
 const showAside = computed(() => hasAside.value && !isHome.value)
+
+// Every trail starts at the site's home page, so it has none of its own.
+const showPagebar = computed(
+  () => !isHome.value && !page.value.isNotFound && page.value.relativePath !== 'index.md'
+)
 </script>
 
 <template>
@@ -77,7 +88,7 @@ const showAside = computed(() => hasAside.value && !isHome.value)
     class="n-layout"
     :class="[
       frontmatter.pageClass,
-      { 'has-sidebar': hasSidebar, 'has-aside': showAside },
+      { 'has-sidebar': hasSidebar, 'has-aside': showAside, 'has-pagebar': showPagebar },
     ]"
   >
     <a class="n-skip" href="#n-content">Skip to content</a>
@@ -96,10 +107,16 @@ const showAside = computed(() => hasAside.value && !isHome.value)
       />
     </Transition>
 
-    <SideNav v-if="hasSidebar" :open="sidebarOpen" />
+    <!-- A section link keeps the route, so the drawer closes on any link. -->
+    <SideNav v-if="hasSidebar" :open="sidebarOpen" @navigate="closeSidebar" />
 
     <div class="n-body">
-      <LocalNav v-if="showAside" />
+      <div v-if="showPagebar" class="n-pagebar">
+        <div class="n-pagebar__inner">
+          <Breadcrumb />
+          <LocalNav v-if="showAside" />
+        </div>
+      </div>
 
       <div class="n-main">
         <main id="n-content" class="n-column">
@@ -141,6 +158,39 @@ const showAside = computed(() => hasAside.value && !isHome.value)
   opacity: 0;
 }
 
+/* --- Page bar ------------------------------------------------------------ */
+
+/* Headings, focus and sticky content read `--n-pagebar-space` to clear the
+   strip, so it is only set while the strip is there. */
+.n-layout.has-pagebar {
+  --n-pagebar-space: var(--n-pagebar-height);
+}
+
+/* A fixed height keeps the anchor offset steady: VitePress measures the
+   strip's bottom edge (`scrollOffset` in config.mjs), and the margins in
+   doc.css add the same height. */
+.n-pagebar {
+  position: sticky;
+  top: var(--n-nav-height);
+  z-index: 40;
+  height: var(--n-pagebar-height);
+  border-bottom: 1px solid var(--n-border-soft);
+  background: color-mix(in srgb, var(--n-bg) 88%, transparent);
+  backdrop-filter: saturate(150%) blur(12px);
+}
+
+/* Same measure and gutter as the column, so the trail starts where the text
+   does. */
+.n-pagebar__inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 100%;
+  max-width: var(--n-content-max);
+  margin: 0 auto;
+  padding: 0 var(--n-gutter);
+}
+
 /* --- Columns ------------------------------------------------------------- */
 
 .n-main {
@@ -157,7 +207,9 @@ const showAside = computed(() => hasAside.value && !isHome.value)
    itself out rather than running prose, so give it the full measure instead of
    the 768px one that keeps body copy readable. */
 .n-layout:not(.has-aside) .n-column,
-.n-layout.n-wide .n-column {
+.n-layout.n-wide .n-column,
+.n-layout:not(.has-aside) .n-pagebar__inner,
+.n-layout.n-wide .n-pagebar__inner {
   max-width: 1200px;
 }
 
@@ -185,6 +237,10 @@ const showAside = computed(() => hasAside.value && !isHome.value)
 @media (max-width: 767px) {
   .n-column {
     padding: 28px 20px 72px;
+  }
+
+  .n-pagebar__inner {
+    padding: 0 20px;
   }
 }
 </style>

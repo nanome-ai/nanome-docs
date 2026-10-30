@@ -56,7 +56,7 @@ const caption = computed(() => ({
 
 <template>
   <div ref="root" class="n-demo" v-on="auto.hold">
-    <div class="n-app-card n-app-themes" role="group" aria-label="Theme">
+    <div class="n-app-card n-app-themes is-spread" role="group" aria-label="Theme">
       <div class="n-app-themelist" role="radiogroup" aria-label="Theme">
         <button
           v-for="t in THEMES"
