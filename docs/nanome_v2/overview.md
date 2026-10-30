@@ -22,14 +22,13 @@ These pages cover Nanome XR, version 2. Nanome Classic (v1.24), the earlier head
 
 ## On screen
 
-<ScreenMap src="nanome-v2/v2-7/desktop-layout.webp" alt="Nanome XR with the Scenes Panel, the Main Panel and the Tools Panel" crop="0,0,56,72" label="Nanome XR screens">
-<MapCard icon="hierarchy" title="Main Panel" href="/nanome_v2/mainpanel" side="top" area="15.8,5.8,33.3,63.8">Structures, ligands, workspaces, people and settings.</MapCard>
-<MapCard icon="view-360" title="Environment" href="/nanome_v2/environment" side="top" area="0,0,100,100">The space around you: skybox, floor and passthrough.</MapCard>
-<MapCard icon="box" title="Scenes Panel" href="/nanome_v2/scenespanel" side="left" area="0.4,10.3,14.9,59.1">Saved views, playback and Spotlight.</MapCard>
-<MapCard icon="droplet" title="Tools Panel" href="/nanome_v2/toolspanel" side="right" area="49.6,10.3,3.3,59.2">Pointer, measuring, building and the other tools.</MapCard>
-<MapCard icon="message" title="Comments" href="/nanome_v2/comments" side="right" area="50.1,23.9,2,3.6">Comments and notes tied to atoms.</MapCard>
-<MapCard icon="mist" title="Sequence Panel" href="/nanome_v2/sequencepanel" side="bottom" area="41,64.9,7.5,3.6">Sequences of every chain, for selecting residues.</MapCard>
-<MapCard icon="menu-2" title="Wrist Menu" href="/nanome_v2/wristmenu" side="bottom">On your wrist in a headset: the Main Panel, your mic and MARA.</MapCard>
+<ScreenMap src="nanome-v2/v2-7/xr-first-person.webp" alt="Nanome XR from inside a headset: the Scenes, Main and Tools panels in front of you, a structure above them, and the Wrist Menu on your off-hand controller" crop="12,0,56,78" label="Nanome XR screens">
+<MapCard icon="hierarchy" title="Main Panel" href="/nanome_v2/mainpanel" side="top" area="41.6,30.3,19.0,35.9">Structures, ligands, workspaces, people and settings.</MapCard>
+<MapCard icon="view-360" title="Environment" href="/nanome_v2/environment" side="top" area="12,0,56,78">The space around you: skybox, floor, pointers and avatars.</MapCard>
+<MapCard icon="box" title="Scenes Panel" href="/nanome_v2/scenespanel" side="left" area="32.7,33.0,8.9,33.2">Saved views, playback and Spotlight.</MapCard>
+<MapCard icon="menu-2" title="Wrist Menu" href="/nanome_v2/wristmenu" side="left" area="16.2,57.0,12.2,17.4">On your off-hand controller: the Main Panel, MARA and your mic.</MapCard>
+<MapCard icon="droplet" title="Tools Panel" href="/nanome_v2/toolspanel" side="right" area="60.6,33.0,2.2,33.0">Pointer, measuring, building, comments and the other tools.</MapCard>
+<MapCard icon="mist" title="Sequence Panel" href="/nanome_v2/sequencepanel" side="bottom" area="55.8,63.2,4.2,2.4">Opens from Sequences: every chain's sequence, for selecting residues.</MapCard>
 </ScreenMap>
 
 ## Working together

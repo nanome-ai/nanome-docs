@@ -8,8 +8,10 @@
  * light and dark copies alike. `crop` (same form) shows only part of the
  * image, such as the panels of a wide desktop capture.
  *
- * Clicking the image asks the parent to open its full-screen view. In that
- * view (`focus`), a region with a link goes to it.
+ * A region is also a way in: clicking one with a link goes to the section
+ * about it, and clicking one without a link asks the parent to point at its
+ * legend row (`pick`). The expand button opens the full-screen view; on an
+ * image with no regions, so does clicking the image itself.
  */
 import { computed } from 'vue'
 import { imageInfo, parseBox } from './image.js'
@@ -24,7 +26,7 @@ const props = defineProps({
   focus: { type: Boolean, default: false },
 })
 
-const emit = defineEmits(['enter', 'leave', 'open'])
+const emit = defineEmits(['enter', 'leave', 'open', 'pick'])
 
 const info = computed(() => imageInfo(props.src))
 const crop = computed(() => parseBox(props.crop) || [0, 0, 100, 100])
@@ -71,10 +73,17 @@ const ordered = computed(() =>
 
 const lit = computed(() => props.spots.find((s) => s.n === props.active) || null)
 
+/** Only an image with no regions opens the larger view by itself. */
+const opensOnClick = computed(() => !props.focus && props.spots.length === 0)
+
 function open(event) {
-  if (props.focus) return
+  if (!opensOnClick.value) return
   event.preventDefault()
   emit('open')
+}
+
+function pick(spot) {
+  if (!spot.href) emit('pick', spot.n)
 }
 </script>
 
@@ -82,13 +91,14 @@ function open(event) {
   <div class="hotshot" :class="{ 'has-dark': !!info.dark, 'is-focus': focus }" :style="outer">
     <div
       class="hotshot__frame"
+      :class="{ 'opens-on-click': opensOnClick }"
       :style="frame"
-      :role="focus ? undefined : 'button'"
-      :tabindex="focus ? undefined : 0"
-      :aria-label="focus ? undefined : `${alt || 'Screenshot'}. Show larger`"
+      :role="opensOnClick ? 'button' : undefined"
+      :tabindex="opensOnClick ? 0 : undefined"
+      :aria-label="opensOnClick ? `${alt || 'Screenshot'}. Show larger` : undefined"
       @click="open"
-      @keydown.enter="open"
-      @keydown.space="open"
+      @keydown.enter.self="open"
+      @keydown.space.self="open"
     >
       <img
         class="hotshot__img hotshot__light no-zoom"
@@ -113,16 +123,18 @@ function open(event) {
       />
 
       <component
-        :is="focus && s.href ? 'a' : 'span'"
+        :is="s.href ? 'a' : 'span'"
         v-for="s in ordered"
         :key="s.n"
         class="hotshot__spot"
         :class="{ 'is-active': s.n === active }"
         :style="place(s.box)"
-        :href="focus && s.href ? s.href : undefined"
-        :aria-label="focus && s.href ? s.label : undefined"
+        :href="s.href || undefined"
+        :aria-label="s.href ? s.label : undefined"
+        :title="s.label || undefined"
         @mouseenter="emit('enter', s.n)"
         @mouseleave="emit('leave', s.n)"
+        @click="pick(s)"
       />
 
       <span
@@ -141,9 +153,19 @@ function open(event) {
       >{{ s.n }}</span>
 
       <span v-if="info.isGif" class="hotshot__play" aria-hidden="true">&#9654;</span>
-      <span v-if="!focus" class="hotshot__expand" aria-hidden="true">
+      <span v-if="!focus && opensOnClick" class="hotshot__expand" aria-hidden="true">
         <svg viewBox="0 0 24 24" width="15" height="15"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
       </span>
+      <button
+        v-else-if="!focus"
+        type="button"
+        class="hotshot__expand is-button"
+        :aria-label="`${alt || 'Screenshot'}. Show larger`"
+        title="Show larger"
+        @click.stop="emit('open')"
+      >
+        <svg viewBox="0 0 24 24" width="15" height="15"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </button>
     </div>
   </div>
 </template>
@@ -159,11 +181,10 @@ function open(event) {
   border: 1px solid var(--n-border-soft);
   border-radius: var(--n-radius);
   background: var(--n-surface-sunken);
-  cursor: zoom-in;
 }
 
-.hotshot.is-focus .hotshot__frame {
-  cursor: default;
+.hotshot__frame.opens-on-click {
+  cursor: zoom-in;
 }
 
 .hotshot__frame:focus-visible {
@@ -192,8 +213,13 @@ function open(event) {
   box-shadow: inset 0 0 0 1px var(--n-accent-border);
 }
 
-.hotshot.is-focus a.hotshot__spot {
+.hotshot__spot {
   cursor: pointer;
+}
+
+.hotshot__spot:focus-visible {
+  outline: 2px solid var(--n-accent);
+  outline-offset: 1px;
 }
 
 /* The lit region: an outline, and the rest of the image dimmed around it. */
@@ -268,8 +294,34 @@ function open(event) {
 }
 
 .hotshot__frame:hover .hotshot__expand,
-.hotshot__frame:focus-visible .hotshot__expand {
+.hotshot__frame:focus-visible .hotshot__expand,
+.hotshot__frame:focus-within .hotshot__expand {
   opacity: 1;
+}
+
+/* With regions to click, the larger view has a button of its own. */
+.hotshot__expand.is-button {
+  z-index: 2;
+  margin: 0;
+  border: 0;
+  cursor: zoom-in;
+  pointer-events: auto;
+}
+
+.hotshot__expand.is-button:hover {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.hotshot__expand.is-button:focus-visible {
+  outline: 2px solid var(--n-accent);
+  outline-offset: 2px;
+}
+
+/* Without a mouse there's no hover to reveal it. */
+@media (hover: none) {
+  .hotshot__expand.is-button {
+    opacity: 1;
+  }
 }
 </style>
 

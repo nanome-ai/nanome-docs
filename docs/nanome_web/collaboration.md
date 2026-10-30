@@ -11,7 +11,6 @@ The **Users** tab of a workspace controls who can open it and what they can chan
 <MapCard icon="link" title="Link access" href="#link-access" side="right" area="2.5,38.9,95,13.1">What opening the code or link allows.</MapCard>
 <MapCard icon="user-plus" title="Adding people" href="#adding-people" side="right" area="2.5,54.1,95,21">Invite by email as Viewer or Editor.</MapCard>
 <MapCard icon="device-vision-pro" title="Sending to a headset" href="#sending-a-workspace-to-a-headset" side="bottom" area="2.5,92.3,27.4,5.8">Open in XR and Queue for All.</MapCard>
-<MapCard icon="crown" title="Following from the web" href="#following-from-the-web" side="bottom">Track what someone in Nanome XR sees.</MapCard>
 </ScreenMap>
 
 ## <AppIcon name="cube-3d-sphere" /> Join via Code {#join-via-code}
