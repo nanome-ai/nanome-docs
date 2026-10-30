@@ -57,7 +57,10 @@ export default defineComponent({
       const el = root.value?.querySelectorAll('.n-mapcard')[n - 1]
       if (!el) return
       const r = el.getBoundingClientRect()
-      if (r.top < 80 || r.bottom > window.innerHeight) el.scrollIntoView({ block: 'center', behavior: 'smooth' })
+      // Below the sticky chrome: the breadcrumb strip, or the nav bar without it.
+      const bar = document.querySelector('.n-pagebar') || document.querySelector('.n-navbar')
+      const chrome = bar ? bar.getBoundingClientRect().bottom : 56
+      if (r.top < chrome + 24 || r.bottom > window.innerHeight) el.scrollIntoView({ block: 'center', behavior: 'smooth' })
     }
 
     return () => {

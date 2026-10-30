@@ -22,7 +22,18 @@
   color: var(--n-text);
   font-weight: 600;
   letter-spacing: var(--n-tracking-tight);
-  scroll-margin-top: calc(var(--n-nav-height) + 24px);
+  /* On top of the nav bar's scroll padding (base.css): the breadcrumb strip,
+     then a 40px gap, the same place VitePress scrolls a clicked anchor link to
+     (`scrollOffset` in config.mjs). */
+  scroll-margin-top: calc(var(--n-pagebar-space) + 40px);
+}
+
+/* Keyboard focus on the page's links and controls clears the breadcrumb strip
+   too. Headings set their own, larger margin above. */
+.n-column
+  :is(a[href], button, input, select, textarea, summary, video[controls],
+    iframe, [tabindex]:not([tabindex='-1'])) {
+  scroll-margin-top: var(--n-pagebar-space);
 }
 
 .vp-doc h1 {
@@ -38,6 +49,9 @@
   border-top: 1px solid var(--n-border-soft);
   font-size: var(--n-text-xl);
   line-height: 1.35;
+  /* The 28px padding is most of the gap, so the rule lands 12px under the
+     strip and the text where an h3's would. */
+  scroll-margin-top: calc(var(--n-pagebar-space) + 12px);
 }
 
 .vp-doc h3 {

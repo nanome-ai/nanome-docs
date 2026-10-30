@@ -3,22 +3,27 @@
  * Right rail: headings on the current page. Built from the rendered DOM by
  * VitePress's own outline helpers, so headings written in markdown *and*
  * headings rendered by an interactive component both show up.
+ *
+ * The heading in view is picked by the same rule as the section in the left
+ * rail and the breadcrumb (`useActiveHeader` in section-spy.js), so they
+ * never disagree.
  */
-import { computed, ref, shallowRef } from 'vue'
+import { computed, nextTick, ref, shallowRef, watch } from 'vue'
 import { onContentUpdated } from 'vitepress'
 import { useData } from 'vitepress/dist/client/theme-default/composables/data.js'
 import {
   getHeaders,
   resolveTitle,
-  useActiveAnchor,
 } from 'vitepress/dist/client/theme-default/composables/outline.js'
 import OutlineItem from './OutlineItem.vue'
+import { useActiveHeader } from './section-spy.js'
 
 const { frontmatter, theme } = useData()
 
 const headers = shallowRef([])
 const container = ref(null)
-const marker = ref(null)
+const active = useActiveHeader(headers)
+const markerTop = ref(null)
 
 onContentUpdated(() => {
   headers.value = getHeaders(
@@ -26,7 +31,15 @@ onContentUpdated(() => {
   )
 })
 
-useActiveAnchor(container, marker)
+// The marker slides to the active link once that link has rendered.
+watch([active, headers], () =>
+  nextTick(() => {
+    const link =
+      active.value &&
+      container.value?.querySelector(`a[href="${CSS.escape(active.value)}"]`)
+    markerTop.value = link ? link.offsetTop : null
+  })
+)
 
 const label = computed(() => resolveTitle(theme.value))
 const hasHeaders = computed(() => headers.value.length > 0)
@@ -41,8 +54,13 @@ const hasHeaders = computed(() => headers.value.length > 0)
   >
     <p class="n-outline__title">{{ label }}</p>
     <div class="n-outline__body">
-      <div ref="marker" class="n-outline__marker" aria-hidden="true" />
-      <OutlineItem :headers="headers" />
+      <div
+        class="n-outline__marker"
+        :class="{ 'is-shown': markerTop !== null }"
+        :style="markerTop === null ? undefined : { top: `${markerTop}px` }"
+        aria-hidden="true"
+      />
+      <OutlineItem :headers="headers" :active="active" />
     </div>
   </aside>
 </template>
@@ -80,12 +98,10 @@ const hasHeaders = computed(() => headers.value.length > 0)
   background: var(--n-border);
 }
 
-/* Sits in the 20px left padding, level with the active link. `useActiveAnchor`
-   drives `top` and `opacity` directly; the 39px it adds matches the default
-   theme's own header offset, so the rule below cancels it back out. */
+/* Sits in the 20px left padding, level with the top of the active link. */
 .n-outline__marker {
   position: absolute;
-  top: 33px;
+  top: 0;
   left: -21px;
   z-index: 1;
   width: 2px;
@@ -94,7 +110,10 @@ const hasHeaders = computed(() => headers.value.length > 0)
   background: var(--n-accent);
   opacity: 0;
   transition: top 220ms var(--n-ease), opacity 220ms var(--n-ease);
-  margin-top: -39px;
+}
+
+.n-outline__marker.is-shown {
+  opacity: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {

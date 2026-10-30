@@ -71,7 +71,7 @@ The comment becomes a text note in the current scene, attached to those atoms. I
 
 - The note belongs to the scene that was current when it was posted, so the viewer shows it only in that scene.
 - Hovering the atom chip highlights the atoms while that scene is the current one. Clicking the chip zooms the view to them.
-- In Nanome Web, a note made this way is always white and at the default size. Text notes with other sizes and colors, and sound notes, are made with the Comments tool in Nanome XR. They're covered on [Text and sound notes](/nanome_v2/comments#text-and-sound-notes).
+- In Nanome Web, a note made this way is always white and at the default size. Text notes with other sizes and colors, and sound notes, are made with the Comments tool in Nanome XR. They're covered on [Text and sound notes](/nanome_v2/toolspanel#text-and-sound-notes).
 
 <Accordion title="Reading an atom chip" teaser="How a chip names entries, chains, residues and atoms.">
 

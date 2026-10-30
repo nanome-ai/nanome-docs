@@ -71,7 +71,10 @@ function pick(n) {
   const el = spots.value.find((s) => s.n === n)?.el?.()
   if (!el) return
   const r = el.getBoundingClientRect()
-  if (r.top < 80 || r.bottom > window.innerHeight) el.scrollIntoView({ block: 'center', behavior: 'smooth' })
+  // Below the sticky chrome: the breadcrumb strip, or the nav bar without it.
+  const bar = document.querySelector('.n-pagebar') || document.querySelector('.n-navbar')
+  const chrome = bar ? bar.getBoundingClientRect().bottom : 56
+  if (r.top < chrome + 24 || r.bottom > window.innerHeight) el.scrollIntoView({ block: 'center', behavior: 'smooth' })
 }
 </script>
 
@@ -207,10 +210,11 @@ function pick(n) {
   .n-shotrow:not(.is-wide) .n-shotrow__shot {
     grid-area: shot;
     position: sticky;
-    top: calc(var(--n-nav-height) + 20px);
+    /* Clears the nav bar and the breadcrumb strip under it. */
+    top: calc(var(--n-nav-height) + var(--n-pagebar-space) + 20px);
     margin: 0;
     /* A tall panel stays short enough to see whole beside the legend. */
-    --hotshot-maxh: calc(100vh - var(--n-nav-height) - 60px);
+    --hotshot-maxh: calc(100vh - var(--n-nav-height) - var(--n-pagebar-space) - 60px);
   }
 }
 
