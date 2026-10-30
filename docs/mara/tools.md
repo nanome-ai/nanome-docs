@@ -6,26 +6,29 @@ title: Tools
 
 **Tools** in Nanome Web's top bar holds what MARA works with: the tools it runs, the integrations that connect it to other platforms, the workflows that chain tools together, and the knowledge it draws on. The left sidebar switches between them.
 
-<ScreenMap src="mara/tools.webp" alt="The Tools page" crop="0,0,41,100" label="Tools sidebar">
-<MapCard icon="plus" title="New" side="left" area="0.9,15.0,10.9,6.9">Creates an Integration, a Tool or a Workflow.</MapCard>
-<MapCard icon="tool" title="Tools" href="#tools" side="left" area="0,27.5,12.8,9.0">Every tool MARA can run, including your own.</MapCard>
-<MapCard icon="triangle-square-circle" title="Integrations" href="#integrations" side="left" area="0,36.7,12.8,7.9">Connections to other platforms, each with its own tools.</MapCard>
-<MapCard icon="route" title="Workflows" href="#workflows" side="left" area="0,45.2,12.8,7.9">Sequences of tools, saved as steps for MARA to follow.</MapCard>
-<MapCard icon="file-info" title="Knowledge" href="#knowledge" side="left" area="0,53.7,12.8,8.1">Background information MARA uses in its answers.</MapCard>
+<ScreenMap src="mara/tools.webp" alt="The Tools page, listing tools" label="Tools page">
+<MapCard icon="plus" title="New" side="bottom" area="0.9,15.0,10.9,6.9">Creates an Integration, a Tool or a Workflow.</MapCard>
+<MapCard icon="tool" title="Tools" href="#tools" side="bottom" area="0,27.5,12.8,9.0">Every tool MARA can run, including your own.</MapCard>
+<MapCard icon="triangle-square-circle" title="Integrations" href="#integrations" side="bottom" area="0,36.7,12.8,7.9">Connections to other platforms, each with its own tools.</MapCard>
+<MapCard icon="route" title="Workflows" href="#workflows" side="bottom" area="0,45.2,12.8,7.9">Sequences of tools, saved as steps for MARA to follow.</MapCard>
+<MapCard icon="file-info" title="Knowledge" href="#knowledge" side="bottom" area="0,53.7,12.8,8.1">Background information MARA uses in its answers.</MapCard>
+<MapCard icon="search" title="Search" side="top" area="75.2,17.3,2.1,5.8">Searches the tools by name.</MapCard>
+<MapCard icon="sparkles" title="What's New?" side="top" area="77.7,16.9,7.7,6.4">The tools added or updated most recently, with their authors and dates.</MapCard>
+<MapCard icon="player-play" title="Tutorial" side="top" area="85.7,16.9,6.6,6.4">Plays the tool-creation part of the Welcome to MARA video.</MapCard>
+<MapCard icon="plus" title="Create" href="#creating-a-tool" side="top" area="92.5,16.9,6.5,6.4">New Tool, Import from GitHub or Request a Tool.</MapCard>
+<MapCard icon="key" title="All / Secrets" side="bottom" area="14.1,27.4,9.2,8.4">Every tool, or the secrets (such as API keys) that tools use.</MapCard>
+<MapCard icon="filter" title="Filters" side="bottom" area="14.2,38.9,25.8,7.4">A category, then All, Custom or Public tools.</MapCard>
+<MapCard icon="eye-off" title="Disabled" side="bottom" area="90.7,38.9,8.4,7.0">Shows the tools that are turned off instead.</MapCard>
+<MapCard icon="list" title="A tool" side="bottom" area="14.3,49.3,83.7,23.3">Its name, tags and description. Clicking it opens the tool's page.</MapCard>
+<MapCard icon="world" title="Tags" href="#tool-tags" side="bottom" area="46.6,54.3,10.5,5.2">Public, and the tool's type, such as Python.</MapCard>
+<MapCard icon="dots" title="Tool menu" href="#tool-menu" side="bottom" area="94.6,58.8,1.8,4.8">Who the tool is on for, Edit and Delete.</MapCard>
 </ScreenMap>
 
 ## <AppIcon name="tool" /> Tools {#tools}
 
-<UiList label="Tools page">
-<UiItem icon="search" name="Search">Searches the tools by name.</UiItem>
-<UiItem name="What's New?">The tools added or updated most recently, with their authors and dates.</UiItem>
-<UiItem icon="play" name="Tutorial">Plays the tool-creation part of the Welcome to MARA onboarding video.</UiItem>
-<UiItem icon="plus" name="Create" href="#creating-a-tool">New Tool, Import from GitHub or Request a Tool.</UiItem>
-<UiItem name="All / Secrets">Tabs: every tool, or the secrets (such as API keys) that tools use.</UiItem>
-<UiItem name="All categories">Filters the list by category.</UiItem>
-<UiItem name="All / Custom / Public">Every tool, custom tools only, or public tools only.</UiItem>
-<UiItem name="Disabled">Shows the tools that are turned off instead.</UiItem>
-</UiList>
+The list shows every tool MARA can run, including your organization's custom tools and public ones. Clicking one opens its page, with its description, its arguments (**Args**), its script or endpoint, and a **Run** section that tests the tool on a file you pick.
+
+### Tool tags {#tool-tags}
 
 Tags beside a tool's name:
 
@@ -33,8 +36,6 @@ Tags beside a tool's name:
 <UiItem icon="world" name="Public">Available to users outside your organization.</UiItem>
 <UiItem icon="brand-python" name="Python">The tool runs a Python script.</UiItem>
 </UiList>
-
-Clicking a tool opens its page, with its description, its arguments (**Args**), its script or endpoint, and a **Run** section that tests the tool on a file you pick.
 
 ### <AppIcon name="dots" /> Tool menu {#tool-menu}
 

@@ -21,9 +21,9 @@ The Chat tab lists your chats on the left, grouped by month with the newest firs
 <UiList label="Chat list">
 <UiItem icon="plus" name="New Chat" area="0.9,15.6,15.0,4.5">Starts a new chat.</UiItem>
 <UiItem icon="search" name="Search (⌘F)" area="0.9,20.7,15.0,4.6">Searches your chats.</UiItem>
-<UiItem icon="pin" name="Pin">Shows when you hover a chat. Pins the chat in the list.</UiItem>
-<UiItem icon="trash" name="Delete">Shows when you hover a chat. Deletes it.</UiItem>
 </UiList>
+
+Hovering a chat in the list shows <AppIcon name="pin" /> **Pin**, which pins it in the list, and <AppIcon name="trash" /> **Delete**.
 
 <UiList label="Starting points">
 <UiItem icon="play" name="Learn the Basics" area="39.1,40.6,11.0,15.4">Plays a walkthrough video of Nanome and MARA.</UiItem>
@@ -67,17 +67,18 @@ An example chat is marked **Example** and has no message box. **Continue this ch
 <ShotRow src="mara/example-chat.webp" alt="The Cheminformatics - PCA example chat, with a tool step, file links and a plot">
 
 <UiList label="Chat header">
-<UiItem icon="pencil" name="Edit title">Next to the chat's title. Renames the chat.</UiItem>
-<UiItem icon="share-2" name="Share" href="#sharing">Sets who can see the chat, and copies its link.</UiItem>
 <UiItem icon="files" name="Files" href="#files-panel" area="91.6,1.4,7.8,6.3">The chat's files, tables and context.</UiItem>
 </UiList>
+
+In your own chats, the header also has <AppIcon name="pencil" /> **Edit title** next to the title, and <AppIcon name="share-2" /> [Share](#sharing).
 
 Above each answer, MARA names the tool or workflow it ran. The <AppIcon name="chevron-right" /> chevron beside it expands the step to show the tool's inputs and output. Files that MARA makes appear as links in the answer, and images and structures show under it.
 
 <UiList label="Under an answer">
 <UiItem icon="eye-off" name="hide 1 file" area="18.7,84.1,9,5.5">Hides the file previews under the answer.</UiItem>
-<UiItem icon="cloud-download" name="Download">Next to a file's name. Downloads the file.</UiItem>
 </UiList>
+
+<AppIcon name="cloud-download" /> **Download**, next to a file's name, downloads that file.
 
 </ShotRow>
 
