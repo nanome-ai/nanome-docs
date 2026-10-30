@@ -1,10 +1,17 @@
 <script setup>
 /**
  * A working copy of the representation panel, as Nanome Web draws it, beside
- * a render of 1KV2's binding site. Each switch, segment and interaction type
- * swaps the render for one made in the app with that option on, and the line
- * under it says what the option does. It steps through the styles by itself
- * until the reader picks one.
+ * a render of 1KV2's ligand in its binding site. The switches always show
+ * what the render contains:
+ *
+ * - One atomistic style is on at a time, and one always stays on.
+ * - Cartoon, Residue Label and Surface each come with the ligand as Stick,
+ *   since that's how those renders were made, and one of them shows at a
+ *   time.
+ * - The interaction list shows the ligand as Stick, with the types that are
+ *   switched on drawn.
+ *
+ * It steps through the styles by itself until the reader picks one.
  *
  *   <RepresentationDemo app="xr" />   labels as Nanome XR names them
  *   <RepresentationDemo app="web" />  labels as Nanome Web names them
@@ -20,7 +27,10 @@ import {
 const props = defineProps({ app: { type: String, default: 'web' } })
 const label = (o) => (props.app === 'xr' ? o.xr : o.web)
 
-const view = ref('bs')
+/** The atomistic style on the ligand: bs, stick, wire or vdw. */
+const atom = ref('bs')
+/** What's added to it: null, cartoon, label or surface. */
+const extra = ref(null)
 const surface = ref('wire')
 const hydrogen = ref('none')
 const showList = ref(false)
@@ -28,55 +38,62 @@ const ints = reactive(Object.fromEntries(INTERACTIONS.map((t) => [t.key, t.on]))
 const note = ref(null)
 const count = computed(() => INTERACTIONS.filter((t) => ints[t.key]).length)
 
-function frameOf(v, s) {
-  if (v === 'surface') return SURFACES.find((x) => x.key === s).src
-  if (v === 'int') return interactionFrame(ints)
-  return [...ATOMISTIC, ...MACRO].find((x) => x.key === v).src
+function frameFor(s) {
+  if (s.list) return interactionFrame(ints)
+  if (s.extra === 'surface') return SURFACES.find((x) => x.key === s.surface).src
+  if (s.extra) return MACRO.find((x) => x.key === s.extra).src
+  return ATOMISTIC.find((x) => x.key === s.atom).src
+}
+const state = () => ({ atom: atom.value, extra: extra.value, surface: surface.value, list: showList.value })
+const src = computed(() => frameFor(state()))
+
+/** Sets the whole state at once, so switches and render never disagree. */
+function apply(next) {
+  atom.value = next.atom
+  extra.value = next.extra ?? null
+  surface.value = next.surface ?? surface.value
+  showList.value = !!next.list
 }
 
-const src = computed(() => frameOf(view.value, surface.value))
-
-// The tour: each style, each surface look, then the interactions.
+// The tour: each atomistic style, Cartoon, Residue Label, each surface look,
+// then the interactions.
 const TOUR = [
-  ...ATOMISTIC.map((a) => ['rep', a.key]),
-  ...MACRO.map((m) => ['rep', m.key]),
-  ...SURFACES.map((s) => ['surface', s.key]),
-  ['int'],
+  ...ATOMISTIC.map((a) => ({ atom: a.key })),
+  ...MACRO.map((m) => ({ atom: 'stick', extra: m.key })),
+  ...SURFACES.map((s) => ({ atom: 'stick', extra: 'surface', surface: s.key })),
+  { atom: 'stick', list: true },
 ]
 let at = 0
-function apply([kind, key]) {
-  note.value = null
-  if (kind === 'surface') {
-    view.value = 'surface'
-    surface.value = key
-  } else if (kind === 'int') {
-    view.value = 'int'
-    showList.value = true
-  } else {
-    view.value = key
-    showList.value = false
-  }
-}
 const root = ref(null)
 const auto = useAutoplay(root, () => {
   at = (at + 1) % TOUR.length
+  note.value = null
   apply(TOUR[at])
 })
-const next = computed(() => {
-  const [kind, key] = TOUR[(at + 1) % TOUR.length]
-  return kind === 'int' ? interactionFrame(ints) : frameOf(kind === 'surface' ? 'surface' : key, key)
-})
+const next = computed(() => frameFor({ surface: surface.value, ...TOUR[(at + 1) % TOUR.length] }))
 
-function pickRep(key) {
+/** A switch is checked only when the state says so, whatever was clicked. */
+function sync(e, on) {
+  e.target.checked = on
+}
+
+function pickAtom(key, e) {
   auto.stop()
   note.value = null
-  view.value = key
+  apply({ atom: key })
+  sync(e, true)
+}
+function toggleExtra(key, e) {
+  auto.stop()
+  note.value = null
+  if (extra.value === key && !showList.value) apply({ atom: atom.value })
+  else apply({ atom: 'stick', extra: key })
+  sync(e, extra.value === key)
 }
 function pickSurface(key) {
   auto.stop()
   note.value = null
-  view.value = 'surface'
-  surface.value = key
+  apply({ atom: 'stick', extra: 'surface', surface: key })
 }
 function pickHydrogen(key) {
   auto.stop()
@@ -85,34 +102,36 @@ function pickHydrogen(key) {
 }
 function toggleList() {
   auto.stop()
-  showList.value = !showList.value
-  if (showList.value) {
-    view.value = 'int'
-    note.value = null
-  }
+  note.value = null
+  if (showList.value) apply({ atom: atom.value, extra: extra.value })
+  else apply({ atom: 'stick', list: true })
 }
-function toggleType(t) {
+function toggleType(t, e) {
   auto.stop()
   ints[t.key] = !ints[t.key]
-  view.value = 'int'
+  sync(e, ints[t.key])
   const absent = t.here ? '' : ' 1KV2’s binding site has none.'
   note.value = { title: `${t.name} ${ints[t.key] ? 'on' : 'off'}`, text: `${t.desc}${absent}` }
 }
 
 const caption = computed(() => {
   if (note.value) return note.value
-  if (view.value === 'surface') {
-    const s = SURFACES.find((x) => x.key === surface.value)
-    return { title: `Surface · ${s.name}`, text: `${s.desc} ${SURFACE_DESC}` }
-  }
-  if (view.value === 'int') {
+  if (showList.value) {
     return {
       title: `Interactions · ${count.value} types on`,
       text: 'Dashed lines between the atoms that interact. In this binding site: hydrogen bonds in yellow, salt bridges in orange and hydrophobic contacts in gray.',
     }
   }
-  const o = [...ATOMISTIC, ...MACRO].find((x) => x.key === view.value)
-  return { title: label(o), text: o.desc }
+  if (extra.value === 'surface') {
+    const s = SURFACES.find((x) => x.key === surface.value)
+    return { title: `Surface · ${s.name}`, text: `${s.desc} ${SURFACE_DESC}` }
+  }
+  if (extra.value) {
+    const m = MACRO.find((x) => x.key === extra.value)
+    return { title: label(m), text: `${m.desc} The ligand is drawn as Stick.` }
+  }
+  const a = ATOMISTIC.find((x) => x.key === atom.value)
+  return { title: label(a), text: a.desc }
 })
 
 const alt = computed(() => `1KV2's binding site: ${caption.value.title}`)
@@ -124,8 +143,8 @@ const alt = computed(() => `1KV2's binding site: ${caption.value.title}`)
       <label v-for="a in ATOMISTIC" :key="a.key" class="n-app-row">
         <AppIcon :name="a.icon" size="1rem" />
         <span class="n-app-row__name">{{ label(a) }}</span>
-        <input type="checkbox" role="switch" class="n-app-switch" :checked="view === a.key" @change="pickRep(a.key)" />
-        <span class="n-app-palette" :class="{ 'is-on': view === a.key }" aria-hidden="true"><AppIcon name="palette" size="0.95rem" /></span>
+        <input type="checkbox" role="switch" class="n-app-switch" :checked="atom === a.key" @change="pickAtom(a.key, $event)" />
+        <span class="n-app-palette" :class="{ 'is-on': atom === a.key }" aria-hidden="true"><AppIcon name="palette" size="0.95rem" /></span>
       </label>
 
       <div class="n-app-seg" role="radiogroup" aria-label="Hydrogens">
@@ -140,8 +159,8 @@ const alt = computed(() => `1KV2's binding site: ${caption.value.title}`)
         <label class="n-app-row">
           <AppIcon :name="m.icon" size="1rem" />
           <span class="n-app-row__name">{{ label(m) }}</span>
-          <input type="checkbox" role="switch" class="n-app-switch" :checked="view === m.key" @change="pickRep(m.key)" />
-          <span class="n-app-palette" :class="{ 'is-on': view === m.key }" aria-hidden="true"><AppIcon name="palette" size="0.95rem" /></span>
+          <input type="checkbox" role="switch" class="n-app-switch" :checked="extra === m.key && !showList" @change="toggleExtra(m.key, $event)" />
+          <span class="n-app-palette" :class="{ 'is-on': extra === m.key && !showList }" aria-hidden="true"><AppIcon name="palette" size="0.95rem" /></span>
         </label>
         <hr />
       </template>
@@ -149,11 +168,11 @@ const alt = computed(() => `1KV2's binding site: ${caption.value.title}`)
       <label class="n-app-row">
         <AppIcon name="egg-fried" size="1rem" />
         <span class="n-app-row__name">Surface</span>
-        <input type="checkbox" role="switch" class="n-app-switch" :checked="view === 'surface'" @change="pickSurface(surface)" />
-        <span class="n-app-palette" :class="{ 'is-on': view === 'surface' }" aria-hidden="true"><AppIcon name="palette" size="0.95rem" /></span>
+        <input type="checkbox" role="switch" class="n-app-switch" :checked="extra === 'surface' && !showList" @change="toggleExtra('surface', $event)" />
+        <span class="n-app-palette" :class="{ 'is-on': extra === 'surface' && !showList }" aria-hidden="true"><AppIcon name="palette" size="0.95rem" /></span>
       </label>
       <div class="n-app-seg" role="radiogroup" aria-label="Surface look">
-        <button v-for="s in SURFACES" :key="s.key" type="button" role="radio" :aria-checked="view === 'surface' && surface === s.key" :class="{ 'is-on': view === 'surface' && surface === s.key }" @click="pickSurface(s.key)">
+        <button v-for="s in SURFACES" :key="s.key" type="button" role="radio" :aria-checked="surface === s.key" :class="{ 'is-on': surface === s.key }" @click="pickSurface(s.key)">
           <span><AppIcon :name="s.icon" size="0.85rem" />{{ s.name }}</span>
         </button>
       </div>
@@ -171,7 +190,7 @@ const alt = computed(() => `1KV2's binding site: ${caption.value.title}`)
         <label v-for="t in INTERACTIONS" :key="t.key" class="n-app-row is-small">
           <span class="n-app-dot" :style="{ background: t.color }" aria-hidden="true" />
           <span class="n-app-row__name">{{ t.name }}</span>
-          <input type="checkbox" role="switch" class="n-app-switch" :checked="ints[t.key]" @change="toggleType(t)" />
+          <input type="checkbox" role="switch" class="n-app-switch" :checked="ints[t.key]" @change="toggleType(t, $event)" />
         </label>
       </div>
     </div>

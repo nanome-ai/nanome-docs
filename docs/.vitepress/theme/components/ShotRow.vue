@@ -39,8 +39,7 @@ const wide = computed(() => {
   return (w * cw) / (h * ch) > 1.9
 })
 
-// Legend rows with an area register here, in page order, and get a number
-// for the pins shown on a narrow screen.
+// Legend rows with an area register here, in page order.
 const spots = ref([])
 let next = 0
 const active = ref(0)
@@ -149,30 +148,21 @@ function pick(n) {
   }
 }
 
-.n-shotrow__legend :deep(.n-uiitem__name) {
-  white-space: normal;
-}
-
 /* Beside a screenshot the legend stays compact, so it runs about as tall as
    the image instead of well past it. */
-.n-shotrow__legend :deep(.n-uilist) {
-  gap: 0;
+.n-shotrow__legend :deep(.n-uilist-hold) {
   margin: 10px 0 14px;
+}
+
+.n-shotrow__legend :deep(.n-uilist) {
+  --uil-mark: 1.75rem;
+  column-gap: 10px;
+  row-gap: 0;
   padding: 4px;
 }
 
 .n-shotrow__legend :deep(.n-uiitem__row) {
-  grid-template-columns: 1.75rem minmax(0, 1fr);
-  gap: 10px;
   padding: 4px 8px;
-}
-
-.n-shotrow__legend :deep(.n-uiitem__text) {
-  min-height: 1.75rem;
-  padding-top: 0.2rem;
-  column-gap: 8px;
-  row-gap: 0;
-  line-height: 1.4;
 }
 
 .n-shotrow__legend :deep(.n-uiitem__name) {
@@ -185,8 +175,8 @@ function pick(n) {
 }
 
 .n-shotrow__legend :deep(.n-uiitem__desc) {
-  flex-basis: 14rem;
   font-size: 0.8125rem;
+  line-height: 1.45;
 }
 
 .n-shotrow__legend :deep(.n-uiitem .n-appicon.is-button) {
@@ -198,13 +188,6 @@ function pick(n) {
   margin: 8px 0;
   font-size: 0.9375rem;
   line-height: 1.55;
-}
-
-/* Narrow: pins on the image and numbers on the rows tie the two together. */
-.n-shotrow :deep(.hotshot__pin),
-.n-shotrow :deep(.n-uiitem__num),
-.n-shotrow :deep(.n-iconcard__num) {
-  display: flex;
 }
 
 /* Side by side once there's room for both: about 46% for the image. */
@@ -228,12 +211,6 @@ function pick(n) {
     margin: 0;
     /* A tall panel stays short enough to see whole beside the legend. */
     --hotshot-maxh: calc(100vh - var(--n-nav-height) - 60px);
-  }
-
-  .n-shotrow:not(.is-wide) :deep(.hotshot__pin),
-  .n-shotrow:not(.is-wide) :deep(.n-uiitem__num),
-  .n-shotrow:not(.is-wide) :deep(.n-iconcard__num) {
-    display: none;
   }
 }
 

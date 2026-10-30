@@ -110,6 +110,7 @@ In a headset, **Load Structure** in the Tools Panel loads a structure by PDB cod
 <UiItem icon="scissors" name="Extract to Entry" area="68.2,79.3,30.0,4.7">Moves the atoms into a new entry.</UiItem>
 <UiItem icon="edit" name="Set substructure" area="68.2,84.3,30.0,4.7">Marks it as ligand, ion, protein, nucleic, sugar or solvent.</UiItem>
 <UiItem icon="circle-dashed" name="Create Distance Component" area="68.2,89.3,30.0,4.7">The atoms within a set distance of this component.</UiItem>
+<UiItem icon="resize" name="Update Distance Filter" href="#distance-components" area="68.2,94.4,30.0,4.7">On a distance component, such as this pocket: changes its distance.</UiItem>
 </UiList>
 
 </ShotRow>

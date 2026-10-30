@@ -14,30 +14,51 @@
   --app-track: #cbd5e1;
   --app-purple: #7c4cff;
   --app-purple-soft: #ede9fe;
+  --app-purple-text: #7c4cff;
+  --app-card: #fff;
+  --app-raised: #fff;
+  --app-thumb: #fff;
+  --app-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
   display: grid;
   gap: 18px;
   margin: 20px 0 32px;
 }
 
 .n-demo__view {
+  display: flex;
+  flex-direction: column;
   order: -1;
   margin: 0;
+  container-type: inline-size;
 }
 
+/* Side by side: the render runs the height of the panel beside it, between
+   a 2:1 and a 1.1:1 shape, with the structure kept in the middle. Short
+   panels spread their controls to match. */
 @media (min-width: 760px) {
   .n-demo {
     grid-template-columns: 21rem minmax(0, 1fr);
-    align-items: start;
+    align-items: stretch;
   }
 
   .n-demo__view {
     order: 0;
-    position: sticky;
-    top: calc(var(--n-nav-height) + 20px);
+  }
+
+  .n-demo .n-demo-stage {
+    flex: 1 1 auto;
+    min-height: max(13rem, 50cqi);
+    max-height: 91cqi;
+    aspect-ratio: auto;
+  }
+
+  .n-demo .n-app-card.is-spread {
+    justify-content: space-between;
   }
 }
 
 .n-demo__caption {
+  flex: none;
   min-height: 3em;
   margin-top: 10px;
   color: var(--n-text-muted);
@@ -49,6 +70,22 @@
   color: var(--n-text);
 }
 
+/* Nanome Web's dark theme, read from its dark screenshots. */
+.dark .n-demo {
+  --app-text: #e4e4e7;
+  --app-muted: #a1a1aa;
+  --app-soft: #d4d4d8;
+  --app-line: #28272a;
+  --app-fill: #111113;
+  --app-track: #3f3f46;
+  --app-purple-soft: #2d2942;
+  --app-purple-text: #e4dcff;
+  --app-card: #18181a;
+  --app-raised: #28272a;
+  --app-thumb: #e4e4e7;
+  --app-shadow: none;
+}
+
 /* The card. */
 .n-app-card {
   display: flex;
@@ -57,11 +94,11 @@
   padding: 12px;
   border: 1px solid var(--app-line);
   border-radius: 24px;
-  background: #fff;
+  background: var(--app-card);
   color: var(--app-text);
   font-size: 15px;
   line-height: 1.35;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--app-shadow);
 }
 
 .vp-doc .n-app-card hr {
@@ -119,7 +156,7 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--app-thumb);
   transition: transform 150ms ease;
 }
 
@@ -188,7 +225,7 @@
 }
 
 .n-app-seg button.is-on > span {
-  background: #fff;
+  background: var(--app-raised);
   color: var(--app-text);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
 }
@@ -251,16 +288,18 @@
 
 /* Color schemes: outlined pills, the picked one filled. */
 .n-app-schemelist {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 6px;
 }
 
 .n-app-scheme {
-  padding: 7px 12px;
+  padding: 7px 6px;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
   border: 1px solid var(--app-line);
   border-radius: 999px;
-  background: #fff;
+  background: var(--app-card);
   color: var(--app-soft);
   font: inherit;
   font-size: 14px;
@@ -309,7 +348,7 @@
 
 .n-app-theme.is-on {
   background: var(--app-purple-soft);
-  color: var(--app-purple);
+  color: var(--app-purple-text);
 }
 
 .n-app-themebar {

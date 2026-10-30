@@ -43,13 +43,11 @@ Manage users or request presenter privilege.
 Toggle or manage menus.
 
 <UiList label="Menu Management tab">
-<UiItem icon="list" name="Entry Menu" area="5.5,22.8,91.5,8.7"></UiItem>
-<UiItem name="Grid Lock" area="5.5,35.1,91.5,8.7"></UiItem>
-<UiItem icon="copy" name="Focus On Menu" area="5.5,45.1,91.5,8.6"></UiItem>
-<UiItem icon="eye-off" name="Hide Menus" area="5.5,57.6,91.5,8.6"></UiItem>
-<UiItem icon="lock" name="Lock Menus" area="5.5,67.4,91.5,8.6"></UiItem>
-<UiItem icon="stack-2" name="Open All" area="5.5,79.8,91.5,8.7"></UiItem>
-<UiItem icon="x" name="Close All" area="5.5,89.5,91.5,8.7"></UiItem>
+<UiItem icon="list" name="Entry Menu" area="5.5,22.8,91.5,8.7">Opens the Entry Menu.</UiItem>
+<UiItem icon="eye-off" name="Hide Menus" area="5.5,57.6,91.5,8.6">Hides the menus.</UiItem>
+<UiItem icon="lock" name="Lock Menus" area="5.5,67.4,91.5,8.6">Locks the menus.</UiItem>
+<UiItem icon="stack-2" name="Open All" area="5.5,79.8,91.5,8.7">Opens all the menus.</UiItem>
+<UiItem icon="x" name="Close All" area="5.5,89.5,91.5,8.7">Closes all the menus.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -76,11 +74,11 @@ Change settings including volume and environment background.
 
 <UiList label="Settings tab">
 <UiItem name="Skybox" area="5.3,21.6,78.9,25.1">The environment background.</UiItem>
-<UiItem icon="volume" name="Master" area="4.6,51.0,86.1,8.7"></UiItem>
-<UiItem icon="volume" name="Music" area="4.6,60.0,86.1,8.6"></UiItem>
-<UiItem icon="volume" name="FX" area="4.6,68.8,86.1,8.6"></UiItem>
-<UiItem icon="volume" name="Mic Output" area="4.6,77.8,86.1,8.4"></UiItem>
-<UiItem icon="volume" name="Remote Users" area="4.6,86.4,86.1,8.7"></UiItem>
+<UiItem icon="volume" name="Master" area="4.6,51.0,86.1,8.7">Sets the master volume.</UiItem>
+<UiItem icon="volume" name="Music" area="4.6,60.0,86.1,8.6">Sets the music volume.</UiItem>
+<UiItem icon="volume" name="FX" area="4.6,68.8,86.1,8.6">Sets the sound effects volume.</UiItem>
+<UiItem icon="volume" name="Mic Output" area="4.6,77.8,86.1,8.4">Sets the mic output volume.</UiItem>
+<UiItem icon="volume" name="Remote Users" area="4.6,86.4,86.1,8.7">Sets the volume of remote users.</UiItem>
 </UiList>
 
 </ShotRow>

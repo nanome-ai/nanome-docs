@@ -6,7 +6,7 @@
  * Clicking a region goes where its card links; a region whose card has no
  * link lights the card instead. The expand button opens the map full screen
  * with the cards still around it. On a narrow screen the image comes first
- * with numbered pins, and the cards follow in a numbered list.
+ * and the cards follow in a list.
  *
  *   <ScreenMap src="nanome-v2/v2-7/desktop-layout.webp" alt="…" crop="0,0,56,72">
  *   <MapCard icon="hierarchy" title="Main Panel" href="/nanome_v2/mainpanel" side="top" area="16,6,33,64">Structures and settings.</MapCard>
@@ -51,7 +51,7 @@ export default defineComponent({
     provide('n-screenmap', { active, enter, leave })
 
     // A click on a region whose card has no link: light the card and bring
-    // it into view. Cards are in the page in the order they're numbered.
+    // it into view. Cards are in the page in reading order.
     const pick = (n) => {
       active.value = n
       const el = root.value?.querySelectorAll('.n-mapcard')[n - 1]
@@ -61,8 +61,8 @@ export default defineComponent({
     }
 
     return () => {
-      // Group the cards by side, then number them in reading order (top,
-      // left, right, bottom) so pins and cards match.
+      // Group the cards by side, and give each an id in reading order (top,
+      // left, right, bottom) that ties it to its region.
       const cards = cardsIn(slots.default?.()).map((vnode) => ({
         vnode,
         side: SIDES.includes(vnode.props?.side) ? vnode.props.side : 'bottom',
@@ -168,7 +168,7 @@ export default defineComponent({
   display: none;
 }
 
-/* Narrow: the image with pins, then the cards in a numbered list. */
+/* Narrow: the image, then the cards in a list. */
 .n-screenmap {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
@@ -187,11 +187,6 @@ export default defineComponent({
 
 .n-screenmap .hotshot {
   margin: 0 auto;
-}
-
-.n-screenmap .hotshot .hotshot__pin,
-.n-screenmap .n-mapcard .n-mapcard__num {
-  display: flex;
 }
 
 /* Wide: the cards around the image, each on the side where its part is. */
@@ -265,11 +260,6 @@ export default defineComponent({
     grid-area: shot;
     order: 0;
     margin: 0;
-  }
-
-  .n-screenmap .hotshot .hotshot__pin,
-  .n-screenmap .n-mapcard .n-mapcard__num {
-    display: none;
   }
 }
 

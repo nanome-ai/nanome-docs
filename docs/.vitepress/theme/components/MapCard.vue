@@ -44,7 +44,7 @@ function leave() {
   >
     <AppIcon :name="icon" button size="1rem" />
     <span class="n-mapcard__text">
-      <span class="n-mapcard__title"><span v-if="area" class="n-mapcard__num">{{ n }}</span>{{ title }}</span>
+      <span class="n-mapcard__title">{{ title }}</span>
       <span class="n-mapcard__desc"><slot /></span>
     </span>
   </component>
@@ -94,22 +94,6 @@ a.n-mapcard:hover :deep(.n-appicon),
   font-size: var(--n-text-base);
   font-weight: 600;
   line-height: 1.35;
-}
-
-/* The pin number, shown only where the cards are listed under the image. */
-.n-mapcard__num {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  min-width: 18px;
-  height: 18px;
-  padding: 0 4px;
-  border-radius: 9px;
-  background: var(--n-accent);
-  color: #fff;
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 1;
 }
 
 .n-mapcard__desc {
