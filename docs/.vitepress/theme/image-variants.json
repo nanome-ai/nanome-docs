@@ -1,4 +1,12 @@
 {
+  "ligands-demo/B96.svg": "ligands-demo/B96.dark.svg",
+  "ligands-demo/BAX.svg": "ligands-demo/BAX.dark.svg",
+  "ligands-demo/BMU.svg": "ligands-demo/BMU.dark.svg",
+  "ligands-demo/MSQ.svg": "ligands-demo/MSQ.dark.svg",
+  "ligands-demo/PQB.svg": "ligands-demo/PQB.dark.svg",
+  "ligands-demo/SB2.svg": "ligands-demo/SB2.dark.svg",
+  "ligands-demo/SB4.svg": "ligands-demo/SB4.dark.svg",
+  "ligands-demo/SB6.svg": "ligands-demo/SB6.dark.svg",
   "mara/chat-3d-viewer.webp": "mara/chat-3d-viewer.dark.webp",
   "mara/conversations.webp": "mara/conversations.dark.webp",
   "mara/create-menu.webp": "mara/create-menu.dark.webp",
@@ -14,6 +22,8 @@
   "mara/tools.webp": "mara/tools.dark.webp",
   "mara/workflows.webp": "mara/workflows.dark.webp",
   "mara/workspace-chat.webp": "mara/workspace-chat.dark.webp",
+  "nanome-v2/scenes-panel-multiuser-indicators.jpg": "nanome-v2/scenes-panel-multiuser-indicators.dark.jpg",
+  "nanome-v2/scenes-panel-spotlight-mode.jpg": "nanome-v2/scenes-panel-spotlight-mode.dark.jpg",
   "nanome-v2/v2-7/align-proteins.webp": "nanome-v2/v2-7/align-proteins.dark.webp",
   "nanome-v2/v2-7/atom-representations.webp": "nanome-v2/v2-7/atom-representations.dark.webp",
   "nanome-v2/v2-7/builder-categories.webp": "nanome-v2/v2-7/builder-categories.dark.webp",
@@ -143,5 +153,6 @@
   "nanome-web/viewer-settings-themes.webp": "nanome-web/viewer-settings-themes.dark.webp",
   "nanome-web/workspace-overview.webp": "nanome-web/workspace-overview.dark.webp",
   "nanome-web/workspaces-filter.webp": "nanome-web/workspaces-filter.dark.webp",
-  "nanome-web/workspaces-row-menu.webp": "nanome-web/workspaces-row-menu.dark.webp"
+  "nanome-web/workspaces-row-menu.webp": "nanome-web/workspaces-row-menu.dark.webp",
+  "plugins-page/superimpose/superimpose_binding_site_diagram.png": "plugins-page/superimpose/superimpose_binding_site_diagram.dark.png"
 }

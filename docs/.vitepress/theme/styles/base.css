@@ -6,8 +6,11 @@
 
 html {
   scroll-behavior: smooth;
-  /* Anchored headings land below the fixed nav bar. */
-  scroll-padding-top: calc(var(--n-nav-height) + 24px);
+  /* Anchor targets and focused elements clear the fixed nav bar. The page's
+     own headings and controls add a margin for the breadcrumb strip under it
+     (doc.css). The strip stays out of this padding: it is sticky, so focus on
+     one of its links would count as covered and scroll the page. */
+  scroll-padding-top: var(--n-nav-height);
   background: var(--n-bg);
 }
 

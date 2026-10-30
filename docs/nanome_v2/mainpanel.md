@@ -110,6 +110,7 @@ In a headset, **Load Structure** in the Tools Panel loads a structure by PDB cod
 <UiItem icon="scissors" name="Extract to Entry" area="68.2,79.3,30.0,4.7">Moves the atoms into a new entry.</UiItem>
 <UiItem icon="edit" name="Set substructure" area="68.2,84.3,30.0,4.7">Marks it as ligand, ion, protein, nucleic, sugar or solvent.</UiItem>
 <UiItem icon="circle-dashed" name="Create Distance Component" area="68.2,89.3,30.0,4.7">The atoms within a set distance of this component.</UiItem>
+<UiItem icon="resize" name="Update Distance Filter" href="#distance-components" area="68.2,94.4,30.0,4.7">On a distance component, such as this pocket: changes its distance.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -271,40 +272,104 @@ Entries with several models, such as a multi-MODEL PDB, and entries with a traje
 
 ## <AppIcon name="affiliate" /> Ligands tab {#ligands-tab}
 
-Every ligand in the workspace in one table. It matches the [Ligands tab](/nanome_web/ligands) in Nanome Web.
+Every ligand in the workspace in one table, with a 2D drawing and calculated properties for each. Nanome Web's [Ligands tab](/nanome_web/ligands) lists the same ligands with the same properties.
 
 <ShotRow src="nanome-v2/v2-7/ligands-tab.webp" alt="The Ligands tab">
 
 <UiList label="Ligands toolbar">
-<UiItem icon="filter" name="Filter ligands" area="2.7,9.5,14.6,7.6">Filters the table, including by what's visible.</UiItem>
-<UiItem icon="columns-3" name="Select property columns" area="18.0,9.5,8.0,7.6">Chooses the columns.</UiItem>
-<UiItem icon="bookmark" name="View presets" area="26.8,9.5,8.0,7.6">Saves and recalls column and filter layouts.</UiItem>
-<UiItem icon="copy-check" name="Bulk-Display" area="35.5,9.5,8.0,7.6">Shows several ligands, or several models of one file, at once.</UiItem>
-<UiItem name="Search" area="56.2,10.2,41.2,6.2">Filters by name.</UiItem>
+<UiItem icon="filter" name="Filter ligands" area="2.7,9.5,14.6,7.6">Filters on property values, or to the ligands that are visible. It shows how many ligands are listed out of the total.</UiItem>
+<UiItem icon="columns-3" name="Select property columns" href="#ligand-property-columns" area="18.0,9.5,8.0,7.6">Chooses the property columns and their order.</UiItem>
+<UiItem icon="bookmark" name="View presets" area="26.8,9.5,8.0,7.6">Saved sets of columns and filters, shared across the project.</UiItem>
+<UiItem icon="copy-check" name="Bulk-Display" area="35.5,9.5,8.0,7.6">Shows ligands from several models at once.</UiItem>
+<UiItem name="Search" area="56.2,10.2,41.2,6.2">Matches the name, the tag or any property value.</UiItem>
 </UiList>
 
-Each row shows the 2D structure and your columns, with these buttons:
-
-<UiList label="Ligand row">
+<UiList label="Ligands table">
+<UiItem icon="arrows-sort" name="Sort" area="4.9,19.0,5.4,5.1">Sorts by that column, ascending, then descending, then back to entry, model and name order.</UiItem>
+<UiItem name="Name" area="5.6,25.3,15.4,14.5">The 2D drawing above the ligand's name. Pointing at the drawing shows it larger.</UiItem>
+<UiItem name="Property columns" href="#ligand-property-columns" area="24.0,19.0,44.0,17.6">NumAtoms and MolWeight to start.</UiItem>
 <UiItem icon="zoom" name="Zoom" area="76.1,26.7,5.8,5.3">Centers the view on the ligand.</UiItem>
-<UiItem icon="info-small" name="Details" area="82.0,26.7,5.8,5.3">Duplicate to Entry, and switches to show properties as 3D labels.</UiItem>
+<UiItem icon="info-small" name="Details" area="82.0,26.7,5.8,5.3">Lists the ligand's tag and properties, each with a switch that shows it as a 3D label, and a Duplicate to Entry button.</UiItem>
 <UiItem icon="edit-circle" name="Edit" href="/nanome_v2/toolspanel#builder-tool" area="87.9,26.7,5.8,5.3">Opens the ligand in the Builder Tool.</UiItem>
 <UiItem icon="caret-down-filled" name="Set Tag" area="73.8,32.7,22.3,5.3">Tags it, for example as Hit or Lead. Also Remove Tag, Edit list and Show 3D tag.</UiItem>
 </UiList>
 
 </ShotRow>
 
-While Bulk-Display is on, two more buttons join the toolbar: **Set Labels** labels the ligands on show, and <AppIcon name="x" /> **Clear displayed ligands** puts them away.
+While Bulk-Display is on, the table lists only ligands from entries with more than one model, and clicking a row adds its ligand to the ones on show or takes it away. A bar under the table counts the ones on show. **Set Labels** gives them all one tag, and <AppIcon name="x" /> **Clear displayed ligands** puts them away.
 
-<ShotRow src="nanome-v2/v2-7/ligand-property-columns.webp" alt="The property column picker">
+### <AppIcon name="columns-3" /> Property columns {#ligand-property-columns}
 
-<Callout type="note" title="Where the numbers come from">
+<ShotRow src="nanome-v2/v2-7/ligand-property-columns.webp" alt="The property column picker, with NumAtoms and MolWeight picked">
 
-Properties are calculated with RDKit on Nanome's server. **MolWeight** is the monoisotopic (exact) mass, which is usually slightly lower than the average molecular weight. **Rating** is a value people enter. SDF data fields from the source file can be shown as columns too. Each column is explained under [Property columns](/nanome_web/ligands#property-columns).
+**Select property columns** lists every property the ligands have, including SDF data fields from the source file. Each one you pick becomes a column when you save.
+
+<UiList label="Property column picker">
+<UiItem icon="columns-3" name="Select property columns" area="18.9,9.4,7.5,6.9">Opens and closes the list.</UiItem>
+<UiItem name="Picked properties" area="20.6,17.9,30.5,10.2">Numbered in column order. Picking one again takes it out.</UiItem>
+<UiItem name="Other properties" area="20.6,28.5,30.5,63.3">In alphabetical order. Picking one adds it as the next column.</UiItem>
+<UiItem icon="x" name="Cancel" area="20.6,93.2,17.0,5.8">Closes the list and keeps the columns as they were.</UiItem>
+<UiItem icon="check" name="Save" area="38.8,93.2,14.6,5.8">Shows the picked columns in their numbered order.</UiItem>
+</UiList>
+
+</ShotRow>
+
+- Items stay in place while the list is open. The next time it opens, the picked ones are at the top.
+- Numbers with a fractional part show to 3 decimals, so B96's MolWeight shows as 527.290. Columns sort by value, so 9 comes before 10.
+- When an SDF data field has the same name as a calculated property, the column shows the value from the file.
+- A view preset saves the columns along with the filters.
+
+Nanome calculates the properties with RDKit on its server, and Nanome Web shows the same values.
+
+| Column | What it is |
+|--------|------------|
+| **NumAtoms** | Number of atoms, including hydrogens. For B96 in 1KV2 (C₃₁H₃₇N₅O₃) it's 76: 31 C, 37 H, 5 N and 3 O |
+| **NumHeavyAtoms** | Number of non-hydrogen atoms |
+| **MolWeight** | Monoisotopic (exact) mass in daltons, including hydrogens |
+| **HeavyAtomMolWeight** | Mass of the non-hydrogen atoms only |
+| **LogP** | Wildman-Crippen estimate of log P, the base-10 logarithm of the octanol-water partition coefficient |
+| **TPSA** | Topological polar surface area (Ertl method, from N and O atoms only), in Å² |
+| **HbondD** | Hydrogen-bond donor count (RDKit's pattern-based definition, which differs from Lipinski's N-H plus O-H count) |
+| **HbondA** | Hydrogen-bond acceptor count (RDKit's pattern-based definition, which differs from Lipinski's N plus O count) |
+| **NumRotatableBonds** | Rotatable bond count |
+| **NumRings** | Ring count |
+| **NumAromaticRings** | Aromatic ring count |
+| **NumAliphaticRings** | Count of rings with at least one non-aromatic bond |
+| **NumSaturatedRings** | Count of rings made only of single bonds |
+| **SMILES** | SMILES string |
+| **InChIKey** | Standard InChIKey |
+| **Rating** | A value people enter, stored with the ligand. The column shows 5 stars; picking the current star again clears it |
+
+<Callout type="note" title="MolWeight is the exact mass">
+
+**MolWeight** holds the monoisotopic mass, the sum of each atom's most abundant isotope. It's usually a little lower than the average molecular weight that suppliers and the RCSB list. For B96 in 1KV2, Nanome shows 527.290, while the RCSB lists a formula weight of 527.66.
 
 </Callout>
 
-</ShotRow>
+The table below holds 8 inhibitors of p38α MAP kinase from the PDB. It looks like Nanome Web's table, which heads NumAtoms as **Atoms** and MolWeight as **MW**, and it sorts, searches and enlarges drawings the way Nanome XR does.
+
+<LigandTableDemo app="xr" />
+
+<Accordion title="Where the sample ligands come from" teaser="8 PDB entries of human p38α, and RDKit for the values.">
+
+Each one comes from an X-ray structure of human p38α MAP kinase (UniProt Q16539) in which it's the only ligand. Its SMILES comes from its record in the RCSB Chemical Component Dictionary, and each value is computed from that SMILES with RDKit. RDKit gives the NumAtoms and MolWeight values Nanome shows: 76 and 527.290 for B96 in 1KV2, and 72 and 548.216 for G0T in 4CEO.
+
+| Name | Ligand | PDB entry | Also known as |
+|------|--------|-----------|---------------|
+| A:B96_391 | [B96](https://www.rcsb.org/ligand/B96) | [1KV2](https://www.rcsb.org/structure/1KV2) | BIRB 796, doramapimod |
+| A:BMU_391 | [BMU](https://www.rcsb.org/ligand/BMU) | [1KV1](https://www.rcsb.org/structure/1KV1) | |
+| A:SB2_800 | [SB2](https://www.rcsb.org/ligand/SB2) | [1A9U](https://www.rcsb.org/structure/1A9U) | SB203580 |
+| A:SB4_800 | [SB4](https://www.rcsb.org/ligand/SB4) | [1BL7](https://www.rcsb.org/structure/1BL7) | SB220025 |
+| A:SB6_800 | [SB6](https://www.rcsb.org/ligand/SB6) | [1BL6](https://www.rcsb.org/structure/1BL6) | SB216995 |
+| A:MSQ_500 | [MSQ](https://www.rcsb.org/ligand/MSQ) | [1DI9](https://www.rcsb.org/structure/1DI9) | |
+| A:PQB_361 | [PQB](https://www.rcsb.org/ligand/PQB) | [2GFS](https://www.rcsb.org/structure/2GFS) | RO3201195 |
+| A:BAX_1 | [BAX](https://www.rcsb.org/ligand/BAX) | [3HEG](https://www.rcsb.org/structure/3HEG) | Sorafenib |
+
+The RDKit calls are `Chem.AddHs` then `GetNumAtoms` for NumAtoms, `GetNumHeavyAtoms` for NumHeavyAtoms, `Descriptors.ExactMolWt` for MolWeight, `Crippen.MolLogP` for LogP, `Chem.MolToInchiKey` for InChIKey, and the matching `rdMolDescriptors` function for TPSA, HbondD, HbondA and the 4 ring counts.
+
+The copy lists HeavyAtomMolWeight, NumRotatableBonds, Rating and SMILES in its picker but leaves their columns out. The first 2 depend on RDKit settings that haven't been matched to Nanome's, people enter Rating, and one molecule can be written as many valid SMILES. The tags are examples.
+
+</Accordion>
 
 ## <AppIcon name="layout-grid" /> Workspaces tab {#workspaces-tab}
 

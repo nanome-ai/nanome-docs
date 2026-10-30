@@ -13,6 +13,12 @@
 /mara/deployment           /mara/technical       301
 /mara/deployment.html      /mara/technical       301
 
+# Comments & Annotations was merged into the Comments section of the Tools Panel
+# page (2.7.1 docs refresh). The host never sees an old link's #anchor, so every
+# old link lands on the section's heading.
+/nanome_v2/comments       /nanome_v2/toolspanel#comments  301
+/nanome_v2/comments.html  /nanome_v2/toolspanel#comments  301
+
 # Nanome Classic pages moved under /nanome1x/ when the v2 and MARA sections were
 # added (#91). These send the old docs.nanome.ai paths, which older links still
 # use, to where the pages live now. Anchors survive the redirect.

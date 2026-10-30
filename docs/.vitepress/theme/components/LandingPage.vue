@@ -23,8 +23,9 @@
     <div v-if="data.newUpdates" class="new-updates">
       <h2>New Updates</h2>
       <div class="update-card">
-        <a :href="data.newUpdates.url">
-          <img :src="data.newUpdates.img" :alt="data.newUpdates.title" />
+        <a :href="data.newUpdates.url" class="update-image" :class="{ 'has-dark': !!updateImage.dark }">
+          <img class="update-light" :src="updateImage.light" :alt="data.newUpdates.title" />
+          <img v-if="updateImage.dark" class="update-dark" :src="updateImage.dark" :alt="data.newUpdates.title" />
         </a>
         <div class="update-content">
           <h3>{{ data.newUpdates.title }}</h3>
@@ -62,16 +63,38 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import HeroCarousel from './HeroCarousel.vue'
 import HomeCarousel from './HomeCarousel.vue'
+import { imageInfo } from './image.js'
 
-defineProps({
+const props = defineProps({
   data: {
     type: Object,
     required: true
   }
 })
+
+// The New Updates image, with its dark copy when there is one. `img` is the
+// image's path under assets/original or assets/compressed.
+const updateImage = computed(() => {
+  const img = props.data.newUpdates?.img || ''
+  const key = img.replace(/^\/assets\/(compressed|original)\//, '')
+  return key === img ? { light: img, dark: '' } : imageInfo(key)
+})
 </script>
+
+<style>
+/* The New Updates image follows the site theme when it has a dark copy. */
+.update-image.has-dark .update-dark,
+.dark .update-image.has-dark .update-light {
+  display: none;
+}
+
+.dark .update-image.has-dark .update-dark {
+  display: block;
+}
+</style>
 
 <style scoped>
 .landing-page .start {
