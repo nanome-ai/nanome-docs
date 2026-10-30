@@ -100,8 +100,6 @@ Rotation and zoom pivot on the selection. The [sequence viewer](#sequence-viewer
 
 ### <AppIcon name="ruler-2" /> Measurement tool {#measurement-tool}
 
-<ShotRow src="nanome-web/measure-results.webp" alt="A finished distance and angle on the 4CEO ligand">
-
 The Measurement tool measures between atoms. The bar sets what it measures:
 
 <UiList label="Measurement modes">
@@ -112,6 +110,8 @@ The Measurement tool measures between atoms. The bar sets what it measures:
 <UiItem icon="x" name="Exit tool">Goes back to the Default tool.</UiItem>
 </UiList>
 
+<ShotRow src="nanome-web/measure-results.webp" alt="A finished distance and angle on the 4CEO ligand">
+
 <Steps>
 
 1. Hovering an atom rings it and labels it with the entry, chain, residue and atom name.
@@ -119,6 +119,11 @@ The Measurement tool measures between atoms. The bar sets what it measures:
 3. The last click completes the measurement. Finished measurements stay drawn in the viewer with their values.
 
 </Steps>
+
+<UiList label="Finished measurements">
+<UiItem icon="angle" name="Angle" area="28.0,38.0,10.5,4.5">The value sits at the second atom, with lines to the other two.</UiItem>
+<UiItem icon="ruler-measure" name="Distance" area="48.5,41.5,13.0,6.0">The value sits at the middle of the dashed line.</UiItem>
+</UiList>
 
 </ShotRow>
 
@@ -199,7 +204,7 @@ A scene is a saved view of the workspace: its components, annotations, molecule 
 <ShotRow src="nanome-web/scenes-panel-menu.webp" alt="The Scenes panel with a scene menu open">
 
 <UiList label="Scenes rail">
-<UiItem icon="chevrons-right" name="Expand">At the top: expands the rail to show the scene names.</UiItem>
+<UiItem icon="chevrons-left" name="Collapse / Expand" area="41.0,5.5,6.8,8.8">At the top: narrows the rail to icons, or widens it again to show the scene names.</UiItem>
 <UiItem icon="plus" name="New Scene" area="3.9,48.7,28.2,8.8">Adds a scene, up to 50 per workspace.</UiItem>
 <UiItem icon="dots" name="More" area="38.2,38.5,53.7,53.5">Each scene's menu: Rename, Duplicate and Delete.</UiItem>
 <UiItem icon="video" name="Recording" area="34.7,33.8,12.0,6.4">With a time, such as 0:37, marks a scene that holds a recording and shows its length.</UiItem>

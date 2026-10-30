@@ -75,11 +75,11 @@ The Measurement Tool measures between atoms picked in 3D. The buttons at the top
 <UiItem icon="trash" name="Delete" area="76.6,9.8,17.3,5.4">Removes measurements by clicking them.</UiItem>
 </UiList>
 
-Each measurement is listed in the panel. Hovering a row highlights the measurement in 3D.
+Each measurement is listed in the panel with its type and value. Hovering a row highlights the measurement in 3D.
 
 <UiList label="Measurement row">
-<UiItem icon="zoom" name="Zoom">Zooms to the measurement.</UiItem>
-<UiItem icon="trash" name="Delete">Deletes the measurement.</UiItem>
+<UiItem icon="zoom" name="Zoom" area="70.7,25.6,10.3,5.7">Zooms to the measurement.</UiItem>
+<UiItem icon="trash" name="Delete" area="81.5,25.6,10.3,5.7">Deletes the measurement, after a second click to confirm.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -135,27 +135,28 @@ The Builder Tool builds new ligands and edits existing ones. On opening, the pan
 
 ### Modes
 
-<ShotRow src="nanome-v2/v2-7/builder-edit.webp" alt="The Builder Tool editing a ligand, with its controls labelled">
+<ShotRow src="nanome-v2/v2-7/builder-edit.webp" alt="The Builder Tool while editing a ligand">
 
 <UiList label="Builder modes">
-<UiItem icon="plus" name="Build" area="36.0,9.0,8.1,6.4">Adds atoms and groups.</UiItem>
-<UiItem icon="replace" name="Replace" area="44.3,9.0,7.9,6.4">Swaps an atom or group for another. It can also fuse a ring fragment onto an existing ring.</UiItem>
-<UiItem icon="line" name="Bond" area="52.4,9.0,7.8,6.4">Clicking two atoms bonds them, and clicking a bond changes its order.</UiItem>
-<UiItem icon="trash" name="Delete" area="60.4,9.0,8.1,6.4">Clicking atoms or bonds deletes them.</UiItem>
+<UiItem icon="plus" name="Build" area="4.2,9.0,23.2,6.4">Adds atoms and groups.</UiItem>
+<UiItem icon="replace" name="Replace" area="28.0,9.0,22.7,6.4">Swaps an atom or group for another. It can also fuse a ring fragment onto an existing ring.</UiItem>
+<UiItem icon="line" name="Bond" area="51.2,9.0,22.4,6.4">Clicking two atoms bonds them, and clicking a bond changes its order.</UiItem>
+<UiItem icon="trash" name="Delete" area="74.2,9.0,23.2,6.4">Clicking atoms or bonds deletes them.</UiItem>
 </UiList>
 
 Along the bottom of the panel:
 
 <UiList label="Builder bottom bar">
-<UiItem name="Auto relax" area="35.9,77.1,12.0,5.7">Beside Minimize: relaxes the nearby geometry after every edit.</UiItem>
-<UiItem icon="minimize" name="Minimize" href="#minimize" area="49.9,77.1,14.0,5.8">Runs a force-field minimization on the ligand.</UiItem>
-<UiItem icon="settings" name="Minimization settings" href="#minimize" area="64.0,77.1,4.4,5.8">Receptor, algorithm, force field and number of steps.</UiItem>
-<UiItem icon="x" name="Cancel minimization">Stops a run.</UiItem>
-<UiItem icon="arrow-back-up" name="Undo" area="35.9,92.3,4.4,5.7">Steps back through edits and minimizations.</UiItem>
-<UiItem icon="arrow-forward-up" name="Redo" area="40.5,92.3,4.5,5.7">Steps forward through them again.</UiItem>
-<UiItem name="Cancel" area="48.1,92.3,9.6,5.7">Discards the changes.</UiItem>
-<UiItem icon="device-floppy" name="Save" href="#saving" area="57.9,92.3,10.5,5.7">Keeps the changes.</UiItem>
+<UiItem name="Auto relax" area="3.9,77.1,34.4,5.7">Beside Minimize: relaxes the nearby geometry after every edit.</UiItem>
+<UiItem icon="minimize" name="Minimize" href="#minimize" area="44.0,77.1,40.2,5.8">Runs a force-field minimization on the ligand.</UiItem>
+<UiItem icon="settings" name="Minimization settings" href="#minimize" area="84.5,77.1,12.6,5.8">Receptor, algorithm, force field and number of steps.</UiItem>
+<UiItem icon="arrow-back-up" name="Undo" area="3.9,92.3,12.6,5.7">Steps back through edits and minimizations.</UiItem>
+<UiItem icon="arrow-forward-up" name="Redo" area="17.1,92.3,12.9,5.7">Steps forward through them again.</UiItem>
+<UiItem name="Cancel" area="38.9,92.3,27.5,5.7">Discards the changes.</UiItem>
+<UiItem icon="device-floppy" name="Save" href="#saving" area="67.0,92.3,30.1,5.7">Keeps the changes.</UiItem>
 </UiList>
+
+While a minimization runs, <AppIcon name="x" /> **Cancel minimization** stops it.
 
 </ShotRow>
 
@@ -321,13 +322,25 @@ Select one or more protein residues, then pick one. Moving the thumbstick left o
 <ShotRow src="nanome-v2/v2-7/tool-residue-editor.webp" alt="The Residue Editor panel">
 
 <UiList label="Residue Editor">
-<UiItem name="Mutate">Changes the residue to another amino acid.</UiItem>
-<UiItem name="Score against" area="14.7,81.5,61.8,5.7">Whether the rotamer scoring counts Visible atoms only or All atoms.</UiItem>
-<UiItem name="Cancel" area="65.4,91.5,14.7,5.7">Discards the change.</UiItem>
-<UiItem icon="device-floppy" name="Save" area="80.4,91.5,16.2,5.7">Keeps the change.</UiItem>
+<UiItem icon="info-circle" name="Rotamer library" area="92.2,3.4,5.0,4.0">Hovering shows the library in use.</UiItem>
+<UiItem name="Residues" area="14.6,13.3,82.6,21.9">The selected residues, grouped by entry. Pick one to edit it.</UiItem>
+<UiItem name="Mutate" area="74.0,37.1,21.6,6.0">Changes the residue to another amino acid.</UiItem>
+<UiItem name="Rotamers" area="14.6,44.9,82.6,36.0">One row per rotamer, with Orig. for the current side chain. The arrows sort by P, Clash or HB.</UiItem>
+<UiItem name="Score against" area="36.0,81.5,40.9,6.0">Whether the scoring counts Visible atoms only or All atoms.</UiItem>
+<UiItem name="Cancel" area="65.7,91.7,14.9,6.0">Discards the change.</UiItem>
+<UiItem icon="device-floppy" name="Save" area="80.6,91.7,16.6,6.0">Keeps the change.</UiItem>
 </UiList>
 
 </ShotRow>
+
+<Accordion title="The rotamer table columns" teaser="P, Clash, HB and the chi angles.">
+
+- **P**: how often the rotamer occurs in the library for this residue's backbone angles, from 0 to 1.
+- **Clash**: clashes between the residue and the atoms around it.
+- **HB**: potential hydrogen bonds between the residue and the atoms around it.
+- **Chi1**, **Chi2** and so on: the side-chain dihedral angles, in degrees. A residue gets one column for each chi angle it has.
+
+</Accordion>
 
 <Accordion title="Which residues it works on" teaser="The picked residue and up to 5 of its neighbors.">
 
@@ -337,21 +350,40 @@ The editor works on the picked residue plus up to 5 of the other selected residu
 
 ## <AppIcon name="tool" /> MARA Tools {#mara-tools}
 
-MARA Tools runs your MARA tools from the headset. The panel opens with a notice: MARA Tools in XR are in beta, and some tools rely on inputs or outputs that XR doesn't support yet.
+MARA Tools runs your MARA tools from the headset. Tools are managed on the Tools page in [Nanome Web](https://app.nanome.ai/tools).
 
-<ShotRow src="nanome-v2/v2-7/tool-mara.webp" alt="The MARA Tools list">
+<ShotRow src="nanome-v2/v2-7/tool-mara-beta.webp" alt="The notice that MARA Tools in XR are in beta" crop="13,26,87,48">
 
-<UiList label="MARA Tools">
-<UiItem name="Continue">Opens the tool list.</UiItem>
-<UiItem name="Search" area="47.9,9.2,48.7,6.7">Searches the tool list.</UiItem>
-<UiItem icon="player-play" name="Run">Runs the tool.</UiItem>
-<UiItem icon="refresh" name="Reset">Resets the run.</UiItem>
-<UiItem icon="arrow-left" name="Back">Returns to the tool list.</UiItem>
+The panel opens with a notice: MARA Tools in XR are in beta. Every tool is listed, but some rely on inputs or outputs that XR doesn't support yet and may fail to run or show their results.
+
+<UiList label="Beta notice">
+<UiItem name="Continue" area="47.1,61.4,17.4,6.0">Opens the tool list.</UiItem>
 </UiList>
 
 </ShotRow>
 
-Tools are managed on the Tools page in [Nanome Web](https://app.nanome.ai/tools).
+<ShotRow src="nanome-v2/v2-7/tool-mara.webp" alt="The MARA Tools list">
+
+<UiList label="MARA Tools list">
+<UiItem icon="filter" name="Filter" area="15.2,9.2,31.2,6.7">All, Pinned, Disabled, or a single category.</UiItem>
+<UiItem name="Search" area="47.9,9.2,48.7,6.7">Searches the tool list.</UiItem>
+<UiItem name="Tool" area="16.6,19.1,75.4,15.9">Its name and the start of its description. Pick one to open it.</UiItem>
+</UiList>
+
+</ShotRow>
+
+<ShotRow src="nanome-v2/v2-7/tool-mara-tool.webp" alt="The page for one tool, the 3D conformer generator">
+
+<UiList label="Tool page">
+<UiItem icon="arrow-left" name="Back" area="14.6,2.4,16.6,6.0">Returns to the tool list.</UiItem>
+<UiItem icon="pin" name="Pin" area="89.9,2.4,7.3,6.0">Adds the tool to the Pinned filter. Selecting it again unpins it.</UiItem>
+<UiItem name="Description" area="14.6,13.3,79.8,79.6">What the tool does, with its inputs below.</UiItem>
+<UiItem icon="player-play" name="Run" area="81.8,91.7,15.3,6.0">Runs the tool.</UiItem>
+</UiList>
+
+After a run, the page shows the result and any output files, and <AppIcon name="refresh" /> **Reset** clears them.
+
+</ShotRow>
 
 ## <AppIcon name="download" /> Load Structure {#load-structure}
 

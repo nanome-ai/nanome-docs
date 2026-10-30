@@ -18,7 +18,8 @@ The Sequence Panel shows the sequences of all loaded structures, protein and nuc
 <UiItem name="Filter hidden structures" area="11.9,59.7,22.4,6.9">Leaves out structures that have no visible representation.</UiItem>
 <UiItem name="Clear" area="80.8,57.9,6.5,10.4">Clears the selection.</UiItem>
 <UiItem name="Create" area="87.6,57.5,7.6,11.1">Creates a component from the selected residues.</UiItem>
-<UiItem name="Update">Appears when a component is active in the panel: updates that component with the current selection.</UiItem>
 </UiList>
+
+When a component is active in the panel, an **Update** button also appears. It updates that component with the current selection.
 
 </ShotRow>

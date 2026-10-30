@@ -12,8 +12,8 @@ The **Entries** tab lists every structure in the workspace and the components th
 <MapCard icon="layout-list" title="Structure actions" href="#structure-actions" side="right" area="74.5,35.0,4.4,3.2">Alignment and interaction components.</MapCard>
 <MapCard icon="dots" title="More options" href="#more-options" side="right" area="88.6,35.0,4.4,3.2">Rename, export, load a map or trajectory, delete.</MapCard>
 <MapCard icon="scribble" title="Representations" href="#representations" side="right" area="63.7,39.8,16.4,5.1">How a component is drawn.</MapCard>
-<MapCard icon="palette" title="Colors" href="#colors" side="bottom">The color schemes for each representation.</MapCard>
-<MapCard icon="link" title="Interactions" href="#interactions" side="bottom">The interaction types a component shows.</MapCard>
+<MapCard icon="palette" title="Colors" href="#colors" side="bottom" area="69.0,63.5,10.8,3.6">Color schemes, from the palette beside each representation in the panel a chip opens.</MapCard>
+<MapCard icon="link" title="Interactions" href="#interactions" side="bottom" area="20.5,74.6,72.5,4.0">The interaction types a component such as Pocket + Ligand shows.</MapCard>
 </ScreenMap>
 
 ## <AppIcon name="stack-2" /> Entries and components {#entries-and-components}
@@ -96,15 +96,15 @@ The palette button beside a representation opens its color schemes:
 <UiItem name="Chain Instance" area="46.9,47.0,44.9,5.2">One color per chain in each entry, so chain A in two entries gets two colors.</UiItem>
 </UiList>
 
-**Carbons only** applies the scheme to carbon atoms and keeps element colors on the other atoms.
-
 </ShotRow>
+
+**Carbons only** applies the scheme to carbon atoms and keeps element colors on the other atoms.
 
 ### <AppIcon name="mist" /> Interactions {#interactions}
 
-<ShotRow src="nanome-web/interactions-list.webp" alt="The Interactions list for a component">
-
 Components that hold interactions, such as **Pocket + Ligand**, show an **Interactions** row with a count. **Show** lists the interaction types, each with its legend color and a switch:
+
+<ShotRow src="nanome-web/interactions-list.webp" alt="The Interactions list for a component">
 
 <UiList label="Interaction types">
 <UiItem name="Hydrogen Bonds" area="1.8,13.6,92.1,8.3">Between a hydrogen-bond donor and an acceptor.</UiItem>
@@ -140,9 +140,9 @@ The <AppIcon name="layout-list" /> **Structure actions** button on an entry row 
 <UiItem icon="eraser" name="Remove components" area="17.6,75.2,59.7,10.9">Removes the entry's components.</UiItem>
 </UiList>
 
-Nanome runs the alignment on its server with CE-Align. TM-Align is available in Nanome XR.
-
 </ShotRow>
+
+Nanome runs the alignment on its server with CE-Align. TM-Align is available in Nanome XR.
 
 ### Interaction components
 

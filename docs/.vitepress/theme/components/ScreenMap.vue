@@ -3,21 +3,16 @@
  * A screenshot with its parts around it: each <MapCard> sits on the side of
  * the image where that part is on screen (top, left, right or bottom), and
  * hovering a card lights up its region of the image, or the other way round.
- * Clicking the image opens it full screen with the cards still around it.
- * On a narrow screen the image comes first with numbered pins, and the cards
- * follow in a numbered list.
+ * Clicking a region goes where its card links; a region whose card has no
+ * link lights the card instead. The expand button opens the map full screen
+ * with the cards still around it. On a narrow screen the image comes first
+ * with numbered pins, and the cards follow in a numbered list.
  *
  *   <ScreenMap src="nanome-v2/v2-7/desktop-layout.webp" alt="…" crop="0,0,56,72">
  *   <MapCard icon="hierarchy" title="Main Panel" href="/nanome_v2/mainpanel" side="top" area="16,6,33,64">Structures and settings.</MapCard>
  *   </ScreenMap>
  *
  * Cards keep the order they're written in on each side.
- *
- * A busy map (five or more cards along the top or bottom, or more than nine
- * in all) goes compact where the reader has a mouse: the cards shrink to
- * their icon and name so a row of tabs fits on one line and the image keeps
- * its size, and the hovered card's line shows in a caption under the image.
- * `compact` / `:compact="false"` overrides that.
  */
 import { Fragment, cloneVNode, computed, defineComponent, h, provide, ref } from 'vue'
 import HotShot from './HotShot.vue'
@@ -43,7 +38,6 @@ export default defineComponent({
     crop: { type: String, default: '' },
     /** Names the map for screen readers, e.g. "Nanome XR screens". */
     label: { type: String, default: '' },
-    compact: { type: Boolean, default: undefined },
   },
   setup(props, { slots }) {
     const active = ref(0)
@@ -56,6 +50,16 @@ export default defineComponent({
     }
     provide('n-screenmap', { active, enter, leave })
 
+    // A click on a region whose card has no link: light the card and bring
+    // it into view. Cards are in the page in the order they're numbered.
+    const pick = (n) => {
+      active.value = n
+      const el = root.value?.querySelectorAll('.n-mapcard')[n - 1]
+      if (!el) return
+      const r = el.getBoundingClientRect()
+      if (r.top < 80 || r.bottom > window.innerHeight) el.scrollIntoView({ block: 'center', behavior: 'smooth' })
+    }
+
     return () => {
       // Group the cards by side, then number them in reading order (top,
       // left, right, bottom) so pins and cards match.
@@ -65,8 +69,6 @@ export default defineComponent({
         box: parseBox(vnode.props?.area),
       }))
       const sides = Object.fromEntries(SIDES.map((s) => [s, cards.filter((c) => c.side === s)]))
-      const compact =
-        props.compact ?? (sides.top.length >= 5 || sides.bottom.length >= 5 || cards.length > 9)
       let n = 0
       const spots = []
       for (const s of SIDES) {
@@ -75,12 +77,6 @@ export default defineComponent({
           if (c.box) spots.push({ n: c.n, box: c.box, label: c.vnode.props?.title || '', href: c.vnode.props?.href || '' })
         }
       }
-
-      // In a compact map, the hovered card's name and line, under the image.
-      const caption = (c) =>
-        h('p', { class: 'n-screenmap__caption', 'aria-live': 'polite' }, c
-          ? [h('strong', null, c.vnode.props?.title || ''), ' ', c.vnode.children?.default?.()]
-          : [])
 
       // Lean each row or column toward where its regions are in the frame:
       // a row of tabs in the right half of the screen sits right of center.
@@ -107,7 +103,7 @@ export default defineComponent({
 
       const classes = [
         'n-screenmap',
-        { 'is-focus': view.focused.value, 'is-compact': compact },
+        { 'is-focus': view.focused.value },
         ...SIDES.map((s) => ({ [`has-${s}`]: sides[s].length > 0 })),
       ]
 
@@ -148,8 +144,8 @@ export default defineComponent({
                   onEnter: enter,
                   onLeave: leave,
                   onOpen: view.open,
+                  onPick: pick,
                 }),
-                compact ? caption(cards.find((c) => c.n === active.value)) : null,
               ]),
               column('right'),
               column('bottom'),
@@ -274,68 +270,6 @@ export default defineComponent({
   .n-screenmap .hotshot .hotshot__pin,
   .n-screenmap .n-mapcard .n-mapcard__num {
     display: none;
-  }
-}
-
-/* Compact (busy maps, mouse only): icon-and-name chips around a bigger image,
-   with the hovered chip's line in a caption under it. */
-.n-screenmap__caption {
-  display: none;
-}
-
-@media (hover: hover) {
-  @container screenmap (min-width: 760px) {
-    .n-screenmap.is-compact.has-left {
-      --n-sm-left: 10.5rem;
-    }
-
-    .n-screenmap.is-compact.has-right {
-      --n-sm-right: 10.5rem;
-    }
-
-    .n-screenmap.is-compact .n-mapcard {
-      align-items: center;
-      gap: 8px;
-      padding: 6px 10px 6px 6px;
-      border-radius: var(--n-radius);
-    }
-
-    .n-screenmap.is-compact .n-mapcard .n-mapcard__desc {
-      display: none;
-    }
-
-    .n-screenmap.is-compact .n-mapcard .n-mapcard__title {
-      font-size: var(--n-text-sm);
-    }
-
-    .n-screenmap.is-compact .n-screenmap__side {
-      gap: 6px;
-    }
-
-    .n-screenmap.is-compact .n-screenmap__top > *,
-    .n-screenmap.is-compact .n-screenmap__bottom > * {
-      flex: 0 1 auto;
-    }
-
-    .n-screenmap.is-compact .n-screenmap__caption {
-      display: block;
-      min-height: 2.9em;
-      margin: 10px auto 0;
-      max-width: 40rem;
-      color: var(--n-text-muted);
-      font-size: var(--n-text-sm);
-      line-height: 1.45;
-      text-align: center;
-    }
-
-    .n-screenmap.is-compact .n-screenmap__caption strong {
-      color: var(--n-text);
-    }
-
-    .n-screenmap.is-compact .n-screenmap__caption p {
-      display: inline;
-      margin: 0;
-    }
   }
 }
 

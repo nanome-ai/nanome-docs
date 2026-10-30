@@ -9,15 +9,19 @@ The Main Panel is where you manage structures, ligands, workspaces, people and s
 
 The [Scenes Panel](/nanome_v2/scenespanel) sits on the left of the Main Panel and the [Tools Panel](/nanome_v2/toolspanel) on the right. Two buttons at the panel's top right change the panel itself.
 
-<ScreenMap src="nanome-v2/v2-7/desktop-layout.webp" alt="The Main Panel on the Components tab, with its tabs along the top" crop="15.4,5.1,34.1,65.1" label="Main Panel tabs">
-<MapCard icon="hierarchy" title="Components" href="#components-tab" side="top" area="15.8,5.7,6.8,4.8">The structures in the workspace and how each is drawn.</MapCard>
-<MapCard icon="affiliate" title="Ligands" href="#ligands-tab" side="top" area="22.6,5.7,5.1,4.8">Every ligand in a table, with properties and tags.</MapCard>
-<MapCard icon="layout-grid" title="Workspaces" href="#workspaces-tab" side="top" area="27.8,5.7,6.5,4.8">Join, open and create workspaces.</MapCard>
-<MapCard icon="users-group" title="Users" href="#users-tab" side="top" area="34.4,5.7,4.5,4.8">People, your mic and sharing.</MapCard>
-<MapCard icon="settings" title="Settings" href="#settings-tab" side="top" area="39.0,5.7,5.2,4.8">Skybox, passthrough, controls and sign-out.</MapCard>
-<MapCard icon="arrows-maximize" title="Increase menu size" side="right" area="46.7,6.3,2.0,3.7">Makes the panel bigger.</MapCard>
-<MapCard icon="lock-open" title="Lock menu position" side="right">Pins the panel in place in a headset. It turns yellow while locked.</MapCard>
-</ScreenMap>
+<ShotRow src="nanome-v2/v2-7/main-panel-header.webp" alt="The top of the Main Panel: the five tabs, then Lock menu position and Increase menu size">
+
+<UiList label="Main Panel tabs and controls">
+<UiItem icon="hierarchy" name="Components" href="#components-tab" area="0.3,2.0,20.2,42.0">The structures in the workspace and how each is drawn.</UiItem>
+<UiItem icon="affiliate" name="Ligands" href="#ligands-tab" area="20.3,2.0,15.6,42.0">Every ligand in a table, with properties and tags.</UiItem>
+<UiItem icon="layout-grid" name="Workspaces" href="#workspaces-tab" area="35.7,2.0,19.9,42.0">Join, open and create workspaces.</UiItem>
+<UiItem icon="users-group" name="Users" href="#users-tab" area="55.3,2.0,13.6,42.0">People, your mic and sharing.</UiItem>
+<UiItem icon="settings" name="Settings" href="#settings-tab" area="68.8,2.0,15.9,42.0">Skybox, passthrough, controls and sign-out.</UiItem>
+<UiItem icon="lock-open" name="Lock menu position" area="86.8,8.3,5.5,29.7">In a headset: keeps the panel where it is, so grabbing it doesn't move it. The icon shows a closed lock while it's on.</UiItem>
+<UiItem icon="arrows-maximize" name="Increase menu size" area="92.8,8.3,5.5,29.7">Widens the panel. Nanome remembers the choice next time.</UiItem>
+</UiList>
+
+</ShotRow>
 
 ## <AppIcon name="hierarchy" /> Components tab {#components-tab}
 
@@ -30,7 +34,6 @@ Every structure in the workspace, and the components that control how it's drawn
 <UiItem icon="eye" name="Hide All" area="11.5,9.5,8.0,7.5">Hides every entry.</UiItem>
 <UiItem icon="sort-ascending-letters" name="Sort by Name" area="20.3,9.5,8.0,7.5">Sorts entries alphabetically.</UiItem>
 <UiItem icon="copy-plus" name="Create Component" area="29.1,9.5,8.0,7.5">Makes a component from the current selection.</UiItem>
-<UiItem icon="player-stop" name="Stop model playback and reset active models">Appears while a multi-model entry is playing.</UiItem>
 <UiItem name="Search" area="56.2,10.2,41.2,6.2">Filters entries and components by name.</UiItem>
 <UiItem name="Position Molecules" area="4.7,92.2,38.1,4.7">At the bottom: lets structures be moved one by one.</UiItem>
 <UiItem icon="mist" name="Sequences" area="74.8,91.3,22.7,6.3">At the bottom: opens the Sequence Panel.</UiItem>
@@ -61,17 +64,16 @@ Each structure you load is an **entry**. Its row has these buttons:
 <UiList label="Entry row">
 <UiItem icon="caret-down-filled" name="Expand" area="3.6,19.2,5.5,6.2">Shows the entry's components.</UiItem>
 <UiItem icon="eye" name="Hide" area="9.2,19.2,5.6,6.2">Hides or shows the entry.</UiItem>
-<UiItem icon="arrow-narrow-right" name="Previous / Next model" href="#model-and-trajectory-playback">For entries with more than one model.</UiItem>
-<UiItem icon="player-play" name="(BETA) Autoplay" href="#model-and-trajectory-playback">Plays the models or trajectory.</UiItem>
 <UiItem icon="layout-list" name="Structure actions" href="#structure-actions" area="62.0,19.2,5.6,6.2">Align, create components, interactions and more.</UiItem>
 <UiItem icon="zoom" name="Zoom on this structure" area="67.7,19.2,5.6,6.2">Brings the entry into view.</UiItem>
 <UiItem icon="dots" name="More options" area="73.4,19.2,5.6,6.2">Rename, Duplicate or Delete. Delete asks first.</UiItem>
-<UiItem icon="paperclip" name="Map loaded">Marks an entry with an electrostatic map.</UiItem>
 </UiList>
 
 </ShotRow>
 
-Hovering a row shows how many atoms it holds. An empty component is grayed out.
+- Hovering a row shows how many atoms it holds. An empty component is grayed out.
+- An entry with more than one model or a trajectory also has [playback buttons](#model-and-trajectory-playback).
+- An entry with an electrostatic map loaded shows a <AppIcon name="paperclip" /> paperclip.
 
 ### Entries and components
 
@@ -268,7 +270,23 @@ Pick from **Ligands**, **Residues**, a **Type** (protein, nucleic acid, ligand, 
 
 ### Model and trajectory playback
 
-Entries with several models, such as a multi-MODEL PDB, and entries with a trajectory play from the entry row. <AppIcon name="player-play" /> **(BETA) Autoplay** plays them, and the playback settings set the speed (×1 to ×20) and direction.
+Entries with several models, such as a multi-MODEL PDB, and entries with a trajectory get playback buttons on their row.
+
+<ShotRow src="nanome-v2/v2-7/model-playback.webp" alt="1D3Z, an entry with 10 models, playing, with the playback settings open below its row">
+
+<UiList label="Playback">
+<UiItem name="Model or frame" area="42.6,36.3,5.1,6.2">Which one is showing, out of how many.</UiItem>
+<UiItem icon="arrow-narrow-left" name="Previous model" area="48.0,36.3,6.0,6.2">Steps back one. On a trajectory it's Previous frame.</UiItem>
+<UiItem icon="player-play" name="(BETA) Autoplay" area="54.2,36.3,5.9,6.2">Opens the playback settings.</UiItem>
+<UiItem icon="arrow-narrow-right" name="Next model" area="60.3,36.3,6.0,6.2">Steps forward one. On a trajectory it's Next frame.</UiItem>
+<UiItem icon="player-track-prev" name="Play backwards" area="65.1,44.2,7.1,7.5">Plays in reverse order.</UiItem>
+<UiItem icon="player-pause" name="Play / Pause" area="72.9,44.2,7.1,7.5">Pauses or resumes.</UiItem>
+<UiItem icon="player-track-next" name="Play forwards" area="80.8,44.2,7.1,7.5">Plays in order. The lit button shows which way it's playing.</UiItem>
+<UiItem name="Speed" area="55.8,52.4,41.3,6.2">×1, ×2, ×5, ×10 or ×20.</UiItem>
+<UiItem icon="player-stop" name="Stop model playback and reset active models" area="33.3,8.9,7.1,7.4">In the Components toolbar while anything plays. Stops playback.</UiItem>
+</UiList>
+
+</ShotRow>
 
 - Playback shows only for you and the people following you.
 - Speeds of ×5 and above may run slowly on standalone headsets.
@@ -285,8 +303,6 @@ Every ligand in the workspace in one table. It matches the [Ligands tab](/nanome
 <UiItem icon="columns-3" name="Select property columns" area="18.0,9.5,8.0,7.6">Chooses the columns.</UiItem>
 <UiItem icon="bookmark" name="View presets" area="26.8,9.5,8.0,7.6">Saves and recalls column and filter layouts.</UiItem>
 <UiItem icon="copy-check" name="Bulk-Display" area="35.5,9.5,8.0,7.6">Shows several ligands, or several models of one file, at once.</UiItem>
-<UiItem icon="caret-down-filled" name="Set Labels">Labels the ligands Bulk-Display shows.</UiItem>
-<UiItem icon="x" name="Clear displayed ligands">Clears what Bulk-Display shows.</UiItem>
 <UiItem name="Search" area="56.2,10.2,41.2,6.2">Filters by name.</UiItem>
 </UiList>
 
@@ -300,6 +316,8 @@ Each row shows the 2D structure and your columns, with these buttons:
 </UiList>
 
 </ShotRow>
+
+While Bulk-Display is on, two more buttons join the toolbar: **Set Labels** labels the ligands on show, and <AppIcon name="x" /> **Clear displayed ligands** puts them away.
 
 <ShotRow src="nanome-v2/v2-7/ligand-property-columns.webp" alt="The property column picker">
 
@@ -353,16 +371,14 @@ Who is in the workspace, your mic, and who can open it.
 <UiItem name="Display Name" area="25.6,18.2,30.9,10.4">The name others see.</UiItem>
 <UiItem icon="microphone" name="Mic" area="56.7,22.0,13.1,6.5">Mutes or unmutes you. The meter moves when your mic picks up sound.</UiItem>
 <UiItem icon="share" name="Share" href="#share" area="63.8,9.6,6.9,5.4">Who can open the workspace, and with what access.</UiItem>
-<UiItem icon="volume-3" name="Mute">In Users in workspace, in a person's (...) menu: mutes them, for you only.</UiItem>
-<UiItem icon="login" name="Join">In Users in organization: goes to a colleague's workspace, or asks to join it.</UiItem>
-<UiItem icon="plus" name="Invite">In Users in organization: invites a colleague to your workspace.</UiItem>
 </UiList>
 
 </ShotRow>
 
 - Your access shows at the top as **My Permission**.
 - The off-hand controller's primary button (**X**, or **A** when left-handed) also mutes you.
-- **Users in organization** lists colleagues who are online. When you ask to join, the owner lets you in as a Viewer or Editor, or denies it. An invited colleague sees **Join Workspace?** with **Refuse** or **Accept**.
+- Under **Users in workspace**, each person's <AppIcon name="dots" /> menu has <AppIcon name="volume-3" /> **Mute**, which mutes them for you only.
+- **Users in organization** lists colleagues who are online. <AppIcon name="login" /> **Join** goes to a colleague's workspace, or asks to join it, and the owner lets you in as a Viewer or Editor, or denies it. <AppIcon name="plus" /> **Invite** asks a colleague to yours, and they see **Join Workspace?** with **Refuse** or **Accept**.
 
 ### <AppIcon name="share" /> Share {#share}
 
@@ -393,23 +409,24 @@ A free license gives Viewer access to workspaces others own.
 <ShotRow src="nanome-v2/v2-7/settings-tab.webp" alt="The Settings tab">
 
 <UiList label="Settings">
-<UiItem icon="moon" name="Night mode" area="5.3,11.9,6.7,6.3">Night or day skybox, when passthrough is off.</UiItem>
-<UiItem icon="view-360" name="Floor" area="12.7,11.9,6.8,6.3">Shows or hides the floor.</UiItem>
-<UiItem name="Skybox theme" href="#day-night-mode-and-themes" area="20.3,11.9,24.9,6.3">Seven themes, each with a day and a night version.</UiItem>
-<UiItem icon="scan-eye" name="Passthrough" area="48.4,9.5,49.0,11.2">Mixed reality or a full skybox. On to start where the headset supports it, grayed out where it doesn't.</UiItem>
-<UiItem icon="hand-stop" name="Left-handed mode" area="2.7,21.3,92.4,11.2">Makes the left hand dominant.</UiItem>
-<UiItem icon="refresh" name="Allow two-handed grab rotation" area="2.7,33.1,92.4,11.2">When off, molecules rotate with one hand only.</UiItem>
-<UiItem icon="arrow-move-down" name="Enable far grab snap-to-hand" area="2.7,44.9,92.4,11.2">When on, grabbing a distant molecule brings it to your hand.</UiItem>
-<UiItem icon="users-group" name="Show other user Avatars" area="2.7,56.7,92.4,11.2">Off to start.</UiItem>
-<UiItem icon="volume" name="Enable interface sounds" area="2.7,68.5,92.4,11.2">Sounds when you use the menus.</UiItem>
-<UiItem icon="help" name="Show tutorial guides">The in-headset tutorials.</UiItem>
-<UiItem icon="box" name="Show structure box on hover">A labelled box around a hovered entry.</UiItem>
-<UiItem icon="outbound" name="Log Out" area="76.0,84.7,18.8,6.3">At the bottom, beside your username.</UiItem>
-<UiItem icon="info-small" name="About" area="4.1,91.1,30.7,5.3">The app version.</UiItem>
-<UiItem icon="server" name="Change Server">Appears when more than one server is set up.</UiItem>
+<UiItem icon="moon" name="Night mode" area="4.4,9.1,6.9,5.3">Night or day skybox, when passthrough is off.</UiItem>
+<UiItem icon="view-360" name="Floor" area="12.0,9.1,6.9,5.3">Shows or hides the floor.</UiItem>
+<UiItem name="Skybox theme" href="#day-night-mode-and-themes" area="19.7,9.2,25.2,5.1">Seven themes, each with a day and a night version.</UiItem>
+<UiItem icon="scan-eye" name="Passthrough" area="50.9,9.1,44.4,5.3">Mixed reality or a full skybox. On to start where the headset supports it, grayed out where it doesn't.</UiItem>
+<UiItem icon="hand-stop" name="Left-handed mode" area="4.4,19.0,90.9,5.4">Makes the left hand dominant.</UiItem>
+<UiItem icon="refresh" name="Allow two-handed grab rotation" area="4.4,28.9,90.9,5.3">When off, molecules rotate with one hand only.</UiItem>
+<UiItem icon="arrow-move-down" name="Enable far grab snap-to-hand" area="4.4,38.7,90.9,5.3">When on, grabbing a distant molecule brings it to your hand.</UiItem>
+<UiItem icon="users-group" name="Show other user Avatars" area="4.4,48.6,90.9,5.4">Off to start.</UiItem>
+<UiItem icon="volume" name="Enable interface sounds" area="4.4,58.5,90.9,5.4">Sounds when you use the menus.</UiItem>
+<UiItem icon="help" name="Show tutorial guides" area="4.4,68.3,90.9,5.3">The in-headset tutorials.</UiItem>
+<UiItem icon="box" name="Show structure box on hover" area="4.4,78.2,90.9,5.3">A labelled box around a hovered entry.</UiItem>
+<UiItem icon="outbound" name="Log Out" area="76.2,88.2,19.2,5.3">At the bottom, beside your username.</UiItem>
+<UiItem icon="info-small" name="App info" area="3.0,93.5,31.5,4.6">The version, with a button for app details and third-party attributions.</UiItem>
 </UiList>
 
 </ShotRow>
+
+When more than one server is set up, a <AppIcon name="server" /> **Change Server** button appears at the bottom too.
 
 ### Day/Night mode and themes {#day-night-mode-and-themes}
 
