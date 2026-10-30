@@ -398,7 +398,8 @@
    the text column on a wide screen, up to 1040px, so the image and its legend
    both have room. */
 @media (min-width: 1280px) {
-  .n-layout.has-sidebar.has-aside .vp-doc > div > div > .n-shotrow {
+  .n-layout.has-sidebar.has-aside .vp-doc > div > div > .n-shotrow-hold,
+  .n-layout.has-sidebar.has-aside .vp-doc > div > div > .n-screenmap-hold {
     --n-room: min(100vw - var(--n-sidebar-width) - var(--n-outline-width) - 2 * var(--n-gutter) - 16px, 1040px);
     margin-inline: min(0px, (100% - var(--n-room)) / 2);
   }

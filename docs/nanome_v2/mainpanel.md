@@ -404,7 +404,7 @@ A free license gives Viewer access to workspaces others own.
 <UiItem icon="view-360" name="Floor">Shows or hides the floor.</UiItem>
 <UiItem name="Skybox theme" href="#day-night-mode-and-themes">Seven themes, each with a day and a night version.</UiItem>
 <UiItem icon="scan-eye" name="Passthrough">Mixed reality or a full skybox. On to start where the headset supports it, grayed out where it doesn't.</UiItem>
-<UiItem icon="hand-stop" name="Left-handed mode">Makes the left hand dominant.</UiItem>
+<UiItem icon="hand-stop" name="Left-handed mode" area="3.1,21.7,91.7,10.4">Makes the left hand dominant.</UiItem>
 <UiItem icon="refresh" name="Allow two-handed grab rotation">When off, molecules rotate with one hand only.</UiItem>
 <UiItem icon="arrow-move-down" name="Enable far grab snap-to-hand">When on, grabbing a distant molecule brings it to your hand.</UiItem>
 <UiItem icon="users-group" name="Show other user Avatars">Off to start.</UiItem>
