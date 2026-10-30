@@ -6,17 +6,13 @@ title: Users & Sharing
 
 The **Users** tab of a workspace controls who can open it and what they can change. It also sends the workspace to colleagues in Nanome XR.
 
-<ShotRow src="nanome-web/users-tab.webp" alt="The Users tab">
-
-<IconGrid label="Users tab" :cols="3">
-<IconCard icon="cube-3d-sphere" title="Join via Code" href="#join-via-code">The workspace code and Copy link.</IconCard>
-<IconCard icon="link" title="Link access" href="#link-access">What opening the code or link allows.</IconCard>
-<IconCard icon="user-plus" title="Adding people" href="#adding-people">Invite by email as Viewer or Editor.</IconCard>
-<IconCard icon="device-vision-pro" title="Sending to a headset" href="#sending-a-workspace-to-a-headset">Open in XR and Queue for All.</IconCard>
-<IconCard icon="crown" title="Following from the web" href="#following-from-the-web">Track what someone in Nanome XR sees.</IconCard>
-</IconGrid>
-
-</ShotRow>
+<ScreenMap src="nanome-web/users-tab.webp" alt="The Users tab" label="Users tab">
+<MapCard icon="cube-3d-sphere" title="Join via Code" href="#join-via-code" side="right" area="2.5,29.9,95,8.6">The workspace code and Copy link.</MapCard>
+<MapCard icon="link" title="Link access" href="#link-access" side="right" area="2.5,38.9,95,13.1">What opening the code or link allows.</MapCard>
+<MapCard icon="user-plus" title="Adding people" href="#adding-people" side="right" area="2.5,54.1,95,21">Invite by email as Viewer or Editor.</MapCard>
+<MapCard icon="device-vision-pro" title="Sending to a headset" href="#sending-a-workspace-to-a-headset" side="bottom" area="2.5,92.3,27.4,5.8">Open in XR and Queue for All.</MapCard>
+<MapCard icon="crown" title="Following from the web" href="#following-from-the-web" side="bottom">Track what someone in Nanome XR sees.</MapCard>
+</ScreenMap>
 
 ## <AppIcon name="cube-3d-sphere" /> Join via Code {#join-via-code}
 
@@ -33,10 +29,10 @@ Every workspace has an 8-character code, shown at the top of the tab in the form
 **Link access** sets what happens when someone opens the workspace's code or link:
 
 <UiList label="Link access">
-<UiItem name="Members only">Only people added to the workspace can open it.</UiItem>
-<UiItem name="Anyone can view">Anyone with the code or link can open it as a Viewer.</UiItem>
-<UiItem name="Anyone can edit">Anyone with the code or link can open it as an Editor.</UiItem>
-<UiItem name="Public workspace">Allow anonymous viewers. Lets people open the workspace without signing in.</UiItem>
+<UiItem name="Members only" area="63.3,42,33.3,15.1">Only people added to the workspace can open it.</UiItem>
+<UiItem name="Anyone can view" area="63.3,57.5,33.3,15.1">Anyone with the code or link can open it as a Viewer.</UiItem>
+<UiItem name="Anyone can edit" area="63.3,72.9,33.3,15.3">Anyone with the code or link can open it as an Editor.</UiItem>
+<UiItem name="Public workspace" area="2.6,45.1,31.8,14.5">Allow anonymous viewers. Lets people open the workspace without signing in.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -52,11 +48,11 @@ Every workspace has an 8-character code, shown at the top of the tab in the form
 <ShotRow src="nanome-web/users-invite-role.webp" alt="Inviting a person by email with a role">
 
 <UiList label="Adding people">
-<UiItem name="Workspace">The tab under the sharing settings: the people added to this workspace and their role.</UiItem>
-<UiItem name="Add people by email">Takes an email address. It has to match their Nanome account exactly.</UiItem>
-<UiItem name="Viewer / Editor">The role menu beside the address.</UiItem>
-<UiItem name="+ Add">Invites them.</UiItem>
-<UiItem name="My Org">The tab that lists colleagues in your organization.</UiItem>
+<UiItem name="Workspace" area="2.6,3.3,21.7,20.5">The tab under the sharing settings: the people added to this workspace and their role.</UiItem>
+<UiItem name="My Org" area="24.7,3.3,15.1,20.5">The tab that lists colleagues in your organization.</UiItem>
+<UiItem name="Add people by email" area="2.6,28.8,57.7,18.1">Takes an email address. It has to match their Nanome account exactly.</UiItem>
+<UiItem name="Viewer / Editor" area="60.9,28.8,23.5,59">The role menu beside the address.</UiItem>
+<UiItem name="+ Add" area="84.6,28.6,12.9,18.3">Invites them.</UiItem>
 </UiList>
 
 </ShotRow>

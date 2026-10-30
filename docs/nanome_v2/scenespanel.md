@@ -6,18 +6,14 @@ title: Scenes Panel
 
 The Scenes Panel sits in the left sidebar, beside the Main Panel. A scene is a saved view of the workspace: its components, annotations, molecule positions and point of view. A workspace can hold up to 50 scenes.
 
-<ShotRow src="nanome-v2/v2-7/scenes-panel.webp" alt="The left sidebar with the Scenes Panel controls labelled">
-
-<IconGrid label="Left sidebar">
-<IconCard icon="layout-grid" title="Workspace header" href="#workspace-header">The workspace name, network health and access.</IconCard>
-<IconCard icon="box" title="Scene controls" href="#controls">Create, step through and play scenes.</IconCard>
-<IconCard icon="dots" title="Scene menu" href="#scene-menu">Rename, duplicate, copy a POV or add a recording.</IconCard>
-<IconCard icon="video" title="Recording a scene" href="#recording-a-scene">A presenter's voice and pointer, played back in the scene.</IconCard>
-<IconCard icon="users" title="Users" href="#users-section">Who's in the workspace, Share and Spotlight Me.</IconCard>
-<IconCard icon="crown" title="Spotlight Mode" href="#spotlight-mode">Share your view, or follow someone else's.</IconCard>
-</IconGrid>
-
-</ShotRow>
+<ScreenMap src="nanome-v2/v2-7/desktop-layout.webp" alt="The left sidebar with the Scenes Panel controls" crop="0,9.6,15.6,60.7" label="Left sidebar">
+<MapCard icon="layout-grid" title="Workspace header" href="#workspace-header" side="top" area="0.5,10.5,14.7,6.2">The workspace name, network health and access.</MapCard>
+<MapCard icon="box" title="Scene controls" href="#controls" side="top" area="0.9,20.1,14.0,4.1">Create, step through and play scenes.</MapCard>
+<MapCard icon="dots" title="Scene menu" href="#scene-menu" side="left">Rename, duplicate, copy a POV or add a recording.</MapCard>
+<MapCard icon="video" title="Recording a scene" href="#recording-a-scene" side="right">A presenter's voice and pointer, played back in the scene.</MapCard>
+<MapCard icon="users" title="Users" href="#users-section" side="bottom" area="0.9,55.5,14.0,8.3">Who's in the workspace, Share and Spotlight Me.</MapCard>
+<MapCard icon="crown" title="Spotlight Mode" href="#spotlight-mode" side="bottom" area="0.9,59.7,14.0,4.1">Share your view, or follow someone else's.</MapCard>
+</ScreenMap>
 
 ## <AppIcon name="layout-grid" /> Workspace header {#workspace-header}
 
@@ -44,9 +40,9 @@ The top of the sidebar shows the workspace name and two icons:
 <ShotRow src="nanome-v2/v2-7/scenes-settings.webp" alt="The scene settings menu">
 
 <UiList label="Scene settings">
-<UiItem icon="target" name="Recenter Self">Resets your position as the viewing origin.</UiItem>
-<UiItem icon="scan-eye" name="Set scene POV">Saves your current perspective as the scene's point of view.</UiItem>
-<UiItem icon="perspective" name="Enable/disable scene POVs">Sets whether switching scenes moves your view to each scene's point of view.</UiItem>
+<UiItem icon="target" name="Recenter Self" area="28.0,26.3,64.2,5.3">Resets your position as the viewing origin.</UiItem>
+<UiItem icon="scan-eye" name="Set scene POV" area="28.0,33.3,64.2,5.2">Saves your current perspective as the scene's point of view.</UiItem>
+<UiItem icon="perspective" name="Enable/disable scene POVs" area="28.0,40.1,64.2,5.2">Sets whether switching scenes moves your view to each scene's point of view.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -56,12 +52,12 @@ The top of the sidebar shows the workspace name and two icons:
 <ShotRow src="nanome-v2/v2-7/scenes-more-options.webp" alt="A scene's More options menu">
 
 <UiList label="Scene More options">
-<UiItem icon="pencil" name="Rename">Renames the scene.</UiItem>
-<UiItem icon="copy" name="Duplicate">Copies the scene with its representations and settings.</UiItem>
-<UiItem icon="trash" name="Delete">Deletes the scene, after a confirmation.</UiItem>
-<UiItem icon="list-check" name="Copy Scene POV">Copies this scene's point of view to other scenes.</UiItem>
-<UiItem icon="video" name="Add Recording" href="#recording-a-scene">Records a presentation in this scene.</UiItem>
-<UiItem icon="trash" name="Delete recording">Deletes the scene's recording.</UiItem>
+<UiItem icon="pencil" name="Rename" area="14.3,28.5,60.8,5.2">Renames the scene.</UiItem>
+<UiItem icon="copy" name="Duplicate" area="14.3,35.5,60.8,5.2">Copies the scene with its representations and settings.</UiItem>
+<UiItem icon="trash" name="Delete" area="14.3,42.3,60.8,5.2">Deletes the scene, after a confirmation.</UiItem>
+<UiItem icon="list-check" name="Copy Scene POV" area="14.3,49.2,60.8,5.2">Copies this scene's point of view to other scenes.</UiItem>
+<UiItem icon="video" name="Add Recording" href="#recording-a-scene" area="14.3,56.0,60.8,5.2">Records a presentation in this scene.</UiItem>
+<UiItem icon="trash" name="Delete recording" area="14.3,62.9,60.8,5.2">Deletes the scene's recording.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -116,13 +112,11 @@ With several people in a workspace, colored dots on each scene show who's viewin
 
 **Spotlight Me** makes your view the shared perspective for everyone who follows you.
 
-</ShotRow>
-
 <Tabs :labels="['Spotlighter', 'Follower']">
 <Tab>
 
 <UiList label="Spotlighter's view">
-<UiItem icon="crown" name="Spotlighting 1/1">Shows that Spotlight Mode is on and how many people follow.</UiItem>
+<UiItem icon="crown" name="Spotlighting 1/1" area="2.7,81.4,20.3,6.5">Shows that Spotlight Mode is on and how many people follow.</UiItem>
 </UiList>
 
 Followers are listed with an <AppIcon name="eye" /> eye icon beside their name.
@@ -131,13 +125,15 @@ Followers are listed with an <AppIcon name="eye" /> eye icon beside their name.
 <Tab>
 
 <UiList label="Follower's view">
-<UiItem icon="crown" name="Spotlighter's name">Shows who you're following.</UiItem>
-<UiItem icon="analyze-filled" name="Reset orientation">Resets your orientation.</UiItem>
-<UiItem name="Stop">Stops following.</UiItem>
+<UiItem icon="crown" name="Spotlighter's name" area="62.0,82.7,5.1,5.0">Shows who you're following.</UiItem>
+<UiItem icon="analyze-filled" name="Reset orientation" area="73.2,82.4,3.0,5.5">Resets your orientation.</UiItem>
+<UiItem name="Stop" area="76.2,82.4,5.0,5.5">Stops following.</UiItem>
 </UiList>
 
 </Tab>
 </Tabs>
+
+</ShotRow>
 
 People in Nanome XR see a prompt for about 6 seconds, with **Not now** to decline, before they follow a new spotlight. Since release 2.7, Nanome Web viewers follow straight away. A **You are following** popup has **Stop Following**. After you stop, a **You stopped following** popup offers **Resume Following** for 3 seconds. Holding the grip also stops following.
 

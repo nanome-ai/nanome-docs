@@ -9,29 +9,21 @@ An open workspace has the workspace panel on the right, the 3D view in the middl
 
 The panel's six tabs are the workspace's main menus:
 
-<IconGrid label="Workspace panel tabs" :cols="3">
-<IconCard icon="stack-2" title="Entries" href="/nanome_web/entries">The structures and how each is drawn.</IconCard>
-<IconCard icon="hexagon" title="Ligands" href="/nanome_web/ligands">Every ligand in a table, with properties.</IconCard>
-<IconCard icon="message" title="Comments" href="/nanome_web/comments">Threaded comments.</IconCard>
-<IconCard icon="sparkles" title="MARA" href="#mara-tab">A MARA chat inside the workspace.</IconCard>
-<IconCard icon="upload" title="Import" href="/nanome_web/loading">Loading structures.</IconCard>
-<IconCard icon="users" title="Users" href="/nanome_web/collaboration">Sharing and sending to a headset.</IconCard>
-</IconGrid>
-
-<ShotRow src="nanome-web/workspace-overview.webp" alt="A workspace in Nanome Web">
-
-Around the 3D view:
-
-<IconGrid label="Around the 3D view" :cols="3">
-<IconCard icon="lasso" title="Tool rail" href="#tool-rail">Default, Selection, Measurement and Add a comment, on the view's right edge.</IconCard>
-<IconCard icon="mouse" title="Moving around" href="#moving-around">Rotate, pan and zoom with the mouse or touch.</IconCard>
-<IconCard icon="player-play" title="Bottom bar" href="#bottom-bar">Point of view, scene stepping and playback, Capture image and viewer settings.</IconCard>
-<IconCard icon="mist" title="Sequence viewer" href="#sequence-viewer">The sequences of every entry, for hovering and selecting residues.</IconCard>
-<IconCard icon="box" title="Scenes rail" href="#scenes">The scenes saved in this workspace, on the left.</IconCard>
-<IconCard icon="cube-3d-sphere" title="Workspace tabs" href="#workspace-tabs">One tab for each open workspace, under the top bar.</IconCard>
-</IconGrid>
-
-</ShotRow>
+<ScreenMap src="nanome-web/workspace-overview.webp" alt="A workspace in Nanome Web" label="Workspace View screen">
+<MapCard icon="stack-2" title="Entries" href="/nanome_web/entries" side="top" area="66.0,29.9,5.6,5.3">The structures and how each is drawn.</MapCard>
+<MapCard icon="hexagon" title="Ligands" href="/nanome_web/ligands" side="top" area="71.7,29.9,5.4,5.3">Every ligand in a table, with properties.</MapCard>
+<MapCard icon="message" title="Comments" href="/nanome_web/comments" side="top" area="77.4,29.9,6.6,5.3">Threaded comments.</MapCard>
+<MapCard icon="sparkles" title="MARA" href="#mara-tab" side="top" area="84.4,29.9,4.7,5.3">A MARA chat inside the workspace.</MapCard>
+<MapCard icon="upload" title="Import" href="/nanome_web/loading" side="top" area="89.4,29.9,4.8,5.3">Loading structures.</MapCard>
+<MapCard icon="users" title="Users" href="/nanome_web/collaboration" side="top" area="94.5,29.9,4.4,5.3">Sharing and sending to a headset.</MapCard>
+<MapCard icon="cube-3d-sphere" title="Workspace tabs" href="#workspace-tabs" side="left" area="0.4,7.6,9.0,5.3">One tab for each open workspace, under the top bar.</MapCard>
+<MapCard icon="box" title="Scenes rail" href="#scenes" side="left" area="0.0,12.9,3.1,87.1">The scenes saved in this workspace, on the left.</MapCard>
+<MapCard icon="chevrons-right" title="Workspace panel" href="#workspace-panel" side="right" area="66.2,12.9,33.8,87.1">The workspace's name, project and description, above the six tabs.</MapCard>
+<MapCard icon="lasso" title="Tool rail" href="#tool-rail" side="right" area="62.9,47.0,3.0,19.2">Default, Selection, Measurement and Add a comment, on the view's right edge.</MapCard>
+<MapCard icon="mouse" title="Moving around" href="#moving-around" side="bottom" area="3.2,12.9,62.9,87.1">Rotate, pan and zoom with the mouse or touch.</MapCard>
+<MapCard icon="player-play" title="Bottom bar" href="#bottom-bar" side="bottom" area="3.5,93.7,39.6,5.7">Point of view, scene stepping and playback, Capture image and viewer settings.</MapCard>
+<MapCard icon="mist" title="Sequence viewer" href="#sequence-viewer" side="bottom" area="62.9,93.8,3.0,5.5">The sequences of every entry, for hovering and selecting residues.</MapCard>
+</ScreenMap>
 
 ## <AppIcon name="chevrons-right" /> Workspace panel {#workspace-panel}
 
@@ -50,14 +42,14 @@ The **MARA** tab is a MARA chat inside the workspace, beside the 3D view.
 <ShotRow src="nanome-web/mara-tab.webp" alt="The MARA tab with no chats yet">
 
 <UiList label="MARA tab">
-<UiItem icon="messages" name="Chat History">The chats started in this workspace.</UiItem>
-<UiItem icon="files" name="Files">The current chat's files. Grayed out until a chat is open.</UiItem>
-<UiItem icon="plus" name="New Chat">Starts a new chat.</UiItem>
-<UiItem icon="paperclip" name="Attach file">Adds a file to your message.</UiItem>
-<UiItem icon="hexagon" name="Draw SMILES">Opens Sketch Molecule, to draw a structure.</UiItem>
-<UiItem icon="tool" name="Run tool">Picks a MARA tool to run.</UiItem>
-<UiItem icon="route" name="Run workflow">Picks a workflow to run.</UiItem>
-<UiItem icon="arrow-up" name="Send">Sends your message.</UiItem>
+<UiItem icon="messages" name="Chat History" area="2.7,1.4,30.8,7.8">The chats started in this workspace.</UiItem>
+<UiItem icon="files" name="Files" area="82.5,1.5,6.9,7.7">The current chat's files. Grayed out until a chat is open.</UiItem>
+<UiItem icon="plus" name="New Chat" area="90.3,1.5,6.8,7.7">Starts a new chat.</UiItem>
+<UiItem icon="paperclip" name="Attach file" area="55.8,87.4,5.9,6.5">Adds a file to your message.</UiItem>
+<UiItem icon="hexagon" name="Draw SMILES" area="63.7,87.4,5.9,6.5">Opens Sketch Molecule, to draw a structure.</UiItem>
+<UiItem icon="tool" name="Run tool" area="71.7,87.4,5.9,6.5">Picks a MARA tool to run.</UiItem>
+<UiItem icon="route" name="Run workflow" area="79.7,87.4,5.9,6.5">Picks a workflow to run.</UiItem>
+<UiItem icon="arrow-up" name="Send" area="87.5,86.2,7.9,8.8">Sends your message.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -94,10 +86,10 @@ Hovering highlights the whole residue under the cursor, whether the cursor is on
 The Selection tool picks atoms at the level set in the bar:
 
 <UiList label="Selection modes">
-<UiItem icon="atom" name="Atom">One atom. The tool opens in this mode.</UiItem>
-<UiItem icon="hexagons" name="Residue">The whole residue.</UiItem>
-<UiItem icon="scribble" name="Chain">The whole chain.</UiItem>
-<UiItem icon="x" name="Exit tool">Goes back to the Default tool.</UiItem>
+<UiItem icon="atom" name="Atom" area="37.6,92.7,6.1,5.5">One atom. The tool opens in this mode.</UiItem>
+<UiItem icon="hexagons" name="Residue" area="43.9,92.7,6.1,5.5">The whole residue.</UiItem>
+<UiItem icon="scribble" name="Chain" area="50.4,92.7,6.0,5.5">The whole chain.</UiItem>
+<UiItem icon="x" name="Exit tool" area="56.6,92.7,6.1,5.5">Goes back to the Default tool.</UiItem>
 </UiList>
 
 Hovering outlines in blue what a click would pick. Clicking adds it to the selection, or removes it when all of it is already selected. Selected atoms are outlined in white. Clicking empty space clears the selection.
@@ -178,9 +170,9 @@ When the connection to Nanome's server is slow, a warning icon <AppIcon name="wi
 <ShotRow src="nanome-web/viewer-settings-themes.webp" alt="The viewer theme list">
 
 <UiList label="Viewer settings">
-<UiItem icon="moon" name="Day and night toggle">Switches between day and night.</UiItem>
-<UiItem name="Environment theme">Default, Arctic Cyan, Aurora Green, Black & White, Gold Orange, Island or Pure Black.</UiItem>
-<UiItem name="Fullscreen">Shows the viewer full screen.</UiItem>
+<UiItem icon="moon" name="Day and night toggle" area="15.0,64.2,10.9,9.3">Switches between day and night.</UiItem>
+<UiItem name="Environment theme" area="27.2,3.7,61.1,70.1">Default, Arctic Cyan, Aurora Green, Black & White, Gold Orange, Island or Pure Black.</UiItem>
+<UiItem name="Fullscreen" area="15.2,74.9,73.1,9.7">Shows the viewer full screen.</UiItem>
 </UiList>
 
 The seven themes match the themes in Nanome XR.
@@ -194,8 +186,8 @@ The **Sequence** button at the bottom right of the viewer opens the sequences of
 <ShotRow src="nanome-web/sequence-panel.webp" alt="The sequence viewer">
 
 <UiList label="Sequence viewer">
-<UiItem name="Create">Makes a component from the selection.</UiItem>
-<UiItem name="Clear">Empties the selection.</UiItem>
+<UiItem name="Create" area="91.2,73.7,7.8,23.7">Makes a component from the selection.</UiItem>
+<UiItem name="Clear" area="84.0,73.7,6.8,23.7">Empties the selection.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -208,9 +200,9 @@ A scene is a saved view of the workspace: its components, annotations, molecule 
 
 <UiList label="Scenes rail">
 <UiItem icon="chevrons-right" name="Expand">At the top: expands the rail to show the scene names.</UiItem>
-<UiItem icon="plus" name="New Scene">Adds a scene, up to 50 per workspace.</UiItem>
-<UiItem icon="dots" name="More">Each scene's menu: Rename, Duplicate and Delete.</UiItem>
-<UiItem icon="video" name="Recording">With a time, such as 0:37, marks a scene that holds a recording and shows its length.</UiItem>
+<UiItem icon="plus" name="New Scene" area="3.9,48.7,28.2,8.8">Adds a scene, up to 50 per workspace.</UiItem>
+<UiItem icon="dots" name="More" area="38.2,38.5,53.7,53.5">Each scene's menu: Rename, Duplicate and Delete.</UiItem>
+<UiItem icon="video" name="Recording" area="34.7,33.8,12.0,6.4">With a time, such as 0:37, marks a scene that holds a recording and shows its length.</UiItem>
 </UiList>
 
 </ShotRow>
