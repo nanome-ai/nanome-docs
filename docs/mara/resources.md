@@ -6,8 +6,6 @@ title: User Resources
 
 Videos and articles to help you get started with MARA.
 
-<vimg src="mara/what_mara_do.png" alt="What can MARA do: data analysis, bioinformatics and cheminformatics" />
-
 ## <AppIcon name="player-play" /> Tutorials {#tutorials}
 
 <IconGrid label="Tutorials">

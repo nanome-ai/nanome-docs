@@ -54,6 +54,8 @@ The **MARA** tab is a MARA chat inside the workspace, beside the 3D view.
 
 </ShotRow>
 
+Chats started here stay with this workspace, in its **Chat History**. MARA works on this workspace and the scene on screen, so "this scene" is enough in a question. [Chats in a workspace](/mara/conversations#workspace-chats) compares them with chats on the Conversations page.
+
 More on what MARA can do is in the [MARA section](/mara/overview).
 
 ## <AppIcon name="lasso" /> Tool rail {#tool-rail}

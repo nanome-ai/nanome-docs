@@ -9,6 +9,10 @@
 /mara/navigation           /mara/tools           301
 /mara/navigation.html      /mara/tools           301
 
+# MARA's Deployment page was folded into Technical Details.
+/mara/deployment           /mara/technical       301
+/mara/deployment.html      /mara/technical       301
+
 # Nanome Classic pages moved under /nanome1x/ when the v2 and MARA sections were
 # added (#91). These send the old docs.nanome.ai paths, which older links still
 # use, to where the pages live now. Anchors survive the redirect.

@@ -6,15 +6,17 @@ title: Conversations
 
 **Conversations** in Nanome Web's top bar is where you chat with MARA. Its other two tabs collect the comment threads and mentions from your workspaces.
 
+Chats started in a workspace's MARA tab stay with that workspace, so this page doesn't list them. [Chats in a workspace](#workspace-chats) compares the two.
+
 <IconGrid label="Conversations tabs" :cols="3">
-<IconCard icon="messages" title="Chat" href="#chat">Your MARA chats, and new ones.</IconCard>
+<IconCard icon="messages" title="Chat" href="#chat">Chats started on this page, and new ones.</IconCard>
 <IconCard icon="message" title="Threads" href="#threads">Comment threads from your workspaces.</IconCard>
 <IconCard icon="at" title="Mentions" href="#mentions">Comments that mention you.</IconCard>
 </IconGrid>
 
 ## <AppIcon name="messages" /> Chat {#chat}
 
-The Chat tab lists your chats on the left, grouped by month with the newest first. With no chat open, the page shows three starting points, a few prompts to try, and the message box.
+The Chat tab lists the chats started on this page, grouped by month with the newest first. With no chat open, the page shows three starting points, a few prompts to try, and the message box.
 
 <ShotRow src="mara/conversations.webp" alt="The Conversations page with the Chat tab open and no chat selected">
 
@@ -98,12 +100,20 @@ A structure file opens in a small 3D viewer inside the chat.
 
 ### <AppIcon name="share-2" /> Sharing a chat {#sharing}
 
+**Share**, in your own chat's header, sets who can see the chat.
+
+<ShotRow src="mara/share-menu.webp" alt="A chat's Share menu, set to Private">
+
 <UiList label="Share">
-<UiItem name="Private">Only you can see the chat.</UiItem>
-<UiItem name="Org">Shares the chat with your organization.</UiItem>
-<UiItem name="Public">Makes the chat public.</UiItem>
-<UiItem icon="copy" name="Copy Link">Copies a link to the chat.</UiItem>
+<UiItem name="Private" area="39.7,23.8,18.8,13.8">Only you can see the chat.</UiItem>
+<UiItem name="Org" area="59.4,23.8,14.1,13.8">Members of your organization can see the chat. It's shown when you're in an organization.</UiItem>
+<UiItem name="Public" area="74.1,23.8,17.2,13.8">Anyone with the link can see the chat.</UiItem>
+<UiItem icon="copy" name="Copy Link" area="64.2,62.5,25.9,13.3">Copies a link to the chat. On a Private chat, it first switches the chat to Org, or to Public if you're not in an organization.</UiItem>
 </UiList>
+
+</ShotRow>
+
+Chats in a workspace's MARA tab have no Share button.
 
 ### <AppIcon name="files" /> Files panel {#files-panel}
 
@@ -119,6 +129,50 @@ A structure file opens in a small 3D viewer inside the chat.
 <UiItem icon="trash" name="Delete" area="61,55.8,9.7,4.6">Deletes the ticked files.</UiItem>
 <UiItem icon="table" name="Tables" href="/mara/features#tables" area="3.1,74.8,93.3,15.8">Data tables for the chat. Drop CSV or SDF files here, or ask MARA to make a table from a file.</UiItem>
 <UiItem name="Context" area="3.3,93,93.2,5.3">Values from tool results and the conversation that MARA keeps for this chat.</UiItem>
+</UiList>
+
+</ShotRow>
+
+## <AppIcon name="sparkles" /> Chats in a workspace {#workspace-chats}
+
+A chat starts either on this page or in a workspace's [MARA tab](/nanome_web/workspace#mara-tab). Each chat stays where it started, and the app has no control for moving a chat from one to the other.
+
+| | Conversations | MARA tab |
+|---|---|---|
+| **Listed in** | This page | Chat History |
+| **Workspace** | None attached | This one |
+| **File link** | Opens beside the chat | Asks where to open it |
+| **Files** | A side panel, with Tables | Replaces the chat |
+| **Add to Workspace** | Asks which workspace | Asks which workspace |
+| **Title, Pin, Share** | Yes | No |
+
+A chat on this page has no workspace attached, but MARA's Nanome tools can still make a workspace and load files into it. In both kinds of chat, **Add to Workspace** in Files asks which workspace to load into. In the MARA tab it doesn't fill in the one you're in.
+
+In the MARA tab, a question can say "this scene" or "this workspace". The chat belongs to the workspace it started in, and each message also tells MARA which scene is on screen. In the chat below, the question names no workspace, and MARA runs Export Entry from Nanome Workspace on this one.
+
+<ShotRow src="mara/workspace-chat.webp" alt="A chat in a workspace's MARA tab, with a tool step and a file link">
+
+<UiList label="Chat in the MARA tab">
+<UiItem icon="messages" name="Chat History" area="2.4,2.6,42.6,6.6">Shows the open chat's title, and lists the chats started in this workspace. Hovering one shows <Btn icon="trash">Delete</Btn>, which asks for a second click.</UiItem>
+<UiItem icon="files" name="Files" area="82.5,2.7,6.7,6.5">Shows the chat's files and context in place of the chat. <Btn icon="arrow-left">Back</Btn> returns to the chat.</UiItem>
+<UiItem icon="plus" name="New Chat" area="90.4,2.7,6.7,6.5">Starts another chat in this workspace.</UiItem>
+<UiItem icon="tool" name="Tool step" area="3.5,38.0,63.3,4.0">The tool MARA ran. The chevron beside it shows the tool's inputs and output.</UiItem>
+<UiItem icon="file" name="File link" href="#open-file-in" area="25.0,44.2,19.6,4.3">Asks where to open the file.</UiItem>
+</UiList>
+
+</ShotRow>
+
+### Opening a file from the MARA tab {#open-file-in}
+
+In the MARA tab, clicking a file link opens a dialog with four choices. On this page, the same click opens the file beside the chat.
+
+<ShotRow src="mara/open-file-in.webp" alt="The Open 4ceo.pdb in dialog">
+
+<UiList label="Open file in">
+<UiItem icon="cube-3d-sphere" name="This Workspace" area="7.3,27.3,85.4,13.6">Loads the file into this workspace.</UiItem>
+<UiItem icon="cube-3d-sphere" name="Other Workspace" area="7.3,43.7,85.4,13.6">Opens the <strong>Add to Workspace</strong> dialog, to pick another workspace.</UiItem>
+<UiItem icon="eye" name="Quick Preview" area="7.3,60.1,85.4,13.6">Shows the file in a window, without loading it into the workspace.</UiItem>
+<UiItem icon="cloud-download" name="Download" area="7.3,76.6,85.4,13.6">Downloads the file.</UiItem>
 </UiList>
 
 </ShotRow>
