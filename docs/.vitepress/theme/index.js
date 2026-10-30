@@ -29,6 +29,11 @@ import Btn from './components/Btn.vue'
 import ShotRow from './components/ShotRow.vue'
 import ScreenMap from './components/ScreenMap.vue'
 import MapCard from './components/MapCard.vue'
+import RepresentationDemo from './components/demos/RepresentationDemo.vue'
+import ColorSchemeDemo from './components/demos/ColorSchemeDemo.vue'
+import ThemeDemo from './components/demos/ThemeDemo.vue'
+import DistanceDemo from './components/demos/DistanceDemo.vue'
+import './components/demos/app.css'
 
 // Interactive building blocks, usable from any markdown page.
 import Chooser from './components/interactive/Chooser.vue'
@@ -69,6 +74,10 @@ export default {
     app.component('ShotRow', ShotRow)
     app.component('ScreenMap', ScreenMap)
     app.component('MapCard', MapCard)
+    app.component('RepresentationDemo', RepresentationDemo)
+    app.component('ColorSchemeDemo', ColorSchemeDemo)
+    app.component('ThemeDemo', ThemeDemo)
+    app.component('DistanceDemo', DistanceDemo)
 
     app.component('Chooser', Chooser)
     app.component('ChooserResult', ChooserResult)

@@ -12,7 +12,7 @@ A **Fixed Reference** structure is chosen, and **Moving Structures** are translo
 
 ## Instructions
 
-<vimg src="plugins-page/superimpose/superimpose_menu.png" />
+<ShotRow src="plugins-page/superimpose/superimpose_menu.png" alt="The Superimpose Proteins menu with Backbone α carbons and Entire Fixed Reference picked, and 5KHX as the Fixed Reference">
 
 1. In the upper left, the user can select the Overlay Method.
     -   **Backbone α carbons**: Overlay structures based on all paired alpha carbons between the two proteins.
@@ -33,30 +33,89 @@ A **Fixed Reference** structure is chosen, and **Moving Structures** are translo
 
     - Once complete, the proteins will be superimposed and locked, for visual inspection. The RMSD tables pulldown menu in the lower left will become active. Each superimpose run will generate a new table, with the most recent run appearing at the top of the pulldown list.  Select the run to open the table in the workspace. Tables can be closed and reopened in the workspace.
 
+<UiList label="Superimpose Proteins menu">
+<UiItem name="Backbone α carbons" area="4.8,23.7,43.5,5.3">Overlays all paired alpha carbons. Picked here.</UiItem>
+<UiItem name="All Heavy Atoms" area="5.1,29.3,43.2,5.3">Overlays backbone and side chain atoms, all but hydrogen.</UiItem>
+<UiItem name="Entire Fixed Reference" area="51.6,24.0,44.1,5.3">Sequence alignment of the entire proteins. Picked here.</UiItem>
+<UiItem name="1 specific chain from the Fixed Reference" area="51.7,29.4,43.9,5.1">Aligns the moving structures onto one chain of the Fixed Reference.</UiItem>
+<UiItem name="By Binding Site" area="51.7,34.8,43.8,5.1">Aligns the binding site around a ligand on the Fixed Reference, using Site-Motif.</UiItem>
+<UiItem name="Fixed" area="5.7,49.1,8.8,26.1">The yellow pin marks the Fixed Reference. Select another pin to change it.</UiItem>
+<UiItem name="Moving Structures" area="14.8,49.1,8.8,26.1">Select one or more. A selected box turns green.</UiItem>
+<UiItem name="Chains" area="53.2,49.5,25.3,25.3">The chain for each protein, when aligning by chain.</UiItem>
+<UiItem name="RMSD Tables" area="19.3,89.7,30.3,7.9">One table per run, newest at the top. Active after a run.</UiItem>
+<UiItem name="Superimpose" area="64.6,88.9,30.1,7.3">Runs the overlay and RMSD. Active once selections are made.</UiItem>
+</UiList>
+
+</ShotRow>
 
 <vimg src="plugins-page/superimpose/superimpose_protein.png" />
 <em>Two superimposed proteins</em>
 <p></p>
 
-<vimg src="plugins-page/superimpose/superimpose_rmsd_menu.png" />
-<em>RMSD table describing above superimposed proteins </em>
+<ShotRow src="plugins-page/superimpose/superimpose_rmsd_menu.png" alt="RMSD Run 1 table with 3AP1 purple tpst2 as the Fixed Reference and 5WRI orange tpst1 at RMSD 1.64">
 
+*RMSD table describing above superimposed proteins*
+
+<UiList label="RMSD table">
+<UiItem name="Fixed Reference" area="0.4,21.1,96.4,12.3">The top row, marked with the yellow pin.</UiItem>
+<UiItem name="Moving Structures" area="0.4,33.9,96.4,10.8">One numbered row each.</UiItem>
+<UiItem name="RMSD" area="50.1,11.8,12.9,31.8">Values close to zero mean highly similar proteins.</UiItem>
+<UiItem name="Paired residue count" area="65.4,9.0,12.1,34.7">Residues paired between the two structures.</UiItem>
+<UiItem name="Paired atom count" area="81.9,9.0,11.8,34.7">Atoms paired. Equals the residue count for backbone α carbons.</UiItem>
+</UiList>
+
+</ShotRow>
+
+<ShotRow src="plugins-page/superimpose/superimpose_menu_2.png" alt="The Superimpose Proteins menu aligning by chain, with chain B picked on 3AP1 and 5WRI and the chains highlighted green on the structures">
 
 4. When aligning by chain, the main panel chain selection boxes will become active. Choose **Fixed** and **Moving Structures** as above, and additionally choose a chain for each protein to be superimposed
 
     - Note that selecting a chain on the plugin main panel will also apply green highlighting to the selected chain of the protein structure, to visualize the selections before running.
 
-<vimg src="plugins-page/superimpose/superimpose_menu_2.png" />
-<vimg src="plugins-page/superimpose/superimpose_rmsd_menu_2.png" />
+<UiList label="Aligning by chain">
+<UiItem name="1 specific chain from the Fixed Reference" area="35.1,29.0,39.8,6.4">Picked here.</UiItem>
+<UiItem name="Fixed" area="2.3,43.9,6.7,9.6">3AP1 purple tpst2 is the Fixed Reference.</UiItem>
+<UiItem name="Moving Structures" area="9.3,54.6,6.2,7.8">5WRI orange tpst1 is selected.</UiItem>
+<UiItem name="Select Chain" area="40.4,44.9,31.4,37.8">The chain for each protein. Chain B is picked on 3AP1 and 5WRI.</UiItem>
+<UiItem name="Chain highlight" area="77.6,11.8,21.1,76.6">The picked chains show green on the structures.</UiItem>
+<UiItem name="Superimpose (2)" area="49.3,90.2,25.1,7.1">The Fixed Reference and one Moving Structure.</UiItem>
+</UiList>
+
+</ShotRow>
+
+<ShotRow src="plugins-page/superimpose/superimpose_rmsd_menu_2.png" alt="RMSD Run 2 table listing chain B for 3AP1 and 5WRI at RMSD 0.54, beside the superimposed proteins">
+
+The RMSD table for a chain run names the chain with each structure.
+
+<UiList label="RMSD table for a chain run">
+<UiItem name="Fixed Reference" area="0.0,41.2,76.7,22.8">3AP1 purple tpst2, chain B.</UiItem>
+<UiItem name="Moving Structure" area="0.0,64.4,76.7,21.3">5WRI orange tpst1, chain B, at RMSD 0.54.</UiItem>
+<UiItem name="Superimposed proteins" area="79.2,17.1,20.6,79.3">The two proteins after the run.</UiItem>
+</UiList>
+
+</ShotRow>
+
+<ShotRow src="plugins-page/superimpose/superimpose-5a.png" alt="The Superimpose Proteins menu aligning by binding site, with All Heavy Atoms picked, the Extract binding sites option, and ligand STI on 1xbb blue">
 
 5. When aligning by Binding Site, the Overlay method will automatically change to **All Heavy Atoms**.
     - An option to **Extract binding sites into new entry items** appears.  This creates a new set of entries containing only the superimposed binding site atoms of each protein.
     - Choose **Fixed** and **Moving Structures** as above and additionally choose a ligand from the Fixed reference to establish the binding site for superimposition.
 
-    <vimg src="plugins-page/superimpose/superimpose-5a.png" />
     *Note the Extract binding sites into new entry items button*
-    <br><br>
-    <vimg src="plugins-page/superimpose/superimpose-5b.png" />
+
+<UiList label="Aligning by binding site">
+<UiItem name="By Binding Site" area="50.4,33.2,45.4,5.0">Picked here.</UiItem>
+<UiItem name="All Heavy Atoms" area="4.0,27.8,42.9,5.0">Picked automatically.</UiItem>
+<UiItem name="Extract binding sites into new entry items" area="4.5,33.8,41.6,4.0">New entries with only the superimposed binding site atoms.</UiItem>
+<UiItem name="Fixed" area="4.1,65.7,8.1,8.2">1xbb blue is the Fixed Reference.</UiItem>
+<UiItem name="Ligand" area="56.3,66.5,34.3,6.7">The ligand that sets the binding site. STI here.</UiItem>
+<UiItem name="Moving Structures" area="12.4,47.9,8.3,16.6">4xg2 gold and 5y5t red-orange are selected.</UiItem>
+<UiItem name="Superimpose (3)" area="64.1,90.8,32.7,7.4">The Fixed Reference and two Moving Structures.</UiItem>
+</UiList>
+
+</ShotRow>
+
+<vimg src="plugins-page/superimpose/superimpose-5b.png" />
 
 
 6. When aligning by selection, the user must make a selection in the **Fixed Reference**.  These selections can be made by using the selector tool on the 3D structure itself, or by using menus such as Hierarchy and Antibody Regions table

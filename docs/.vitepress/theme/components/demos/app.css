@@ -1,0 +1,371 @@
+/* =========================================================================
+   Option panels: copies of Nanome Web's own controls (white card, slate text,
+   purple switches, grey pill segments), measured from the app, beside a
+   render of what each option does. The copies stay light in the site's dark
+   theme, as the app does.
+   ========================================================================= */
+
+.n-demo {
+  --app-text: #334155;
+  --app-muted: #64748b;
+  --app-soft: #475569;
+  --app-line: #e2e8f0;
+  --app-fill: #f1f5f9;
+  --app-track: #cbd5e1;
+  --app-purple: #7c4cff;
+  --app-purple-soft: #ede9fe;
+  display: grid;
+  gap: 18px;
+  margin: 20px 0 32px;
+}
+
+.n-demo__view {
+  order: -1;
+  margin: 0;
+}
+
+@media (min-width: 760px) {
+  .n-demo {
+    grid-template-columns: 21rem minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .n-demo__view {
+    order: 0;
+    position: sticky;
+    top: calc(var(--n-nav-height) + 20px);
+  }
+}
+
+.n-demo__caption {
+  min-height: 3em;
+  margin-top: 10px;
+  color: var(--n-text-muted);
+  font-size: var(--n-text-sm);
+  line-height: 1.5;
+}
+
+.n-demo__caption strong {
+  color: var(--n-text);
+}
+
+/* The card. */
+.n-app-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--app-line);
+  border-radius: 24px;
+  background: #fff;
+  color: var(--app-text);
+  font-size: 15px;
+  line-height: 1.35;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.vp-doc .n-app-card hr {
+  margin: 0;
+  border: 0;
+  border-top: 1px solid var(--app-line);
+}
+
+/* A row: icon, name, switch, palette. */
+.n-app-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.n-app-row__name {
+  display: inline-flex;
+  flex: 1;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.n-app-row.is-small {
+  min-height: 28px;
+  font-size: 14px;
+}
+
+.n-app-card .n-appicon {
+  color: var(--app-text);
+}
+
+/* The switch: 40 by 24, purple when on. */
+.n-app-switch {
+  position: relative;
+  flex: none;
+  width: 40px;
+  height: 24px;
+  margin: 0;
+  border-radius: 30px;
+  background: var(--app-track);
+  appearance: none;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.n-app-switch::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 150ms ease;
+}
+
+.n-app-switch:checked {
+  background: var(--app-purple);
+}
+
+.n-app-switch:checked::after {
+  transform: translateX(16px);
+}
+
+.n-app-switch:focus-visible,
+.n-app-card button:focus-visible {
+  outline: 2px solid var(--app-purple);
+  outline-offset: 2px;
+}
+
+.n-app-palette {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  opacity: 0.45;
+}
+
+.n-app-palette.is-on {
+  background: var(--app-fill);
+  opacity: 1;
+}
+
+/* A segmented control: grey pills, the picked one white. */
+.n-app-seg {
+  display: flex;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.n-app-seg button {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 4px;
+  border: 1px solid var(--app-fill);
+  background: var(--app-fill);
+  color: var(--app-muted);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.n-app-seg button > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 4px 4px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.n-app-seg button .n-appicon {
+  color: inherit;
+}
+
+.n-app-seg button.is-on > span {
+  background: #fff;
+  color: var(--app-text);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+/* Interactions: the count, Show or Hide, and the list. */
+.n-app-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 11px;
+  background: var(--app-fill);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.n-app-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid var(--app-fill);
+  border-radius: 32px;
+  background: var(--app-fill);
+  color: var(--app-soft);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.n-app-caret {
+  width: 0;
+  height: 0;
+  border-top: 5px solid currentColor;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+.n-app-caret.is-up {
+  transform: rotate(180deg);
+}
+
+.n-app-intlist {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: 2px;
+}
+
+.n-app-dot {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+/* Color schemes: outlined pills, the picked one filled. */
+.n-app-schemelist {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.n-app-scheme {
+  padding: 7px 12px;
+  border: 1px solid var(--app-line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--app-soft);
+  font: inherit;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.n-app-scheme:hover:not(:disabled),
+.n-app-scheme.is-on {
+  border-color: var(--app-fill);
+  background: var(--app-fill);
+  color: var(--app-text);
+}
+
+.n-app-scheme.is-on {
+  font-weight: 600;
+}
+
+.n-app-scheme:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Themes: a list with the picked one in purple, and the day/night button. */
+.n-app-themelist {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.n-app-theme {
+  padding: 9px 14px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--app-text);
+  font: inherit;
+  font-size: 16px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.n-app-theme:hover {
+  background: var(--app-fill);
+}
+
+.n-app-theme.is-on {
+  background: var(--app-purple-soft);
+  color: var(--app-purple);
+}
+
+.n-app-themebar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--app-line);
+}
+
+.n-app-round {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--app-fill);
+  cursor: pointer;
+}
+
+.n-app-field {
+  flex: 1;
+  padding: 9px 14px;
+  border: 2px solid var(--app-purple);
+  border-radius: 16px;
+  font-size: 15px;
+}
+
+/* The distance slider: purple track up to the value. */
+.n-app-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+}
+
+.n-app-slider__head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.n-app-slider__head output {
+  min-width: 3.2em;
+  padding: 2px 8px;
+  border-radius: 8px;
+  background: var(--app-fill);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.n-app-slider input[type='range'] {
+  width: 100%;
+  margin: 0;
+  accent-color: var(--app-purple);
+  cursor: pointer;
+}

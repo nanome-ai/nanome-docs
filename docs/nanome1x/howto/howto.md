@@ -4,9 +4,17 @@ title: How to
 
 ## How to enable/disable auto height adjustment
 
-<vimg src="howto-page/autoheightsetting.png" />
+<ShotRow src="howto-page/autoheightsetting.png" alt="The Action Menu with Auto Height Adjust selected and its Enabled toggle open">
 
- Auto height calibration can be toggled on/off using the action menu. If users are having height issues, we recommend using this toggle to help troubleshoot the issue. By default, the toggle is off when users are in Mixed Reality Passthrough and turned on when users are in virtual reality. If height issues persist, we recommend resetting your floor height by calibrating your device. EX: with meta devices, this is done by resetting the guardian.
+Auto height calibration can be toggled on/off using the action menu. If users are having height issues, we recommend using this toggle to help troubleshoot the issue. By default, the toggle is off when users are in Mixed Reality Passthrough and turned on when users are in virtual reality. If height issues persist, we recommend resetting your floor height by calibrating your device. EX: with meta devices, this is done by resetting the guardian.
+
+<UiList label="Action Menu">
+<UiItem name="Auto Height Adjust" area="32.7,77.9,30.8,8.4">Opens the toggle for auto height adjustment.</UiItem>
+<UiItem icon="check" name="Enabled" area="64.4,1.9,29.4,8.6">Turns auto height adjustment on or off.</UiItem>
+<UiItem icon="refresh" name="Reset To Default" area="64.4,10.4,29.4,7.3">Sets the toggle back to its default.</UiItem>
+</UiList>
+
+</ShotRow>
 
 ## How to export a molecule for future access or other software
 
@@ -28,12 +36,27 @@ Nanome supports the following MD trajectory files (v1.26): .PDB, .PSE, .DCD, .GR
 1. Go to the [Load menu](/nanome1x/navigation/menus#load).
 2. Click on [Files](/nanome1x/navigation/menus#my-files). Navigate to the folder that contains your trajectories and press load (you may also have to multi-select the topology file for trajectories generated via Gromacs or Desmond.
 If a trajectory doesn’t load properly, please try reducing its frame count and/or export as a multi-model .PDB. Additionally, please let us know some details about the problematic files and we can look into resolving them. Relevant details would include the file format type and the number of frames. Typically, the shorter the trajectory the easier time you’ll have to load it in. 
-3. Once loaded, you can play the trajectory by launching the “Frame” menu represented by this icon on the [Entry List](/nanome1x/navigation/menus#entry-list): 
-<vimg src="howto-page/FrameMenuIcon.png" />
+3. Once loaded, you can play the trajectory by launching the “Frame” menu with its button on the [Entry List](/nanome1x/navigation/menus#entry-list), shown in [the next section](#how-to-open-the-frame-menu-and-execute-frame-operations).
 
 ## How to open the Frame Menu and execute frame operations
 
+<ShotRow src="navigating-page/Entry-Hierarchy.jpg" alt="The Entry List with 6LU7 loaded, and the Frame Menu button on its row" crop="0,0,35.6,100">
+
 Find the entity containing multiple frames that you have loaded on the [Entry Menu](/nanome1x/navigation/menus#main-menus). Click on the second button from the right on the same row. This is the [Frame Menu](/nanome1x/navigation/menus#frame-data) Button.
+
+<UiList label="Entry List row">
+<UiItem name="Entity row" area="0.7,23.8,34.6,11.1">The entity you loaded, here 6LU7.</UiItem>
+<UiItem name="Frame Menu" area="29.5,27.2,3.3,7.6">Second button from the right. Opens the Frame Menu.</UiItem>
+</UiList>
+
+</ShotRow>
+
+<ScreenMap src="navigating-page/frame_menu_speeds.png" alt="The Frame Menu for 2HIU with the Playback and Edit tabs open" label="Frame Menu">
+<MapCard icon="list-details" title="Frames tab" href="#how-to-swap-molecules-from-the-list-of-frames" side="left" area="1.6,14.7,24.3,8.3">Top left. Lists the frames.</MapCard>
+<MapCard icon="chevron-right" title="Previous / Next frame" href="#how-to-change-frame" side="left" area="5.2,25.2,40.8,9.7">The arrow buttons on the left side.</MapCard>
+<MapCard icon="tag" title="Meta Data tab" href="#how-to-show-meta-data-on-frame" side="right" area="73.9,14.7,24.3,8.3">Top right. Shows the meta data.</MapCard>
+<MapCard icon="copy-plus" title="Duplicate frame" href="#how-to-duplicate-a-frame" side="right" area="53.8,66.3,40.5,11.8">On the right side.</MapCard>
+</ScreenMap>
 
 ### How to change frame
 
@@ -41,12 +64,25 @@ Click on the arrow buttons on the left side of the [Frame Menu](/nanome1x/naviga
 
 ### How to duplicate a frame 
 
-Click on the Duplicate Frame button on the right side of the [Frame Menu](/nanome1x/navigation/menus#frame-data) to change frame.
+Click on the Duplicate Frame button on the right side of the [Frame Menu](/nanome1x/navigation/menus#frame-data) to duplicate the current frame.
 
 ### How to swap molecules from the list of frames
 
+<ShotRow src="navigating-page/Entry-FrameData2.jpg" alt="The Frame Menu for 2HIU with the Frames and Meta Data tabs open">
+
+<Steps>
+
 1. Click on the Frames Tab Button on the top left to switch to the Frames Tab.
 2. Click on one of the models in the list to switch to that molecule.
+
+</Steps>
+
+<UiList label="Frames tab">
+<UiItem icon="list-details" name="Frames tab" area="0.7,14.0,24.7,8.3">Top left.</UiItem>
+<UiItem name="Model list" area="4.6,36.0,40.9,58.1">One row per frame. Click one to switch to it.</UiItem>
+</UiList>
+
+</ShotRow>
 
 ### How to show meta data on frame
 

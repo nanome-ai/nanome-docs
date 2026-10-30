@@ -7,11 +7,12 @@
  *
  * A legend row (<UiItem>) or card (<IconCard>) with an `area` ("x,y,w,h",
  * percent of the image) lights up that part of the image while it's hovered,
- * and hovering the image lights up the row. Clicking the image opens it full
- * screen with the legend beside it.
+ * and hovering the image lights up the row. Clicking a part of the image goes
+ * to the row's link, or brings the row into view when it has none. The expand
+ * button opens the image full screen with the legend beside it.
  *
- * A very wide image, such as a sequence strip, stays full width under its
- * legend, since it can't be read at a third of the page.
+ * A wide image (about 2:1 or wider), such as a sequence strip, stays full
+ * width under its legend, since it can't be read at a third of the page.
  *
  *   <ShotRow src="nanome-v2/v2-7/settings-tab.webp" alt="The Settings tab">
  *
@@ -35,7 +36,7 @@ const props = defineProps({
 const wide = computed(() => {
   const [w, h] = imageInfo(props.src).size || []
   const [, , cw, ch] = parseBox(props.crop) || [0, 0, 100, 100]
-  return (w * cw) / (h * ch) > 2.2
+  return (w * cw) / (h * ch) > 1.9
 })
 
 // Legend rows with an area register here, in page order, and get a number
@@ -64,6 +65,15 @@ provide('n-hotspots', {
 
 const root = ref(null)
 const view = useFocusView(root)
+
+/** A click on a region with no link: light its row and bring it into view. */
+function pick(n) {
+  active.value = n
+  const el = spots.value.find((s) => s.n === n)?.el?.()
+  if (!el) return
+  const r = el.getBoundingClientRect()
+  if (r.top < 80 || r.bottom > window.innerHeight) el.scrollIntoView({ block: 'center', behavior: 'smooth' })
+}
 </script>
 
 <template>
@@ -90,6 +100,7 @@ const view = useFocusView(root)
             @enter="(n) => (active = n)"
             @leave="(n) => active === n && (active = 0)"
             @open="view.open"
+            @pick="pick"
           />
         </div>
       </div>
@@ -142,6 +153,53 @@ const view = useFocusView(root)
   white-space: normal;
 }
 
+/* Beside a screenshot the legend stays compact, so it runs about as tall as
+   the image instead of well past it. */
+.n-shotrow__legend :deep(.n-uilist) {
+  gap: 0;
+  margin: 10px 0 14px;
+  padding: 4px;
+}
+
+.n-shotrow__legend :deep(.n-uiitem__row) {
+  grid-template-columns: 1.75rem minmax(0, 1fr);
+  gap: 10px;
+  padding: 4px 8px;
+}
+
+.n-shotrow__legend :deep(.n-uiitem__text) {
+  min-height: 1.75rem;
+  padding-top: 0.2rem;
+  column-gap: 8px;
+  row-gap: 0;
+  line-height: 1.4;
+}
+
+.n-shotrow__legend :deep(.n-uiitem__name) {
+  font-size: 0.875rem;
+}
+
+.n-shotrow__legend :deep(.n-uiitem__name.is-textbutton) {
+  padding: 0 8px;
+  font-size: 0.8125rem;
+}
+
+.n-shotrow__legend :deep(.n-uiitem__desc) {
+  flex-basis: 14rem;
+  font-size: 0.8125rem;
+}
+
+.n-shotrow__legend :deep(.n-uiitem .n-appicon.is-button) {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.n-shotrow__legend > :deep(p) {
+  margin: 8px 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
 /* Narrow: pins on the image and numbers on the rows tie the two together. */
 .n-shotrow :deep(.hotshot__pin),
 .n-shotrow :deep(.n-uiitem__num),
@@ -149,11 +207,11 @@ const view = useFocusView(root)
   display: flex;
 }
 
-/* Side by side once there's room for both: about 40% for the image. */
+/* Side by side once there's room for both: about 46% for the image. */
 @container shotrow (min-width: 600px) {
   .n-shotrow:not(.is-wide) .n-shotrow__grid {
     display: grid;
-    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
     grid-template-areas: 'shot legend';
     align-items: start;
     gap: 28px;

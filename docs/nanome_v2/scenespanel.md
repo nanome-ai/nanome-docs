@@ -9,9 +9,8 @@ The Scenes Panel sits in the left sidebar, beside the Main Panel. A scene is a s
 <ScreenMap src="nanome-v2/v2-7/desktop-layout.webp" alt="The left sidebar with the Scenes Panel controls" crop="0,9.6,15.6,60.7" label="Left sidebar">
 <MapCard icon="layout-grid" title="Workspace header" href="#workspace-header" side="top" area="0.5,10.5,14.7,6.2">The workspace name, network health and access.</MapCard>
 <MapCard icon="box" title="Scene controls" href="#controls" side="top" area="0.9,20.1,14.0,4.1">Create, step through and play scenes.</MapCard>
-<MapCard icon="dots" title="Scene menu" href="#scene-menu" side="left">Rename, duplicate, copy a POV or add a recording.</MapCard>
-<MapCard icon="video" title="Recording a scene" href="#recording-a-scene" side="right">A presenter's voice and pointer, played back in the scene.</MapCard>
-<MapCard icon="users" title="Users" href="#users-section" side="bottom" area="0.9,55.5,14.0,8.3">Who's in the workspace, Share and Spotlight Me.</MapCard>
+<MapCard icon="dots" title="Scene menu" href="#scene-menu" side="left" area="1.2,25.3,11.5,5.6">On a scene's row, shown on hover: rename, duplicate, copy a POV, or record a presentation in the scene.</MapCard>
+<MapCard icon="users" title="Users" href="#users-section" side="bottom" area="0.9,55.5,14.0,4.0">Who's in the workspace, Share and Spotlight Me.</MapCard>
 <MapCard icon="crown" title="Spotlight Mode" href="#spotlight-mode" side="bottom" area="0.9,59.7,14.0,4.1">Share your view, or follow someone else's.</MapCard>
 </ScreenMap>
 

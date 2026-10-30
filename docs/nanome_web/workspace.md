@@ -31,7 +31,7 @@ The panel shows the workspace name, project and description above its six tabs. 
 
 <UiList label="Workspace panel header">
 <UiItem icon="chevrons-right" name="Collapse panel">At the top of the panel: collapses it to give the viewer more room.</UiItem>
-<UiItem icon="device-vision-pro" name="Open in XR">Sends this workspace to Nanome XR on your headset, which asks whether to load it just for you or for everyone in your current session.</UiItem>
+<UiItem icon="device-vision-pro" name="Open in XR" href="/nanome_web/collaboration#sending-a-workspace-to-a-headset">Sends this workspace to Nanome XR on your headset. With other people in the headset's session, it asks whether to load it just for you or for everyone.</UiItem>
 <UiItem icon="dots" name="More (...)" href="/nanome_web/home#workspaces">Open in new tab, Edit info, Copy shareable link, Duplicate, Open in XR, Move to project, Export analysis and Delete.</UiItem>
 </UiList>
 
@@ -69,15 +69,23 @@ The four buttons on the right edge of the viewer choose what a click in the 3D v
 
 The Selection and Measurement tools show their modes in a bar at the bottom of the viewer, in place of the scene controls. <Btn icon="x">Exit tool</Btn> at the end of the bar goes back to the Default tool.
 
+A click only counts when the mouse moves 4 pixels or less between pressing and releasing the button. A longer drag turns or pans the view, so dragging never selects or measures.
+
 <DocVideo src="v2-7/web-hover-select-measure.mp4" caption="Hovering, selecting and measuring in Nanome Web (from the v2.7 release)." />
 
 ### <AppIcon name="droplet" /> Default {#default}
 
-<ShotRow src="nanome-web/hover-highlight.webp" alt="An atom highlighted and labelled on hover">
+<ShotRow src="nanome-web/hover-highlight.webp" alt="A residue on the ribbon highlighted and labeled on hover">
 
 Hovering highlights the whole residue under the cursor, whether the cursor is on an atom, a bond or the ribbon. Clicking adds that residue to the selection, or removes it when it's already selected. Clicking empty space clears the selection, and double-clicking zooms to a residue or an entry.
 
+<UiList label="Hover">
+<UiItem icon="droplet" name="Hovered residue" area="34.4,28.0,9.4,11.4">Outlined in blue. Its label gives the entry name, then the chain, residue and residue number, such as A|GLY'59. On an atom, the label adds the atom name.</UiItem>
+</UiList>
+
 </ShotRow>
+
+The Default tool works like the [Pointer](/nanome_v2/toolspanel#pointer) in Nanome XR.
 
 ### <AppIcon name="lasso" /> Selection tool {#selection-tool}
 
@@ -98,19 +106,21 @@ Hovering outlines in blue what a click would pick. Clicking adds it to the selec
 
 Rotation and zoom pivot on the selection. The [sequence viewer](#sequence-viewer) selects residues too, and its **Create** button turns the selection into a component.
 
-### <AppIcon name="ruler-2" /> Measurement tool {#measurement-tool}
+In Nanome XR, the [Selection Tool](/nanome_v2/toolspanel#selection-tool) can also select by dragging over atoms. In Nanome Web a drag turns the view.
 
-<ShotRow src="nanome-web/measure-results.webp" alt="A finished distance and angle on the 4CEO ligand">
+### <AppIcon name="ruler-2" /> Measurement tool {#measurement-tool}
 
 The Measurement tool measures between atoms. The bar sets what it measures:
 
 <UiList label="Measurement modes">
 <UiItem icon="ruler-measure" name="Distance">Click 2 atoms. The distance, in ångströms to two decimal places. The tool opens in this mode.</UiItem>
 <UiItem icon="angle" name="Angle">Click 3 atoms. The angle at the second atom, in degrees to one decimal place.</UiItem>
-<UiItem icon="rotate-clockwise-2" name="Dihedral">Click 4 atoms. The torsion angle around the bond axis from atom 2 to atom 3, in degrees from 0° to 180°.</UiItem>
+<UiItem icon="rotate-clockwise-2" name="Dihedral">Click 4 atoms. The torsion angle around the bond axis from atom 2 to atom 3, in degrees from 0° to 180°, to one decimal place.</UiItem>
 <UiItem icon="trash" name="Delete">Removes the measurement that's clicked.</UiItem>
 <UiItem icon="x" name="Exit tool">Goes back to the Default tool.</UiItem>
 </UiList>
+
+<ShotRow src="nanome-web/measure-results.webp" alt="A finished distance and angle on the 4CEO ligand">
 
 <Steps>
 
@@ -119,6 +129,11 @@ The Measurement tool measures between atoms. The bar sets what it measures:
 3. The last click completes the measurement. Finished measurements stay drawn in the viewer with their values.
 
 </Steps>
+
+<UiList label="Finished measurements">
+<UiItem icon="angle" name="Angle" area="28.0,38.0,10.5,4.5">The value sits beside the second atom, with lines to the other two.</UiItem>
+<UiItem icon="ruler-measure" name="Distance" area="48.5,41.5,13.0,6.0">The value sits at the middle of the dashed line.</UiItem>
+</UiList>
 
 </ShotRow>
 
@@ -133,7 +148,18 @@ Nanome shows dihedral angles from 0° to 180°. Torsions of −60° and +60° bo
 
 </Callout>
 
+Nanome Web draws measurements the same way as Nanome XR. A distance, a dihedral and an angle look like this:
+
+<vimg src="nanome-v2/v2-7/measurement-types.webp" alt="A distance, a dihedral and an angle measured on the 1KV2 ligand" />
+
 In **Delete** mode, hovering a measurement turns it red, and clicking removes it.
+
+<Accordion title="How the tool picks" teaser="The live line, and a 12-pixel reach in Delete mode.">
+
+- Between clicks, the dashed line ends at the hovered atom. Away from any atom, it follows the cursor at the depth of the first picked atom.
+- In **Delete** mode, the cursor picks the measurement whose lines pass closest to it, within 12 pixels on screen.
+
+</Accordion>
 
 ### <AppIcon name="message" /> Add a comment {#add-a-comment}
 
@@ -152,60 +178,133 @@ Mouse and touch controls in the 3D viewer:
 
 Rotation and zoom pivot on the current selection, or on the highlighted residue under the cursor, so the part being inspected stays in view.
 
+While you're [following someone](/nanome_web/collaboration#following-from-the-web), dragging still turns or pans the view. When you let go, the view eases back to theirs.
+
+<Accordion title="Pivot and double-click details" teaser="What the view turns around, and what a double-click frames.">
+
+- Rotation and zoom turn around the center of the selection. With nothing selected, they turn around the center of what's highlighted under the cursor, such as the hovered residue. With nothing under the cursor, they turn around a point in the middle of the view.
+- The scroll wheel keeps the same pivot until scrolling pauses for 0.5 seconds, so the view doesn't jump as other residues pass under the cursor.
+- Double-clicking frames what's highlighted under the cursor: the residue with the Default tool, or the atom, residue or chain with the Selection tool. Double-clicking inside an entry's bounding box, but off its atoms and ribbon, frames the whole entry, as long as the box covers less than 75% of the view.
+
+</Accordion>
+
 When the connection to Nanome's server is slow, a warning icon <AppIcon name="wifi-off" /> appears at the top left of the viewer. Hovering it shows the ping time.
 
 ## <AppIcon name="player-play" /> Bottom bar {#bottom-bar}
 
+The bottom of the viewer has Settings on the left, the scene controls in the middle and Sequence on the right.
+
 <UiList label="Bottom bar">
 <UiItem icon="settings" name="Settings" href="#viewer-settings">The viewer settings.</UiItem>
-<UiItem icon="scan-eye" name="Set point of view">Saves the current view as the point of view of the active scene.</UiItem>
+<UiItem icon="scan-eye" name="Set point of view" href="#point-of-view">Saves the current view as the point of view of the active scene.</UiItem>
 <UiItem icon="chevron-right" name="‹ 1/1 ›">Steps to the previous or next scene. The number shows the active scene and the total.</UiItem>
-<UiItem icon="player-play" name="Play scenes">Plays through the scenes in order.</UiItem>
+<UiItem icon="player-play" name="Play scenes" href="#playing-scenes">Plays through the scenes in order.</UiItem>
 <UiItem icon="camera" name="Capture image">Saves an image of the current view.</UiItem>
 <UiItem icon="mist" name="Sequence" href="#sequence-viewer">Opens the sequence viewer, at the bottom right.</UiItem>
 </UiList>
 
 ### <AppIcon name="settings" /> Viewer settings {#viewer-settings}
 
-<ShotRow src="nanome-web/viewer-settings-themes.webp" alt="The viewer theme list">
+<ShotRow src="nanome-web/viewer-settings-themes.webp" alt="The viewer settings with the theme list open">
 
 <UiList label="Viewer settings">
-<UiItem icon="moon" name="Day and night toggle" area="15.0,64.2,10.9,9.3">Switches between day and night.</UiItem>
-<UiItem name="Environment theme" area="27.2,3.7,61.1,70.1">Default, Arctic Cyan, Aurora Green, Black & White, Gold Orange, Island or Pure Black.</UiItem>
-<UiItem name="Fullscreen" area="15.2,74.9,73.1,9.7">Shows the viewer full screen.</UiItem>
+<UiItem icon="settings" name="Settings" area="9.5,87.3,13.4,11.4">At the bottom left of the viewer: opens the settings card.</UiItem>
+<UiItem icon="sun" name="Day and night toggle" href="#environment-themes" area="14.6,64.0,11.2,9.6">Switches the theme between its day and night versions.</UiItem>
+<UiItem icon="view-360" name="Environment theme" href="#environment-themes" area="27.2,3.7,61.1,70.1">Default, Arctic Cyan, Aurora Green, Black & White, Gold Orange, Island or Pure Black.</UiItem>
+<UiItem icon="arrows-maximize" name="Fullscreen" area="14.8,74.6,73.8,10.2">Shows the viewer full screen.</UiItem>
 </UiList>
 
 The seven themes match the themes in Nanome XR.
 
 </ShotRow>
 
+### <AppIcon name="view-360" /> Environment themes {#environment-themes}
+
+Since release 2.7 the background around the structures is a range of procedurally generated mountains in the colors of the theme, with a day and a night version of each theme. Nanome Web draws the same mountains as Nanome XR.
+
+Each theme in the copy below shows the viewer in it, by day or by night.
+
+<ThemeDemo app="web" />
+
+- Pure Black is plain black by day and by night.
+- The theme and the day or night choice change only your own view. Other people in the workspace keep theirs.
+- Nanome Web has no floor grid, so it has no Floor switch, and it doesn't show other people's avatars. The headset's floor, passthrough and avatars are on [Environment](/nanome_v2/environment).
+
+<Accordion title="How the mountains are drawn" teaser="One panorama per theme, redrawn when the theme or day and night changes.">
+
+Each theme has a day palette and a night palette. A palette sets the colors of the sky from the top down to the horizon, the sun, and the ground near and far. Nanome draws layered mountain ridges in these colors into one panoramic image, with the farther ridges fading into the haze at the horizon. It redraws the image only when the theme or the day and night setting changes.
+
+</Accordion>
+
 ## <AppIcon name="mist" /> Sequence viewer {#sequence-viewer}
 
 The **Sequence** button at the bottom right of the viewer opens the sequences of every entry in the workspace, one row per entry, with chain labels and residue numbers above the letters. Hovering a residue highlights it in 3D and names it at the top right of the sequence viewer (for example, `4ceo A: GLY 59`). Clicking residues selects them.
 
-<ShotRow src="nanome-web/sequence-panel.webp" alt="The sequence viewer">
+<ShotRow src="nanome-web/sequence-panel.webp" alt="The sequence viewer for 4CEO">
 
 <UiList label="Sequence viewer">
-<UiItem name="Create" area="91.2,73.7,7.8,23.7">Makes a component from the selection.</UiItem>
+<UiItem icon="mist" name="Sequences" area="1.0,7.1,16.4,12.5">The header, with the number of entries shown.</UiItem>
+<UiItem icon="chevron-down" name="Collapse" area="96.2,8.7,1.7,9.3">Folds the sequence viewer away.</UiItem>
+<UiItem name="Entry" area="0.6,39.4,4.4,10.9">Each entry's row starts with its name.</UiItem>
+<UiItem name="Chain label" area="13.5,32.4,1.4,8.3">The chain's letter, at the start of each chain.</UiItem>
+<UiItem name="Residue numbers" area="13.4,41.7,83.5,6.7">At the start of each chain, on numbers that are multiples of 10, and after a jump of 10 or more in the numbering.</UiItem>
+<UiItem name="Missing residues" area="13.4,48.7,36.8,9.0">In gray: residues that are in the sequence but have no atoms in the structure.</UiItem>
 <UiItem name="Clear" area="84.0,73.7,6.8,23.7">Empties the selection.</UiItem>
+<UiItem name="Create" area="91.2,73.7,7.8,23.7">Makes a component from the selection.</UiItem>
 </UiList>
 
 </ShotRow>
 
 ## <AppIcon name="box" /> Scenes {#scenes}
 
-A scene is a saved view of the workspace: its components, annotations, molecule positions and point of view. The rail lists scenes by number.
+A scene is a saved view of the workspace: its components, annotations, molecule positions and point of view. The rail lists scenes by number. A workspace holds up to 50 scenes and always keeps at least 1.
 
 <ShotRow src="nanome-web/scenes-panel-menu.webp" alt="The Scenes panel with a scene menu open">
 
 <UiList label="Scenes rail">
-<UiItem icon="chevrons-right" name="Expand">At the top: expands the rail to show the scene names.</UiItem>
+<UiItem icon="chevrons-left" name="Collapse / Expand" area="41.0,5.5,6.8,8.8">At the top: narrows the rail to the scene numbers, or widens it again to show the scene names.</UiItem>
+<UiItem icon="box" name="Scene" area="2.4,25.4,17.0,9.2">Selecting a scene switches to it.</UiItem>
+<UiItem icon="video" name="Recording" href="#recordings" area="34.2,33.2,13.0,7.4">With a time, such as 0:37, marks a scene that holds a recording and shows its length.</UiItem>
 <UiItem icon="plus" name="New Scene" area="3.9,48.7,28.2,8.8">Adds a scene, up to 50 per workspace.</UiItem>
-<UiItem icon="dots" name="More" area="38.2,38.5,53.7,53.5">Each scene's menu: Rename, Duplicate and Delete.</UiItem>
-<UiItem icon="video" name="Recording" area="34.7,33.8,12.0,6.4">With a time, such as 0:37, marks a scene that holds a recording and shows its length.</UiItem>
+<UiItem icon="pencil" name="Rename" href="#scene-menu" area="42.0,43.4,47.6,13.3">Renames the scene.</UiItem>
+<UiItem icon="copy" name="Duplicate" href="#scene-menu" area="42.0,58.4,47.6,13.3">Adds a copy of the scene right after it.</UiItem>
+<UiItem icon="trash" name="Delete" href="#scene-menu" area="42.0,73.5,47.6,13.3">Deletes the scene.</UiItem>
 </UiList>
 
 </ShotRow>
+
+- A workspace opens on the scene you last viewed in it, or on its first scene.
+- Switching scenes moves your view to the scene's [point of view](#point-of-view), and stops [following](/nanome_web/collaboration#following-from-the-web) anyone you were following.
+- Creating, renaming, duplicating and deleting scenes, and setting a point of view, need Editor access.
+
+### <AppIcon name="dots" /> Scene menu {#scene-menu}
+
+Each scene's <AppIcon name="dots" /> menu has Rename, Duplicate and Delete.
+
+- **Duplicate** places the copy right after the original, with its components, annotations, recording, molecule positions and point of view. The copy counts toward the 50-scene limit.
+- **Delete** removes the scene. The last scene in a workspace can't be deleted.
+
+### <AppIcon name="scan-eye" /> Point of view {#point-of-view}
+
+<Btn icon="scan-eye">Set point of view</Btn> in the bottom bar saves your current view as the active scene's point of view. Switching to that scene, or opening the workspace on it, brings the view back there. Nanome Web always moves to the point of view when you switch scenes. In Nanome XR this can be turned off in the [scene settings](/nanome_v2/scenespanel#scene-settings).
+
+### <AppIcon name="player-play" /> Playing scenes {#playing-scenes}
+
+<Btn icon="player-play">Play scenes</Btn> plays the scenes in order, starting from the current one, and switches to the Default tool.
+
+- A scene without a recording stays on screen for 5 seconds.
+- A scene with a recording plays it: the presenter's voice and pointer movements, and any moving, turning or zooming of the scene they did while recording. The next scene starts when the recording ends.
+- Playback pauses at the end of the last scene.
+
+<Accordion title="Playback timing" teaser="Point of view first, then 5 seconds or the recording.">
+
+Each scene starts by moving the view to its point of view and pausing 0.8 seconds for it to settle. A scene without a recording then holds for 5 seconds. A scene with a recording lasts as long as its recording. A recording that moved, turned or zoomed the scene starts from the view it recorded, in place of the point of view.
+
+</Accordion>
+
+### <AppIcon name="video" /> Recordings {#recordings}
+
+A scene can hold a recorded presentation, made in Nanome XR with [Add Recording](/nanome_v2/scenespanel#recording-a-scene). The scene menu in Nanome Web has no recording options. A scene with a recording shows a red <AppIcon name="video" /> and the recording's length in the rail, and **Play scenes** plays it back.
 
 ## <AppIcon name="cube-3d-sphere" /> Workspace tabs {#workspace-tabs}
 
