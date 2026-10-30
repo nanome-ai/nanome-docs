@@ -8,14 +8,22 @@ The **Ligands** tab is a table of every ligand in the workspace, with a 2D drawi
 
 ## <AppIcon name="filter" /> Toolbar {#toolbar}
 
-<ShotRow src="nanome-web/ligands-tab.webp" alt="The Ligands tab">
+<ShotRow src="nanome-web/ligands-tab.webp" alt="The Ligands tab" crop="0,20,100,80">
 
 <UiList label="Ligands toolbar">
-<UiItem icon="filter" name="Filter ligands">Narrows the table. The button shows how many ligands are listed out of the total, for example 2/2.</UiItem>
-<UiItem icon="columns-3" name="Select property columns" href="#property-columns">Chooses which properties appear as columns.</UiItem>
-<UiItem icon="bookmark" name="View presets">Preset sets of columns.</UiItem>
-<UiItem name="Search ligands">Filters by name.</UiItem>
-<UiItem icon="window-maximize" name="Fullscreen">Opens the table in a larger window.</UiItem>
+<UiItem icon="filter" name="Filter ligands" area="2.8,29.9,13.6,5.4">Narrows the table. The button shows how many ligands are listed out of the total, for example 2/2.</UiItem>
+<UiItem icon="columns-3" name="Select property columns" href="#property-columns" area="17.5,29.9,6.8,5.4">Chooses which properties appear as columns.</UiItem>
+<UiItem icon="bookmark" name="View presets" area="25.3,29.9,6.8,5.4">Preset sets of columns.</UiItem>
+<UiItem name="Search ligands" area="57.6,29.9,31.8,5.5">Filters by name.</UiItem>
+<UiItem icon="window-maximize" name="Fullscreen" area="90.5,29.9,6.8,5.4">Opens the table in a larger window.</UiItem>
+</UiList>
+
+Along the bottom of the tab:
+
+<UiList label="Ligands tab bottom bar">
+<UiItem icon="eye" name="Preview all" area="2.8,92.5,23.9,5.5">Opens a 3D preview that steps through the listed ligands one model at a time, with a download button for each.</UiItem>
+<UiItem icon="cloud-download" name="Download all" area="27.7,92.5,26.5,5.5">Downloads the listed ligands.</UiItem>
+<UiItem icon="hexagon-plus-2" name="Sketch new" area="55.1,92.5,25.2,5.5">Opens the 2D sketcher to draw a new ligand.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -28,27 +36,25 @@ Each row shows the ligand's 2D drawing, its entry, its name, and the chosen prop
 
 </ShotRow>
 
-<ShotRow src="nanome-web/ligand-row-menu.webp" alt="A ligand row's menu">
+<ShotRow src="nanome-web/ligand-row-menu.webp" alt="A ligand row's menu" crop="30,0,70,100">
 
 In the fullscreen table, each row has a checkbox and a <AppIcon name="dots-vertical" /> menu:
 
 <UiList label="Ligand row menu">
-<UiItem name="Download SDF">Downloads the ligand as an SDF file.</UiItem>
-<UiItem name="Sketch variant">Opens the ligand in the 2D sketcher to draw a variant.</UiItem>
-<UiItem name="Properties">Shows the ligand's calculated properties.</UiItem>
-<UiItem name="Tag">Hit, Lead, Add to Synthesis, or New tag... for a custom tag. The tag appears in the Tag column.</UiItem>
+<UiItem name="Download SDF" area="62.5,32.2,25.3,6.6">Downloads the ligand as an SDF file.</UiItem>
+<UiItem name="Sketch variant" area="62.5,39.9,25.3,6.6">Opens the ligand in the 2D sketcher to draw a variant.</UiItem>
+<UiItem name="Properties" area="62.5,47.7,25.3,6.6">Shows the ligand's calculated properties.</UiItem>
+<UiItem name="Tag" area="62.5,56.8,25.3,37.5">Hit, Lead, Add to Synthesis, or New tag... for a custom tag. The tag appears in the Tag column.</UiItem>
 </UiList>
 
 </ShotRow>
 
 <ShotRow src="nanome-web/ligand-preview.webp" alt="A ligand preview">
 
-Along the bottom of the tab:
+<AppIcon name="eye" /> **Preview all** opens this view:
 
-<UiList label="Ligands tab bottom bar">
-<UiItem icon="eye" name="Preview all">Opens a 3D preview that steps through the listed ligands one model at a time, with a download button for each.</UiItem>
-<UiItem icon="cloud-download" name="Download all">Downloads the listed ligands.</UiItem>
-<UiItem icon="hexagon-plus-2" name="Sketch new">Opens the 2D sketcher to draw a new ligand.</UiItem>
+<UiList label="Ligand preview">
+<UiItem icon="cloud-download" name="Download" area="92.6,93.3,5.8,5.1">Downloads the ligand shown.</UiItem>
 </UiList>
 
 </ShotRow>

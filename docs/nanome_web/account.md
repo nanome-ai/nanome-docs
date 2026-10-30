@@ -9,10 +9,10 @@ The account menu sits at the right end of the top bar, under your initial. It sh
 <ShotRow src="nanome-web/account-menu.webp" alt="The account menu">
 
 <UiList label="Account menu">
-<UiItem icon="lock-cog" name="Login via Device Code" href="#login-via-device-code">Signs a headset in.</UiItem>
-<UiItem name="Account / Billing / Organization">Open your account, billing and organization pages.</UiItem>
-<UiItem name="Settings" href="#settings">API keys, MCP setup and display preferences.</UiItem>
-<UiItem name="Logout">Signs out of Nanome Web.</UiItem>
+<UiItem icon="lock-cog" name="Login via Device Code" href="#login-via-device-code" area="37.9,31.6,54.0,6.5">Signs a headset in.</UiItem>
+<UiItem name="Account / Billing / Organization" area="37.9,41.3,54.0,25.0">Open your account, billing and organization pages.</UiItem>
+<UiItem name="Settings" href="#settings" area="37.9,69.4,54.0,6.3">API keys, MCP setup and display preferences.</UiItem>
+<UiItem name="Logout" area="37.9,79.0,54.0,6.2">Signs out of Nanome Web.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -44,7 +44,14 @@ Nanome XR can sign in with a 4-character code. The headset's login page shows th
 
 <ShotRow src="nanome-web/settings-api-keys.webp" alt="API Keys in System settings">
 
-**API Keys** authenticate requests to Nanome's server from tool routes and the `mara-client` Python package. **+ Create** makes a new key. Each key shows only its last characters and its expiry date, with buttons to reveal, copy or delete it.
+**API Keys** authenticate requests to Nanome's server from tool routes and the `mara-client` Python package. Each key shows only its last characters and its expiry date.
+
+<UiList label="API Keys">
+<UiItem name="+ Create" area="84.4,37.3,11.4,8.5">Makes a new key.</UiItem>
+<UiItem icon="eye" name="Reveal" area="81.6,67.4,2.4,4.5">Shows the key.</UiItem>
+<UiItem icon="copy" name="Copy" area="85.9,67.4,2.4,4.5">Copies the key.</UiItem>
+<UiItem icon="trash" name="Delete" area="90.3,67.4,2.4,4.5">Deletes the key.</UiItem>
+</UiList>
 
 </ShotRow>
 
@@ -63,11 +70,11 @@ The assistant asks you to sign in and approve access in a browser the first time
 <ShotRow src="nanome-web/settings-preferences.webp" alt="The preference switches in System settings">
 
 <UiList label="Preferences">
-<UiItem name="Auto-open Files">Opens supported files in the split view when they're added to a chat.</UiItem>
-<UiItem name="Auto-run Workflows">Runs workflows in chat automatically.</UiItem>
-<UiItem name="Dark Mode">Darker colors for the web app.</UiItem>
-<UiItem name="Hide Credits">Hides the credits display.</UiItem>
-<UiItem name="Reset chats">Delete all permanently deletes all MARA chats and uploaded files.</UiItem>
+<UiItem name="Auto-open Files" area="3.5,9.1,92.7,9.1">Opens supported files in the split view when they're added to a chat.</UiItem>
+<UiItem name="Auto-run Workflows" area="3.5,27.9,92.7,9.1">Runs workflows in chat automatically.</UiItem>
+<UiItem name="Dark Mode" area="3.5,46.7,92.7,9.2">Darker colors for the web app.</UiItem>
+<UiItem name="Hide Credits" area="3.5,65.6,92.7,8.6">Hides the credits display.</UiItem>
+<UiItem name="Reset chats" area="3.5,84.2,92.7,9.2">Delete all permanently deletes all MARA chats and uploaded files.</UiItem>
 </UiList>
 
 </ShotRow>
