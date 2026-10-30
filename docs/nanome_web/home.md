@@ -9,12 +9,19 @@ Signing in to [app.nanome.ai](https://app.nanome.ai) opens the Home page. It lis
 A **project** is a folder of workspaces with its own members. A **workspace** is the shared 3D document that holds structures, scenes, comments and permissions. Every workspace belongs to one project.
 
 <ScreenMap src="nanome-web/home-recent.webp" alt="The Home page with recent workspaces and projects" label="Home page">
-<MapCard icon="home" title="Top bar" href="#top-bar" side="top" area="0.0,0.0,100.0,15.0">Navigation, search and your account, on every page.</MapCard>
-<MapCard icon="cube-3d-sphere" title="Join via Code" href="#join-via-code" side="top" area="82.3,19.8,9.3,8.8">Opens a workspace from its code.</MapCard>
-<MapCard icon="plus" title="New" href="#new" side="left" area="0.9,18.0,10.9,8.8">Creates a workspace or a project.</MapCard>
-<MapCard icon="clock" title="Recent" href="#recent" side="left" area="0.0,33.3,12.8,10.9">The workspaces and projects you opened last.</MapCard>
-<MapCard icon="cube-3d-sphere" title="All Workspaces" href="#workspaces" side="left" area="0.0,44.4,12.8,9.9">Every workspace you can open, and the workspace menu.</MapCard>
-<MapCard icon="folder" title="All Projects" href="#projects" side="left" area="0.0,54.7,12.8,10.0">Every project, its members and its activity.</MapCard>
+<MapCard icon="home" title="Home" href="#recent" side="top" area="12.7,3.5,3.6,9.2">This page.</MapCard>
+<MapCard icon="cube-3d-sphere" title="Workspace" href="/nanome_web/workspace" side="top" area="17.1,3.5,6.0,9.2">Back to your open workspace tabs.</MapCard>
+<MapCard icon="messages" title="Conversations" href="/mara/conversations" side="top" area="24.0,3.5,7.4,9.2">MARA chats, and the comment threads and mentions from your workspaces.</MapCard>
+<MapCard icon="tool" title="Tools" href="/mara/tools" side="top" area="32.2,3.5,3.1,9.2">MARA's tools, integrations, workflows and knowledge.</MapCard>
+<MapCard icon="infinity" title="Credits" href="#top-bar" side="top" area="82.2,2.6,7.8,9.4">Your account's credit balance.</MapCard>
+<MapCard icon="search" title="Search (⌘K)" href="#top-bar" side="top" area="90.5,2.6,2.5,9.4">Searches by name.</MapCard>
+<MapCard icon="lock-cog" title="Login via Device Code" href="/nanome_web/account#login-via-device-code" side="top" area="93.5,2.6,2.4,9.4">Signs a headset in to your account.</MapCard>
+<MapCard icon="user-circle" title="Account menu" href="/nanome_web/account" side="top" area="96.3,2.4,2.9,9.8">Account, billing, organization and settings.</MapCard>
+<MapCard icon="plus" title="New" href="#new" side="bottom" area="0.9,18.0,10.9,8.8">Creates a workspace or a project.</MapCard>
+<MapCard icon="clock" title="Recent" href="#recent" side="bottom" area="0.0,33.3,12.8,10.9">The workspaces and projects you opened last.</MapCard>
+<MapCard icon="cube-3d-sphere" title="All Workspaces" href="#workspaces" side="bottom" area="0.0,44.4,12.8,9.9">Every workspace you can open, and the workspace menu.</MapCard>
+<MapCard icon="folder" title="All Projects" href="#projects" side="bottom" area="0.0,54.7,12.8,10.0">Every project, its members and its activity.</MapCard>
+<MapCard icon="cube-3d-sphere" title="Join via Code" href="#join-via-code" side="bottom" area="82.3,19.8,9.3,8.8">Opens a workspace from its code.</MapCard>
 </ScreenMap>
 
 ## <AppIcon name="clock" /> Recent {#recent}
@@ -101,18 +108,14 @@ The **New** button at the top of the sidebar creates a **Workspace** or a **Proj
 
 The top bar is the same on every page.
 
+- **Credits** can be hidden in [Settings](/nanome_web/account#settings).
+- On pages without their own **Join via Code** button, the top bar has <AppIcon name="cube-3d-sphere" /> **Join Workspace via Code**, which opens a workspace from its 8-character code.
+- The account menu (your initial) also has **Logout** and the web app version.
+
 <ShotRow src="nanome-web/search.webp" alt="Search results for 4ceo">
 
-<UiList label="Top bar">
-<UiItem name="Home">Returns to this page.</UiItem>
-<UiItem name="Workspace">Returns to your open workspace tabs.</UiItem>
-<UiItem name="Conversations" href="/mara/conversations">MARA chats, plus the comment threads and mentions from your workspaces.</UiItem>
-<UiItem name="Tools" href="/mara/tools">MARA's tools, integrations, workflows and knowledge.</UiItem>
-<UiItem icon="infinity" name="Credits">Your account's credit balance. It can be hidden in Settings.</UiItem>
+<UiList label="Search">
 <UiItem icon="search" name="Search (⌘K)" area="1.7,5.1,96.7,25.9">Searches by name. Workspace results show the project, owner and last-opened date.</UiItem>
-<UiItem icon="cube-3d-sphere" name="Join Workspace via Code">Opens a workspace from its 8-character code, on pages without their own Join via Code button.</UiItem>
-<UiItem icon="lock-cog" name="Login via Device Code" href="/nanome_web/account#login-via-device-code">Signs a headset in to your account.</UiItem>
-<UiItem name="Account menu" href="/nanome_web/account">Your initial: account, billing, organization and settings pages, plus Logout and the web app version.</UiItem>
 </UiList>
 
 </ShotRow>
