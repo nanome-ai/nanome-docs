@@ -30,7 +30,9 @@ You assign your licenses to people, and take them back, at [home.nanome.ai](http
 
 <ShotRow src="nanome-page/Licenses3.png" alt="An email address typed into a license row, with the check mark beside it">
 
-Type the email address of the person you want to give the license to, and click the check mark to confirm. Nanome sends them a confirmation email, and once they confirm it, they get the features this license includes.
+<UiList label="Assign a license">
+<UiItem icon="check" name="Check mark" area="53.2,31.7,2.5,35.0">Type the email address of the person you want to give the license to, and click the check mark to confirm. Nanome sends them a confirmation email, and once they confirm it, they get the features this license includes.</UiItem>
+</UiList>
 
 </ShotRow>
 
@@ -38,6 +40,8 @@ Type the email address of the person you want to give the license to, and click 
 
 <ShotRow src="nanome-page/Licenses4.png" alt="The cross button on an assigned license">
 
-Click the cross button to unassign the license.
+<UiList label="Unassign a license">
+<UiItem icon="x" name="Cross button" area="53.0,32.1,2.8,39.6">Click the cross button to unassign the license.</UiItem>
+</UiList>
 
 </ShotRow>

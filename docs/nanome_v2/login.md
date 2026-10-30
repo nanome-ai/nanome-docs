@@ -6,16 +6,12 @@ title: Login Screen
 
 Nanome opens on the login screen. It has two tabs: one for your password, and one for a code you enter on another device.
 
-<ShotRow src="nanome-v2/v2-7/login-password.webp" alt="The Nanome XR login screen on the Password tab">
-
-<IconGrid label="Login screen">
-<IconCard icon="password" title="Password" href="#password">Your Nanome username and password.</IconCard>
-<IconCard icon="key" title="Code" href="#code">A 4-character code, entered on another device.</IconCard>
-<IconCard icon="user-plus" title="Create Account" href="#create-account">A new account, made from the headset.</IconCard>
-<IconCard icon="alert-triangle" title="Sign-in messages" href="#sign-in-messages">What went wrong, and device and license limits.</IconCard>
-</IconGrid>
-
-</ShotRow>
+<ScreenMap src="nanome-v2/v2-7/login-password.webp" alt="The Nanome XR login screen on the Password tab" crop="1.9,0.5,45.1,95" label="Login screen">
+<MapCard icon="password" title="Password" href="#password" side="top" area="10.6,11.9,13.7,4.6">Your Nanome username and password.</MapCard>
+<MapCard icon="key" title="Code" href="#code" side="top" area="24.6,11.9,13.7,4.6">A 4-character code, entered on another device.</MapCard>
+<MapCard icon="user-plus" title="Create Account" href="#create-account" side="right" area="9.9,55.8,29.1,5.8">A new account, made from the headset.</MapCard>
+<MapCard icon="alert-triangle" title="Sign-in messages" href="#sign-in-messages" side="bottom">What went wrong, and device and license limits.</MapCard>
+</ScreenMap>
 
 ## <AppIcon name="password" /> Password {#password}
 
