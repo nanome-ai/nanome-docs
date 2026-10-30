@@ -34,7 +34,7 @@ const frames = computed(() => loaded.value.map((src) => ({ src, info: imageInfo(
 </script>
 
 <template>
-  <div class="n-demo-stage" :style="{ aspectRatio: ratio }">
+  <div class="n-demo-stage" :style="{ '--stage-ar': ratio }">
     <div
       v-for="f in frames"
       :key="f.src"
@@ -60,6 +60,7 @@ const frames = computed(() => loaded.value.map((src) => ({ src, info: imageInfo(
 <style>
 .n-demo-stage {
   position: relative;
+  aspect-ratio: var(--stage-ar, 16 / 9);
   overflow: hidden;
   border: 1px solid var(--n-border-soft);
   border-radius: var(--n-radius);
@@ -86,6 +87,7 @@ const frames = computed(() => loaded.value.map((src) => ({ src, info: imageInfo(
   border: 0;
   border-radius: 0;
   object-fit: cover;
+  object-position: 50% 50%;
 }
 
 .n-demo-stage__frame.has-dark .n-demo-stage__dark,

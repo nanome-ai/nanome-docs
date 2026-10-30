@@ -55,10 +55,9 @@ The Hierarchy Menu lists out the components of an entity, such as chains and res
 <UiItem icon="arrow-up" name="Up" area="3.2,15.0,7.9,8.3">Goes back up one level. It's grayed out at the top level, as here.</UiItem>
 <UiItem name="Path" area="11.2,15.4,22.2,7.9">The level you're on, such as 6LU7 or 6LU7 &gt; A.</UiItem>
 <UiItem icon="layout-list" name="View modes" href="#different-browsing-modes-small-medium-large" area="13.8,27.7,28.6,9.2">A list, or icons in different sizes. The list is on here.</UiItem>
-<UiItem icon="search" name="Search" area="44.3,27.7,52.0,9.2"></UiItem>
 <UiItem icon="link" name="Chains" area="2.6,39.0,42.7,38.0">One row per chain, with its atom count.</UiItem>
 <UiItem icon="eye" name="Show / Hide" area="46.2,39.0,10.8,38.0">Shows or hides each chain. HA is hidden here.</UiItem>
-<UiItem icon="zoom-in" name="Zoom" area="57.8,39.0,10.7,38.0"></UiItem>
+<UiItem icon="zoom-in" name="Zoom" area="57.8,39.0,10.7,38.0">Zooms to each chain.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -101,17 +100,17 @@ Frame data allows users to navigate and modify different frames of the same stru
 <UiItem name="Dial" area="14.5,45.7,22.5,24.9">The dial, from the first frame to the last.</UiItem>
 <UiItem icon="player-pause" name="Play / Pause" area="5.2,72.3,40.8,9.6">Pause in the middle, with a play button on each side.</UiItem>
 <UiItem name="Speed" area="5.2,82.5,32.7,10.3">1x, 5x, 50x or 100x.</UiItem>
-<UiItem name="Loop" area="39.2,82.8,6.7,9.7"></UiItem>
+<UiItem name="Loop" area="39.2,82.8,6.7,9.7">Loops the playback.</UiItem>
 </UiList>
 
 <UiList label="Edit tab">
-<UiItem icon="arrow-up" name="Move up" area="53.8,25.2,20.2,12.0"></UiItem>
-<UiItem name="Move to top" area="74.0,25.2,20.3,12.0"></UiItem>
-<UiItem name="Move down" area="53.8,39.8,20.2,12.2"></UiItem>
-<UiItem name="Move to bottom" area="74.0,39.8,20.3,12.2"></UiItem>
-<UiItem name="Split frame" area="53.8,54.5,40.5,11.9"></UiItem>
+<UiItem icon="arrow-up" name="Move up" area="53.8,25.2,20.2,12.0">Moves the current frame up one place.</UiItem>
+<UiItem name="Move to top" area="74.0,25.2,20.3,12.0">Moves the current frame to the top.</UiItem>
+<UiItem name="Move down" area="53.8,39.8,20.2,12.2">Moves the current frame down one place.</UiItem>
+<UiItem name="Move to bottom" area="74.0,39.8,20.3,12.2">Moves the current frame to the bottom.</UiItem>
+<UiItem name="Split frame" area="53.8,54.5,40.5,11.9">Splits the current frame.</UiItem>
 <UiItem icon="copy-plus" name="Duplicate frame" area="53.8,66.4,40.5,11.6">Duplicates the current frame.</UiItem>
-<UiItem icon="trash" name="Delete frame" area="53.8,80.6,40.5,12.2"></UiItem>
+<UiItem icon="trash" name="Delete frame" area="53.8,80.6,40.5,12.2">Deletes the current frame.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -161,7 +160,7 @@ This menu specifies residue conformations.
 <UiItem name="Residue" area="3.4,32.4,31.3,51.9">Each residue with alternative conformations, with buttons to hide it and zoom to it.</UiItem>
 <UiItem name="# Conformations" area="35.7,27.9,23.6,56.3">How many conformations are shown, and how many are available.</UiItem>
 <UiItem name="Show Conformation" area="60.9,32.4,26.6,51.9">The conformations shown, such as A (.7), B (.3).</UiItem>
-<UiItem icon="select-all" name="Select All Residues" area="3.2,85.8,33.8,10.0"></UiItem>
+<UiItem icon="select-all" name="Select All Residues" area="3.2,85.8,33.8,10.0">Selects all the residues.</UiItem>
 <UiItem icon="eye" name="Apply View" area="45.8,85.8,51.2,10.0">ALL, and two other views.</UiItem>
 </UiList>
 
@@ -343,8 +342,6 @@ Toggle the visibility of solvent-excluded-surface, change its opacity, or change
 <UiList label="Surface tab">
 <UiItem name="Show Surface" area="22.0,17.6,35.7,23.5">Shows the surface.</UiItem>
 <UiItem name="Hide Surface" area="57.7,17.6,35.6,23.5">Hides the surface.</UiItem>
-<UiItem name="Ignore Ligands" area="22.0,42.3,71.3,10.4"></UiItem>
-<UiItem name="Solvent Accessible Surface" area="22.0,53.8,71.3,10.4"></UiItem>
 <UiItem name="SAS Probe Radius" area="22.0,66.5,71.3,15.5">The probe length, in Angstroms.</UiItem>
 <UiItem name="Opacity" area="22.0,84.7,71.3,15.1">The surface's opacity.</UiItem>
 </UiList>
@@ -403,8 +400,8 @@ Colors picked in picker are applied in a solid style.
 <UiList label="Picker tab">
 <UiItem name="Carbonite" area="37.1,31.7,29.1,11.1">Carbonite color applies only to carbons.</UiItem>
 <UiItem name="Monochrome" area="66.2,31.7,28.7,11.1">Monochrome color applies to all atoms indifferently.</UiItem>
-<UiItem icon="palette" name="Color picker" area="51.8,45.5,42.7,37.7"></UiItem>
-<UiItem icon="star" name="Add Favorite" area="51.5,84.1,33.9,10.0"></UiItem>
+<UiItem icon="palette" name="Color picker" area="51.8,45.5,42.7,37.7">Picks a color to apply in a solid style.</UiItem>
+<UiItem icon="star" name="Add Favorite" area="51.5,84.1,33.9,10.0">Adds the picked color as a favorite.</UiItem>
 <UiItem icon="list-check" name="Apply on" area="4.4,17.8,23.2,43.0">Which parts get the color: Surface, Ribbon and Atom.</UiItem>
 </UiList>
 
@@ -427,18 +424,11 @@ Colors picked in schemes are applied in a certain pattern.
 
 <UiList label="Schemes tab">
 <UiItem name="Carbonite / Monochrome" area="37.0,30.9,57.9,11.1">As in the Picker tab.</UiItem>
-<UiItem name="Type" area="37.3,45.4,28.5,8.1"></UiItem>
-<UiItem name="Element" area="66.0,45.4,28.6,8.1"></UiItem>
-<UiItem name="Occupancy" area="37.3,53.6,28.5,8.0"></UiItem>
-<UiItem name="Donor Acceptor" area="66.0,53.6,28.6,8.0"></UiItem>
-<UiItem name="BFactor" area="37.3,61.7,28.5,8.0"></UiItem>
-<UiItem name="Cartoon" area="66.0,61.7,28.6,8.0"></UiItem>
-<UiItem name="Rainbow" area="37.3,69.8,28.5,8.0"></UiItem>
+<UiItem name="Occupancy" area="37.3,53.6,28.5,8.0">Colors the selected structures by occupancy.</UiItem>
+<UiItem name="BFactor" area="37.3,61.7,28.5,8.0">Colors the selected structures by b-factor.</UiItem>
+<UiItem name="Rainbow" area="37.3,69.8,28.5,8.0">Colors the selected structures in rainbow colors.</UiItem>
 <UiItem name="YRB Hydrophobe" area="66.0,69.8,28.6,8.0">Color selected structures by their hydrophobicity with yellow, red, blue colors.</UiItem>
-<UiItem name="Chain" area="37.3,77.9,28.5,8.0"></UiItem>
-<UiItem name="Hydrophobe" area="66.0,77.9,28.6,8.0"></UiItem>
 <UiItem name="IMGT" area="37.3,86.0,28.5,8.2">Color selected antibody structures by their regions.</UiItem>
-<UiItem name="Kabat" area="66.0,86.0,28.6,8.2"></UiItem>
 </UiList>
 
 </ShotRow>
@@ -459,10 +449,10 @@ Edit the selected structures by applying actions from the buttons.
 
 <UiList label="Edit tab">
 <UiItem icon="copy-plus" name="Duplicate" area="24.6,18.6,68.3,10.1">Copies the selected structures.</UiItem>
-<UiItem name="Split" area="24.6,28.7,68.3,9.7"></UiItem>
-<UiItem name="Combine" area="24.6,38.5,68.3,9.7"></UiItem>
-<UiItem name="Center" area="24.6,48.2,68.3,9.8"></UiItem>
-<UiItem icon="zoom-in" name="Zoom" area="24.6,58.1,68.3,9.9"></UiItem>
+<UiItem name="Split" area="24.6,28.7,68.3,9.7">Splits the selected structures.</UiItem>
+<UiItem name="Combine" area="24.6,38.5,68.3,9.7">Combines the selected structures.</UiItem>
+<UiItem name="Center" area="24.6,48.2,68.3,9.8">Centers the selected structures.</UiItem>
+<UiItem icon="zoom-in" name="Zoom" area="24.6,58.1,68.3,9.9">Zooms to the selected structures.</UiItem>
 <UiItem name="Mutate" href="#mutate" area="24.6,74.2,68.3,10.0">Opens the Mutate menu.</UiItem>
 <UiItem name="Delete" area="24.6,84.2,68.3,10.1">Deletes the selected structures.</UiItem>
 </UiList>
@@ -513,8 +503,7 @@ Apply certain computations on the selected structures and modify them according 
 **Calculate H-bonds:** config the threshold for generating h-bonds.
 
 <UiList label="H-bonds menu">
-<UiItem name="Precise / Relaxed" area="7.4,18.2,85.1,5.8"></UiItem>
-<UiItem name="Relax H-bonds" area="7.1,25.2,83.1,6.2"></UiItem>
+<UiItem name="Relax H-bonds" area="7.1,25.2,83.1,6.2">Relaxes the h-bond constraints. On here.</UiItem>
 <UiItem name="Relax Constraints By" area="6.8,33.6,83.6,33.7">The threshold, in Angstrom and degrees.</UiItem>
 <UiItem name="Calculate: Once / Continuously" area="6.9,69.4,85.4,14.2">Calculates h-bonds one time, or keeps calculating them.</UiItem>
 <UiItem name="Clear All H-bonds" area="6.9,84.3,85.4,9.8">Clears every h-bond.</UiItem>
@@ -529,7 +518,6 @@ Apply certain computations on the selected structures and modify them according 
 <UiList label="Minimize menu">
 <UiItem name="Force Fields" area="4.0,20.4,42.9,75.0">The force field to use.</UiItem>
 <UiItem name="Number of Steps" area="53.1,19.5,42.5,20.2">The arrows change the number of steps.</UiItem>
-<UiItem name="Steepest Descent" area="53.1,47.6,42.6,9.4"></UiItem>
 <UiItem name="Start minimization" area="53.1,82.9,42.7,12.4">Starts minimizing the selected structures.</UiItem>
 </UiList>
 
@@ -547,7 +535,7 @@ Switch to a certain tool to directly apply modification to the structures.
 <UiItem name="Selector" href="/nanome1x/navigation/toolsmenu#selection-tool" area="70.0,18.6,22.7,37.4">Selects structures directly in the workspace.</UiItem>
 <UiItem name="Torsion" href="/nanome1x/navigation/toolsmenu#torsion-tool" area="24.6,56.1,23.1,37.5">Twists rotatable bonds.</UiItem>
 <UiItem name="Med Chem" href="/nanome1x/navigation/toolsmenu#medchem-tools" area="47.6,56.1,22.4,37.5">Edits atoms directly with your hands.</UiItem>
-<UiItem icon="atom" name="Builder" area="70.0,56.1,22.7,37.5"></UiItem>
+<UiItem icon="atom" name="Builder" area="70.0,56.1,22.7,37.5">Switches to the Builder tool.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -581,11 +569,11 @@ Quickly modify selection range using certain criteria.
 Refine selection by applying certain changes.
 
 <UiList label="Refine tab">
-<UiItem icon="square-x" name="Deselect All" area="28.8,25.5,62.2,13.7"></UiItem>
+<UiItem icon="square-x" name="Deselect All" area="28.8,25.5,62.2,13.7">Deselects everything.</UiItem>
 <UiItem icon="replace" name="Replace Selection" area="28.8,39.3,62.2,13.4">Opens the Replace Selection menu, shown below.</UiItem>
-<UiItem icon="plus" name="Append to Selection" area="28.8,52.9,62.2,13.3"></UiItem>
-<UiItem icon="filter" name="Filter within Selection" area="28.8,66.3,62.2,13.4"></UiItem>
-<UiItem icon="minus" name="Remove from Selection" area="28.8,79.9,62.2,13.6"></UiItem>
+<UiItem icon="plus" name="Append to Selection" area="28.8,52.9,62.2,13.3">Adds to the current selection.</UiItem>
+<UiItem icon="filter" name="Filter within Selection" area="28.8,66.3,62.2,13.4">Filters the current selection.</UiItem>
+<UiItem icon="minus" name="Remove from Selection" area="28.8,79.9,62.2,13.6">Removes from the current selection.</UiItem>
 </UiList>
 
 <UiList label="Selection tabs">
@@ -606,7 +594,7 @@ Refine selection by applying certain changes.
 <UiItem name="Residue" area="37.2,38.4,25.6,7.4">Lists the residue names, as here.</UiItem>
 <UiItem icon="atom" name="Atom" area="63.0,38.4,24.5,7.4">Lists the atom names, such as N, CA and CB.</UiItem>
 <UiItem icon="list" name="List" area="14.2,47.0,68.1,13.1">The items on the open tab.</UiItem>
-<UiItem icon="check" name="Apply" area="67.0,67.6,19.2,6.4"></UiItem>
+<UiItem icon="check" name="Apply" area="67.0,67.6,19.2,6.4">Replaces the selection.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -622,10 +610,10 @@ Refine selection by applying certain changes.
 Select or deselect certain types of atoms.
 
 <UiList label="Atom Type tab">
-<UiItem icon="plus" name="Select all carbons" area="28.7,24.4,62.2,15.1"></UiItem>
-<UiItem icon="minus" name="Deselect all carbons" area="28.7,39.7,62.2,15.1"></UiItem>
-<UiItem icon="plus" name="Select all hetatoms" area="28.7,64.4,62.2,15.1"></UiItem>
-<UiItem icon="minus" name="Deselect all hetatoms" area="28.7,79.6,62.2,15.2"></UiItem>
+<UiItem icon="plus" name="Select all carbons" area="28.7,24.4,62.2,15.1">Selects every carbon atom.</UiItem>
+<UiItem icon="minus" name="Deselect all carbons" area="28.7,39.7,62.2,15.1">Deselects every carbon atom.</UiItem>
+<UiItem icon="plus" name="Select all hetatoms" area="28.7,64.4,62.2,15.1">Selects every hetatom.</UiItem>
+<UiItem icon="minus" name="Deselect all hetatoms" area="28.7,79.6,62.2,15.2">Deselects every hetatom.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -637,10 +625,10 @@ Select or deselect certain types of atoms.
 Select or deselect certain types of residues.
 
 <UiList label="Residue Type tab">
-<UiItem icon="plus" name="Select all waters" area="28.1,23.8,62.7,15.1"></UiItem>
-<UiItem icon="minus" name="Deselect all waters" area="28.1,39.1,62.7,15.1"></UiItem>
-<UiItem icon="plus" name="Select all amino acids" area="28.1,63.8,62.7,15.1"></UiItem>
-<UiItem icon="minus" name="Deselect all amino acids" area="28.1,79.1,62.7,15.2"></UiItem>
+<UiItem icon="plus" name="Select all waters" area="28.1,23.8,62.7,15.1">Selects every water.</UiItem>
+<UiItem icon="minus" name="Deselect all waters" area="28.1,39.1,62.7,15.1">Deselects every water.</UiItem>
+<UiItem icon="plus" name="Select all amino acids" area="28.1,63.8,62.7,15.1">Selects every amino acid.</UiItem>
+<UiItem icon="minus" name="Deselect all amino acids" area="28.1,79.1,62.7,15.2">Deselects every amino acid.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -653,9 +641,8 @@ Expand or shrink the selection range by physical proximity.
 
 <UiList label="Distance tab">
 <UiItem icon="ruler-2" name="Angstrom" area="27.9,20.2,62.7,18.7">The distance, in Angstroms. 5 here.</UiItem>
-<UiItem icon="arrows-maximize" name="Extend Selection" area="28.1,43.0,62.2,15.6"></UiItem>
-<UiItem icon="minimize" name="Shrink Selection" area="28.1,58.8,62.2,15.8"></UiItem>
-<UiItem name="Select Entire Residue" area="27.9,77.7,61.7,8.8"></UiItem>
+<UiItem icon="arrows-maximize" name="Extend Selection" area="28.1,43.0,62.2,15.6">Grows the selection by the distance above. Greyed out here.</UiItem>
+<UiItem icon="minimize" name="Shrink Selection" area="28.1,58.8,62.2,15.8">Shrinks the selection by the distance above. Greyed out here.</UiItem>
 </UiList>
 
 </ShotRow>

@@ -144,13 +144,6 @@ function pick(spot) {
         aria-hidden="true"
       />
 
-      <span
-        v-for="s in spots"
-        :key="`pin-${s.n}`"
-        class="hotshot__pin"
-        :style="{ left: place(s.box).left, top: place(s.box).top }"
-        aria-hidden="true"
-      >{{ s.n }}</span>
 
       <span v-if="info.isGif" class="hotshot__play" aria-hidden="true">&#9654;</span>
       <span v-if="!focus && opensOnClick" class="hotshot__expand" aria-hidden="true">
@@ -245,27 +238,6 @@ function pick(spot) {
   .hotshot__lit {
     transition: none;
   }
-}
-
-/* Numbered pins, for a narrow layout where the legend can't sit around the
-   image. The parent shows them. */
-.hotshot__pin {
-  position: absolute;
-  z-index: 1;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  min-width: 18px;
-  height: 18px;
-  padding: 0 4px;
-  margin: -6px 0 0 -6px;
-  border-radius: 9px;
-  background: var(--n-accent);
-  color: #fff;
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 1;
-  pointer-events: none;
 }
 
 .hotshot__play {

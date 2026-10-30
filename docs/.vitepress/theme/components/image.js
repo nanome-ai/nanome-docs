@@ -7,8 +7,12 @@
 import variants from '../image-variants.json'
 import widths from '../image-widths.json'
 import sizes from '../image-sizes.json'
+import versions from '../image-versions.json'
 
-const toCopy = (src) => `/assets/compressed/${src.slice(0, src.lastIndexOf('.'))}.webp`
+// The copy's URL, with its content hash, so a changed image never comes from
+// a stale cache.
+const toCopy = (src) =>
+  `/assets/compressed/${src.slice(0, src.lastIndexOf('.'))}.webp${versions[src] ? `?v=${versions[src]}` : ''}`
 
 export function imageInfo(src) {
   const dark = variants[src] || ''

@@ -1,13 +1,156 @@
+import { existsSync, readFileSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vitepress'
 
 // Pages for people editing the docs. `docs:dev` serves them; `docs:build` leaves
 // them out, so they never reach docs.nanome.ai, its sitemap or its search index.
 const isProduction = process.env.NODE_ENV === 'production'
 
+// --- Page sections -----------------------------------------------------------
+
+const docsDir = fileURLToPath(new URL('..', import.meta.url))
+
+/** VitePress's heading slug (`slugify` in @mdit-vue/shared), copied because
+    the package is bundled inside VitePress rather than installed on its own. */
+const rControl = /[\u0000-\u001f]/g
+const rSpecial = /[\s~`!@#$%^&*()\-_+=[\]{}|\\;:"'“”‘’<>,.?/]+/g
+const rCombining = /[\u{300}-\u{36f}]/gu
+
+const slugify = (str) =>
+  str
+    .normalize('NFKD')
+    .replace(rCombining, '')
+    .replace(rControl, '')
+    .replace(rSpecial, '-')
+    .replace(/-{2,}/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .replace(/^(\d)/, '_$1')
+    .toLowerCase()
+
+const ENTITIES = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: '\u{a0}' }
+
+/**
+ * The text a heading's slug is made from: what markdown-it-anchor reads from
+ * its text and inline-code tokens. Inline HTML (the `<AppIcon>` in front of most
+ * headings), images and emphasis markers are not text, so they drop out.
+ */
+function headingText(source) {
+  return source
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+    .replace(/<\/?[A-Za-z][^>]*>/g, '')
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/`+ ?([^`]*?) ?`+/g, '$1')
+    .replace(/(?<!\*)(\*{1,3})(?![\s*])(.*?[^\s*])\1(?!\*)/g, '$2')
+    .replace(/(?<![\w_])(_{1,3})(?![\s_])(.*?[^\s_])\1(?![\w_])/g, '$2')
+    .replace(/(?<!~)~~(?![\s~])(.*?[^\s~])~~(?!~)/g, '$1')
+    .replace(/\\([!-/:-@[-`{-~])/g, '$1')
+    .replace(/&(#x?[0-9a-f]+|[a-z]+);/gi, (match, name) =>
+      name[0] === '#'
+        ? String.fromCodePoint(parseInt(name.slice(1).replace(/^x/i, '0x')))
+        : ENTITIES[name.toLowerCase()] ?? match
+    )
+}
+
+/**
+ * The h2 headings of the page a sidebar link points at, as `{ text, link }`.
+ *
+ * Read from the markdown when the config loads, so every page in the sidebar
+ * carries its own sections, whichever page is open. The id is the heading's
+ * own `{#id}`, or else the slug VitePress gives it. Ids are claimed in page
+ * order across every heading level, as VitePress claims them, so a repeated
+ * title gets the same `-1` suffix. In `docs:dev`, a new or renamed heading
+ * shows up here after a restart.
+ */
+function pageSections(link) {
+  const path = link.slice(1).replace(/\.(md|html)$/, '').replace(/(^|\/)$/, '$1index')
+  const file = [`${path}.md`, `${path}/index.md`]
+    .map((name) => `${docsDir}${name}`)
+    .find((name) => existsSync(name))
+  if (!file) return []
+
+  const lines = readFileSync(file, 'utf8')
+    .replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, '')
+    .split(/\r?\n/)
+
+  const sections = []
+  const taken = new Set()
+  let fence = null
+  let inComment = false
+
+  for (const line of lines) {
+    if (fence) {
+      if (line.match(/^ {0,3}(`{3,}|~{3,})[ \t]*$/)?.[1].startsWith(fence)) fence = null
+      continue
+    }
+    if (inComment) {
+      inComment = !line.includes('-->')
+      continue
+    }
+
+    const open = line.match(/^ {0,3}(`{3,}|~{3,})/)
+    if (open) {
+      fence = open[1]
+      continue
+    }
+    if (/<!--(?![\s\S]*-->)/.test(line)) {
+      inComment = true
+      continue
+    }
+
+    const heading = line.match(/^ {0,3}(#{1,6})(?:[ \t]+(.*?))?(?:[ \t]+#+)?[ \t]*$/)
+    if (!heading) continue
+
+    let content = heading[2] ?? ''
+    let id = null
+    const attrs = content.match(/[ \t]*\{([^{}]*)\}[ \t]*$/)
+    if (attrs) {
+      content = content.slice(0, attrs.index)
+      id = attrs[1].match(/(?:^|\s)#([^\s}]+)/)?.[1] ?? null
+    }
+
+    const text = headingText(content)
+    if (!id) {
+      const base = slugify(text)
+      id = base
+      for (let n = 1; taken.has(id); n++) id = `${base}-${n}`
+    }
+    taken.add(id)
+
+    if (heading[1].length === 2) {
+      sections.push({ text: text.replace(/\s+/g, ' ').trim(), link: `${link}#${id}` })
+    }
+  }
+
+  return sections
+}
+
+/** Gives every page link in a sidebar tree its `sections`, for the theme's
+    left rail and breadcrumb. Section links carry a `#`, so they get none. */
+function withSections(items) {
+  for (const item of items) {
+    if (item.items) withSections(item.items)
+    if (item.link?.startsWith('/') && !item.link.includes('#')) {
+      const sections = pageSections(item.link)
+      if (sections.length) item.sections = sections
+    }
+  }
+  return items
+}
+
 export default defineConfig({
   title: 'Help & Documentation',
   description: 'Documentation site for Nanome software.',
   cleanUrls: true,
+
+  // The site data, which now carries every page's section list, goes in one
+  // cached script instead of being inlined into every page's HTML.
+  metaChunk: true,
+
+  // Where a clicked anchor link puts its heading: 40px under the theme's
+  // breadcrumb strip, or under the nav bar on a page without one. The
+  // heading margins in theme/styles/doc.css match it for links opened
+  // directly. The section highlight in the rails uses the same line.
+  scrollOffset: { selector: ['.n-pagebar', '.n-navbar'], padding: 40 },
 
   srcExclude: isProduction ? ['contributing/**'] : [],
 
@@ -53,7 +196,7 @@ export default defineConfig({
       provider: 'local'
     },
 
-    sidebar: [
+    sidebar: withSections([
       {
         text: 'Home',
         link: '/'
@@ -72,11 +215,7 @@ export default defineConfig({
               { text: 'Login', link: '/nanome_v2/login' },
               { text: 'Controls', link: '/nanome_v2/controls' },
               { text: 'Main Panel', link: '/nanome_v2/mainpanel' },
-              {
-                text: 'Tools Panel',
-                link: '/nanome_v2/toolspanel',
-                items: [{ text: 'Comments & Annotations', link: '/nanome_v2/comments' }]
-              },
+              { text: 'Tools Panel', link: '/nanome_v2/toolspanel' },
               { text: 'Scenes Panel', link: '/nanome_v2/scenespanel' },
               { text: 'Wrist Menu', link: '/nanome_v2/wristmenu' },
               { text: 'Sequence Panel', link: '/nanome_v2/sequencepanel' },
@@ -236,7 +375,7 @@ export default defineConfig({
           { text: 'Interactive components', link: '/contributing/components' }
         ]
       }])
-    ],
+    ]),
 
     sidebarDepth: 2
   }

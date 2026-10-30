@@ -41,7 +41,7 @@ const leave = () => n && shot.leave(n)
   >
     <AppIcon :name="icon" button size="1.05rem" />
     <span class="n-iconcard__text">
-      <span class="n-iconcard__title"><span v-if="n" class="n-iconcard__num">{{ n }}</span>{{ title }}</span>
+      <span class="n-iconcard__title">{{ title }}</span>
       <span class="n-iconcard__desc"><slot /></span>
     </span>
   </a>
@@ -97,22 +97,6 @@ const leave = () => n && shot.leave(n)
   color: var(--n-text-muted);
   font-size: var(--n-text-sm);
   line-height: 1.5;
-}
-
-/* The pin number, shown by <ShotRow> only where the image sits under the cards. */
-.n-iconcard__num {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  min-width: 18px;
-  height: 18px;
-  padding: 0 4px;
-  border-radius: 9px;
-  background: var(--n-accent);
-  color: #fff;
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 1;
 }
 
 /* A one-line description is enough here; drop paragraph margins from markdown. */

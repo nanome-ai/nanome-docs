@@ -73,6 +73,10 @@
 
   /* --- Layout ----------------------------------------------------------- */
   --n-nav-height: 56px;
+  /* The breadcrumb strip under the nav bar. `--n-pagebar-space` is what it
+     takes from the top of the window: 0 until the layout shows it. */
+  --n-pagebar-height: 44px;
+  --n-pagebar-space: 0px;
   --n-sidebar-width: 256px;
   --n-outline-width: 232px;
   --n-content-max: 768px;

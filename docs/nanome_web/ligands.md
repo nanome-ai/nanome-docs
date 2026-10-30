@@ -107,7 +107,7 @@ Nanome calculates these properties with RDKit on its server. SDF data fields fro
 <UiList label="Property column picker">
 <UiItem icon="search" name="Search properties" area="26.2,15.2,52.2,12.9">Filters the list by name.</UiItem>
 <UiItem name="Property list" area="20.5,28.5,57.8,54.5">A checkbox for each property. A checked property gets a column.</UiItem>
-<UiItem name="Column order" area="18.3,84.6,59.6,12.6">A checked property shows its place among the property columns, so **2 - MolWeight** is the second, after **Atoms**.</UiItem>
+<UiItem name="Column order" area="18.3,84.6,59.6,12.6">A checked property shows its place among the property columns. 2 - MolWeight is the second, after Atoms.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -136,6 +136,31 @@ Nanome calculates these properties with RDKit on its server. SDF data fields fro
 The **MolWeight** column (shown as **MW**) holds the monoisotopic mass, the sum of each atom's most abundant isotope. It's usually a little lower than the average molecular weight that suppliers and the RCSB list. For the 4CEO ligand G0T (C₃₀H₃₂N₂O₈), Nanome shows 548.216, while the RCSB lists a formula weight of 548.58.
 
 </Callout>
+
+The copy of Nanome Web's table below holds 8 inhibitors of p38α MAP kinase from the PDB.
+
+<LigandTableDemo />
+
+<Accordion title="Where the sample ligands come from" teaser="8 PDB entries of human p38α, and RDKit for the values.">
+
+Each one comes from an X-ray structure of human p38α MAP kinase (UniProt Q16539) in which it's the only ligand. Its SMILES comes from its record in the RCSB Chemical Component Dictionary, and each value is computed from that SMILES with RDKit. RDKit gives the NumAtoms and MolWeight values Nanome shows: 76 and 527.290 for B96 in 1KV2, and 72 and 548.216 for G0T in 4CEO.
+
+| Name | Ligand | PDB entry | Also known as |
+|------|--------|-----------|---------------|
+| A:B96_391 | [B96](https://www.rcsb.org/ligand/B96) | [1KV2](https://www.rcsb.org/structure/1KV2) | BIRB 796, doramapimod |
+| A:BMU_391 | [BMU](https://www.rcsb.org/ligand/BMU) | [1KV1](https://www.rcsb.org/structure/1KV1) | |
+| A:SB2_800 | [SB2](https://www.rcsb.org/ligand/SB2) | [1A9U](https://www.rcsb.org/structure/1A9U) | SB203580 |
+| A:SB4_800 | [SB4](https://www.rcsb.org/ligand/SB4) | [1BL7](https://www.rcsb.org/structure/1BL7) | SB220025 |
+| A:SB6_800 | [SB6](https://www.rcsb.org/ligand/SB6) | [1BL6](https://www.rcsb.org/structure/1BL6) | SB216995 |
+| A:MSQ_500 | [MSQ](https://www.rcsb.org/ligand/MSQ) | [1DI9](https://www.rcsb.org/structure/1DI9) | |
+| A:PQB_361 | [PQB](https://www.rcsb.org/ligand/PQB) | [2GFS](https://www.rcsb.org/structure/2GFS) | RO3201195 |
+| A:BAX_1 | [BAX](https://www.rcsb.org/ligand/BAX) | [3HEG](https://www.rcsb.org/structure/3HEG) | Sorafenib |
+
+The RDKit calls are `Chem.AddHs` then `GetNumAtoms` for NumAtoms, `GetNumHeavyAtoms` for NumHeavyAtoms, `Descriptors.ExactMolWt` for MolWeight, `Crippen.MolLogP` for LogP, `Chem.MolToInchiKey` for InChIKey, and the matching `rdMolDescriptors` function for TPSA, HbondD, HbondA and the 4 ring counts.
+
+The copy lists HeavyAtomMolWeight, NumRotatableBonds, Rating and SMILES in its picker but leaves their columns out. The first 2 depend on RDKit settings that haven't been matched to Nanome's, people enter Rating, and one molecule can be written as many valid SMILES. The tags are examples.
+
+</Accordion>
 
 <Accordion title="Hydrogens and bond orders" teaser="Where ligand bonds come from, which the calculated values depend on.">
 
