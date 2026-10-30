@@ -628,14 +628,14 @@ points where.
 
 ### Spotlight and follow
 
-*Spotlighting, seen from both sides.*
-
 <ShotRow src="nanome-v2/scenes-panel-spotlight-mode.jpg" alt="Spotlighting, seen by the user spotlighting and by a follower">
 
+*Spotlighting, seen from both sides.*
+
 <UiList label="Spotlight and follow">
-<UiItem icon="crown" name="Spotlight Me">Makes your view the shared view. Followers see it with a crown icon.</UiItem>
-<UiItem name="Stop">Lets a follower break away.</UiItem>
-<UiItem icon="analyze-filled" name="Reset Orientation">Brings back a follower who got turned around.</UiItem>
+<UiItem icon="crown" name="Spotlight Me" area="2.8,81.6,20.1,6.0">Makes your view the shared view. Followers see it with a crown icon.</UiItem>
+<UiItem name="Stop" area="76.3,82.4,4.9,5.4">Lets a follower break away.</UiItem>
+<UiItem icon="analyze-filled" name="Reset Orientation" area="73.3,82.4,2.9,5.4">Brings back a follower who got turned around.</UiItem>
 </UiList>
 
 </ShotRow>

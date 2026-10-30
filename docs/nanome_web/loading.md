@@ -6,15 +6,11 @@ title: Loading Structures
 
 Structures come into a workspace through the **Import** tab of the workspace panel, from three sources.
 
-<ShotRow src="nanome-web/import-tab.webp" alt="The Import tab">
-
-<IconGrid label="Import sources" :cols="3">
-<IconCard icon="download" title="Import from RCSB" href="#import-from-rcsb">The RCSB Protein Data Bank, by PDB ID.</IconCard>
-<IconCard icon="upload" title="Upload from your computer" href="#upload-from-your-computer">Structures, session files, trajectories and maps.</IconCard>
-<IconCard icon="messages" title="Import from Chat" href="#import-from-chat">Files from your MARA chats.</IconCard>
-</IconGrid>
-
-</ShotRow>
+<ScreenMap src="nanome-web/import-tab.webp" alt="The Import tab" crop="0,21,100,79" label="Import sources">
+<MapCard icon="download" title="Import from RCSB" href="#import-from-rcsb" side="left" area="2.7,29.8,46.2,23.0">The RCSB Protein Data Bank, by PDB ID.</MapCard>
+<MapCard icon="upload" title="Upload from your computer" href="#upload-from-your-computer" side="right" area="51.3,29.8,46.2,23.0">Structures, session files, trajectories and maps.</MapCard>
+<MapCard icon="messages" title="Import from Chat" href="#import-from-chat" side="bottom" area="2.7,54.7,94.7,43.3">Files from your MARA chats.</MapCard>
+</ScreenMap>
 
 ## <AppIcon name="download" /> Import from RCSB {#import-from-rcsb}
 
@@ -36,9 +32,9 @@ When a structure has a bound ligand, Nanome builds a binding-site view automatic
 <ShotRow src="nanome-web/import-chat-menu.webp" alt="Import from Chat with a file row menu open">
 
 <UiList label="Import from Chat">
-<UiItem icon="search" name="Search">Helps find a file.</UiItem>
-<UiItem icon="arrows-sort" name="Sort">Orders the list.</UiItem>
-<UiItem icon="dots" name="More">Each row's menu: Go to chat and Download.</UiItem>
+<UiItem icon="search" name="Search" area="61.6,7.2,7.1,12.2">Helps find a file.</UiItem>
+<UiItem icon="arrows-sort" name="Sort" area="69.7,7.2,25.8,12.2">Orders the list.</UiItem>
+<UiItem icon="dots" name="More" area="91.3,37.7,4.4,5.5">Each row's menu: Go to chat and Download.</UiItem>
 </UiList>
 
 </ShotRow>

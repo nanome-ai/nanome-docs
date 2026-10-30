@@ -6,8 +6,6 @@ title: Comments & Annotations
 
 Since release 2.7, comments and annotations share one panel: the <AppIcon name="message" /> **Comments** tool in the Tools Panel. A comment can belong to the whole workspace, to a scene or to an annotation, and it can point at specific atoms. Comments appear for everyone in the workspace as they're posted, in Nanome XR and in Nanome Web.
 
-<ShotRow src="nanome-v2/v2-7/tool-comments.webp" alt="The Comments tool panel">
-
 <IconGrid label="Comments">
 <IconCard icon="message" title="The panel" href="#the-panel">Modes, the filter and the comment box.</IconCard>
 <IconCard icon="messages" title="Threads" href="#threads">Replies, mentions, reactions and atom chips.</IconCard>
@@ -15,21 +13,23 @@ Since release 2.7, comments and annotations share one panel: the <AppIcon name="
 <IconCard icon="eye" title="Hiding annotations" href="#hiding-annotations">Hide one annotation, or all of them.</IconCard>
 </IconGrid>
 
-</ShotRow>
-
 <DocVideo src="v2-7/comments.mp4" caption="Comments, from the v2.7 release video. The Agent tag in the video is for illustration." />
 
 ## <AppIcon name="message" /> The panel {#the-panel}
 
+<ShotRow src="nanome-v2/v2-7/tool-comments.webp" alt="The Comments tool panel">
+
 <UiList label="Comments panel">
-<UiItem icon="text-size" name="Text">Editors only: places a text note in 3D.</UiItem>
-<UiItem icon="volume" name="Sound">Editors only: records a sound note.</UiItem>
-<UiItem icon="trash" name="Delete">Editors only: removes notes.</UiItem>
-<UiItem icon="list" name="All">The filter: All, Workspace (comments on the workspace itself) or Scene (comments on the current scene).</UiItem>
-<UiItem name="Comment on this workspace">The box at the bottom: posts a new comment.</UiItem>
+<UiItem icon="text-size" name="Text" area="15.4,9.8,24.4,5.6">Editors only: places a text note in 3D.</UiItem>
+<UiItem icon="volume" name="Sound" area="40.4,9.8,27.2,5.6">Editors only: records a sound note.</UiItem>
+<UiItem icon="trash" name="Delete" area="68.6,9.8,27.4,5.6">Editors only: removes notes.</UiItem>
+<UiItem icon="list" name="All" area="80.4,16.0,16.3,5.8">The filter: All, Workspace (comments on the workspace itself) or Scene (comments on the current scene).</UiItem>
+<UiItem name="Comment on this workspace" area="14.6,87.2,82.1,10.1">The box at the bottom: posts a new comment.</UiItem>
 </UiList>
 
 A count shows how many comments match the filter. A dot on the Comments tool's button shows that there are unread comments.
+
+</ShotRow>
 
 ## <AppIcon name="messages" /> Threads {#threads}
 
