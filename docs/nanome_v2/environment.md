@@ -31,7 +31,9 @@ They're set at the top of the [Settings tab](/nanome_v2/mainpanel#settings-tab):
 
 </ShotRow>
 
-<vimg src="nanome-v2/v2-7/skybox-themes.webp" alt="The seven skybox themes, by day and by night" />
+Each theme in the copy below shows the view from a headset in it, by day or by night.
+
+<ThemeDemo app="xr" />
 
 ## <AppIcon name="droplet" /> Pointers {#pointers}
 
