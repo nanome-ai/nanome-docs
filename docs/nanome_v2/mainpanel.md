@@ -7,24 +7,17 @@ title: Main Panel
 
 The Main Panel is where you manage structures, ligands, workspaces, people and settings. Open it from the [Wrist Menu](/nanome_v2/wristmenu) or with the **Menu** button on your off-hand controller. Everyone in a session has their own.
 
-<ShotRow src="nanome-v2/v2-7/desktop-layout.webp" alt="Nanome XR with the left sidebar, the Main Panel, the Tools Panel and 1KV2">
+The [Scenes Panel](/nanome_v2/scenespanel) sits on the left of the Main Panel and the [Tools Panel](/nanome_v2/toolspanel) on the right. Two buttons at the panel's top right change the panel itself.
 
-<IconGrid label="Main Panel tabs">
-<IconCard icon="hierarchy" title="Components" href="#components-tab">The structures in the workspace and how each is drawn.</IconCard>
-<IconCard icon="affiliate" title="Ligands" href="#ligands-tab">Every ligand in a table, with properties and tags.</IconCard>
-<IconCard icon="layout-grid" title="Workspaces" href="#workspaces-tab">Join, open and create workspaces.</IconCard>
-<IconCard icon="users-group" title="Users" href="#users-tab">People, your mic and sharing.</IconCard>
-<IconCard icon="settings" title="Settings" href="#settings-tab">Skybox, passthrough, controls and sign-out.</IconCard>
-</IconGrid>
-
-</ShotRow>
-
-The [Scenes Panel](/nanome_v2/scenespanel) sits on the left of the Main Panel and the [Tools Panel](/nanome_v2/toolspanel) on the right. Two buttons at the panel's top right change the panel itself:
-
-<UiList label="Panel controls">
-<UiItem icon="arrows-maximize" name="Increase menu size">Makes the panel bigger.</UiItem>
-<UiItem icon="lock-open" name="Lock menu position">Pins the panel in place in a headset. It turns yellow while locked.</UiItem>
-</UiList>
+<ScreenMap src="nanome-v2/v2-7/desktop-layout.webp" alt="The Main Panel on the Components tab, with its tabs along the top" crop="15.4,5.1,34.1,65.1" label="Main Panel tabs">
+<MapCard icon="hierarchy" title="Components" href="#components-tab" side="top" area="15.8,5.7,6.8,4.8">The structures in the workspace and how each is drawn.</MapCard>
+<MapCard icon="affiliate" title="Ligands" href="#ligands-tab" side="top" area="22.6,5.7,5.1,4.8">Every ligand in a table, with properties and tags.</MapCard>
+<MapCard icon="layout-grid" title="Workspaces" href="#workspaces-tab" side="top" area="27.8,5.7,6.5,4.8">Join, open and create workspaces.</MapCard>
+<MapCard icon="users-group" title="Users" href="#users-tab" side="top" area="34.4,5.7,4.5,4.8">People, your mic and sharing.</MapCard>
+<MapCard icon="settings" title="Settings" href="#settings-tab" side="top" area="39.0,5.7,5.2,4.8">Skybox, passthrough, controls and sign-out.</MapCard>
+<MapCard icon="arrows-maximize" title="Increase menu size" side="right" area="46.7,6.3,2.0,3.7">Makes the panel bigger.</MapCard>
+<MapCard icon="lock-open" title="Lock menu position" side="right">Pins the panel in place in a headset. It turns yellow while locked.</MapCard>
+</ScreenMap>
 
 ## <AppIcon name="hierarchy" /> Components tab {#components-tab}
 
@@ -33,14 +26,14 @@ Every structure in the workspace, and the components that control how it's drawn
 <ShotRow src="nanome-v2/v2-7/components-tab.webp" alt="The Components tab with 1KV2 and its components">
 
 <UiList label="Components toolbar">
-<UiItem icon="caret-down-filled" name="Collapse All">Collapses every entry.</UiItem>
-<UiItem icon="eye" name="Hide All">Hides every entry.</UiItem>
-<UiItem icon="sort-ascending-letters" name="Sort by Name">Sorts entries alphabetically.</UiItem>
-<UiItem icon="copy-plus" name="Create Component">Makes a component from the current selection.</UiItem>
+<UiItem icon="caret-down-filled" name="Collapse All" area="2.7,9.5,8.0,7.5">Collapses every entry.</UiItem>
+<UiItem icon="eye" name="Hide All" area="11.5,9.5,8.0,7.5">Hides every entry.</UiItem>
+<UiItem icon="sort-ascending-letters" name="Sort by Name" area="20.3,9.5,8.0,7.5">Sorts entries alphabetically.</UiItem>
+<UiItem icon="copy-plus" name="Create Component" area="29.1,9.5,8.0,7.5">Makes a component from the current selection.</UiItem>
 <UiItem icon="player-stop" name="Stop model playback and reset active models">Appears while a multi-model entry is playing.</UiItem>
-<UiItem name="Search">Filters entries and components by name.</UiItem>
-<UiItem name="Position Molecules">At the bottom: lets structures be moved one by one.</UiItem>
-<UiItem icon="mist" name="Sequences">At the bottom: opens the Sequence Panel.</UiItem>
+<UiItem name="Search" area="56.2,10.2,41.2,6.2">Filters entries and components by name.</UiItem>
+<UiItem name="Position Molecules" area="4.7,92.2,38.1,4.7">At the bottom: lets structures be moved one by one.</UiItem>
+<UiItem icon="mist" name="Sequences" area="74.8,91.3,22.7,6.3">At the bottom: opens the Sequence Panel.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -66,13 +59,13 @@ The report lists warnings and errors, with the line number when it's known.
 Each structure you load is an **entry**. Its row has these buttons:
 
 <UiList label="Entry row">
-<UiItem icon="caret-down-filled" name="Expand">Shows the entry's components.</UiItem>
-<UiItem icon="eye" name="Hide">Hides or shows the entry.</UiItem>
+<UiItem icon="caret-down-filled" name="Expand" area="3.6,19.2,5.5,6.2">Shows the entry's components.</UiItem>
+<UiItem icon="eye" name="Hide" area="9.2,19.2,5.6,6.2">Hides or shows the entry.</UiItem>
 <UiItem icon="arrow-narrow-right" name="Previous / Next model" href="#model-and-trajectory-playback">For entries with more than one model.</UiItem>
 <UiItem icon="player-play" name="(BETA) Autoplay" href="#model-and-trajectory-playback">Plays the models or trajectory.</UiItem>
-<UiItem icon="layout-list" name="Structure actions" href="#structure-actions">Align, create components, interactions and more.</UiItem>
-<UiItem icon="zoom" name="Zoom on this structure">Brings the entry into view.</UiItem>
-<UiItem icon="dots" name="More options">Rename, Duplicate or Delete. Delete asks first.</UiItem>
+<UiItem icon="layout-list" name="Structure actions" href="#structure-actions" area="62.0,19.2,5.6,6.2">Align, create components, interactions and more.</UiItem>
+<UiItem icon="zoom" name="Zoom on this structure" area="67.7,19.2,5.6,6.2">Brings the entry into view.</UiItem>
+<UiItem icon="dots" name="More options" area="73.4,19.2,5.6,6.2">Rename, Duplicate or Delete. Delete asks first.</UiItem>
 <UiItem icon="paperclip" name="Map loaded">Marks an entry with an electrostatic map.</UiItem>
 </UiList>
 
@@ -106,15 +99,15 @@ In a headset, **Load Structure** in the Tools Panel loads a structure by PDB cod
 <ShotRow src="nanome-v2/v2-7/component-more-options.webp" alt="A component's More options menu">
 
 <UiList label="Component More options">
-<UiItem icon="pencil" name="Rename">Renames the component.</UiItem>
-<UiItem icon="trash" name="Remove">Removes the component. Its atoms stay in the entry.</UiItem>
-<UiItem icon="trash" name="Delete Atoms">Permanently deletes the component's atoms from the entry, after a confirmation.</UiItem>
-<UiItem icon="mist" name="Edit Selection">Selects the component's atoms.</UiItem>
-<UiItem icon="list-check" name="Copy Component">Copies the component to other scenes.</UiItem>
-<UiItem icon="copy" name="Duplicate to Entry">Copies the atoms into a new entry.</UiItem>
-<UiItem icon="scissors" name="Extract to Entry">Moves the atoms into a new entry.</UiItem>
-<UiItem icon="edit" name="Set substructure">Marks it as ligand, ion, protein, nucleic, sugar or solvent.</UiItem>
-<UiItem icon="circle-dashed" name="Create Distance Component">The atoms within a set distance of this component.</UiItem>
+<UiItem icon="pencil" name="Rename" area="68.2,49.0,30.0,4.7">Renames the component.</UiItem>
+<UiItem icon="trash" name="Remove" area="68.2,54.1,30.0,4.7">Removes the component. Its atoms stay in the entry.</UiItem>
+<UiItem icon="trash" name="Delete Atoms" area="68.2,59.1,30.0,4.7">Permanently deletes the component's atoms from the entry, after a confirmation.</UiItem>
+<UiItem icon="mist" name="Edit Selection" area="68.2,64.1,30.0,4.7">Selects the component's atoms.</UiItem>
+<UiItem icon="list-check" name="Copy Component" area="68.2,69.2,30.0,4.7">Copies the component to other scenes.</UiItem>
+<UiItem icon="copy" name="Duplicate to Entry" area="68.2,74.2,30.0,4.7">Copies the atoms into a new entry.</UiItem>
+<UiItem icon="scissors" name="Extract to Entry" area="68.2,79.3,30.0,4.7">Moves the atoms into a new entry.</UiItem>
+<UiItem icon="edit" name="Set substructure" area="68.2,84.3,30.0,4.7">Marks it as ligand, ion, protein, nucleic, sugar or solvent.</UiItem>
+<UiItem icon="circle-dashed" name="Create Distance Component" area="68.2,89.3,30.0,4.7">The atoms within a set distance of this component.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -140,14 +133,14 @@ The button on a component that names its current style, such as **Cartoon**, ope
 <ShotRow src="nanome-v2/v2-7/representation-popup.webp" alt="The representation panel for the Protein component">
 
 <UiList label="Representations">
-<UiItem icon="line" name="Ball & Stick">Atoms as spheres, joined by cylinders.</UiItem>
-<UiItem icon="slash" name="Stick">Bonds as cylinders.</UiItem>
-<UiItem icon="hexagon" name="Wire">Bonds as thin lines.</UiItem>
-<UiItem icon="color-filter" name="Van der Waals">Space-filling spheres.</UiItem>
-<UiItem icon="timeline" name="Hydrogens">None, Polar or All.</UiItem>
-<UiItem icon="scribble" name="Cartoon">Ribbons for helices, sheets and loops.</UiItem>
-<UiItem icon="tag" name="Residue Label">A label on each residue.</UiItem>
-<UiItem icon="egg-fried" name="Surface">The molecular surface, drawn as Wire, Sheer, Semi or Opaque.</UiItem>
+<UiItem icon="line" name="Ball & Stick" area="13.6,33.9,66.7,5.9">Atoms as spheres, joined by cylinders.</UiItem>
+<UiItem icon="slash" name="Stick" area="13.6,39.9,66.7,5.9">Bonds as cylinders.</UiItem>
+<UiItem icon="hexagon" name="Wire" area="13.6,46.0,66.7,5.9">Bonds as thin lines.</UiItem>
+<UiItem icon="color-filter" name="Van der Waals" area="13.6,52.1,66.7,5.9">Space-filling spheres.</UiItem>
+<UiItem icon="timeline" name="Hydrogens" area="13.6,58.2,66.7,5.9">None, Polar or All.</UiItem>
+<UiItem icon="scribble" name="Cartoon" area="13.6,65.0,66.7,6.5">Ribbons for helices, sheets and loops.</UiItem>
+<UiItem icon="tag" name="Residue Label" area="13.6,72.3,66.7,6.5">A label on each residue.</UiItem>
+<UiItem icon="egg-fried" name="Surface" area="13.6,79.6,66.7,12.8">The molecular surface, drawn as Wire, Sheer, Semi or Opaque.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -233,14 +226,14 @@ The <AppIcon name="palette" /> button beside a style opens its colors:
 <ShotRow src="nanome-v2/v2-7/structure-actions.webp" alt="The Structure actions menu for 1KV2">
 
 <UiList label="Structure actions">
-<UiItem icon="arrow-left-to-arc" name="Align proteins to this">Superposes other protein entries onto this one.</UiItem>
-<UiItem icon="copy-plus" name="Create component">From ligands, residues, molecule types, amino acids or nucleotides.</UiItem>
-<UiItem icon="list-check" name="Copy components">Copies this entry's components to other scenes.</UiItem>
-<UiItem icon="refresh" name="Reset components">Restores the default components in this scene.</UiItem>
-<UiItem icon="polygon" name="Create interaction components">Computes interactions with a ligand or between chains.</UiItem>
-<UiItem icon="square-x" name="Remove interaction components">Removes them from the scene.</UiItem>
-<UiItem icon="list-check" name="Copy position">Copies the entry's position to other scenes.</UiItem>
-<UiItem icon="progress-x" name="Reset position">Moves the entry back to its original coordinates.</UiItem>
+<UiItem icon="arrow-left-to-arc" name="Align proteins to this" area="62.2,27.1,35.8,6.0">Superposes other protein entries onto this one.</UiItem>
+<UiItem icon="copy-plus" name="Create component" area="62.2,33.5,35.8,6.0">From ligands, residues, molecule types, amino acids or nucleotides.</UiItem>
+<UiItem icon="list-check" name="Copy components" area="62.2,39.8,35.8,6.0">Copies this entry's components to other scenes.</UiItem>
+<UiItem icon="refresh" name="Reset components" area="62.2,46.2,35.8,6.0">Restores the default components in this scene.</UiItem>
+<UiItem icon="polygon" name="Create interaction components" area="62.2,52.6,35.8,6.0">Computes interactions with a ligand or between chains.</UiItem>
+<UiItem icon="square-x" name="Remove interaction components" area="62.2,58.9,35.8,6.0">Removes them from the scene.</UiItem>
+<UiItem icon="list-check" name="Copy position" area="62.2,65.3,35.8,6.0">Copies the entry's position to other scenes.</UiItem>
+<UiItem icon="progress-x" name="Reset position" area="62.2,71.7,35.8,6.0">Moves the entry back to its original coordinates.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -288,25 +281,25 @@ Every ligand in the workspace in one table. It matches the [Ligands tab](/nanome
 <ShotRow src="nanome-v2/v2-7/ligands-tab.webp" alt="The Ligands tab">
 
 <UiList label="Ligands toolbar">
-<UiItem icon="filter" name="Filter ligands">Filters the table, including by what's visible.</UiItem>
-<UiItem icon="columns-3" name="Select property columns">Chooses the columns.</UiItem>
-<UiItem icon="bookmark" name="View presets">Saves and recalls column and filter layouts.</UiItem>
-<UiItem icon="copy-check" name="Bulk-Display">Shows several ligands, or several models of one file, at once.</UiItem>
+<UiItem icon="filter" name="Filter ligands" area="2.7,9.5,14.6,7.6">Filters the table, including by what's visible.</UiItem>
+<UiItem icon="columns-3" name="Select property columns" area="18.0,9.5,8.0,7.6">Chooses the columns.</UiItem>
+<UiItem icon="bookmark" name="View presets" area="26.8,9.5,8.0,7.6">Saves and recalls column and filter layouts.</UiItem>
+<UiItem icon="copy-check" name="Bulk-Display" area="35.5,9.5,8.0,7.6">Shows several ligands, or several models of one file, at once.</UiItem>
 <UiItem icon="caret-down-filled" name="Set Labels">Labels the ligands Bulk-Display shows.</UiItem>
 <UiItem icon="x" name="Clear displayed ligands">Clears what Bulk-Display shows.</UiItem>
-<UiItem name="Search">Filters by name.</UiItem>
+<UiItem name="Search" area="56.2,10.2,41.2,6.2">Filters by name.</UiItem>
 </UiList>
-
-</ShotRow>
 
 Each row shows the 2D structure and your columns, with these buttons:
 
 <UiList label="Ligand row">
-<UiItem icon="zoom" name="Zoom">Centers the view on the ligand.</UiItem>
-<UiItem icon="info-small" name="Details">Duplicate to Entry, and switches to show properties as 3D labels.</UiItem>
-<UiItem icon="edit-circle" name="Edit" href="/nanome_v2/toolspanel#builder-tool">Opens the ligand in the Builder Tool.</UiItem>
-<UiItem icon="caret-down-filled" name="Set Tag">Tags it, for example as Hit or Lead. Also Remove Tag, Edit list and Show 3D tag.</UiItem>
+<UiItem icon="zoom" name="Zoom" area="76.1,26.7,5.8,5.3">Centers the view on the ligand.</UiItem>
+<UiItem icon="info-small" name="Details" area="82.0,26.7,5.8,5.3">Duplicate to Entry, and switches to show properties as 3D labels.</UiItem>
+<UiItem icon="edit-circle" name="Edit" href="/nanome_v2/toolspanel#builder-tool" area="87.9,26.7,5.8,5.3">Opens the ligand in the Builder Tool.</UiItem>
+<UiItem icon="caret-down-filled" name="Set Tag" area="73.8,32.7,22.3,5.3">Tags it, for example as Hit or Lead. Also Remove Tag, Edit list and Show 3D tag.</UiItem>
 </UiList>
+
+</ShotRow>
 
 <ShotRow src="nanome-v2/v2-7/ligand-property-columns.webp" alt="The property column picker">
 
@@ -323,12 +316,12 @@ Properties are calculated with RDKit on Nanome's server. **MolWeight** is the mo
 <ShotRow src="nanome-v2/v2-7/workspaces-tab.webp" alt="The Workspaces tab">
 
 <UiList label="Workspaces tab">
-<UiItem name="Join Workspace">Type an 8-character code, shown as XXXX-XXXX, then Go.</UiItem>
-<UiItem name="Filter By Name Or Owner">Filters the list.</UiItem>
-<UiItem icon="dots" name="More options">Info, View Project, Permissions, Rename, Duplicate, and Delete (owner) or Leave.</UiItem>
-<UiItem icon="plus" name="New">Creates a workspace.</UiItem>
-<UiItem icon="users-group" name="Load for All">Opens the selected workspace and brings everyone with you.</UiItem>
-<UiItem icon="user" name="Load">Opens the selected workspace just for you.</UiItem>
+<UiItem name="Join Workspace" area="2.7,9.5,94.7,9.7">Type an 8-character code, shown as XXXX-XXXX, then Go.</UiItem>
+<UiItem name="Filter By Name Or Owner" area="3.9,26.5,92.4,6.3">Filters the list.</UiItem>
+<UiItem icon="dots" name="More options" area="88.0,42.7,5.9,5.5">Info, View Project, Permissions, Rename, Duplicate, and Delete (owner) or Leave.</UiItem>
+<UiItem icon="plus" name="New" area="2.7,91.3,23.3,6.4">Creates a workspace.</UiItem>
+<UiItem icon="users-group" name="Load for All" area="50.1,91.3,23.3,6.4">Opens the selected workspace and brings everyone with you.</UiItem>
+<UiItem icon="user" name="Load" area="74.1,91.3,23.3,6.4">Opens the selected workspace just for you.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -357,9 +350,9 @@ Who is in the workspace, your mic, and who can open it.
 <ShotRow src="nanome-v2/v2-7/users-tab-annotated.webp" alt="The Users tab with its controls labelled">
 
 <UiList label="Users tab">
-<UiItem name="Display Name">The name others see.</UiItem>
-<UiItem icon="microphone" name="Mic">Mutes or unmutes you. The meter moves when your mic picks up sound.</UiItem>
-<UiItem icon="share" name="Share" href="#share">Who can open the workspace, and with what access.</UiItem>
+<UiItem name="Display Name" area="25.6,18.2,30.9,10.4">The name others see.</UiItem>
+<UiItem icon="microphone" name="Mic" area="56.7,22.0,13.1,6.5">Mutes or unmutes you. The meter moves when your mic picks up sound.</UiItem>
+<UiItem icon="share" name="Share" href="#share" area="63.8,9.6,6.9,5.4">Who can open the workspace, and with what access.</UiItem>
 <UiItem icon="volume-3" name="Mute">In Users in workspace, in a person's (...) menu: mutes them, for you only.</UiItem>
 <UiItem icon="login" name="Join">In Users in organization: goes to a colleague's workspace, or asks to join it.</UiItem>
 <UiItem icon="plus" name="Invite">In Users in organization: invites a colleague to your workspace.</UiItem>
@@ -378,9 +371,9 @@ Who is in the workspace, your mic, and who can open it.
 The dialog shows the workspace code, and has:
 
 <UiList label="Share dialog">
-<UiItem name="Global permission level">None, Viewer or Editor, for anyone with the code.</UiItem>
-<UiItem icon="user-plus" name="Add people by email">Adds a person as Editor or Viewer. The address has to match their Nanome account exactly.</UiItem>
-<UiItem icon="dots" name="Email / Permission">The people with access. Each one's menu has Make Editor or Make Viewer, and Remove User for the owner.</UiItem>
+<UiItem name="Global permission level" area="68.6,23.0,19.1,6.2">None, Viewer or Editor, for anyone with the code.</UiItem>
+<UiItem icon="user-plus" name="Add people by email" area="11.0,31.6,78.2,6.2">Adds a person as Editor or Viewer. The address has to match their Nanome account exactly.</UiItem>
+<UiItem icon="dots" name="Email / Permission" area="11.0,38.6,78.2,32.3">The people with access. Each one's menu has Make Editor or Make Viewer, and Remove User for the owner.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -400,19 +393,19 @@ A free license gives Viewer access to workspaces others own.
 <ShotRow src="nanome-v2/v2-7/settings-tab.webp" alt="The Settings tab">
 
 <UiList label="Settings">
-<UiItem icon="moon" name="Night mode">Night or day skybox, when passthrough is off.</UiItem>
-<UiItem icon="view-360" name="Floor">Shows or hides the floor.</UiItem>
-<UiItem name="Skybox theme" href="#day-night-mode-and-themes">Seven themes, each with a day and a night version.</UiItem>
-<UiItem icon="scan-eye" name="Passthrough">Mixed reality or a full skybox. On to start where the headset supports it, grayed out where it doesn't.</UiItem>
-<UiItem icon="hand-stop" name="Left-handed mode" area="3.1,21.7,91.7,10.4">Makes the left hand dominant.</UiItem>
-<UiItem icon="refresh" name="Allow two-handed grab rotation">When off, molecules rotate with one hand only.</UiItem>
-<UiItem icon="arrow-move-down" name="Enable far grab snap-to-hand">When on, grabbing a distant molecule brings it to your hand.</UiItem>
-<UiItem icon="users-group" name="Show other user Avatars">Off to start.</UiItem>
-<UiItem icon="volume" name="Enable interface sounds">Sounds when you use the menus.</UiItem>
+<UiItem icon="moon" name="Night mode" area="5.3,11.9,6.7,6.3">Night or day skybox, when passthrough is off.</UiItem>
+<UiItem icon="view-360" name="Floor" area="12.7,11.9,6.8,6.3">Shows or hides the floor.</UiItem>
+<UiItem name="Skybox theme" href="#day-night-mode-and-themes" area="20.3,11.9,24.9,6.3">Seven themes, each with a day and a night version.</UiItem>
+<UiItem icon="scan-eye" name="Passthrough" area="48.4,9.5,49.0,11.2">Mixed reality or a full skybox. On to start where the headset supports it, grayed out where it doesn't.</UiItem>
+<UiItem icon="hand-stop" name="Left-handed mode" area="2.7,21.3,92.4,11.2">Makes the left hand dominant.</UiItem>
+<UiItem icon="refresh" name="Allow two-handed grab rotation" area="2.7,33.1,92.4,11.2">When off, molecules rotate with one hand only.</UiItem>
+<UiItem icon="arrow-move-down" name="Enable far grab snap-to-hand" area="2.7,44.9,92.4,11.2">When on, grabbing a distant molecule brings it to your hand.</UiItem>
+<UiItem icon="users-group" name="Show other user Avatars" area="2.7,56.7,92.4,11.2">Off to start.</UiItem>
+<UiItem icon="volume" name="Enable interface sounds" area="2.7,68.5,92.4,11.2">Sounds when you use the menus.</UiItem>
 <UiItem icon="help" name="Show tutorial guides">The in-headset tutorials.</UiItem>
 <UiItem icon="box" name="Show structure box on hover">A labelled box around a hovered entry.</UiItem>
-<UiItem icon="outbound" name="Log Out">At the bottom, beside your username.</UiItem>
-<UiItem icon="info-small" name="About">The app version.</UiItem>
+<UiItem icon="outbound" name="Log Out" area="76.0,84.7,18.8,6.3">At the bottom, beside your username.</UiItem>
+<UiItem icon="info-small" name="About" area="4.1,91.1,30.7,5.3">The app version.</UiItem>
 <UiItem icon="server" name="Change Server">Appears when more than one server is set up.</UiItem>
 </UiList>
 

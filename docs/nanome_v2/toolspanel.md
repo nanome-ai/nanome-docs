@@ -5,27 +5,22 @@ title: Tools Panel
 
 # Tools Panel
 
-The Tools Panel is the column of buttons on the right side of the Main Panel. Choosing a tool changes what the controller does in 3D and opens that tool's panel. The tools, from top to bottom:
+The Tools Panel is the column of buttons on the right side of the Main Panel. Choosing a tool changes what the controller does in 3D and opens that tool's panel. The tools, from top to bottom, and the three more buttons below them:
 
-<IconGrid label="Tools">
-  <IconCard icon="droplet" title="Pointer" href="#pointer">Hover over and select residues and atoms.</IconCard>
-  <IconCard icon="lasso" title="Selection Tool" href="#selection-tool">Build a selection by clicking or dragging over atoms.</IconCard>
-  <IconCard icon="ruler-2" title="Measurement Tool" href="#measurement-tool">Measure distances, angles and dihedrals.</IconCard>
-  <IconCard icon="message" title="Comments" href="#comments">Comments, text notes and sound notes.</IconCard>
-  <IconCard icon="link" title="Interactions Tool" href="#interactions-tool">Browse, pin and label the interactions in the workspace.</IconCard>
-  <IconCard icon="hexagon-plus-2" title="Builder Tool" href="#builder-tool">Build and edit ligands, and minimize them, alone or in a binding pocket.</IconCard>
-  <IconCard icon="rotate-360" title="Torsion Tool" href="#torsion-tool">Rotate bonds and see torsional strain.</IconCard>
-  <IconCard icon="arrow-rotary-first-left" title="Residue Editor" href="#residue-editor">Mutate residues and choose side-chain rotamers.</IconCard>
-  <IconCard icon="tool" title="MARA Tools" href="#mara-tools">Run MARA tools from the headset.</IconCard>
-</IconGrid>
-
-Below the tools are three more buttons:
-
-<IconGrid label="More buttons">
-  <IconCard icon="download" title="Load Structure" href="#load-structure">Load a PDB entry from the RCSB by its code.</IconCard>
-  <IconCard icon="sparkles" title="Open MARA" href="/mara/overview">Talk to MARA, Nanome's AI assistant.</IconCard>
-  <IconCard icon="bug" title="Report a problem" href="#report-a-problem">Send a bug report to Nanome.</IconCard>
-</IconGrid>
+<ScreenMap src="nanome-v2/v2-7/desktop-layout.webp" alt="The Tools Panel, with the Pointer chosen" crop="40.0,9.5,22.3,60.8" label="Tools Panel buttons">
+<MapCard icon="droplet" title="Pointer" href="#pointer" side="top" area="50.0,11.3,2.3,4.0">Hover over and select residues and atoms.</MapCard>
+<MapCard icon="lasso" title="Selection Tool" href="#selection-tool" side="left" area="50.0,15.5,2.3,4.0">Build a selection by clicking or dragging over atoms.</MapCard>
+<MapCard icon="ruler-2" title="Measurement Tool" href="#measurement-tool" side="left" area="50.0,19.6,2.3,4.0">Measure distances, angles and dihedrals.</MapCard>
+<MapCard icon="message" title="Comments" href="#comments" side="left" area="50.0,23.8,2.3,4.0">Comments, text notes and sound notes.</MapCard>
+<MapCard icon="link" title="Interactions Tool" href="#interactions-tool" side="left" area="50.0,27.9,2.3,4.0">Browse, pin and label the interactions in the workspace.</MapCard>
+<MapCard icon="hexagon-plus-2" title="Builder Tool" href="#builder-tool" side="right" area="50.0,32.0,2.3,4.0">Build and edit ligands, and minimize them, alone or in a binding pocket.</MapCard>
+<MapCard icon="rotate-360" title="Torsion Tool" href="#torsion-tool" side="right" area="50.0,36.2,2.3,4.0">Rotate bonds and see torsional strain.</MapCard>
+<MapCard icon="arrow-rotary-first-left" title="Residue Editor" href="#residue-editor" side="right" area="50.0,40.4,2.3,4.0">Mutate residues and choose side-chain rotamers.</MapCard>
+<MapCard icon="tool" title="MARA Tools" href="#mara-tools" side="right" area="50.0,44.5,2.3,4.0">Run MARA tools from the headset.</MapCard>
+<MapCard icon="download" title="Load Structure" href="#load-structure" side="bottom" area="50.0,56.3,2.3,4.0">Load a PDB entry from the RCSB by its code.</MapCard>
+<MapCard icon="sparkles" title="Open MARA" href="/mara/overview" side="bottom" area="50.0,60.5,2.3,4.0">Talk to MARA, Nanome's AI assistant.</MapCard>
+<MapCard icon="bug" title="Report a problem" href="#report-a-problem" side="bottom" area="50.0,64.6,2.3,4.0">Send a bug report to Nanome.</MapCard>
+</ScreenMap>
 
 <Callout type="note" title="Viewer or Editor">
 
@@ -51,18 +46,18 @@ The off-hand controller always works as a pointer for hovering and selecting, wh
 The Selection Tool selects by clicking on atoms, or by dragging over them. The three buttons at the top set what a click picks:
 
 <UiList label="Selection modes">
-<UiItem icon="atom" name="Atom">A click picks an atom.</UiItem>
-<UiItem icon="hexagons" name="Residue">A click picks a residue.</UiItem>
-<UiItem icon="scribble" name="Chain">A click picks a chain.</UiItem>
+<UiItem icon="atom" name="Atom" area="22.8,9.8,23.2,5.4">A click picks an atom.</UiItem>
+<UiItem icon="hexagons" name="Residue" area="46.6,9.8,23.4,5.4">A click picks a residue.</UiItem>
+<UiItem icon="scribble" name="Chain" area="70.5,9.8,23.5,5.4">A click picks a chain.</UiItem>
 </UiList>
 
 The panel counts the entries, chains, residues and atoms in the selection, and lists the components it touches. Below that:
 
 <UiList label="Selection switches and buttons">
-<UiItem name="Share selection">Shows your selection to others in your color.</UiItem>
-<UiItem name="Show partial marks">Marks entries and components in the Components tab that are partly selected.</UiItem>
-<UiItem name="Clear">Clears the selection.</UiItem>
-<UiItem name="Create">Creates a component from the selection.</UiItem>
+<UiItem name="Share selection" area="25.5,79.0,67.9,4.5">Shows your selection to others in your color.</UiItem>
+<UiItem name="Show partial marks" area="25.5,85.1,67.9,4.6">Marks entries and components in the Components tab that are partly selected.</UiItem>
+<UiItem name="Clear" area="53.7,91.5,18.8,5.7">Clears the selection.</UiItem>
+<UiItem name="Create" area="73.9,91.5,21.2,5.7">Creates a component from the selection.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -74,28 +69,28 @@ The panel counts the entries, chains, residues and atoms in the selection, and l
 The Measurement Tool measures between atoms picked in 3D. The buttons at the top set the mode:
 
 <UiList label="Measurement modes">
-<UiItem icon="ruler-measure" name="Distance">2 atoms, in Å.</UiItem>
-<UiItem icon="angle" name="Angle">3 atoms, measured at the second atom, in degrees.</UiItem>
-<UiItem icon="rotate-clockwise-2" name="Dihedral">4 atoms: the torsion around the axis from atom 2 to atom 3, in degrees.</UiItem>
-<UiItem icon="trash" name="Delete">Removes measurements by clicking them.</UiItem>
+<UiItem icon="ruler-measure" name="Distance" area="22.8,9.8,17.2,5.4">2 atoms, in Å.</UiItem>
+<UiItem icon="angle" name="Angle" area="40.8,9.8,17.2,5.4">3 atoms, measured at the second atom, in degrees.</UiItem>
+<UiItem icon="rotate-clockwise-2" name="Dihedral" area="58.8,9.8,17.2,5.4">4 atoms: the torsion around the axis from atom 2 to atom 3, in degrees.</UiItem>
+<UiItem icon="trash" name="Delete" area="76.6,9.8,17.3,5.4">Removes measurements by clicking them.</UiItem>
 </UiList>
 
-</ShotRow>
-
-<Callout type="note" title="Dihedrals have no sign">
-
-Dihedral angles show from 0° to 180° without a sign, so torsions of −60° and +60° both read 60°.
-
-</Callout>
-
-<ShotRow src="nanome-v2/v2-7/measurement-types.webp" alt="A distance, a dihedral and an angle measured on the 1KV2 ligand">
+Each measurement is listed in the panel. Hovering a row highlights the measurement in 3D.
 
 <UiList label="Measurement row">
 <UiItem icon="zoom" name="Zoom">Zooms to the measurement.</UiItem>
 <UiItem icon="trash" name="Delete">Deletes the measurement.</UiItem>
 </UiList>
 
-Each measurement is listed in the panel. Hovering a row highlights the measurement in 3D.
+</ShotRow>
+
+<ShotRow src="nanome-v2/v2-7/measurement-types.webp" alt="A distance, a dihedral and an angle measured on the 1KV2 ligand">
+
+<Callout type="note" title="Dihedrals have no sign">
+
+Dihedral angles show from 0° to 180° without a sign, so torsions of −60° and +60° both read 60°.
+
+</Callout>
 
 </ShotRow>
 
@@ -114,14 +109,14 @@ The Interactions Tool lists the interactions in the workspace, grouped by entry 
 <ShotRow src="nanome-v2/v2-7/tool-interactions.webp" alt="The Interactions Tool listing hydrogen bonds in 1KV2">
 
 <UiList label="Interactions tabs">
-<UiItem icon="eye" name="Visible">The visible interactions.</UiItem>
-<UiItem icon="pin" name="Pinned">The pinned ones.</UiItem>
-<UiItem icon="list" name="All">All of them.</UiItem>
+<UiItem icon="eye" name="Visible" area="15.4,9.8,28.5,5.5">The visible interactions.</UiItem>
+<UiItem icon="pin" name="Pinned" area="44.6,9.8,28.5,5.5">The pinned ones.</UiItem>
+<UiItem icon="list" name="All" area="73.8,9.8,22.1,5.5">All of them.</UiItem>
 </UiList>
 
 <UiList label="Interaction row">
-<UiItem icon="zoom" name="Zoom">Zooms to the interaction.</UiItem>
-<UiItem icon="dots" name="More options">Pin. For a pinned interaction: Unpin, Label, and Show Label or Hide Label.</UiItem>
+<UiItem icon="zoom" name="Zoom" area="73.1,31.8,6.8,5.6">Zooms to the interaction.</UiItem>
+<UiItem icon="dots" name="More options" area="80.3,31.8,6.8,5.6">Pin. For a pinned interaction: Unpin, Label, and Show Label or Hide Label.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -143,23 +138,23 @@ The Builder Tool builds new ligands and edits existing ones. On opening, the pan
 <ShotRow src="nanome-v2/v2-7/builder-edit.webp" alt="The Builder Tool editing a ligand, with its controls labelled">
 
 <UiList label="Builder modes">
-<UiItem icon="plus" name="Build">Adds atoms and groups.</UiItem>
-<UiItem icon="replace" name="Replace">Swaps an atom or group for another. It can also fuse a ring fragment onto an existing ring.</UiItem>
-<UiItem icon="line" name="Bond">Clicking two atoms bonds them, and clicking a bond changes its order.</UiItem>
-<UiItem icon="trash" name="Delete">Clicking atoms or bonds deletes them.</UiItem>
+<UiItem icon="plus" name="Build" area="36.0,9.0,8.1,6.4">Adds atoms and groups.</UiItem>
+<UiItem icon="replace" name="Replace" area="44.3,9.0,7.9,6.4">Swaps an atom or group for another. It can also fuse a ring fragment onto an existing ring.</UiItem>
+<UiItem icon="line" name="Bond" area="52.4,9.0,7.8,6.4">Clicking two atoms bonds them, and clicking a bond changes its order.</UiItem>
+<UiItem icon="trash" name="Delete" area="60.4,9.0,8.1,6.4">Clicking atoms or bonds deletes them.</UiItem>
 </UiList>
 
 Along the bottom of the panel:
 
 <UiList label="Builder bottom bar">
-<UiItem name="Auto relax">Beside Minimize: relaxes the nearby geometry after every edit.</UiItem>
-<UiItem icon="minimize" name="Minimize" href="#minimize">Runs a force-field minimization on the ligand.</UiItem>
-<UiItem icon="settings" name="Minimization settings" href="#minimize">Receptor, algorithm, force field and number of steps.</UiItem>
+<UiItem name="Auto relax" area="35.9,77.1,12.0,5.7">Beside Minimize: relaxes the nearby geometry after every edit.</UiItem>
+<UiItem icon="minimize" name="Minimize" href="#minimize" area="49.9,77.1,14.0,5.8">Runs a force-field minimization on the ligand.</UiItem>
+<UiItem icon="settings" name="Minimization settings" href="#minimize" area="64.0,77.1,4.4,5.8">Receptor, algorithm, force field and number of steps.</UiItem>
 <UiItem icon="x" name="Cancel minimization">Stops a run.</UiItem>
-<UiItem icon="arrow-back-up" name="Undo">Steps back through edits and minimizations.</UiItem>
-<UiItem icon="arrow-forward-up" name="Redo">Steps forward through them again.</UiItem>
-<UiItem name="Cancel">Discards the changes.</UiItem>
-<UiItem icon="device-floppy" name="Save" href="#saving">Keeps the changes.</UiItem>
+<UiItem icon="arrow-back-up" name="Undo" area="35.9,92.3,4.4,5.7">Steps back through edits and minimizations.</UiItem>
+<UiItem icon="arrow-forward-up" name="Redo" area="40.5,92.3,4.5,5.7">Steps forward through them again.</UiItem>
+<UiItem name="Cancel" area="48.1,92.3,9.6,5.7">Discards the changes.</UiItem>
+<UiItem icon="device-floppy" name="Save" href="#saving" area="57.9,92.3,10.5,5.7">Keeps the changes.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -199,11 +194,11 @@ When **Replace** fuses a ring fragment onto an existing ring, it merges the atom
 **Minimize** runs a force-field minimization on the ligand. <Btn icon="settings">Minimization settings</Btn> opens:
 
 <UiList label="Minimization settings">
-<UiItem name="Receptor" href="#pocket-minimization">None (vacuum) minimizes the ligand on its own. Choosing an entry minimizes it inside that entry's binding pocket.</UiItem>
-<UiItem name="Algorithm">The menu lists Steepest Descent. The minimization itself runs RDKit's force-field minimizer, which uses the BFGS method.</UiItem>
-<UiItem name="Force field">MMFF94, MMFF94s or UFF.</UiItem>
-<UiItem name="Number of steps">50, 100, 200, 500, 1000 or 5000. This is a maximum, and minimization stops earlier when it converges.</UiItem>
-<UiItem name="Apply">Keeps the settings.</UiItem>
+<UiItem name="Receptor" href="#pocket-minimization" area="61.8,61.3,36.9,7.5">None (vacuum) minimizes the ligand on its own. Choosing an entry minimizes it inside that entry's binding pocket.</UiItem>
+<UiItem name="Algorithm" area="61.8,69.5,36.9,7.5">The menu lists Steepest Descent. The minimization itself runs RDKit's force-field minimizer, which uses the BFGS method.</UiItem>
+<UiItem name="Force field" area="61.8,77.7,36.9,7.5">MMFF94, MMFF94s or UFF.</UiItem>
+<UiItem name="Number of steps" area="61.8,86.0,36.9,7.5">50, 100, 200, 500, 1000 or 5000. This is a maximum, and minimization stops earlier when it converges.</UiItem>
+<UiItem name="Apply" area="84.9,95.1,13.6,4.1">Keeps the settings.</UiItem>
 </UiList>
 
 When it finishes, the panel shows the energy in kJ/mol.
@@ -225,8 +220,8 @@ In vacuum, the energy is the force field's conformational energy for the ligand.
 Since release 2.7, a ligand can be minimized in place inside a receptor's binding site. With a receptor entry chosen as the **Receptor**, the settings include:
 
 <UiList label="Pocket minimization settings">
-<UiItem name="Receptor flexibility">Chooses what else moves: Rigid receptor, Flexible pocket or Flexible side chains.</UiItem>
-<UiItem name="Pocket radius (Å)">How far from the ligand the pocket reaches, from 2 Å to 10 Å, with 4 Å by default.</UiItem>
+<UiItem name="Receptor flexibility" area="53.0,74.6,45.9,10.7">Chooses what else moves: Rigid receptor, Flexible pocket or Flexible side chains.</UiItem>
+<UiItem name="Pocket radius (Å)" area="53.0,85.8,45.9,7.8">How far from the ligand the pocket reaches, from 2 Å to 10 Å, with 4 Å by default.</UiItem>
 </UiList>
 
 The result shows the **Energy** in kJ/mol, the **Ligand RMSD** and the **Pocket RMSD**. A run can be cancelled or undone.
@@ -286,10 +281,10 @@ A ligand that started from **Create New** is saved as a new ligand. An existing 
 The Torsion Tool rotates bonds to change a structure's conformation. A structure is chosen in 3D, or from the list:
 
 <UiList label="Torsion structure list">
-<UiItem name="All Chains">Every residue in every chain.</UiItem>
-<UiItem name="All Ligands">Every ligand.</UiItem>
-<UiItem name="Chain A">Every residue in one chain.</UiItem>
-<UiItem name="A:B96_391">One ligand.</UiItem>
+<UiItem name="All Chains" area="23.2,21.6,70.2,6.6">Every residue in every chain.</UiItem>
+<UiItem name="All Ligands" area="23.2,28.5,70.2,6.6">Every ligand.</UiItem>
+<UiItem name="Chain A" area="23.2,35.3,70.2,6.5">Every residue in one chain.</UiItem>
+<UiItem name="A:B96_391" area="23.2,42.1,70.2,6.6">One ligand.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -299,10 +294,10 @@ The Torsion Tool rotates bonds to change a structure's conformation. A structure
 Clicking and holding on a bond rotates the atoms on one side of it. **Display torsion strain for the entire structure** colors atoms by an estimate of the torsional strain in the rotatable single bonds around them.
 
 <UiList label="Torsion Tool buttons">
-<UiItem icon="arrow-back-up" name="Undo">Steps back through changes.</UiItem>
-<UiItem icon="arrow-forward-up" name="Redo">Steps forward through them again.</UiItem>
-<UiItem name="Cancel">Discards the changes.</UiItem>
-<UiItem icon="device-floppy" name="Save">Commits the changes.</UiItem>
+<UiItem icon="arrow-back-up" name="Undo" area="9.7,91.5,4.5,5.7">Steps back through changes.</UiItem>
+<UiItem icon="arrow-forward-up" name="Redo" area="14.4,91.5,4.5,5.7">Steps forward through them again.</UiItem>
+<UiItem name="Cancel" area="21.9,91.5,9.6,5.7">Discards the changes.</UiItem>
+<UiItem icon="device-floppy" name="Save" area="31.8,91.5,10.6,5.7">Commits the changes.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -327,9 +322,9 @@ Select one or more protein residues, then pick one. Moving the thumbstick left o
 
 <UiList label="Residue Editor">
 <UiItem name="Mutate">Changes the residue to another amino acid.</UiItem>
-<UiItem name="Score against">Whether the rotamer scoring counts Visible atoms only or All atoms.</UiItem>
-<UiItem name="Cancel">Discards the change.</UiItem>
-<UiItem icon="device-floppy" name="Save">Keeps the change.</UiItem>
+<UiItem name="Score against" area="14.7,81.5,61.8,5.7">Whether the rotamer scoring counts Visible atoms only or All atoms.</UiItem>
+<UiItem name="Cancel" area="65.4,91.5,14.7,5.7">Discards the change.</UiItem>
+<UiItem icon="device-floppy" name="Save" area="80.4,91.5,16.2,5.7">Keeps the change.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -348,7 +343,7 @@ MARA Tools runs your MARA tools from the headset. The panel opens with a notice:
 
 <UiList label="MARA Tools">
 <UiItem name="Continue">Opens the tool list.</UiItem>
-<UiItem name="Search">Searches the tool list.</UiItem>
+<UiItem name="Search" area="47.9,9.2,48.7,6.7">Searches the tool list.</UiItem>
 <UiItem icon="player-play" name="Run">Runs the tool.</UiItem>
 <UiItem icon="refresh" name="Reset">Resets the run.</UiItem>
 <UiItem icon="arrow-left" name="Back">Returns to the tool list.</UiItem>
