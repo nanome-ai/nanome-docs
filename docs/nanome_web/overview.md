@@ -6,14 +6,12 @@ title: Nanome Web
 
 Nanome Web is the browser version of Nanome, at [app.nanome.ai](https://app.nanome.ai). It opens the same projects, workspaces and scenes as the Nanome XR headset app, so a colleague on a laptop and a colleague in a headset can work in one workspace at the same time.
 
-<IconGrid label="Top bar">
-<IconCard icon="home" title="Home" href="/nanome_web/home">The start page: workspace and project lists, search and joining by code.</IconCard>
-<IconCard icon="cube-3d-sphere" title="Workspace" href="/nanome_web/workspace">Your open workspaces: the 3D viewer, its tools, scenes and the sequence viewer.</IconCard>
-<IconCard icon="messages" title="Conversations" href="/mara/features#chat">Chat with MARA, and go back to earlier chats.</IconCard>
-<IconCard icon="tool" title="Tools" href="/mara/navigation#tools">Every tool MARA can use, and your custom tools.</IconCard>
-</IconGrid>
-
-<vimg src="nanome-web/workspace-overview.webp" alt="A workspace in Nanome Web" />
+<ScreenMap src="nanome-web/workspace-overview.webp" alt="A workspace in Nanome Web" label="Top bar">
+<MapCard icon="home" title="Home" href="/nanome_web/home" side="top" area="12.9,2.5,3.4,4.4">The start page: workspace and project lists, search and joining by code.</MapCard>
+<MapCard icon="cube-3d-sphere" title="Workspace" href="/nanome_web/workspace" side="top" area="17.2,2.5,6.0,4.4">Your open workspaces: the 3D viewer, its tools, scenes and the sequence viewer.</MapCard>
+<MapCard icon="messages" title="Conversations" href="/mara/conversations" side="top" area="24.0,2.5,7.4,4.4">Chat with MARA, and go back to earlier chats.</MapCard>
+<MapCard icon="tool" title="Tools" href="/mara/tools" side="top" area="32.3,2.5,3.1,4.4">Every tool MARA can use, and your custom tools.</MapCard>
+</ScreenMap>
 
 These pages describe Nanome Web as of release 2.7.1.
 

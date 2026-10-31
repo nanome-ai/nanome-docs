@@ -6,19 +6,18 @@ title: User Resources
 
 Videos and articles to help you get started with MARA.
 
-<vimg src="mara/what_mara_do.png" alt="What can MARA do: data analysis, bioinformatics and cheminformatics" />
-
 ## <AppIcon name="player-play" /> Tutorials {#tutorials}
 
 <IconGrid label="Tutorials">
-<IconCard icon="player-play" title="Welcome to MARA" href="https://youtu.be/7ZVdwAtM_Gg">Onboarding tutorial video.</IconCard>
+<IconCard icon="play" title="Nanome and MARA walkthrough" href="https://youtu.be/fq8NFAvlavA">The video behind Learn the Basics on the Conversations page.</IconCard>
+<IconCard icon="player-play" title="Welcome to MARA" href="https://youtu.be/7ZVdwAtM_Gg">Onboarding tutorial video. Tutorial on the Tools page opens it at tool creation.</IconCard>
 <IconCard icon="player-play" title="CDD Vault + MARA" href="https://youtu.be/T1mjK3Z8qfQ">An example workflow, on video.</IconCard>
 <IconCard icon="player-play" title="Integrating Nanome and MARA" href="https://youtu.be/hXa2LUorsVM">MARA onboarding video.</IconCard>
 </IconGrid>
 
 ## <AppIcon name="route" /> Example use cases and workflows {#examples}
 
-Blog posts on how different people use MARA, and in which workflows.
+Blog posts on how people use MARA in their own workflows.
 
 <IconGrid label="Example use cases">
 <IconCard icon="file-text" title="Bioinformatics Workflow" href="https://nanome.ai/blog/mara-bioinformatics-workflow/">Blog post.</IconCard>
@@ -37,4 +36,4 @@ The vision for MARA as a scientific co-pilot.
 
 ## <AppIcon name="bulb" /> Update announcements {#latest-update}
 
-The [MARA v0.12.10 update announcement](https://nanome.ai/blog/mara-update:-v0.12.10) describes that release.
+[Web App 1.0 ships today, and MARA's beta tag comes off with it](https://nanome.ai/blog/web-app-1.0-ships-today-and-mara%27s-beta-tag-comes-off-with-it.) covers the rewrite of how MARA plans, calls tools and runs workflows. An earlier post covers [MARA v0.12.10](https://nanome.ai/blog/mara-update:-v0.12.10).

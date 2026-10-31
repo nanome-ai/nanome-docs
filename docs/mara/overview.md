@@ -4,56 +4,61 @@ title: MARA Overview
 
 # MARA
 
-**MARA** (Molecular Analysis and Reasoning Assistant) is Nanome's AI assistant for scientific informatics. It's an agentic system: you ask in plain language, and MARA builds and runs the workflow of tools that answers it. In Nanome Web, it lives on the **Conversations** and **Tools** pages and in the **MARA** tab of a workspace.
+**MARA** (Molecular Analysis and Reasoning Assistant) is Nanome's AI assistant. You ask in plain language, and MARA picks the tools that answer the question, runs them, and returns the results as text, files, tables, plots and 3D structures.
 
-<IconGrid label="Where MARA lives" :cols="3">
-<IconCard icon="messages" title="Conversations" href="/mara/features#chat">Chat with MARA, and go back to earlier chats.</IconCard>
-<IconCard icon="sparkles" title="MARA tab" href="/nanome_web/workspace#mara-tab">Change a workspace's representations in plain language.</IconCard>
-<IconCard icon="tool" title="Tools" href="/mara/navigation#tools">Every tool MARA can use, and your custom tools.</IconCard>
-<IconCard icon="route" title="Workflows" href="/mara/navigation#workflows">Sequences of tools that you define.</IconCard>
-<IconCard icon="triangle-square-circle" title="Integrations" href="/mara/navigation#integrations">Links to your existing tools and data sources.</IconCard>
-<IconCard icon="file-info" title="Knowledge" href="/mara/navigation#knowledge">Org knowledge, base knowledge and queries.</IconCard>
+## Where MARA is {#where-mara-is}
+
+<IconGrid label="Where MARA is">
+<IconCard icon="messages" title="Conversations" href="/mara/conversations">In Nanome Web's top bar. Chats with MARA, with their files, tables and a 3D viewer.</IconCard>
+<IconCard icon="tool" title="Tools" href="/mara/tools">In Nanome Web's top bar. The tools, integrations, workflows and knowledge MARA works with.</IconCard>
+<IconCard icon="sparkles" title="MARA tab" href="/nanome_web/workspace#mara-tab">In a Nanome Web workspace: a MARA chat beside the 3D view.</IconCard>
+<IconCard icon="device-vision-pro" title="In Nanome XR" href="#in-nanome-xr">Talk to MARA, and run MARA tools, from a headset.</IconCard>
 </IconGrid>
 
-## <AppIcon name="sparkles" /> What MARA does {#what-mara-does}
+## <AppIcon name="message-2-share" /> What you can ask {#what-you-can-ask}
 
-MARA works with your existing workflows, tools and data sources, and handles data processing, analysis and communication across drug discovery, materials science, genomics and bioinformatics.
+The example chats on the [Conversations](/mara/conversations#examples) page show one complete task for each field:
 
-- It uses large language models and its tools to run tasks from complex data analysis to molecular modeling, and returns results in real time.
-- You can write your own tools as Python scripts, SQL queries or HTTP endpoints, for anything from molecule manipulation to data querying.
-- It works with platforms like CDD Vault for drug discovery, and aims to expand into other fields.
-- It can run inside your organization's firewall, with data privacy and compliance in mind, and fit in with internal informatics systems.
+<IconGrid label="Example chats">
+<IconCard icon="hexagons" title="Cheminformatics" href="/mara/conversations#examples">Calculate molecular properties, analyze SAR data, visualize data.</IconCard>
+<IconCard icon="dna2" title="Bioinformatics" href="/mara/conversations#examples">Design protein sequences, align sequences, fold a sequence with ESMFold.</IconCard>
+<IconCard icon="microscope" title="Drug Discovery" href="/mara/conversations#examples">Find related structures, find binding pockets, run docking.</IconCard>
+<IconCard icon="atom" title="Comp Chemistry" href="/mara/conversations#examples">Process molecular dynamics trajectories, calculate distances, prepare structures.</IconCard>
+</IconGrid>
 
-### Applications
+More tasks by kind, and what MARA does with tables and structures, are under [What MARA can do](/mara/features).
 
-<AccordionGroup label="4 application areas">
+## <AppIcon name="device-vision-pro" /> In Nanome XR {#in-nanome-xr}
 
-<Accordion title="Drug discovery and development" teaser="Molecular libraries, lead selection and SAR analysis.">
+<ShotRow src="mara/xr-mara-buttons.webp" alt="The Wrist Menu and the Tools Panel in a headset, with MARA's buttons on each">
 
-In cheminformatics, MARA helps create molecular libraries and supports lead selection and SAR analysis by automating tasks such as R-group variation, SMILES-to-SDF conversion, and preparing molecules for docking studies.
+<UiList label="MARA in Nanome XR">
+<UiItem icon="sparkles" name="MARA on the Wrist Menu" href="#talking-to-mara" area="18.0,78.9,6.4,11.5">Opens MARA and starts listening.</UiItem>
+<UiItem icon="sparkles" name="Open MARA" href="#talking-to-mara" area="90.2,72.2,1.8,3.3">At the bottom of the Tools Panel. The same as the Wrist Menu button.</UiItem>
+<UiItem icon="tool" name="MARA Tools" href="/nanome_v2/toolspanel#mara-tools" area="90.2,53.5,1.8,3.3">In the Tools Panel, in beta. Runs your MARA tools from the headset.</UiItem>
+</UiList>
 
-</Accordion>
+</ShotRow>
 
-<Accordion title="Genomics and bioinformatics" teaser="Sequencing, proteomics and multi-omics workflows.">
+### Talking to MARA {#talking-to-mara}
 
-MARA manages workflows for genomic sequencing, proteomic data analysis and multi-omics integration, for working with large datasets.
+In a headset, MARA changes how the workspace is drawn when you ask out loud. Changes to the selection aren't supported yet.
 
-</Accordion>
+<Steps>
 
-<Accordion title="Materials science and engineering" teaser="Design and simulation of new compounds.">
+1. Open MARA from the Wrist Menu or the Tools Panel, or press the off-hand controller's second button (**Y**, or **B** when left-handed) once a workspace is open.
+2. MARA shows **Listening...** and writes out what you say as you speak. **Cancel** stops without sending.
+3. When you finish, MARA shows your request, then **MARA Processing...**, then its answer, and the workspace changes.
+4. **New** asks something else. **Close** puts MARA away.
 
-MARA is positioned to support materials science research, helping with the design and simulation of new compounds for advanced materials, nanotechnology and sustainable engineering.
+</Steps>
 
-</Accordion>
+- MARA needs the headset's microphone. Without permission, it says so instead of listening.
+- Its buttons need Editor access to the workspace.
 
-<Accordion title="Collaborative research and informatics" teaser="One place for databases, experimental data and analysis tools.">
+## <AppIcon name="code" /> For administrators and developers {#administrators-and-developers}
 
-MARA brings traditional databases, experimental data and analysis tools together in one place for interdisciplinary teams, and works within a networked environment to support communication and decisions across R&D.
-
-</Accordion>
-
-</AccordionGroup>
-
-## <AppIcon name="building" /> Getting access {#getting-access}
-
-MARA is available in closed beta partnerships for pharmaceutical and biotech companies. Enterprise deployments can be customized and integrated to fit an organization's scientific environment. To explore it, [contact us](/help/contact).
+<IconGrid label="More about MARA">
+<IconCard icon="topology-star-3" title="Technical" href="/mara/technical">Architecture and deployment, tool creation, API keys and single sign-on.</IconCard>
+<IconCard icon="player-play" title="Resources" href="/mara/resources">Videos, blog posts and webinars.</IconCard>
+</IconGrid>
