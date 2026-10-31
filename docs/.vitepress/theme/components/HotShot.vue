@@ -119,7 +119,32 @@ const ordered = computed(() =>
   [...props.spots].sort((a, b) => b.box[2] * b.box[3] - a.box[2] * a.box[3])
 )
 
-const lit = computed(() => props.spots.find((s) => s.n === props.active) || null)
+// The active part's regions: one, or one for each place it shows up.
+const lits = computed(() => props.spots.filter((s) => s.n === props.active))
+const lit = computed(() => (lits.value.length === 1 ? lits.value[0] : null))
+
+/**
+ * With several lit regions, one dim layer has a hole for each, so no part of
+ * the image is dimmed twice. The holes' corners round by 6px, like the
+ * outlines, in a frame that stretches the 0-100 box to its own shape.
+ */
+const holes = computed(() => {
+  if (lits.value.length < 2) return ''
+  const [fw, fh] = frameSize.value || [400, 400 / ratio.value]
+  const f = (v) => +v.toFixed(3)
+  return lits.value
+    .map((s) => {
+      const [x, y, w, h] = framed(s.box)
+      const a = f(Math.min((6 / fw) * 100, w / 2))
+      const b = f(Math.min((6 / fh) * 100, h / 2))
+      const arc = (tx, ty) => `A${a} ${b} 0 0 1 ${f(tx)} ${f(ty)}`
+      return (
+        `M${f(x + a)} ${f(y)}H${f(x + w - a)}${arc(x + w, y + b)}V${f(y + h - b)}${arc(x + w - a, y + h)}` +
+        `H${f(x + a)}${arc(x, y + h - b)}V${f(y + b)}${arc(x + a, y)}Z`
+      )
+    })
+    .join('')
+})
 
 /** Only an image with no regions opens the larger view by itself. */
 const opensOnClick = computed(() => !props.focus && props.spots.length === 0)
@@ -186,8 +211,8 @@ function pick(spot) {
            reach the same link once, through its legend row or card. -->
       <component
         :is="s.href ? 'a' : 'span'"
-        v-for="s in ordered"
-        :key="s.n"
+        v-for="(s, i) in ordered"
+        :key="`${s.n}-${i}`"
         class="hotshot__spot"
         :class="{ 'is-active': s.n === active }"
         :style="place(s.box)"
@@ -206,6 +231,12 @@ function pick(spot) {
         :style="lit ? place(lit.box) : null"
         aria-hidden="true"
       />
+      <template v-if="holes">
+        <svg class="hotshot__dim" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <path :d="`M0 0H100V100H0Z${holes}`" fill-rule="evenodd" />
+        </svg>
+        <span v-for="(s, i) in lits" :key="i" class="hotshot__ring" :style="place(s.box)" aria-hidden="true" />
+      </template>
 
 
       <span v-if="info.isGif && !focus" class="hotshot__play" aria-hidden="true">&#9654;</span>
@@ -298,9 +329,43 @@ function pick(spot) {
   opacity: 1;
 }
 
+/* Several lit regions: one dim layer with a hole for each, and an outline
+   around each. */
+.hotshot__dim {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+}
+
+.hotshot__ring {
+  position: absolute;
+  border-radius: 6px;
+  box-shadow: 0 0 0 2px var(--n-accent);
+  pointer-events: none;
+}
+
+.hotshot__dim,
+.hotshot__ring {
+  animation: hotshot-in 140ms var(--n-ease);
+}
+
+@keyframes hotshot-in {
+  from {
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hotshot__lit {
     transition: none;
+  }
+
+  .hotshot__dim,
+  .hotshot__ring {
+    animation: none;
   }
 }
 
@@ -377,6 +442,10 @@ function pick(spot) {
 /* Dark captures need a deeper dim for the lit region to stand out. */
 .dark .hotshot__lit {
   box-shadow: 0 0 0 2px var(--n-accent), 0 0 0 100vmax rgba(0, 0, 0, 0.62);
+}
+
+.dark .hotshot__dim {
+  fill: rgba(0, 0, 0, 0.62);
 }
 
 .hotshot.has-dark .hotshot__dark {

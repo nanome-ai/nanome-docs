@@ -6,7 +6,11 @@
  * Clicking a region goes where its card links; a region whose card has no
  * link lights the card instead. The expand button opens the map full screen
  * with the cards still around it. On a narrow screen the image comes first
- * and the cards follow in a list.
+ * and the cards follow in a list. So does a screenshot that isn't tall, with
+ * cards on both sides, until there's room for both columns beside it.
+ *
+ * A card's `area` can hold more than one box, split by ";", for a part that
+ * shows up in more than one place, such as each person's avatar.
  *
  *   <ScreenMap src="nanome-v2/v2-7/desktop-layout.webp" alt="…" crop="0,0,56,72">
  *   <MapCard icon="hierarchy" title="Main Panel" href="/nanome_v2/mainpanel" side="top" area="16,6,33,64">Structures and settings.</MapCard>
@@ -17,10 +21,13 @@
 import { Fragment, cloneVNode, computed, defineComponent, h, provide, ref } from 'vue'
 import HotShot from './HotShot.vue'
 import MapCard from './MapCard.vue'
-import { parseBox } from './image.js'
+import { imageInfo, parseBox } from './image.js'
 import { useFocusView } from './focus.js'
 
 const SIDES = ['top', 'left', 'right', 'bottom']
+
+/** A card's area: one box, or several split by ";", keeping those that parse. */
+const boxesOf = (area) => (area ? String(area).split(';').map(parseBox).filter(Boolean) : [])
 
 function cardsIn(nodes, out = []) {
   for (const node of nodes || []) {
@@ -65,6 +72,15 @@ export default defineComponent({
     }
     provide('n-screenmap', { active, enter, leave })
 
+    // The image's height in the page, so the full-screen view never shows it
+    // smaller than that.
+    const pageHeight = ref(0)
+    const open = () => {
+      const frame = root.value?.querySelector('.hotshot__frame')
+      pageHeight.value = frame ? Math.round(frame.getBoundingClientRect().height) : 0
+      view.open()
+    }
+
     // A click on a region whose card has no link: light the card and bring
     // it into view. Cards are in the page in reading order.
     const pick = (n) => {
@@ -85,47 +101,74 @@ export default defineComponent({
     return () => {
       // Group the cards by side, and give each an id in reading order (top,
       // left, right, bottom) that ties it to its region.
-      const cards = cardsIn(slots.default?.()).map((vnode) => ({
-        vnode,
-        side: SIDES.includes(vnode.props?.side) ? vnode.props.side : 'bottom',
-        box: parseBox(vnode.props?.area),
-      }))
+      const cards = cardsIn(slots.default?.()).map((vnode) => {
+        const boxes = boxesOf(vnode.props?.area)
+        return {
+          vnode,
+          side: SIDES.includes(vnode.props?.side) ? vnode.props.side : 'bottom',
+          box: boxes[0] || null,
+          boxes,
+        }
+      })
       const sides = Object.fromEntries(SIDES.map((s) => [s, cards.filter((c) => c.side === s)]))
       let n = 0
       const spots = []
       for (const s of SIDES) {
         for (const c of sides[s]) {
           c.n = ++n
-          if (c.box) spots.push({ n: c.n, box: c.box, label: c.vnode.props?.title || '', href: c.vnode.props?.href || '' })
+          for (const box of c.boxes) {
+            spots.push({ n: c.n, box, label: c.vnode.props?.title || '', href: c.vnode.props?.href || '' })
+          }
         }
       }
 
+      const crop = parseBox(props.crop) || [0, 0, 100, 100]
+      // The frame's width over its height, after the crop.
+      const [w, h0] = imageInfo(props.src).size || []
+      const ar = (w * crop[2]) / (h0 * crop[3])
+
+      // Where a region's center is along a row (across) or down a column,
+      // from 0 to 1 of the frame.
+      const centerOf = (s, box) =>
+        s === 'top' || s === 'bottom'
+          ? (box[0] + box[2] / 2 - crop[0]) / crop[2]
+          : (box[1] + box[3] / 2 - crop[1]) / crop[3]
+
       // Lean each row or column toward where its regions are in the frame:
       // a row of tabs in the right half of the screen sits right of center.
-      const crop = parseBox(props.crop) || [0, 0, 100, 100]
       const lean = (s) => {
-        const across = s === 'top' || s === 'bottom'
-        const centers = sides[s]
-          .filter((c) => c.box)
-          .map((c) => (across ? (c.box[0] + c.box[2] / 2 - crop[0]) / crop[2] : (c.box[1] + c.box[3] / 2 - crop[1]) / crop[3]))
+        const centers = sides[s].filter((c) => c.box).map((c) => centerOf(s, c.box))
         if (!centers.length) return null
         const mean = centers.reduce((a, b) => a + b, 0) / centers.length
-        const where = mean < 0.38 ? 'flex-start' : mean > 0.62 ? 'flex-end' : 'center'
-        return across ? { justifyContent: where } : { justifyContent: where }
+        return { justifyContent: mean < 0.38 ? 'flex-start' : mean > 0.62 ? 'flex-end' : 'center' }
       }
 
-      const column = (s) =>
-        sides[s].length
-          ? h(
-              'div',
-              { class: `n-screenmap__side n-screenmap__${s}`, style: lean(s) },
-              sides[s].map((c) => cloneVNode(c.vnode, { n: c.n, key: c.n }))
-            )
-          : null
+      // A lone card beside the image sits level with its region.
+      const level = (s) => {
+        const only = sides[s].length === 1 ? sides[s][0].box : null
+        return (s === 'left' || s === 'right') && only ? Math.min(1, Math.max(0, centerOf(s, only))) : null
+      }
+
+      const column = (s) => {
+        if (!sides[s].length) return null
+        const at = level(s)
+        return h(
+          'div',
+          {
+            class: ['n-screenmap__side', `n-screenmap__${s}`, { 'is-level': at !== null }],
+            style: at !== null ? { '--sm-at': at.toFixed(3) } : lean(s),
+          },
+          sides[s].map((c) => cloneVNode(c.vnode, { n: c.n, key: c.n }))
+        )
+      }
 
       const classes = [
         'n-screenmap',
-        { 'is-focus': view.focused.value },
+        {
+          'is-focus': view.focused.value,
+          // Cards on both sides of a screenshot that isn't tall.
+          'is-flanked': sides.left.length > 0 && sides.right.length > 0 && ar >= 0.75,
+        },
         ...SIDES.map((s) => ({ [`has-${s}`]: sides[s].length > 0 })),
       ]
 
@@ -140,7 +183,7 @@ export default defineComponent({
             'div',
             {
               ref: root,
-              class: classes,
+              class: ['n-screenmap-view', { 'is-focus': view.focused.value }],
               role: view.focused.value ? 'dialog' : props.label ? 'region' : undefined,
               'aria-modal': view.focused.value ? 'true' : undefined,
               'aria-label': props.label || (view.focused.value && props.alt) || undefined,
@@ -154,24 +197,36 @@ export default defineComponent({
                   h('path', { d: 'M6 6l12 12M18 6L6 18', fill: 'none', stroke: 'currentColor', 'stroke-width': 2, 'stroke-linecap': 'round' }),
                 ])
               ),
-              column('top'),
-              column('left'),
-              h('div', { class: 'n-screenmap__shot' }, [
-                h(HotShot, {
-                  src: props.src,
-                  alt: props.alt,
-                  crop: props.crop,
-                  spots,
-                  active: active.value,
-                  focus: view.focused.value,
-                  onEnter: enter,
-                  onLeave: leave,
-                  onOpen: view.open,
-                  onPick: pick,
-                }),
-              ]),
-              column('right'),
-              column('bottom'),
+              h(
+                'div',
+                {
+                  class: classes,
+                  style: {
+                    '--sm-ar': Number.isFinite(ar) ? ar.toFixed(4) : undefined,
+                    '--sm-page-h': pageHeight.value ? `${pageHeight.value}px` : undefined,
+                  },
+                },
+                [
+                  column('top'),
+                  column('left'),
+                  h('div', { class: 'n-screenmap__shot' }, [
+                    h(HotShot, {
+                      src: props.src,
+                      alt: props.alt,
+                      crop: props.crop,
+                      spots,
+                      active: active.value,
+                      focus: view.focused.value,
+                      onEnter: enter,
+                      onLeave: leave,
+                      onOpen: open,
+                      onPick: pick,
+                    }),
+                  ]),
+                  column('right'),
+                  column('bottom'),
+                ]
+              ),
             ]
           ),
         ]
@@ -183,19 +238,26 @@ export default defineComponent({
 
 <style>
 .n-screenmap-hold {
-  container: screenmap / inline-size;
   margin: 20px 0 32px;
 }
 
-.n-screenmap .n-focus-close {
+/* The map answers to its own width: the page's column, or the whole window
+   in the full-screen view. */
+.n-screenmap-view {
+  container: screenmap / inline-size;
+}
+
+.n-screenmap-view .n-focus-close {
   display: none;
 }
 
-/* Narrow: the image, then the cards in a list. */
+/* Narrow: the image, then the cards in a list. A tall screen stays short
+   enough to see whole in the window. */
 .n-screenmap {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
   gap: 10px;
+  --hotshot-maxh: calc(100vh - var(--n-nav-height) - var(--n-pagebar-space) - 60px);
 }
 
 .n-screenmap__side {
@@ -223,16 +285,20 @@ export default defineComponent({
       'bottom bottom bottom';
     gap: 14px;
     align-items: center;
-    /* A tall screen stays short enough to see whole in the window. */
-    --hotshot-maxh: calc(100vh - var(--n-nav-height) - var(--n-pagebar-space) - 60px);
+  }
+
+  /* Under a row of cards, the image leaves room for the row, so the two fit
+     in the window together. */
+  .n-screenmap.has-top:not(.is-focus) {
+    --hotshot-maxh: calc(100vh - var(--n-nav-height) - var(--n-pagebar-space) - 190px);
   }
 
   .n-screenmap.has-left {
-    --n-sm-left: 12.5rem;
+    --n-sm-left: 13rem;
   }
 
   .n-screenmap.has-right {
-    --n-sm-right: 12.5rem;
+    --n-sm-right: 13rem;
   }
 
   .n-screenmap__side {
@@ -268,6 +334,25 @@ export default defineComponent({
     align-self: stretch;
   }
 
+  /* A lone card beside the image sits level with its region: the space above
+     and below it splits in the same proportion as the image's. */
+  .n-screenmap__side.is-level {
+    justify-content: flex-start;
+  }
+
+  .n-screenmap__side.is-level::before,
+  .n-screenmap__side.is-level::after {
+    content: '';
+  }
+
+  .n-screenmap__side.is-level::before {
+    flex: var(--sm-at) 1 0;
+  }
+
+  .n-screenmap__side.is-level::after {
+    flex: calc(1 - var(--sm-at)) 1 0;
+  }
+
   .n-screenmap__top {
     grid-area: top;
   }
@@ -296,14 +381,87 @@ export default defineComponent({
     order: 0;
     margin: 0;
   }
+
+  /* Full screen, the image's column is as wide as the image, so the cards
+     beside it stay close and the map sits in the middle of the window. */
+  .n-screenmap.is-focus:is(.has-left, .has-right) {
+    grid-template-columns:
+      minmax(0, var(--n-sm-left, 0px))
+      minmax(0, calc(var(--hotshot-maxh) * var(--sm-ar, 1)))
+      minmax(0, var(--n-sm-right, 0px));
+    justify-content: center;
+  }
+
+  /* A row over the image alone still holds 2 cards side by side, and the
+     image keeps to the cards on its right. */
+  .n-screenmap.is-focus.has-right:not(.has-left):is(.has-top, .has-bottom) {
+    grid-template-columns:
+      0px
+      minmax(0, max(calc(var(--hotshot-maxh) * var(--sm-ar, 1)), 26rem))
+      minmax(0, var(--n-sm-right, 0px));
+  }
+
+  .n-screenmap.is-focus.has-right:not(.has-left) .hotshot {
+    margin-right: 0;
+  }
+
+  /* Full screen under a row of cards, the image leaves room for the row, but
+     never comes out smaller than in the page. */
+  .n-screenmap.is-focus.has-top {
+    --hotshot-maxh: max(100vh - 260px, var(--sm-page-h, 0px));
+  }
+}
+
+/* With cards on both sides of a screenshot that isn't tall, the columns
+   would leave it half its size. Until the map is 1000px wide, the image comes
+   first and the cards follow in a list instead. */
+@container screenmap (max-width: 999.98px) {
+  .n-screenmap.is-flanked {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+    grid-template-areas: none;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .n-screenmap.is-flanked:not(.is-focus) {
+    --hotshot-maxh: calc(100vh - var(--n-nav-height) - var(--n-pagebar-space) - 60px);
+  }
+
+  .n-screenmap.is-flanked.is-focus {
+    --hotshot-maxh: calc(100vh - 150px);
+  }
+
+  .n-screenmap.is-flanked > .n-screenmap__side {
+    display: contents;
+  }
+
+  .n-screenmap.is-flanked > .n-screenmap__side::before,
+  .n-screenmap.is-flanked > .n-screenmap__side::after {
+    content: none;
+  }
+
+  /* Every card the same size, as in the narrow layout (MapCard's padding). */
+  .n-screenmap.is-flanked > .n-screenmap__side > .n-mapcard {
+    max-width: none;
+    padding: 12px 14px;
+    gap: 12px;
+  }
+
+  .n-screenmap.is-flanked > .n-screenmap__shot {
+    grid-area: auto;
+    grid-column: 1 / -1;
+    order: -1;
+    margin: 0 0 6px;
+  }
 }
 
 /* Full screen: the same layout over the whole window, the image as large as
-   the cards around it leave room for. */
-.n-screenmap.is-focus {
+   the window allows. A map taller than the window scrolls to the rest. */
+.n-screenmap-view.is-focus {
   position: fixed;
   inset: 0;
   z-index: 200;
+  display: grid;
   margin: 0;
   padding: 56px max(24px, 3vw) 32px;
   overflow: auto;
@@ -312,11 +470,14 @@ export default defineComponent({
   align-content: start;
   align-content: safe center;
   background: var(--n-bg);
-  --hotshot-cap: 4000px;
-  --hotshot-maxh: calc(100vh - 260px);
 }
 
-.n-screenmap.is-focus .n-focus-close {
+.n-screenmap.is-focus {
+  --hotshot-cap: 4000px;
+  --hotshot-maxh: calc(100vh - 150px);
+}
+
+.n-screenmap-view.is-focus .n-focus-close {
   position: fixed;
   top: 12px;
   right: 16px;
@@ -336,6 +497,23 @@ export default defineComponent({
 
 .n-screenmap.is-focus.has-right {
   --n-sm-right: 17rem;
+}
+
+/* Cards on both sides keep the page's columns, so the image gets the room.
+   So do the cards in a narrow window. */
+.n-screenmap.is-focus.is-flanked {
+  --n-sm-left: 13rem;
+  --n-sm-right: 13rem;
+}
+
+@container screenmap (max-width: 1099.98px) {
+  .n-screenmap.is-focus.has-left {
+    --n-sm-left: 13rem;
+  }
+
+  .n-screenmap.is-focus.has-right {
+    --n-sm-right: 13rem;
+  }
 }
 
 html.n-focus-open {

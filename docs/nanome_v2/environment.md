@@ -8,9 +8,9 @@ The Nanome XR environment is a floor with a skybox around it, with the structure
 
 <ScreenMap src="nanome-v2/v2-7/xr-environment.webp" alt="The view from a headset: a structure in the middle, two other people's avatars beside it, and a pointer at the tip of each of your controllers" label="The Nanome XR environment">
 <MapCard icon="view-360" title="Skybox" href="#skybox-and-floor" side="top" area="0,0,100,50">Mountains in your theme's colors, by day or by night, or plain black in Pure Black. Passthrough shows your room instead.</MapCard>
-<MapCard icon="users-group" title="Avatars" href="#avatars" side="top" area="29.8,32.4,9.0,19.2">A head and hands for each person in the session. Off to start.</MapCard>
+<MapCard icon="users-group" title="Avatars" href="#avatars" side="top" area="29.8,32.4,9.0,19.2;59.9,35.0,8.6,18.6">A head and hands for each person in the session. Off to start.</MapCard>
 <MapCard icon="tag" title="Name tag" href="#avatars" side="top" area="60.4,35.0,7.7,3.2">Their name, their mic, and the number of the scene they're in.</MapCard>
-<MapCard icon="droplet" title="Pointer" href="#pointers" side="bottom" area="68.4,77.0,4.2,7.0">At the tip of each controller. Everyone sees it on the same part of the structure.</MapCard>
+<MapCard icon="droplet" title="Pointer" href="#pointers" side="bottom" area="68.4,77.0,4.2,7.0;13.1,73.0,4.5,7.0">At the tip of each controller. Everyone sees it on the same part of the structure.</MapCard>
 <MapCard icon="view-360" title="Floor" href="#skybox-and-floor" side="bottom" area="0,50,100,50">A grid under the structures. It can be turned off.</MapCard>
 </ScreenMap>
 

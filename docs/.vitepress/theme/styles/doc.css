@@ -342,6 +342,14 @@
   vertical-align: top;
 }
 
+/* On the narrowest phones, 3 columns fit without scrolling sideways. */
+@media (max-width: 359px) {
+  .vp-doc th,
+  .vp-doc td {
+    padding: 10px 8px;
+  }
+}
+
 .vp-doc th {
   background: var(--n-surface-sunken);
   color: var(--n-text);

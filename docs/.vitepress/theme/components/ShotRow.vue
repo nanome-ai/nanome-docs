@@ -39,11 +39,14 @@ const props = defineProps({
   stack: { type: Boolean, default: false },
 })
 
-const wide = computed(() => {
+/** The image's width over its height, after the crop. */
+const ar = computed(() => {
   const [w, h] = imageInfo(props.src).size || []
   const [, , cw, ch] = parseBox(props.crop) || [0, 0, 100, 100]
-  return (w * cw) / (h * ch) > 1.9
+  return (w * cw) / (h * ch)
 })
+
+const wide = computed(() => ar.value > 1.9)
 
 // Legend rows with an area register here, in page order.
 const spots = ref([])
@@ -118,7 +121,10 @@ async function pick(n) {
 </script>
 
 <template>
-  <div class="n-shotrow-hold" :style="view.focused.value ? { height: `${view.holdHeight.value}px` } : null">
+  <div
+    class="n-shotrow-hold"
+    :style="{ '--shot-ar': Number.isFinite(ar) ? ar.toFixed(4) : undefined, height: view.focused.value ? `${view.holdHeight.value}px` : undefined }"
+  >
     <div
       ref="root"
       class="n-shotrow"
@@ -225,9 +231,11 @@ async function pick(n) {
   line-height: 1.45;
 }
 
+/* Less padding too, so the glyph stays the size it is in a plain legend. */
 .n-shotrow__legend :deep(.n-uiitem .n-appicon.is-button) {
   width: 1.75rem;
   height: 1.75rem;
+  padding: 0.4rem;
 }
 
 /* The name beside an icon matches the smaller icon here. */
@@ -334,10 +342,15 @@ async function pick(n) {
 }
 
 @container shotrow (min-width: 600px) {
+  /* The image's column is as wide as the image at full height, so a tall
+     panel sits next to its legend, and the two are centered together. A
+     landscape shot gets up to about two thirds of the row. */
   .n-shotrow.is-focus:not(.is-wide) .n-shotrow__grid {
-    grid-template-columns: minmax(0, 1.7fr) minmax(18rem, 1fr);
-    max-width: 1600px;
-    margin: 0 auto;
+    grid-template-columns:
+      min(calc((100vh - 100px) * var(--shot-ar, 1)), 63%, 100% - 18rem - 40px)
+      minmax(18rem, 34rem);
+    justify-content: center;
+    column-gap: 40px;
   }
 
   .n-shotrow.is-focus:not(.is-wide) .n-shotrow__shot {

@@ -6,13 +6,17 @@
  *   <Tabs :labels="['ArborXR', 'ManageXR', 'Meta HMS']">
  *     <Tab>…</Tab><Tab>…</Tab><Tab>…</Tab>
  *   </Tabs>
+ *
+ * `ids` names the tabs, so a link to #<id> opens that tab and lands on it.
  */
-import { computed, provide, ref, useId } from 'vue'
+import { computed, onBeforeUnmount, onMounted, provide, ref, useId } from 'vue'
 
 const props = defineProps({
   labels: { type: Array, required: true },
   /** Small note under each label, same order as `labels`. */
   notes: { type: Array, default: () => [] },
+  /** Anchor ids for the tabs, same order as `labels`. */
+  ids: { type: Array, default: () => [] },
 })
 
 const active = ref(0)
@@ -28,7 +32,7 @@ provide('n-tabs', {
 
 // Unique per instance: a long guide page can hold more than one tab set.
 const uid = useId()
-const tabId = (i) => `${uid}-tab-${i}`
+const tabId = (i) => props.ids[i] || `${uid}-tab-${i}`
 const panelId = (i) => `${uid}-panel-${i}`
 
 const count = computed(() => props.labels.length)
@@ -46,6 +50,22 @@ function onKey(event) {
 
   document.getElementById(tabId(active.value))?.focus()
 }
+
+/** A link to one of the tabs opens it. */
+function fromHash() {
+  let id = ''
+  try {
+    id = decodeURIComponent(location.hash.slice(1))
+  } catch {}
+  const i = id ? props.ids.indexOf(id) : -1
+  if (i >= 0) active.value = i
+}
+
+onMounted(() => {
+  fromHash()
+  addEventListener('hashchange', fromHash)
+})
+onBeforeUnmount(() => removeEventListener('hashchange', fromHash))
 </script>
 
 <template>
@@ -97,17 +117,18 @@ function onKey(event) {
   display: none;
 }
 
+/* The active tab's line is drawn inside the tab, so the strip's scroll box
+   can't clip it. */
 .n-tabs__tab {
   padding: 10px 14px;
   border: 0;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
   background: none;
+  box-shadow: inset 0 -2px 0 transparent;
   color: var(--n-text-faint);
   text-align: left;
   white-space: nowrap;
   cursor: pointer;
-  transition: color var(--n-transition), border-color var(--n-transition);
+  transition: color var(--n-transition), box-shadow var(--n-transition);
 }
 
 /* On a phone the tabs share one row and their labels wrap. A tab only
@@ -140,7 +161,7 @@ function onKey(event) {
 }
 
 .n-tabs__tab.is-active {
-  border-bottom-color: var(--n-accent);
+  box-shadow: inset 0 -2px 0 var(--n-accent);
   color: var(--n-text);
 }
 
