@@ -1,5 +1,6 @@
 ---
 title: Quest for Business
+trail: Help
 search: false
 prev: false
 next: false
@@ -7,7 +8,7 @@ next: false
 
 # Quest for Business
 
-Meta renamed Quest for Business to Meta Horizon managed services (HMS). Meta also stopped selling business editions of Quest in February 2026, and HMS has been free since February 20, 2026, so organizations now buy the standard headsets and enroll them in HMS.
+Quest for Business is now Meta Horizon managed services (HMS). On February 20, 2026, Meta stopped selling the business editions of Quest and made HMS licenses free. Organizations now buy the standard Quest 3 or 3S and enroll them in HMS, which Meta supports for those headsets through January 4, 2030.
 
 Getting Started covers managing Quest headsets for Nanome:
 
