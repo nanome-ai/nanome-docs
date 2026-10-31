@@ -121,7 +121,7 @@ In a headset, **Load Structure** in the Tools Panel loads a structure by PDB cod
 
 <DistanceDemo />
 
-- The distance runs from 2 Å to 10 Å, with 4 Å to start.
+- The distance runs from 2 Å to 10 Å, with 4 Å to start. The app's slider moves freely, and the copy above stops every 2 Å.
 - **Include ligands** is off to start, so other ligands, such as NADP+ here, are left out. Waters and ions in range still count. **All entries** searches every entry in the workspace, and the name then starts with "all within".
 - A distance component's menu also has **Update Distance Filter**, which changes the distance and keeps the other options. The name stays as it was.
 
@@ -361,7 +361,7 @@ Nanome calculates the properties with RDKit on its server, and Nanome Web shows 
 
 </Callout>
 
-The table below holds 8 inhibitors of p38α MAP kinase from the PDB. It looks like Nanome Web's table, with NumAtoms headed **Atoms** and MolWeight **MW**, and it sorts, searches, filters, keeps view presets and enlarges drawings the way Nanome XR does.
+The table below holds 8 inhibitors of p38α MAP kinase from the PDB. It looks like Nanome Web's table, with NumAtoms headed **Atoms** and MolWeight **MW**, and it sorts, searches, filters, keeps view presets and enlarges drawings the way Nanome XR does. Its row menu follows Nanome Web's. In Nanome XR a row has Zoom, Details, Edit and Set Tag, listed above.
 
 <LigandTableDemo app="xr" />
 

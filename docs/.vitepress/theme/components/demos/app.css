@@ -16,7 +16,9 @@
   --app-track: #cbd5e1;
   --app-purple: #7c4cff;
   --app-purple-soft: #ede9fe;
-  --app-purple-text: #7c4cff;
+  /* Darker than the app's purple, so a picked item's text on
+     --app-purple-soft reaches 4.5:1. */
+  --app-purple-text: #6a3de8;
   --app-card: #fff;
   --app-raised: #fff;
   --app-thumb: #fff;
@@ -171,6 +173,17 @@
   outline-offset: 2px;
 }
 
+/* A segmented control clips its buttons to its rounded ends, so the ring
+   goes inside, on the pill. */
+.n-app-seg button:focus-visible {
+  outline: none;
+}
+
+.n-app-seg button:focus-visible > span {
+  outline: 2px solid var(--app-purple);
+  outline-offset: -2px;
+}
+
 .n-app-palette {
   display: inline-flex;
   flex: none;
@@ -180,6 +193,7 @@
   height: 32px;
   border-radius: 50%;
   opacity: 0.45;
+  cursor: default;
 }
 
 .n-app-palette.is-on {
@@ -771,7 +785,7 @@
 }
 
 .vp-doc .n-ltab .n-ltab__table td.is-faint {
-  color: var(--lt-faint);
+  color: var(--lt-muted);
 }
 
 .n-ltab__table tbody tr {

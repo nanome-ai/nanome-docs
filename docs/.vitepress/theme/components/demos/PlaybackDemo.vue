@@ -100,9 +100,12 @@ onBeforeUnmount(() => {
 
 function step(by) {
   model.value = wrap(model.value + by)
+  // While playing, the model moves on under the note, so it names none.
   note.value = {
     title: by > 0 ? 'Next model' : 'Previous model',
-    text: `Steps to model ${model.value}/10, wrapping around at either end.${playing.value ? ' Playback carries on from there.' : ''}`,
+    text: playing.value
+      ? `Steps ${by > 0 ? 'forward' : 'back'} 1 model, wrapping around at either end. Playback carries on from there.`
+      : `Steps to model ${model.value}/10, wrapping around at either end.`,
   }
 }
 function rowPlay() {

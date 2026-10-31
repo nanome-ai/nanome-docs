@@ -130,6 +130,22 @@ const isNumericKey = (key) => key === RATING || LIGANDS.some((l) => !Number.isNa
 const opLabel = (op) => OPERATORS[op][xr.value ? 'xr' : 'web']
 
 /**
+ * When an action removes or disables the control that has focus in a
+ * popover, focus moves to `pick(popover)` instead of dropping to the page.
+ * Called after the change, so its update to the page comes first.
+ */
+function keepFocus(pop, pick) {
+  const was = document.activeElement
+  if (!pop.value?.contains(was)) return
+  nextTick(() => {
+    if (was.isConnected && !was.disabled) return
+    pick(pop.value)?.focus({ preventScroll: true })
+  })
+}
+const PROPERTY = 'select[aria-label="Property"]'
+const PRESET_NAME = 'input[aria-label="New preset name"]'
+
+/**
  * Whether a ligand passes a filter: numbers compare as numbers when both sides
  * are numbers, anything else as text without regard to case, and a ligand
  * without the property fails. No sample ligand has a Rating. Nanome XR finds
@@ -192,6 +208,9 @@ function addFilter() {
   filters.value = [...filters.value, f]
   // XR keeps the property and operator for the next filter; Nanome Web clears the row.
   draft.value = xr.value ? { ...draft.value, value: '' } : blankDraft()
+  // Add turns off as the value clears, so focus goes on to the value in XR
+  // and back to the property on Nanome Web.
+  keepFocus(filterPop, (pop) => pop.querySelector(xr.value ? 'input[aria-label="Value"]' : PROPERTY))
   const sym = xr.value && OPERATORS[f.op].xr !== OPERATORS[f.op].web ? `${OPERATORS[f.op].xr} is ${OPERATORS[f.op].name}. ` : ''
   let text = `${sym}Compared as text, without regard to case. A ligand is listed only when it passes every filter.`
   if (f.key === RATING) text = 'No sample ligand has a rating, and a ligand without the property fails, so none passes.'
@@ -202,6 +221,11 @@ function addFilter() {
 function removeFilter(i) {
   const f = filters.value[i]
   filters.value = filters.value.filter((_, j) => j !== i)
+  // On to the filter that takes its place, or the property when none is left.
+  keepFocus(filterPop, (pop) => {
+    const left = pop.querySelectorAll('.n-ltab__filter button')
+    return left.length ? left[Math.min(i, left.length - 1)] : pop.querySelector(PROPERTY)
+  })
   note.value = {
     title: `${describe(f)} · removed`,
     text: filters.value.length ? 'The other filters still apply.' : 'No filters are left.',
@@ -270,6 +294,7 @@ function savePreset() {
   }
   presets.value = [...presets.value, { id: nextPreset++, name, columns: [...selected.value], filters: filters.value.map((f) => ({ ...f })) }]
   presetName.value = ''
+  keepFocus(presetsPop, (pop) => pop.querySelector(PRESET_NAME))
   note.value = {
     title: `${name} · saved`,
     text: twin
@@ -284,11 +309,13 @@ function replacePreset() {
   presets.value = presets.value.map((q) => (q.id === p.id ? { ...q, columns: [...selected.value], filters: filters.value.map((f) => ({ ...f })) } : q))
   replacing.value = null
   presetName.value = ''
+  keepFocus(presetsPop, (pop) => pop.querySelector(PRESET_NAME))
   note.value = { title: `${p.name} · replaced`, text: 'It now holds the current columns and filters.' }
 }
 
 function cancelReplace() {
   replacing.value = null
+  keepFocus(presetsPop, (pop) => pop.querySelector(PRESET_NAME))
   note.value = { title: 'Cancel', text: 'The preset stays as it was, and the name stays in the field.' }
 }
 
@@ -303,7 +330,13 @@ function deletePreset(p) {
     return
   }
   confirming.value = null
+  const at = presets.value.findIndex((q) => q.id === p.id)
   presets.value = presets.value.filter((q) => q.id !== p.id)
+  // On to the preset that takes its place, or the name field when none is left.
+  keepFocus(presetsPop, (pop) => {
+    const left = pop.querySelectorAll('.n-ltab__papply')
+    return left.length ? left[Math.min(at, left.length - 1)] : pop.querySelector(PRESET_NAME)
+  })
   note.value = { title: `${p.name} · deleted`, text: 'Gone from the project for everyone. The table keeps its columns and filters.' }
 }
 
@@ -952,8 +985,9 @@ const caption = computed(() => {
         @keydown="onMenuKey"
       >
         <div class="n-ltab__menuhead">Actions</div>
-        <button type="button" role="menuitem" tabindex="-1" @click="act('sdf')"><AppIcon name="cloud-download" size="16px" />Download SDF</button>
-        <button type="button" role="menuitem" tabindex="-1" @click="act('sketch')"><AppIcon name="hexagon-plus-2" size="16px" />Sketch variant</button>
+        <!-- Nanome XR's row has neither (LigandsMenu). -->
+        <button v-if="!xr" type="button" role="menuitem" tabindex="-1" @click="act('sdf')"><AppIcon name="cloud-download" size="16px" />Download SDF</button>
+        <button v-if="!xr" type="button" role="menuitem" tabindex="-1" @click="act('sketch')"><AppIcon name="hexagon-plus-2" size="16px" />Sketch variant</button>
         <button type="button" role="menuitem" tabindex="-1" @click="act('props')"><AppIcon name="info-circle" size="16px" />Properties</button>
         <div class="n-ltab__menuhead">Tag</div>
         <button

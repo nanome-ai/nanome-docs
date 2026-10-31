@@ -291,7 +291,7 @@ watch(src, (s) => {
           </div>
         </div>
       </div>
-      <figcaption class="n-demo__caption" aria-live="polite"><strong>{{ caption.title }}</strong> {{ caption.text }}</figcaption>
+      <figcaption class="n-demo__caption" :aria-live="auto.playing.value ? 'off' : 'polite'"><strong>{{ caption.title }}</strong> {{ caption.text }}</figcaption>
     </figure>
   </div>
 </template>
