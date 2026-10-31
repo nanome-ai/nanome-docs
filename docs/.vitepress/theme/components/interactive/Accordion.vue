@@ -78,6 +78,7 @@ function onToggle(event) {
   display: flex;
   align-items: center;
   gap: 16px;
+  margin: 0;
   padding: 15px 18px;
   cursor: pointer;
   list-style: none;
@@ -90,6 +91,12 @@ function onToggle(event) {
 
 .n-accordion__summary:hover {
   background: var(--n-surface-hover);
+}
+
+/* The box clips anything outside it, so the ring goes just inside. */
+.n-accordion__summary:focus-visible {
+  outline-offset: -2px;
+  border-radius: var(--n-radius);
 }
 
 .n-accordion__heading {

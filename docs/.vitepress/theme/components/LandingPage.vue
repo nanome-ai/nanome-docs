@@ -53,7 +53,7 @@
     />
 
     <!-- Case studies -->
-    <h2>Case studies</h2>
+    <h2>Case Studies</h2>
     <HeroCarousel :slides="data.hero" />
     <p class="case-studies-all">
       <a href="https://nanome.ai/case-studies">All case studies</a>
@@ -169,6 +169,7 @@ const updateImage = computed(() => {
   margin-top: 0;
   font-size: 1.4rem;
   color: var(--vp-c-text-1);
+  text-wrap: balance;
 }
 
 .landing-page .update-content p {

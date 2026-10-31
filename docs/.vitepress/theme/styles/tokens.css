@@ -36,8 +36,9 @@
   --n-text-inverse: #ffffff;
 
   /* --- Status ----------------------------------------------------------- */
-  --n-good: #1a8a4a;
-  --n-warn: #b26a00;
+  /* Dark enough for 4.5:1 on their own -soft tints and on the callout grey. */
+  --n-good: #147a3e;
+  --n-warn: #945800;
   --n-bad: #c1372c;
   --n-good-soft: rgba(26, 138, 74, 0.1);
   --n-warn-soft: rgba(178, 106, 0, 0.1);
