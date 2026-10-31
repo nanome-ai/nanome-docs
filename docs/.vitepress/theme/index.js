@@ -1,4 +1,14 @@
-import DefaultTheme from 'vitepress/theme-without-fonts'
+// The default theme's global styles (variables, base, utilities, markdown
+// content, code blocks) come first, so the cascade order is unchanged.
+import 'vitepress/dist/client/theme-default/styles/vars.css'
+import 'vitepress/dist/client/theme-default/styles/base.css'
+import 'vitepress/dist/client/theme-default/styles/icons.css'
+import 'vitepress/dist/client/theme-default/styles/utils.css'
+import 'vitepress/dist/client/theme-default/styles/components/custom-block.css'
+import 'vitepress/dist/client/theme-default/styles/components/vp-code.css'
+import 'vitepress/dist/client/theme-default/styles/components/vp-code-group.css'
+import 'vitepress/dist/client/theme-default/styles/components/vp-doc.css'
+import VPBadge from 'vitepress/dist/client/theme-default/components/VPBadge.vue'
 import mediumZoom from 'medium-zoom'
 import { nextTick, onMounted, watch } from 'vue'
 import { useRoute } from 'vitepress'
@@ -50,12 +60,11 @@ import Steps from './components/interactive/Steps.vue'
 import CopyBlock from './components/interactive/CopyBlock.vue'
 import Callout from './components/interactive/Callout.vue'
 
-// `extends` still gives us the default theme's markdown-level pieces — code
-// group tabs, `<Badge>`, and the local search dialog the nav bar imports.
-// Only the Layout is replaced. The router shows NotFound in place of the page
-// for a missing URL.
+// The default theme's global styles and `<Badge>` are imported directly at the
+// top, and the nav bar imports its search button and dialog. Only its Layout,
+// and every component under it, is left out. The router shows NotFound in
+// place of the page for a missing URL.
 export default {
-  extends: DefaultTheme,
   Layout,
   NotFound,
 
@@ -79,6 +88,7 @@ export default {
         )
     }
 
+    app.component('Badge', VPBadge)
     app.component('Vimg', Vimg)
     app.component('ToggleSection', ToggleSection)
     app.component('ContactForm', ContactForm)
@@ -118,16 +128,16 @@ export default {
 
   setup() {
     const route = useRoute()
+    // One zoom for the whole visit. Each page swaps in its own images, so
+    // the zoom's document listeners don't pile up as the reader moves on.
     // A click on an image inside a link follows the link, so those images get
-    // no zoom view. The old instance closes on a route change, so its overlay
-    // can't stay on the next page.
+    // no zoom view. Detaching closes an open zoom view, so its overlay can't
+    // stay on the next page.
     let zoom
     const initZoom = () => {
-      zoom?.close()
-      zoom?.detach()
-      zoom = mediumZoom('.vimg > img:not(a img), .vp-doc img:not(.no-zoom):not(a img)', {
-        background: 'var(--n-bg)',
-      })
+      zoom ??= mediumZoom({ background: 'var(--n-bg)' })
+      zoom.detach()
+      zoom.attach('.vimg > img:not(a img), .vp-doc img:not(.no-zoom):not(a img)')
     }
     onMounted(initZoom)
     watch(
