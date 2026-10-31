@@ -60,7 +60,8 @@ export default defineComponent({
       // Below the sticky chrome: the breadcrumb strip, or the nav bar without it.
       const bar = document.querySelector('.n-pagebar') || document.querySelector('.n-navbar')
       const chrome = bar ? bar.getBoundingClientRect().bottom : 56
-      if (r.top < chrome + 24 || r.bottom > window.innerHeight) el.scrollIntoView({ block: 'center', behavior: 'smooth' })
+      const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+      if (r.top < chrome + 24 || r.bottom > window.innerHeight) el.scrollIntoView({ block: 'center', behavior })
     }
 
     return () => {
@@ -224,9 +225,12 @@ export default defineComponent({
     justify-content: center;
   }
 
+  /* A row wraps as if each card were 12.5rem, and the cards then take up to
+     13.5rem of any room left, so a two-word title stays on one line. */
   .n-screenmap__top > *,
   .n-screenmap__bottom > * {
-    flex: 0 1 12.5rem;
+    flex: 1 1 12.5rem;
+    max-width: 13.5rem;
   }
 
   /* Cards beside the image stay compact, so the image keeps the room. */
@@ -275,7 +279,10 @@ export default defineComponent({
   margin: 0;
   padding: 56px max(24px, 3vw) 32px;
   overflow: auto;
+  /* Centered when it fits; a map taller than the window starts at the top, so
+     all of it can be scrolled to. */
   align-content: center;
+  align-content: safe center;
   background: var(--n-bg);
   --hotshot-cap: 4000px;
   --hotshot-maxh: calc(100vh - 260px);

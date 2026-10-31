@@ -22,7 +22,7 @@
  *
  *   </ShotRow>
  */
-import { computed, provide, ref } from 'vue'
+import { computed, nextTick, provide, ref } from 'vue'
 import HotShot from './HotShot.vue'
 import { imageInfo, parseBox } from './image.js'
 import { useFocusView } from './focus.js'
@@ -43,6 +43,28 @@ const wide = computed(() => {
 const spots = ref([])
 let next = 0
 const active = ref(0)
+// A click on a region can scroll the page to its row, which slides the image
+// under the pointer. Hovers during that scroll aren't the reader's, so they're
+// ignored until it ends, and the row stays lit.
+let holding = 0
+let holds = 0
+
+function enter(n) {
+  if (!holding) active.value = n
+}
+
+function leave(n) {
+  if (!holding && active.value === n) active.value = 0
+}
+
+function holdWhileScrolling() {
+  const mine = ++holds
+  holding = mine
+  const end = () => setTimeout(() => holding === mine && (holding = 0), 100)
+  addEventListener('scrollend', end, { once: true })
+  // For a browser without scrollend.
+  setTimeout(end, 1500)
+}
 
 provide('n-hotspots', {
   active,
@@ -54,27 +76,38 @@ provide('n-hotspots', {
   unregister(n) {
     spots.value = spots.value.filter((s) => s.n !== n)
   },
-  enter(n) {
-    active.value = n
-  },
-  leave(n) {
-    if (active.value === n) active.value = 0
-  },
+  enter,
+  leave,
 })
 
 const root = ref(null)
 const view = useFocusView(root)
 
 /** A click on a region with no link: light its row and bring it into view. */
-function pick(n) {
+async function pick(n) {
   active.value = n
   const el = spots.value.find((s) => s.n === n)?.el?.()
   if (!el) return
+  // A row in a closed <Tab> has no box: open its tab first.
+  if (!el.getClientRects().length) {
+    const pane = el.closest('.n-tabs__panel > div')
+    const i = pane ? [...pane.parentElement.children].indexOf(pane) : -1
+    const tab = pane?.closest('.n-tabs')?.querySelectorAll('.n-tabs__tab')[i]
+    if (!tab) return
+    // The legend changes height, which can move the image under the pointer.
+    holdWhileScrolling()
+    tab.click()
+    await nextTick()
+  }
   const r = el.getBoundingClientRect()
   // Below the sticky chrome: the breadcrumb strip, or the nav bar without it.
   const bar = document.querySelector('.n-pagebar') || document.querySelector('.n-navbar')
   const chrome = bar ? bar.getBoundingClientRect().bottom : 56
-  if (r.top < chrome + 24 || r.bottom > window.innerHeight) el.scrollIntoView({ block: 'center', behavior: 'smooth' })
+  if (r.top < chrome + 24 || r.bottom > window.innerHeight) {
+    holdWhileScrolling()
+    const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+    el.scrollIntoView({ block: 'center', behavior })
+  }
 }
 </script>
 
@@ -99,8 +132,8 @@ function pick(n) {
             :spots="spots"
             :active="active"
             :focus="view.focused.value"
-            @enter="(n) => (active = n)"
-            @leave="(n) => active === n && (active = 0)"
+            @enter="enter"
+            @leave="leave"
             @open="view.open"
             @pick="pick"
           />
@@ -193,6 +226,13 @@ function pick(n) {
   line-height: 1.55;
 }
 
+/* A list in a legend matches the paragraphs beside it. */
+.n-shotrow__legend > :deep(ul),
+.n-shotrow__legend > :deep(ol) {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
 /* Side by side once there's room for both: about 46% for the image. */
 @container shotrow (min-width: 600px) {
   .n-shotrow:not(.is-wide) .n-shotrow__grid {
@@ -243,6 +283,19 @@ function pick(n) {
   cursor: pointer;
 }
 
+/* On a phone the full-screen view opens on the image, with the legend under it. */
+@container shotrow (max-width: 599px) {
+  .n-shotrow.is-focus .n-shotrow__grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .n-shotrow.is-focus .n-shotrow__shot {
+    order: -1;
+    margin: 0 0 16px;
+  }
+}
+
 @container shotrow (min-width: 600px) {
   .n-shotrow.is-focus:not(.is-wide) .n-shotrow__grid {
     grid-template-columns: minmax(0, 1.7fr) minmax(18rem, 1fr);
@@ -253,6 +306,11 @@ function pick(n) {
   .n-shotrow.is-focus:not(.is-wide) .n-shotrow__shot {
     top: 0;
     --hotshot-maxh: calc(100vh - 100px);
+  }
+
+  /* A tall panel fills only part of its column, so it sits in the middle. */
+  .n-shotrow.is-focus:not(.is-wide) :deep(.hotshot) {
+    margin-inline: auto;
   }
 }
 </style>

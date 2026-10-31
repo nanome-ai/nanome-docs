@@ -418,6 +418,17 @@
     --n-room: min(100vw - var(--n-sidebar-width) - var(--n-outline-width) - 2 * var(--n-gutter) - 16px, 1040px);
     margin-inline: min(0px, (100% - var(--n-room)) / 2);
   }
+
+  /* A wide screenshot sits under its legend, so the legend keeps to the text
+     column like the paragraphs around it, and the image is centered under it. */
+  .n-layout.has-sidebar.has-aside:not(.n-wide) .vp-doc > div > div > .n-shotrow-hold .n-shotrow.is-wide:not(.is-focus) .n-shotrow__legend {
+    max-width: calc(var(--n-content-max) - 2 * var(--n-gutter));
+    margin-inline: auto;
+  }
+
+  .n-layout.has-sidebar.has-aside:not(.n-wide) .vp-doc > div > div > .n-shotrow-hold .n-shotrow.is-wide:not(.is-focus) .hotshot {
+    margin-inline: auto;
+  }
 }
 
 .vimg__play-btn {
