@@ -9,7 +9,7 @@ Fixes for Nanome XR and Nanome Web: sign-in messages, the device limit, licenses
 
 <IconGrid label="Troubleshooting topics" :cols="3">
 <IconCard icon="alert-triangle" title="Sign-in messages" href="#sign-in">What each message means, and what to do next.</IconCard>
-<IconCard icon="devices" title="Device limit" href="#device-limit">One device at a time for each account.</IconCard>
+<IconCard icon="devices" title="Device limit" href="#device-limit">A limit on how many devices each account can use at once.</IconCard>
 <IconCard icon="license" title="License" href="#license">No license for Nanome XR, or one about to expire.</IconCard>
 <IconCard icon="wifi" title="Network" href="#network">Nanome cloud checks, and on-prem deployments.</IconCard>
 <IconCard icon="volume" title="No sound" href="#audio">Your mic, muted people and device audio.</IconCard>
@@ -32,9 +32,9 @@ Since release 2.7, the Nanome XR login screen says why a sign-in failed. **Detai
 
 ## <AppIcon name="devices" /> Device limit {#device-limit}
 
-An account can be signed in on one device at a time.
+Each account can be signed in on a limited number of devices at once.
 
-- **A Device Limit screen at sign-in** means the account is already signed in on another device. Sign out of Nanome there, then sign in again.
+- **A Device Limit screen at sign-in** lists the account's other sessions. Choose **Sign Out** on one of them, then **Retry**.
 - **Signed out with a notice** can mean the same account signed in on another device. An expired license also signs out with a notice (see [License](#license)).
 
 On a shared headset, <Btn icon="outbound">Log Out</Btn> at the bottom of the [Settings tab](/nanome_v2/mainpanel#settings-tab) signs you out, so the next person starts with their own account.
@@ -57,7 +57,7 @@ These checks narrow down most connection problems.
 
 <Steps>
 
-1. **Look at the network status.** The <AppIcon name="wifi" /> icon on the login screen shows it.
+1. **Read the sign-in message.** The login screen names network problems, such as no connection or a network that blocks the sign-in request.
 2. **Rule out a sign-in page.** Guest networks that ask for a browser sign-in (captive portals) block headset setup. A Quest also shows a no-internet message whenever it can't reach Meta, before Nanome opens.
 3. **Check the firewall.** Nanome needs outbound TCP 443 to `*.nanome.ai` and `*.nanome.com`, allowed by hostname, since the servers' IP addresses change. These hosts should also be exempt from TLS/SSL inspection.
 4. **Test the connection.** From the same network, `curl -v https://api.nanome.com` confirms port 443 is open (ping uses ICMP and doesn't test it). When a phone hotspot works and the office network doesn't, the office network is blocking something.
@@ -74,7 +74,7 @@ Only for Nanome v2 running on the organization's own VM. Its ports, DNS names an
 
 <Accordion title="A headset can't reach Nanome's servers" teaser="Without internet access, headsets sign in through the auth proxy.">
 
-Headsets sign in and check licenses through Nanome's API at api.nanome.com. On an internal network that stops them from reaching it, point Meta Quest and Galaxy XR headsets at the auth proxy on the VM with a config file from the MDM: [auth proxy setup](/getting-started#on-prem). The proxy forwards their requests to api.nanome.com. Once the file is on the headset, Nanome says it's unable to reach Nanome servers and offers a button that enables local config access.
+Headsets sign in and check licenses through Nanome's API at api.nanome.com. On an internal network that stops them from reaching it, point Meta Quest and Galaxy XR headsets at the auth proxy on the VM with a config file from the MDM: [auth proxy setup](/getting-started#on-prem). The proxy forwards their requests to api.nanome.com. Once the file is on the headset, Nanome shows **Nanome Routing unreachable** with **Read routing file on device**.
 
 </Accordion>
 

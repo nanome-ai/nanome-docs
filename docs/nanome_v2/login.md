@@ -14,7 +14,7 @@ Nanome opens on the login screen. It has two tabs: one for your password, and on
 
 ## <AppIcon name="password" /> Password {#password}
 
-Enter your Nanome username and password, then <Btn icon="login-2">Log in</Btn>.
+The **Password** tab takes your Nanome username or email address and your password. <Btn icon="login-2">Log in</Btn> signs you in.
 
 ## <AppIcon name="key" /> Code {#code}
 
@@ -45,19 +45,22 @@ Accounts created with Google, Microsoft or Apple, accounts that use single sign-
 <UiItem name="Email">The account's email address.</UiItem>
 <UiItem name="Username">6 to 120 characters: lowercase letters, numbers, dots, underscores and hyphens.</UiItem>
 <UiItem name="Password">8 to 250 characters, with an uppercase letter, a lowercase letter and a symbol.</UiItem>
+<UiItem name="I'm part of a">Classroom, Academic Lab, National Research Lab, Commercial Company or Other.</UiItem>
+<UiItem name="Company / Institution">Optional.</UiItem>
+<UiItem name="Subscribe to Newsletter">Signs you up for Nanome's newsletter.</UiItem>
 </UiList>
 
 ### Video: Creating Your Account
 
 <YoutubeEmbed videoId="cB82b8xIZoY" title="Nanome v2.4 Quick Tips: Creating Your Account" />
 
-## <AppIcon name="info-small" /> Also on the screen {#also-on-the-screen}
+## <AppIcon name="info-circle" /> Also on the screen {#also-on-the-screen}
 
 <UiList label="Login screen">
 <UiItem name="Remember Me">Keeps you signed in on the headset.</UiItem>
 <UiItem name="Close">Closes the tutorial banner on the left, which helps new users get started. Show tutorial guides in the Settings tab turns it back on.</UiItem>
-<UiItem icon="wifi" name="Network status">Shows the network status.</UiItem>
-<UiItem name="Version">Shows the Nanome version.</UiItem>
+<UiItem name="Version">The Nanome version and build number.</UiItem>
+<UiItem icon="info-circle" name="About Nanome">The i button beside the version. Shows the app details and attributions.</UiItem>
 <UiItem icon="maximize" name="Passthrough">Below the login screen. On by default on headsets that support passthrough.</UiItem>
 </UiList>
 
@@ -71,6 +74,6 @@ Since release 2.7, sign-in errors say what went wrong, with a **Details** button
 - an account without a license for Nanome XR
 - network problems
 
-An account can be signed in on one device at a time. When it is already signed in somewhere else, a **Device Limit** screen asks you to sign out of the other device first. Signing in on another device can sign this one out, with a notice.
+Each account can be signed in on a limited number of devices at once. When the limit is reached, a **Device Limit** screen lists the other sessions, each with **Sign Out**, and **Retry** continues. Signing in on another device can sign this one out, with a notice.
 
 Nanome warns when your license will expire within 30 days. When it expires, Nanome signs out with a notice.
