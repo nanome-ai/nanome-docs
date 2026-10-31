@@ -12,7 +12,7 @@ Nanome is accessible from a keyboard and mouse setup on a 2D monitor as well.
 <MapCard icon="stack-2" title="Menu Management" href="#menu-management-tab" side="right" area="91.1,0.0,2.2,3.0">Toggle or manage menus.</MapCard>
 <MapCard icon="users-group" title="Room" href="#room-tab" side="right" area="93.3,0.0,2.2,3.0">Manage users or request presenter privilege.</MapCard>
 <MapCard icon="camera" title="View Navigation" href="#view-navigation-tab" side="right" area="95.6,0.0,2.2,3.0">Change options for view control.</MapCard>
-<MapCard icon="settings" title="Settings" href="#settings-tab" side="right" area="97.8,0.0,2.2,3.0">Volume and environment background.</MapCard>
+<MapCard icon="settings" title="Setting" href="#settings-tab" side="right" area="97.8,0.0,2.2,3.0">Volume and environment background.</MapCard>
 <MapCard icon="plus" title="Load" href="/nanome1x/navigation/menus#load" side="bottom" area="36.8,77.0,3.6,8.2">Opens the Load menu.</MapCard>
 <MapCard icon="plug-connected" title="Plugin" href="/nanome1x/plugins/overview" side="bottom" area="40.6,77.0,3.6,8.2">Opens the Plugin menu.</MapCard>
 <MapCard icon="eye" title="Display" href="/nanome1x/navigation/menus#display" side="bottom" area="44.3,77.0,3.6,8.2">Opens the Display menu.</MapCard>
@@ -44,6 +44,8 @@ Toggle or manage menus.
 
 <UiList label="Menu Management tab">
 <UiItem icon="list" name="Entry Menu" area="5.5,22.8,91.5,8.7">Opens the Entry Menu.</UiItem>
+<UiItem icon="layout-grid" name="Grid Lock" area="5.5,36.3,91.5,8.7">Turns Grid Lock on or off.</UiItem>
+<UiItem icon="target" name="Focus On Menu" area="5.5,45.6,91.5,8.7">Brings a menu into focus.</UiItem>
 <UiItem icon="eye-off" name="Hide Menus" area="5.5,57.6,91.5,8.6">Hides the menus.</UiItem>
 <UiItem icon="lock" name="Lock Menus" area="5.5,67.4,91.5,8.6">Locks the menus.</UiItem>
 <UiItem icon="stack-2" name="Open All" area="5.5,79.8,91.5,8.7">Opens all the menus.</UiItem>
@@ -66,13 +68,13 @@ Change options for view control.
 
 </ShotRow>
 
-## Settings Tab
+## Setting Tab {#settings-tab}
 
-<ShotRow src="navigating-page/2D-Setting.jpg" alt="The Settings tab with the Skybox and Volume sliders">
+<ShotRow src="navigating-page/2D-Setting.jpg" alt="The Setting tab with the Skybox and Volume sliders">
 
 Change settings including volume and environment background.
 
-<UiList label="Settings tab">
+<UiList label="Setting tab">
 <UiItem name="Skybox" area="5.3,21.6,78.9,25.1">The environment background.</UiItem>
 <UiItem icon="volume" name="Master" area="4.6,51.0,86.1,8.7">Sets the master volume.</UiItem>
 <UiItem icon="volume" name="Music" area="4.6,60.0,86.1,8.6">Sets the music volume.</UiItem>
@@ -106,4 +108,4 @@ The control scheme can be accessed at any time by pressing the [H] key on the ke
 
 ## Nanome 2D Controller Bindings
 
-Nanome also supports the use of a controller in 2D mode. You can find the controller bindings [here](/controls/overview#_2d-controller-bindings).
+Nanome also supports the use of a controller in 2D mode. See the [2D controller bindings](/controls/overview#_2d-controller-bindings).

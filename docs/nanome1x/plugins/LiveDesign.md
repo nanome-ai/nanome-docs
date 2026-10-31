@@ -55,7 +55,7 @@ Lastly, click on "Login with Token", the plugin will update to show this menu:
 
 Note that this step is required once every 30 days (LiveDesign's tokens are refreshing every 30 days), most of the time, the token is re-used to avoid this step.
 
-# Usage
+## Usage
 
 This plugin allows you to load molecular data from LiveDesign or send ligand poses to a LiveReport.
 

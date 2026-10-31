@@ -4,7 +4,7 @@ title: Quick Drop
 
 # Quick Drop
 
-Nanome Quick Drop is a powerful feature of Nanome that simplifies the process of loading files into the Nanome application. With Quick Drop, users can conveniently drag and drop files onto the home.nanome.ai webpage, and the files will automatically load the next time they open Nanome on their headset or computer. Third-party applications can utilize Quick Drop via Nanome's API to allow users to open files directly from their application into Nanome.
+Quick Drop loads files into Nanome. Files you drag onto home.nanome.ai load the next time you open Nanome on your headset or computer. Other applications can use Quick Drop through Nanome's API to open files in Nanome.
 
 ## Third-Party Integration
 
@@ -27,7 +27,7 @@ The following code snippet demonstrates this flow:
 const NANOME_API = 'https://api.nanome.ai'
 
 // array of File or Blob objects from <input type="file" />
-// or manually contructed from file data with new File() constructor
+// or manually constructed from file data with new File() constructor
 const files = [file1, file2]
 
 // get user login token
@@ -55,7 +55,7 @@ const urls = addRes.results
 let done = 0
 
 const onFileUploaded = async () => {
-    if (done != files.length) return
+    if (++done != files.length) return
 
     // notify Nanome API that all files are uploaded
     await fetch(`${NANOME_API}/quickdrop/update`, {
@@ -88,7 +88,7 @@ const NANOME_API = 'https://api.nanome.ai'
 const QUICKDROP_API = 'https://quickdrop.example.com'
 
 // array of File or Blob objects from <input type="file" />
-// or manually contructed from file data with new File() constructor
+// or manually constructed from file data with new File() constructor
 const files = [file1, file2]
 
 // get user unique ID
@@ -104,7 +104,7 @@ const unique = loginRes.results.user.unique
 let done = 0
 
 const onFileUploaded = async () => {
-    if (done != files.length) return
+    if (++done != files.length) return
 
     // notify Quick Drop server that all files are uploaded
     await fetch(`${NANOME_API}/quickdrop/${unique}/update`, {

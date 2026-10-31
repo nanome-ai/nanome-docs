@@ -4,15 +4,15 @@ title: Deep Linking
 
 # Deep Linking
 
-Deep linking (also known as application protocol) enables 3rd party applications to construct a URL to automatically launch Nanome with various parameters, files, and scripts programatically.
+Deep linking (also known as application protocol) enables 3rd party applications to construct a URL to automatically launch Nanome with various parameters, files, and scripts programmatically.
 
-An example of this would be having a Molecular Database Partner or customer's internal web application that could have a button to "Open in Nanome" for a single or specific set of molecules. Clicking the button would prompt the user to launch the pre-installed Nanome Application and immediately load the files into the corresponding Nanome room seamlessly.
+An example of this would be having a Molecular Database Partner or customer's internal web application that could have a button to "Open in Nanome" for a single or specific set of molecules. Clicking the button would prompt the user to launch the pre-installed Nanome Application and immediately load the files into the corresponding Nanome room.
 
 Please note that:
 
-1. the deep linking/app protocol requires the Nanome application to be downloaded and requires Windows registry binding. Thus, users who want to use this method will need to have installed Nanome using the Windows Setup Installer located on the [nanome.ai/setup](https://nanome.ai/setup) page.
+1. The deep linking/app protocol requires the Nanome application to be downloaded and requires Windows registry binding. Thus, users who want to use this method will need to have installed Nanome using the Windows Setup Installer located on the [nanome.ai/setup](https://nanome.ai/setup) page.
 
-2. All-in-one headsets do not yet have support for this deeplinking protocol unless invoked through the Nanome in-VR web browser.
+2. All-in-one headsets do not yet have support for this deep linking protocol unless invoked through the Nanome in-VR web browser.
 
 ## Use cases
 
@@ -30,7 +30,7 @@ Please note that:
 
 - Run a script
 
-> A scientist can click a button in the web browser and it would load and run a Nanome Macro (written in LUA) in the room and apply changes such as changing the molecular representation for the secondary structure, doing modifying molecular operations. [(See Lua Script here)](#run-script-functions-lua-directly)
+> A scientist can click a button in the web browser and it would load and run a Nanome Macro (written in Lua) in the room and apply changes such as changing the molecular representation for the secondary structure, doing modifying molecular operations. [(See Lua Script here)](#run-script-functions-lua-directly)
 
 <a href="https://open.nanome.ai/#/W3sidHlwZSI6InNjcmlwdCIsInNjcmlwdCI6IlxuICAgICAgICAgICAgZnVuY3Rpb24gbWFpbiAoKVxuICAgICAgICAgICAgICAgIGlmIExpc3RfTGVuZ3RoKFNlbGVjdGlvbl9HZXRDb21wbGV4ZXMoKSkgPD0gMCB0aGVuXG4gICAgICAgICAgICAgICAgICAgIHJldHVybiBcIkVycm9yOiBObyBTdHJ1Y3R1cmUgU2VsZWN0ZWRcIlxuICAgICAgICAgICAgICAgIGVuZFxuICAgICAgICAgICAgICAgIENvbW1hbmRfU2V0UmliYm9uc1JlbmRlcihcInNlY29uZGFyeS1zdHJ1Y3R1cmVzXCIpXG4gICAgICAgICAgICAgICAgQ29tbWFuZF9TZXRTdXJmYWNlc1RyYW5zcGFyZW5jeSgwLjUpXG4gICAgICAgICAgICAgICAgQ29tbWFuZF9Db2xvcmluZ0F0b21zQm9uZHMoXCJkZWZhdWx0XCIsIG5pbCwgbmlsLCB0cnVlKVxuICAgICAgICAgICAgICAgIENvbW1hbmRfQ29sb3JpbmdSaWJib25zKFwiZGVmYXVsdFwiKVxuICAgICAgICAgICAgICAgIENvbW1hbmRfQ29sb3JpbmdTdXJmYWNlcyhcImRlZmF1bHRcIilcbiAgICAgICAgICAgICAgICByZXR1cm4gXCJTdWNjZXNzXCJcbiAgICAgICAgICAgIGVuZCJ9XQ==" class="btn">Run a script in Nanome</a>
 
@@ -39,11 +39,13 @@ Please note that:
 
 ### Constructing the URL
 
-Each URL contains a JSON stringified, base64 encoded JSON object and is appended to the "nanome" web data/type.
+Each URL is `nanome:///` followed by the base64-encoded JSON of your commands.
 
 An example URL looks like:
 
-    nanome:///<base64-payload>
+```text
+nanome:///<base64-payload>
+```
 
 Entering this URL in the browser would automatically launch Nanome from the Windows Registry (PC Setup Installer) or the in-VR web browser would automatically handle the commands.
 
@@ -65,7 +67,7 @@ const commands = [
 ]
 ```
 
-Now the JSON needs stringified and base64 encoded (btoa) then executed using the window.open() function:
+Now the JSON needs to be stringified and base64 encoded (btoa) then executed using the window.open() function:
 
 ```js
 const deepLink = "nanome:///" + btoa(JSON.stringify(commands))
@@ -112,7 +114,7 @@ const deepLink = "nanome:///" + btoa(JSON.stringify(commands))
 window.open(deepLink)
 ```
 
-### Run script functions (LUA) directly
+### Run script functions (Lua) directly
 
 Runs a Nanome Macro (Lua) commands directly in the JSON. See the [Nanome Macro documentation](https://github.com/nanome-ai/nanome-macros/blob/master/Documentation/API.md) for supported Macro Script commands.
 
