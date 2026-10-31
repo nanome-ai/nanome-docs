@@ -27,7 +27,7 @@ API keys let other applications work with MARA and Nanome: tool routes, the `mar
 
 <Callout type="warning" title="Keep API keys private">
 
-A key works for anyone who has it, so a key that's no longer used, or that may have leaked, is best deleted.
+A key works for anyone who has it, so a key that's no longer used, or that may have leaked, is best revoked.
 
 </Callout>
 
