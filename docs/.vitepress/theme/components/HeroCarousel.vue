@@ -39,6 +39,9 @@ defineProps({
 .slide img {
   width: 100%;
   height: 100%;
+  margin: 0; /* drop the page's image margin and frame */
+  border: 0;
+  border-radius: 0;
   object-fit: contain; /* banners are wider than 16:9; show them whole */
   background: var(--n-surface-sunken);
 }

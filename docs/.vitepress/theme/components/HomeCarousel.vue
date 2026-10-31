@@ -105,6 +105,9 @@ function getSlideURL(slide) {
 .home-carousel .img img {
   width: 100%;
   height: 100%;
+  margin: 0; /* drop the page's image margin and frame; the wrapper rounds */
+  border: 0;
+  border-radius: 0;
   object-fit: cover;
 }
 

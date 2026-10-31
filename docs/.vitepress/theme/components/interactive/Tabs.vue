@@ -121,6 +121,13 @@ function onKey(event) {
   color: var(--n-text);
 }
 
+/* Inset, so the strip's scroll box doesn't clip the ring. */
+.n-tabs__tab:focus-visible {
+  outline: 2px solid var(--n-accent);
+  outline-offset: -2px;
+  border-radius: var(--n-radius-sm);
+}
+
 .n-tabs__tab.is-active {
   border-bottom-color: var(--n-accent);
   color: var(--n-text);
