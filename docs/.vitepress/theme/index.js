@@ -56,7 +56,26 @@ export default {
   extends: DefaultTheme,
   Layout,
 
-  enhanceApp({ app }) {
+  enhanceApp({ app, router }) {
+    // A new page opens at its top, at its #section, or where Back left it,
+    // straight away. The smooth scrolling base.css sets is for links within a
+    // page, and would sweep the new page there from the old one's offset.
+    // Back and Forward skip onBeforeRouteChange, so this starts in
+    // onBeforePageLoad. Smooth scrolling comes back two frames after the
+    // route change, once the router's own scroll has run.
+    if (typeof window !== 'undefined') {
+      const root = document.documentElement
+      router.onBeforePageLoad = () => {
+        root.style.scrollBehavior = 'auto'
+      }
+      router.onAfterRouteChange = () =>
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() => {
+            root.style.scrollBehavior = ''
+          })
+        )
+    }
+
     app.component('Vimg', Vimg)
     app.component('ToggleSection', ToggleSection)
     app.component('ContactForm', ContactForm)
