@@ -97,6 +97,13 @@ function onKey(event) {
   display: none;
 }
 
+/* On a phone the tabs wrap, so none hides past the edge. */
+@media (max-width: 639px) {
+  .n-tabs__list {
+    flex-wrap: wrap;
+  }
+}
+
 .n-tabs__tab {
   padding: 10px 14px;
   border: 0;
