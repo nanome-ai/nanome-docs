@@ -14,9 +14,10 @@ These pages cover Nanome XR, version 2. Nanome Classic (v1.24), the earlier head
 
 ## Start here
 
-<IconGrid label="Start here" :cols="3">
+<IconGrid label="Start here">
 <IconCard icon="headset" title="Set up a headset" href="/getting-started">Hardware, install and first login.</IconCard>
 <IconCard icon="login-2" title="Log in" href="/nanome_v2/login">With your password, or a code from another device.</IconCard>
+<IconCard icon="hand-grab" title="Controls" href="/nanome_v2/controls">Grab, scale, point and select, with controllers or hands.</IconCard>
 <IconCard icon="sparkles" title="What's new in 2.7" href="/nanome_v2/whatsnew">Comments, pocket minimization and more.</IconCard>
 </IconGrid>
 
@@ -33,7 +34,7 @@ These pages cover Nanome XR, version 2. Nanome Classic (v1.24), the earlier head
 
 ## Working together
 
-<IconGrid label="Working together" :cols="3">
+<IconGrid label="Working together">
 <IconCard icon="users-group" title="Collaboration" href="/nanome_v2/collaboration">Sharing a workspace and following each other.</IconCard>
 <IconCard icon="crown" title="Session Guide" href="/session-guide">Running a group session from start to finish.</IconCard>
 <IconCard icon="route" title="Sample Workflows" href="/nanome_v2/sampleworkflows">Step-by-step examples.</IconCard>

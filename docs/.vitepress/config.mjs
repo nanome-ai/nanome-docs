@@ -249,6 +249,7 @@ export default defineConfig({
               { text: 'Getting Started', link: '/getting-started' },
               { text: "What's New in 2.7", link: '/nanome_v2/whatsnew' },
               { text: 'Login', link: '/nanome_v2/login' },
+              { text: 'Controls', link: '/nanome_v2/controls' },
               { text: 'Main Panel', link: '/nanome_v2/mainpanel' },
               { text: 'Tools Panel', link: '/nanome_v2/toolspanel' },
               { text: 'Scenes Panel', link: '/nanome_v2/scenespanel' },
@@ -258,7 +259,8 @@ export default defineConfig({
               { text: 'Collaboration', link: '/nanome_v2/collaboration' },
               { text: 'Session Guide', link: '/session-guide' },
               { text: 'Sample Workflows', link: '/nanome_v2/sampleworkflows' },
-              { text: 'Tips', link: '/nanome_v2/tips' }
+              { text: 'Tips', link: '/nanome_v2/tips' },
+              { text: 'Vision Pro', link: '/nanome_v2/visionpro' }
             ]
           },
           {
