@@ -27,7 +27,7 @@ The following code snippet demonstrates this flow:
 const NANOME_API = 'https://api.nanome.ai'
 
 // array of File or Blob objects from <input type="file" />
-// or manually contructed from file data with new File() constructor
+// or manually constructed from file data with new File() constructor
 const files = [file1, file2]
 
 // get user login token
@@ -55,7 +55,7 @@ const urls = addRes.results
 let done = 0
 
 const onFileUploaded = async () => {
-    if (done != files.length) return
+    if (++done != files.length) return
 
     // notify Nanome API that all files are uploaded
     await fetch(`${NANOME_API}/quickdrop/update`, {
@@ -88,7 +88,7 @@ const NANOME_API = 'https://api.nanome.ai'
 const QUICKDROP_API = 'https://quickdrop.example.com'
 
 // array of File or Blob objects from <input type="file" />
-// or manually contructed from file data with new File() constructor
+// or manually constructed from file data with new File() constructor
 const files = [file1, file2]
 
 // get user unique ID
@@ -104,7 +104,7 @@ const unique = loginRes.results.user.unique
 let done = 0
 
 const onFileUploaded = async () => {
-    if (done != files.length) return
+    if (++done != files.length) return
 
     // notify Quick Drop server that all files are uploaded
     await fetch(`${NANOME_API}/quickdrop/${unique}/update`, {

@@ -1,5 +1,7 @@
 ---
 title: Key Features
+prev: false
+next: false
 ---
 
 # Key Features
@@ -27,7 +29,7 @@ Both VR users and 2D users can collaborate in a virtual space.
 
 ## Torsion tool
 
-Users can rotate structures around each other and measure the resulting bond angles and lengths through the torsion tool.
+The torsion tool twists a rotatable bond, and the measured dihedral angle updates as you turn it.
 
 <vimg src="features-page/measure-torsion.gif" />
 

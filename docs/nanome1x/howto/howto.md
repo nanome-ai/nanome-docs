@@ -1,6 +1,8 @@
 ---
-title: How to
+title: How To
 ---
+
+# How To
 
 ## How to enable/disable auto height adjustment
 
@@ -30,7 +32,7 @@ Auto height calibration can be toggled on/off using the action menu. If users ar
 
 ## How to load a MD trajectory file
 
-<video src="https://user-images.githubusercontent.com/125503369/235212408-5e740ee3-1cb3-49a3-9bd9-0cc5aba5137a.mp4" controls="controls" style="width: 100%; max-width: 720px;" loop muted playsinline></video>
+<video src="https://user-images.githubusercontent.com/125503369/235212408-5e740ee3-1cb3-49a3-9bd9-0cc5aba5137a.mp4" controls="controls" width="1920" height="1080" style="width: 100%; max-width: 720px; height: auto; aspect-ratio: 16 / 9;" loop muted playsinline></video>
 
 Nanome supports the following MD trajectory files (v1.26): .PDB, .PSE, .DCD, .GRO, .XTC, .TRR. For trajectory support in Nanome v2, see [Supported File Formats](/nanome_web/fileformats#trajectory-molecular-dynamics). 
 1. Go to the [Load menu](/nanome1x/navigation/menus#load).
@@ -109,18 +111,9 @@ Click on the [Build Menu](/nanome1x/navigation/toolsmenu#build) Tab Button on th
 
 ## How to change the color of your avatar
 
-VR:
-
-1. Press the Y Button on the left controller to bring up the [Action Menu](/nanome1x/navigation/actionmenu#action-menu).
-
-Desktop:
-
-1. Right-click anywhere in the window.
-
-2. Click on the Settings Button at the bottom of the [Action Menu](/nanome1x/navigation/actionmenu#action-menu) to open Settings Submenu.
-3. Click on the Change My Color button to change avatar color.
-
-
+1. Open the [Action Menu](/nanome1x/navigation/actionmenu#action-menu): in VR, press the Y button on the left controller; on desktop, right-click anywhere in the window.
+2. Click the Settings button at the bottom of the Action Menu to open the Settings submenu.
+3. Click Change My Color to change your avatar's color.
 
 ## How to view Windows content in Nanome
 

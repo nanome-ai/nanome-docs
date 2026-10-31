@@ -474,7 +474,7 @@ Apply certain computations on the selected structures and modify them according 
 <UiList label="Compute tab">
 <UiItem name="Add" area="24.1,27.6,34.5,12.4">Under Hydrogens: adds hydrogens to the selected structures.</UiItem>
 <UiItem name="Delete" area="58.7,27.6,34.4,12.4">Under Hydrogens: deletes hydrogens from the selected structures.</UiItem>
-<UiItem name="Calculate ESP" area="24.1,47.0,56.3,12.1">Generate the Electron Potential Map of the selected structure.</UiItem>
+<UiItem name="Calculate ESP" area="24.1,47.0,56.3,12.1">Calculates the electrostatic potential (ESP) of the selected structure.</UiItem>
 <UiItem icon="palette" name="ESP color key" area="80.5,47.0,12.6,12.1">Shows the Electrostatic Potential color key. It's on in the picture below.</UiItem>
 <UiItem name="Calculate Clashes" area="24.1,59.1,56.3,11.7">Calculates atom clashes.</UiItem>
 <UiItem name="Calculate H-bonds" area="24.1,70.8,56.3,11.7">Calculates h-bonds. Marked BETA.</UiItem>
@@ -484,7 +484,7 @@ Apply certain computations on the selected structures and modify them according 
 
 </ShotRow>
 
-<vimg src="navigating-page/Modify-ESP.jpg" alt="A protein surface colored by its Electron Potential Map, with the Electrostatic Potential color key beside the Modify menu" />
+<vimg src="navigating-page/Modify-ESP.jpg" alt="A protein surface colored by its electrostatic potential, with the Electrostatic Potential color key beside the Modify menu" />
 
 <ShotRow src="navigating-page/Modify-Compute-Clashes.jpg" alt="The Clashes menu">
 

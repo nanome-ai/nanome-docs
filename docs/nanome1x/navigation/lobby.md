@@ -66,8 +66,6 @@ Once the Nanome Basics tutorial is completed, you can move onto Advanced Tutoria
 
 <ShotRow src="navigating-page/lobbytopbar1.24.3numbered.png" alt="The lobby top bar on the Lobby tab, with its parts numbered 1 to 5">
 
-Refresh, Creating a Room, and Settings
-
 <UiList label="Lobby top bar">
 <UiItem icon="login" name="Join By Meeting ID" href="#_1-join-by-meeting-id" area="4.3,50.0,27.7,37.5">Join a prescheduled meeting with its Meeting ID.</UiItem>
 <UiItem icon="plus" name="Create Room" href="#_2-creating-a-room" area="33.6,50.0,23.2,37.5">Public, Private or Single User, depending on your license.</UiItem>
@@ -78,7 +76,7 @@ Refresh, Creating a Room, and Settings
 
 </ShotRow>
 
-### (1) Join by Meeting ID
+### (1) Join By Meeting ID
 
 Users can join a prescheduled meeting in Nanome by entering the Meeting ID provided by the room host. Find out how to [create meetings here](/home.nanome.ai/meetings).
 
@@ -114,7 +112,7 @@ In the Setting tab, users can adjust various settings.
 
 </ShotRow>
 
-- Configuration Viewer
+**Configuration Viewer**
 
 By selecting the Configuration button in the Setting tab, users can view the Nanome Configuration file, which contains additional settings that cannot be controlled directly from within the app. Newly added are Presentation Setup Options, which enable the presenter to manage guests that join their room. The Configuration file can be located in the same directory as the app build directory.
 

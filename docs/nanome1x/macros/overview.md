@@ -72,14 +72,12 @@ Macros can be shared simply by copy/pasting the “.lua” file on different mac
 
 You can store the macros in one of the following supported folders (configurable in the config-file):
 
-C://Users/{{USERNAME}}/Desktop/
-
-C://Users/{{USERNAME}}/Downloads/
-
-C://Users/{{USERNAME}}/Documents/
-
-C://Users/{{USERNAME}}/Documents/Nanome/
-
-C://Users/{{USERNAME}}/Documents/Nanome/Macros/
+```text
+C:\Users\<USERNAME>\Desktop\
+C:\Users\<USERNAME>\Downloads\
+C:\Users\<USERNAME>\Documents\
+C:\Users\<USERNAME>\Documents\Nanome\
+C:\Users\<USERNAME>\Documents\Nanome\Macros\
+```
 
 Optionally, a macro can be hosted through an HTTP server (configurable in the config-file)

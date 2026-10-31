@@ -1,12 +1,14 @@
 ---
 title: Navigating Nanome
+prev: false
+next: false
 ---
 
 # Navigating Nanome
 
 ## Lobby
 
-<vimg src="navigating-page/Lobby.jpg" />
+<vimg src="navigating-page/124loginscreen.png" />
 
 The Nanome Lobby is where users can sign into an account or sign up. By toggling the 'Remember Me' button, users can automatically be signed in the next time they start Nanome. Users can also start the tutorial by selecting 'Start Tutorial'.
 
