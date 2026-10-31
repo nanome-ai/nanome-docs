@@ -113,7 +113,7 @@ This chapter matters once headsets are shared or spread across a team.
 
 <Chooser
   param="mdm"
-  title="Answer three questions"
+  title="Answer up to 3 questions"
   :steps="[
     {
       id: 'device',
@@ -248,7 +248,7 @@ with the Nanome team.
 
 </Chooser>
 
-### Compare all three side by side
+### Compare all 3 side by side
 
 <AccordionGroup label="Cost, supported headsets, and features">
 
@@ -422,13 +422,13 @@ Headsets need Wi-Fi with direct internet access and a short list of hostnames
 allowed through the firewall. What IT allows depends on where Nanome runs.
 
 <IconGrid label="Where Nanome runs" :cols="2">
-<IconCard icon="world" title="Nanome cloud" href="#cloud">app.nanome.ai, run by Nanome. Six checks for IT.</IconCard>
+<IconCard icon="world" title="Nanome cloud" href="#cloud">app.nanome.ai, run by Nanome. 6 checks for IT.</IconCard>
 <IconCard icon="server" title="On-prem or private VM" href="#on-prem">Nanome on the organization's own VM. Ports, DNS and the auth proxy.</IconCard>
 </IconGrid>
 
 ### <AppIcon name="world" /> Nanome cloud (app.nanome.ai) {#cloud}
 
-Six checks, written to hand straight to IT.
+6 checks, written to hand straight to IT.
 
 <AccordionGroup label="6 checks for IT">
 
@@ -560,9 +560,9 @@ file the MDM puts on the headset.
    `auth_proxy=http://nanome-auth.company.com`.
 2. With the MDM, add the file to each headset at
    `/sdcard/Managed files/nanome_config`.
-3. Open Nanome. It says it's unable to reach Nanome servers. Choose the button
-   that enables local config access, then accept the system prompt to allow
-   file storage access.
+3. Open Nanome. On **Nanome Routing unreachable**, choose
+   **Read routing file on device**, then **Allow**, and accept the Android
+   prompt for file access.
 4. Check that you can log in.
 
 </Steps>
@@ -778,7 +778,7 @@ way.
 
 <Steps>
 
-1. Open nanome.ai/setup in the headset's browser and download the Android XR APK.
+1. Open nanome.ai/versions in the headset's browser and download the Android XR APK.
 2. Allow installs from unknown sources when Android asks, then install.
 
 </Steps>
