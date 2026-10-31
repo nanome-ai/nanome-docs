@@ -111,7 +111,7 @@ The full per-format list, with import and export capability, trajectory playback
 
 <Accordion title="What file formats does Nanome support, and how do I import them?" teaser="PDB and SDF are the most stable, plus many more." tag="v1.24">
 
-*This answer describes Nanome 1.24 (Classic).*
+*This answer describes Nanome Classic (v1.24).*
 
 Nanome supports .pdb and .sdf, and has limited compatibility with other atomic coordinate files, like .cif. The .pdb and .sdf formats are the most stable, and we keep improving the parser's handling of anomalies.
 
@@ -125,7 +125,7 @@ We recommend making Nanome the default software for .pdb files. Double-clicking 
 
 <Accordion title="What are the supported files and limits for trajectory (MD) files?" teaser="Formats, the 500-frame subsample, and atom counts by device." tag="v1.24">
 
-*This answer describes Nanome 1.24 (Classic). For trajectories in Nanome XR and Nanome Web, see [Supported File Formats](/nanome_web/fileformats#trajectory-molecular-dynamics).*
+*This answer describes Nanome Classic (v1.24). For trajectories in Nanome XR and Nanome Web, see [Supported File Formats](/nanome_web/fileformats#trajectory-molecular-dynamics).*
 
 | File Type | Description                                      | Source Software      |
 | --------- | ------------------------------------------------ | -------------------- |
