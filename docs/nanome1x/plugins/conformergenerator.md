@@ -18,11 +18,11 @@ The Conformer Generator Plugin uses RDKit and UFF minimization to deliver a coll
 
 ## Instructions
 
-<ShotRow src="plugins-page/conformer-generator/plugin-list.png" alt="The Stacks Menu with Conformer Generator selected in the plugin list">
+<ShotRow src="plugins-page/conformer-generator/plugin-list.png" alt="The Stacks menu with Conformer Generator selected in the plugin list">
 
-Access the Conformer Generator plugin from the Stacks Menu.
+Access the Conformer Generator plugin from the Stacks menu.
 
-<UiList label="Stacks Menu">
+<UiList label="Stacks menu">
 <UiItem name="Conformer Generator" area="2.3,57.6,50.3,11.1">Selected here, with its description on the right.</UiItem>
 <UiItem name="Activate" area="59.6,85.5,17.9,10.9">Starts the selected plugin.</UiItem>
 <UiItem name="Data Table" area="2.4,77.6,50.0,10.5">Another plugin for viewing the results, shown at the end of this page.</UiItem>
@@ -87,7 +87,7 @@ Advanced Menu allows sorting and playing back through the conformers, as well as
 <UiItem icon="player-pause" name="Play / Pause" area="4.4,73.6,41.3,10.3">Plays the conformers in turn, or pauses.</UiItem>
 <UiItem name="Speed" area="4.4,84.3,33.2,10.5">1x, 5x, 50x or 100x.</UiItem>
 <UiItem name="Meta Data" area="74.6,13.6,24.9,8.4">The data for the current conformer.</UiItem>
-<UiItem icon="tag" name="conf energy" area="53.4,55.1,39.2,9.8">The conformer's energy.</UiItem>
+<UiItem icon="tag" name="conf energy" area="53.4,55.1,39.2,9.8">The conformer's UFF energy, in kcal/mol.</UiItem>
 <UiItem icon="tag" name="conf rmsd" area="53.4,65.4,39.2,9.8">RMSD to the seed ligand.</UiItem>
 </UiList>
 
@@ -95,7 +95,7 @@ Advanced Menu allows sorting and playing back through the conformers, as well as
 
 <ShotRow src="plugins-page/conformer-generator/data-table.png" alt="The Data Table plugin listing the 50D conf conformers by conf energy, with the seed ligand row highlighted">
 
-The Data Table plugin can also be used to view results and is accessible through the Stacks Menu. Energy and RMSD to seed ligand may be sorted and filtered in the table, and plotted graphically. Note the seed ligand at RMSD=0 highlighted here.
+The Data Table plugin can also be used to view results and is accessible through the Stacks menu. Energy and RMSD to seed ligand may be sorted and filtered in the table, and plotted graphically. Note the seed ligand at RMSD=0 highlighted here.
 
 <UiList label="Data Table">
 <UiItem name="50D conf" area="0.0,0.0,30.1,6.6">The entry shown in the table.</UiItem>
@@ -112,7 +112,7 @@ The Data Table plugin can also be used to view results and is accessible through
 <UiList label="Data Table graph">
 <UiItem name="Y Axis" area="74.8,32.9,25.0,10.8">Set to conf rmsd here.</UiItem>
 <UiItem name="X Axis" area="74.8,49.6,24.8,8.1">Set to conf energy here.</UiItem>
-<UiItem name="Seed ligand" area="7.5,73.6,12.9,26.4">At RMSD 0, with an energy of 126.65.</UiItem>
+<UiItem name="Seed ligand" area="7.5,73.6,12.9,26.4">At RMSD 0, with an energy of 126.65 kcal/mol.</UiItem>
 </UiList>
 
 </ShotRow>

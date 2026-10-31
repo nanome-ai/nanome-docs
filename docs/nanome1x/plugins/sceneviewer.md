@@ -63,7 +63,7 @@ Choose the **Open Scene Viewer** option to open the Scene Viewer menu.
 
 <ShotRow src="plugins-page/scene-viewer/create-scene-1.png" alt="The Scene Viewer in Edit Mode with Scene 1 and its Update, Notes and Delete buttons">
 
-Arrange and render the 3D content, including size, location and hiding of any workspace content that is not wanted for the scene. Click **update**.
+Arrange and render the 3D content, including size, location and hiding of any workspace content that is not wanted for the scene. Click **Update**.
 
 <UiList label="Scene Viewer in Edit Mode">
 <UiItem name="Edit Mode" area="1.4,27.9,26.4,18.3">On to create and edit scenes. Off for view mode.</UiItem>
@@ -71,16 +71,16 @@ Arrange and render the 3D content, including size, location and hiding of any wo
 <UiItem icon="plus" name="New Scene" area="55.0,27.1,19.9,20.1">Adds a scene below the active one.</UiItem>
 <UiItem name="Scene 1" area="3.1,55.5,50.9,42.4">The active scene, with its default name.</UiItem>
 <UiItem icon="refresh" name="Update" area="54.5,61.1,9.5,29.3">Saves the current 3D content to the scene.</UiItem>
-<UiItem icon="info-circle" name="Notes" area="64.2,61.1,9.2,29.3">Opens the entry menu for the scene's name and description.</UiItem>
+<UiItem icon="info-circle" name="Notes" area="64.2,61.1,9.2,29.3">Opens the Scene Info panel for the scene's name and description.</UiItem>
 <UiItem icon="trash" name="Delete" area="73.7,61.1,9.8,29.3">Deletes the scene.</UiItem>
 <UiItem icon="arrows-sort" name="Up and down arrows" area="86.1,60.3,5.7,33.2">Move the scene up or down the deck.</UiItem>
 </UiList>
 
 </ShotRow>
 
-<ShotRow src="plugins-page/scene-viewer/create-scene-2.png" alt="The Scene Info entry menu over the Scene Viewer, with the name Loaded protein and a description" crop="27.8,8.2,40.1,91.8">
+<ShotRow src="plugins-page/scene-viewer/create-scene-2.png" alt="The Scene Info panel over the Scene Viewer, with the name Loaded protein and a description" crop="27.8,8.2,40.1,91.8">
 
-Select **notes** to open the entry menu for name and description of the scene. A character counter is provided. Click **update**. This will update the scene viewer menu with the scene name.
+Select **Notes** to open the Scene Info panel for the scene's name and description. A character counter is provided. Click **Update**. This will update the Scene Viewer menu with the scene name.
 
 <UiList label="Scene Info">
 <UiItem name="Name" area="30.6,50.2,34.7,9.2">The scene's name. Loaded protein here.</UiItem>
@@ -99,11 +99,11 @@ Select **notes** to open the entry menu for name and description of the scene. A
 
 <ShotRow src="plugins-page/scene-viewer/more-scenes-1.png" alt="The Scene Viewer with Loaded protein and a new scene, Scene 2, below it">
 
-- New scenes are created by clicking on **+ New Scene** in the top bar of the menu. The new scene will consist of the content at the time **+ New Scene** is chosen. The new scene will be added to the deck in the position just below the scene from which **+ New Scene** was chosen. For example, if scenes ordered A, B, C, D have been made, and scene B is active when a new scene is added, the new scene will be positioned between B and C in the deck. When finished editing the new scene and associated notes, click **update**.  
+- New scenes are created by clicking on **+ New Scene** in the top bar of the menu. The new scene will consist of the content at the time **+ New Scene** is chosen. The new scene will be added to the deck in the position just below the scene from which **+ New Scene** was chosen. For example, if scenes ordered A, B, C, D have been made, and scene B is active when a new scene is added, the new scene will be positioned between B and C in the deck. When finished editing the new scene and associated notes, click **Update**.  
     - Users may select any scene in the deck from which to start a new scene.  
     - Users may edit the active scene,  then add a new scene and update, or
     - Users may add a new scene, then edit and update it.
-- Remember to choose update before switching scenes in edit mode. 
+- Remember to choose **Update** before switching scenes in edit mode. 
 
 *A new scene has been added, with default name Scene 2.*
 
@@ -151,7 +151,7 @@ Select **notes** to open the entry menu for name and description of the scene. A
 
 <vimg src="plugins-page/scene-viewer/review-scenes-4.png" alt="The Scene Info panel moved above the Scene Viewer" />
 
-<em>Move the Scene Info panel to a suitable position and scale for viewing.</em>
+<em>Here the Scene Info panel sits above the Scene Viewer.</em>
 
 ### 5. Saving Scene Decks (.nanoscenes files)
 
@@ -161,18 +161,18 @@ In **Edit Mode**, choose **Save Deck to Vault**.
 
 <UiList label="Scene Viewer in Edit Mode">
 <UiItem name="Edit Mode" area="3.7,10.3,26.2,8.8">On, since saving is done in Edit Mode.</UiItem>
-<UiItem name="Save Deck to Vault" area="27.1,86.1,46.2,11.0">Opens a pop up menu to name the deck.</UiItem>
+<UiItem name="Save Deck to Vault" area="27.1,86.1,46.2,11.0">Opens a pop-up menu to name the deck.</UiItem>
 </UiList>
 
 </ShotRow>
 
-<ShotRow src="plugins-page/scene-viewer/save-scene-2.png" alt="The Name your Scene Deck pop up with the name My 5ly6 deck">
+<ShotRow src="plugins-page/scene-viewer/save-scene-2.png" alt="The Name your Scene Deck pop-up with the name My 5ly6 deck">
 
-In the pop up menu, enter a name and click **Save**.
+In the pop-up menu, enter a name and click **Save**.
 
 <UiList label="Name your Scene Deck">
 <UiItem name="Deck name" area="6.1,54.3,87.6,10.2">The name of the .nanoscenes file.</UiItem>
-<UiItem name="Cancel" area="42.8,86.0,24.6,10.2">Closes the pop up without saving.</UiItem>
+<UiItem name="Cancel" area="42.8,86.0,24.6,10.2">Closes the pop-up without saving.</UiItem>
 <UiItem name="Save" area="68.2,85.6,25.1,11.1">Saves the deck. Vault then asks where.</UiItem>
 </UiList>
 

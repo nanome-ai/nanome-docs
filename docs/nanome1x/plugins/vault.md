@@ -6,7 +6,7 @@ title: Vault
 
 Nanome Vault is a plugin that enables easy cloud upload, download and storage from VR headsets and your web browser. This allows users to drag and drop a file to/from their web browser and make it instantly available in their Nanome session.
 
-With the rise of all-in-one headsets like the Oculus Quest 2 and the Vive Focus 3, the barrier to entry to store and retrieve files has increased considerably due to the need to plug the headset into a computer and use Android File transfer manually. Nanome Vault allows users to open up a web browser on any computer to access cloud storage that is integrated directly into their Nanome session and linked to your Nanome account. You can visit the Nanome-hosted Vault Plugin at https://vault.nanome.ai. _Note that if you are an Enterprise customer, your Organization will have a different web address for the private-cloud deployment of the Nanome Vault, please contact your Nanome administrator for the correct URL_.
+Standalone headsets such as Quest store files on the headset, so moving files usually means plugging it into a computer and using Android File Transfer. Nanome Vault allows users to open up a web browser on any computer to access cloud storage that is integrated directly into your Nanome session and linked to your Nanome account. You can visit the Nanome-hosted Vault Plugin at https://vault.nanome.ai. _Note that if you are an Enterprise customer, your Organization will have a different web address for the private-cloud deployment of the Nanome Vault, please contact your Nanome administrator for the correct URL_.
 
 There are three primary folders in the Nanome Vault:
 - shared: a public folder everyone can see
@@ -15,7 +15,7 @@ There are three primary folders in the Nanome Vault:
 
 Inside your account folder there are a few preset folders, such as Pictures, Workspaces and Molecules. Users can create new folders, move files around, and even encrypt folders.
 
-When accessing Vault from the web browser (at https://vault.nanome.ai), it will prompt you to login using your Nanome credentials.
+When accessing Vault from the web browser (at https://vault.nanome.ai), it asks you to log in with your Nanome account.
 
 <vimg src="plugins-page/nanome-vault/web.png" alt="Nanome Vault in a web browser before logging in, with the shared and account folders" />
 
@@ -36,4 +36,4 @@ Whenever you have a prompt to export (e.g. Workspace Session File, Molecule, Ima
 
 This is particularly useful if you have made several ligand design iterations and wanted to upload them to share with other colleagues.
 
-You can also access the Scene Viewer from Vault, which allows you to arrange content in Nanome. More information on the Scene Viewer can be found [here](/nanome1x/plugins/sceneviewer).
+You can also access the Scene Viewer from Vault, which allows you to arrange content in Nanome. The [Scene Viewer](/nanome1x/plugins/sceneviewer) page has more.

@@ -18,7 +18,7 @@ For example, the MedChem Stack includes the integrations medicinal chemists use 
 
 Some examples of plugins:
 - Nanome Vault: drag and drop files on a website and open them on any device running Nanome
-- Molecular Docking: Running and viewing docking results (Autodock, etc)
+- Molecular Docking: Running and viewing docking results (Smina and AutoDock 4)
 - Chemical Properties: Live chemical property prediction during design with RDKit
 - All of our public plugins are on [GitHub](https://github.com/nanome-ai), with names that start with "plugin-".
 

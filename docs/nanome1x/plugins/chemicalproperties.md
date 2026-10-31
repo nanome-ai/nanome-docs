@@ -4,13 +4,13 @@ title: Chemical Properties
 
 # Chemical Properties
 
-The Chemical Properties plugin display chemical properties for a complex using rdkit.
+The Chemical Properties plugin shows chemical properties of a complex, calculated with RDKit.
 
 <vimg src="plugins-page/chemicalproperties_plugin.png" alt="The Chemical Properties menu for 5202, showing its 2D structure and properties such as MW, logP and TPSA, beside the molecule in 3D" />
 
-This plugin requires rdkit to be installed and in the PATH variable. To install, follow the instructions [here](http://www.rdkit.org/docs/Install.html).
+If you host this plugin yourself, it needs RDKit. The [RDKit install guide](https://www.rdkit.org/docs/Install.html) explains how to install it.
 
-nanome-chemical-properties has a "snapshots" feature where you can take a snapshot of a complex to compare properties against other snapshots. Snapshots only persist while the plugin is active, so deactivating the plugin will lose the current snapshots.
+The plugin has a "snapshots" feature where you can take a snapshot of a complex to compare properties against other snapshots. Snapshots only persist while the plugin is active, so deactivating the plugin will lose the current snapshots.
 
 To create a snapshot, select a complex and press the "snapshot" button.
 
