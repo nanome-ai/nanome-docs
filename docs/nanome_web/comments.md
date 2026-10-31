@@ -18,7 +18,7 @@ Comments, added in release 2.7, are threaded discussions stored inside a workspa
 
 The **Comments** tab in the workspace panel lists the workspace's comments, with the filter at the top and the comment box at the bottom.
 
-<ShotRow src="nanome-web/comments-tab.webp" alt="The Comments tab" crop="0,20,100,80">
+<ShotRow src="nanome-web/comments-tab.webp" alt="The Comments tab" crop="0,20,100,80" stack>
 
 <UiList label="Comments tab">
 <UiItem name="All" area="3.8,30.7,8.5,4.5">Shows all comments.</UiItem>

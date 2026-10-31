@@ -118,7 +118,7 @@ The 3D view shows the pointers of people in Nanome XR, so a colleague in the bro
 
 ## <AppIcon name="crown" /> Following from the web {#following-from-the-web}
 
-Nanome Web can follow someone in Nanome XR, so the browser view tracks what they're looking at.
+Nanome Web can follow someone in Nanome XR, so the browser view tracks what they're looking at. Following in a headset is covered under [Spotlight and follow](/nanome_v2/collaboration#spotlight-and-follow).
 
 - Clicking someone's initial at the top of the workspace panel follows them.
 - Following moves Nanome Web to the leader's scene, and to each scene they move to after that.
