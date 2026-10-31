@@ -72,6 +72,11 @@ const frameEl = ref(null)
 const frameSize = ref(null)
 let sizer = null
 onMounted(() => {
+  // Measured now, the button's place is set from the frame's real size as the
+  // regions arrive. A guess could put it under the frame for a moment and
+  // move the page, and a #section link with it.
+  const el = frameEl.value
+  if (el?.clientWidth && el.clientHeight) frameSize.value = [el.clientWidth, el.clientHeight]
   if (typeof ResizeObserver === 'undefined' || !frameEl.value) return
   sizer = new ResizeObserver(([entry]) => {
     // A frame in a closed tab has no size until the tab opens.

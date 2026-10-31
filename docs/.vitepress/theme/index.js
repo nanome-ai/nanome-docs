@@ -11,7 +11,7 @@ import 'vitepress/dist/client/theme-default/styles/components/vp-doc.css'
 import VPBadge from 'vitepress/dist/client/theme-default/components/VPBadge.vue'
 import mediumZoom from 'medium-zoom'
 import { nextTick, onMounted, watch } from 'vue'
-import { useRoute } from 'vitepress'
+import { getScrollOffset, useRoute } from 'vitepress'
 
 import './styles/tokens.css'
 import './styles/base.css'
@@ -63,6 +63,26 @@ import Steps from './components/interactive/Steps.vue'
 import CopyBlock from './components/interactive/CopyBlock.vue'
 import Callout from './components/interactive/Callout.vue'
 
+/**
+ * On a page opened at a #section, the router works out where to scroll before
+ * the page is live. Figures that settle as they come alive, such as an expand
+ * button moving under its screenshot or two legends lining up, can then push
+ * the section down. This puts it back where the router meant it to be.
+ */
+function settleOnHash() {
+  if (!location.hash) return
+  let el = null
+  try {
+    el = document.getElementById(decodeURIComponent(location.hash.slice(1)))
+  } catch {
+    return
+  }
+  // A section in a closed tab or toggle has no place to go back to.
+  if (!el?.getClientRects().length) return
+  const off = el.getBoundingClientRect().top - getScrollOffset() + (parseInt(getComputedStyle(el).paddingTop, 10) || 0)
+  if (Math.abs(off) > 1) window.scrollBy(0, off)
+}
+
 // The default theme's global styles and `<Badge>` are imported directly at the
 // top, and the nav bar imports its search button and dialog. Only its Layout,
 // and every component under it, is left out. The router shows NotFound in
@@ -77,18 +97,24 @@ export default {
     // page, and would sweep the new page there from the old one's offset.
     // Back and Forward skip onBeforeRouteChange, so this starts in
     // onBeforePageLoad. Smooth scrolling comes back two frames after the
-    // route change, once the router's own scroll has run.
+    // route change, once the router's own scroll has run. On the first page,
+    // the #section is checked then too (see settleOnHash).
     if (typeof window !== 'undefined') {
       const root = document.documentElement
+      let opened = false
       router.onBeforePageLoad = () => {
         root.style.scrollBehavior = 'auto'
       }
-      router.onAfterRouteChange = () =>
+      router.onAfterRouteChange = () => {
+        const first = !opened
+        opened = true
         requestAnimationFrame(() =>
           requestAnimationFrame(() => {
+            if (first) settleOnHash()
             root.style.scrollBehavior = ''
           })
         )
+      }
     }
 
     app.component('Badge', VPBadge)
