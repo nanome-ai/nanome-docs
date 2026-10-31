@@ -158,7 +158,7 @@ Each one comes from an X-ray structure of human p38α MAP kinase (UniProt Q16539
 
 The RDKit calls are `Chem.AddHs` then `GetNumAtoms` for NumAtoms, `GetNumHeavyAtoms` for NumHeavyAtoms, `Descriptors.ExactMolWt` for MolWeight, `Crippen.MolLogP` for LogP, `Chem.MolToInchiKey` for InChIKey, and the matching `rdMolDescriptors` function for TPSA, HbondD, HbondA and the 4 ring counts.
 
-The copy lists HeavyAtomMolWeight, NumRotatableBonds, Rating and SMILES in its picker but leaves their columns out. The first 2 depend on RDKit settings that haven't been matched to Nanome's, people enter Rating, and one molecule can be written as many valid SMILES. The tags are examples.
+The copy lists HeavyAtomMolWeight, NumRotatableBonds, Rating and SMILES in its picker but leaves their columns out. NumRotatableBonds depends on RDKit settings that haven't been matched to Nanome's, people enter Rating, and one molecule can be written as many valid SMILES. The tags are examples.
 
 </Accordion>
 

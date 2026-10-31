@@ -174,13 +174,13 @@ export const COLUMNS = [
 export const DEFAULT_COLUMNS = ['NumAtoms', 'MolWeight']
 
 /**
- * Columns Nanome's picker lists that the demo leaves out, because its value
- * can't be pinned down from what's known. `why` is for maintainers; `desc` is
- * the line the demo shows, in the words of /nanome_web/ligands#property-columns.
+ * Columns Nanome's picker lists that the demo leaves out. `why` says why, for
+ * maintainers; `desc` is the line the demo shows, in the words of
+ * /nanome_web/ligands#property-columns.
  */
 export const LEFT_OUT = [
-  { key: 'HeavyAtomMolWeight', desc: 'Mass of the non-hydrogen atoms only.',
-    why: "RDKit's HeavyAtomMolWt is an average mass (490.373 for B96), while Nanome's MolWeight is monoisotopic; a monoisotopic heavy-atom mass would be 490.000. No Nanome value is known to tell which." },
+  { key: 'HeavyAtomMolWeight', desc: 'Monoisotopic mass of the non-hydrogen atoms only.',
+    why: "Nanome computes it with calcExactMW(mol, true) (RdkitCommandGenerateMetadata.cs in WorkspaceAPI), a monoisotopic mass, unlike RDKit's average-mass HeavyAtomMolWt. The demo's ligands don't carry the value yet." },
   { key: 'NumRotatableBonds', desc: 'Rotatable bond count.',
     why: "RDKit's count changes with its strict or non-strict pattern and with explicit hydrogens: 3 or 4 for SB4, 7 or 10 for PQB. No Nanome value is known to tell which." },
   { key: 'Rating', desc: 'A value people enter, stored with the ligand.',
