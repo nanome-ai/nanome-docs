@@ -15,7 +15,7 @@ Nanome Web is the browser version of Nanome, at [app.nanome.ai](https://app.nano
 
 <vimg src="nanome-web/workspace-overview.webp" alt="A workspace in Nanome Web" />
 
-These pages describe Nanome Web as of release 2.7.1.
+These pages describe Nanome Web as of Nanome release 2.7.1. The last line of the [account menu](/nanome_web/account) shows the web app's own version, which was 1.4.4 when these pages were written.
 
 ## Pages in this section
 

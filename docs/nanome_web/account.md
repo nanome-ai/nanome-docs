@@ -30,7 +30,7 @@ Nanome XR can sign in with a 4-character code. The headset's login page shows th
 
 ## Settings {#settings}
 
-**Settings** has 2 tabs: **Account** and **System**. System holds API Keys, MCP Setup and the preference switches.
+**Settings** has 2 tabs: **Account** and **System**. System holds API Keys, MCP Setup and the preference switches. Below the tabs, **Help** opens this site's [MARA overview](/mara/overview), and **Feedback** sends Nanome feedback or a bug report.
 
 ### Account
 

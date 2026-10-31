@@ -35,7 +35,7 @@ While a trajectory is open, its entry row shows the current frame out of the tot
 
 Stepping and playback wrap around. After the last frame comes the first, and stepping back from the first frame goes to the last, so playback keeps looping until it's stopped.
 
-×1 plays 1 frame a second and ×20 plays 20. Playback waits for a frame that hasn't arrived yet.
+×1 plays 1 frame a second and ×20 plays 20.
 
 <PlaybackDemo app="web" />
 
