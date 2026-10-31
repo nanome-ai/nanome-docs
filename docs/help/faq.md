@@ -15,7 +15,7 @@ title: FAQ
 
 <Callout type="note" title="Nanome XR, Nanome Web and Nanome Classic">
 
-Answers tagged **Classic** describe Nanome Classic (v1.24 and v1.26), the earlier headset app. For Nanome XR and Nanome Web, start with [Getting Started](/getting-started).
+Answers tagged **Classic** describe Nanome Classic (v1.24), the earlier headset app. For Nanome XR and Nanome Web, start with [Getting Started](/getting-started).
 
 </Callout>
 
@@ -109,9 +109,9 @@ The full per-format list, with import and export capability, trajectory playback
 
 </Accordion>
 
-<Accordion title="What file formats does Nanome support, and how do I import them?" teaser="PDB and SDF are the most stable, plus many more." tag="v1.26">
+<Accordion title="What file formats does Nanome support, and how do I import them?" teaser="PDB and SDF are the most stable, plus many more." tag="v1.24">
 
-*This answer describes Nanome 1.26 (Classic).*
+*This answer describes Nanome 1.24 (Classic).*
 
 Nanome supports .pdb and .sdf, and has limited compatibility with other atomic coordinate files, like .cif. The .pdb and .sdf formats are the most stable, and we keep improving the parser's handling of anomalies.
 
@@ -123,9 +123,9 @@ We recommend making Nanome the default software for .pdb files. Double-clicking 
 
 </Accordion>
 
-<Accordion title="What are the supported files and limits for trajectory (MD) files?" teaser="Formats, the 500-frame subsample, and atom counts by device." tag="v1.26">
+<Accordion title="What are the supported files and limits for trajectory (MD) files?" teaser="Formats, the 500-frame subsample, and atom counts by device." tag="v1.24">
 
-*This answer describes Nanome 1.26 (Classic). For trajectories in Nanome XR and Nanome Web, see [Supported File Formats](/nanome_web/fileformats#trajectory-molecular-dynamics).*
+*This answer describes Nanome 1.24 (Classic). For trajectories in Nanome XR and Nanome Web, see [Supported File Formats](/nanome_web/fileformats#trajectory-molecular-dynamics).*
 
 | File Type | Description                                      | Source Software      |
 | --------- | ------------------------------------------------ | -------------------- |
