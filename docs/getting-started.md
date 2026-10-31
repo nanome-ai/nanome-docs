@@ -39,8 +39,9 @@ Steps 2 and 3, device management, are for IT teams with several headsets. With o
 Nanome runs on Meta Quest 3 and 3S, Samsung Galaxy XR, Apple Vision Pro, and
 Windows PCs over Meta Link. It also runs on Meta Quest 2 and Quest Pro, the
 minimum Quest headsets for Nanome XR. Quest 3 and 3S are recommended: Quest 2
-and Quest Pro have a little over half their rendering budget, so detail drops
-with smaller scenes. [Choosing Hardware](/help/choosinghardware) compares them.
+and Quest Pro have a little over half the Quest 3 rendering budget, so detail
+drops sooner as a scene grows. [Choosing Hardware](/help/choosinghardware)
+compares them.
 
 <div class="lineup">
   <figure>
