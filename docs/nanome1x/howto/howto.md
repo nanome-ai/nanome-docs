@@ -21,7 +21,7 @@ Auto height calibration can be toggled on/off using the action menu. If users ar
 ## How to export a molecule for future access or other software
 
 1. Select the structure you want to save.
-2. On the Entry List menu, click the [Export button](/nanome1x/navigation/menus#entry-list)
+2. On the Entry List menu, click the [Export button](/nanome1x/navigation/menus#menu-actions)
 3. On the menu that appears after clicking Export, select where on your computer you want to save the structure (Desktop or Documents), and then select the file format you want to export to (pdb, sdf, or mmcif).
 
 ## How to load a structure stored on local computer
@@ -30,15 +30,16 @@ Auto height calibration can be toggled on/off using the action menu. If users ar
 2. Click on [Files](/nanome1x/navigation/menus#my-files) and then select the location (Desktop or Documents) where you saved the structure.
 3. You should then see the filename for the structure you saved. Click on the file, then click "load files".
 
-## How to load a MD trajectory file
+## How to load an MD trajectory file {#how-to-load-a-md-trajectory-file}
 
 <video src="https://user-images.githubusercontent.com/125503369/235212408-5e740ee3-1cb3-49a3-9bd9-0cc5aba5137a.mp4" controls="controls" width="1920" height="1080" style="width: 100%; max-width: 720px; height: auto; aspect-ratio: 16 / 9;" loop muted playsinline></video>
 
 Nanome supports the following MD trajectory files (v1.26): .PDB, .PSE, .DCD, .GRO, .XTC, .TRR. For trajectory support in Nanome v2, see [Supported File Formats](/nanome_web/fileformats#trajectory-molecular-dynamics). 
 1. Go to the [Load menu](/nanome1x/navigation/menus#load).
-2. Click on [Files](/nanome1x/navigation/menus#my-files). Navigate to the folder that contains your trajectories and press load (you may also have to multi-select the topology file for trajectories generated via Gromacs or Desmond.
-If a trajectory doesn’t load properly, please try reducing its frame count and/or export as a multi-model .PDB. Additionally, please let us know some details about the problematic files and we can look into resolving them. Relevant details would include the file format type and the number of frames. Typically, the shorter the trajectory the easier time you’ll have to load it in. 
+2. Click on [Files](/nanome1x/navigation/menus#my-files). Navigate to the folder that contains your trajectories and press load (you may also have to multi-select the topology file for trajectories generated via GROMACS or Desmond).
 3. Once loaded, you can play the trajectory by launching the “Frame” menu with its button on the [Entry List](/nanome1x/navigation/menus#entry-list), shown in [the next section](#how-to-open-the-frame-menu-and-execute-frame-operations).
+
+If a trajectory doesn’t load properly, please try reducing its frame count and/or export as a multi-model .PDB. Additionally, please let us know some details about the problematic files and we can look into resolving them. Relevant details would include the file format type and the number of frames. Typically, the shorter the trajectory the easier time you’ll have to load it in. 
 
 ## How to open the Frame Menu and execute frame operations
 
@@ -117,17 +118,15 @@ Click on the [Build Menu](/nanome1x/navigation/toolsmenu#build) Tab Button on th
 
 ## How to view Windows content in Nanome
 
-<vimg src="howto-page/WindowsContent.gif" />
+<vimg src="howto-page/WindowsContent.gif" alt="Opening Oculus Dash in Nanome and pinning a desktop window beside the menus" />
 
 When using the Oculus Rift/Rift S or Oculus Link (Quest connected to a desktop), users can take advantage of Oculus Dash to ‘pin’ windows or their entire desktop in VR and Nanome. This means users can view excel sheets, websites, and other 3rd party software while the headset is on. This way, users can seamlessly work in Nanome with their existing desktop apps. However, please note that this pinned window is not visible to other users in the same room. If you want to collaboratively view a PDF file with your colleague in Nanome, please [load](/nanome1x/navigation/menus#load) the PDF file into your workspace.
 
-To view the documentation on how to use Oculus Dash, please visit the official oculus support page: [https://support.oculus.com/166993604065478/](https://support.oculus.com/166993604065478/)
+To view a tutorial on how to use Oculus Dash to pin windows, we recommend this UploadVR article here: [https://uploadvr.com/oculus-dash-windows-button/](https://uploadvr.com/oculus-dash-windows-button/)
 
-To view a tutorial on how to use oculus dash to pin windows, we recommend this uploadVR article here: [https://uploadvr.com/oculus-dash-windows-button/](https://uploadvr.com/oculus-dash-windows-button/)
+## How to capture 2D videos in Oculus Quest
 
-### How to capture 2D videos in Oculus Quest
-
-To view a tutorial on how to capture 2D videos and retrieve them in Oculus Quest, we recommend this uploadVR article here: [https://uploadvr.com/how-to-transfer-screenshots-videos-quest/](https://uploadvr.com/how-to-transfer-screenshots-videos-quest/)
+To view a tutorial on how to capture 2D videos and retrieve them in Oculus Quest, we recommend this UploadVR article here: [https://uploadvr.com/how-to-transfer-screenshots-videos-quest/](https://uploadvr.com/how-to-transfer-screenshots-videos-quest/)
 
 ## How to capture 2D videos on PC
 
@@ -136,7 +135,7 @@ To view a tutorial on how to capture 2D videos on PC, we recommend this PCMag ar
 
 ## How to find the log file of a previous session
 
-<vimg src="howto-page/LogFile.png" />
+<vimg src="howto-page/LogFile.png" alt="The History folder in File Explorer, with log files named by date and time" />
 
 If your session crashes or you encounter any issues in Nanome, you can go to "C:\Users\\[USERNAME]\AppData\LocalLow\Nanome Inc_\Nanome\History" to retrieve the log file and send it to us at support@nanome.ai so that we can help you troubleshoot the problem.
 
@@ -148,20 +147,15 @@ A log file's name follows the format of "YYYY-MM-DD_HH-MM-SS_details.txt" and is
 
 Nanome can be loaded onto the Oculus Quest or Oculus Quest 2 via a few different methods. In 2021, Nanome was added to the Oculus App Lab (see [here](https://www.oculus.com/experiences/quest/3077598929010226/)), which means Nanome can now be found in the Quest store. When searching for Nanome, the result will initially be hidden - you need to open the "App Lab" results to find the Nanome application. See the animation below for more details. (Note: this process was performed on a smartphone.)
 
-<vimg src="howto-page/nanome_on_oculus_quest.gif"/>
+<vimg src="howto-page/nanome_on_oculus_quest.gif" alt="Searching for Nanome in the Oculus phone app and opening its App Lab page" />
 
 Downloading Nanome from Oculus App Lab will be the easiest method for getting access to the software on your Quest device. For alternative methods (such as sideloading), you can refer to our [setup page](https://nanome.ai/setup).
 
 ## How to use Oculus Dash
 
-<vimg src="howto-page/OculusDash.gif" />
+<vimg src="howto-page/OculusDash.gif" alt="A person in a headset pinning desktop windows with Oculus Dash" />
 
-When using the Oculus Rift/Rift S or Oculus Link (Quest connected to a desktop), users can take advantage of Oculus Dash to ‘pin’ windows or their entire desktop in VR and Nanome. This means users can view excel sheets, websites, and other 3rd party software while the headset is on. This way, users can seamlessly work in Nanome with their existing desktop apps.
-
-To view the documentation on how to use Oculus Dash please visit the official oculus support page: [https://support.oculus.com/166993604065478/](https://support.oculus.com/166993604065478/)
-
-To view a tutorial on how to use oculus dash to pin windows, we recommend this UploadVR article here: 
-[https://uploadvr.com/oculus-dash-windows-button/](https://uploadvr.com/oculus-dash-windows-button/)
+[How to view Windows content in Nanome](#how-to-view-windows-content-in-nanome) explains what Oculus Dash does.
 
 ## How to access pre-release beta versions of Nanome
 
@@ -169,7 +163,7 @@ Prior to the official release of each new Nanome version, we will make available
 
 On the Steam store, you can switch to the beta release by following [this guide](https://partner.steamgames.com/doc/store/application/branches). On the Oculus store, refer to the following GIF. (Be sure to switch back to the ‘LIVE’ for the latest stable release.)
 
-<vimg src="howto-page/beta-release-oculus-store.gif" />
+<vimg src="howto-page/beta-release-oculus-store.gif" alt="Switching Nanome from the LIVE version to the BETA version on its Oculus store page" />
 
 If you are participating in our Oculus Quest Nanome beta, please request the pre-release beta of the next version by emailing [support@nanome.ai](mailto:support@nanome.ai).
 

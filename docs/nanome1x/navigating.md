@@ -1,5 +1,6 @@
 ---
 title: Navigating Nanome
+search: false
 prev: false
 next: false
 ---
@@ -289,7 +290,7 @@ Show small atoms and bonds in volumetric stick visual.
 
 <vimg src="navigating-page/Display-Atom-Vanderwal.jpg" />
 
-Show atoms in thin Van Der Waals visual and hide bonds.
+Shows each atom as a sphere at its van der Waals radius, with no bonds.
 
 - Adaptive
 

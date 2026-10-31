@@ -4,23 +4,23 @@ title: Environment
 
 # Environment
 
-<vimg src="features-page/collaboration.gif" />
+<vimg src="features-page/collaboration.gif" alt="Avatars gathered around a protein in one shared room" />
 
 ## Teleportation
 
-<vimg src="navigating-page/Teleportation.gif" />
+<vimg src="navigating-page/Teleportation.gif" alt="Teleporting to new spots around a protein" />
 
 In addition to physically moving around in VR, users can teleport around the environment by pointing to a spot on the floor and pressing and holding down the trigger button with their index finger.
 
 ## Scaling
 
-<vimg src="navigating-page/Scale_Molecule.gif" />
+<vimg src="navigating-page/Scale_Molecule.gif" alt="Scaling a protein up and then down with both controllers" />
 
 In order to scale the environment or molecular structures, press down on the middle finger 'grip' button on each controller. Next, bring the controllers together to scale the environment smaller or pull them apart to scale the environment larger.
 
 ## Structure Grabbing & Moving
 
-<vimg src="navigating-page/Grab_Molecule.gif" />
+<vimg src="navigating-page/Grab_Molecule.gif" alt="Grabbing a protein and moving it" />
 
 In order to grab a structure, reach out and press the middle finger 'grip' button on one of the left or right controllers. Users can also grab structures from a distance by pointing their ray/laser and then pressing the 'grip' button.
 
@@ -28,6 +28,6 @@ Once the structure is grabbed, users can use the joystick or touchpad of their c
 
 ## Entry Menu Grabbing & Scaling
 
-<vimg src="navigating-page/Grab_Menu.gif" />
+<vimg src="navigating-page/Grab_Menu.gif" alt="Grabbing the Entry List and moving it" />
 
-<vimg src="navigating-page/Scale_Menu.gif" />
+<vimg src="navigating-page/Scale_Menu.gif" alt="Scaling the Entry List down and then up" />

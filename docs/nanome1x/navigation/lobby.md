@@ -4,7 +4,7 @@ title: Lobby
 
 # Lobby
 
-<vimg src="navigating-page/124loginscreen.png" />
+<vimg src="navigating-page/124loginscreen.png" alt="The Welcome to Nanome! panel on its Sign In tab, beside the 1.24 update banner" />
 
 The Nanome Lobby is where users can sign into an account or sign up. By toggling the 'Remember Me' button, users can automatically be signed in the next time they start Nanome. Users can also start the Nanome Basics tutorial by selecting 'Start Tutorial'.
 
@@ -21,13 +21,13 @@ After signing in, the lobby looks like this (Meetings tab shown):
 
 ## Update Banner
 
-<vimg src="navigating-page/1243updatebanner.png" />
+<vimg src="navigating-page/1243updatebanner.png" alt="The 1.24 Mixed Reality Update banner: Passthrough, Meta Avatars and Grab to Present" />
 
 The update banner features the latest features that are added in the version that the users are in.
 
 ## Creating an Account
 
-<vimg src="navigating-page/124accountcreation.png" />
+<vimg src="navigating-page/124accountcreation.png" alt="The Welcome to Nanome! panel on its Register tab" />
 
 An email address is required to create a Nanome account.
 
@@ -35,7 +35,7 @@ An email address is required to create a Nanome account.
 
 ## Nanome Basics
 
-<vimg src="navigating-page/nanome_basics.png" />
+<vimg src="navigating-page/nanome_basics.png" alt="The Nanome Basics panel on Trigger Selection, with Restart Scenario, Jump to Advanced and Exit Tutorial beside it" />
 
 Nanome Basics is our introductory tutorial that gets the user acquainted with the Nanome virtual environment and controllers. The tutorial consists of 7 levels. Follow the instructions on the Level Panel and the narrated audio to complete the levels.
 
@@ -82,15 +82,17 @@ Users can join a prescheduled meeting in Nanome by entering the Meeting ID provi
 
 ### (2) Creating a Room
 
-<vimg src="navigating-page/createroom.png" />
+<vimg src="navigating-page/createroom.png" alt="The Create Room panel with Room Name, Display Name, Room Password (optional) and Choose Room Access set to Private (My Org)" />
 
 There are three Room Types a user can create depending on their Nanome License.
 
 Room Types:
 
-- Public Rooms: Anyone can join in the room. available to all Nanome licenses
-- Private Rooms: A password is set for the room. Available to Academic and Enterprise
-- Single User: Offline mode which no one else can join. Available to Academic and Enterprise
+- Public Rooms: Anyone can join the room. Available to all Nanome licenses.
+- Private Rooms (Private (My Org) under Choose Room Access): Only people in your organization can join. Available to Academic and Enterprise.
+- Single User: Offline mode that no one else can join. Available to Academic and Enterprise.
+
+Any room can also have an optional Room Password.
 
 ### (3) Public / My Org Server Selector
 
@@ -116,7 +118,7 @@ In the Setting tab, users can adjust various settings.
 
 By selecting the Configuration button in the Setting tab, users can view the Nanome Configuration file, which contains additional settings that cannot be controlled directly from within the app. Newly added are Presentation Setup Options, which enable the presenter to manage guests that join their room. The Configuration file can be located in the same directory as the app build directory.
 
-<vimg src="navigating-page/Lobby-ConfigurationViewer.jpg" />
+<vimg src="navigating-page/Lobby-ConfigurationViewer.jpg" alt="The Configuration viewer listing settings such as desktop-mode = False" />
 
 ## Lobby Left Window
 

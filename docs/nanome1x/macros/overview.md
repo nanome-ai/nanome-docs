@@ -6,7 +6,7 @@ title: Macros In Nanome
 
 Macros are custom shortcuts you’ll be able to program yourself to speed up your work.
 
-<vimg src="macros-page/macros.gif" />
+<vimg src="macros-page/macros.gif" alt="Running the SiteView.All macro from the Macro menu, which changes how the protein is shown" />
 
 ## Summary
 
@@ -31,11 +31,11 @@ To access macros, you’ll simply open up the new Macro submenu on your wrist or
 
 To customize and/or create your own, open up your Nanome download files in Windows as shown below. You’ll find them in your Oculus, Steam or Vive folder.
 
-<vimg src="macros-page/macros1.png" />
+<vimg src="macros-page/macros1.png" alt="File Explorer in Oculus Apps, Software, with the nanome-nanome folder selected" />
 
 Click the folder named ‘Build’, then ‘Build Assets’, then ‘Macros’ to open up the folder seen below.
 
-<vimg src="macros-page/macros2.png" />
+<vimg src="macros-page/macros2.png" alt="File Explorer in Build, BuildAssets, Macros, with the SiteView.All, SiteView.Cycle and SiteView.Selection Lua files" />
 
 Each of these LUA files will appear in your Macro menu as a separate Macro.
 

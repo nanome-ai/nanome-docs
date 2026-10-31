@@ -4,13 +4,13 @@ title: Action Menu
 
 # Action Menu
 
-<vimg src="navigating-page/ActionMenu.gif" />
+<vimg src="navigating-page/ActionMenu.gif" alt="The action menu opening and closing in front of a protein, with Menus, Room, Entries and more under Actions" />
 
-Action menu offers a quick access to all major features in Nanome anywhere. If you are using a Vive system, press and hold the touch pad on your left controller to activate the menu. If you are using an Oculus system, press and hold the Y button on your left controller to activate the menu.
+Action menu offers a quick access to all major features in Nanome anywhere. If you are using a Vive system, press and hold the touch pad on your left controller to activate the menu. If you are using an Oculus system, the Y button on your left controller opens and closes the menu.
 
 ## Example of using the action menu to change avatar color
 
-<vimg src="navigating-page/AvatarColor.gif" />
+<vimg src="navigating-page/AvatarColor.gif" alt="Opening the action menu and choosing Change my color under Room" />
 
 ## Use the action menu to set up a meeting
 
@@ -35,7 +35,9 @@ Action menu offers a quick access to all major features in Nanome anywhere. If y
 
 </ShotRow>
 
-## Use the action menu to activate MR passthrough (Meta Quest Pro and Meta Quest 3 only)
+## Use the action menu to activate MR passthrough {#use-the-action-menu-to-activate-mr-passthrough-meta-quest-pro-and-meta-quest-3-only}
+
+Passthrough works on the headsets marked in the [Classic hardware matrix](/help/choosinghardware-classic#nanome-classic-v1-24-headset-comparison-matrix).
 
 <ShotRow src="navigating-page/action-menu-MR.png" alt="The action menu with Mixed Reality, under Actions, outlined in red">
 

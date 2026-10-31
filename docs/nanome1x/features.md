@@ -1,5 +1,6 @@
 ---
 title: Key Features
+search: false
 prev: false
 next: false
 ---
@@ -21,31 +22,31 @@ Our feature list is the following:
 
 Both VR users and 2D users can collaborate in a virtual space.
 
-<vimg src="features-page/collaboration.gif" />
+<vimg src="features-page/collaboration.gif" alt="Avatars gathered around a protein in one shared room" />
 
 ## Medicinal Chemistry Toolkit (MedChem)
 
-<vimg src="features-page/medchem.gif" />
+<vimg src="features-page/medchem.gif" alt="Adding rings and atoms to a molecule with the MedChem Rings & Chains and Atoms & Bonds menus" />
 
 ## Torsion tool
 
 The torsion tool twists a rotatable bond, and the measured dihedral angle updates as you turn it.
 
-<vimg src="features-page/measure-torsion.gif" />
+<vimg src="features-page/measure-torsion.gif" alt="Picking the Torsion tool from the tools menu, then twisting a bond while its angle label updates" />
 
 ## Electron Density Maps
 
-<vimg src="features-page/edm.gif" />
+<vimg src="features-page/edm.gif" alt="An electron density map shown as a blue mesh around a structure" />
 
 ## Trajectories
 
-<vimg src="features-page/nanome-gif-downsized_large.gif" />
+<vimg src="features-page/nanome-gif-downsized_large.gif" alt="A trajectory playing frame by frame while its display style changes" />
 
 ## Tools Menu
 
-Press and hold the Right Hand button to pull up the tools menu to easily switch between your favorite tools.
+Holding the right top button (B on Oculus controllers) opens the tools menu, where you can switch tools.
 
-<vimg src="features-page/hand-tools.gif" />
+<vimg src="features-page/hand-tools.gif" alt="The tools menu around the right hand: Hand, Measure, Select, MedChem and Torsion" />
 
 ## Molecular Surfaces
 
