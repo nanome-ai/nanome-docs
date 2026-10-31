@@ -1,0 +1,17 @@
+# Build files whose names carry a content hash, such as
+# /assets/chunks/theme.C8GlOD-P.js, /assets/index.md.7WFZLpMi.lean.js and
+# /assets/style.*.css. A changed file gets a new name in the next build, so
+# browsers can keep these for a year without checking back.
+#
+# Anything under docs/public is copied into the build output, so this file
+# ships to the host root, where Cloudflare Pages reads it. A splat matches
+# across folders, so /assets/*.js covers /assets/chunks/ too. Images under
+# /assets/compressed and /assets/original keep stable names (pages add a ?v=
+# hash) and match neither rule, so they keep the host's default caching.
+# A hand-named .js or .css file under docs/public/assets would get the same
+# year-long cache, so such files belong somewhere else in docs/public.
+/assets/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*.css
+  Cache-Control: public, max-age=31536000, immutable
