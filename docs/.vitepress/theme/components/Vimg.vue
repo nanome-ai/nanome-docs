@@ -1,14 +1,14 @@
 <template>
   <div>
-    <div class="vimg" :class="{ 'has-dark': !!darkSrc }" :style="box">
+    <div class="vimg" :class="{ 'has-dark': !!info.dark }" :style="box">
       <img
         class="vimg__light"
-        :src="`/assets/compressed/${toCopy(src)}${version(src)}`"
-        :data-zoom-src="`/assets/original/${src}`"
+        :src="info.light"
+        :data-zoom-src="info.zoom"
         :alt="alt"
-        :width="size?.[0]"
-        :height="size?.[1]"
-        :style="ratio(size)"
+        :width="info.size?.[0]"
+        :height="info.size?.[1]"
+        :style="ratio(info.size)"
         loading="lazy"
         decoding="async"
         v-bind="playable"
@@ -16,31 +16,28 @@
         @keydown.space.prevent="play"
       />
       <img
-        v-if="darkSrc"
+        v-if="info.dark"
         class="vimg__dark"
-        :src="`/assets/compressed/${toCopy(darkSrc)}${version(darkSrc)}`"
-        :data-zoom-src="`/assets/original/${darkSrc}`"
+        :src="info.dark"
+        :data-zoom-src="info.darkZoom"
         :alt="alt"
-        :width="darkSize?.[0]"
-        :height="darkSize?.[1]"
-        :style="ratio(darkSize)"
+        :width="info.darkSize?.[0]"
+        :height="info.darkSize?.[1]"
+        :style="ratio(info.darkSize)"
         loading="lazy"
         decoding="async"
         v-bind="playable"
         @keydown.enter.prevent="play"
         @keydown.space.prevent="play"
       />
-      <div v-if="isGif" class="vimg__play-btn">&#9654;</div>
+      <div v-if="info.isGif" class="vimg__play-btn">&#9654;</div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { computed } from 'vue'
-import variants from '../image-variants.json'
-import widths from '../image-widths.json'
-import sizes from '../image-sizes.json'
-import versions from '../image-versions.json'
+import { imageInfo } from './image.js'
 
 const props = defineProps({
   src: {
@@ -53,14 +50,14 @@ const props = defineProps({
   }
 })
 
-const isGif = computed(() => {
-  return props.src.lastIndexOf('.gif') !== -1
-})
+// The web copy (up to 1600px wide), the dark twin when there is one, and the
+// copy's size. scripts/compress.js writes them all.
+const info = computed(() => imageInfo(props.src))
 
 // A GIF shows a still until it's opened, so the keyboard needs a way in too:
 // Enter or Space clicks it, which is what medium-zoom listens for.
 const playable = computed(() =>
-  isGif.value
+  info.value.isGif
     ? { tabindex: 0, role: 'button', 'aria-label': `${props.alt || 'Animation'}. Play` }
     : {}
 )
@@ -68,43 +65,25 @@ const playable = computed(() =>
 // medium-zoom hides the image while it's open, which drops focus, so hand it
 // back on close.
 function play(event) {
-  if (!isGif.value || event.repeat) return
+  if (!info.value.isGif || event.repeat) return
   const img = event.currentTarget
   img.addEventListener('medium-zoom:closed', () => img.focus({ preventScroll: true }), { once: true })
   img.click()
 }
 
-// scripts/compress.js writes a WebP copy, up to 1600px wide, for every
-// original, and records which images have a `.dark` twin for dark mode.
-const darkSrc = computed(() => variants[props.src] || '')
-
-// The copy's width and height, so the page holds the image's space before it
-// loads and a link to a heading lower down lands on it.
-const size = computed(() => sizes[props.src])
-const darkSize = computed(() => sizes[darkSrc.value])
-
-// 2x screenshots show at half their pixel width, the size they are on screen;
-// other images at most at the width of their copy.
+// The image shows at its on-screen width (half the pixels of a 2x screenshot),
+// and the copy's width and height hold its space before it loads, so a link to
+// a heading lower down lands on it.
 const box = computed(() => {
-  const [w, h] = size.value || []
-  const shown = widths[props.src] ? Math.round(widths[props.src] / 2) : w
+  const { shown, size } = info.value
   return {
     ...(shown ? { '--vimg-w': `${shown}px` } : {}),
-    ...(w ? { '--vimg-ar': (w / h).toFixed(4) } : {}),
+    ...(size ? { '--vimg-ar': (size[0] / size[1]).toFixed(4) } : {}),
   }
 })
 
 function ratio(wh) {
   return wh ? { aspectRatio: `${wh[0]} / ${wh[1]}` } : null
-}
-
-function toCopy(src) {
-  return src.substr(0, src.lastIndexOf('.')) + '.webp'
-}
-
-/** The copy's content hash, so a changed image never comes from a stale cache. */
-function version(src) {
-  return versions[src] ? `?v=${versions[src]}` : ''
 }
 </script>
 

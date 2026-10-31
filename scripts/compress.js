@@ -18,6 +18,12 @@
 // It also records the width of each 2x screenshot (the folders in HIDPI) in
 // image-widths.json, so <Vimg> shows them at their on-screen size instead of
 // stretching a narrow panel across the content column.
+//
+// The theme script doesn't carry these lists: the build hands each page the
+// entries for the images it names (imageData in docs/.vitepress/config.mjs).
+// Every list is sorted, one image per line, so the same images always give the
+// same files. After a merge brings in new images, run `npm run docs:compress`
+// and commit what it writes.
 
 const sharp = require('sharp')
 const fs = require('fs')
@@ -66,7 +72,9 @@ const force = process.argv.includes('--force')
   console.log(`Done compressing (${built} rebuilt)`)
 
   // Light image -> its dark twin, for <Vimg>.
-  const files = walk(assetDir).map((f) => path.relative(assetDir, f).split(path.sep).join('/'))
+  const files = walk(assetDir)
+    .map((f) => path.relative(assetDir, f).split(path.sep).join('/'))
+    .sort()
   const darkByBase = new Map(
     files
       .filter((f) => /\.dark\.\w+$/.test(f))
