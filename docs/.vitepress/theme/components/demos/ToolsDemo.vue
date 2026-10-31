@@ -285,7 +285,7 @@ watch(src, (s) => {
       <div class="n-tools__stage">
         <DemoStage :src="src" :next="auto.playing.value ? next : ''" :alt="alt" :playing="auto.playing.value" @toggle="auto.toggle" />
         <div class="n-tools__closeup" aria-hidden="true">
-          <div v-for="f in closeups" :key="f.src" class="n-tools__closeframe" :class="{ 'is-on': f.src === shown }">
+          <div v-for="f in closeups" :key="f.src" class="n-tools__closeframe" :class="{ 'is-on': f.src === shown, 'has-dark': !!f.dark }">
             <div class="n-tools__closeimg n-tools__closelight" :style="{ backgroundImage: f.light }" />
             <div v-if="f.dark" class="n-tools__closeimg n-tools__closedark" :style="{ backgroundImage: f.dark }" />
           </div>
@@ -436,7 +436,7 @@ watch(src, (s) => {
 }
 
 .n-tools__closeup .n-tools__closedark,
-.dark .n-tools__closeup .n-tools__closelight {
+.dark .n-tools__closeup .has-dark .n-tools__closelight {
   display: none;
 }
 

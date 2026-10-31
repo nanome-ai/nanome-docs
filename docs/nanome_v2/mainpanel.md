@@ -320,11 +320,11 @@ While Bulk-Display is on, the table lists only ligands from entries with more th
 **Select property columns** lists every property the ligands have, including SDF data fields from the source file. Each one you pick becomes a column when you save.
 
 <UiList label="Property column picker">
-<UiItem icon="columns-3" name="Select property columns" area="18.9,9.4,7.5,6.9">Opens and closes the list.</UiItem>
-<UiItem name="Picked properties" area="20.6,17.9,30.5,10.2">Numbered in column order. Picking one again takes it out.</UiItem>
-<UiItem name="Other properties" area="20.6,28.5,30.5,63.3">In alphabetical order. Picking one adds it as the next column.</UiItem>
-<UiItem icon="x" name="Cancel" area="20.6,93.2,17.0,5.8">Closes the list and keeps the columns as they were.</UiItem>
-<UiItem icon="check" name="Save" area="38.8,93.2,14.6,5.8">Shows the picked columns in their numbered order.</UiItem>
+<UiItem icon="columns-3" name="Select property columns" area="18.3,9.4,7.5,6.9">Opens and closes the list.</UiItem>
+<UiItem name="Picked properties" area="20.0,17.9,30.5,10.2">Numbered in column order. Picking one again takes it out.</UiItem>
+<UiItem name="Other properties" area="20.0,28.5,30.5,63.3">In alphabetical order. Picking one adds it as the next column.</UiItem>
+<UiItem icon="x" name="Cancel" area="20.0,93.2,17.0,5.8">Closes the list and keeps the columns as they were.</UiItem>
+<UiItem icon="check" name="Save" area="38.2,93.2,14.6,5.8">Shows the picked columns in their numbered order.</UiItem>
 </UiList>
 
 </ShotRow>
