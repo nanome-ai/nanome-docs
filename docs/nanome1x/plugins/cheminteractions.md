@@ -27,7 +27,7 @@ The Chemical Interactions plugin visualizes ligand-receptor and protein-protein 
 
 4. Modify the Display Settings to show or hide interactions of interest.
     - Change the visibility or color of each interaction type
-    - `Hide All`: Quickly hide all interaction lines. Toggles through _Hide All_, _Show All_, and _Show Default_ 
+    - `Show All`: Shows all interaction types, hides them all, or goes back to the default ones. Its label cycles through Show All, Hide All and Show Default.
     - `Clear Frame` button will delete all interaction lines currently visible in the workspace.
 
 </Steps>
@@ -38,7 +38,7 @@ The Chemical Interactions plugin visualizes ligand-receptor and protein-protein 
 <UiItem name="Selected Atoms/Residues" area="31.1,33.2,38.1,5.0">Selection mode that uses the atoms/residues selected in the workspace.</UiItem>
 <UiItem name="Specific Structures" area="31.1,38.3,38.1,5.1">Selection mode that uses the Structure 2 dropdown. Picked here.</UiItem>
 <UiItem name="Calculate" area="31.1,44.4,38.1,7.2">Finds the interactions with arpeggio and draws them in the workspace.</UiItem>
-<UiItem name="Hide All" area="31.4,59.7,6.8,3.7">Reads Show All in this screenshot. Toggles through Hide All, Show All and Show Default.</UiItem>
+<UiItem name="Show All" area="31.4,59.7,6.8,3.7">Shows or hides all interaction types. Its label cycles through Show All, Hide All and Show Default.</UiItem>
 <UiItem name="Clear Frame" area="44.2,59.7,9.6,3.7">Deletes all interaction lines visible in the workspace.</UiItem>
 <UiItem name="Interaction types" area="32.0,65.3,16.6,30.1">Shows or hides each interaction type.</UiItem>
 <UiItem name="Colors" area="52.3,65.3,15.1,30.1">Sets the color of each interaction type.</UiItem>

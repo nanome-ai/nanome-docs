@@ -22,7 +22,7 @@ A **Fixed Reference** structure is chosen, and **Moving Structures** are rotated
     -   **Align to Entire Fixed Reference**: Uses a sequence based alignment to superimpose entire proteins on top of each other.
     -   **1 specific Chain from the Fixed Reference**: Uses a sequence based alignment to superimpose the moving structures onto a specified chain on the Fixed Reference.
     -   **By Binding Site**: The user selects a ligand on the Fixed Reference, and the surrounding binding site is aligned to the moving structures using Site-Motif (See Methodologies for more details)
-    -   **By Selection**:   The user selects specific residues in the fixed reference and the moving structures are aligned by that selection only.  Users may choose to specify residues on both the fixed and moving structures but only selections in the fixed reference are required for the plugin to run.
+    -   **By Selection** (not in this screenshot; see step 6): The user selects specific residues in the fixed reference and the moving structures are aligned by that selection only.  Users may choose to specify residues on both the fixed and moving structures but only selections in the fixed reference are required for the plugin to run.
 
 3. A list of proteins in the workspace appears in the main panel.  In this panel, choose **Fixed Reference** and **Moving Structures**, and subselect a chain or ligand for each, if aligning by chain or binding site, respectively (see 4, below).
     - By default, the first entry is set as Fixed, and designated by the yellow pin. When selected as Fixed, the box under Moving will be inactive.  To change this selection, select the pin next to the desired Fixed Reference protein.
@@ -48,9 +48,8 @@ A **Fixed Reference** structure is chosen, and **Moving Structures** are rotated
 
 </ShotRow>
 
-<vimg src="plugins-page/superimpose/superimpose_protein.png" />
+<vimg src="plugins-page/superimpose/superimpose_protein.png" alt="The purple and orange proteins, 3AP1 and 5WRI, superimposed" />
 <em>Two superimposed proteins</em>
-<p></p>
 
 <ShotRow src="plugins-page/superimpose/superimpose_rmsd_menu.png" alt="RMSD Run 1 table with 3AP1 purple tpst2 as the Fixed Reference and 5WRI orange tpst1 at RMSD 1.64">
 
@@ -115,15 +114,15 @@ The RMSD table for a chain run names the chain with each structure.
 
 </ShotRow>
 
-<vimg src="plugins-page/superimpose/superimpose-5b.png" />
+<vimg src="plugins-page/superimpose/superimpose-5b.png" alt="RMSD Run 1 table with 1xbb blue as the Fixed Reference, 4xg2 gold at RMSD 0.59 and 5y5t red-orange at 0.65, above the superimposed proteins" />
 
 
 6. When aligning by selection, the user must make a selection in the **Fixed Reference**.  These selections can be made by using the selector tool on the 3D structure itself, or by using menus such as Hierarchy and Antibody Regions table
 
-    <vimg src="plugins-page/superimpose/superimpose-6a.png" />
+    <vimg src="plugins-page/superimpose/superimpose-6a.png" alt="The Entry Hierarchy for chain A of 4xg2 yellow, with residues selected in the sequence, beside the yellow and orange structures" />
     *Making a selection in the Fixed Reference using the hierarchy menu.*
     <br><br>
-    <vimg src="plugins-page/superimpose/superimpose-6b.png" />
+    <vimg src="plugins-page/superimpose/superimpose-6b.png" alt="The Superimpose Proteins menu with By Selection picked, 4xg2 yellow as the Fixed Reference and 5y5t orange as a Moving Structure, beside the superimposed structures" />
     *Structures superimposed based on a selection in the fixed reference*
 
 
@@ -190,8 +189,7 @@ Improvements to the codebase include:
 - Logging
 
 #### Overview
-<br>
-<vimg src="plugins-page/superimpose/superimpose_binding_site_diagram.png" />
+<vimg src="plugins-page/superimpose/superimpose_binding_site_diagram.png" alt="Diagram: the fixed ligand sets the fixed binding site, fpocket finds pockets on the moving complex, Site-Motif picks the best match, and the two binding sites are superimposed" />
 
 #### References
 Sankar S, Chandra N (2022) SiteMotif: A graph-based algorithm for deriving structural motifs in Protein Ligand binding sites. PLoS Comput Biol 18(2): e1009901. https://doi.org/10.1371/journal.pcbi.1009901

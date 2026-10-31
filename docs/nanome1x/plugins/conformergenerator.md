@@ -4,7 +4,7 @@ title: Conformer Generator
 
 # Conformer Generator
 
-<vimg src="plugins-page/conformer-generator/overview.png" />
+<vimg src="plugins-page/conformer-generator/overview.png" alt="The Conf Gen menu set to 5WFD and 50 conformers, beside 3 conformers in 3D, the 5WFD conf frames with their conf energy, and a scatter plot of the conformers" />
 
 The Conformer Generator Plugin uses RDKit and UFF minimization to deliver a collection of diverse, low energy conformers of a selected “seed” ligand. 3D results are captured as frames in a single new entry in the workspace. Each conformer's minimized energy and its RMSD to the seed ligand are shown on the Meta Data tab of the Advanced Menu and in the Data Table plugin.
 

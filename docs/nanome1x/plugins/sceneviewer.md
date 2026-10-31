@@ -13,9 +13,9 @@ In view mode (Edit mode toggled Off), the scenes of the deck can be viewed by cl
 
 ## Instructions
 
-1.  Accessing the Scene Viewer
+### 1. Accessing the Scene Viewer
 
-    The Scene Viewer is accessible from Vault, in the Stacks menu.
+The Scene Viewer is accessible from Vault, in the Stacks menu.
 
 <ShotRow src="plugins-page/scene-viewer/access-viewer-1.png" alt="The Stacks menu with Vault picked in the plugin list, and its Deactivate and Open buttons">
 
@@ -59,7 +59,7 @@ Choose the **Open Scene Viewer** option to open the Scene Viewer menu.
 
 </ShotRow>
 
-2. Creating the First Scene
+### 2. Creating the First Scene
 
 <ShotRow src="plugins-page/scene-viewer/create-scene-1.png" alt="The Scene Viewer in Edit Mode with Scene 1 and its Update, Notes and Delete buttons">
 
@@ -95,7 +95,7 @@ Select **notes** to open the entry menu for name and description of the scene. A
 
 <em>The scene now shows its new name.</em>
 
-3. Creating subsequent Scenes
+### 3. Creating subsequent Scenes
 
 <ShotRow src="plugins-page/scene-viewer/more-scenes-1.png" alt="The Scene Viewer with Loaded protein and a new scene, Scene 2, below it">
 
@@ -123,7 +123,7 @@ Select **notes** to open the entry menu for name and description of the scene. A
 
 <em>Several scenes in a Scene Deck have been created.</em>
 
-4. Reviewing scenes in View mode (Edit mode toggled off)
+### 4. Reviewing scenes in View mode (Edit mode toggled off)
 
 <ShotRow src="plugins-page/scene-viewer/review-scenes-1.png" alt="The Scene Viewer with Edit Mode off, showing the scene list, Open Scene Info and the arrows" crop="0,11.1,53.6,85.6">
 
@@ -153,7 +153,7 @@ Select **notes** to open the entry menu for name and description of the scene. A
 
 <em>Move the Scene Info panel to a suitable position and scale for viewing.</em>
 
-5. Saving Scene Decks (.nanoscenes files)
+### 5. Saving Scene Decks (.nanoscenes files)
 
 <ShotRow src="plugins-page/scene-viewer/save-scene-1.png" alt="The Scene Viewer in Edit Mode with Save Deck to Vault below the scene list">
 

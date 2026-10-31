@@ -46,17 +46,14 @@ There are two ways to load a map into Nanome:
 
 Find the EMDB ID for the map you wish to load. Enter the id in the Textbox and press Load
 - The Browse EMDB button will open EMDB in the web browser
-- Files must be under 500MB. Unfortunately there is no way to tell unless you try loading it.
+- The plugin checks a map's size before downloading it, and shows an error if the map is over its size limit.
 - After the Map loads, the RCSB code will be prepopulated in the next Textbox. Load this by pressing load.
 - The structure will be added to your workspace, and aligned to the previously loaded map.
 
-<UiList label="1) Load map from EMDB">
+<UiList label="Load from EMDB">
 <UiItem name="Browse EMDB" area="81.0,18.4,14.6,4.4">Opens EMDB in the web browser.</UiItem>
 <UiItem name="EMDB ID" area="5.4,30.5,45.5,16.6">The Textbox for the map's EMDB ID.</UiItem>
-<UiItem name="Load" area="51.7,30.4,43.8,16.7">Loads the map. Files must be under 500MB.</UiItem>
-</UiList>
-
-<UiList label="2) Load fitted model from RCSB">
+<UiItem name="Load" area="51.7,30.4,43.8,16.7">Loads the map, if it's under the plugin's size limit.</UiItem>
 <UiItem name="RCSB code" area="5.1,60.9,45.8,16.0">Filled in with the RCSB code after the map loads.</UiItem>
 <UiItem name="Load" area="51.7,60.9,43.9,16.2">Adds the structure to your workspace, aligned to the map.</UiItem>
 </UiList>

@@ -6,7 +6,7 @@ title: Chemical Properties
 
 The Chemical Properties plugin display chemical properties for a complex using rdkit.
 
-<vimg src="plugins-page/chemicalproperties_plugin.png" />
+<vimg src="plugins-page/chemicalproperties_plugin.png" alt="The Chemical Properties menu for 5202, showing its 2D structure and properties such as MW, logP and TPSA, beside the molecule in 3D" />
 
 This plugin requires rdkit to be installed and in the PATH variable. To install, follow the instructions [here](http://www.rdkit.org/docs/Install.html).
 

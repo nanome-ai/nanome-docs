@@ -11,7 +11,7 @@ Ligand efficiency is an important predictive property in medicinal chemistry and
 
 ## Instructions
 
-<vimg src="plugins-page/realtimescoring_plugin.png" />
+<vimg src="plugins-page/realtimescoring_plugin.png" alt="The Realtime Scoring menu with 1TYL as the receptor and 1TYL {a} as the ligand" />
 
 To use this plugin, select a receptor (left pane), the ligands you would like to score (right pane), and press "Start scoring". Each ligand's score will appear on the scoring window. Atom scores will be shown via their radii and atoms will be labeled with their symbol. Moving a complex around will update its score.
 
