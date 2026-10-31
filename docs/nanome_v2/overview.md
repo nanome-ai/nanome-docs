@@ -29,7 +29,7 @@ These pages cover Nanome XR, version 2. Nanome Classic (v1.24), the earlier head
 <MapCard icon="box" title="Scenes Panel" href="/nanome_v2/scenespanel" side="left" area="32.7,33.0,8.9,33.2">Saved views, playback and Spotlight.</MapCard>
 <MapCard icon="menu-2" title="Wrist Menu" href="/nanome_v2/wristmenu" side="left" area="16.2,57.0,12.2,17.4">On your off-hand controller: the Main Panel, MARA and your mic.</MapCard>
 <MapCard icon="droplet" title="Tools Panel" href="/nanome_v2/toolspanel" side="right" area="60.6,33.0,2.2,33.0">Pointer, measuring, building, comments and the other tools.</MapCard>
-<MapCard icon="mist" title="Sequence Panel" href="/nanome_v2/sequencepanel" side="bottom" area="55.8,63.2,4.2,2.4">Opens from Sequences: every chain's sequence, for selecting residues.</MapCard>
+<MapCard icon="mist" title="Sequence Panel" href="/nanome_v2/sequencepanel" side="right" area="55.8,63.2,4.2,2.4">Opens from Sequences: every chain's sequence, for selecting residues.</MapCard>
 </ScreenMap>
 
 ## Working together

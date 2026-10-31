@@ -44,11 +44,11 @@ Vision Pro uses the visionOS pinch. The [Controls](/nanome_v2/controls#apple-vis
 <UiItem icon="arrows-move" name="Position Molecules" href="#components-tab">With the switch on, a pinch moves one structure on its own.</UiItem>
 </UiList>
 
-The window's buttons work like any visionOS window: look at a button and pinch.
+The window's buttons work like any visionOS window: looking at a button and pinching presses it.
 
 ## <AppIcon name="layout-grid" /> The Nanome window {#the-nanome-window}
 
-The window has three columns: the sidebar on the left, the open tab in the middle and [Scenes](#scenes) on the right. The top line names the loaded workspace, or reads **No Workspace Loaded**.
+The window has 3 columns: the sidebar on the left, the open tab in the middle and [Scenes](#scenes) on the right. The top line names the loaded workspace, or reads **No Workspace Loaded**.
 
 <UiList label="Sidebar">
 <UiItem name="Components" href="#components-tab">The structures in the workspace. Available once a workspace is loaded.</UiItem>
@@ -65,17 +65,17 @@ The structures in the workspace, each with its components. The **Position Molecu
 Each structure's row has these buttons:
 
 <UiList label="Entry row">
-<UiItem name="Eye">Hides or shows the structure. A structure with no components shows a plus instead, which adds the default components.</UiItem>
-<UiItem name="Previous, Play, Next">For structures with several models or frames, with a frame count. Long-pressing Play picks a speed: ×1, ×2, ×5, ×10 or ×20. Only you and the people following you see the playback.</UiItem>
-<UiItem name="Zoom">Brings the structure into view.</UiItem>
-<UiItem name="More">Rename, Duplicate, Delete (after a confirmation), Copy Entry Position and Copy Components. Under Structure Actions: Reset Components, Reset Position and Remove Interaction Components.</UiItem>
+<UiItem icon="eye" name="Eye">Hides or shows the structure. A structure with no components shows a plus instead, which adds the default components.</UiItem>
+<UiItem icon="player-play" name="Previous, Play, Next">For structures with several models or frames, with a frame count. Long-pressing Play picks a speed: ×1, ×2, ×5, ×10 or ×20. Only you and the people following you see the playback.</UiItem>
+<UiItem icon="zoom" name="Zoom">Brings the structure into view.</UiItem>
+<UiItem icon="dots" name="More">Rename, Duplicate, Delete (after a confirmation), Copy Entry Position and Copy Components. Under Structure Actions: Reset Components, Reset Position and Remove Interaction Components.</UiItem>
 </UiList>
 
 Each component sits under its structure, with 2 buttons:
 
 <UiList label="Component row">
-<UiItem name="Eye">Hides or shows the component.</UiItem>
-<UiItem name="More">Rename, Remove, Copy Component and Duplicate to Entry.</UiItem>
+<UiItem icon="eye" name="Eye">Hides or shows the component.</UiItem>
+<UiItem icon="dots" name="More">Rename, Remove, Copy Component and Duplicate to Entry.</UiItem>
 </UiList>
 
 Copy Entry Position, Copy Components and Copy Component copy to other scenes: a sheet picks the scenes, with All and None.
@@ -88,7 +88,7 @@ A switch at the top shows **Projects** or **Workspaces**. Projects can be filter
 <UiItem name="Name, Owner, Modified">The columns of the workspace list.</UiItem>
 <UiItem name="New">Creates a workspace.</UiItem>
 <UiItem name="Load">Opens the selected workspace.</UiItem>
-<UiItem name="More">Info, Duplicate, Rename (with edit access) and Leave. Leave asks first, because access only comes back with a new invitation.</UiItem>
+<UiItem icon="dots" name="More">Info, Duplicate, Rename (with edit access) and Leave. Leave asks first, because access only comes back with a new invitation.</UiItem>
 </UiList>
 
 ### Settings tab {#settings-tab}
@@ -104,10 +104,10 @@ A switch at the top shows **Projects** or **Workspaces**. Projects can be filter
 The right column lists the workspace's [scenes](/nanome_v2/scenespanel), with the current one's number out of the total.
 
 <UiList label="Scenes column">
-<UiItem name="Plus">Adds a scene.</UiItem>
-<UiItem name="Arrows">Go to the previous or next scene.</UiItem>
-<UiItem name="Gear">Recenter Self, Set scene POV, and Enable or Disable Scene POVs.</UiItem>
-<UiItem name="More">On a scene: Rename, Duplicate, Copy Scene POV and Delete.</UiItem>
+<UiItem icon="plus" name="Plus">Adds a scene.</UiItem>
+<UiItem icon="arrow-right" name="Arrows">Go to the previous or next scene.</UiItem>
+<UiItem icon="settings" name="Gear">Recenter Self, Set scene POV, and Enable or Disable Scene POVs.</UiItem>
+<UiItem icon="dots" name="More">On a scene: Rename, Duplicate, Copy Scene POV and Delete.</UiItem>
 </UiList>
 
 ## <AppIcon name="headset" /> Compared with Quest {#compared-with-quest}

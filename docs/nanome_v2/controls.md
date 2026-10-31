@@ -21,13 +21,13 @@ A grab is the grip button on a controller, or a pinch with hand tracking and on 
 
 <UiList label="Grabbing">
 <UiItem icon="hand-grab" name="Grab">Moves and turns the whole workspace with your hand: all the structures together.</UiItem>
-<UiItem icon="arrows-maximize" name="Grab with both hands">Hands apart makes the structures bigger, hands together smaller, from a tenth to ten times Nanome's default size.</UiItem>
+<UiItem icon="arrows-maximize" name="Grab with both hands">Hands apart makes the structures bigger, hands together smaller, from 0.1 to 10 times Nanome's default size.</UiItem>
 <UiItem icon="refresh" name="Turn both hands" href="/nanome_v2/mainpanel#settings-tab">While grabbing with both hands, turning the hands around each other rotates the workspace. Off when Allow two-handed grab rotation is off in Settings.</UiItem>
 <UiItem icon="arrows-move" name="Position Molecules" href="/nanome_v2/mainpanel#components-tab">At the bottom of the Components tab. While it's on, grabbing a structure moves only that one. Scaling still sizes them all. Editors only.</UiItem>
 <UiItem icon="lock-open" name="Grab the Main Panel" href="/nanome_v2/mainpanel">Moves the panel, unless Lock menu position is on.</UiItem>
 </UiList>
 
-The thumbsticks don't walk or turn you. To get closer to a structure, grab the workspace and pull it toward you.
+The thumbsticks don't walk or turn you. Grabbing the workspace and pulling it toward you brings a structure closer.
 
 ## <AppIcon name="headset" /> Meta Quest controllers {#meta-quest-controllers}
 
@@ -109,7 +109,7 @@ Nanome on Vision Pro is a beta, and uses the visionOS pinch. Its window and menu
 <UiList label="Vision Pro gestures">
 <UiItem icon="hand-grab" name="Look and pinch" href="#grab-move-and-scale">Looking at a structure and pinching grabs the workspace, and moving the hand moves it. Reaching out and pinching a structure directly does the same.</UiItem>
 <UiItem icon="arrows-maximize" name="Pinch with both hands" href="#grab-move-and-scale">Scales and rotates.</UiItem>
-<UiItem icon="window-maximize" name="Windows">Nanome's panels are visionOS windows: look at a button and pinch.</UiItem>
+<UiItem icon="window-maximize" name="Windows">Nanome's panels are visionOS windows: looking at a button and pinching presses it.</UiItem>
 </UiList>
 
 The Vision Pro beta has no Wrist Menu, tool display or button shortcuts.
