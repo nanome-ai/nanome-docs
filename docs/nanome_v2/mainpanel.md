@@ -7,9 +7,9 @@ title: Main Panel
 
 The Main Panel is where you manage structures, ligands, workspaces, people and settings. Open it from the [Wrist Menu](/nanome_v2/wristmenu) or with the **Menu** button on your off-hand controller. Everyone in a session has their own.
 
-The [Scenes Panel](/nanome_v2/scenespanel) sits on the left of the Main Panel and the [Tools Panel](/nanome_v2/toolspanel) on the right. Two buttons at the panel's top right change the panel itself.
+The [Scenes Panel](/nanome_v2/scenespanel) sits on the left of the Main Panel and the [Tools Panel](/nanome_v2/toolspanel) on the right. The 2 buttons at the panel's top right change the panel itself.
 
-<ShotRow src="nanome-v2/v2-7/main-panel-header.webp" alt="The top of the Main Panel: the five tabs, then Lock menu position and Increase menu size">
+<ShotRow src="nanome-v2/v2-7/main-panel-header.webp" alt="The top of the Main Panel: the 5 tabs, then Lock menu position and Increase menu size">
 
 <UiList label="Main Panel tabs and controls">
 <UiItem icon="hierarchy" name="Components" href="#components-tab" area="0.3,2.0,20.2,42.0">The structures in the workspace and how each is drawn.</UiItem>
@@ -32,11 +32,11 @@ Every structure in the workspace, and the components that control how it's drawn
 <UiList label="Components toolbar">
 <UiItem icon="caret-down-filled" name="Collapse All" area="2.7,9.5,8.0,7.5">Collapses every entry.</UiItem>
 <UiItem icon="eye" name="Hide All" area="11.5,9.5,8.0,7.5">Hides every entry.</UiItem>
-<UiItem icon="sort-ascending-letters" name="Sort by Name" area="20.3,9.5,8.0,7.5">Sorts entries alphabetically.</UiItem>
+<UiItem icon="sort-ascending-letters" name="Sort by Name" area="20.3,9.5,8.0,7.5">Sorts entries by name, Z to A first, then A to Z.</UiItem>
 <UiItem icon="copy-plus" name="Create Component" area="29.1,9.5,8.0,7.5">Makes a component of a type, an amino acid or a nucleotide, in all entries or the ones you pick.</UiItem>
 <UiItem name="Search" area="56.2,10.2,41.2,6.2">Filters entries and components by name.</UiItem>
 <UiItem name="Position Molecules" area="4.7,92.2,38.1,4.7">At the bottom: lets structures be moved one by one.</UiItem>
-<UiItem icon="mist" name="Sequences" area="74.8,91.3,22.7,6.3">At the bottom: opens the Sequence Panel.</UiItem>
+<UiItem icon="mist" name="Sequences" href="/nanome_v2/sequencepanel" area="74.8,91.3,22.7,6.3">At the bottom: opens the Sequence Panel.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -77,7 +77,7 @@ Each structure you load is an **entry**. Its row has these buttons:
 
 ### Entries and components
 
-<ShotRow src="nanome-v2/v2-7/components-breakdown.webp" alt="The default components of 1KV2, labelled">
+<ShotRow src="nanome-v2/v2-7/components-breakdown.webp" alt="The default components of 1KV2, labeled">
 
 Each entry holds **components**: named parts of the structure, each with its own look. A structure with a ligand loads with a default breakdown:
 
@@ -150,9 +150,9 @@ The copy of the panel below works like the app's: each switch shows 1KV2's bindi
 
 Each component's representations end with an <AppIcon name="mist" /> **Interactions** row and the number of interaction types switched on. **Show** lists each type with its own switch:
 
-<Btn>Hydrogen Bonds</Btn> <Btn>VDW Clashes</Btn> <Btn>π Stacking</Btn> <Btn>Salt Bridges</Btn> <Btn>Cation-π</Btn> <Btn>Halogen Bonds</Btn> <Btn>Halogen-π</Btn> <Btn>Hydrophobic</Btn> <Btn>Metal Coordination</Btn>
+<Btn>Hydrogen Bonds</Btn> <Btn>VDW Clashes</Btn> <Btn>π Stacking</Btn> <Btn>Salt Bridges</Btn> <Btn>Cation-π</Btn> <Btn>Halogen Bonds</Btn> <Btn>Hydrophobic</Btn> <Btn>Metal Coordination</Btn> <Btn>Halogen-π</Btn>
 
-The <AppIcon name="filter" /> **Filter** switch, there when the component has a ligand and a type is on, shows only interactions between ligand and non-ligand atoms. To list and pin interactions, use the [Interactions Tool](/nanome_v2/toolspanel#interactions-tool).
+The <AppIcon name="filter" /> **Filter** switch, there when the component has a ligand and a type is on, shows only interactions between ligand and non-ligand atoms. The [Interactions Tool](/nanome_v2/toolspanel#interactions-tool) lists interactions and can pin them.
 
 <AccordionGroup label="Interaction details">
 
@@ -160,7 +160,7 @@ The <AppIcon name="filter" /> **Filter** switch, there when the component has a 
 
 A component within one entry shows the interactions inside it, which is how **Pocket + Ligand** works. A component that spans several entries shows only the interactions between entries.
 
-Metal coordination has been an interaction type since release 2.4. Since 2.7, metal–ligand bonds that the Chemical Component Dictionary flags as coordination are no longer also drawn as covalent bonds.
+Metal coordination has been an interaction type since release 2.4. Since 2.7, metal-ligand bonds that the Chemical Component Dictionary flags as coordination are no longer also drawn as covalent bonds.
 
 </Accordion>
 
@@ -195,7 +195,7 @@ The <AppIcon name="palette" /> button beside a style opens its colors. Each sche
 
 **Uniform** opens a color picker with a hex field and swatches.
 
-<Accordion title="Electrostatic coloring" teaser="Appears when the entry has a DX map loaded.">
+<Accordion title="Electrostatic coloring" teaser="In a surface's colors, when the entry has a DX map loaded.">
 
 **Electrostatic** colors a surface by the map's value, sampled 1.4 Å out along each surface normal: red at the minimum, white in the middle and blue at the maximum. The default range is −5 to +5 and can be widened to ±20. Values are in the map's own units (APBS maps use kT/e). Nanome doesn't compute the electrostatic potential itself.
 
@@ -223,14 +223,14 @@ The <AppIcon name="palette" /> button beside a style opens its colors. Each sche
 
 <vimg src="nanome-v2/v2-7/align-proteins.webp" alt="Align proteins to this, with 1A9U aligned to 1KV2 by CE-Align" />
 
-Choose **CE-Align** or **TM-Align**, then the entries and chains to align. The alignment runs on Nanome's server. Each aligned row shows **RMSD**, the Cα RMSD over the aligned residues, and **Length**, the number of aligned residues. At least 8 Cα atoms are needed.
+The popup offers **CE-Align** or **TM-Align**, then the entries and chains to align. The alignment runs on Nanome's server. Each aligned row shows **RMSD**, the Cα RMSD over the aligned residues, and **Length**, the number of aligned residues. At least 8 Cα atoms are needed.
 
 </Tab>
 <Tab>
 
 <vimg src="nanome-v2/v2-7/create-component.webp" alt="The Create component options" />
 
-Pick from **Ligands**, **Residues**, a **Type** (protein, nucleic acid, ligand, water and others), **Amino Acids** or **Nucleotides**.
+The options are **Ligands**, **Residues**, a **Type** (protein, nucleic acid, ligand, water and others), **Amino Acids** and **Nucleotides**.
 
 </Tab>
 <Tab>
@@ -268,7 +268,7 @@ Entries with several models, such as a multi-MODEL PDB, and entries with a traje
 
 - Playback shows only for you and the people following you.
 - Speeds of ×5 and above may run slowly on standalone headsets.
-- Surface changes wait until playback stops.
+- While it plays, that entry's Surface switch is grayed out.
 
 ## <AppIcon name="affiliate" /> Ligands tab {#ligands-tab}
 
@@ -376,7 +376,7 @@ The copy lists HeavyAtomMolWeight, NumRotatableBonds, Rating and SMILES in its p
 <ShotRow src="nanome-v2/v2-7/workspaces-tab.webp" alt="The Workspaces tab">
 
 <UiList label="Workspaces tab">
-<UiItem name="Join Workspace" area="2.7,9.5,94.7,9.7">Type an 8-character code, shown as XXXX-XXXX, then Go.</UiItem>
+<UiItem name="Join Workspace" area="2.7,9.5,94.7,9.7">An 8-character code, shown as XXXX-XXXX. Go joins that workspace.</UiItem>
 <UiItem name="Filter By Name Or Owner" area="3.9,26.5,92.4,6.3">Filters the list.</UiItem>
 <UiItem icon="dots" name="More options" area="88.0,42.7,5.9,5.5">Info, View Project, Permissions, Rename, Duplicate, and Delete (owner) or Leave.</UiItem>
 <UiItem icon="plus" name="New" area="2.7,91.3,23.3,6.4">Creates a workspace.</UiItem>
@@ -407,7 +407,7 @@ Who is in the workspace, your mic, and who can open it.
 
 ### User settings {#user-settings}
 
-<ShotRow src="nanome-v2/v2-7/users-tab-annotated.webp" alt="The Users tab with its controls labelled">
+<ShotRow src="nanome-v2/v2-7/users-tab-annotated.webp" alt="The Users tab with its controls labeled">
 
 <UiList label="Users tab">
 <UiItem name="Display Name" area="25.6,18.2,30.9,10.4">The name others see.</UiItem>
@@ -453,15 +453,15 @@ A free license gives Viewer access to workspaces others own.
 <UiList label="Settings">
 <UiItem icon="moon" name="Night mode" area="4.4,9.1,6.9,5.3">Night or day skybox, when passthrough is off. The icon is a sun while it's off.</UiItem>
 <UiItem icon="view-360" name="Floor" area="12.0,9.1,6.9,5.3">Shows or hides the floor. The icon is crossed out while the floor is hidden.</UiItem>
-<UiItem name="Skybox theme" href="#day-night-mode-and-themes" area="19.7,9.2,25.2,5.1">Seven themes, each with a day and a night version.</UiItem>
-<UiItem icon="scan-eye" name="Passthrough" area="50.9,9.1,44.4,5.3">Mixed reality or a full skybox. On to start where the headset supports it, grayed out where it doesn't.</UiItem>
+<UiItem name="Skybox theme" href="#day-night-mode-and-themes" area="19.7,9.2,25.2,5.1">7 themes, each with a day and a night version except Pure Black.</UiItem>
+<UiItem icon="scan-eye" name="Passthrough" area="50.9,9.1,44.4,5.3">Mixed reality or a full skybox. On to start where the headset supports it, grayed out where it doesn't. While it's on, Night mode, Floor and Skybox theme are grayed out.</UiItem>
 <UiItem icon="hand-stop" name="Left-handed mode" area="4.4,19.0,90.9,5.4">Makes the left hand dominant.</UiItem>
 <UiItem icon="refresh" name="Allow two-handed grab rotation" area="4.4,28.9,90.9,5.3">When off, molecules rotate with one hand only.</UiItem>
 <UiItem icon="arrow-move-down" name="Enable far grab snap-to-hand" area="4.4,38.7,90.9,5.3">When on, grabbing a distant molecule brings it to your hand.</UiItem>
 <UiItem icon="users-group" name="Show other user Avatars" area="4.4,48.6,90.9,5.4">Off to start.</UiItem>
 <UiItem icon="volume" name="Enable interface sounds" area="4.4,58.5,90.9,5.4">Sounds when you use the menus.</UiItem>
 <UiItem icon="help" name="Show tutorial guides" area="4.4,68.3,90.9,5.3">The in-headset tutorials.</UiItem>
-<UiItem icon="box" name="Show structure box on hover" area="4.4,78.2,90.9,5.3">A labelled box around a hovered entry.</UiItem>
+<UiItem icon="box" name="Show structure box on hover" area="4.4,78.2,90.9,5.3">A labeled box around a hovered entry.</UiItem>
 <UiItem icon="outbound" name="Log Out" area="76.2,88.2,19.2,5.3">At the bottom, beside your username.</UiItem>
 <UiItem icon="info-small" name="App info" area="3.0,93.5,31.5,4.6">The version, with a button for app details and third-party attributions.</UiItem>
 </UiList>
@@ -472,6 +472,6 @@ When more than one server is set up, a <AppIcon name="server" /> **Change Server
 
 ### Day/Night mode and themes {#day-night-mode-and-themes}
 
-The themes are Default, Arctic Cyan, Aurora Green, Black & White, Gold Orange, Island and Pure Black. Since release 2.7 the skyboxes are procedurally generated mountains in each theme's colors, and Night mode switches each one between its day and night version. Pure Black is a plain black sky.
+The themes are Default, Arctic Cyan, Aurora Green, Black & White, Gold Orange, Island and Pure Black. Since release 2.7 the skyboxes are procedurally generated mountains in each theme's colors, and Night mode switches each one between its day and night version. Pure Black is a plain black sky by day and by night.
 
 Each theme, by day and by night, is on the [Environment](/nanome_v2/environment#skybox-and-floor) page.

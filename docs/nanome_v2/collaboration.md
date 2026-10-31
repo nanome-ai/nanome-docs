@@ -9,7 +9,7 @@ A workspace holds the structures, their representations, scenes, comments and pe
 <IconGrid label="Working together">
 <IconCard icon="share" title="Permissions" href="#permissions">Viewer, Editor, Owner or None.</IconCard>
 <IconCard icon="users-group" title="Invitations and join requests" href="#invitations-and-join-requests">Invite a colleague in, or ask to join them.</IconCard>
-<IconCard icon="layout-grid" title="Load for All vs. Load for Me" href="#load-for-all-vs-load-for-me">Move everyone to the next workspace, or just you.</IconCard>
+<IconCard icon="layout-grid" title="Load for All vs. Load" href="#load-for-all-vs-load-for-me">Move everyone to the next workspace, or just you.</IconCard>
 <IconCard icon="crown" title="Spotlight and follow" href="#spotlight-and-follow">Show your view, or step into someone else's.</IconCard>
 <IconCard icon="hierarchy" title="Structures and scenes" href="#structures-and-scenes">What to know when several people share a session.</IconCard>
 </IconGrid>
@@ -46,7 +46,7 @@ Both start from **Users in organization**, in the Users tab.
 
 An invited colleague sees **Join Workspace?** with <Btn icon="x">Refuse</Btn> or <Btn icon="check">Accept</Btn>. The colleague can accept a join request as <Btn icon="eye">Viewer</Btn> or <Btn icon="edit">Editor</Btn>, or <Btn icon="ban">Deny</Btn> it.
 
-## <AppIcon name="layout-grid" /> Load for All vs. Load for Me {#load-for-all-vs-load-for-me}
+## <AppIcon name="layout-grid" /> Load for All vs. Load {#load-for-all-vs-load-for-me}
 
 <UiList label="Loading a workspace">
 <UiItem icon="users-group" name="Load for All">Brings everyone in your current session with you to the next workspace.</UiItem>
@@ -68,7 +68,7 @@ People moving with you see a **Loading Workspace** notice, "[User] is moving all
 </Tab>
 <Tab>
 
-A workspace sent from Nanome Web with **Open in XR** arrives as a **Load from Web** prompt with <Btn icon="user">Just Me</Btn> or <Btn icon="users">Load for All</Btn>.
+A workspace sent from Nanome Web with **Open in XR** opens straight away when you're alone. With other people in your session, a **Load from Web** prompt offers <Btn icon="user">Just Me</Btn> or <Btn icon="users">Load for All</Btn>.
 
 </Tab>
 </Tabs>

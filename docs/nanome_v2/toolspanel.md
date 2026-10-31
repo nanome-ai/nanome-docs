@@ -86,7 +86,7 @@ Each measurement is listed in the panel with its type and value. Hovering a row 
 
 <ShotRow src="nanome-v2/v2-7/measurement-types.webp" alt="A distance, a dihedral and an angle measured on the 1KV2 ligand">
 
-<Callout type="note" title="Dihedrals have no sign">
+<Callout type="note" title="Dihedrals show without a sign">
 
 Dihedral angles show from 0° to 180° without a sign, so torsions of −60° and +60° both read 60°.
 

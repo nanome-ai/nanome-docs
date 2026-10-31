@@ -101,7 +101,7 @@ People added to the workspace's project already have their project role in the w
 - **With other people in the session**: a **Load from Web** prompt asks whether to load it <Btn icon="user">Just Me</Btn> or <Btn icon="users">Load for All</Btn>, which brings everyone in your current session along.
 - **Closed or signed out**: Nanome XR opens the workspace the next time it signs in, in place of the last workspace you had open.
 
-When the workspace is already open in the headset, nothing changes. **Load for All** can first offer to add people who don't have access as Viewers or Editors, as described under [Load for All vs. Load for Me](/nanome_v2/collaboration#load-for-all-vs-load-for-me).
+When the workspace is already open in the headset, nothing changes. **Load for All** can first offer to add people who don't have access as Viewers or Editors, as described under [Load for All vs. Load](/nanome_v2/collaboration#load-for-all-vs-load-for-me).
 
 ## <AppIcon name="droplet" /> Pointers {#pointers}
 
