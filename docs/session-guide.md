@@ -5,25 +5,22 @@ outline: [2, 3]
 
 # Running a session in Nanome
 
-Once users can reach a workspace, in a browser or a headset, these steps take a group from an empty workspace to a working session.
+Once people can reach a workspace, in a browser or a headset, these steps take a group from an empty workspace to a working session. Each step links to the reference page that covers its buttons.
 
 <IconGrid label="Session steps">
-<IconCard icon="list-check" title="Plan" href="#plan">How many users, joining from what, with how much on screen.</IconCard>
-<IconCard icon="cube-3d-sphere" title="Build" href="#build">In the web app, with a coding agent, or in a headset.</IconCard>
+<IconCard icon="list-check" title="Plan" href="#plan">How many people, joining from what, with how much on screen.</IconCard>
+<IconCard icon="cube-3d-sphere" title="Build" href="#build">In Nanome Web, with a coding agent, or in a headset.</IconCard>
 <IconCard icon="box" title="Scenes" href="#scenes">Saved views the group moves through together.</IconCard>
-<IconCard icon="mood-smile" title="Comfort" href="#comfort">How much structure a headset can show.</IconCard>
+<IconCard icon="mood-smile" title="Comfort" href="#comfort">How much structure a headset shows comfortably.</IconCard>
 <IconCard icon="lock" title="Permissions" href="#roles">Who can change what.</IconCard>
-<IconCard icon="share" title="Share" href="#share">Get the group into the same workspace.</IconCard>
-<IconCard icon="crown" title="Run the session" href="#live">Spotlight, follow, and move the group.</IconCard>
+<IconCard icon="share" title="Share" href="#share">Getting the group into the same workspace.</IconCard>
+<IconCard icon="crown" title="Run the session" href="#live">Spotlight, follow and moving the group.</IconCard>
 <IconCard icon="alert-triangle" title="Troubleshooting" href="#fixes">What to check when something feels wrong.</IconCard>
 </IconGrid>
 
 ## <AppIcon name="list-check" /> Plan the session {#plan}
 
-<p class="chapter-kicker">Step 1 of 8 · What to settle before anyone joins</p>
-
-A session runs on 3 things: how many users join, what they join from, and how
-much structure is on screen. Settle those first.
+A session rests on 3 things: how many people join, what they join from, and how much structure is on screen.
 
 ### Find the shape of your session
 
@@ -32,10 +29,10 @@ much structure is on screen. Settle those first.
   :steps="[
     {
       id: 'size',
-      label: 'How many users join at once?',
+      label: 'How many people join at once?',
       options: [
-        { id: 'small', label: '2 to 5 users', detail: 'A working review, a design discussion, or a walkthrough' },
-        { id: 'group', label: 'A single group', detail: 'A training session, a team meeting, or a lab' },
+        { id: 'small', label: '2 to 5 people', detail: 'A working review, a design discussion or a walkthrough' },
+        { id: 'group', label: 'A single group', detail: 'A training session, a team meeting or a lab' },
         { id: 'large', label: 'More than one group', detail: 'A large cohort working through the same material' }
       ]
     },
@@ -44,118 +41,104 @@ much structure is on screen. Settle those first.
       label: 'How do they join?',
       when: 'size',
       options: [
-        { id: 'xr', label: 'All users in headsets', detail: 'One headset per user for the whole session' },
-        { id: 'mixed', label: 'Headsets and browsers', detail: 'Some users in XR, the rest following along on the web' },
+        { id: 'xr', label: 'Everyone in a headset', detail: 'One headset per person for the whole session' },
+        { id: 'mixed', label: 'Headsets and browsers', detail: 'Some people in Nanome XR, the rest in Nanome Web' },
         { id: 'web', label: 'Mostly browsers', detail: 'A few headsets at most, the rest at app.nanome.ai' }
       ]
     }
   ]">
 
-<ChooserResult when="size=small mode=xr" verdict="One workspace, all users as Editor.">
+<ChooserResult when="size=small mode=xr" verdict="One workspace, everyone as Editor.">
 
-- A review this size fits in a single workspace, and letting every user edit keeps the discussion moving.
-- Build 2 or 3 scenes ahead of time for the views the discussion keeps returning to.
-- Keep the shown atom count at or under 7,500 so the session stays at 72 FPS or better on a Quest 3.
+- A review this size fits in one workspace, and edit access lets anyone change the view as the discussion moves.
+- Building 2 or 3 scenes ahead covers the views the discussion keeps coming back to.
+- About 7,500 shown atoms or fewer suits a Quest 3 or Galaxy XR. Vision Pro and PCVR carry more.
+- People on a free license have Viewer access to workspaces they don't own, even when they're added as Editors.
 
 </ChooserResult>
 
-<ChooserResult when="size=small mode=mixed" verdict="One workspace, and the web users follow.">
+<ChooserResult when="size=small mode=mixed" verdict="One workspace, with the browsers following.">
 
-- Users in a browser can follow a user in XR, which keeps a review going for anyone without a headset.
-- Load structures from the web app when the file is anything other than a PDB code, since XR loads by code.
-- Every user can be an Editor at this size, and permissions can still be changed per user later.
+- People in Nanome Web can follow someone in a headset and see what that person sees.
+- Nanome XR loads PDB entries by code. Other files are loaded in Nanome Web, and the workspace updates in the headset.
+- Everyone can be an Editor at this size, and each person's level can change later.
 
 </ChooserResult>
 
 <ChooserResult when="size=small mode=web" verdict="One workspace in the browser.">
 
-- The web app carries the same workspaces, scenes, and sharing as XR, so nothing has to be rebuilt later.
-- Any user in the session can spotlight, and the rest follow, whether they are in a browser or a headset.
-- Structures load from RCSB by PDB code, or by dragging a file in from a computer.
+- Nanome Web opens the same workspaces and scenes as Nanome XR, so nothing needs rebuilding if a headset joins later.
+- Anyone can spotlight from the browser with **Spotlight Me**, and the others follow, in a browser or a headset.
+- Structures load from the RCSB by PDB ID, or from files uploaded or dragged onto the workspace.
 
 </ChooserResult>
 
 <ChooserResult when="size=group mode=xr" verdict="One prepared workspace, the group as Viewers.">
 
-- Set the global permission to Viewer before sharing the code. Viewers explore, spotlight, follow, and move through scenes without changing the workspace.
-- Prepare the scenes first. A Viewer walking into a finished sequence needs no setup time.
-- Budget the atom count for the weakest headset in the room.
+- With the global level on Viewer before the code goes out, people can look around, point, comment, spotlight, follow and move between scenes, and the workspace stays as it was prepared.
+- Scenes built ahead let the group start straight away.
+- The least powerful headset in the room sets how much a scene can show.
 
 </ChooserResult>
 
 <ChooserResult when="size=group mode=mixed" verdict="One workspace, Viewer by default, headsets lead.">
 
-- Users in XR drive, and users in browsers follow from app.nanome.ai with the same scenes and spotlight.
-- Promote a user to Editor for the moment they need to change something, then set them back.
-- Scenes keep the group together: any user can jump to a named scene instead of being walked there.
+- People in headsets lead, and people in Nanome Web follow with the same scenes and spotlight.
+- Someone who needs to change something can be made an Editor for that moment, then a Viewer again.
+- Named scenes keep the group together: anyone can go to a scene without being walked there.
 
 </ChooserResult>
 
-<ChooserResult when="size=group mode=web" verdict="One workspace, and the headsets are the demo.">
+<ChooserResult when="size=group mode=web" verdict="One workspace, with a headset or two leading.">
 
-- Most of the group works in the browser while 1 or 2 headsets show what the structure feels like at scale.
-- The web app handles file formats that XR does not, so load anything unusual there first.
-- Viewer is still the right default, since a browser tab is just as capable of rearranging a workspace.
-
-</ChooserResult>
-
-<ChooserResult when="size=large mode=xr" verdict="Split into groups, 1 workspace each.">
-
-- Divide the users by the number of headsets, and give each group its own workspace built from the same material.
-- Splitting contains mistakes: a change made in one group only affects that group, rather than every user at once.
-- Set every group workspace to Viewer, so the prepared material survives the session.
-- A coding agent can build the same workspace repeatedly from one description, which makes this practical.
+- Most of the group works in Nanome Web while 1 or 2 people in headsets lead the walkthrough.
+- Nanome Web loads every supported file format, so file preparation happens there.
+- Viewer is still the right default: in a browser, an Editor can rearrange the workspace just as easily.
 
 </ChooserResult>
 
-<ChooserResult when="size=large mode=mixed" verdict="Groups in XR, the rest following in a browser.">
+<ChooserResult when="size=large mode=xr" verdict="Split into groups, with a copy of the workspace each.">
 
-- Build 1 workspace per headset group, then let the users without a headset follow along from the web.
-- Publish the scene order ahead of time so every group covers the same ground without a live presenter.
-- Keep each group small enough to hold one conversation, which is the real limit on a working session.
+- Each headset group gets its own copy of the workspace, made with **Duplicate**.
+- Splitting contains mistakes: a change in one copy stays in that copy.
+- Each copy stays on Viewer, so the prepared material survives the session.
 
 </ChooserResult>
 
-<ChooserResult when="size=large mode=web" verdict="Browsers carry the session, headsets rotate through.">
+<ChooserResult when="size=large mode=mixed" verdict="Groups in headsets, the rest following in a browser.">
 
-- A large cohort works at app.nanome.ai, and the headsets rotate so each user gets time in XR without a queue.
-- One prepared workspace per rotation keeps every user starting from the same view.
-- Viewer is the default. It leaves the prepared material intact for whoever rotates in next.
+- Each headset group gets its own copy of the workspace, and people without a headset follow along in Nanome Web.
+- A scene order shared ahead of time lets every group cover the same ground.
+- Each group stays small enough to hold one conversation.
+
+</ChooserResult>
+
+<ChooserResult when="size=large mode=web" verdict="Browsers carry the session, headsets rotate.">
+
+- The cohort works in Nanome Web, and the headsets rotate so each person gets time in one.
+- With the workspace on Viewer, every rotation starts from the same prepared scenes.
 
 </ChooserResult>
 
 </Chooser>
 
-<Accordion title="Why splitting works" teaser="Past one conversation, give each group its own workspace.">
+<Accordion title="Splitting a large group" teaser="One copy of the workspace per group, made with Duplicate.">
 
-A single workspace holds up while the group fits in one conversation. Past
-that, split the group and give each part its own workspace built from the same
-material. Splitting contains mistakes: a change one group makes stops at that
-group instead of landing in front of every user at once.
+One workspace works while the group fits in one conversation. Past that, each group gets its own copy built from the same material, so a change one group makes stays with that group.
 
-It also keeps each session light. A workspace carrying the whole cohort is
-doing more work than several smaller ones, and the headsets feel it first.
+**Duplicate**, in a workspace's More options menu in Nanome XR or Nanome Web, makes the copy: the same structures and scenes, under the original name with "- Copy" added, owned by whoever made it. The copy keeps the global level but not the people added by email, and every workspace has its own code. On a free license, each copy counts toward the 3 workspaces you can own.
 
 </Accordion>
 
 <Callout type="note">
 
-Prepared material is what makes a session start on time. The workspace, its
-scenes, and its permissions are all easier to set before anyone joins than
-during a live session.
+A session starts on time when the workspace, its scenes and its permissions are ready before anyone joins. All 3 take less time to set up ahead than during the session.
 
 </Callout>
 
 ## <AppIcon name="cube-3d-sphere" /> Build the workspace {#build}
 
-<p class="chapter-kicker">Step 2 of 8 · Three ways to build a workspace</p>
-
-A workspace holds structures, their representations, scenes, and permissions.
-Build it in the web app, describe it to a coding agent, or assemble it in a
-headset. The web app is the recommended route, and everything built there opens
-anywhere else.
-
-<YoutubeEmbed videoId="aOICs-LXoj4" title="Nanome v2.4 Quick Tips: Setting Up a New Workspace" />
+A workspace holds structures, their components and representations, scenes and permissions. It can be built in Nanome Web, by a coding agent or in a headset, and opens the same way in both apps.
 
 ### Pick a build path
 
@@ -166,53 +149,36 @@ anywhere else.
       id: 'surface',
       label: 'Where is the workspace being built?',
       options: [
-        { id: 'web', label: 'In the web app', detail: 'app.nanome.ai, in a browser', badge: 'Recommended' },
-        { id: 'mcp', label: 'With a coding agent', detail: 'Describe the workspace, and the MCP server builds it' },
-        { id: 'xr', label: 'In the headset', detail: 'Load structures by PDB code without leaving XR' }
+        { id: 'web', label: 'In Nanome Web', detail: 'app.nanome.ai, in a browser', badge: 'Recommended' },
+        { id: 'mcp', label: 'With a coding agent', detail: 'Describe the workspace, and the Nanome MCP server builds it' },
+        { id: 'xr', label: 'In a headset', detail: 'Load PDB entries by code without leaving Nanome XR' }
       ]
     },
     {
       id: 'client',
-      label: 'Which client?',
+      label: 'Which agent?',
       when: 'surface=mcp',
       options: [
-        { id: 'claude', label: 'Claude Code', detail: 'The client Nanome documents, with the command below' },
-        { id: 'codex', label: 'Codex', detail: 'Listed under MCP Setup in Settings in the web app' },
-        { id: 'gemini', label: 'Gemini CLI', detail: 'Listed under MCP Setup in Settings in the web app' }
-      ]
-    },
-    {
-      id: 'plan',
-      label: 'What plan is the agent on?',
-      when: 'surface=mcp',
-      options: [
-        { id: 'free', label: 'Free', detail: 'No subscription on the agent' },
-        { id: 'entry', label: 'Paid, $20 a month', detail: 'The entry subscription on most agents' },
-        { id: 'high', label: 'Paid, $100 or more a month', detail: 'The higher tiers, with room to keep going' }
+        { id: 'claude', label: 'Claude Code' },
+        { id: 'codex', label: 'Codex' },
+        { id: 'gemini', label: 'Gemini CLI' }
       ]
     }
   ]">
 
-<ChooserResult when="surface=web" verdict="Build it at app.nanome.ai.">
+<ChooserResult when="surface=web" verdict="Build it in Nanome Web.">
 
 <Steps>
 
-1. Create a project, then a workspace inside it. Projects group workspaces, and
-   project details are edited in the browser.
-2. Load structures by PDB code from RCSB, or drag a file in. The browser handles
-   the file formats a headset can't take, and the workspace carries them into XR
-   afterward.
-3. Nanome splits each entry into components on its own: the protein, the waters,
-   each binding site, the ligand, the pocket around it, and pocket plus ligand
-   together.
-4. Set a representation per component: Cartoon for the fold, Stick or Ball and
-   Stick for the part under discussion, Surface where shape matters. One
-   atomistic representation is active per component at a time.
-5. Hide what the session doesn't need, then save the view as a scene.
+1. Create a [project](/nanome_web/home#projects), then a workspace in it.
+2. Load structures from the RCSB by PDB ID, or upload files. Nanome Web takes every [supported format](/nanome_web/fileformats), and the workspace carries them into Nanome XR.
+3. A structure with a ligand loads with its default components: the protein, and a binding site that holds the ligand, the pocket around it, and the pocket and ligand together. Waters and ions get components when the file has them.
+4. Give each component its representation: Cartoon for the fold, Stick or Ball & Stick for the part under discussion, a surface where shape matters. The [representations panel](/nanome_v2/mainpanel#representations) shows each style.
+5. Hide what the view doesn't need. Changes stay with the scene that's open, and [Scenes](#scenes) adds the next views.
 
 </Steps>
 
-[Open the web app](https://app.nanome.ai)
+[Open Nanome Web](https://app.nanome.ai)
 
 </ChooserResult>
 
@@ -220,241 +186,222 @@ anywhere else.
 
 <Steps>
 
-1. In the Workspaces tab, choose <Btn icon="plus">New</Btn> to start a
-   workspace, or open one that already exists.
-2. Load a structure by PDB code. Components appear the same way they do in the
-   browser.
-3. Set representations from the Components tab, hide what the view doesn't need,
-   and save the result as a scene.
-4. Anything that isn't a PDB code, including local files and other formats,
-   loads in the browser first. The workspace then opens in the headset with
-   those structures in it.
+1. In the Workspaces tab, <Btn icon="plus">New</Btn> creates a workspace.
+2. <Btn icon="download">Load Structure</Btn>, in the Tools Panel, loads a PDB entry from the RCSB by its code. Its components appear as they do in Nanome Web.
+3. In the Components tab, set each component's representation and hide what the view doesn't need.
+4. Other file types are loaded in Nanome Web, and the workspace updates in the headset.
 
 </Steps>
 
-Building in XR suits a workspace that grows during a discussion. Material
-prepared ahead of a session is usually quicker to assemble in the browser.
+Building in a headset suits a workspace that grows during a discussion. Material prepared ahead is usually quicker to build in Nanome Web.
 
 </ChooserResult>
 
 <ChooserResult when="surface=mcp" verdict="Describe it, and the agent builds it.">
 
-The Nanome MCP server has tools for projects, workspaces, scenes,
-components, annotations, entries, and export. It authenticates with an existing
-Nanome account, so there's no second account to create, and Nanome puts setup at
-about 2 minutes.
+Through the Nanome MCP server, a coding agent can create projects, workspaces and scenes, load structures, add components and measurements, and export ligands as SDF. [MCP Setup](/nanome_web/account#mcp-setup), under Settings in Nanome Web, shows the command for each agent. The first time the agent connects, it asks you to sign in and approve access in your browser.
 
 </ChooserResult>
 
 <ChooserResult when="surface=mcp client=claude">
 
-<CopyBlock title="Add the server" text="claude mcp add --transport http nanome https://workspaces.nanome.ai/mcp" />
+<CopyBlock title="Claude Code" :lines="['claude mcp add --transport http nanome https://workspaces.nanome.ai/mcp', 'claude mcp login nanome']" />
 
 <Steps>
 
-1. Add **-s user** to make Nanome available in every project rather than the
-   current directory.
-2. Authenticate with **claude mcp login nanome**, or run **/mcp** in a session
-   and choose **Authenticate**.
-3. Restart the client so the tools load into the session.
-4. Check that **mcp__nanome__\*** tools appear. A connected status on its own
-   doesn't confirm that authentication finished.
+1. Run both commands, and sign in when the browser opens. Adding **-s user** to the first command makes Nanome available in every project.
+2. Start a new Claude Code session so the Nanome tools load.
+3. Ask for a structure to check that the tools answer.
+
+</Steps>
+
+Nanome also publishes a [Claude Code plugin](https://github.com/nanome-ai/claude-code-nanome-plugin) that builds a workspace from a description and returns its link.
+
+</ChooserResult>
+
+<ChooserResult when="surface=mcp client=codex">
+
+<CopyBlock title="Codex" :lines="['codex mcp add nanome --url https://workspaces.nanome.ai/mcp', 'codex mcp login nanome']" />
+
+<Steps>
+
+1. Run both commands, and sign in when the browser opens.
+2. Start a new Codex session so the Nanome tools load.
+3. Ask for a structure to check that the tools answer.
 
 </Steps>
 
 </ChooserResult>
 
-<ChooserResult when="surface=mcp client=codex|gemini">
+<ChooserResult when="surface=mcp client=gemini">
+
+<CopyBlock title="Gemini CLI" text="gemini mcp add --transport http nanome https://workspaces.nanome.ai/mcp" />
 
 <Steps>
 
-1. Open **MCP Setup** in Settings in the web app
-   ([MCP setup](/nanome_web/account#mcp-setup)). It carries the exact command
-   for your client alongside the other clients.
-2. Run that command, then sign in when the browser opens. The same Nanome
-   account applies.
-3. Restart the client so the tools load into the session.
-4. Ask for a structure to confirm the Nanome tools are answering.
+1. Run the command, then start Gemini CLI.
+2. Sign in when the browser opens, the first time Gemini CLI uses the Nanome tools.
+3. Ask for a structure to check that the tools answer.
 
 </Steps>
-
-[MCP Setup in Settings](https://app.nanome.ai/settings)
-
-</ChooserResult>
-
-<ChooserResult when="surface=mcp plan=free">
-
-**Room to try it.** A free tier is usually enough to connect, load a structure,
-and see what building this way feels like. Anything elaborate tends to run into
-the plan's limits partway through.
-
-</ChooserResult>
-
-<ChooserResult when="surface=mcp plan=entry">
-
-**Room for a session.** An entry subscription generally covers preparing the
-material for a session, though a long build with a lot of back and forth can
-still run it down. Worth starting early rather than an hour before.
-
-</ChooserResult>
-
-<ChooserResult when="surface=mcp plan=high">
-
-**Room to keep going.** Higher tiers leave enough headroom to build repeatedly
-without watching the budget, which is what a large session split into groups
-tends to need.
 
 </ChooserResult>
 
 <ChooserResult when="surface=mcp">
 
-Treat these as rough bands rather than limits. How much a plan covers keeps
-shifting as the MCP server gets more efficient and model costs come down, so the
-practical check is to build one workspace and see how far the budget goes. MCP
-calls also draw on Nanome credits, listed per seat on the pricing page,
-separately from whatever the agent's own plan allows.
-
-[Nanome credits](https://nanome.ai/pricing)
-
 **What a request looks like**
 
-- Pull up 6OIM, KRAS G12C with sotorasib bound. Show the fold as a cartoon
-  colored by secondary structure, put the drug in gold, and show me the GDP and
-  the magnesium.
-- Surface the whole protein semi-transparent, and color everything within 5 Å of
-  the ligand so I can see the switch II pocket.
-- Show me the covalent bond. Cys12 and the acrylamide warhead big, the rest of
-  the ligand small. Measure the sulfur-carbon distance, the attack angle, and the
-  torsion.
+- Pull up 6OIM, KRAS G12C with sotorasib bound. Show the fold as a cartoon colored by secondary structure, put the drug in gold, and show the GDP and the magnesium.
+- Put a surface on the residues within 5 Å of the drug so I can see the switch II pocket.
+- Show the covalent bond: Cys12 and the acrylamide warhead large, the rest of the drug small. Measure the sulfur to carbon distance.
 
-Nanome's own walkthrough builds a 9-scene workspace from requests like these in
-about 11 minutes. Selections are stored as rules, so "within 5 Å of the ligand"
-stays a live definition rather than a fixed list of atoms, and measurements
-anchor to atoms instead of sitting in text.
-
-[Open the example workspace](https://app.nanome.ai/workspaces/U8Y98TVW)
-· [Claude Code plugin](https://github.com/nanome-ai/claude-code-nanome-plugin)
+The agent builds components from selection rules and measurements between atoms, so the result is an ordinary workspace that anyone with access can open and change in Nanome Web or Nanome XR.
 
 </ChooserResult>
 
 </Chooser>
 
-### More on building
-
-<YoutubeEmbed videoId="Mw3oZhPD14k" title="Nanome v2.4 Quick Tips: Building Custom Components" />
-
-<YoutubeEmbed videoId="wdECz2HmR3o" title="Nanome v2.4 Quick Tips: Changing Molecular Representations" />
-
 ## <AppIcon name="box" /> Scenes {#scenes}
 
-<p class="chapter-kicker">Step 3 of 8 · Telling the story with scenes</p>
-
-Scenes are saved views inside a workspace. Instead of showing everything at once
-and hiding the parts nobody needs yet, each scene shows one step and the group
-moves through them together.
-
-<Callout type="tip" title="A new scene starts empty on purpose">
-
-New scenes have fresh, unset representations, so each entry gets set up
-deliberately. Duplicating a scene copies it exactly, which makes a small
-variation cheap and a clean slate equally cheap.
-
-</Callout>
+Scenes are saved views in a workspace. Each one holds its own components, annotations, molecule positions and point of view, so each scene can show one step while the group moves through them together.
 
 ### Building a sequence
 
-<ShotRow src="nanome-v2/v2-7/scenes-panel.webp" alt="The Scenes Panel controls, labeled">
+<ShotRow src="nanome-v2/v2-7/scenes-multiuser.webp" alt="The left sidebar with 3 scenes, Overview, Binding site and Pocket surface, a colored dot for each person in a scene, and Ana's and Ben's name chips">
 
-*Scenes Panel controls. Every button is described on [Scenes Panel](/nanome_v2/scenespanel).*
-
-<Steps>
-
-1. Set the view, then <Btn icon="plus">Create scene</Btn>. The scene keeps the
-   representations and visibility exactly as they are at that moment.
-2. Use <Btn icon="scan-eye">Set scene POV</Btn> so switching to the scene lands
-   every user in the same framing, and leave scene POVs on for the session with
-   <Btn icon="perspective">Enable/disable scene POVs</Btn>.
-3. Choose **Duplicate** in the scene's <AppIcon name="dots" /> menu for the next
-   step, change one thing, and keep going. Each scene reveals a little more than
-   the one before it.
-4. Drag a scene by its handle to reorder it, and choose **Rename** in its
-   <AppIcon name="dots" /> menu, so the order and names match how the session
-   runs.
-
-</Steps>
+<UiList label="Scenes Panel">
+<UiItem icon="plus" name="Create scene" area="6.0,17.5,13.4,6.1">Adds an empty scene. Editors only.</UiItem>
+<UiItem icon="settings" name="Scene settings" href="/nanome_v2/scenespanel#scene-settings" area="21.0,17.5,13.4,6.1">Set scene POV, Disable Scene POVs and Recenter Self. Editors only.</UiItem>
+<UiItem icon="arrow-right" name="Previous and Next scene" area="50.9,17.5,28.4,6.1">Steps through the scenes. Anyone can use them.</UiItem>
+<UiItem icon="player-play" name="Play scenes" area="81.0,17.5,13.4,6.1">Plays the scenes, with their recordings.</UiItem>
+<UiItem name="Drag handle (=)" area="83.3,28.9,8.0,22.7">Reorders the scenes.</UiItem>
+<UiItem name="Scene dots" area="8.7,40.5,11.8,4.1">One dot for each person in that scene, in their color, you included.</UiItem>
+<UiItem name="Name chips" area="5.4,76.6,88.9,5.7">The others in the workspace. Selecting a chip follows that person.</UiItem>
+</UiList>
 
 </ShotRow>
 
+<Steps>
+
+1. **Create scene** adds an empty scene: each entry in it starts hidden, and the entry's eye in the Components tab brings back its default components.
+2. **Set scene POV**, in Scene settings, saves your current view as the scene's point of view. Going to the scene then moves each person to that view.
+3. **Duplicate**, in the scene's <AppIcon name="dots" /> menu, copies the scene with its components, annotations and positions. One change in the copy makes the next step, so each scene shows a little more than the one before.
+4. **Rename**, in the same menu, names each scene for what it shows, and the drag handle puts the scenes in order.
+
+</Steps>
+
+A late change can still reach scenes already built: **Copy components**, in an entry's [Structure actions](/nanome_v2/mainpanel#structure-actions), copies its components to other scenes, and **Copy Scene POV** copies a point of view. Every button is on [Scenes Panel](/nanome_v2/scenespanel).
+
 ### What makes a sequence work
 
-<AccordionGroup label="4 things worth knowing">
+<AccordionGroup label="5 things worth knowing">
 
-<Accordion title="Hide what the scene doesn't need" teaser="Anything left on still costs frames, even behind a surface.">
+<Accordion title="Hide what the scene doesn't need" teaser="Everything shown counts, even behind a surface.">
 
-A scene that shows every atom and then covers them with an opaque surface still
-renders every atom. Hiding what the scene isn't about is covered under
-[Keep it comfortable](#comfort).
+Nanome counts every shown atom, bond, cartoon and surface when it works out what a scene costs to draw, including atoms behind an opaque surface. [Keep it comfortable](#comfort) covers how much a headset shows.
 
 </Accordion>
 
-<Accordion title="Name scenes for what they show" teaser="&quot;Active Site Close-up&quot; beats &quot;Scene 4&quot;.">
+<Accordion title="Name scenes for what they show" teaser="&quot;Binding site&quot; says more than &quot;Scene 4&quot;.">
 
-Nanome's own examples are "Active Site Close-up" and "Ligand Binding
-Comparison". Named scenes let any user in the workspace jump to the right point
-without being walked there, which matters most when the session splits into
-groups.
+Names such as Overview, Binding site and Pocket surface let anyone go straight to the right step, which matters most once the session splits into groups.
 
 </Accordion>
 
-<Accordion title="See where each user is" teaser="Colored dots on a scene show who is viewing it.">
+<Accordion title="See where everyone is" teaser="A dot on each scene for each person in it.">
 
-Each user in a workspace gets a personal color, shown on their name tag and as a
-dot on whichever scene they're viewing. A glance at the panel says whether the
-group is together or scattered across scenes.
-
-<vimg src="nanome-v2/scenes-panel-multiuser-indicators.jpg" alt="Colored dots on each scene show which users are viewing it" />
-
-*Per-user color dots on each scene.*
+Each person has a color, shown on their name chip and as a dot on the scene they're in. Pointing at the dots lists the names, so a glance shows whether the group is together.
 
 </Accordion>
 
-<Accordion title="Keep the sequence short" teaser="A workspace holds up to 50 scenes; sessions rarely need 10.">
+<Accordion title="Keep the sequence short" teaser="A workspace holds up to 50 scenes.">
 
-Nanome raised the ceiling to 50 scenes per workspace in v2.6. A long sequence
-built before the first session usually ends up rebuilt after it, so start with
-the handful of views the discussion needs and add scenes as questions come up.
+A long sequence built before the first session often gets rebuilt after it. Starting with the handful of views the discussion needs, and adding scenes as questions come up, saves that work.
+
+</Accordion>
+
+<Accordion title="A recording locks the workspace" teaser="Recorded walkthroughs play back with Play scenes.">
+
+A scene can hold a recorded walkthrough, with the presenter's voice and pointer, that plays with **Play scenes**. A workspace that holds a recording is locked against changes until someone chooses **Modify anyway**.
+
+[Recording a scene →](/nanome_v2/scenespanel#recording-a-scene)
 
 </Accordion>
 
 </AccordionGroup>
 
-### Scenes in 2 minutes
-
-<YoutubeEmbed videoId="vngy1zlFvRA" title="Nanome v2.4 Quick Tips: Working with Scenes" />
-
 ## <AppIcon name="mood-smile" /> Keep it comfortable {#comfort}
 
-<p class="chapter-kicker">Step 4 of 8 · How much structure a headset can show</p>
-
-Comfort in a headset tracks frame rate, and frame rate tracks how many atoms are
-on screen.
+Comfort in a headset depends on a steady frame rate. Every shown atom, bond, cartoon residue, surface and label adds to the work each frame.
 
 ### Comfort by shown atom count
 
-Nanome rates comfort against frame rate: Comfortable is 72 FPS or better,
-Moderate is 60 FPS or better, and 30 FPS or less is not recommended.
+Nanome suggests these shown atom counts as starting points for each headset, with nothing else on screen.
 
-| Shown atoms | Quest 3 / 3S | Galaxy XR | Vision Pro (M2) | PCVR |
-| --- | --- | --- | --- | --- |
-| 7,500 | Comfortable | Comfortable | Comfortable | Comfortable |
-| 10,000 | Moderate | Moderate | Comfortable | Comfortable |
-| 15,000 | Not recommended | Moderate | Comfortable | Comfortable |
-| 20,000 | Not recommended | Not recommended | Comfortable | Comfortable |
+<table class="comfort">
+  <colgroup>
+    <col style="width: 16%" />
+    <col style="width: 21%" />
+    <col style="width: 21%" />
+    <col style="width: 21%" />
+    <col style="width: 21%" />
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Shown atoms</th>
+      <th>Quest 3 / 3S</th>
+      <th>Galaxy XR</th>
+      <th>Vision Pro (M2)</th>
+      <th>PCVR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>7,500</td>
+      <td class="rate-good">Comfortable</td>
+      <td class="rate-good">Comfortable</td>
+      <td class="rate-good">Comfortable</td>
+      <td class="rate-good">Comfortable</td>
+    </tr>
+    <tr>
+      <td>10,000</td>
+      <td class="rate-ok">Moderate</td>
+      <td class="rate-ok">Moderate</td>
+      <td class="rate-good">Comfortable</td>
+      <td class="rate-good">Comfortable</td>
+    </tr>
+    <tr>
+      <td>15,000</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-good">Comfortable</td>
+      <td class="rate-good">Comfortable</td>
+    </tr>
+    <tr>
+      <td>20,000</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-bad">Not recommended</td>
+      <td class="rate-good">Comfortable</td>
+      <td class="rate-good">Comfortable</td>
+    </tr>
+  </tbody>
+</table>
 
-Shown atom count is what's displayed, not what's loaded. Surfaces, ribbons
-and labels each move the number on their own.
+Galaxy XR ratings are estimates: Nanome gives it the same drawing budget as Quest 3. PCVR ratings carry over from Nanome Classic (v1.24). Quest 2 and Quest Pro get a little over half the Quest 3 budget, so heavy scenes lose detail and hide entries sooner on them.
 
-[Comfort comparison →](/help/choosinghardware)
+The count covers what's shown: a large structure can sit in the workspace with most of it hidden.
+
+[Every headset and Nanome Web →](/help/choosinghardware#comfort-comparison)
+
+### When a scene is too heavy {#too-heavy}
+
+On Quest, Galaxy XR and Vision Pro, Nanome estimates what each shown entry costs to draw and aims to keep the scene within a budget for that headset. Over budget, it lowers the detail of the largest entry first, then the next, with no message. A cartoon gets visibly coarser, and surfaces keep their full detail. If the scene stays far over budget, Nanome hides whole entries, largest first.
+
+On Quest and Galaxy XR, a hidden entry leaves a pill with its name where it was, and its eye in the Components tab turns amber. Selecting either opens **Show Entry?**, with **Keep hidden**, **Show Entry**, **Show Entry in all scenes** and **Show all Entries**.
+
+If the frame rate stays under 15 FPS for more than 5 seconds, Nanome opens **Slowdown detected** and hides every entry. They stay hidden until someone shows them again. The popup offers **Leave workspace**, **Disable detection**, which turns the check off until another workspace opens, and **Close popup**. This check also runs on PCVR, which has no drawing budget. On Vision Pro, it hides entries without the popup.
+
+Each headset does this on its own, so one person can lose an entry that everyone else still sees.
 
 ### Spending the budget well
 
@@ -462,58 +409,35 @@ and labels each move the number on their own.
 
 <Card title="Hide first">
 
-<Btn icon="eye">Hide All</Btn> clears the view, and the eye button on each
-component's row brings back one component at a time. Everything shown counts,
-whether or not it's visible behind something else.
+<Btn icon="eye">Hide All</Btn>, at the top of the Components tab, hides every entry, and each entry's eye brings one back. Everything shown counts, even behind an opaque surface.
 
 </Card>
 
 <Card title="Keep surfaces small">
 
-Surfaces have 4 display styles: **Wire**, **Sheer**, **Semi**, and **Opaque**.
-They set the opacity of the same surface, so switching between them saves
-little. Keeping a surface to the pocket, or hiding it, saves the most.
+A surface costs the same at every detail level and opacity, and **Sheer** and **Semi** only change how see-through it is. A surface on the pocket costs far less than one over the whole protein.
 
 </Card>
 
-<Card title="One atomistic look at a time">
+<Card title="Atoms where the discussion is">
 
-Ball & Stick, Stick, Wire, and Van der Waals are exclusive per component, so the choice
-is already made once per component. Split a structure into components to mix
-looks across a single entry.
+Cartoon for the fold, and atoms only for the part under discussion, keep the shown atom count low. Components give each part of a structure its own style.
 
 </Card>
 
 </CardGrid>
 
-<vimg src="nanome-v2/v2-7/surface-styles.webp" alt="Surface styles: Wire, Sheer, Semi and Opaque" />
+Every style, drawn on 1KV2, is in the copy of the [representations panel](/nanome_v2/mainpanel#representations) on Main Panel.
 
-*Surface styles: Wire, Sheer, Semi, Opaque.*
+<Callout type="note" title="PCVR has no drawing budget">
 
-<vimg src="nanome-v2/v2-7/atom-representations.webp" alt="Ball & Stick, Stick, Wire and Van der Waals" />
-
-*Atomistic representations.*
-
-<Callout type="note" title="PCVR carries more">
-
-PCVR stays Comfortable at 20,000 shown atoms, where a Quest 3 is already past
-its budget. Sessions that need heavy structures run better with the heavy views
-on desktop and the walkthrough in XR.
+Nanome XR sets no drawing budget on PCVR, so the PC's graphics card sets the limit. Sessions that need heavy structures run better with the heavy views on desktop and the walkthrough in XR.
 
 </Callout>
 
 ## <AppIcon name="lock" /> Permissions {#roles}
 
-<p class="chapter-kicker">Step 5 of 8 · Deciding who can change what</p>
-
-Permissions are set per workspace, before anyone joins.
-
-<Callout type="tip" title="Set the level before the code goes out">
-
-A workspace's global permission applies to anyone who joins with the code, so
-deciding it first keeps prepared material intact.
-
-</Callout>
+Permissions are set per workspace. The global level applies to anyone who joins with the code, so it's best set before the code goes out.
 
 ### The four levels
 
@@ -521,59 +445,50 @@ deciding it first keeps prepared material intact.
 
 <Card title="Viewer">
 
-Sees structures, spotlights their own view, follows others, and moves through
-scenes. Cannot edit representations or arrange structures.
+The usual level for a group. Viewers look around, select, point, comment, follow, spotlight and move between scenes, and the workspace stays as it is.
 
 </Card>
 
 <Card title="Editor">
 
-Makes all changes, and invites others to view or edit.
+For the people building or changing the workspace. Editors can also open Share to add people and change their level.
 
 </Card>
 
 <Card title="Owner">
 
-Everything an Editor can do, plus removing users and deleting the workspace.
+Each workspace has 1 Owner, who can do everything an Editor can, remove people and delete the workspace.
 
 </Card>
 
 <Card title="None">
 
-No access. The setting for a workspace that should stay private while it is
-being built.
+As the global level, it keeps the workspace private: only people added by email, or through its project, can open it.
 
 </Card>
 
 </CardGrid>
 
+On a free license, people have Viewer access to workspaces they don't own, even when they're added as Editors.
+
+[What each level can do →](/nanome_v2/collaboration#permissions)
+
 ### Setting them
-
-<ShotRow src="nanome-v2/v2-7/users-tab-share-dialog.webp" alt="The Share dialog">
-
-*Users tab > Share.*
 
 <Steps>
 
-1. Open the **Users** tab and choose <Btn icon="share">Share</Btn>. The dialog
-   shows the workspace code and the global level.
-2. Set the global level to **Viewer** for a prepared workspace, or **None** to
-   close it entirely.
-3. Add named users by email with their own level. The address has to match
-   exactly, since the field has no autocomplete.
-4. Change one user later from the <AppIcon name="dots" /> menu next to their
-   name, which offers **Make Editor** or **Make Viewer** and, for the Owner,
-   **Remove User**.
+1. In Nanome XR, open the **Users** tab and choose <Btn icon="share">Share</Btn>. In Nanome Web, open the workspace's **Users** tab.
+2. Set the global level: **Viewer** for a prepared workspace, or **None** to keep it private. Nanome Web calls it **Link access**: **Members only**, **Anyone can view** or **Anyone can edit**.
+3. Add anyone who needs their own level with **Add people by email**. The address has to match their Nanome account exactly.
+4. To change one person later, open the menu beside their address: **Make Editor** or **Make Viewer**, and **Remove User** for the Owner.
 
 </Steps>
 
-</ShotRow>
+[Share dialog in Nanome XR →](/nanome_v2/mainpanel#share) · [Link access in Nanome Web →](/nanome_web/collaboration#link-access)
 
 ## <AppIcon name="share" /> Share the workspace {#share}
 
-<p class="chapter-kicker">Step 6 of 8 · Getting the group into the same workspace</p>
-
-A workspace reaches other users 3 ways:
+A workspace reaches other people 3 ways:
 
 <IconGrid label="Ways to share a workspace" :cols="3">
 <IconCard icon="share" title="The workspace code" href="#workspace-code">Anyone who enters it joins at the global level.</IconCard>
@@ -583,184 +498,134 @@ A workspace reaches other users 3 ways:
 
 ### <AppIcon name="share" /> The workspace code {#workspace-code}
 
-Every workspace has a short code. It sits at the top of the Share dialog in the
-Users tab, next to the global permission level, reads as 2 short blocks, like
-`AB12-CD34`, and stays with the workspace. Any user who enters it joins at
-whatever global level the workspace is set to, from a browser or a headset.
+Every workspace has its own 8-character code, shown as <span style="white-space: nowrap">`XXXX-XXXX`</span> in the Share dialog and at the top of the Users tab in Nanome Web. Anyone who enters it joins at the global level, from a headset or a browser.
 
 <Steps>
 
-1. Set the global level first. A code shared while the workspace is on **None**
-   lets nobody in.
-2. Read the code out, paste it into a calendar invite, or send it in chat.
-3. In a headset, users enter it under **Join Workspace** in the Workspaces tab.
-   In a browser, it goes in **Join Workspace via Code** at app.nanome.ai.
+1. Set the global level first. While it's **None**, the code works only for people added by email or through the project.
+2. Send the code with the invitation or in the chat. **Copy link**, beside the code in Nanome Web, copies a link to the workspace and leaves access as it is.
+3. In a headset, the code goes in **Join Workspace** at the top of the Workspaces tab. In a browser, it goes in **Join via Code**.
 
 </Steps>
 
+**Copy shareable link**, in a workspace's menu in Nanome Web, changes **Members only** to **Anyone can view** before it copies the link.
+
 ### <AppIcon name="mail" /> Named access by email {#named-access}
 
-**Add people by email** in the Share dialog gives one address its own level,
-Editor or Viewer, separate from whatever the code hands out. Use it when the
-workspace should stay closed to the rest of the organization, or when one user
-needs to edit while the rest only watch.
+**Add people by email** gives one address its own level, Editor or Viewer, whatever the code allows. It suits a workspace that stays private, or one person who edits while the rest watch.
 
-### <AppIcon name="users" /> Users already online {#org-list}
+### <AppIcon name="users" /> Colleagues already online {#org-list}
 
-**Users in organization** lists the members currently online.
+**Users in organization**, in the Users tab, lists colleagues who are online.
 
 <UiList label="Users in organization">
-<UiItem icon="plus" name="Invite">Invites that user into the current workspace.</UiItem>
-<UiItem icon="login" name="Join">Goes the other way, into whichever workspace they are in.</UiItem>
+<UiItem icon="plus" name="Invite">Asks them into your current workspace. They see <strong>Join Workspace?</strong> with Refuse or Accept.</UiItem>
+<UiItem icon="login" name="Join">Goes to the workspace they're in. Without access, it sends them a join request, which they can accept as Viewer or Editor.</UiItem>
 </UiList>
 
 <Callout type="note" title="Taking access back">
 
-Access can be pulled back at any point. The global level can drop to **None**,
-and one user can be changed, or removed by the Owner, from the
-<AppIcon name="dots" /> menu beside their name without affecting anyone else.
+The global level can drop to **None** at any point, and one person can be changed, or removed by the Owner, from the menu beside them in the Share dialog. Nobody else is affected.
 
 </Callout>
 
 ## <AppIcon name="crown" /> Run the session {#live}
 
-<p class="chapter-kicker">Step 7 of 8 · Spotlight, follow, and moving the group</p>
-
-Nanome has no designated presenter. Any user can spotlight their view, and any
-user can follow another, which makes handing the session around a matter of who
-points where.
+Nobody has to be the designated presenter. Anyone can spotlight their view and anyone can follow someone else, so handing over the session is a matter of who spotlights next.
 
 ### Spotlight and follow
 
-<ShotRow src="nanome-v2/scenes-panel-spotlight-mode.jpg" alt="Spotlighting, seen by the user spotlighting and by a follower" crop="0,2,100,96">
+The copy of the Users section below works like Nanome XR's: selecting Ana or Ben follows them, and **Spotlight Me** has both of them follow you.
 
-*Spotlighting, seen from both sides.*
+<SpotlightDemo />
 
-<UiList label="Spotlight and follow">
-<UiItem icon="crown" name="Spotlighting 1/1" area="2.8,81.6,20.1,6.0">Shown after you choose Spotlight Me. Your view is the shared view, and followers see it with a crown icon. The count is how many of the other users follow you, and selecting the button stops spotlighting.</UiItem>
-<UiItem name="Stop" area="76.3,82.4,4.9,5.4">Lets a follower break away.</UiItem>
-<UiItem icon="analyze-filled" name="Reset orientation" area="73.3,82.4,2.9,5.4">Brings back a follower who got turned around.</UiItem>
-</UiList>
+- In a headset, a new spotlight shows a prompt, and the headset follows after about 6 seconds unless the person chooses **Not now**. Nanome Web follows straight away.
+- People who join or reconnect during a spotlight follow it too, and followers see the leader's scene, tool and edits as they happen.
+- Pointers sit on the same part of the structure for everyone, so pointing at a residue works even when nobody is following.
 
-</ShotRow>
+[Spotlight Mode →](/nanome_v2/scenespanel#spotlight-mode) · [Following from Nanome Web →](/nanome_web/collaboration#following-from-the-web)
 
-Pointers sit relative to the structure, so a pointer at a residue lands on that
-residue for every user, even those looking from their own angle.
+### Moving the group
+
+**Load for All**, in the Workspaces tab, takes everyone in your session to the selected workspace. Each of them sees **Loading Workspace**, with **Cancel** to stay or **Go Now**, and moves with you if they do nothing. When some of them can't open the destination, Nanome first offers to add them as Viewers or Editors. **Load** moves only you.
+
+In Nanome Web, **Queue for All**, at the bottom of a workspace's Users tab, sends it to every member. People in a headset move to it right away, and the rest get it the next time they open Nanome XR.
+
+[Load for All vs. Load →](/nanome_v2/collaboration#load-for-all-vs-load-for-me)
 
 ### Before the group arrives
 
-<AccordionGroup label="4 checks">
+<AccordionGroup label="3 checks">
 
-<Accordion title="Turn Position Molecules off" teaser="Spotlight doesn't work properly while it's on.">
+<Accordion title="Recenter each headset" teaser="Holding the Meta button lines up each person's view.">
 
-**Position Molecules** moves structures independently of the workspace. The
-spotlight system will not work properly while it's on, so it belongs off for
-anything collaborative.
+On Meta Quest, holding the Meta button recenters your view. Each person can do this before the session, and again if the spotlight sits off-center for them. Editors also have **Recenter Self** in Scene settings.
 
 </Accordion>
 
-<Accordion title="Reset the play boundary" teaser="Each headset sets its own space before the session starts.">
+<Accordion title="Check audio in the Users tab" teaser="Your mic, your name, and muting someone for yourself.">
 
-Repositioning the boundary with the Meta Quest button puts each user at a
-sensible starting point. A user who ends up standing inside the structure can
-redo it mid-session without leaving the workspace.
+The Users tab shows your mic with a level meter, the display name others see, and a menu beside each person with **Mute**, which mutes them for you only. The off-hand controller's primary button (**X**, or **A** when left-handed) and the Wrist Menu also mute you.
 
-</Accordion>
-
-<Accordion title="Check audio in the Users tab" teaser="Mic level, self-mute, and muting another user all live there.">
-
-The **Users** tab shows a mic input level, a display name anyone can change, and
-a per-user menu for muting another user locally. The Wrist Menu carries a mute
-button for the moments between speaking.
-
-<vimg src="nanome-v2/v2-7/users-tab-annotated.webp" alt="The Users tab, labeled" />
-
-*Users tab.*
+[User settings →](/nanome_v2/mainpanel#user-settings)
 
 </Accordion>
 
-<Accordion title="Move the group, or move alone" teaser="Load for All brings the group; Load moves one user.">
+<Accordion title="Step through every scene once" teaser="On the least powerful headset in the room.">
 
-**Load for All** takes every user in the current workspace to the next one, with
-a notification that lets them opt out or go immediately. When some users can't
-open the destination, Nanome asks whoever chose Load for All to add them as
-Viewers or Editors, which is another reason to set permissions before the
-session. **Load** moves one user and leaves the rest where they are.
+Going through the sequence once on the least powerful headset shows whether any scene loses detail or hides an entry before the group sees it. On Quest and Galaxy XR, a hidden entry leaves a pill with its name.
+
+[When a scene is too heavy →](#too-heavy)
 
 </Accordion>
 
 </AccordionGroup>
 
-### Inviting and following
-
-<YoutubeEmbed videoId="5uikQlDO7FA" title="Nanome v2.5 Quick Tips: Load Structures, Invite & Follow from XR" />
-
-<YoutubeEmbed videoId="6v7xlQNzzoY" title="Nanome v2.5 Quick Tips: Invite Users & Follow from the Web" />
-
 ## <AppIcon name="alert-triangle" /> Troubleshooting {#fixes}
 
-<p class="chapter-kicker">Step 8 of 8 · What to check when something feels wrong</p>
-
-Most live problems come from 4 places: too much on screen, a permission set
-after the invitation went out, Position Molecules left on, or a network the
-headsets cannot reach.
+Most live problems come from 3 places: too much on screen, a permission set after the code went out, or a network the headsets can't reach.
 
 <AccordionGroup label="6 checks">
 
-<Accordion title="The headset feels slow or uncomfortable" teaser="Almost always the shown atom count.">
+<Accordion title="The headset feels slow, or an entry vanished" teaser="Usually too much on screen.">
 
-Hide everything, then bring back only what the current scene is about. Keeping a
-surface to the pocket, or hiding it, buys the most frames.
+When a scene is far over a headset's budget, Nanome lowers detail and then hides entries, and after a long slowdown it hides every entry. Hiding everything and bringing back only what the current scene is about usually fixes it, and a surface on the pocket costs far less than one over the whole protein.
 
-[Keep it comfortable →](#comfort)
-
-</Accordion>
-
-<Accordion title="Following or spotlighting does nothing" teaser="Check whether Position Molecules is on.">
-
-The spotlight system will not work properly while **Position Molecules** is on,
-because structures are moving independently of the workspace all users share.
+[When a scene is too heavy →](#too-heavy)
 
 </Accordion>
 
-<Accordion title="A user can't change anything" teaser="Their permission is Viewer, which is usually on purpose.">
+<Accordion title="Someone can't change anything" teaser="Their level is Viewer, which is usually on purpose.">
 
-**My Permission** at the top of the Users tab shows the current level. An Editor
-or Owner can promote one user from the <AppIcon name="dots" /> menu beside their
-name, which is enough for the moment they need to change something.
+**My Permission**, at the top of the Users tab, shows each person their own level. An Editor or the Owner can choose **Make Editor** from the menu beside their address in the Share dialog. On a free license, people stay Viewers in workspaces they don't own.
+
+</Accordion>
+
+<Accordion title="Someone can't get in with the code" teaser="The global level is probably None.">
+
+While the global level is **None** (**Members only** in Nanome Web), the code works only for people added by email or through the workspace's project. Setting it to **Viewer**, or adding the person by email, lets them in.
+
+</Accordion>
+
+<Accordion title="A follower's view is turned sideways" teaser="Reset orientation lines it up again.">
+
+While following, **Reset orientation**, in the bar under the name chips, lines the leader's view up with the way the follower faces now.
 
 </Accordion>
 
 <Accordion title="Headsets struggle while browsers are fine" teaser="The headsets are probably on a different network.">
 
-Headsets are often put on a separate network from laptops, and that network can
-be slower or more restricted. A phone makes a quick test: load the workspace on
-the headset network, then on the main one, and compare. The network requirements
-are in the setup guide.
+Headsets often sit on a separate network from laptops, and that network can be slower or more restricted. While a connection is poor, a warning icon appears beside the workspace name in the left sidebar, and its tooltip shows the ping. A phone hotspot makes a quick comparison.
 
-[Wi-Fi and firewall requirements →](/getting-started#network)
+[Wi-Fi and network requirements →](/getting-started#network)
 
 </Accordion>
 
-<Accordion title="The web app loads to a black screen" teaser="Hardware acceleration is off in the browser.">
+<Accordion title="Nanome Web shows 3D viewer unavailable" teaser="The browser can't use WebGL 2 right now.">
 
-A workspace that reaches full loading and then stays black usually means the
-browser is rendering without the GPU. In Chrome, turning on hardware
-acceleration in Settings and checking **chrome://gpu** for a disabled WebGL line
-has resolved it for other accounts. Support can confirm the exact settings for a
-given machine.
+The viewer needs WebGL 2. The message lists fixes for the browser in use, such as restarting it or turning on hardware acceleration, and **Technical details** holds a report to send to support.
 
 [Email support](mailto:support@nanome.ai)
-
-</Accordion>
-
-<Accordion title="Everything slowed down at once" teaser="Count how many users are in a single workspace.">
-
-A workspace holding the whole group is doing more work than several smaller ones.
-Splitting a large session across workspaces keeps each one light, and keeps one
-heavy view from reaching every user at once.
-
-[Plan the session →](#plan)
 
 </Accordion>
 
