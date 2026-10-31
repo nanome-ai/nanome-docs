@@ -130,11 +130,20 @@ function pickHydrogen(key) {
   hydrogen.value = key
   note.value = { title: `Hydrogens · ${label(HYDROGENS.find((h) => h.key === key))}`, text: `${HYDROGEN_DESC[key]} 1KV2's file has no hydrogen atoms, so the render stays the same.` }
 }
+// In the app, Show and Hide only open and close the list. The copy's
+// interaction renders draw the ligand as Stick, so Hide puts back the
+// representation that was on before Show.
+let beforeList = null
 function toggleList() {
   auto.stop()
   note.value = null
-  if (showList.value) apply({ atom: atom.value, extra: extra.value })
-  else apply({ atom: 'stick', list: true })
+  if (showList.value) {
+    apply(beforeList ?? { atom: atom.value })
+    beforeList = null
+  } else {
+    beforeList = { atom: atom.value, extra: extra.value, surface: surface.value }
+    apply({ atom: 'stick', list: true })
+  }
   syncAt()
 }
 function toggleType(t, e) {
@@ -179,7 +188,7 @@ const alt = computed(() => `1KV2's binding site: ${caption.value.title}`)
 </script>
 
 <template>
-  <div ref="root" class="n-demo" v-on="auto.hold">
+  <div ref="root" class="n-demo n-reps-demo" v-on="auto.hold">
     <div class="n-app-card n-app-reps" role="group" :aria-label="app === 'xr' ? 'Representations, as in Nanome XR' : 'Representations, as in Nanome Web'">
       <label v-for="a in ATOMISTIC" :key="a.key" class="n-app-row">
         <AppIcon :name="a.icon" size="1rem" />
@@ -242,3 +251,25 @@ const alt = computed(() => `1KV2's binding site: ${caption.value.title}`)
     </figure>
   </div>
 </template>
+
+<style>
+/* Under the render on a phone, room for the longest caption in the tour, so
+   the page below doesn't move as it steps. */
+@media (max-width: 599px) {
+  .n-reps-demo .n-demo__caption {
+    min-height: 6em;
+  }
+}
+
+@media (max-width: 413px) {
+  .n-reps-demo .n-demo__caption {
+    min-height: 7.5em;
+  }
+}
+
+@media (max-width: 349px) {
+  .n-reps-demo .n-demo__caption {
+    min-height: 9em;
+  }
+}
+</style>

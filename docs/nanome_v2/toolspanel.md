@@ -119,7 +119,7 @@ Since release 2.7, comments and annotations share one panel: the Comments tool. 
 <UiList label="Comments panel">
 <UiItem icon="text-size" name="Text" area="15.4,9.8,24.4,5.6">Editors only: places a text note in 3D.</UiItem>
 <UiItem icon="volume" name="Sound" area="40.4,9.8,27.2,5.6">Editors only: records a sound note.</UiItem>
-<UiItem icon="trash" name="Delete" area="68.6,9.8,27.4,5.6">Editors only: removes notes.</UiItem>
+<UiItem icon="trash" name="Delete" area="68.6,9.8,27.4,5.6">Editors only: removes text notes by pointing at them in 3D. A sound note is deleted from the <AppIcon name="dots" /> More options menu on its row.</UiItem>
 <UiItem icon="list" name="Filter" area="80.4,16.0,16.3,5.8">All, Workspace (comments on the workspace itself) or Scene (comments on the current scene).</UiItem>
 <UiItem name="Comment on this workspace" area="14.6,87.2,82.1,10.1">The box at the bottom: posts a new comment.</UiItem>
 </UiList>

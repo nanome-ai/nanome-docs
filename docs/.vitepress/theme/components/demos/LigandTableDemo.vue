@@ -70,6 +70,9 @@ const pickerQuery = ref('')
 const menu = ref(null)
 const note = ref(null)
 const scrolled = ref(false)
+/** More columns sit off to the right: the table fades at its right edge. */
+const more = ref(false)
+const scrollBox = ref(null)
 const root = ref(null)
 const menuEl = ref(null)
 const pickBtn = ref(null)
@@ -609,8 +612,13 @@ function setTag(t) {
     : { title: `${l.name} · Remove tag`, text: 'The ligand has no tag now, and its Tag cell shows a dash.' }
 }
 
+function measureMore() {
+  const el = scrollBox.value
+  more.value = !!el && el.scrollLeft + el.clientWidth < el.scrollWidth - 1
+}
 function onScroll(e) {
   scrolled.value = e.target.scrollLeft > 0
+  measureMore()
   menu.value = null
 }
 
@@ -626,13 +634,21 @@ function onKey(e) {
 function onPickerFocusOut(e) {
   if (picker.value && e.relatedTarget && !e.currentTarget.contains(e.relatedTarget)) picker.value = false
 }
+// The box and the table both change size: with the window, and as columns
+// and rows come and go.
+let resizeObs = null
 onMounted(() => {
   document.addEventListener('pointerdown', onPointerDown)
   document.addEventListener('keydown', onKey)
+  measureMore()
+  resizeObs = new ResizeObserver(measureMore)
+  resizeObs.observe(scrollBox.value)
+  resizeObs.observe(scrollBox.value.firstElementChild)
 })
 onBeforeUnmount(() => {
   document.removeEventListener('pointerdown', onPointerDown)
   document.removeEventListener('keydown', onKey)
+  resizeObs?.disconnect()
   clearTimeout(confirmTimer)
 })
 
@@ -891,8 +907,9 @@ const caption = computed(() => {
 
       <div class="n-ltab__body">
         <div
+          ref="scrollBox"
           class="n-ltab__scroll"
-          :class="{ 'is-scrolled': scrolled, 'is-empty': !rows.length }"
+          :class="{ 'is-scrolled': scrolled, 'has-more': more, 'is-empty': !rows.length }"
           :style="growStyle"
           @scroll="onScroll"
         >

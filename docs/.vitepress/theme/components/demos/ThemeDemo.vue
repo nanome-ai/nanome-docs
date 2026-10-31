@@ -57,11 +57,18 @@ const caption = computed(() => ({
   title: `${current.value.name} · ${night.value ? 'Night' : 'Day'}`,
   text: props.app === 'xr' ? xrText() : 'The viewer’s background in the theme’s colors.',
 }))
+// What the render shows, for a screen reader.
+const alt = computed(() => {
+  const when = `the ${current.value.name} theme by ${night.value ? 'night' : 'day'}`
+  return props.app === 'xr'
+    ? `The view from a headset in ${when}: 1KV2, the Main Panel, 2 avatars and both controllers`
+    : `1KV2 in the Nanome Web viewer in ${when}`
+})
 </script>
 
 <template>
   <div ref="root" class="n-demo" v-on="auto.hold">
-    <div class="n-app-card n-app-themes is-spread" role="group" aria-label="Theme">
+    <div class="n-app-card n-app-themes is-spread" role="group" aria-label="Theme settings">
       <div class="n-app-themelist" role="group" aria-label="Theme" @keydown="arrowPick">
         <button
           v-for="t in THEMES"
@@ -82,7 +89,7 @@ const caption = computed(() => ({
     </div>
 
     <figure class="n-demo__view">
-      <DemoStage :src="src" :next="auto.playing.value ? next : ''" :alt="caption.title" :playing="auto.playing.value" @toggle="auto.toggle" />
+      <DemoStage :src="src" :next="auto.playing.value ? next : ''" :alt="alt" :playing="auto.playing.value" @toggle="auto.toggle" />
       <figcaption class="n-demo__caption" :aria-live="auto.playing.value ? 'off' : 'polite'"><strong>{{ caption.title }}</strong> {{ caption.text }}</figcaption>
     </figure>
   </div>

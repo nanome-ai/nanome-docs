@@ -82,10 +82,12 @@ const TEXT = {
   'measurement-dihedral': `Picking 4 atoms measures the dihedral around the axis from atom 2 to atom 3, and ${HINT('dihedral')}`,
   'measurement-delete': `Pulling the trigger on a measurement removes it. The badge and the tip sphere turn red, and ${HINT('delete')}`,
   'comments-text': `Pulling the trigger on an atom starts a text note there. The badge shows a speech bubble. ${FIRST('text')}`,
-  'comments-sound': `Pulling the trigger on an atom starts a sound note there, and ${HINT('sound')} Viewers get no modes, so no hint.`,
-  'comments-delete': `Pulling the trigger on a note deletes it. The badge and the tip sphere turn red, and ${HINT('delete')}`,
+  'comments-sound': `Pulling the trigger on an atom starts a sound note there, and ${HINT('sound')}`,
+  // Delete aims only at text notes (StructureInteractor); a sound note is
+  // deleted from its row's menu in the panel (CommentsMenu).
+  'comments-delete': `Pulling the trigger on a text note deletes it. Sound notes are deleted from their row in the panel. The badge and the tip sphere turn red, and ${HINT('delete')}`,
   interactions: 'The trigger pins the interaction at the tip, or unpins a pinned one. The badge shows a pin where the rail shows a link, and an unpin icon over a pinned interaction.',
-  'builder-start': 'No ligand is open, so there are no modes. Picking a ligand in 3D or in the panel’s list opens it in Build, as Edit A:B96_391 does here.',
+  'builder-start': 'No ligand is open, so there are no modes. Picking a ligand in 3D or in the panel’s list opens it in Build, as picking A:B96_391 does here.',
   'builder-build': `Adds atoms and groups. The fragment to add replaces the tip sphere. ${FIRST('build')}`,
   'builder-replace': `Swaps an atom or group for another. The fragment preview stays at the tip, and ${HINT('replace')}`,
   'builder-bond': `Pulling the trigger on 2 atoms bonds them, and on a bond changes its order. The white tip sphere is back, and ${HINT('bond')}`,
@@ -249,8 +251,8 @@ watch(src, (s) => {
               <span><AppIcon :name="MODES[m].icon" size="0.85rem" />{{ MODES[m].label }}</span>
             </button>
           </div>
-          <button v-else-if="tool === 'builder'" type="button" class="n-app-pill" @click="openLigand">
-            <AppIcon name="pencil" size="0.9rem" />Edit A:B96_391
+          <button v-else-if="tool === 'builder'" type="button" class="n-app-pill" aria-label="Edit A:B96_391" @click="openLigand">
+            <AppIcon name="pencil" size="0.9rem" />A:B96_391
           </button>
           <span v-else class="n-tools__none">{{ current.none }}</span>
         </div>
@@ -470,7 +472,7 @@ watch(src, (s) => {
   min-height: 6em;
 }
 
-@media (max-width: 359px) {
+@media (max-width: 374px) {
   .n-tools-demo .n-demo__caption {
     min-height: 7.5em;
   }

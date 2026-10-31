@@ -520,10 +520,32 @@
 }
 
 .n-ltab button:focus-visible,
-.n-ltab input:focus-visible,
-.n-ltab tbody tr:focus-visible {
+.n-ltab input:focus-visible {
   outline: 2px solid var(--lt-purple);
   outline-offset: -2px;
+}
+
+/* A focused row's ring is drawn on its cells, so the sticky drawing cell
+   can't cover its left end. */
+.n-ltab tbody tr:focus-visible {
+  outline: none;
+}
+
+.vp-doc .n-ltab .n-ltab__table tbody tr:focus-visible > td {
+  box-shadow: inset 0 2px var(--lt-purple), inset 0 -2px var(--lt-purple);
+}
+
+.vp-doc .n-ltab .n-ltab__table tbody tr:focus-visible > td:first-child {
+  box-shadow: inset 2px 0 var(--lt-purple), inset 0 2px var(--lt-purple), inset 0 -2px var(--lt-purple);
+}
+
+.vp-doc .n-ltab .n-ltab__table tbody tr:focus-visible > td:last-child {
+  box-shadow: inset -2px 0 var(--lt-purple), inset 0 2px var(--lt-purple), inset 0 -2px var(--lt-purple);
+}
+
+.vp-doc .n-ltab .n-ltab__scroll.is-scrolled tbody tr:focus-visible > td.n-ltab__img {
+  box-shadow: inset 2px 0 var(--lt-purple), inset 0 2px var(--lt-purple), inset 0 -2px var(--lt-purple),
+    6px 0 6px -6px rgba(0, 0, 0, 0.25);
 }
 
 .n-ltab .n-appicon {
@@ -813,6 +835,13 @@
 
 .n-ltab__scroll.is-scrolled .n-ltab__img {
   box-shadow: 6px 0 6px -6px rgba(0, 0, 0, 0.25);
+}
+
+/* While more columns sit off to the right, the table fades out at its right
+   edge, so it's clear there's more to scroll to. */
+.n-ltab__scroll.has-more {
+  -webkit-mask-image: linear-gradient(to left, transparent, #000 32px);
+  mask-image: linear-gradient(to left, transparent, #000 32px);
 }
 
 .vp-doc .n-ltab img {
