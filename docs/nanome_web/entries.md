@@ -29,7 +29,7 @@ An **entry** is one loaded structure, such as a PDB file. Each entry holds **com
 
 <Accordion title="How components are named" teaser="Chain, ligand code and residue number.">
 
-The names come from the chain, the three-character ligand code and the residue number in the file. In the 4CEO example, `G0T` is the ligand's code in the RCSB Chemical Component Dictionary.
+The names come from the chain, the 3-character ligand code and the residue number in the file. In the 4CEO example, `G0T` is the ligand's code in the RCSB Chemical Component Dictionary.
 
 </Accordion>
 
@@ -171,7 +171,7 @@ Nanome runs the alignment on its server with CE-Align. TM-Align is available in 
 
 <ShotRow src="nanome-web/create-interactions.webp" alt="Create interaction components, on the Polymer-Polymer tab">
 
-**Create interaction components** opens a dialog with two modes:
+**Create interaction components** opens a dialog with 2 modes:
 
 <UiList label="Create interaction components">
 <UiItem name="Polymer-Ligand" area="11.4,13.6,38.1,15.8">Interactions between this entry's polymer, such as a protein, and a ligand in another entry. With no other ligand entries in the workspace, the dialog shows No ligands available.</UiItem>

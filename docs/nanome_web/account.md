@@ -10,7 +10,7 @@ The account menu sits at the right end of the top bar, under your initial. It sh
 
 <UiList label="Account menu">
 <UiItem icon="lock-cog" name="Login via Device Code" href="#login-via-device-code" area="37.9,31.6,54.0,6.5">Signs a headset in.</UiItem>
-<UiItem name="Account / Billing / Organization" area="37.9,41.3,54.0,25.0">Open your account, billing and organization pages.</UiItem>
+<UiItem name="Account / Billing / Organization" area="37.9,41.3,54.0,25.0">Account opens the Account tab of Settings. Billing and Organization open their own pages.</UiItem>
 <UiItem name="Settings" href="#settings" area="37.9,69.4,54.0,6.3">API keys, MCP setup and display preferences.</UiItem>
 <UiItem name="Logout" area="37.9,79.0,54.0,6.2">Signs out of Nanome Web.</UiItem>
 </UiList>
@@ -27,7 +27,7 @@ Nanome XR can sign in with a 4-character code. The headset's login page shows th
 
 ## Settings {#settings}
 
-**Settings** has two tabs: **Account** and **System**.
+**Settings** has 2 tabs: **Account** and **System**. System holds API Keys, MCP Setup and the preference switches.
 
 ### Account
 
@@ -55,7 +55,7 @@ Nanome XR can sign in with a 4-character code. The headset's login page shows th
 
 </ShotRow>
 
-### MCP setup {#mcp-setup}
+### MCP Setup {#mcp-setup}
 
 **MCP Setup** shows the command that connects an AI assistant to the Nanome MCP server, with versions for Claude Code, Codex and Gemini CLI. For Claude Code:
 
@@ -75,7 +75,7 @@ The assistant asks you to sign in and approve access in a browser the first time
 <UiItem name="Auto-run Workflows" area="3.5,27.9,92.7,9.1">Runs workflows in chat automatically.</UiItem>
 <UiItem name="Dark Mode" area="3.5,46.7,92.7,9.2">Darker colors for the web app.</UiItem>
 <UiItem name="Hide Credits" area="3.5,65.6,92.7,8.6">Hides the credits display. The switch shows only for accounts with unlimited credits.</UiItem>
-<UiItem name="Reset chats" area="3.5,84.2,92.7,9.2">Delete all permanently deletes all MARA chats and uploaded files.</UiItem>
+<UiItem name="Reset chats" area="3.5,84.2,92.7,9.2">Its Delete all button permanently deletes all MARA chats and uploaded files.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -84,4 +84,4 @@ The assistant asks you to sign in and approve access in a browser the first time
 
 Since release 2.7, Nanome XR warns when a license will expire within 30 days, and signs out with a notice when it does. Its sign-in errors say what went wrong: wrong credentials, an account that has to use Google, Microsoft, Apple or SSO sign-in, an organization IP restriction, or a network problem.
 
-Free licenses are limited to 1 owned project, 3 owned workspaces and 5 structures per workspace, with view-only access to shared workspaces and projects. License details are on [home.nanome.ai](/home.nanome.ai/licenses).
+Free licenses are limited to 1 owned project, 3 owned workspaces and 5 structures per workspace, with view-only access to shared workspaces and projects. [Account Tiers](/home.nanome.ai/accounttiers) compares the free and paid seats.

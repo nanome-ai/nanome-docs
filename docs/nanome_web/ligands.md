@@ -117,7 +117,7 @@ Nanome calculates these properties with RDKit on its server. SDF data fields fro
 | **NumAtoms** | Number of atoms, including hydrogens. Shown as **Atoms**. For G0T (C₃₀H₃₂N₂O₈) it's 72: 30 C, 32 H, 2 N and 8 O |
 | **NumHeavyAtoms** | Number of non-hydrogen atoms |
 | **MolWeight** | Monoisotopic (exact) mass in daltons, including hydrogens. Shown as **MW** |
-| **HeavyAtomMolWeight** | Mass of the non-hydrogen atoms only |
+| **HeavyAtomMolWeight** | Monoisotopic mass of the non-hydrogen atoms only. Shown as **Heavy Atom MW** |
 | **LogP** | Wildman-Crippen estimate of log P, the base-10 logarithm of the octanol-water partition coefficient |
 | **TPSA** | Topological polar surface area (Ertl method, from N and O atoms only), in Å² |
 | **HbondD** | Hydrogen-bond donor count (RDKit's pattern-based definition, which differs from Lipinski's N-H plus O-H count) |

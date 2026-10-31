@@ -11,7 +11,7 @@ Nanome plays molecular dynamics trajectories in Nanome Web and streams them to N
 
 ## <AppIcon name="paperclip" /> Loading a trajectory {#loading-a-trajectory}
 
-A frame trajectory attaches to a structure that's already loaded. In the **Entries** tab, the entry's <Btn icon="dots">(...)</Btn> menu has **Load trajectory**.
+A frame trajectory attaches to a structure that's already loaded. In the **Entries** tab, the entry's <AppIcon name="dots" /> **(...)** menu has **Load trajectory**.
 
 <ShotRow src="nanome-web/entry-more-options.webp" alt="An entry's More options menu, with Load trajectory" crop="54.6,3.9,42.3,86.6">
 

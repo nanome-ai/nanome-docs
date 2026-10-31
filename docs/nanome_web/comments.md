@@ -36,7 +36,7 @@ A workspace with no comments shows **No comments yet**.
 
 <UiList label="A comment">
 <UiItem name="Author and time">The author's avatar and name, and how long ago the comment was posted, such as <code>18m</code> or <code>now</code>.</UiItem>
-<UiItem icon="box" name="Scene chip">On a comment tied to a scene: the scene's number and name, such as <code>6: 1KV2comments</code>.</UiItem>
+<UiItem icon="cube" name="Scene chip">On a comment tied to a scene: the scene's number and name, such as <code>6: 1KV2comments</code>.</UiItem>
 <UiItem icon="circle-dot" name="Atom chip" href="#anchoring-to-atoms">A link to specific atoms, such as <code>1KV2 A|B96'391 C4, C5</code>. Hovering it highlights those atoms in the viewer, and clicking it zooms to them.</UiItem>
 <UiItem name="@mentions">A comment can mention a colleague by name. The mention is highlighted in the text.</UiItem>
 <UiItem icon="mood-plus" name="Reactions" href="#reactions">Emoji reactions under the comment, with a count beside each emoji.</UiItem>

@@ -4,7 +4,7 @@ title: Loading Structures
 
 # Loading Structures
 
-Structures come into a workspace through the **Import** tab of the workspace panel, from three sources.
+Structures come into a workspace through the **Import** tab of the workspace panel, from 3 sources.
 
 <ScreenMap src="nanome-web/import-tab.webp" alt="The Import tab" crop="0,21,100,79" label="Import sources">
 <MapCard icon="download" title="Import from RCSB" href="#import-from-rcsb" side="left" area="2.7,29.8,46.2,23.0">The RCSB Protein Data Bank, by PDB ID.</MapCard>
@@ -27,13 +27,13 @@ The <Btn icon="upload">Click to Upload</Btn> button opens a file picker, and fil
 
 ## <AppIcon name="messages" /> Import from Chat {#import-from-chat}
 
-**Import from Chat** lists files from your MARA conversations, with the chat each came from and its date. The checkboxes select files.
+**Import from Chat** lists files from your MARA conversations, with the chat each came from and its date. The checkboxes select files. **Import** then adds them to the workspace (the button shows the count, such as Import 2 files), and **Deselect All** clears the selection.
 
 <ShotRow src="nanome-web/import-chat-menu.webp" alt="Import from Chat with a file row menu open">
 
 <UiList label="Import from Chat">
-<UiItem icon="search" name="Search" area="61.6,7.2,7.1,12.2">Helps find a file.</UiItem>
-<UiItem icon="arrows-sort" name="Sort" area="69.7,7.2,25.8,12.2">Orders the list.</UiItem>
+<UiItem icon="search" name="Search" area="61.6,7.2,7.1,12.2">Searches the list.</UiItem>
+<UiItem icon="arrows-sort" name="Sort" area="69.7,7.2,25.8,12.2">By Name or by Date.</UiItem>
 <UiItem icon="dots" name="More" area="91.3,37.7,4.4,5.5">Each row's menu: Go to chat and Download.</UiItem>
 </UiList>
 
@@ -41,7 +41,7 @@ The <Btn icon="upload">Click to Upload</Btn> button opens a file picker, and fil
 
 ## File loading changes in 2.7
 
-<AccordionGroup label="File loading changes in 2.7">
+<AccordionGroup label="2 changes">
 
 <Accordion title="GROMACS .gro files" teaser="Faster loading, and chains split where numbering restarts.">
 
@@ -59,7 +59,7 @@ Since 2.7, bonds that the dictionary flags as metal coordination are no longer d
 
 </AccordionGroup>
 
-### Video: Loading Structures from the Web
+## Video: Loading Structures from the Web
 
 <YoutubeEmbed videoId="BkZ6R8fPbgQ" title="Nanome v2.5 Quick Tips: Loading Structures from the Web" />
 

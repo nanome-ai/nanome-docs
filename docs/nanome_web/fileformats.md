@@ -44,10 +44,10 @@ Frame-trajectory formats.
 
 | Format | Extensions | Import | Animates? | Limits |
 |--------|------------|--------|-----------|--------|
-| **GRO** | `.gro` | standalone | ▶️ frame-trajectory | 🆕 split into chains where residue numbering restarts; ACE, NME and NH2 caps stay in the protein |
+| **GRO** | `.gro` | standalone, or attach to a loaded model | ▶️ frame-trajectory | 🆕 split into chains where residue numbering restarts; ACE, NME and NH2 caps stay in the protein |
 | **XTC** | `.xtc` | attach to a loaded model | ▶️ frame-trajectory | atom count must match the host; file up to 200 MB |
 | **TRR** | `.trr` | attach to a loaded model | ▶️ frame-trajectory | atom count must match the host; file up to 200 MB |
-| **DCD** | `.dcd` | attach to a loaded model | ▶️ frame-trajectory | file up to 200 MB; 64-bit CHARMM DCD and fixed-atom DCD are not supported |
+| **DCD** | `.dcd` | attach to a loaded model | ▶️ frame-trajectory | file up to 200 MB; 64-bit CHARMM DCD and fixed-atom DCD aren't supported |
 
 ## Maps / volumetric
 
@@ -74,8 +74,8 @@ All of these use the same parser on Nanome's server.
 
 ## Not supported
 
-- **Electron density maps**: CCP4, MRC and DSN6 are not supported.
-- **LAMMPS** native trajectories (`.lammpstrj` / dump) are not read directly. LAMMPS can write DCD or XTC, which attach to a structure with the same atom count.
+- **Electron density maps**: CCP4, MRC and DSN6 aren't supported.
+- **LAMMPS** native trajectories (`.lammpstrj` / dump) aren't read directly. LAMMPS can write DCD or XTC, which attach to a structure with the same atom count.
 - **No workspace-file export**: workspaces live in the database, and there's no portable workspace file.
 - **No trajectory export**: export is single-frame only.
 - **No export** for mmCIF, MAE, MOE, or PSE (import-only).
@@ -88,7 +88,7 @@ Both animation types are driven by the same play, pause, and scrub controls, but
 | Type | A "step" is… | Source formats |
 |-----------|--------------|----------------|
 | **Model-indexing** | a whole model (full topology) | multi-MODEL **PDB / mmCIF**, multi-record **SDF**, multi-block **XYZ** |
-| **Frame-trajectory** | a coordinate set on one shared model | **GRO** (standalone), **XTC / TRR / DCD** (attached to a loaded model) |
+| **Frame-trajectory** | a coordinate set on one shared model | **GRO** (standalone or attached), **XTC / TRR / DCD** (attached to a loaded model) |
 
 There's no frame limit. An attached trajectory file can be up to **200 MB**, and every frame's atom count must equal the host model's.
 

@@ -66,7 +66,7 @@ Editors and the Owner can change **Link access**, and only the Owner sees **Publ
 
 **Link access** is the same setting as the global permission level in the [Share dialog](/nanome_v2/mainpanel#share) in Nanome XR. There, None matches **Members only**, Viewer matches **Anyone can view** and Editor matches **Anyone can edit**.
 
-<Callout type="warning" title="Check sharing before adding unpublished data">
+<Callout type="warning" title="Sharing and unpublished data">
 
 **Public workspace** makes the workspace readable by anyone who has its code or link, with no sign-in, whatever **Link access** is set to. A workspace that holds proprietary structures stays limited to its members with **Public workspace** off and **Link access** on **Members only**.
 
