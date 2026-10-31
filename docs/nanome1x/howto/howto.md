@@ -34,7 +34,7 @@ Auto height calibration can be toggled on/off using the action menu. If users ar
 
 <video src="https://user-images.githubusercontent.com/125503369/235212408-5e740ee3-1cb3-49a3-9bd9-0cc5aba5137a.mp4" controls="controls" width="1920" height="1080" style="width: 100%; max-width: 720px; height: auto; aspect-ratio: 16 / 9;" loop muted playsinline></video>
 
-Nanome supports the following MD trajectory files (v1.26): .PDB, .PSE, .DCD, .GRO, .XTC, .TRR. For trajectory support in Nanome v2, see [Supported File Formats](/nanome_web/fileformats#trajectory-molecular-dynamics). 
+Nanome supports the following MD trajectory files (v1.24): .PDB, .PSE, .DCD, .GRO, .XTC, .TRR. For trajectory support in Nanome v2, see [Supported File Formats](/nanome_web/fileformats#trajectory-molecular-dynamics). 
 1. Go to the [Load menu](/nanome1x/navigation/menus#load).
 2. Click on [Files](/nanome1x/navigation/menus#my-files). Navigate to the folder that contains your trajectories and press load (you may also have to multi-select the topology file for trajectories generated via GROMACS or Desmond).
 3. Once loaded, you can play the trajectory by launching the “Frame” menu with its button on the [Entry List](/nanome1x/navigation/menus#entry-list), shown in [the next section](#how-to-open-the-frame-menu-and-execute-frame-operations).
