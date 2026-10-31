@@ -13,6 +13,7 @@
  *
  * A wide image (about 2:1 or wider), such as a sequence strip, stays full
  * width under its legend, since it can't be read at a third of the page.
+ * Full screen it comes first, with the legend under it.
  *
  *   <ShotRow src="nanome-v2/v2-7/settings-tab.webp" alt="The Settings tab">
  *
@@ -117,6 +118,9 @@ async function pick(n) {
       ref="root"
       class="n-shotrow"
       :class="{ 'is-wide': wide, 'is-focus': view.focused.value, 'has-spots': spots.length > 0 }"
+      :role="view.focused.value ? 'dialog' : undefined"
+      :aria-modal="view.focused.value ? 'true' : undefined"
+      :aria-label="(view.focused.value && alt) || undefined"
       @click.capture="view.onClick"
     >
       <button class="n-focus-close" type="button" aria-label="Close" @click="view.close">
@@ -220,17 +224,27 @@ async function pick(n) {
   height: 1.75rem;
 }
 
+/* The name beside an icon matches the smaller icon here. */
+.n-shotrow__legend :deep(.n-uiitem__name:not(.is-textbutton)) {
+  min-height: 1.75rem;
+}
+
 .n-shotrow__legend > :deep(p) {
   margin: 8px 0;
   font-size: 0.9375rem;
   line-height: 1.55;
 }
 
-/* A list in a legend matches the paragraphs beside it. */
+/* A list or <Steps> in a legend matches the paragraphs beside it. */
 .n-shotrow__legend > :deep(ul),
-.n-shotrow__legend > :deep(ol) {
+.n-shotrow__legend > :deep(ol),
+.n-shotrow__legend > :deep(.n-steps) {
   font-size: 0.9375rem;
   line-height: 1.55;
+}
+
+.n-shotrow__legend > :deep(.n-steps p) {
+  line-height: inherit;
 }
 
 /* Side by side once there's room for both: about 46% for the image. */
@@ -284,7 +298,7 @@ async function pick(n) {
 }
 
 /* On a phone the full-screen view opens on the image, with the legend under it. */
-@container shotrow (max-width: 599px) {
+@container shotrow (max-width: 599.98px) {
   .n-shotrow.is-focus .n-shotrow__grid {
     display: flex;
     flex-direction: column;
@@ -294,6 +308,23 @@ async function pick(n) {
     order: -1;
     margin: 0 0 16px;
   }
+}
+
+/* So does a wide image at any size. It stays short enough that a legend of a
+   few rows fits under it in the window, and a long legend scrolls. */
+.n-shotrow.is-focus.is-wide .n-shotrow__grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.n-shotrow.is-focus.is-wide .n-shotrow__shot {
+  order: -1;
+  margin: 0 0 16px;
+  --hotshot-maxh: max(50vh, 100vh - 300px);
+}
+
+.n-shotrow.is-focus.is-wide :deep(.hotshot) {
+  margin-inline: auto;
 }
 
 @container shotrow (min-width: 600px) {

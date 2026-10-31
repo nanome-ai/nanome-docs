@@ -2,7 +2,7 @@
 title: LiveDesign
 ---
 
-# LiveDesign Plugin documentation
+# LiveDesign
 
 ## Authentication
 
@@ -23,11 +23,11 @@ When starting the plugin for the first time, this is what the login menu looks l
 
 First you will need to click on "Login to LD", which will open the Nanome web browser. Please log in to LiveDesign using your usual credentials.
 
-<vimg src="plugins-page/livedesign/okta.jpg"/>
+<vimg src="plugins-page/livedesign/okta.jpg" alt="The LiveDesign Login menu beside the Nanome web browser open to a sign-in page, with the keyboard below" />
 
 <ShotRow src="plugins-page/livedesign/token.jpg" alt="The Nanome web browser with a blank page, the keyboard open below it and Copy circled in red">
 
-Once logged in, click the "Get Auth Token" button, this will redirect you to a web page that looks like this:
+Once logged in, click "Get Auth Token". This opens a web page with your token.
 
 If the keyboard is not opened, click on the keyboard icon on the lower left part of the web browser, then click to select the whole token string and click "Copy" button, next to the keyboard.
 
@@ -51,11 +51,11 @@ Then, on the LiveDesign plugin, click on the "Auth Token" input field, just unde
 
 Lastly, click on "Login with Token", the plugin will update to show this menu:
 
-<vimg src="plugins-page/livedesign/main_page.jpg"/>
+<vimg src="plugins-page/livedesign/main_page.jpg" alt="The LiveDesign Plugin menu with empty Project Name, LiveReport Name and 3D column lists, asking you to select a project, a LiveReport and a 3D column" />
 
-Note that this step is required once every 30 days (LiveDesign's tokens are refreshing every 30 days), most of the time, the token is re-used to avoid this step.
+You only need to do this once every 30 days, since LiveDesign tokens refresh every 30 days. Until then the plugin reuses the token.
 
-# Usage
+## Usage
 
 This plugin allows you to load molecular data from LiveDesign or send ligand poses to a LiveReport.
 
@@ -80,7 +80,7 @@ Similarly, select a LiveReport name and 3D columns. Remember that you can filter
 
 Example of unfiltered (above) and filtered LiveReport names:
 
-<vimg src="plugins-page/livedesign/filtered.jpg"/>
+<vimg src="plugins-page/livedesign/filtered.jpg" alt="The LiveDesign Plugin menu with wee typed in the LiveReport filter, leaving only Wee1 Data Snapshot in the list" />
 
 <ShotRow src="plugins-page/livedesign/preview.jpg" alt="The entity list, with a larger preview of a compound's 2D picture">
 
@@ -92,28 +92,28 @@ Entity names can be filtered using the "Entity names" input field to only show p
 <UiItem name="Compound picture" area="4.6,37.9,16.0,23.5">Hover over it for a larger preview.</UiItem>
 <UiItem name="Larger preview" area="31.1,37.2,37.9,54.0">Shows while you hover.</UiItem>
 <UiItem name="Entity names" area="2.5,28.4,78.0,8.6">Filters the entity list.</UiItem>
+<UiItem name="Check box" area="22.2,47.2,3.6,5.4">Selects the entity.</UiItem>
+<UiItem name="Select all" area="6.3,91.4,20.4,8.4">Selects every entity.</UiItem>
+<UiItem name="Load" area="41.1,91.4,13.6,8.4">Loads the 3D data of the selected entities into Nanome.</UiItem>
+<UiItem name="Send to LiveDesign" href="#send-3d-poses-to-livedesign" area="63.1,91.4,31.7,8.4">Sends selected ligand poses to the LiveReport.</UiItem>
 </UiList>
 
 </ShotRow>
 
-<ShotRow src="plugins-page/livedesign/column.jpg" alt="The entity list with two added columns, Lot Scientist and Glide Docking">
+<ShotRow src="plugins-page/livedesign/column.jpg" alt="The LiveDesign Plugin menu with two added column filters, Lot Scientist and Glide Docking">
 
-You can also add up to 2 descriptive column and filter entities using the added column by clicking on the "+" sign:
+You can also add up to 2 descriptive columns and filter entities using the added column by clicking on the "+" sign:
 
-<UiList label="Columns and loading">
-<UiItem icon="plus" name="Add column" area="93.9,30.1,4.4,6.4">The "+" sign. Adds a descriptive column, up to 2.</UiItem>
-<UiItem name="Column filter" area="35.1,28.4,25.3,9.1">One for each added column, such as Lot Scientist. Filters entities by that column.</UiItem>
-<UiItem name="Check box" area="21.9,47.7,3.7,5.2">Selects the entity.</UiItem>
-<UiItem name="Select all" area="5.9,92.1,20.9,7.7">Selects every entity.</UiItem>
-<UiItem name="Load" area="40.5,92.1,14.4,7.7">Loads the 3D data of the selected entities into Nanome.</UiItem>
-<UiItem name="Send to LiveDesign" href="#send-3d-poses-to-livedesign" area="63.1,92.1,31.2,7.7">Sends selected ligand poses to the LiveReport.</UiItem>
+<UiList label="Added columns">
+<UiItem icon="plus" name="Add column" area="93.9,79.2,4.4,16.8">The "+" sign. Adds a descriptive column, up to 2.</UiItem>
+<UiItem name="Column filter" area="35.1,74.7,25.3,23.9">One for each added column, such as Lot Scientist. Filters entities by that column.</UiItem>
 </UiList>
 
 </ShotRow>
 
-Select one of several entities and click "Load" to retrieve these 3D data and display them in Nanome:
+Select one or more entities and click "Load" to retrieve their 3D data and display them in Nanome:
 
-<vimg src="plugins-page/livedesign/loaded.jpg"/>
+<vimg src="plugins-page/livedesign/loaded.jpg" alt="V35000 checked in the LiveDesign Plugin menu and loaded into the Entry List, beside the protein in the workspace" />
 
 <ShotRow src="plugins-page/livedesign/advanced.jpg" alt="The Entry List with the Advanced Menus button circled in red">
 
@@ -139,11 +139,11 @@ Poses of the same ligand appear as a single entry that contains several frames. 
 To upload to LiveDesign, first select the ligand(s) you want to send, then open the LiveDesign plugin, select the Project and the LiveReport you want to upload to.
 Lastly, click on the "Send to LiveDesign" button.
 
-If the LiveReport already contains the uploaded ligand, it will add poses to this ligand in the "Nanome Upload" column.
-If not, a new row will be created and poses will be added to it in the "Nanome Upload" column.
+If the LiveReport already contains the uploaded ligand, it will add poses to this ligand in the "Nanome Upload (3D)" column.
+If not, a new row will be created and poses will be added to it in the "Nanome Upload (3D)" column.
 
-<vimg src="plugins-page/livedesign/sending.jpg"/>
-<vimg src="plugins-page/livedesign/ld.jpg"/>
+<vimg src="plugins-page/livedesign/sending.jpg" alt="The Entry List with V35000_modif selected, beside the LiveDesign Plugin menu set to Project 1 and the TestImport LiveReport" />
+<vimg src="plugins-page/livedesign/ld.jpg" alt="A LiveReport in LiveDesign with the sent pose in the Nanome Upload (3D) column of the V35000 row" />
 
 ## Experiencing issues or not seeing the plugin?
 Feel free to reach out to support@nanome.ai and we'll get back to you soon. 

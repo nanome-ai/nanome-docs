@@ -53,7 +53,7 @@ Toggle on and off each menu quickly or all at once.
 
 ## Menu Layouts
 
-<vimg src="navigating-page/Wrist-Menu.jpg" />
+<vimg src="navigating-page/Wrist-Menu.jpg" alt="The wrist menu with Focus On Menu, Grid Lock Menus, Hide Menus and Lock Menus" />
 
 Quickly manage the enabled menus and format them in certain layouts.
 
@@ -163,7 +163,7 @@ Change your display name, hairstyle, hair color, eyeglasses color, and shirt col
 
 ## Screenshot Tool
 
-<vimg src="navigating-page/Wrist-ScreenshotTool.gif" />
+<vimg src="navigating-page/Wrist-ScreenshotTool.gif" alt="Opening the camera from the wrist menu and taking a picture of a protein" />
 
 Use the screenshot tool to take a screenshot of your workspace and send it via email.
 
@@ -194,4 +194,4 @@ The shared notepad can be used as a sticky note.
 
 This is a web browser that can be accessed from within the virtual environment. The browser may be viewed by only a single user, or shared with everyone in the same workspace. Note: only one browser can be shared at a time.
 
-<vimg src="navigating-page/web_browser_no_keyboard.png" /> <vimg src="navigating-page/web_browser_with_keyboard.png" />
+<vimg src="navigating-page/web_browser_no_keyboard.png" alt="The in-VR web browser showing docs.nanome.ai, with its keyboard closed" /> <vimg src="navigating-page/web_browser_with_keyboard.png" alt="The in-VR web browser showing docs.nanome.ai, with its keyboard open below" />

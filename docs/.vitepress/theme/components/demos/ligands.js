@@ -67,9 +67,12 @@ export const FIXED = [
  * The property columns, in the picker's order, which is alphabetical in both
  * apps (LigandsMenuViewModel.Update sorts the names; the Nanome Web and XR
  * pickers in ligand-columns.webp and ligand-property-columns.webp list them
- * that way). Nanome Web heads NumAtoms and MolWeight as Atoms and MW. How it
- * heads the others wasn't seen, so they keep the picker's names, as Nanome XR
- * heads every column.
+ * that way).
+ *
+ * `label` heads the column in the XR copy. `web` heads it in the Nanome Web
+ * copy, where it differs from the property name (ligandPropertyHeader in
+ * Nanome Web's WorkspaceLigands), and `tip` is the tooltip of the info icon
+ * Nanome Web puts in that header.
  *
  * `rdkit` is the call that reproduces the column, on the molecule built from
  * the CCD SMILES (`mol`) or that molecule after Chem.AddHs (`molH`).
@@ -78,12 +81,16 @@ export const COLUMNS = [
   {
     key: 'HbondA',
     label: 'HbondA',
+    web: 'HBA',
+    tip: 'Hydrogen Bond Acceptors',
     rdkit: 'rdMolDescriptors.CalcNumHBA(mol)', // = Descriptors.NumHAcceptors
     desc: "Hydrogen-bond acceptors, by RDKit's pattern-based definition. It differs from Lipinski's count of N plus O.",
   },
   {
     key: 'HbondD',
     label: 'HbondD',
+    web: 'HBD',
+    tip: 'Hydrogen Bond Donors',
     rdkit: 'rdMolDescriptors.CalcNumHBD(mol)', // = Descriptors.NumHDonors
     desc: "Hydrogen-bond donors, by RDKit's pattern-based definition. It differs from Lipinski's count of N-H plus O-H.",
   },
@@ -97,6 +104,8 @@ export const COLUMNS = [
   {
     key: 'LogP',
     label: 'LogP',
+    web: 'Log P',
+    tip: 'Logarithm of the partition coefficient',
     rdkit: 'Crippen.MolLogP(mol)', // = Descriptors.MolLogP
     desc: 'Wildman-Crippen estimate of log P, the base-10 logarithm of the octanol-water partition coefficient.',
   },
@@ -104,18 +113,22 @@ export const COLUMNS = [
     // Checked: G0T 548.216, B96 527.290, 50D 440.214.
     key: 'MolWeight',
     label: 'MW',
+    web: 'MW',
+    tip: 'Molecular Weight',
     rdkit: 'Descriptors.ExactMolWt(mol)',
     desc: "Monoisotopic (exact) mass in daltons, including hydrogens. It's usually a little lower than the average molecular weight that suppliers list.",
   },
   {
     key: 'NumAliphaticRings',
     label: 'NumAliphaticRings',
+    web: 'Aliphatic Rings',
     rdkit: 'rdMolDescriptors.CalcNumAliphaticRings(mol)',
     desc: 'Rings with at least one non-aromatic bond.',
   },
   {
     key: 'NumAromaticRings',
     label: 'NumAromaticRings',
+    web: 'Aromatic Rings',
     rdkit: 'rdMolDescriptors.CalcNumAromaticRings(mol)',
     desc: 'Aromatic rings.',
   },
@@ -123,30 +136,35 @@ export const COLUMNS = [
     // Checked: G0T 72, B96 76. Without AddHs it would be the heavy-atom count.
     key: 'NumAtoms',
     label: 'Atoms',
+    web: 'Atoms',
     rdkit: 'molH.GetNumAtoms()',
     desc: 'Atoms, including hydrogens.',
   },
   {
     key: 'NumHeavyAtoms',
     label: 'NumHeavyAtoms',
+    web: 'Heavy Atoms',
     rdkit: 'mol.GetNumHeavyAtoms()', // = Descriptors.HeavyAtomCount
     desc: 'Atoms other than hydrogen.',
   },
   {
     key: 'NumRings',
     label: 'NumRings',
+    web: 'Rings',
     rdkit: 'rdMolDescriptors.CalcNumRings(mol)', // = Descriptors.RingCount
     desc: 'Rings.',
   },
   {
     key: 'NumSaturatedRings',
     label: 'NumSaturatedRings',
+    web: 'Saturated Rings',
     rdkit: 'rdMolDescriptors.CalcNumSaturatedRings(mol)',
     desc: 'Rings made only of single bonds.',
   },
   {
     key: 'TPSA',
     label: 'TPSA',
+    tip: 'Topological Polar Surface Area',
     rdkit: 'rdMolDescriptors.CalcTPSA(mol)', // N and O only, the default
     desc: "Topological polar surface area in Å², by Ertl's method from N and O atoms only.",
   },
@@ -156,13 +174,13 @@ export const COLUMNS = [
 export const DEFAULT_COLUMNS = ['NumAtoms', 'MolWeight']
 
 /**
- * Columns Nanome's picker lists that the demo leaves out, because its value
- * can't be pinned down from what's known. `why` is for maintainers; `desc` is
- * the line the demo shows, in the words of /nanome_web/ligands#property-columns.
+ * Columns Nanome's picker lists that the demo leaves out. `why` says why, for
+ * maintainers; `desc` is the line the demo shows, in the words of
+ * /nanome_web/ligands#property-columns.
  */
 export const LEFT_OUT = [
-  { key: 'HeavyAtomMolWeight', desc: 'Mass of the non-hydrogen atoms only.',
-    why: "RDKit's HeavyAtomMolWt is an average mass (490.373 for B96), while Nanome's MolWeight is monoisotopic; a monoisotopic heavy-atom mass would be 490.000. No Nanome value is known to tell which." },
+  { key: 'HeavyAtomMolWeight', desc: 'Monoisotopic mass of the non-hydrogen atoms only.',
+    why: "Nanome computes it with calcExactMW(mol, true) (RdkitCommandGenerateMetadata.cs in WorkspaceAPI), a monoisotopic mass, unlike RDKit's average-mass HeavyAtomMolWt. The demo's ligands don't carry the value yet." },
   { key: 'NumRotatableBonds', desc: 'Rotatable bond count.',
     why: "RDKit's count changes with its strict or non-strict pattern and with explicit hydrogens: 3 or 4 for SB4, 7 or 10 for PQB. No Nanome value is known to tell which." },
   { key: 'Rating', desc: 'A value people enter, stored with the ligand.',
@@ -216,7 +234,7 @@ export const LIGANDS = [
     smiles: 'c1cc(cc(c1)OC[C@H](CO)O)C(=O)c2cnn(c2N)c3ccc(cc3)F',
     props: { NumAtoms: 45, NumHeavyAtoms: 27, MolWeight: 371.128, LogP: 1.557, TPSA: 110.6, HbondD: 3, HbondA: 6, NumRings: 3, NumAromaticRings: 3, NumAliphaticRings: 0, NumSaturatedRings: 0, InChIKey: 'IJDQETGUEUJVTB-HNNXBMFYSA-N' } },
   { ccd: 'BAX', pdb: '3HEG', entry: '3heg', name: 'A:BAX_1', tag: '', formula: 'C21 H16 Cl F3 N4 O3',
-    about: 'Sorafenib',
+    about: 'sorafenib',
     smiles: 'CNC(=O)c1cc(ccn1)Oc2ccc(cc2)NC(=O)Nc3ccc(c(c3)C(F)(F)F)Cl',
     props: { NumAtoms: 48, NumHeavyAtoms: 32, MolWeight: 464.086, LogP: 5.55, TPSA: 92.35, HbondD: 3, HbondA: 4, NumRings: 3, NumAromaticRings: 3, NumAliphaticRings: 0, NumSaturatedRings: 0, InChIKey: 'MLDQJTXFUGDVEO-UHFFFAOYSA-N' } },
 ]

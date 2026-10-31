@@ -12,7 +12,7 @@ The **Users** tab of a workspace controls who can open it and what they can chan
 <MapCard icon="link" title="Link access" href="#link-access" side="right" area="2.5,38.9,95,13.1">What opening the code or link allows.</MapCard>
 <MapCard icon="user-plus" title="Adding people" href="#adding-people" side="right" area="2.5,54.1,95,21">Invite by email as Viewer or Editor.</MapCard>
 <MapCard icon="share" title="Roles" href="#roles" side="right" area="85.4,70.5,12.0,4.4">Owner, Editor, Viewer or None, and what each can do.</MapCard>
-<MapCard icon="device-vision-pro" title="Queue for All" href="#sending-a-workspace-to-a-headset" side="bottom" area="2.5,92.3,27.4,5.8">Queues the workspace for Nanome XR.</MapCard>
+<MapCard icon="device-vision-pro" title="Queue for All" href="#sending-a-workspace-to-a-headset" side="bottom" area="2.5,92.3,27.4,5.8">Sends the workspace to every member in Nanome XR.</MapCard>
 </ScreenMap>
 
 ## <AppIcon name="share" /> Roles {#roles}
@@ -41,7 +41,7 @@ Someone can have access to a workspace in more than one way, and Nanome gives th
 
 ## <AppIcon name="cube-3d-sphere" /> Join via Code {#join-via-code}
 
-Every workspace has an 8-character code, shown at the top of the tab in the form `XXXX-XXXX`. Anyone with access can type the code into **Join via Code** in Nanome Web, or into the **Workspaces** tab in Nanome XR.
+Every workspace has an 8-character code, shown at the top of the tab in the form <span style="white-space: nowrap">`XXXX-XXXX`</span>. Anyone with access can type the code into **Join via Code** in Nanome Web, or into the **Workspaces** tab in Nanome XR.
 
 <UiList label="Workspace code">
 <UiItem icon="link" name="Copy link">Copies a link to the workspace, instead of the code.</UiItem>
@@ -62,11 +62,15 @@ Every workspace has an 8-character code, shown at the top of the tab in the form
 
 </ShotRow>
 
+Editors and the Owner can change **Link access**, and only the Owner sees **Public workspace**.
+
 **Link access** is the same setting as the global permission level in the [Share dialog](/nanome_v2/mainpanel#share) in Nanome XR. There, None matches **Members only**, Viewer matches **Anyone can view** and Editor matches **Anyone can edit**.
 
-<Callout type="warning" title="Check sharing before adding unpublished data">
+<Callout type="warning" title="Sharing and unpublished data">
 
 **Public workspace** makes the workspace readable by anyone who has its code or link, with no sign-in, whatever **Link access** is set to. A workspace that holds proprietary structures stays limited to its members with **Public workspace** off and **Link access** on **Members only**.
+
+**Copy shareable link** in the [workspace menu](/nanome_web/home#workspaces) changes **Members only** to **Anyone can view** before it copies the link. **Copy link** in the Users tab copies it and leaves access as it is.
 
 </Callout>
 
@@ -92,7 +96,7 @@ People added to the workspace's project already have their project role in the w
 
 <UiList label="Sending to Nanome XR">
 <UiItem icon="device-vision-pro" name="Open in XR">In the workspace header: sends the workspace to Nanome XR on your headset.</UiItem>
-<UiItem icon="device-vision-pro" name="Queue for All">At the bottom of the Users tab: also queues the workspace for Nanome XR.</UiItem>
+<UiItem icon="device-vision-pro" name="Queue for All">At the bottom of the Users tab: sends the workspace to every member. People in a headset move to it right away, and the rest get it the next time they open Nanome XR. A prompt asks first.</UiItem>
 </UiList>
 
 **Open in XR** goes to Nanome XR signed in to your own Nanome account. A headset signs in to your account with [Login via Device Code](/nanome_web/account#login-via-device-code). What happens next depends on the headset:
@@ -101,7 +105,7 @@ People added to the workspace's project already have their project role in the w
 - **With other people in the session**: a **Load from Web** prompt asks whether to load it <Btn icon="user">Just Me</Btn> or <Btn icon="users">Load for All</Btn>, which brings everyone in your current session along.
 - **Closed or signed out**: Nanome XR opens the workspace the next time it signs in, in place of the last workspace you had open.
 
-When the workspace is already open in the headset, nothing changes. **Load for All** can first offer to add people who don't have access as Viewers or Editors, as described under [Load for All vs. Load for Me](/nanome_v2/collaboration#load-for-all-vs-load-for-me).
+When the workspace is already open in the headset, nothing changes. **Load for All** can first offer to add people who don't have access as Viewers or Editors, as described under [Load for All vs. Load](/nanome_v2/collaboration#load-for-all-vs-load-for-me).
 
 ## <AppIcon name="droplet" /> Pointers {#pointers}
 
@@ -109,18 +113,19 @@ The 3D view shows the pointers of people in Nanome XR, so a colleague in the bro
 
 - A pointer sits on the same part of the structure for everyone, in its owner's color.
 - Only people in the same scene as you show a pointer.
-- Pointers have no name tags in Nanome Web, and Nanome Web doesn't show avatars.
+- Pointers have no name tags in Nanome Web, and the 3D view doesn't show headset avatars.
 - When you follow someone, their pointer also shows the tool they're using.
 
 ## <AppIcon name="crown" /> Following from the web {#following-from-the-web}
 
 Nanome Web can follow someone in Nanome XR, so the browser view tracks what they're looking at.
 
+- Clicking someone's initial at the top of the workspace panel follows them.
 - Following moves Nanome Web to the leader's scene, and to each scene they move to after that.
 - Dragging still rotates or pans the view. When you let go, the view eases back to the leader's.
 - Following stops when the leader leaves the workspace.
 
-When someone starts a spotlight, Nanome Web follows them straight away. A headset first shows a prompt for about 6 seconds. People who open the workspace during a spotlight follow it too, and its followers stop following when it ends. The headset's controls are under [Spotlight Mode](/nanome_v2/scenespanel#spotlight-mode).
+<AppIcon name="crown" /> **Spotlight Me**, the crown button beside the initials, starts a spotlight from the browser. When someone starts a spotlight, Nanome Web follows them straight away. A headset first shows a prompt for about 6 seconds. People who open the workspace during a spotlight follow it too, and its followers stop following when it ends. The headset's controls are under [Spotlight Mode](/nanome_v2/scenespanel#spotlight-mode).
 
 <Accordion title="What following shows" teaser="The leader's tool and edits, and chains of followers.">
 

@@ -2,14 +2,17 @@
 /**
  * A working copy of the color scheme menu, as Nanome Web draws it, beside a
  * render of 1KV2 in the scheme that's picked. Carbons only switches to the
- * render with that option on, where it changes the picture. It steps through
- * the schemes by itself until the reader picks one.
+ * render with that option on, where it changes the picture. Both apps hide
+ * Carbons only and turn it off while Element Type is picked (ColorThemePopup
+ * in XR), so the copy does too. It steps through the schemes by itself until
+ * the reader picks one.
  *
  *   <ColorSchemeDemo app="xr" />   the schemes Nanome XR lists
  *   <ColorSchemeDemo app="web" />  the schemes Nanome Web lists
  */
 import { computed, ref } from 'vue'
 import DemoStage from './DemoStage.vue'
+import { arrowPick } from './arrows.js'
 import { useAutoplay } from './autoplay.js'
 import { CARBONS_DESC, SCHEMES, schemeFrame } from './data.js'
 
@@ -38,6 +41,7 @@ function pick(s) {
   if (s.disabled) return
   auto.stop()
   scheme.value = s.key
+  if (s.key === 'element-type') carbons.value = false
   showCarbons.value = false
 }
 function flipCarbons() {
@@ -61,7 +65,7 @@ const caption = computed(() => {
 <template>
   <div ref="root" class="n-demo" v-on="auto.hold">
     <div class="n-app-card n-app-schemes is-spread" role="group" aria-label="Color schemes">
-      <div class="n-app-schemelist" role="group" aria-label="Color scheme">
+      <div class="n-app-schemelist" role="group" aria-label="Color scheme" @keydown="arrowPick">
         <button
           v-for="s in schemes"
           :key="s.key"
@@ -74,9 +78,10 @@ const caption = computed(() => {
           @click="pick(s)"
         >{{ s.name }}</button>
       </div>
-      <label class="n-app-row">
+      <!-- Hidden while Element Type is picked, keeping its space so the card doesn't jump. -->
+      <label class="n-app-row" :style="{ visibility: scheme === 'element-type' ? 'hidden' : null }">
         <span class="n-app-row__name">Carbons only</span>
-        <input type="checkbox" role="switch" class="n-app-switch" :checked="carbons" @change="flipCarbons" />
+        <input type="checkbox" role="switch" class="n-app-switch" :checked="carbons" :disabled="scheme === 'element-type'" @change="flipCarbons" />
       </label>
     </div>
 

@@ -4,12 +4,11 @@
       ref="video"
       :src="`/assets/videos/${src}`"
       :poster="poster ? `/assets/videos/${poster}` : undefined"
-      autoplay
       loop
       muted
       playsinline
       controls
-      preload="metadata"
+      preload="none"
       :style="{ aspectRatio: SIZES[src] || '16 / 9' }"
     ></video>
     <figcaption v-if="caption">{{ caption }}</figcaption>
@@ -17,7 +16,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 
 // Frame sizes of the videos that aren't 16:9, so the page keeps their space
 // before they load (a heading lower down would otherwise move as they do).
@@ -26,18 +25,33 @@ const SIZES = {
   'v2-7/web-md-playback.mp4': '1024 / 746',
 }
 
-// With reduced motion a video waits for its play button. It shows the frame
-// at 1s, since some of the videos fade in from black.
+// A video starts loading and playing once it's within a screen of the viewport.
+// With reduced motion it waits for its play button instead, and shows the
+// frame at 1s, since some of the videos fade in from black.
 const video = ref(null)
+let io = null
 onMounted(() => {
   const v = video.value
-  if (!v || !window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return
-  v.autoplay = false
-  v.pause()
-  const still = () => v.paused && v.currentTime < 1 && (v.currentTime = Math.min(1, v.duration / 2))
-  if (v.readyState >= 1) still()
-  else v.addEventListener('loadedmetadata', still, { once: true })
+  if (!v) return
+  const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+  const start = () => {
+    io?.disconnect()
+    if (reduced) {
+      const still = () => v.paused && v.currentTime < 1 && (v.currentTime = Math.min(1, v.duration / 2))
+      v.preload = 'metadata'
+      if (v.readyState >= 1) still()
+      else v.addEventListener('loadedmetadata', still, { once: true })
+      return
+    }
+    v.preload = 'auto'
+    v.autoplay = true
+    v.play?.().catch(() => {})
+  }
+  if (!('IntersectionObserver' in window)) return start()
+  io = new IntersectionObserver(([e]) => e.isIntersecting && start(), { rootMargin: '100% 0px' })
+  io.observe(v)
 })
+onBeforeUnmount(() => io?.disconnect())
 
 defineProps({
   src: {

@@ -1,5 +1,13 @@
 <template>
-  <div class="simple-carousel" :class="{ 'carousel-dark': dark }">
+  <div
+    ref="root"
+    class="simple-carousel"
+    :class="{ 'carousel-dark': dark }"
+    @mouseenter="onPointerEnter"
+    @mouseleave="onPointerLeave"
+    @focusin="onFocusIn"
+    @focusout="onFocusOut"
+  >
     <div class="carousel-container">
       <button
         v-if="showArrows"
@@ -16,8 +24,10 @@
           :key="index"
           class="carousel-slide"
           :style="{ width: slideWidth }"
+          :aria-hidden="isClone(index) ? 'true' : undefined"
         >
-          <slot :item="item" :index="index % items.length" />
+          <!-- Clones carry `clone`, so their links can leave the Tab order. -->
+          <slot :item="item" :index="index % items.length" :clone="isClone(index)" />
         </div>
       </div>
 
@@ -46,7 +56,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, nextTick, onMounted, onUnmounted, watch } from 'vue'
 
 const props = defineProps({
   items: {
@@ -79,6 +89,7 @@ const props = defineProps({
   }
 })
 
+const root = ref(null)
 const track = ref(null)
 const currentDot = ref(0)
 const currentIndex = ref(0)
@@ -100,6 +111,15 @@ const clonedItems = computed(() => {
   return [...props.items.slice(-cloneCount), ...props.items, ...props.items.slice(0, cloneCount)]
 })
 
+// The copies before and after the real slides that make the loop seamless.
+function isClone(index) {
+  return index < props.slidesToShow || index >= props.slidesToShow + props.items.length
+}
+
+function reducedMotion() {
+  return window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+}
+
 function getSlidePixelWidth() {
   return track.value.offsetWidth / props.slidesToShow
 }
@@ -107,7 +127,7 @@ function getSlidePixelWidth() {
 function scrollToPosition(index, smooth = true) {
   track.value.scrollTo({
     left: getSlidePixelWidth() * index,
-    behavior: smooth ? 'smooth' : 'auto'
+    behavior: smooth && !reducedMotion() ? 'smooth' : 'auto'
   })
 }
 
@@ -169,7 +189,7 @@ function scrollToSlide(dotIndex) {
 }
 
 function startAutoplay() {
-  if (!props.autoplay) return
+  if (!props.autoplay || autoplayTimer.value || reducedMotion()) return
   autoplayTimer.value = setInterval(scrollNext, props.autoplaySpeed)
 }
 
@@ -179,6 +199,62 @@ function stopAutoplay() {
     autoplayTimer.value = null
   }
 }
+
+// Autoplay waits while the pointer or keyboard focus is in the carousel.
+let hovering = false
+let focusInside = false
+
+function onPointerEnter() {
+  hovering = true
+  stopAutoplay()
+}
+
+function onPointerLeave() {
+  hovering = false
+  if (!focusInside) startAutoplay()
+}
+
+function onFocusIn() {
+  focusInside = true
+  stopAutoplay()
+}
+
+function onFocusOut(event) {
+  if (root.value?.contains(event.relatedTarget)) return
+  focusInside = false
+  if (!hovering) startAutoplay()
+}
+
+// A swipe or trackpad scroll snaps to a slide. Once it stops, pick up the
+// index and dot from where it landed, and step off a clone like scrollAndWrap.
+function onScrollSettled() {
+  if (!track.value || isTransitioning.value) return
+  const index = Math.round(track.value.scrollLeft / getSlidePixelWidth())
+  const realSlides = props.items.length
+  let settled = index
+  if (index < props.slidesToShow) settled = index + realSlides
+  else if (index >= props.slidesToShow + realSlides) settled = index - realSlides
+  currentIndex.value = settled
+  updateDot(settled)
+  if (settled !== index) scrollToPosition(settled, false)
+}
+
+let settleTimer = null
+function onScroll() {
+  clearTimeout(settleTimer)
+  settleTimer = setTimeout(onScrollSettled, 150)
+}
+
+let scrollListener = null
+
+// HomeCarousel shows fewer slides on narrow screens. The clones change with
+// it, so start again from the first real slide.
+watch(() => props.slidesToShow, () => nextTick(() => {
+  if (!track.value) return
+  currentIndex.value = props.slidesToShow
+  updateDot(props.slidesToShow)
+  scrollToPosition(props.slidesToShow, false)
+}))
 
 function onResize() {
   if (track.value) {
@@ -190,6 +266,8 @@ onMounted(() => {
   if (track.value) {
     currentIndex.value = props.slidesToShow
     scrollToPosition(props.slidesToShow, false)
+    scrollListener = 'onscrollend' in window ? ['scrollend', onScrollSettled] : ['scroll', onScroll]
+    track.value.addEventListener(...scrollListener)
   }
   window.addEventListener('resize', onResize)
   startAutoplay()
@@ -197,6 +275,8 @@ onMounted(() => {
 
 onUnmounted(() => {
   window.removeEventListener('resize', onResize)
+  if (scrollListener) track.value?.removeEventListener(...scrollListener)
+  clearTimeout(settleTimer)
   stopAutoplay()
 })
 </script>
@@ -231,8 +311,15 @@ onUnmounted(() => {
   justify-content: center;
 }
 
-.carousel-container:hover .carousel-nav {
+.carousel-container:hover .carousel-nav,
+.carousel-nav:focus-visible {
   opacity: 1;
+}
+
+/* Inset, like the dots' ring, so it stays inside the slide. */
+.carousel-nav:focus-visible {
+  outline: 2px solid var(--n-accent);
+  outline-offset: -2px;
 }
 
 .carousel-nav::before,
@@ -314,6 +401,11 @@ onUnmounted(() => {
   cursor: pointer;
 }
 
+/* No page list bullet beside each dot. */
+.carousel-dots li::before {
+  display: none;
+}
+
 .carousel-dots button {
   display: block;
   width: 12px;
@@ -324,18 +416,37 @@ onUnmounted(() => {
   cursor: pointer;
   color: transparent;
   border: 0;
-  outline: none;
   background: #888;
   border-radius: 50%;
+}
+
+.carousel-dots button:focus-visible {
+  outline: 2px solid var(--n-accent);
+  outline-offset: 2px;
 }
 
 .carousel-dots li.active button {
   background: #eee;
 }
 
+/* The hero's dots sit in a row under the slide, clear of its title. */
+.carousel-dark .carousel-dots {
+  position: static;
+}
+
+.carousel-dark .carousel-dots button {
+  background: var(--n-text-faint);
+}
+
+.carousel-dark .carousel-dots li.active button {
+  background: var(--n-accent);
+  transform: scale(1.25);
+}
+
 .carousel-track {
   display: flex;
   overflow-x: auto;
+  scroll-snap-type: x mandatory;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -347,5 +458,6 @@ onUnmounted(() => {
 .carousel-slide {
   flex-shrink: 0;
   box-sizing: border-box;
+  scroll-snap-align: start;
 }
 </style>
