@@ -62,7 +62,7 @@ The Hierarchy Menu lists out the components of an entity, such as chains and res
 
 </ShotRow>
 
-### Different Browsing Modes (Small, Medium, Large)
+### Different Viewing Modes (Small, Medium, Large) {#different-browsing-modes-small-medium-large}
 
 <ShotRow src="navigating-page/Entry-SmallIcon.jpg" alt="The Entry Hierarchy menu for chain A of 6LU7, with small icons">
 
@@ -256,17 +256,13 @@ Recent files loaded in Nanome.
 <table>
 <tbody>
 <tr>
-<td width="50%" ></td>
-<td width="50%" ></td>
-</tr>
-<tr>
-<td><vimg src="navigating-page/loadingtoolong.png" alt="The Load menu while 4WFB downloads, with a Cancel button below it" /></td>
-<td><vimg src="navigating-page/cancelledload.png" alt="The Load menu after a cancelled load, with Loading was cancelled below it" /></td>
+<td width="50%"><vimg src="navigating-page/loadingtoolong.png" alt="The Load menu while 4WFB downloads, with a Cancel button below it" /></td>
+<td width="50%"><vimg src="navigating-page/cancelledload.png" alt="The Load menu after a cancelled load, with Loading was cancelled below it" /></td>
 </tr>
 </tbody>
 </table>
 
-Cancel the loading of structures from the menu source tab, perfect for if your structure is taking too long to load or you made a mistake in the PDB code.
+Cancel a load from the Source tab if it's taking too long or the PDB code is wrong.
 
 ## Stacks
 
@@ -380,7 +376,7 @@ Navigate to Display/Styles > Surface Styles, then check the "Mesh Surface" optio
 <UiList label="Labels tab">
 <UiItem icon="tag" name="Atom" area="23.3,29.5,68.5,11.7">Show labels on atoms.</UiItem>
 <UiItem icon="tag" name="Residue" area="23.3,50.3,68.5,11.7">Show labels on residues.</UiItem>
-<UiItem icon="tag" name="Chain" area="23.3,71.1,68.5,11.8">Greyed out in this screenshot.</UiItem>
+<UiItem icon="tag" name="Chain" area="23.3,71.1,68.5,11.8">Grayed out in this screenshot.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -429,7 +425,7 @@ Colors picked in schemes are applied in a certain pattern.
 <UiItem name="Occupancy" area="37.3,53.6,28.5,8.0">Colors the selected structures by occupancy.</UiItem>
 <UiItem name="BFactor" area="37.3,61.7,28.5,8.0">Colors the selected structures by b-factor.</UiItem>
 <UiItem name="Rainbow" area="37.3,69.8,28.5,8.0">Colors the selected structures in rainbow colors.</UiItem>
-<UiItem name="YRB Hydrophobe" area="66.0,69.8,28.6,8.0">Color selected structures by their hydrophobicity with yellow, red, blue colors.</UiItem>
+<UiItem name="YRB Hydrophobe" area="66.0,69.8,28.6,8.0">Colors carbons not bound to nitrogen or oxygen yellow, the charged oxygens of Asp and Glu red, and the charged nitrogens of Lys and Arg blue. Everything else is white.</UiItem>
 <UiItem name="IMGT" area="37.3,86.0,28.5,8.2">Color selected antibody structures by their regions.</UiItem>
 </UiList>
 
@@ -438,8 +434,6 @@ Colors picked in schemes are applied in a certain pattern.
 | YRB Hydrophobe | IMGT |
 |:-----:|:-----:|
 | <vimg src="navigating-page/Color-Hydrophobe-Small.jpg" alt="A protein surface in YRB Hydrophobe colors" /> | <vimg src="navigating-page/Color-IMGT-Small.jpg" alt="An antibody colored by its IMGT regions" /> |
-
-Other available color schemes include coloring by occupancy, b-factor, rainbow and so on.
 
 ## Modify
 
@@ -643,8 +637,9 @@ Expand or shrink the selection range by physical proximity.
 
 <UiList label="Distance tab">
 <UiItem icon="ruler-2" name="Angstrom" area="27.9,20.2,62.7,18.7">The distance, in Angstroms. 5 here.</UiItem>
-<UiItem icon="arrows-maximize" name="Extend Selection" area="28.1,43.0,62.2,15.6">Grows the selection by the distance above. Greyed out here.</UiItem>
-<UiItem icon="minimize" name="Shrink Selection" area="28.1,58.8,62.2,15.8">Shrinks the selection by the distance above. Greyed out here.</UiItem>
+<UiItem icon="arrows-maximize" name="Extend Selection" area="28.1,43.0,62.2,15.6">Grows the selection by the distance above. Grayed out here.</UiItem>
+<UiItem icon="minimize" name="Shrink Selection" area="28.1,58.8,62.2,15.8">Shrinks the selection by the distance above. Grayed out here.</UiItem>
+<UiItem name="Select Entire Residue" area="28.1,78.5,62.5,9.0">When on, distance selection takes whole residues.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -675,4 +670,4 @@ Spatial recordings can be accessed from either the Wrist Menu (see below) or the
 
 <vimg src="navigating-page/wrist_menu_spatrec.png" alt="The wrist menu with its Spatial Recording button" />
 
-As of April 2021 (Nanome 1.20), this feature is in BETA - in particular, spatial recordings created in version 1.20 will not be playable in future versions.
+Spatial recordings were a beta feature in Nanome 1.20. Recordings made in 1.20 can't be played in later versions.

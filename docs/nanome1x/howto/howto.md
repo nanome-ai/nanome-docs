@@ -8,7 +8,7 @@ title: How To
 
 <ShotRow src="howto-page/autoheightsetting.png" alt="The Action Menu with Auto Height Adjust selected and its Enabled toggle open">
 
-Auto height calibration can be toggled on/off using the action menu. If users are having height issues, we recommend using this toggle to help troubleshoot the issue. By default, the toggle is off when users are in Mixed Reality Passthrough and turned on when users are in virtual reality. If height issues persist, we recommend resetting your floor height by calibrating your device. EX: with meta devices, this is done by resetting the guardian.
+Auto height calibration can be toggled on/off using the action menu. If users are having height issues, we recommend using this toggle to help troubleshoot the issue. By default, the toggle is off when users are in Mixed Reality Passthrough and turned on when users are in virtual reality. If height issues persist, we recommend resetting your floor height by calibrating your device. On Meta headsets, that means resetting the Guardian.
 
 <UiList label="Action Menu">
 <UiItem name="Auto Height Adjust" area="32.7,77.9,30.8,8.4">Opens the toggle for auto height adjustment.</UiItem>
@@ -28,7 +28,7 @@ Auto height calibration can be toggled on/off using the action menu. If users ar
 
 1. Go to the [Load menu](/nanome1x/navigation/menus#load).
 2. Click on [Files](/nanome1x/navigation/menus#my-files) and then select the location (Desktop or Documents) where you saved the structure.
-3. You should then see the filename for the structure you saved. Click on the file, then click "load files".
+3. You should then see the filename for the structure you saved. Click on the file, then click Load files.
 
 ## How to load an MD trajectory file {#how-to-load-a-md-trajectory-file}
 
@@ -45,7 +45,7 @@ If a trajectory doesn’t load properly, please try reducing its frame count and
 
 <ShotRow src="navigating-page/Entry-Hierarchy.jpg" alt="The Entry List with 6LU7 loaded, and the Frame Menu button on its row" crop="0,0,35.6,100">
 
-Find the entity containing multiple frames that you have loaded on the [Entry Menu](/nanome1x/navigation/menus#main-menus). Click on the second button from the right on the same row. This is the [Frame Menu](/nanome1x/navigation/menus#frame-data) Button.
+Find the entity containing multiple frames that you have loaded on the [Entry List](/nanome1x/navigation/menus#entry-list). Click on the second button from the right on the same row. This is the [Frame Menu](/nanome1x/navigation/menus#frame-data) Button.
 
 <UiList label="Entry List row">
 <UiItem name="Entity row" area="0.7,23.8,34.6,11.1">The entity you loaded, here 6LU7.</UiItem>
@@ -93,11 +93,11 @@ Click on the Meta Data Tab Button on the top right to switch to Meta Data Tab.
 
 ## How to access the MedChem tool and build molecules
 
-Hold down the B Button on the right controller to bring up the [Tool Menu](/nanome1x/navigation/toolsmenu), hover the ray over the [MedChem Tool](/nanome1x/navigation/toolsmenu#medchem-tools) button to the bottom left and release B button.
+Hold down the B Button on the right controller to bring up the [Tools Menu](/nanome1x/navigation/toolsmenu), hover the ray over the [MedChem Tool](/nanome1x/navigation/toolsmenu#medchem-tools) button to the bottom left and release B button.
 
 ### How to open the library of molecules 
 
-Click on the [Build Menu](/nanome1x/navigation/toolsmenu#build) Tab Button on the top right of the MedChem menu on the left hand
+Click on the [Build Menu](/nanome1x/navigation/toolsmenu#build) Tab Button on the top right of the MedChem menu on the left hand.
 
 ### How to build molecules using the MedChem tool
 
@@ -106,9 +106,9 @@ Click on the [Build Menu](/nanome1x/navigation/toolsmenu#build) Tab Button on th
 
 ## How to use the Measurement tool
 
-1. Hold down the B Button on the right controller to bring up the [Tool Menu](/nanome1x/navigation/toolsmenu), hover the ray over the [Measurement Tool](/nanome1x/navigation/toolsmenu#measurement-tool) button to the top right and release B button
+1. Hold down the B Button on the right controller to bring up the [Tools Menu](/nanome1x/navigation/toolsmenu), hover the ray over the [Measurement Tool](/nanome1x/navigation/toolsmenu#measurement-tool) button to the top right and release B button.
 2. Overlap the tip of the tool with the atom that you want to measure and press trigger on the right hand controller to place a measurement point.
-3. Do the same action for another atom in order to create a distance measurement between the two atoms
+3. Do the same action for another atom in order to create a distance measurement between the two atoms.
 
 ## How to change the color of your avatar
 
@@ -120,7 +120,7 @@ Click on the [Build Menu](/nanome1x/navigation/toolsmenu#build) Tab Button on th
 
 <vimg src="howto-page/WindowsContent.gif" alt="Opening Oculus Dash in Nanome and pinning a desktop window beside the menus" />
 
-When using the Oculus Rift/Rift S or Oculus Link (Quest connected to a desktop), users can take advantage of Oculus Dash to ‘pin’ windows or their entire desktop in VR and Nanome. This means users can view excel sheets, websites, and other 3rd party software while the headset is on. This way, users can seamlessly work in Nanome with their existing desktop apps. However, please note that this pinned window is not visible to other users in the same room. If you want to collaboratively view a PDF file with your colleague in Nanome, please [load](/nanome1x/navigation/menus#load) the PDF file into your workspace.
+When using the Oculus Rift/Rift S or Oculus Link (Quest connected to a desktop), users can take advantage of Oculus Dash to ‘pin’ windows or their entire desktop in VR and Nanome. This means users can view excel sheets, websites, and other 3rd party software while the headset is on. This way, users can work in Nanome with their existing desktop apps. However, please note that this pinned window is not visible to other users in the same room. If you want to collaboratively view a PDF file with your colleague in Nanome, please [load](/nanome1x/navigation/menus#load) the PDF file into your workspace.
 
 To view a tutorial on how to use Oculus Dash to pin windows, we recommend this UploadVR article here: [https://uploadvr.com/oculus-dash-windows-button/](https://uploadvr.com/oculus-dash-windows-button/)
 
@@ -145,7 +145,7 @@ A log file's name follows the format of "YYYY-MM-DD_HH-MM-SS_details.txt" and is
 
 ## How to access Nanome on the Oculus Quest family of headsets
 
-Nanome can be loaded onto the Oculus Quest or Oculus Quest 2 via a few different methods. In 2021, Nanome was added to the Oculus App Lab (see [here](https://www.oculus.com/experiences/quest/3077598929010226/)), which means Nanome can now be found in the Quest store. When searching for Nanome, the result will initially be hidden - you need to open the "App Lab" results to find the Nanome application. See the animation below for more details. (Note: this process was performed on a smartphone.)
+Nanome can be loaded onto the Oculus Quest or Oculus Quest 2 via a few different methods. In 2021, Nanome was added to the Oculus App Lab (see [here](https://www.oculus.com/experiences/quest/3077598929010226/)). You can find it by searching for Nanome in the Meta Horizon Store. The animation below shows the 2021 App Lab search on a smartphone.
 
 <vimg src="howto-page/nanome_on_oculus_quest.gif" alt="Searching for Nanome in the Oculus phone app and opening its App Lab page" />
 

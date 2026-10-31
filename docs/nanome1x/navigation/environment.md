@@ -26,7 +26,7 @@ In order to grab a structure, reach out and press the middle finger 'grip' butto
 
 Once the structure is grabbed, users can use the joystick or touchpad of their controllers to move the structure closer or further away from them.
 
-## Entry Menu Grabbing & Scaling
+## Entry List Grabbing & Scaling {#entry-menu-grabbing-scaling}
 
 <vimg src="navigating-page/Grab_Menu.gif" alt="Grabbing the Entry List and moving it" />
 

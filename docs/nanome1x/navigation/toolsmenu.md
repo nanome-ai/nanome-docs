@@ -12,7 +12,7 @@ The right top button (B on Oculus controllers, the touchpad on Vive) opens the t
 
 <vimg src="navigating-page/Tool-Laser.jpg" alt="A hand pointing a yellow laser pointer" />
 
-Holding down the joystick at any moment to trigger your laser pointer that is visible to other users in the room. You can use this laser to point at a point of interest for your colleagues.
+Holding down the joystick at any time shows a laser pointer that other users in the room can see. You can use this laser to point at a point of interest for your colleagues.
 
 <vimg src="navigating-page/Tool-Hand.jpg" alt="The open hand of the Hand Tool" />
 

@@ -4,7 +4,7 @@ title: Quick Drop
 
 # Quick Drop
 
-Nanome Quick Drop is a powerful feature of Nanome that simplifies the process of loading files into the Nanome application. With Quick Drop, users can conveniently drag and drop files onto the home.nanome.ai webpage, and the files will automatically load the next time they open Nanome on their headset or computer. Third-party applications can utilize Quick Drop via Nanome's API to allow users to open files directly from their application into Nanome.
+Quick Drop loads files into Nanome. Files you drag onto home.nanome.ai load the next time you open Nanome on your headset or computer. Other applications can use Quick Drop through Nanome's API to open files in Nanome.
 
 ## Third-Party Integration
 
