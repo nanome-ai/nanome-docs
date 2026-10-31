@@ -39,7 +39,7 @@ The panel shows the workspace name, project and description above its 6 tabs. It
 
 The **MARA** tab is a MARA chat inside the workspace, beside the 3D view.
 
-<ShotRow src="nanome-web/mara-tab.webp" alt="The MARA tab with no chats yet">
+<ShotRow src="nanome-web/mara-tab.webp" alt="The MARA tab with no chats yet" stack>
 
 <UiList label="MARA tab">
 <UiItem icon="messages" name="Chat History" area="2.7,1.4,30.8,7.8">The chats started in this workspace.</UiItem>
@@ -152,7 +152,15 @@ Nanome shows dihedral angles from 0° to 180°. Torsions of −60° and +60° bo
 
 Nanome Web draws measurements the same way as Nanome XR. A distance, a dihedral and an angle look like this:
 
-<vimg src="nanome-v2/v2-7/measurement-types.webp" alt="A distance, a dihedral and an angle measured on the 1KV2 ligand" />
+<ShotRow src="nanome-v2/v2-7/measurement-types.webp" alt="A distance from the 1KV2 ligand to Met109, and a dihedral and an angle on the ligand">
+
+<UiList label="Measurement types">
+<UiItem icon="ruler-measure" name="Distance" area="19.9,40.7,8.9,23.2">2 atoms, in Å.</UiItem>
+<UiItem icon="rotate-clockwise-2" name="Dihedral" area="60.6,31.8,15.7,13.9">4 atoms: the torsion around the axis from atom 2 to atom 3, in degrees.</UiItem>
+<UiItem icon="angle" name="Angle" area="66.8,46.1,9.2,17.1">3 atoms, measured at the second atom, in degrees.</UiItem>
+</UiList>
+
+</ShotRow>
 
 In **Delete** mode, hovering a measurement turns it red, and clicking removes it.
 
