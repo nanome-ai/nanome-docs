@@ -224,6 +224,11 @@ async function pick(n) {
   height: 1.75rem;
 }
 
+/* The name beside an icon matches the smaller icon here. */
+.n-shotrow__legend :deep(.n-uiitem__name:not(.is-textbutton)) {
+  min-height: 1.75rem;
+}
+
 .n-shotrow__legend > :deep(p) {
   margin: 8px 0;
   font-size: 0.9375rem;

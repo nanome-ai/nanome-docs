@@ -272,6 +272,13 @@ export default defineComponent({
     grid-area: top;
   }
 
+  /* With cards only on the right, the rows above and below the image span
+     just the image's column, so they line up with the parts they point to. */
+  .n-screenmap.has-right:not(.has-left) > .n-screenmap__top,
+  .n-screenmap.has-right:not(.has-left) > .n-screenmap__bottom {
+    grid-column: 1 / 3;
+  }
+
   .n-screenmap__left {
     grid-area: left;
   }

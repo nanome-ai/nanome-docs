@@ -182,6 +182,8 @@ function pick(spot) {
         decoding="async"
       />
 
+      <!-- A linked region is for the pointer. The keyboard and screen readers
+           reach the same link once, through its legend row or card. -->
       <component
         :is="s.href ? 'a' : 'span'"
         v-for="s in ordered"
@@ -191,7 +193,7 @@ function pick(spot) {
         :style="place(s.box)"
         :href="s.href || undefined"
         :tabindex="s.href ? -1 : undefined"
-        :aria-label="s.href ? s.label : undefined"
+        :aria-hidden="s.href ? 'true' : undefined"
         :title="s.label || undefined"
         @mouseenter="emit('enter', s.n)"
         @mouseleave="emit('leave', s.n)"
@@ -364,7 +366,7 @@ function pick(spot) {
 
 /* Without a mouse there's no hover to reveal it. */
 @media (hover: none) {
-  .hotshot__expand.is-button {
+  .hotshot__expand {
     opacity: 1;
   }
 }

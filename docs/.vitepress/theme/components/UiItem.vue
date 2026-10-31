@@ -115,6 +115,12 @@ a.n-uiitem__row:hover :deep(.n-appicon),
   line-height: 1.4;
 }
 
+/* Beside an icon the name is as tall as the icon button (0.95rem x 2), so the
+   text sits level with the icon's middle. */
+.n-uiitem__name:not(.is-textbutton) {
+  min-height: 1.9rem;
+}
+
 /* A text button: drawn as the pill the app shows. A one-line name gets fully
    round ends, and a name that wraps becomes a box with rounded corners. */
 .n-uiitem__name.is-textbutton {
@@ -123,6 +129,7 @@ a.n-uiitem__row:hover :deep(.n-appicon),
   border-radius: 0.8em;
   background: var(--n-surface-sunken);
   font-size: var(--n-text-sm);
+  text-wrap: balance;
 }
 
 .n-uiitem__desc {
