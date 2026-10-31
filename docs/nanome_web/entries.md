@@ -64,9 +64,11 @@ The copy of the panel below works like the app's: each switch shows 1KV2's bindi
 
 ### <AppIcon name="palette" /> Colors {#colors}
 
-The palette button beside a representation opens its color schemes. Each scheme in the copy below shows 1KV2 colored that way.
+The palette button beside a representation opens its color schemes. The copy below colors 1KV2's binding site, drawn as Stick, in each scheme.
 
 <ColorSchemeDemo app="web" />
+
+Nanome Web has no **Model Instance** scheme, which [Nanome XR](/nanome_v2/mainpanel#color-schemes) offers. As in Nanome XR, **Carbons only** is hidden while **Element Type** is picked. **Uniform** shows a color square and hue bar under the list, and it starts white.
 
 <Accordion title="Electrostatic coloring" teaser="What a DX map loaded on the entry is used for.">
 
@@ -198,7 +200,7 @@ Only polymer atoms count toward the interface.
 <Tabs :labels="['Entry menu', 'Component menu']">
 <Tab>
 
-<ShotRow src="nanome-web/entry-more-options.webp" alt="An entry's More options menu" crop="54.6,3.9,42.3,86.6">
+<ShotRow src="nanome-web/entry-more-options.webp" alt="An entry's More options menu" crop="50.9,8.4,46.0,84.0">
 
 <UiList label="Entry More options">
 <UiItem icon="pencil" name="Rename" area="57.5,22.1,33.7,10.9">Renames the entry.</UiItem>
@@ -213,7 +215,7 @@ Only polymer atoms count toward the interface.
 </Tab>
 <Tab>
 
-<ShotRow src="nanome-web/component-more-options.webp" alt="A component's More options menu" crop="50.9,1.8,46.0,86.6">
+<ShotRow src="nanome-web/component-more-options.webp" alt="A component's More options menu" crop="50.9,1.4,46.0,97.75">
 
 <UiList label="Component More options">
 <UiItem icon="pencil" name="Rename" area="57.5,24.3,33.7,12.7">Renames the component.</UiItem>
