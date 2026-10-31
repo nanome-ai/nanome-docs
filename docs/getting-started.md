@@ -881,11 +881,11 @@ workspace, and view-only access to workspaces and projects others share.
 
 After the trial, headset access continues on a paid seat. The pricing page
 lists what each seat includes, and the Nanome team quotes volume and academic
-pricing by email.
+pricing.
 
 [Compare the seats](/home.nanome.ai/accounttiers)
 · [Plans and pricing](https://nanome.ai/pricing)
-· [Ask for a quote](mailto:support@nanome.ai)
+· [Ask for a quote](https://nanome.ai/pricing#contact-form)
 
 </Accordion>
 
