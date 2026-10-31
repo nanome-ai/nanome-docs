@@ -9,6 +9,7 @@ import './styles/doc.css'
 import './styles/components.css'
 
 import Layout from './Layout.vue'
+import NotFound from './NotFound.vue'
 
 // Content components carried over from the previous theme.
 import Vimg from './components/Vimg.vue'
@@ -51,10 +52,12 @@ import Callout from './components/interactive/Callout.vue'
 
 // `extends` still gives us the default theme's markdown-level pieces — code
 // group tabs, `<Badge>`, and the local search dialog the nav bar imports.
-// Only the Layout is replaced.
+// Only the Layout is replaced. The router shows NotFound in place of the page
+// for a missing URL.
 export default {
   extends: DefaultTheme,
   Layout,
+  NotFound,
 
   enhanceApp({ app, router }) {
     // A new page opens at its top, at its #section, or where Back left it,

@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vitepress'
 
 // Pages for people editing the docs. `docs:dev` serves them; `docs:build` leaves
-// them out, so they never reach docs.nanome.ai, its sitemap or its search index.
+// them out, so they never reach help.nanome.ai, its sitemap or its search index.
 const isProduction = process.env.NODE_ENV === 'production'
 
 // --- Page sections -----------------------------------------------------------
@@ -197,7 +197,7 @@ export default defineConfig({
   ],
 
   sitemap: {
-    hostname: 'https://docs.nanome.ai'
+    hostname: 'https://help.nanome.ai'
   },
 
   lastUpdated: true,
@@ -230,6 +230,8 @@ export default defineConfig({
       }
     },
 
+    // Each Overview row names its group in `docFooterText`, so the previous and
+    // next links at the foot of a page say which overview they open.
     sidebar: withSections([
       {
         text: 'Home',
@@ -243,7 +245,7 @@ export default defineConfig({
             text: 'Nanome XR',
             collapsed: true,
             items: [
-              { text: 'Overview', link: '/nanome_v2/overview' },
+              { text: 'Overview', docFooterText: 'Nanome XR Overview', link: '/nanome_v2/overview' },
               { text: 'Getting Started', link: '/getting-started' },
               { text: "What's New in 2.7", link: '/nanome_v2/whatsnew' },
               { text: 'Login', link: '/nanome_v2/login' },
@@ -263,7 +265,7 @@ export default defineConfig({
             text: 'Nanome Web',
             collapsed: true,
             items: [
-              { text: 'Overview', link: '/nanome_web/overview' },
+              { text: 'Overview', docFooterText: 'Nanome Web Overview', link: '/nanome_web/overview' },
               { text: 'Web App Basics (Video)', link: '/nanome_web/basics' },
               { text: 'Home, Workspaces & Projects', link: '/nanome_web/home' },
               { text: 'Workspace View', link: '/nanome_web/workspace' },
@@ -284,7 +286,7 @@ export default defineConfig({
         text: 'MARA',
         collapsed: true,
         items: [
-          { text: 'Overview', link: '/mara/overview' },
+          { text: 'Overview', docFooterText: 'MARA Overview', link: '/mara/overview' },
           { text: 'Features', link: '/mara/features' },
           { text: 'Navigation', link: '/mara/navigation' },
           { text: 'Technical', link: '/mara/technical' },
@@ -297,13 +299,14 @@ export default defineConfig({
         items: [
           {
             text: 'Overview',
+            docFooterText: 'Nanome Classic Overview',
             link: '/nanome1x/overview'
           },
           {
             text: 'Nanome Controls',
             collapsed: true,
             items: [
-              { text: 'Overview', link: '/controls/overview' }
+              { text: 'Overview', docFooterText: 'Nanome Controls Overview', link: '/controls/overview' }
             ]
           },
           {
@@ -324,7 +327,7 @@ export default defineConfig({
             text: 'Nanome Plugins (Stacks)',
             collapsed: true,
             items: [
-              { text: 'Overview', link: '/nanome1x/plugins/overview' },
+              { text: 'Overview', docFooterText: 'Plugins Overview', link: '/nanome1x/plugins/overview' },
               { text: 'Chemical Interactions', link: '/nanome1x/plugins/cheminteractions' },
               { text: 'Superimpose', link: '/nanome1x/plugins/superimpose' },
               { text: 'Antibodies', link: '/nanome1x/plugins/antibodies' },
@@ -333,7 +336,7 @@ export default defineConfig({
               { text: 'Docking', link: '/nanome1x/plugins/docking' },
               { text: 'LiveDesign', link: '/nanome1x/plugins/LiveDesign' },
               { text: 'Minimization', link: '/nanome1x/plugins/minimization' },
-              { text: 'Real-Time Scoring', link: '/nanome1x/plugins/realtimescoring' },
+              { text: 'Real-time Scoring', link: '/nanome1x/plugins/realtimescoring' },
               { text: 'Structure Prep', link: '/nanome1x/plugins/structureprep' },
               { text: 'Vault', link: '/nanome1x/plugins/vault' },
               { text: 'Scene Viewer', link: '/nanome1x/plugins/sceneviewer' },
@@ -347,7 +350,7 @@ export default defineConfig({
             text: 'Nanome Macros',
             collapsed: true,
             items: [
-              { text: 'Overview', link: '/nanome1x/macros/overview' }
+              { text: 'Overview', docFooterText: 'Macros Overview', link: '/nanome1x/macros/overview' }
             ]
           },
           {
@@ -382,9 +385,9 @@ export default defineConfig({
         text: 'Accounts & Licenses',
         collapsed: true,
         items: [
-          { text: 'Overview', link: '/home.nanome.ai/overview_home_nanome' },
+          { text: 'Overview', docFooterText: 'Accounts & Licenses Overview', link: '/home.nanome.ai/overview_home_nanome' },
           { text: 'Licenses', link: '/home.nanome.ai/licenses' },
-          { text: 'Two Factor Auth', link: '/home.nanome.ai/twofactorauth' },
+          { text: 'Two-Factor Auth', link: '/home.nanome.ai/twofactorauth' },
           { text: 'Invoice', link: '/home.nanome.ai/invoice' },
           { text: 'Account Tiers', link: '/home.nanome.ai/accounttiers' },
           { text: 'Meetings', link: '/home.nanome.ai/meetings' }

@@ -146,7 +146,8 @@ const showPagebar = computed(
             <div class="vp-doc">
               <Content />
             </div>
-            <DocFooter v-if="!isHome && !page.isNotFound" />
+            <!-- The home page starts the sidebar, so it has no previous or next. -->
+            <DocFooter v-if="!isHome && !page.isNotFound && page.relativePath !== 'index.md'" />
           </div>
         </main>
 
