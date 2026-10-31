@@ -211,7 +211,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Nanome.ai', link: 'https://nanome.ai/' },
-      { text: 'Download', link: 'https://home.nanome.ai/setup' },
+      { text: 'Download', link: '/getting-started#install' },
       { text: 'Contact', link: '/help/contact' },
     ],
 
@@ -367,8 +367,7 @@ export default defineConfig({
               { text: 'Choosing Hardware (Classic)', link: '/help/choosinghardware-classic' },
               { text: 'Hardware Requirements', link: '/help/hardwarerequirements' },
               { text: 'PC Hardware', link: '/help/pchardware' },
-              { text: 'Enterprise Deployment', link: '/help/enterprise' },
-              { text: 'Quest for Business', link: '/help/questforbusiness' }
+              { text: 'Enterprise Deployment', link: '/help/enterprise' }
             ]
           },
           {

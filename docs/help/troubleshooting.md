@@ -1,20 +1,120 @@
 ---
 title: Troubleshooting
+outline: [2, 3]
 ---
 
 # Troubleshooting
 
-Fixes for trouble logging in, network ports, firewalls and sound.
+Fixes for Nanome XR and Nanome Web: sign-in messages, the device limit, licenses, the network and sound. The ports, VPN and firewall steps for Nanome Classic (v1.24) are in [their own section](#classic) at the end.
 
-<IconGrid label="Troubleshooting topics">
-<IconCard icon="wifi" title="Ports Nanome needs" href="#ports">What each machine or headset has to reach to log in.</IconCard>
-<IconCard icon="plug-connected" title="Oculus and Steam" href="#oculus-and-steam">Ports for the Oculus and Steam apps themselves.</IconCard>
-<IconCard icon="lock" title="Quest on a VPN" href="#vpn">Using a Quest on a VPN network.</IconCard>
-<IconCard icon="brand-windows" title="Windows Firewall" href="#firewall">Allow Nanome through the firewall.</IconCard>
-<IconCard icon="volume" title="No sound" href="#audio">Audio fixes for Windows, Oculus, Vive and Nanome.</IconCard>
+<IconGrid label="Troubleshooting topics" :cols="3">
+<IconCard icon="alert-triangle" title="Sign-in messages" href="#sign-in">What each message means, and what to do next.</IconCard>
+<IconCard icon="devices" title="Device limit" href="#device-limit">A limit on how many devices each account can use at once.</IconCard>
+<IconCard icon="license" title="License" href="#license">No license for Nanome XR, or one about to expire.</IconCard>
+<IconCard icon="wifi" title="Network" href="#network">Nanome cloud checks, and on-prem deployments.</IconCard>
+<IconCard icon="volume" title="No sound" href="#audio">Your mic, muted people and device audio.</IconCard>
+<IconCard icon="headset" title="Nanome Classic" href="#classic">Ports, VPN and Windows Firewall for v1.24.</IconCard>
 </IconGrid>
 
-## <AppIcon name="wifi" /> Trouble logging in: ports Nanome needs {#ports}
+## <AppIcon name="alert-triangle" /> Sign-in messages {#sign-in}
+
+Since release 2.7, the Nanome XR login screen says why a sign-in failed. **Details** shows the error code, HTTP status and time, which are worth including when you [contact support](/help/contact).
+
+| The message is about | What to do |
+| --- | --- |
+| A wrong username or password | Check both. Forgotten passwords are reset at [home.nanome.ai](https://home.nanome.ai). |
+| An account that has to use the Code tab | Accounts created with Google, Microsoft or Apple, accounts that use SSO, and accounts with two-factor authentication sign in with the <Btn icon="key">Code</Btn> tab. [How the Code tab works](/nanome_v2/login#code). |
+| An organization IP restriction | The organization only allows sign-in from certain networks. Try again from one of them, or ask the organization's Nanome admin. |
+| No license for Nanome XR | See [License](#license). |
+| A network problem | See [Network](#network). |
+
+[Login Screen](/nanome_v2/login#sign-in-messages) describes every button on the screen.
+
+## <AppIcon name="devices" /> Device limit {#device-limit}
+
+Each account can be signed in on a limited number of devices at once.
+
+- **A Device Limit screen at sign-in** lists the account's other sessions. Choose **Sign Out** on one of them, then **Retry**.
+- **Signed out with a notice** can mean the same account signed in on another device. An expired license also signs out with a notice (see [License](#license)).
+
+On a shared headset, <Btn icon="outbound">Log Out</Btn> at the bottom of the [Settings tab](/nanome_v2/mainpanel#settings-tab) signs you out, so the next person starts with their own account.
+
+## <AppIcon name="license" /> License {#license}
+
+- **No license for Nanome XR.** Working in a headset takes a Collab or Full seat. A free license covers the browser at [app.nanome.ai](https://app.nanome.ai), with 1 owned project, 3 owned workspaces and 5 structures per workspace.
+- **Assigning a seat.** An admin assigns licenses at home.nanome.ai under **Licenses** > **Assign Users**, using each user's account email. The license activates once that user confirms the email Nanome sends. Step by step: [Manage Licenses](/home.nanome.ai/licenses).
+- **Expiring soon.** Nanome warns when a license will expire within 30 days. When it expires, Nanome signs out with a notice.
+
+Every new account starts with a 14-day Full license trial. [Account Tiers](/home.nanome.ai/accounttiers) compares the seats and lists prices.
+
+## <AppIcon name="wifi" /> Network {#network}
+
+The full checklist and the firewall allowlist for IT are in [Getting Started: Wi-Fi & network](/getting-started#network).
+
+### <AppIcon name="world" /> Nanome cloud (app.nanome.ai) {#network-cloud}
+
+These checks narrow down most connection problems.
+
+<Steps>
+
+1. **Read the sign-in message.** The login screen names network problems, such as no connection or a network that blocks the sign-in request.
+2. **Rule out a sign-in page.** Guest networks that ask for a browser sign-in (captive portals) block headset setup. A Quest also shows a no-internet message whenever it can't reach Meta, before Nanome opens.
+3. **Check the firewall.** Nanome needs outbound TCP 443 to `*.nanome.ai` and `*.nanome.com`, allowed by hostname, since the servers' IP addresses change. These hosts should also be exempt from TLS/SSL inspection.
+4. **Test the connection.** From the same network, `curl -v https://api.nanome.com` confirms port 443 is open (ping uses ICMP and doesn't test it). When a phone hotspot works and the office network doesn't, the office network is blocking something.
+
+</Steps>
+
+Collaboration and voice use the same secure WebSocket connection on TCP 443, so no UDP ports are involved. Nanome XR on Windows only makes outbound connections and doesn't listen for incoming ones, so Windows Firewall needs no inbound rule for it. The [Windows Firewall steps](#firewall) further down are for Nanome Classic.
+
+### <AppIcon name="server" /> On-prem or private VM {#network-on-prem}
+
+Only for Nanome v2 running on the organization's own VM. Its ports, DNS names and auth proxy are in [Getting Started: On-prem or private VM](/getting-started#on-prem), and installation is in Nanome's [v2 deployment guide](https://nanome.ai/deploy).
+
+<AccordionGroup label="3 on-prem problems">
+
+<Accordion title="A headset can't reach Nanome's servers" teaser="Without internet access, headsets sign in through the auth proxy.">
+
+Headsets sign in and check licenses through Nanome's API at api.nanome.com. On an internal network that stops them from reaching it, point Meta Quest and Galaxy XR headsets at the auth proxy on the VM with a config file from the MDM: [auth proxy setup](/getting-started#on-prem). The proxy forwards their requests to api.nanome.com. Once the file is on the headset, Nanome shows **Nanome Routing unreachable** with **Read routing file on device**.
+
+</Accordion>
+
+<Accordion title="Error response from daemon: pull access denied" teaser="AWS access on the VM, or aws_login.py skipped before a redeploy.">
+
+On a fresh deployment, the VM's AWS access isn't configured correctly. Check that the Access Key and Secret Key are in `~/.aws/credentials`, run `python aws_login.py`, and try again.
+
+When redeploying, run `python aws_login.py` before `docker compose up -d --wait`.
+
+</Accordion>
+
+<Accordion title="chromadb.errors.InvalidDimensionException" teaser="The embedding model changed, so the old embeddings have to go.">
+
+"Embedding dimension X does not match collection dimensionality Y" appears when a deployment switches to a different text embedding model. Older deployments use text-embedding-ada-002 by default. Clear the old embeddings:
+
+```sh
+docker compose down
+docker volume rm nanome-deployer_mara-embeddings-volume
+docker compose up -d --wait
+```
+
+</Accordion>
+
+</AccordionGroup>
+
+## <AppIcon name="volume" /> No sound {#audio}
+
+- **Nobody can hear you.** Check <Btn icon="microphone">Mic</Btn> in the [Users tab](/nanome_v2/mainpanel#user-settings): its meter moves when your mic picks up sound. The off-hand controller's primary button (**X**, or **A** when left-handed) also mutes you.
+- **You can't hear one person.** <Btn icon="volume-3">Mute</Btn> in that person's (...) menu, under **Users in workspace**, mutes them for you only. Check you haven't muted them.
+- **No sound at all.** Check the device's own audio: [sound problems in Windows](https://support.microsoft.com/en-us/windows/hardware/audio/fix-sound-or-audio-problems-in-windows), or the [Meta Quest Help Center](https://www.meta.com/help/quest/).
+
+## <AppIcon name="headset" /> Nanome Classic (v1.24) {#classic}
+
+<Callout type="warning" title="For Nanome Classic only">
+
+Everything in this section is for Nanome Classic (v1.24), the older app. For Nanome XR and Nanome Web, see [Network](#network) above.
+
+</Callout>
+
+### Ports Nanome Classic needs {#ports}
 
 These are **required** from each machine or VR device:
 
@@ -30,7 +130,7 @@ These are **optional**, for molecular databases:
 | --- | --- | --- |
 | Molecular databases | TCP 443 | files.rcsb.org, pubchem.ncbi.nlm.nih.gov and www.drugbank.ca |
 
-## <AppIcon name="plug-connected" /> Oculus and Steam {#oculus-and-steam}
+### Oculus and Steam {#oculus-and-steam}
 
 If the Steam or Oculus apps don't work at all, with or without Nanome, try opening these ports from each device.
 
@@ -59,8 +159,6 @@ TCP port 443 for:
 - mqtt.facebook.com
 - my.workplace.com
 
-[Oculus for Business FAQ](https://developer.oculus.com/documentation/ofb/latest/concepts/ofb-developer-reference/)
-
 </Accordion>
 
 <Accordion title="Steam and SteamVR" teaser="TCP 80 and 443, according to Steam's documentation.">
@@ -81,7 +179,7 @@ Steam also recommends opening network traffic to the Steam application on UDP po
 
 </AccordionGroup>
 
-## <AppIcon name="lock" /> Using a Quest on a VPN network {#vpn}
+### Using a Quest on a VPN network {#vpn}
 
 The Oculus Quest 2 with Oculus's v29 firmware update can run arbitrary APK files (Android apps). So you can sideload the APK of your VPN, log in, and use it as you would on an Android device. Your VPN provider has to offer an APK for this to work. We've seen it work with NordVPN, ExpressVPN, Cisco AnyConnect and several others.
 
@@ -112,7 +210,7 @@ Then create the VPN-enabled hotspot:
 
 </Accordion>
 
-## <AppIcon name="brand-windows" /> Allow Nanome through Windows Firewall {#firewall}
+### Allow Nanome through Windows Firewall {#firewall}
 
 <Steps>
 
@@ -133,7 +231,7 @@ Then create the VPN-enabled hotspot:
 
 </Steps>
 
-### Find Nanome.exe {#find-nanome-exe}
+#### Find Nanome.exe {#find-nanome-exe}
 
 <Tabs :labels="['Installed with Oculus', 'Installed with Steam']">
 <Tab>
@@ -154,9 +252,7 @@ Right-click Nanome in the library and click **Properties**. Select the **Local F
 </Tab>
 </Tabs>
 
-## <AppIcon name="volume" /> Trouble hearing anything? {#audio}
+### Sound in Nanome Classic {#classic-audio}
 
-- Windows: [How to fix Windows audio](https://support.microsoft.com/en-us/help/4520288/windows-10-fix-sound-problems)
-- Oculus: [How to fix Oculus audio](https://support.oculus.com/948087951934283/)
-- Vive: [How to fix Vive audio](https://www.vive.com/uk/support/vive/category_howto/no-audio-while-using-extension-cable.html)
-- Windows and Oculus audio work, but there's no sound in Nanome: [Settings in Nanome](/nanome1x/navigating#settings)
+- Vive headsets: [How to fix Vive audio](https://www.vive.com/uk/support/vive/category_howto/no-audio-while-using-extension-cable.html)
+- Windows and headset audio work, but there's no sound in Nanome Classic: [Sound settings in the Wrist Menu](/nanome1x/navigation/wristmenu#sound)

@@ -15,7 +15,7 @@ title: FAQ
 
 <Callout type="note" title="Nanome XR, Nanome Web and Nanome Classic">
 
-Answers tagged **Classic** describe Nanome Classic (v1.24 and v1.26), the older PC VR app. For Nanome XR and Nanome Web, start with [Getting Started](/getting-started).
+Answers tagged **Classic** describe Nanome Classic (v1.24 and v1.26), the earlier headset app. For Nanome XR and Nanome Web, start with [Getting Started](/getting-started).
 
 </Callout>
 
@@ -69,9 +69,9 @@ Nanome Classic had a 2D desktop mode for users without VR devices: you joined a 
 
 </Accordion>
 
-<Accordion title="Do I need an internet connection to use Nanome?" teaser="Highly recommended, and needed to collaborate or use online databases.">
+<Accordion title="Do I need an internet connection to use Nanome?" teaser="Yes, to sign in and open workspaces.">
 
-A stable internet connection is highly recommended, especially when collaborating with other users. You also need the web to download structures from databases like RCSB and DrugBank. Solo users with structures stored on their own machine don't need internet access.
+Yes. Nanome XR and Nanome Web sign in, check your license and open workspaces over the network, from Nanome's servers or your organization's own server. Nanome XR also loads structures from RCSB by PDB code. On an on-prem deployment, headsets without internet access sign in through the [auth proxy](/getting-started#on-prem). Nanome Classic could run on its own with structures stored on the computer.
 
 </Accordion>
 
@@ -85,13 +85,13 @@ A stable internet connection is highly recommended, especially when collaboratin
 
 [Download &amp; install](/getting-started#install) covers Nanome XR on each headset.
 
-Nanome Classic is free to download from all major VR stores, including Oculus, Steam and VivePort, or directly from [home.nanome.ai/setup](https://home.nanome.ai/setup). Premium versions with upgraded features are for sale on our website.
+Nanome Classic is free to download from all major VR stores, including Oculus, Steam and VivePort, or directly from the [Versions page](https://nanome.ai/versions). Premium versions with upgraded features are for sale on our website.
 
 </Accordion>
 
-<Accordion title="How do I update Nanome to the latest version?" teaser="Follow the Nanome update guide.">
+<Accordion title="How do I update Nanome to the latest version?" teaser="See Download &amp; install in Getting Started.">
 
-Download the [Nanome update guide](https://drive.google.com/file/d/1x6LEc1-kV3yp9XYgSqxnIsU8iv1ou4fk/view?usp=sharing) and follow its instructions.
+[Download &amp; install](/getting-started#install) covers updates for Nanome XR on each headset. For Nanome Classic, the [Nanome update guide](https://drive.google.com/file/d/1x6LEc1-kV3yp9XYgSqxnIsU8iv1ou4fk/view?usp=sharing) has the steps.
 
 </Accordion>
 
@@ -148,7 +148,7 @@ We recommend keeping systems small, with only the atoms relevant to the collabor
 
 </Accordion>
 
-<Accordion title="Are there any limitations for Nanome Vault file storage?" teaser="No file size limit, but the client has to load what you store.">
+<Accordion title="Are there any limitations for Nanome Vault file storage?" teaser="No file size limit, but the client has to load what you store." tag="Classic">
 
 Nanome Vault has no particular file size limit. The limits come from the Nanome client loading files that are too large, in number of atoms and bonds or in sheer file size.
 
@@ -164,9 +164,9 @@ Nanome Vault has no particular file size limit. The limits come from the Nanome 
 
 <AccordionGroup label="8 questions">
 
-<Accordion title="How does the Nanome licensing system work? Isn't Nanome free?" teaser="A limited version is free. Premium licenses are sold.">
+<Accordion title="How does the Nanome licensing system work? Isn't Nanome free?" teaser="The browser is free. Headsets take a Collab or Full seat.">
 
-A limited version of Nanome is free for all users, from any major VR store or from home.nanome.ai/setup. Licenses for premium capabilities are sold on the [Nanome website](https://nanome.ai/pricing/).
+A free license covers Nanome in the browser at app.nanome.ai, with 1 owned project, 3 owned workspaces and 5 structures per workspace. Working in a headset takes a Collab or Full seat, and every new account starts with a 14-day Full license trial. [Account Tiers](/home.nanome.ai/accounttiers) compares the seats and lists prices.
 
 </Accordion>
 
@@ -194,7 +194,7 @@ We provide full support for private data security, database integration, computa
 
 </Accordion>
 
-<Accordion title="Can I use plugins with an Academic License?" teaser="Plugins are Enterprise only for now.">
+<Accordion title="Can I use plugins with an Academic License?" teaser="Plugins are Enterprise only for now." tag="Classic">
 
 Plugins are only available with an Enterprise license for now. We may open them up to early adopters in academic institutions. To ask about the Nanome Developer Program, email support@nanome.ai.
 
@@ -235,11 +235,13 @@ If your card was charged after the transaction, contact us at support@nanome.ai 
 
 ## <AppIcon name="bug" /> Logs and support {#support}
 
-When something goes wrong in Nanome, send us the logs for the event (both messages.txt and details.txt) so we can investigate. Email your bug report to support@nanome.ai.
+Nanome XR sends its log to Nanome on its own while you're signed in, every few minutes and after an error. Bug reports go to support@nanome.ai, and the time it happened helps us find the log.
+
+Nanome XR also keeps the log on the device as `Nanome2_<date>_<time>.txt` in a History folder: on Windows in `C:\Users\[USERNAME]\AppData\LocalLow\Nanome Inc\Nanome\History`, and on Meta Quest or Galaxy XR in `Android/data/com.nanome.nanome/files/History`.
 
 <AccordionGroup label="4 questions">
 
-<Accordion title="Where are the log files for PC-tethered VR?" teaser="In AppData on your computer.">
+<Accordion title="Where are the log files for PC-tethered VR?" teaser="In AppData on your computer." tag="Classic">
 
 With PC 2D mode or a PC-tethered VR headset, the logs for your session are on your computer. In File Explorer, go to:
 
@@ -249,7 +251,7 @@ A log file is named "YYYY-MM-DD_HH-MM-SS_details.txt", after the time the sessio
 
 </Accordion>
 
-<Accordion title="Where are the log files for all-in-one VR (e.g. Quest 2 or Vive Focus 3)?" teaser="On the headset. Copy them over a USB-C data cable.">
+<Accordion title="Where are the log files for all-in-one VR (e.g. Quest 2 or Vive Focus 3)?" teaser="On the headset. Copy them over a USB-C data cable." tag="Classic">
 
 All-in-one headsets such as the Quest 2 and Vive Focus 3 run Android-based operating systems and save log files on the headset. To move or copy them, connect the headset to your computer with a USB-C cable.
 
@@ -269,7 +271,7 @@ All-in-one headsets such as the Quest 2 and Vive Focus 3 run Android-based opera
 
 </Steps>
 
-The computer can now read the headset's storage. The next step depends on whether you're on Windows or Mac.
+The computer can now read the headset's storage.
 
 On Windows, open File Explorer and look at the left panel, which lists the storage devices connected to your computer. One of them is the headset's file storage, sometimes named "Quest" or "Oculus".
 

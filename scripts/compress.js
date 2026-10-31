@@ -31,7 +31,7 @@ const widthsFile = path.join(__dirname, '../docs/.vitepress/theme/image-widths.j
 const sizesFile = path.join(__dirname, '../docs/.vitepress/theme/image-sizes.json')
 const versionsFile = path.join(__dirname, '../docs/.vitepress/theme/image-versions.json')
 
-const HIDPI = /^(nanome-web|nanome-v2\/v2-7)\//
+const HIDPI = /^(nanome-web|nanome-v2\/v2-7|home-nanome)\//
 const MAX_WIDTH = 1600
 // The desktop layout is shown cropped to one panel on the Tools Panel and
 // Scenes Panel pages, about 4.5 times its full-width size.

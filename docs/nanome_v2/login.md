@@ -6,24 +6,21 @@ title: Login Screen
 
 Nanome opens on the login screen. It has two tabs: one for your password, and one for a code you enter on another device.
 
-<IconGrid label="Login screen">
-<IconCard icon="password" title="Password" href="#password">Your Nanome username and password.</IconCard>
-<IconCard icon="key" title="Code" href="#code">A 4-character code, entered on another device.</IconCard>
-<IconCard icon="user-plus" title="Create Account" href="#create-account">A new account, made from the headset.</IconCard>
-<IconCard icon="alert-triangle" title="Sign-in messages" href="#sign-in-messages">What went wrong, and device and license limits.</IconCard>
-</IconGrid>
-
-<vimg src="nanome-v2/v2-7/login-password.webp" alt="The Nanome XR login screen on the Password tab" />
+<ScreenMap src="nanome-v2/v2-7/login-password.webp" alt="The Nanome XR login screen on the Password tab" crop="1.9,0.5,45.1,95" label="Login screen">
+<MapCard icon="password" title="Password" href="#password" side="top" area="10.6,11.9,13.7,4.6">Your Nanome username and password.</MapCard>
+<MapCard icon="key" title="Code" href="#code" side="top" area="24.6,11.9,13.7,4.6">A 4-character code, entered on another device.</MapCard>
+<MapCard icon="user-plus" title="Create Account" href="#create-account" side="right" area="9.9,55.8,29.1,5.8">A new account, made from the headset.</MapCard>
+</ScreenMap>
 
 ## <AppIcon name="password" /> Password {#password}
 
-Enter your Nanome username and password, then <Btn icon="login-2">Log in</Btn>.
+The **Password** tab takes your Nanome username or email address and your password. <Btn icon="login-2">Log in</Btn> signs you in.
 
 ## <AppIcon name="key" /> Code {#code}
 
-The **Code** tab signs you in from another device.
+<ShotRow src="nanome-v2/v2-7/login-code.webp" alt="The Code tab with a 4-character code and the time until a new one">
 
-<vimg src="nanome-v2/v2-7/login-code.webp" alt="The Code tab with a 4-character code and the time until a new one" />
+The **Code** tab signs you in from another device.
 
 <Steps>
 
@@ -31,6 +28,8 @@ The **Code** tab signs you in from another device.
 2. Enter the code at [nanome.ai/activate](https://nanome.ai/activate), or in **Login via Device Code** on [app.nanome.ai](/nanome_web/account#login-via-device-code).
 
 </Steps>
+
+</ShotRow>
 
 <Callout type="note" title="Accounts that sign in with a code">
 
@@ -46,19 +45,22 @@ Accounts created with Google, Microsoft or Apple, accounts that use single sign-
 <UiItem name="Email">The account's email address.</UiItem>
 <UiItem name="Username">6 to 120 characters: lowercase letters, numbers, dots, underscores and hyphens.</UiItem>
 <UiItem name="Password">8 to 250 characters, with an uppercase letter, a lowercase letter and a symbol.</UiItem>
+<UiItem name="I'm part of a">Classroom, Academic Lab, National Research Lab, Commercial Company or Other.</UiItem>
+<UiItem name="Company / Institution">Optional.</UiItem>
+<UiItem name="Subscribe to Newsletter">Signs you up for Nanome's newsletter.</UiItem>
 </UiList>
 
 ### Video: Creating Your Account
 
 <YoutubeEmbed videoId="cB82b8xIZoY" title="Nanome v2.4 Quick Tips: Creating Your Account" />
 
-## <AppIcon name="info-small" /> Also on the screen {#also-on-the-screen}
+## <AppIcon name="info-circle" /> Also on the screen {#also-on-the-screen}
 
 <UiList label="Login screen">
 <UiItem name="Remember Me">Keeps you signed in on the headset.</UiItem>
 <UiItem name="Close">Closes the tutorial banner on the left, which helps new users get started. Show tutorial guides in the Settings tab turns it back on.</UiItem>
-<UiItem icon="wifi" name="Network status">Shows the network status.</UiItem>
-<UiItem name="Version">Shows the Nanome version.</UiItem>
+<UiItem name="Version">The Nanome version and build number.</UiItem>
+<UiItem icon="info-circle" name="About Nanome">The i button beside the version. Shows the app details and attributions.</UiItem>
 <UiItem icon="maximize" name="Passthrough">Below the login screen. On by default on headsets that support passthrough.</UiItem>
 </UiList>
 
@@ -72,6 +74,6 @@ Since release 2.7, sign-in errors say what went wrong, with a **Details** button
 - an account without a license for Nanome XR
 - network problems
 
-Nanome can run on a limited number of devices at a time per account. Past the limit, a **Device Limit** screen asks you to sign out of another device first. Signing in on another device can sign this one out, with a notice.
+Each account can be signed in on a limited number of devices at once. When the limit is reached, a **Device Limit** screen lists the other sessions, each with **Sign Out**, and **Retry** continues. Signing in on another device can sign this one out, with a notice.
 
 Nanome warns when your license will expire within 30 days. When it expires, Nanome signs out with a notice.

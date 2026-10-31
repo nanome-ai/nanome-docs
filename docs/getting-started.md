@@ -4,7 +4,7 @@ outline: [2, 3]
 ---
 
 <script setup>
-import { NANOME_HOSTS, NETWORK_ALLOWLIST } from './.vitepress/data/setup-network.js'
+import { NANOME_HOSTS, NETWORK_ALLOWLIST, ONPREM_DNS, ONPREM_OUTBOUND, ONPREM_ALLOWLIST } from './.vitepress/data/setup-network.js'
 </script>
 
 # Getting started with Nanome XR
@@ -113,7 +113,7 @@ This chapter matters once headsets are shared or spread across a team.
 
 <Chooser
   param="mdm"
-  title="Answer three questions"
+  title="Answer up to 3 questions"
   :steps="[
     {
       id: 'device',
@@ -181,8 +181,8 @@ Meta's free service enrolls Quest headsets, pushes Wi-Fi and Nanome to all of
 them, and keeps every headset on the version IT approved. It covers a shared
 lab or classroom without a budget line.
 
-Meta Horizon managed services (HMS) has been free since February 20, 2026,
-and works with Quest 2, 3, 3S, and Pro.
+Meta Horizon managed services (HMS), formerly Quest for Business, has been
+free since February 20, 2026, and works with Quest 2, 3, 3S, and Pro.
 
 - Enrolls Meta Quest headsets and runs them without personal Meta accounts
 - Device presets, Wi-Fi profiles, app and file push, and remote wipe
@@ -248,13 +248,14 @@ with the Nanome team.
 
 </Chooser>
 
-### Compare all three side by side
+### Compare all 3 side by side
 
 <AccordionGroup label="Cost, supported headsets, and features">
 
 <Accordion title="Meta Horizon managed services (HMS)" teaser="Free. Manages Meta Quest only." tag="Free">
 
-Free since February 20, 2026.
+Free since February 20, 2026. HMS was called Quest for Business before Meta
+renamed it.
 
 - Manages Meta Quest headsets only, on Quest 2, 3, 3S, and Pro
 - Quest headsets that are not already enrolled in an MDM enroll through HMS on
@@ -418,10 +419,16 @@ those can enroll Quest headsets the same way.
 <p class="chapter-kicker">Step 4 of 7 · A network Nanome can reach</p>
 
 Headsets need Wi-Fi with direct internet access and a short list of hostnames
-allowed through the firewall. The checklist below is written to hand straight
-to IT.
+allowed through the firewall. What IT allows depends on where Nanome runs.
 
-### Six checks for IT
+<IconGrid label="Where Nanome runs" :cols="2">
+<IconCard icon="world" title="Nanome cloud" href="#cloud">app.nanome.ai, run by Nanome. 6 checks for IT.</IconCard>
+<IconCard icon="server" title="On-prem or private VM" href="#on-prem">Nanome on the organization's own VM. Ports, DNS and the auth proxy.</IconCard>
+</IconGrid>
+
+### <AppIcon name="world" /> Nanome cloud (app.nanome.ai) {#cloud}
+
+6 checks, written to hand straight to IT.
 
 <AccordionGroup label="6 checks for IT">
 
@@ -437,7 +444,10 @@ can't reach Meta, before Nanome ever opens.
 
 Allow outbound TCP 443 to `*.nanome.ai` and `*.nanome.com`. Nanome's servers
 run on Cloudflare and AWS, where IP addresses change, so IP-based rules
-eventually break.
+eventually break. Collaboration and voice run over a secure WebSocket on the
+same port, so Nanome needs no UDP ports, and it doesn't accept incoming
+connections. Headsets also load structures by PDB ID straight from
+files.rcsb.org.
 
 <ul class="hosts">
   <li v-for="entry in NANOME_HOSTS" :key="entry.host">
@@ -495,12 +505,109 @@ both publish network tests that also run in the headset's browser.
 
 </AccordionGroup>
 
-<Callout type="note" title="Private and on-premise deployments">
+### <AppIcon name="server" /> On-prem or private VM {#on-prem}
 
-Running Nanome on a private cloud or on-premise server? Those deployments use
-their own hosts and ports, covered in the
-[enterprise deployment guide](https://nanome.ai/deploy). Samsung Galaxy XR
-fleets managed under Android Enterprise also need
+These apply only when Nanome v2 runs on the organization's own Linux VM. Nanome
+cloud users don't need any of them. Installation is covered in Nanome's
+[v2 deployment guide](https://nanome.ai/deploy).
+
+<AccordionGroup label="6 checks for on-prem">
+
+<Accordion title="Ports on the VM" teaser="TCP 80, and TCP 443 when SSL certificates are provisioned.">
+
+The VM needs TCP 80 (HTTP) open, and TCP 443 (HTTPS) when SSL certificates are
+provisioned. An nginx proxy on the VM routes each DNS name to its service, so
+headsets and browsers reach the VM only through those names, and no other port
+on it needs to be reachable from them.
+
+</Accordion>
+
+<Accordion title="DNS names" teaser="Names under the organization's domain, pointing to the VM.">
+
+The deployment guide writes the organization's domain as company.com. These
+names point to the VM, and the Nanome team needs them to configure the
+organization's licenses:
+
+<ul class="hosts">
+  <li v-for="entry in ONPREM_DNS" :key="entry.host">
+    <code>{{ entry.host }}</code>
+    <span>{{ entry.purpose }}</span>
+  </li>
+</ul>
+
+If the VM already has an A record, add CNAME records for these names that
+point to it. Otherwise, create A records that point to the VM's IP address.
+With HTTPS, the SSL certificate covers `*.company.com`, or each name.
+
+The deployment guide marks nanome-auth as optional. The deployer asks for it
+whenever it sets up workspaces, and headsets only need it when they can't
+reach api.nanome.com.
+
+</Accordion>
+
+<Accordion title="Headsets without internet access" teaser="An auth proxy on the VM, set up through the MDM.">
+
+Headsets sign in and check licenses through Nanome's API at api.nanome.com,
+even on an on-prem deployment. When the internal network stops headsets from
+reaching the internet, the auth proxy on the VM takes those requests and
+forwards them to api.nanome.com. It starts on the VM during deployment and
+uses the nanome-auth name. Meta Quest and Galaxy XR read the setting from a
+file the MDM puts on the headset.
+
+<Steps>
+
+1. Create a plain text file named `nanome_config` that contains
+   `auth_proxy=http://nanome-auth.company.com`.
+2. With the MDM, add the file to each headset at
+   `/sdcard/Managed files/nanome_config`.
+3. Open Nanome. On **Nanome Routing unreachable**, choose
+   **Read routing file on device**, then **Allow**, and accept the Android
+   prompt for file access.
+4. Check that you can log in.
+
+</Steps>
+
+</Accordion>
+
+<Accordion title="AI features" teaser="An LLM provider: Anthropic, OpenAI, AWS Bedrock or Microsoft Foundry.">
+
+AI features in Nanome and the web app need access to an LLM provider:
+Anthropic, OpenAI, AWS Bedrock or Microsoft Foundry. Have the provider's URL
+and API key, or other auth details, ready before installation. For another
+provider, ask [support@nanome.ai](mailto:support@nanome.ai).
+
+</Accordion>
+
+<Accordion title="What the VM connects to" teaser="Nanome's API, image registries, the LLM provider and science data sources.">
+
+<ul>
+  <li v-for="item in ONPREM_OUTBOUND" :key="item">{{ item }}</li>
+</ul>
+
+</Accordion>
+
+<Accordion title="Testing the deployment" teaser="The web app first, then a headset in the same workspace.">
+
+<Steps>
+
+1. Open nanome.company.com in a browser and log in.
+2. Drag a PDB file onto the page, create a workspace, and check the workspace
+   contains the molecule.
+3. Log in to Nanome on a headset and check the workspace shows up with the
+   molecule.
+4. While in XR, check the XR cursors appear in the web preview.
+
+</Steps>
+
+</Accordion>
+
+</AccordionGroup>
+
+<CopyBlock title="On-prem network summary" :text="ONPREM_ALLOWLIST" />
+
+<Callout type="note" title="Samsung Galaxy XR under Android Enterprise">
+
+Galaxy XR fleets managed under Android Enterprise also need
 [Google's endpoints](https://support.google.com/work/android/answer/10513641).
 
 </Callout>
@@ -671,7 +778,7 @@ way.
 
 <Steps>
 
-1. Open nanome.ai/setup in the headset's browser and download the Android XR APK.
+1. Open nanome.ai/versions in the headset's browser and download the Android XR APK.
 2. Allow installs from unknown sources when Android asks, then install.
 
 </Steps>
@@ -747,7 +854,7 @@ authentication.
 
 </CardGrid>
 
-<vimg src="setup/accounts/enable-2fa.jpg" alt="Two-factor authentication under Account Settings, Security, at home.nanome.ai" />
+<vimg src="home-nanome/account-security.webp" alt="Two-factor authentication under Account Settings, Security, at home.nanome.ai" />
 
 *Account Settings > Security.*
 
@@ -776,7 +883,8 @@ After the trial, headset access continues on a paid seat. The pricing page
 lists what each seat includes, and the Nanome team quotes volume and academic
 pricing by email.
 
-[Plans and seats](https://nanome.ai/pricing)
+[Compare the seats](/home.nanome.ai/accounttiers)
+· [Plans and pricing](https://nanome.ai/pricing)
 · [Ask for a quote](mailto:support@nanome.ai)
 
 </Accordion>
@@ -787,7 +895,7 @@ An admin assigns licenses in home.nanome.ai under **Licenses** >
 **Assign Users**, using each user's account email. The license activates once
 that user confirms the email Nanome sends.
 
-<vimg src="setup/accounts/assign-licenses.jpg" alt="Licenses, Assign Users at home.nanome.ai" />
+<vimg src="home-nanome/licenses-owned.webp" alt="The Owned licenses table, with Assign Users at the top right, at home.nanome.ai" />
 
 *Licenses > Assign Users. Step by step: [Manage Licenses](/home.nanome.ai/licenses).*
 

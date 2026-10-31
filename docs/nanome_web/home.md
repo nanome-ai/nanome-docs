@@ -22,7 +22,7 @@ A **project** is a folder of workspaces with its own members. A **workspace** is
 ## <AppIcon name="clock" /> Recent {#recent}
 
 - **Recent Workspaces** lists the workspaces you opened most recently, with their project, owner, the date you last opened them, and your access level (Owner, Editor or Viewer).
-- **Recent Projects** lists projects the same way, with a count of the workspaces in each.
+- **Recent Projects** lists projects with their workspace count, owner, last update and your access level.
 
 The two buttons at the top right switch between a grid of cards and a list.
 
@@ -51,12 +51,12 @@ Right-clicking a workspace row, or clicking its <AppIcon name="dots" /> **(...)*
 <UiList label="Workspace menu">
 <UiItem name="Open in new tab">Opens the workspace in a new browser tab.</UiItem>
 <UiItem name="Edit info">Changes the workspace name and description.</UiItem>
-<UiItem name="Copy shareable link">Copies a link to the workspace.</UiItem>
+<UiItem name="Copy shareable link">Copies a link to the workspace. If Link access is Members only, it first changes it to Anyone can view.</UiItem>
 <UiItem name="Duplicate">Makes a copy of the workspace.</UiItem>
-<UiItem name="Open in XR" href="/nanome_web/collaboration#sending-a-workspace-to-a-headset">Sends the workspace to Nanome XR on your headset. With other people in the headset's session, it asks whether to load it just for you or for everyone.</UiItem>
+<UiItem name="Open in XR" href="/nanome_web/collaboration#sending-a-workspace-to-a-headset">Sends the workspace to Nanome XR on your headset. With other people in the headset's session, it asks Just Me or Load for All.</UiItem>
 <UiItem name="Move to project">Moves the workspace into another project.</UiItem>
 <UiItem name="Export analysis">A ZIP of CSV files: chemical interactions, measurements and minimization history. Works from an open workspace's menu; grayed out in the list.</UiItem>
-<UiItem name="Delete">Deletes the workspace.</UiItem>
+<UiItem name="Delete">Deletes the workspace. If you don't own the workspace or its project, this item is Leave, which removes you from it.</UiItem>
 </UiList>
 
 <vimg src="nanome-web/workspaces-row-menu.webp" alt="A workspace row's menu" />
@@ -65,7 +65,7 @@ Right-clicking a workspace row, or clicking its <AppIcon name="dots" /> **(...)*
 
 The **All Projects** view lists projects with their workspace count, owner, last update and your access level. It has the same search, filter, sort and layout controls as the All Workspaces view.
 
-The row menu has **Open in new tab**, **Edit info**, **Manage members** and **Delete**.
+The row menu has **Open in new tab**, **Edit info**, **Manage members** and **Delete** (**Leave** on a project you don't own).
 
 <vimg src="nanome-web/projects-row-menu.webp" alt="A project row's menu" />
 
@@ -74,7 +74,7 @@ The row menu has **Open in new tab**, **Edit info**, **Manage members** and **De
 <UiList label="Project page">
 <UiItem name="Description, Focus, Lead">The fields across the top.</UiItem>
 <UiItem name="Activity">A feed on the right that records when workspaces in the project are created and edited.</UiItem>
-<UiItem name="Move Workspaces">Moves workspaces in or out of the project.</UiItem>
+<UiItem name="Move Workspaces">Moves workspaces you own from other projects into this one.</UiItem>
 <UiItem name="Workspaces">A tab that lists the project's workspaces.</UiItem>
 <UiItem name="Members">A tab that adds people by email as Editor or Viewer and lists current members with their role.</UiItem>
 </UiList>
@@ -89,14 +89,14 @@ The **New** button at the top of the sidebar creates a **Workspace** or a **Proj
 
 ## <AppIcon name="home" /> Top bar {#top-bar}
 
-The top bar is the same on every page.
+The top bar is on every page.
 
 <UiList label="Top bar">
 <UiItem name="Home">Returns to this page.</UiItem>
 <UiItem name="Workspace">Returns to your open workspace tabs.</UiItem>
 <UiItem name="Conversations / Tools" href="/mara/overview">MARA chat and tools, covered in the MARA section.</UiItem>
 <UiItem icon="infinity" name="Credits">Your account's credit balance. It can be hidden in Settings.</UiItem>
-<UiItem icon="search" name="Search (⌘K)">Searches by name. Workspace results show the project, owner and last-opened date.</UiItem>
+<UiItem icon="search" name="Search (⌘K)">Searches workspaces and projects by name. On Windows and Linux the shortcut is Ctrl+K. Workspace results show the project, owner and last-opened date.</UiItem>
 <UiItem icon="cube-3d-sphere" name="Join Workspace via Code">Opens a workspace from its 8-character code, on pages without their own Join via Code button.</UiItem>
 <UiItem icon="lock-cog" name="Login via Device Code" href="/nanome_web/account#login-via-device-code">Signs a headset in to your account.</UiItem>
 <UiItem name="Account menu" href="/nanome_web/account">Your initial: account, billing, organization and settings pages, plus Logout and the web app version.</UiItem>
@@ -106,4 +106,4 @@ The top bar is the same on every page.
 
 ## Account limits
 
-Free licenses are limited to 1 owned project, 3 owned workspaces and 5 structures per workspace, with view-only access to workspaces and projects that others share. Nanome Web shows a message when a limit is reached. Paid plans are on [Account Tiers](/home.nanome.ai/accounttiers).
+Free licenses are limited to 1 owned project, 3 owned workspaces and 5 structures per workspace, with view-only access to workspaces and projects that others share. Nanome Web shows a message when a limit is reached. [Account Tiers](/home.nanome.ai/accounttiers) compares the paid seats.
