@@ -141,8 +141,8 @@ function withSections(items) {
 // --- Image data --------------------------------------------------------------
 
 /**
- * scripts/compress.js lists each image's copy size, content hash, dark twin
- * and on-screen width in theme/image-*.json. The theme script
+ * scripts/compress.js lists each image's copy size, content hash, dark twin,
+ * on-screen width and smaller copy in theme/image-*.json. The theme script
  * doesn't carry those lists, which hold every image on the site. Instead each
  * page's script gets the entries for the images its markdown names, and adds
  * them (addImages in theme/components/image.js) before the page renders.
@@ -153,7 +153,7 @@ function withSections(items) {
  * frame's entry, which the browser fetches beside the page's script and keeps.
  */
 const themeDir = fileURLToPath(new URL('./theme/', import.meta.url))
-const IMAGE_LISTS = ['sizes', 'versions', 'variants', 'widths']
+const IMAGE_LISTS = ['sizes', 'versions', 'variants', 'widths', 'small']
 const IMAGE_MODULE = `${themeDir}components/image.js`
 const FRAMES = 'nanome-v2/v2-7/options/'
 const FRAMES_ID = 'virtual:demo-frames'
@@ -184,7 +184,7 @@ function imageData() {
 
   /** The entries for these images and their dark twins, sorted. */
   function entries(srcs) {
-    const { sizes, versions, variants, widths } = readLists()
+    const { sizes, versions, variants, widths, small } = readLists()
     const all = new Set()
     for (const src of srcs) {
       if (!sizes[src]) continue
@@ -196,6 +196,7 @@ function imageData() {
       const entry = { size: sizes[src], v: versions[src] }
       if (widths[src]) entry.shown = Math.round(widths[src] / 2)
       if (variants[src]) entry.dark = variants[src]
+      if (small[src]) entry.small = small[src]
       out[src] = entry
     }
     return out

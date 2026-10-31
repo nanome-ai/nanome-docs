@@ -4,6 +4,8 @@
       <img
         class="vimg__light"
         :src="info.light"
+        :srcset="info.lightSet"
+        :sizes="info.lightSet && info.sizes"
         :data-zoom-src="info.zoom"
         :alt="alt"
         :width="info.size?.[0]"
@@ -14,11 +16,14 @@
         v-bind="playable"
         @keydown.enter.prevent="play"
         @keydown.space.prevent="play"
+        @medium-zoom:open="pin"
       />
       <img
         v-if="info.dark"
         class="vimg__dark"
         :src="info.dark"
+        :srcset="info.darkSet"
+        :sizes="info.darkSet && info.sizes"
         :data-zoom-src="info.darkZoom"
         :alt="alt"
         :width="info.darkSize?.[0]"
@@ -29,6 +34,7 @@
         v-bind="playable"
         @keydown.enter.prevent="play"
         @keydown.space.prevent="play"
+        @medium-zoom:open="pin"
       />
       <div v-if="info.isGif" class="vimg__play-btn">&#9654;</div>
     </div>
@@ -50,8 +56,9 @@ const props = defineProps({
   }
 })
 
-// The web copy (up to 1600px wide), the dark twin when there is one, and the
-// copy's size. scripts/compress.js writes them all.
+// The web copies (up to 1600px wide, and 800px when the image is wider),
+// the dark twin when there is one, and the copy's size. scripts/compress.js
+// writes them all.
 const info = computed(() => imageInfo(props.src))
 
 // A GIF shows a still until it's opened, so the keyboard needs a way in too:
@@ -69,6 +76,27 @@ function play(event) {
   const img = event.currentTarget
   img.addEventListener('medium-zoom:closed', () => img.focus({ preventScroll: true }), { once: true })
   img.click()
+}
+
+// medium-zoom opens an image by showing a copy of it in its place until the
+// original file is in. With `sizes="auto"` and lazy loading, the copy would
+// wait for its own layout before choosing a file, and the image would blink.
+// The width it has now, and loading at once, let the copy show the file
+// already on screen straight away.
+function pin(event) {
+  const img = event.currentTarget
+  if (!img.srcset) return
+  const sizes = img.getAttribute('sizes')
+  img.sizes = `${img.getBoundingClientRect().width}px`
+  img.loading = 'eager'
+  img.addEventListener(
+    'medium-zoom:closed',
+    () => {
+      img.setAttribute('sizes', sizes)
+      img.loading = 'lazy'
+    },
+    { once: true }
+  )
 }
 
 // The image shows at its on-screen width (half the pixels of a 2x screenshot),

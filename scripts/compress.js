@@ -19,6 +19,11 @@
 // image-widths.json, so <Vimg> shows them at their on-screen size instead of
 // stretching a narrow panel across the content column.
 //
+// An image wider than SMALL_MIN also gets a copy SMALL_WIDTH wide,
+// `<name>.w800.webp`, listed in image-small.json. A screenshot beside its
+// legend shows about 390px wide, so 1x and 2x screens load that copy, and the
+// full-screen view loads the full one (see image.js).
+//
 // The theme script doesn't carry these lists: the build hands each page the
 // entries for the images it names (imageData in docs/.vitepress/config.mjs).
 // Every list is sorted, one image per line, so the same images always give the
@@ -36,6 +41,7 @@ const manifestFile = path.join(__dirname, '../docs/.vitepress/theme/image-varian
 const widthsFile = path.join(__dirname, '../docs/.vitepress/theme/image-widths.json')
 const sizesFile = path.join(__dirname, '../docs/.vitepress/theme/image-sizes.json')
 const versionsFile = path.join(__dirname, '../docs/.vitepress/theme/image-versions.json')
+const smallFile = path.join(__dirname, '../docs/.vitepress/theme/image-small.json')
 
 const HIDPI = /^(nanome-web|nanome-v2\/v2-7)\//
 const MAX_WIDTH = 1600
@@ -45,6 +51,14 @@ const WIDE = {
   'nanome-v2/v2-7/desktop-layout.webp': 3840,
   'nanome-v2/v2-7/desktop-layout.dark.webp': 3840,
 }
+// The smaller copy: a little over twice the ~390px a screenshot beside its
+// legend shows at. A copy up to SMALL_MIN wide gets none, since it would
+// shrink too little to be worth a second file.
+const SMALL_WIDTH = 800
+const SMALL_MIN = 1000
+// The option-panel demos show their frames whole on the stage, never through
+// <Vimg> or <HotShot>, so they get no smaller copy.
+const NO_SMALL = /^nanome-v2\/v2-7\/options\//
 const QUALITY = 80
 const force = process.argv.includes('--force')
 
@@ -54,20 +68,29 @@ const force = process.argv.includes('--force')
   for (const file of walk(assetDir)) {
     const rel = path.relative(assetDir, file)
     if (!/\.(png|jpe?g|gif|webp)$/i.test(rel)) continue
+    const key = rel.split(path.sep).join('/')
 
     const out = path.join(compressedDir, rel.replace(/\.\w+$/, '.webp'))
-    if (!force && fs.existsSync(out) && fs.statSync(out).mtimeMs >= fs.statSync(file).mtimeMs) {
-      continue
+    if (stale(out, file)) {
+      fs.mkdirSync(path.dirname(out), { recursive: true })
+      // GIFs get a still of their first frame; the original plays on click.
+      await sharp(file, { pages: 1 })
+        .resize({ width: WIDE[key] || MAX_WIDTH, withoutEnlargement: true })
+        .webp({ quality: QUALITY })
+        .toFile(out)
+      built++
+      console.log(`- ${rel}`)
     }
 
-    fs.mkdirSync(path.dirname(out), { recursive: true })
-    // GIFs get a still of their first frame; the original plays on click.
-    await sharp(file, { pages: 1 })
-      .resize({ width: WIDE[rel.split(path.sep).join('/')] || MAX_WIDTH, withoutEnlargement: true })
-      .webp({ quality: QUALITY })
-      .toFile(out)
-    built++
-    console.log(`- ${rel}`)
+    const small = smallCopy(key)
+    if (small && stale(path.join(compressedDir, small), file) && (await wider(file))) {
+      await sharp(file, { pages: 1 })
+        .resize({ width: SMALL_WIDTH })
+        .webp({ quality: QUALITY })
+        .toFile(path.join(compressedDir, small))
+      built++
+      console.log(`- ${small}`)
+    }
   }
   console.log(`Done compressing (${built} rebuilt)`)
 
@@ -122,7 +145,40 @@ const force = process.argv.includes('--force')
     .sort()
     .map((f) => `  ${JSON.stringify(f)}: ${JSON.stringify(versions[f])}`)
   fs.writeFileSync(versionsFile, `{\n${vlines.join(',\n')}\n}\n`)
+
+  // The smaller copy's width and short hash, for each image that has one.
+  const smalls = []
+  for (const f of Object.keys(sizes).sort()) {
+    const small = smallCopy(f)
+    if (!small || sizes[f][0] <= SMALL_MIN) continue
+    const copy = path.join(compressedDir, small)
+    const { width } = await sharp(copy).metadata()
+    const hash = crypto.createHash('sha1').update(fs.readFileSync(copy)).digest('hex').slice(0, 8)
+    smalls.push(`  ${JSON.stringify(f)}: [${width}, ${JSON.stringify(hash)}]`)
+  }
+  fs.writeFileSync(smallFile, `{\n${smalls.join(',\n')}\n}\n`)
+  console.log(`${smalls.length} images have a smaller copy`)
 })()
+
+/** True when the copy is missing or older than its original, or with --force. */
+function stale(copy, original) {
+  return force || !fs.existsSync(copy) || fs.statSync(copy).mtimeMs < fs.statSync(original).mtimeMs
+}
+
+/**
+ * Where the smaller copy of an image goes, under assets/compressed, or null
+ * for an image that never gets one: a demo frame, or one shown cropped (WIDE).
+ */
+function smallCopy(key) {
+  if (NO_SMALL.test(key) || WIDE[key]) return null
+  return key.replace(/\.\w+$/, `.w${SMALL_WIDTH}.webp`)
+}
+
+/** True when the original is wide enough to get a smaller copy. */
+async function wider(file) {
+  const { width } = await sharp(file, { pages: 1 }).metadata()
+  return width > SMALL_MIN
+}
 
 function walk(dir) {
   return fs
