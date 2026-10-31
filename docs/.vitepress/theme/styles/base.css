@@ -71,6 +71,12 @@ html .DocSearch-Button:focus-visible {
   outline-offset: 2px;
 }
 
+/* A section a link has moved focus to (theme/index.js). The page has just
+   scrolled there, so a ring around the heading would add nothing. */
+.n-section-target:focus {
+  outline: none;
+}
+
 input,
 select,
 textarea,

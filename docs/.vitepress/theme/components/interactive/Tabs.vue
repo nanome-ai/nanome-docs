@@ -135,17 +135,23 @@ onBeforeUnmount(() => removeEventListener('hashchange', fromHash))
    moves to a second row when a single word won't fit, so none hides past
    the edge. */
 @media (max-width: 639px) {
+  /* Each tab draws its own part of the rule, so a second row has a rule
+     under it too, and the active tab's line sits on its row's rule. */
   .n-tabs__list {
     flex-wrap: wrap;
+    gap: 0;
+    border-bottom: 0;
   }
 
-  /* A column, so labels of one and two lines all start at the top. */
+  /* A column, so labels of one and two lines all start at the top. The side
+     padding stands in for the gap between tabs. */
   .n-tabs__tab {
     display: flex;
     flex: 1 1 0;
     flex-direction: column;
-    padding: 10px 8px;
+    padding: 10px;
     white-space: normal;
+    box-shadow: inset 0 -1px 0 var(--n-border);
   }
 }
 

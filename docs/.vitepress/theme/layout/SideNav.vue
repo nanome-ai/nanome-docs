@@ -218,6 +218,11 @@ function toggle(group) {
   color: var(--n-text);
 }
 
+/* Inside the button, so the sidebar's scroll box can't cut the ring off. */
+.n-sidenav__label--button:focus-visible {
+  outline-offset: -2px;
+}
+
 /* An open section, and the one holding the current page, read a shade louder
    than the rest — a heading should not be dimmer than the rows under it. */
 .n-sidenav__group.is-active > .n-sidenav__label,

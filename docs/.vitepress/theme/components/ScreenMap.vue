@@ -18,7 +18,7 @@
  *
  * Cards keep the order they're written in on each side.
  */
-import { Fragment, cloneVNode, computed, defineComponent, h, provide, ref } from 'vue'
+import { Fragment, cloneVNode, defineComponent, h, nextTick, onBeforeUnmount, provide, ref, watch } from 'vue'
 import HotShot from './HotShot.vue'
 import MapCard from './MapCard.vue'
 import { imageInfo, parseBox } from './image.js'
@@ -66,33 +66,89 @@ export default defineComponent({
       const mine = ++holds
       holding = mine
       const end = () => setTimeout(() => holding === mine && (holding = 0), 100)
+      // The page scrolls, or the full-screen view does.
       addEventListener('scrollend', end, { once: true })
+      root.value?.addEventListener('scrollend', end, { once: true })
       // For a browser without scrollend.
       setTimeout(end, 1500)
     }
     provide('n-screenmap', { active, enter, leave })
 
-    // The image's height in the page, so the full-screen view never shows it
-    // smaller than that.
+    // The image's height in the page, so the full-screen view doesn't show it
+    // much smaller than that.
     const pageHeight = ref(0)
-    const open = () => {
+
+    // Full screen, the image also leaves room for the rows of cards above and
+    // below it, so the whole map fits in the window. When that would make the
+    // image more than a tenth smaller than in the page, or the cards beside
+    // it are taller than the window anyway, the image keeps its size and the
+    // map scrolls instead.
+    const fitHeight = ref(0)
+    const fit = () => {
+      const map = root.value?.querySelector('.n-screenmap')
+      if (!view.focused.value || !map) return
+      // Only with the cards around the image, not under it in a list.
+      if (getComputedStyle(map).gridTemplateAreas === 'none') {
+        fitHeight.value = 0
+        return
+      }
+      const parts = [...map.children]
+      const rows = parts.filter((el) => el.matches('.n-screenmap__top, .n-screenmap__bottom'))
+      // The grid always has a row above and below the image, each a gap away.
+      const gap = parseFloat(getComputedStyle(map).rowGap) || 0
+      const { paddingTop, paddingBottom } = getComputedStyle(root.value)
+      const room =
+        root.value.clientHeight -
+        parseFloat(paddingTop) -
+        parseFloat(paddingBottom) -
+        2 * gap -
+        rows.reduce((sum, el) => sum + el.getBoundingClientRect().height, 0)
+      const tallest = Math.max(
+        0,
+        ...parts
+          .filter((el) => el.matches('.n-screenmap__left, .n-screenmap__right'))
+          .map((el) => {
+            const cards = [...el.children]
+            return cards.length ? cards.at(-1).getBoundingClientRect().bottom - cards[0].getBoundingClientRect().top : 0
+          })
+      )
+      fitHeight.value = rows.length && room >= 0.9 * pageHeight.value && tallest <= room ? Math.floor(room) : 0
+    }
+    watch(view.focused, (on) => {
+      if (on) addEventListener('resize', fit)
+      else {
+        removeEventListener('resize', fit)
+        fitHeight.value = 0
+      }
+    })
+    onBeforeUnmount(() => removeEventListener('resize', fit))
+
+    const open = async () => {
       const frame = root.value?.querySelector('.hotshot__frame')
       pageHeight.value = frame ? Math.round(frame.getBoundingClientRect().height) : 0
-      view.open()
+      await view.open()
+      // Once the view is open, and again once the image has its new size,
+      // which can rewrap the rows.
+      fit()
+      await nextTick()
+      fit()
     }
 
     // A click on a region whose card has no link: light the card and bring
-    // it into view. Cards are in the page in reading order.
+    // it into view if it's out of view. Cards are in the page in reading order.
     const pick = (n) => {
       active.value = n
       const el = root.value?.querySelectorAll('.n-mapcard')[n - 1]
       if (!el) return
       const r = el.getBoundingClientRect()
-      // Below the sticky chrome: the breadcrumb strip, or the nav bar without it.
+      // Below the sticky chrome: the breadcrumb strip, or the nav bar without
+      // it. Full screen, the view covers both, so only its own top counts.
       const bar = document.querySelector('.n-pagebar') || document.querySelector('.n-navbar')
-      const chrome = bar ? bar.getBoundingClientRect().bottom : 56
+      const top = view.focused.value
+        ? root.value.getBoundingClientRect().top
+        : (bar ? bar.getBoundingClientRect().bottom : 56) + 24
       const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
-      if (r.top < chrome + 24 || r.bottom > window.innerHeight) {
+      if (r.top < top || r.bottom > window.innerHeight) {
         holdWhileScrolling()
         el.scrollIntoView({ block: 'center', behavior })
       }
@@ -166,6 +222,7 @@ export default defineComponent({
         'n-screenmap',
         {
           'is-focus': view.focused.value,
+          'is-fit': view.focused.value && fitHeight.value > 0,
           // Cards on both sides of a screenshot that isn't tall.
           'is-flanked': sides.left.length > 0 && sides.right.length > 0 && ar >= 0.75,
         },
@@ -204,11 +261,13 @@ export default defineComponent({
                   style: {
                     '--sm-ar': Number.isFinite(ar) ? ar.toFixed(4) : undefined,
                     '--sm-page-h': pageHeight.value ? `${pageHeight.value}px` : undefined,
+                    '--sm-fit-h': fitHeight.value ? `${fitHeight.value}px` : undefined,
                   },
                 },
+                // The image first, then the cards in reading order, so Tab
+                // reaches them in the order they're read when they're listed
+                // under the image. Around the image, grid areas place them.
                 [
-                  column('top'),
-                  column('left'),
                   h('div', { class: 'n-screenmap__shot' }, [
                     h(HotShot, {
                       src: props.src,
@@ -223,6 +282,8 @@ export default defineComponent({
                       onPick: pick,
                     }),
                   ]),
+                  column('top'),
+                  column('left'),
                   column('right'),
                   column('bottom'),
                 ]
@@ -266,7 +327,6 @@ export default defineComponent({
 
 .n-screenmap__shot {
   grid-column: 1 / -1;
-  order: -1;
   margin-bottom: 6px;
 }
 
@@ -378,7 +438,6 @@ export default defineComponent({
 
   .n-screenmap__shot {
     grid-area: shot;
-    order: 0;
     margin: 0;
   }
 
@@ -409,6 +468,12 @@ export default defineComponent({
      never comes out smaller than in the page. */
   .n-screenmap.is-focus.has-top {
     --hotshot-maxh: max(100vh - 260px, var(--sm-page-h, 0px));
+  }
+
+  /* Or the room the rows above and below it leave, so the whole map fits
+     in the window (fit() in the script). */
+  .n-screenmap.is-focus.is-fit {
+    --hotshot-maxh: var(--sm-fit-h);
   }
 }
 
@@ -450,7 +515,6 @@ export default defineComponent({
   .n-screenmap.is-flanked > .n-screenmap__shot {
     grid-area: auto;
     grid-column: 1 / -1;
-    order: -1;
     margin: 0 0 6px;
   }
 }
@@ -518,5 +582,19 @@ export default defineComponent({
 
 html.n-focus-open {
   overflow: hidden;
+}
+
+/* On a phone, full screen shows the image larger than the page can: up to
+   2.5 screens wide, as long as it stays short enough for the window, and the
+   image scrolls sideways. A tall screen stays as it is. */
+@media (max-width: 639px) {
+  .n-screenmap.is-focus .n-screenmap__shot {
+    overflow-x: auto;
+  }
+
+  .n-screenmap.is-focus .n-screenmap__shot .hotshot {
+    width: max(100%, min(var(--hotshot-shown), 250vw, (var(--hotshot-maxh, 100vh - 120px)) * var(--hotshot-ar)));
+    max-width: none;
+  }
 }
 </style>

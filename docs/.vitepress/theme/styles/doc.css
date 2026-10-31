@@ -138,6 +138,12 @@
   margin: 0 0 20px;
 }
 
+/* An accordion has no margin of its own under it, so text that follows one
+   keeps the same gap as between paragraphs. */
+.vp-doc .n-accordion + :is(p, ul, ol) {
+  margin-top: 20px;
+}
+
 .vp-doc strong {
   color: var(--n-text);
   font-weight: 600;
@@ -230,6 +236,12 @@
   font-size: 0.875em;
 }
 
+/* Short code with no spaces, such as mara-client, stays on one line instead
+   of breaking at its hyphen (see config.mjs). */
+.vp-doc code.n-nobreak {
+  white-space: nowrap;
+}
+
 .vp-doc div[class*='language-'] {
   position: relative;
   margin: 24px 0;
@@ -246,7 +258,21 @@
   background: transparent;
 }
 
+/* The first line starts under the language label, so a long line never
+   scrolls under it. */
+.vp-doc div[class*='language-']:has(> .lang:not(:empty)) > pre {
+  padding-top: 30px;
+}
+
+/* The block clips anything outside it, so the ring of a focused block, which
+   scrolls with the keyboard, is drawn inside it. */
+.vp-doc div[class*='language-'] > pre:focus-visible {
+  outline-offset: -2px;
+}
+
+/* The pre's padding is the only inset, so text starts 20px in. */
 .vp-doc div[class*='language-'] code {
+  padding: 0;
   font-family: var(--n-font-mono);
   font-size: 0.875rem;
   line-height: 1.65;
@@ -469,8 +495,9 @@
 
 /* A screenshot row, screen map or option panel at the top level of a page
    also takes the space beside the text column on a wide screen, up to
-   1040px, so the image and its legend both have room. */
-@media (min-width: 1280px) {
+   1040px, so the image and its legend both have room. It starts once that
+   gains at least 36px on each side, so it never reads as a misalignment. */
+@media (min-width: 1344px) {
   .n-layout.has-sidebar.has-aside .vp-doc > div > div > .n-shotrow-hold,
   .n-layout.has-sidebar.has-aside .vp-doc > div > div > .n-screenmap-hold,
   .n-layout.has-sidebar.has-aside .vp-doc > div > div > .n-demo {

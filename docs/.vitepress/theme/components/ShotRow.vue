@@ -70,7 +70,9 @@ function holdWhileScrolling() {
   const mine = ++holds
   holding = mine
   const end = () => setTimeout(() => holding === mine && (holding = 0), 100)
+  // The page scrolls, or the full-screen view does.
   addEventListener('scrollend', end, { once: true })
+  root.value?.addEventListener('scrollend', end, { once: true })
   // For a browser without scrollend.
   setTimeout(end, 1500)
 }
@@ -92,7 +94,7 @@ provide('n-hotspots', {
 const root = ref(null)
 const view = useFocusView(root)
 
-/** A click on a region with no link: light its row and bring it into view. */
+/** A click on a region with no link: light its row and bring it into view if it's out of view. */
 async function pick(n) {
   active.value = n
   const el = spots.value.find((s) => s.n === n)?.el?.()
@@ -110,9 +112,12 @@ async function pick(n) {
   }
   const r = el.getBoundingClientRect()
   // Below the sticky chrome: the breadcrumb strip, or the nav bar without it.
+  // Full screen, the view covers both, so only its own top counts.
   const bar = document.querySelector('.n-pagebar') || document.querySelector('.n-navbar')
-  const chrome = bar ? bar.getBoundingClientRect().bottom : 56
-  if (r.top < chrome + 24 || r.bottom > window.innerHeight) {
+  const top = view.focused.value
+    ? root.value.getBoundingClientRect().top
+    : (bar ? bar.getBoundingClientRect().bottom : 56) + 24
+  if (r.top < top || r.bottom > window.innerHeight) {
     holdWhileScrolling()
     const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
     el.scrollIntoView({ block: 'center', behavior })
@@ -361,6 +366,20 @@ async function pick(n) {
   /* A tall panel fills only part of its column, so it sits in the middle. */
   .n-shotrow.is-focus:not(.is-wide) :deep(.hotshot) {
     margin-inline: auto;
+  }
+}
+
+/* On a phone, full screen shows the image larger than the page can: up to
+   2.5 screens wide, as long as it stays short enough for the window, and the
+   image scrolls sideways. A tall panel stays as it is. */
+@media (max-width: 639px) {
+  .n-shotrow.is-focus .n-shotrow__shot {
+    overflow-x: auto;
+  }
+
+  .n-shotrow.is-focus .n-shotrow__shot :deep(.hotshot) {
+    width: max(100%, min(var(--hotshot-shown), 250vw, (var(--hotshot-maxh, 100vh - 120px)) * var(--hotshot-ar)));
+    max-width: none;
   }
 }
 </style>
