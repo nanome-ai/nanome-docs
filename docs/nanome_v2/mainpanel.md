@@ -346,7 +346,7 @@ Nanome calculates the properties with RDKit on its server, and Nanome Web shows 
 
 </Callout>
 
-The table below holds 8 inhibitors of p38α MAP kinase from the PDB. It looks like Nanome Web's table, which heads NumAtoms as **Atoms** and MolWeight as **MW**, and it sorts, searches and enlarges drawings the way Nanome XR does.
+The table below holds 8 inhibitors of p38α MAP kinase from the PDB. It looks like Nanome Web's table, with NumAtoms headed **Atoms** and MolWeight **MW**, and it sorts, searches and enlarges drawings the way Nanome XR does.
 
 <LigandTableDemo app="xr" />
 

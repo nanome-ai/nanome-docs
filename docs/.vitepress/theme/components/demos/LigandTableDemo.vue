@@ -7,12 +7,14 @@
  * line under the table explains the column or control last used; the filter
  * and preset buttons only change that line.
  *
- * With app="xr" it sorts, searches and previews the way Nanome XR's table
- * does, from its source: a third click on a header goes back to the default
- * order (NanoTable.CycleSort), search also matches the tag and property
- * values (LigandsMenuViewModel.MatchesFilters), and a drawing shows larger
- * while the pointer is on it (LigandsMenu, #ligand-large-preview). Nanome
- * Web wasn't seen doing these, so the default copy doesn't.
+ * Both copies sort and search the way both apps do, from their source: a
+ * third click on a header goes back to the default order (NanoTable.CycleSort
+ * in XR, removable-sort on Nanome Web's table), and search matches the name,
+ * the tag or any property value (LigandsMenuViewModel.MatchesFilters in XR,
+ * WorkspaceLigands in Nanome Web). The default copy heads its columns and
+ * puts info icons where Nanome Web does (ligands.js). With app="xr" a drawing
+ * also shows larger while the pointer is on it (LigandsMenu,
+ * #ligand-large-preview), which Nanome Web wasn't seen doing.
  *
  * Measured from the app: header cells 12px 16px on #f8fafc, 16px text, rows
  * 66px tall, the drawing frozen in an 88px first column, numbers to 3
@@ -57,6 +59,9 @@ let menuTrigger = null
 
 const order = (key) => selected.value.indexOf(key) + 1
 
+/** A column's header: the XR copy's label, or Nanome Web's header. */
+const head = (c) => (xr.value ? c.label : c.web || c.label)
+
 /** Entry and Name, the property columns in the order they were checked, then Tag. */
 const headers = computed(() => [BY_KEY.entry, BY_KEY.name, ...selected.value.map((k) => BY_KEY[k]), BY_KEY.tag])
 
@@ -80,11 +85,9 @@ function compare(a, b) {
   return collator.compare(String(a ?? ''), String(b ?? ''))
 }
 
-// Nanome Web's search matches the name. Nanome XR's also matches the tag and
-// any property value.
+// Both apps' search matches the name, the tag or any property value.
 function matches(l, q) {
   if (l.name.toLowerCase().includes(q)) return true
-  if (!xr.value) return false
   const tag = tags.value[l.ccd] || ''
   return tag.toLowerCase().includes(q) || Object.values(l.props).some((v) => String(v).toLowerCase().includes(q))
 }
@@ -129,22 +132,22 @@ function say(n) {
   note.value = n
 }
 
-/** Ascending, then descending. In Nanome XR a third click goes back to the default order. */
+/** Ascending, then descending, then a third click goes back to the default order. */
 function sortBy(c) {
   closeAll()
   const same = sort.value.key === c.key
   const words = isNumber(c) ? ['low to high', 'high to low'] : ['A to Z', 'Z to A']
-  if (xr.value && same && sort.value.dir === -1) {
+  if (same && sort.value.dir === -1) {
     sort.value = { key: null, dir: 1 }
     note.value = {
-      title: `${c.label} · unsorted`,
+      title: `${head(c)} · unsorted`,
       text: 'Back to the default order: entries in the order they were loaded, then model and name.',
     }
     return
   }
   const dir = same ? -sort.value.dir : 1
   sort.value = { key: c.key, dir }
-  note.value = { title: `${c.label} · ${words[dir === 1 ? 0 : 1]}`, text: c.desc }
+  note.value = { title: `${head(c)} · ${words[dir === 1 ? 0 : 1]}`, text: c.desc }
 }
 
 function ariaSort(c) {
@@ -154,8 +157,8 @@ function ariaSort(c) {
 
 function explain(c) {
   closeAll()
-  const same = c.label === c.key || FIXED.includes(c)
-  note.value = { title: same ? c.label : `${c.label} · ${c.key}`, text: c.desc }
+  const same = head(c) === c.key || FIXED.includes(c)
+  note.value = { title: same ? head(c) : `${head(c)} · ${c.key}`, text: c.desc }
 }
 
 function togglePicker(e) {
@@ -182,11 +185,8 @@ function toggle(o) {
   const on = !order(o.key)
   selected.value = on ? [...selected.value, o.key] : selected.value.filter((k) => k !== o.key)
   if (!on && sort.value.key === o.key) sort.value = { key: null, dir: 1 }
-  // Nanome Web heads only Atoms and MW in screenshots; Nanome XR heads every column by its name.
-  let head = ''
-  if (o.label !== o.key) head = ` Its column is headed ${o.label}.`
-  else if (!xr.value) head = ' This copy heads its column with the property name.'
-  note.value = { title: `${o.key} ${on ? 'on' : 'off'}`, text: `${o.desc}${head}` }
+  const named = head(o) === o.key ? '' : ` Its column is headed ${head(o)}.`
+  note.value = { title: `${o.key} ${on ? 'on' : 'off'}`, text: `${o.desc}${named}` }
 }
 
 const listed = computed(() => {
@@ -290,7 +290,7 @@ function act(kind) {
   closeAndRefocus()
   if (kind === 'sdf') note.value = { title: 'Download SDF', text: `Downloads ${l.name} as an SDF file.` }
   if (kind === 'sketch') note.value = { title: 'Sketch variant', text: `Opens ${l.name} in the 2D sketcher, to draw a variant of it.` }
-  if (kind === 'new') note.value = { title: 'New tag...', text: "Adds a custom tag to the workspace's list." }
+  if (kind === 'new') note.value = { title: 'New tag…', text: 'Adds a custom tag to the workspace’s list.' }
   if (kind === 'props') {
     const list = COLUMNS.map((c) => `${c.label} ${formatValue(l.props[c.key])}`).join(', ')
     note.value = { title: `${l.name} · Properties`, text: `${list}.` }
@@ -301,7 +301,9 @@ function setTag(t) {
   const l = menuRow.value
   closeAndRefocus()
   tags.value = { ...tags.value, [l.ccd]: t }
-  note.value = { title: `${l.name} · ${t}`, text: 'A ligand has 1 tag at most, so a new one replaces the old. Everyone in the workspace sees it.' }
+  note.value = t
+    ? { title: `${l.name} · ${t}`, text: 'A ligand has 1 tag at most, so a new one replaces the old. Everyone in the workspace sees it.' }
+    : { title: `${l.name} · Remove tag`, text: 'The ligand has no tag now, and its Tag cell shows a dash.' }
 }
 
 function onScroll(e) {
@@ -336,7 +338,7 @@ const caption = computed(() => {
     const q = query.value.trim()
     return {
       title: q ? `Search · ${rows.value.length} of ${LIGANDS.length}` : 'Search',
-      text: xr.value ? 'Matches the name, the tag or any property value.' : 'Filters the rows by name.',
+      text: 'Matches the name, the tag or any property value.',
     }
   }
   return n || {
@@ -445,8 +447,8 @@ const caption = computed(() => {
                 </th>
                 <th v-for="c in headers" :key="c.key" scope="col" :aria-sort="ariaSort(c)">
                   <span class="n-ltab__head">
-                    <!-- Nanome Web shows the column-info icon on MW (ligands-fullscreen.webp). -->
-                    <button v-if="c.key === 'MolWeight'" type="button" class="n-ltab__info" :aria-label="`What ${c.label} means`" @click="explain(c)">
+                    <!-- Nanome Web puts an info icon on each column with a tooltip; the XR copy keeps the one on MW. -->
+                    <button v-if="xr ? c.key === 'MolWeight' : c.tip" type="button" class="n-ltab__info" :aria-label="`What ${head(c)} means`" @click="explain(c)">
                       <AppIcon name="info-circle" size="16px" />
                     </button>
                     <button
@@ -455,7 +457,7 @@ const caption = computed(() => {
                       :class="{ 'is-up': ariaSort(c) === 'ascending', 'is-down': ariaSort(c) === 'descending' }"
                       @click="sortBy(c)"
                     >
-                      {{ c.label }}
+                      {{ head(c) }}
                       <svg viewBox="0 0 16 16" aria-hidden="true">
                         <path class="n-ltab__up" d="M5 13.5v-11M2 5.5l3-3 3 3" />
                         <path class="n-ltab__down" d="M11 2.5v11M8 10.5l3 3 3-3" />
@@ -540,7 +542,9 @@ const caption = computed(() => {
           :class="{ 'is-on': tags[menuRow.ccd] === t }"
           @click="setTag(t)"
         ><AppIcon name="tag" size="16px" />{{ t }}</button>
-        <button type="button" role="menuitem" tabindex="-1" @click="act('new')"><AppIcon name="plus" size="16px" />New tag...</button>
+        <!-- Only on a tagged ligand, as in Nanome Web. -->
+        <button v-if="tags[menuRow.ccd]" type="button" role="menuitem" tabindex="-1" @click="setTag('')"><AppIcon name="x" size="16px" />Remove tag</button>
+        <button type="button" role="menuitem" tabindex="-1" @click="act('new')"><AppIcon name="plus" size="16px" />New tag…</button>
       </div>
     </div>
 
