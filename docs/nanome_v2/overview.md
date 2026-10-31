@@ -34,7 +34,7 @@ These pages cover Nanome XR, version 2. Nanome Classic (v1.24), the earlier head
 
 ## Working together
 
-<IconGrid label="Working together" :cols="3">
+<IconGrid label="Working together">
 <IconCard icon="users-group" title="Collaboration" href="/nanome_v2/collaboration">Sharing a workspace and following each other.</IconCard>
 <IconCard icon="crown" title="Session Guide" href="/session-guide">Running a group session from start to finish.</IconCard>
 <IconCard icon="route" title="Sample Workflows" href="/nanome_v2/sampleworkflows">Step-by-step examples.</IconCard>
