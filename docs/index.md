@@ -2,11 +2,14 @@
 title: Home
 aside: false
 hero:
-  - img: /assets/carousels/hero/resonac.webp
+  - title: Resonac case study
+    img: /assets/carousels/hero/resonac.webp
     url: https://nanome.ai/blog/how-resonac-turned-two-years-of-misaligned-randd-into-a-single-afternoon-breakthrough
-  - img: /assets/carousels/hero/nimbus.png
+  - title: Nimbus Therapeutics case study
+    img: /assets/carousels/hero/nimbus.png
     url: https://nanome.ai/case-studies/nimbus-therapeutics
-  - img: /assets/carousels/hero/novartis.png
+  - title: Novartis case study
+    img: /assets/carousels/hero/novartis.png
     url: https://nanome.ai/case-studies/novartis
 start:
   - icon: device-vision-pro

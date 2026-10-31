@@ -8,9 +8,9 @@
     :autoplay="true"
     :autoplay-speed="5000"
   >
-    <template #default="{ item }">
-      <a :href="item.url" class="slide" target="_blank">
-        <img :src="item.img" />
+    <template #default="{ item, clone }">
+      <a :href="item.url" class="slide" target="_blank" :tabindex="clone ? -1 : undefined">
+        <img :src="item.img" :alt="item.title || item.alt || ''" />
       </a>
     </template>
   </SimpleCarousel>

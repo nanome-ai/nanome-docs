@@ -60,7 +60,7 @@ function onKey(event) {
         class="n-tabs__tab"
         :class="{ 'is-active': active === i }"
         :aria-selected="active === i ? 'true' : 'false'"
-        :aria-controls="panelId(i)"
+        :aria-controls="active === i ? panelId(i) : undefined"
         :tabindex="active === i ? 0 : -1"
         @click="active = i"
       >
@@ -97,13 +97,6 @@ function onKey(event) {
   display: none;
 }
 
-/* On a phone the tabs wrap, so none hides past the edge. */
-@media (max-width: 639px) {
-  .n-tabs__list {
-    flex-wrap: wrap;
-  }
-}
-
 .n-tabs__tab {
   padding: 10px 14px;
   border: 0;
@@ -115,6 +108,24 @@ function onKey(event) {
   white-space: nowrap;
   cursor: pointer;
   transition: color var(--n-transition), border-color var(--n-transition);
+}
+
+/* On a phone the tabs share one row and their labels wrap. A tab only
+   moves to a second row when a single word won't fit, so none hides past
+   the edge. */
+@media (max-width: 639px) {
+  .n-tabs__list {
+    flex-wrap: wrap;
+  }
+
+  /* A column, so labels of one and two lines all start at the top. */
+  .n-tabs__tab {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    padding: 10px 8px;
+    white-space: normal;
+  }
 }
 
 .n-tabs__tab:hover {
