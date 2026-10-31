@@ -2,7 +2,7 @@
 title: LiveDesign
 ---
 
-# LiveDesign Plugin documentation
+# LiveDesign
 
 ## Authentication
 
@@ -55,7 +55,7 @@ Lastly, click on "Login with Token", the plugin will update to show this menu:
 
 Note that this step is required once every 30 days (LiveDesign's tokens are refreshing every 30 days), most of the time, the token is re-used to avoid this step.
 
-# Usage
+## Usage
 
 This plugin allows you to load molecular data from LiveDesign or send ligand poses to a LiveReport.
 
@@ -92,21 +92,21 @@ Entity names can be filtered using the "Entity names" input field to only show p
 <UiItem name="Compound picture" area="4.6,37.9,16.0,23.5">Hover over it for a larger preview.</UiItem>
 <UiItem name="Larger preview" area="31.1,37.2,37.9,54.0">Shows while you hover.</UiItem>
 <UiItem name="Entity names" area="2.5,28.4,78.0,8.6">Filters the entity list.</UiItem>
+<UiItem name="Check box" area="22.2,47.2,3.6,5.4">Selects the entity.</UiItem>
+<UiItem name="Select all" area="6.3,91.4,20.4,8.4">Selects every entity.</UiItem>
+<UiItem name="Load" area="41.1,91.4,13.6,8.4">Loads the 3D data of the selected entities into Nanome.</UiItem>
+<UiItem name="Send to LiveDesign" href="#send-3d-poses-to-livedesign" area="63.1,91.4,31.7,8.4">Sends selected ligand poses to the LiveReport.</UiItem>
 </UiList>
 
 </ShotRow>
 
-<ShotRow src="plugins-page/livedesign/column.jpg" alt="The entity list with two added columns, Lot Scientist and Glide Docking">
+<ShotRow src="plugins-page/livedesign/column.jpg" alt="The LiveDesign Plugin menu with two added column filters, Lot Scientist and Glide Docking">
 
 You can also add up to 2 descriptive column and filter entities using the added column by clicking on the "+" sign:
 
-<UiList label="Columns and loading">
-<UiItem icon="plus" name="Add column" area="93.9,30.1,4.4,6.4">The "+" sign. Adds a descriptive column, up to 2.</UiItem>
-<UiItem name="Column filter" area="35.1,28.4,25.3,9.1">One for each added column, such as Lot Scientist. Filters entities by that column.</UiItem>
-<UiItem name="Check box" area="21.9,47.7,3.7,5.2">Selects the entity.</UiItem>
-<UiItem name="Select all" area="5.9,92.1,20.9,7.7">Selects every entity.</UiItem>
-<UiItem name="Load" area="40.5,92.1,14.4,7.7">Loads the 3D data of the selected entities into Nanome.</UiItem>
-<UiItem name="Send to LiveDesign" href="#send-3d-poses-to-livedesign" area="63.1,92.1,31.2,7.7">Sends selected ligand poses to the LiveReport.</UiItem>
+<UiList label="Added columns">
+<UiItem icon="plus" name="Add column" area="93.9,79.2,4.4,16.8">The "+" sign. Adds a descriptive column, up to 2.</UiItem>
+<UiItem name="Column filter" area="35.1,74.7,25.3,23.9">One for each added column, such as Lot Scientist. Filters entities by that column.</UiItem>
 </UiList>
 
 </ShotRow>

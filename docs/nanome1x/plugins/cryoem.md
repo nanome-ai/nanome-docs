@@ -37,7 +37,7 @@ There are two ways to load a map into Nanome:
 </ShotRow>
 
 #### Load from Vault
-- The Browse Vault button will open the Vault navigation menu.
+- **Load From Vault** opens the Vault navigation menu.
 - Find the maps and models you have already uploaded, select them, and press Load.
 
 #### Load from EMDB

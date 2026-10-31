@@ -4,11 +4,11 @@ title: Superimpose Proteins
 
 # Superimpose Proteins
 
-The Superimpose Proteins plugin overlays two or more proteins in 3D space for visual comparison and calculates Root Mean Square Deviation (RMSD) values as a numeric metric on structural similarity.
+The Superimpose Proteins plugin overlays two or more proteins in 3D space for visual comparison and calculates Root Mean Square Deviation (RMSD) values, a number in Å that measures how far apart the structures are.
 
 Protein overlay is done either by using backbone (alpha-carbons) or by using all heavy protein atoms; and the alignment can be done on the full protein or limited to a chain.
 
-A **Fixed Reference** structure is chosen, and **Moving Structures** are translocated to be superimposed upon the Fixed Reference. RMSD values are reported between the Fixed Reference and each Moving Structure.
+A **Fixed Reference** structure is chosen, and **Moving Structures** are rotated and moved onto the Fixed Reference. RMSD values are reported between the Fixed Reference and each Moving Structure.
 
 ## Instructions
 
@@ -129,7 +129,7 @@ The RMSD table for a chain run names the chain with each structure.
 
 7. **RMSD tables** report out fixed and moving structures (with chain when relevant) RMSD values, **paired residues**, and paired atoms
     - Note that when superimposing by backbone alpha carbons, the # of paired residues = # of paired atoms;  when superimposing by all heavy atoms, the # of paired residues will be ~8x less than the # of paired atoms because there are on average ~8 heavy atoms per residue.
-    - For two identical proteins, the RMSD would be zero.  Values close to zero indicate highly similar proteins.  Values over 10 are very different.  A combination of visual inspection and RMSD values gives a reasonable indication of how similar the structures are.
+    - For two identical proteins, the RMSD would be zero.  Values close to zero indicate highly similar proteins.  Values over 10 Å mean very different structures.  A combination of visual inspection and RMSD values gives a reasonable indication of how similar the structures are.
 
 
 ## Methodologies

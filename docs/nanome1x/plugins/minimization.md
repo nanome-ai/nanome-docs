@@ -4,7 +4,7 @@ title: Minimization
 
 # Minimization
 
-The minimization plugin optimizes the conformation of the selected molecule or complex to find a geometry where interatomic forces are as close to zero as possible.  The [molecular mechanics](https://open-babel.readthedocs.io/en/latest/Forcefields/Overview.html) methods developed by [Open Babel](https://openbabel.org/) are employed.
+The minimization plugin optimizes the conformation of the selected molecule or complex to find a geometry where the net force on each atom is as close to zero as possible.  The [molecular mechanics](https://open-babel.readthedocs.io/en/latest/Forcefields/Overview.html) methods developed by [Open Babel](https://openbabel.org/) are employed.
 
 <vimg src="plugins-page/minimization_plugin.png" />
 
@@ -23,7 +23,7 @@ The minimization process can be stopped at any time by pressing the 'Stop' butto
 
 Settings can be viewed and changed before running the minimization from the Advanced Settings icon button; this is the “gear wheel” in the main minimization window.
 
-Force fields that are supported in Nanome: *General AMBER*, *Ghemical*, *MMFF94*, *MMF94s*, and *Universal*. The default force field is **Universal**. 
+Force fields that are supported in Nanome: *General AMBER*, *Ghemical*, *MMFF94*, *MMFF94s*, and *Universal*. The default force field is **Universal**. 
 
 Choose from two first derivative techniques:
 - **Steepest Descent** to find a local minimum, best suited for starting structures far from the minimum; 

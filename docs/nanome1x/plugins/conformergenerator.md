@@ -6,7 +6,7 @@ title: Conformer Generator
 
 <vimg src="plugins-page/conformer-generator/overview.png" />
 
-The Conformer Generator Plugin uses RDKit and UFF minimization to deliver a collection of diverse, low energy conformers of a selected “seed” ligand. 3D results are captured as frames in a single new entry in the workspace. The associated minimized energy and similarity to the seed ligand (RMSD) for the seed and all conformers is accessible in both the Advanced Menu - Frames and via the Data Table Plugin.
+The Conformer Generator Plugin uses RDKit and UFF minimization to deliver a collection of diverse, low energy conformers of a selected “seed” ligand. 3D results are captured as frames in a single new entry in the workspace. Each conformer's minimized energy and its RMSD to the seed ligand are shown on the Meta Data tab of the Advanced Menu and in the Data Table plugin.
 
 ## Potential uses
 
@@ -35,7 +35,7 @@ Access the Conformer Generator plugin from the Stacks Menu.
 <Steps>
 
 1. In the upper left, the user can select either a protein entry containing a ligand or an individual ligand entry
-2. Next the number of conformers to be returned (50, 100 or 200 conformers) is chosen from the pulldown
+2. Next, choose the maximum number of conformers (50, 100 or 200) from the pulldown. Conformers too similar to one already kept are left out, so you may get fewer.
 3. Users may optionally choose to have the conformer set locked with the seed structure
 4. Clicking Generate runs the plugin.  During calculation, this button reads “Generating”
 5. Once complete, the “Generating” button returns to “Generate” state and a new entry appears in the entry list

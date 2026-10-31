@@ -20,9 +20,9 @@ Some examples of plugins that our customers love are:
 - Nanome Vault: Drag and Drop files on a website and access them on any device running Nanome (Amazing for Quest storage)
 - Molecular Docking: Running and viewing docking results (Autodock, etc)
 - Chemical Properties: Live chemical property prediction during design with RDKit
-- All of our public plugins are available on our [Github](https://github.com/nanome-ai) with the "plugins-" prefix.
+- All of our public plugins are on [GitHub](https://github.com/nanome-ai), with names that start with "plugin-".
 
-New users who sign up for a Nanome account get a 30-day free trial unlocking premium license capabilities and also early access to Nanome's cloud-hosted plugins.
+Every new Nanome account gets a 14-day Full license trial.
 
 If you would like to develop plugins for Nanome, please reach out to us by [contacting us](mailto:hello@nanome.ai) and take a look at our development resources such as our [API documentation](https://nanome.readthedocs.org).
 

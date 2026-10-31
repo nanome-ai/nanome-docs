@@ -6,15 +6,17 @@ title: Antibodies Representation
 
 The Antibody Representation plugin adds the IMGT color scheme, labels antibody regions on a selected protein, and highlights CDR loops.  A table of Antibody Regions allows independent selection of CDR loops for calculations or representational changes.  Importantly, only antibodies and fragments of antibodies are modified; the representation of antigens in the complex is unchanged.
 
+The plugin is accessible through the stacks menu. Select the antibody structure in the Entry list, click Activate and then Run. The structure will update with heavy and light chains colored in grays and CDR loops colored according to the IMGT scheme.
+
+<vimg src="plugins-page/antibodies/image1.png" />
+
 <table>
+<tbody>
 <tr>
-<td width="50%" ><vimg src="plugins-page/antibodies/image1.png"/></td>
-<td width="50%" >The plugin is accessible through the stacks menu. Select the antibody structure in the Entry list, click Activate and then Run.   The structure will update with heavy and light chains colored in grays and CDR loops colored according to the IMGT scheme.</td>
+<td width="50%"><vimg src="plugins-page/antibodies/image4.png" /></td>
+<td width="50%"><vimg src="plugins-page/antibodies/image7.png" /></td>
 </tr>
-<tr>
-<td><vimg src="plugins-page/antibodies/image4.png" /></td>
-<td><vimg src="plugins-page/antibodies/image7.png" /></td>
-</tr>
+</tbody>
 </table>
 
 *Output of run on PDB code 5GGS, PD-1 + pembrolizumab Fab and Regions Table. Note that only antibody portions are recolored and labeled; antigen protein remains as loaded*
@@ -29,10 +31,12 @@ Select CDR loops from the table by clicking on the labeled buttons.  The 3D stru
 Selection of CDR loops from the Regions table can be used in conjunction with other Nanome menus and plugins. Some examples of plugins are **Chemical Interactions** and **High Quality Surfaces**.
 
 <table>
+<tbody>
 <tr>
-<td><vimg src="plugins-page/antibodies/image9.png" /></td>
-<td><vimg src="plugins-page/antibodies/image6.png" /></td>
+<td width="50%"><vimg src="plugins-page/antibodies/image9.png" /></td>
+<td width="50%"><vimg src="plugins-page/antibodies/image6.png" /></td>
 </tr>
+</tbody>
 </table>
 
 ### Calculate **Chemical Interactions** between the residues of selected CDR loops with proteins within 5 angstroms in 4 steps.  
