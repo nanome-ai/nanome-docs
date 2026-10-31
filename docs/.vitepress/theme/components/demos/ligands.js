@@ -202,7 +202,9 @@ export function formatValue(v) {
 /**
  * The rows, in load order. `pdb` is the entry the ligand comes from, `about`
  * the name the RCSB gives it (entry title or CCD synonym), when it has one.
- * Tags are demo values.
+ * Tags are demo values, and so is `hidden`: it stands in for an entry hidden
+ * in the 3D view, which Filter by currently visible leaves out (1BL6 and 1BL7
+ * here, so turning it on lists 6 of 8).
  */
 export const LIGANDS = [
   { ccd: 'B96', pdb: '1KV2', entry: '1kv2', name: 'A:B96_391', tag: 'Lead', formula: 'C31 H37 N5 O3',
@@ -217,11 +219,11 @@ export const LIGANDS = [
     about: 'SB203580',
     smiles: 'C[S@](=O)c1ccc(cc1)c2[nH]c(c(n2)c3ccc(cc3)F)c4ccncc4',
     props: { NumAtoms: 43, NumHeavyAtoms: 27, MolWeight: 377.1, LogP: 4.682, TPSA: 58.64, HbondD: 1, HbondA: 3, NumRings: 4, NumAromaticRings: 4, NumAliphaticRings: 0, NumSaturatedRings: 0, InChIKey: 'CDMGBJANTYXAIV-MHZLTWQESA-N' } },
-  { ccd: 'SB4', pdb: '1BL7', entry: '1bl7', name: 'A:SB4_800', tag: '', formula: 'C18 H19 F N6',
+  { ccd: 'SB4', pdb: '1BL7', entry: '1bl7', name: 'A:SB4_800', tag: '', hidden: true, formula: 'C18 H19 F N6',
     about: 'SB220025',
     smiles: 'c1cc(ccc1c2c(n(cn2)C3CCNCC3)c4ccnc(n4)N)F',
     props: { NumAtoms: 44, NumHeavyAtoms: 25, MolWeight: 338.166, LogP: 2.653, TPSA: 81.65, HbondD: 2, HbondA: 5, NumRings: 4, NumAromaticRings: 3, NumAliphaticRings: 1, NumSaturatedRings: 1, InChIKey: 'VSPFURGQAYMVAN-UHFFFAOYSA-N' } },
-  { ccd: 'SB6', pdb: '1BL6', entry: '1bl6', name: 'A:SB6_800', tag: '', formula: 'C18 H16 F N3',
+  { ccd: 'SB6', pdb: '1BL6', entry: '1bl6', name: 'A:SB6_800', tag: '', hidden: true, formula: 'C18 H16 F N3',
     about: 'SB216995',
     smiles: 'c1cc(ccc1c2c(n(cn2)CC3CC3)c4ccncc4)F',
     props: { NumAtoms: 38, NumHeavyAtoms: 22, MolWeight: 293.133, LogP: 4.161, TPSA: 30.71, HbondD: 0, HbondA: 2, NumRings: 4, NumAromaticRings: 3, NumAliphaticRings: 1, NumSaturatedRings: 1, InChIKey: 'ROKOFZNQCIIJMI-UHFFFAOYSA-N' } },
@@ -237,4 +239,52 @@ export const LIGANDS = [
     about: 'sorafenib',
     smiles: 'CNC(=O)c1cc(ccn1)Oc2ccc(cc2)NC(=O)Nc3ccc(c(c3)C(F)(F)F)Cl',
     props: { NumAtoms: 48, NumHeavyAtoms: 32, MolWeight: 464.086, LogP: 5.55, TPSA: 92.35, HbondD: 3, HbondA: 4, NumRings: 3, NumAromaticRings: 3, NumAliphaticRings: 0, NumSaturatedRings: 0, InChIKey: 'MLDQJTXFUGDVEO-UHFFFAOYSA-N' } },
+]
+
+/**
+ * The filter operators and each app's label for them: LigandMetadataFilterOps
+ * in Nanome XR (a symbol, with the name as its tooltip) and the `to` map beside
+ * WorkspaceLigandsFilters in Nanome Web. A property gets NUMERIC_OPS when it's
+ * Rating or any ligand's value is a number, otherwise TEXT_OPS, in both apps
+ * (LigandFiltersPopup.UpdateOperatorOptions; `no` and `Ci` in Nanome Web).
+ */
+export const OPERATORS = {
+  EQUALS: { xr: '=', web: '=', name: 'Equal to' },
+  NOT_EQUALS: { xr: '≠', web: '≠', name: 'Not equal to' },
+  LESS_THAN: { xr: '<', web: '<', name: 'Less than' },
+  LESS_THAN_OR_EQUAL: { xr: '≤', web: '≤', name: 'Less than or equal to' },
+  GREATER_THAN: { xr: '>', web: '>', name: 'Greater than' },
+  GREATER_THAN_OR_EQUAL: { xr: '≥', web: '≥', name: 'Greater than or equal to' },
+  CONTAINS: { xr: '~', web: 'contains', name: 'Contains' },
+  NOT_CONTAINS: { xr: '!~', web: 'does not contain', name: 'Does not contain' },
+  STARTS_WITH: { xr: '^', web: 'starts with', name: 'Starts with' },
+  ENDS_WITH: { xr: '$', web: 'ends with', name: 'Ends with' },
+}
+export const NUMERIC_OPS = ['EQUALS', 'NOT_EQUALS', 'LESS_THAN', 'LESS_THAN_OR_EQUAL', 'GREATER_THAN', 'GREATER_THAN_OR_EQUAL']
+export const TEXT_OPS = ['EQUALS', 'NOT_EQUALS', 'CONTAINS', 'NOT_CONTAINS', 'STARTS_WITH', 'ENDS_WITH']
+
+/** Both apps add Rating to the filter's property list (LigandsMenuPresenter, `R` in WorkspaceLigandsTable). */
+export const RATING = 'Rating'
+
+/**
+ * 2 example view presets. A preset holds columns and filters, and applying it
+ * sets both (LigandsMenuViewModel.ApplyPreset; applyPreset in Nanome Web's
+ * ligandTable store). With the values above, the first lists 6 of 8 (B96, MW
+ * 527.290, and BAX, LogP 5.55, drop out) and the second 4 of 8 (B96 80.65,
+ * SB4 81.65, PQB 110.6 and BAX 92.35 Å²).
+ */
+export const PRESETS = [
+  {
+    name: 'MW < 500, LogP ≤ 5',
+    columns: ['NumAtoms', 'MolWeight', 'LogP'],
+    filters: [
+      { key: 'MolWeight', op: 'LESS_THAN', value: '500' },
+      { key: 'LogP', op: 'LESS_THAN_OR_EQUAL', value: '5' },
+    ],
+  },
+  {
+    name: 'TPSA over 80',
+    columns: ['TPSA', 'HbondD', 'HbondA'],
+    filters: [{ key: 'TPSA', op: 'GREATER_THAN', value: '80' }],
+  },
 ]

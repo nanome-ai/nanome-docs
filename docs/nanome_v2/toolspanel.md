@@ -28,6 +28,12 @@ Viewers can use <Btn icon="droplet">Pointer</Btn>, <Btn icon="lasso">Selection T
 
 </Callout>
 
+## <AppIcon name="hand-click" /> The controller in each tool {#controller}
+
+Choosing a tool also changes what your dominant-hand controller shows: the tool's badge and, for tools with modes, the current mode above the thumbstick.
+
+<ToolsDemo />
+
 ## <AppIcon name="droplet" /> Pointer {#pointer}
 
 The Pointer is the default tool.
@@ -85,6 +91,12 @@ Each measurement is listed in the panel with its type and value. Hovering a row 
 </ShotRow>
 
 <ShotRow src="nanome-v2/v2-7/measurement-types.webp" alt="A distance from the 1KV2 ligand to Met109, and a dihedral and an angle on the ligand">
+
+<UiList label="Measurement types">
+<UiItem icon="ruler-measure" name="Distance" area="19.9,40.7,8.9,22.9">2 atoms, in Å.</UiItem>
+<UiItem icon="rotate-clockwise-2" name="Dihedral" area="60.4,32.1,16.1,12.9">4 atoms: the torsion around the axis from atom 2 to atom 3, in degrees.</UiItem>
+<UiItem icon="angle" name="Angle" area="67.7,45.7,8.2,17.9">3 atoms, measured at the second atom, in degrees.</UiItem>
+</UiList>
 
 <Callout type="note" title="Dihedrals show without a sign">
 

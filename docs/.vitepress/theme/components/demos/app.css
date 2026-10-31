@@ -36,34 +36,26 @@
   container-type: inline-size;
 }
 
-/* Side by side: the render runs the height of the panel beside it, between
-   a 2:1 and a 1.1:1 shape, with the structure kept in the middle. Short
-   panels spread their controls to match. */
+/* Side by side: the render keeps its frame's shape at every width (the stage
+   sets it from the frame), so no control can resize it. A long panel, such
+   as the open Interactions list, scrolls past the render, which stays in
+   view. */
 @media (min-width: 760px) {
   .n-demo {
     grid-template-columns: 21rem minmax(0, 1fr);
-    align-items: stretch;
+    align-items: start;
   }
 
   .n-demo__view {
+    position: sticky;
+    top: calc(var(--n-nav-height) + var(--n-pagebar-space) + 20px);
     order: 0;
-  }
-
-  .n-demo .n-demo-stage {
-    flex: 1 1 auto;
-    min-height: max(13rem, 50cqi);
-    max-height: 91cqi;
-    aspect-ratio: auto;
-  }
-
-  .n-demo .n-app-card.is-spread {
-    justify-content: space-between;
   }
 }
 
 .n-demo__caption {
   flex: none;
-  min-height: 3em;
+  min-height: 4.5em;
   margin-top: 10px;
   color: var(--n-text-muted);
   font-size: var(--n-text-sm);
@@ -339,6 +331,32 @@
 .n-app-scheme:disabled {
   opacity: 0.45;
   cursor: not-allowed;
+}
+
+/* Uniform's colors: round swatches, as in Nanome XR's picker, ringed when
+   picked. The thin ring keeps a white swatch visible on the white card. */
+.n-app-swatches {
+  display: flex;
+  gap: 8px;
+  padding: 2px 4px;
+}
+
+.n-app-swatch {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 2px solid var(--app-card);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--app-track);
+  cursor: pointer;
+}
+
+.n-app-swatch:hover {
+  box-shadow: 0 0 0 2px var(--app-track);
+}
+
+.n-app-swatch.is-on {
+  box-shadow: 0 0 0 2px var(--app-text);
 }
 
 /* Themes: a list with the picked one in purple, and the day/night button. */

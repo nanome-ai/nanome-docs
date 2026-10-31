@@ -1,8 +1,9 @@
 <script setup>
 /**
  * A working copy of the representation panel, as Nanome Web draws it, beside
- * a render of 1KV2's ligand in its binding site. The switches always show
- * what the render contains:
+ * a render of 1KV2's ligand in its binding site, with the pocket around it
+ * as Wire in every render. The switches always show what the render
+ * contains:
  *
  * - One atomistic style is on at a time, and one always stays on.
  * - Cartoon, Residue Label and Surface each come with the ligand as Stick,
@@ -10,6 +11,9 @@
  *   time.
  * - The interaction list shows the ligand as Stick, with the types that are
  *   switched on drawn.
+ *
+ * Each app has its own renders: Nanome XR's with its floor, Nanome Web's
+ * without.
  *
  * It steps through the styles by itself until the reader picks one.
  *
@@ -22,7 +26,8 @@ import DemoStage from './DemoStage.vue'
 import { arrowPick } from './arrows.js'
 import { useAutoplay } from './autoplay.js'
 import {
-  ATOMISTIC, HYDROGENS, HYDROGEN_DESC, INTERACTIONS, MACRO, SURFACES, SURFACE_DESC, interactionFrame,
+  ATOMISTIC, HYDROGENS, HYDROGEN_DESC, INTERACTIONS, MACRO, SURFACES, SURFACE_DESC, interactionFrame, repFrame,
+  surfaceFrame,
 } from './data.js'
 
 const props = defineProps({ app: { type: String, default: 'web' } })
@@ -40,10 +45,10 @@ const note = ref(null)
 const count = computed(() => INTERACTIONS.filter((t) => ints[t.key]).length)
 
 function frameFor(s) {
-  if (s.list) return interactionFrame(ints)
-  if (s.extra === 'surface') return SURFACES.find((x) => x.key === s.surface).src
-  if (s.extra) return MACRO.find((x) => x.key === s.extra).src
-  return ATOMISTIC.find((x) => x.key === s.atom).src
+  if (s.list) return interactionFrame(props.app, ints)
+  if (s.extra === 'surface') return surfaceFrame(props.app, s.surface)
+  if (s.extra) return repFrame(props.app, MACRO.find((x) => x.key === s.extra).file)
+  return repFrame(props.app, ATOMISTIC.find((x) => x.key === s.atom).file)
 }
 const state = () => ({ atom: atom.value, extra: extra.value, surface: surface.value, list: showList.value })
 const src = computed(() => frameFor(state()))
@@ -119,16 +124,15 @@ const caption = computed(() => {
   if (note.value) return note.value
   if (showList.value) {
     // Only the types 1KV2's binding site has are drawn, so name those.
-    const shown = [
-      ['hb', 'hydrogen bonds in yellow'],
-      ['salt', 'salt bridges in orange'],
-      ['hydrophobic', 'hydrophobic contacts in gray'],
-    ].filter(([k]) => ints[k]).map(([, s]) => s)
+    const shown = INTERACTIONS.filter((t) => t.here && ints[t.key]).map((t) => t.shown(t.here))
     const list = shown.length > 1 ? `${shown.slice(0, -1).join(', ')} and ${shown.at(-1)}` : shown[0]
+    // Pocket + Ligand draws every interaction inside it, and both salt
+    // bridges here join pocket residues.
+    const salt = ints.salt ? ' Both salt bridges join pocket residues to each other.' : ''
     return {
       title: `Interactions · ${count.value} ${count.value === 1 ? 'type' : 'types'} on`,
       text: list
-        ? `Dashed lines between the atoms that interact. In this binding site: ${list}.`
+        ? `Dashed lines between the atoms that interact. In this binding site: ${list}.${salt}`
         : count.value
           ? '1KV2’s binding site has none of the types that are on, so no lines show.'
           : 'Every type is off, so no lines show.',
@@ -136,11 +140,11 @@ const caption = computed(() => {
   }
   if (extra.value === 'surface') {
     const s = SURFACES.find((x) => x.key === surface.value)
-    return { title: `Surface · ${s.name}`, text: `${s.desc} ${SURFACE_DESC}` }
+    return { title: `Surface · ${s.name}`, text: [s.desc, SURFACE_DESC, s.after].filter(Boolean).join(' ') }
   }
   if (extra.value) {
     const m = MACRO.find((x) => x.key === extra.value)
-    return { title: label(m), text: `${m.desc} The ligand is drawn as Stick.` }
+    return { title: label(m), text: m.desc }
   }
   const a = ATOMISTIC.find((x) => x.key === atom.value)
   return { title: label(a), text: a.desc }

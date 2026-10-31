@@ -2,8 +2,11 @@
 /**
  * The render beside an option panel. Frames that have been shown stay in
  * the page, stacked, so going back to one is an instant fade; the next frame
- * the autoplay will show is loaded ahead of time. A frame with a dark copy
- * swaps with the site theme.
+ * the autoplay will show is loaded ahead of time, and `preload` puts a whole
+ * set in the page up front. A frame with a dark copy swaps with the site
+ * theme. The stage always has the frame's shape, so it never changes size
+ * while the frames of one set (all the same size) come and go. `cut` swaps
+ * frames without the fade, for playback.
  */
 import { computed, nextTick, ref, watch } from 'vue'
 import AppIcon from '../AppIcon.vue'
@@ -14,10 +17,14 @@ const props = defineProps({
   next: { type: String, default: '' },
   alt: { type: String, default: '' },
   playing: { type: Boolean, default: false },
+  preload: { type: Array, default: () => [] },
+  cut: { type: Boolean, default: false },
+  /** The round play button that steps through the options. */
+  playButton: { type: Boolean, default: true },
 })
 const emit = defineEmits(['toggle'])
 
-const loaded = ref([props.src])
+const loaded = ref([...new Set([props.src, ...props.preload])])
 const stage = ref(null)
 
 // The frame on show. A newly picked frame takes over once its image has
@@ -37,9 +44,9 @@ function painted(src) {
 }
 
 watch(
-  () => [props.src, props.next],
-  ([src, next]) => {
-    for (const s of [src, next]) if (s && !loaded.value.includes(s)) loaded.value.push(s)
+  () => [props.src, props.next, ...props.preload],
+  ([src, ...more]) => {
+    for (const s of [src, ...more]) if (s && !loaded.value.includes(s)) loaded.value.push(s)
     nextTick(() => {
       if (src === props.src && (ready.has(src) || painted(src))) shown.value = src
     })
@@ -55,7 +62,7 @@ const frames = computed(() => loaded.value.map((src) => ({ src, info: imageInfo(
 </script>
 
 <template>
-  <div ref="stage" class="n-demo-stage" :style="{ '--stage-ar': ratio }">
+  <div ref="stage" class="n-demo-stage" :class="{ 'is-cut': cut }" :style="{ '--stage-ar': ratio }">
     <div
       v-for="f in frames"
       :key="f.src"
@@ -67,6 +74,7 @@ const frames = computed(() => loaded.value.map((src) => ({ src, info: imageInfo(
       <img v-if="f.info.dark" class="n-demo-stage__img n-demo-stage__dark no-zoom" :src="f.info.dark" :alt="f.src === shown ? alt : ''" loading="lazy" decoding="async" @load="onReady(f.src)" @error="onReady(f.src)" />
     </div>
     <button
+      v-if="playButton"
       type="button"
       class="n-demo-stage__play"
       :aria-label="playing ? 'Stop stepping through the options' : 'Step through the options'"
@@ -97,6 +105,10 @@ const frames = computed(() => loaded.value.map((src) => ({ src, info: imageInfo(
 
 .n-demo-stage__frame.is-on {
   opacity: 1;
+}
+
+.n-demo-stage.is-cut .n-demo-stage__frame {
+  transition: none;
 }
 
 .vp-doc .n-demo-stage__img,
