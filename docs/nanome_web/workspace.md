@@ -7,7 +7,7 @@ title: Workspace View
 
 An open workspace has the workspace panel on the right, the 3D view in the middle and the scenes rail on the left.
 
-The panel's six tabs are the workspace's main menus:
+The panel's 6 tabs are the workspace's main menus:
 
 <ScreenMap src="nanome-web/workspace-overview.webp" alt="A workspace in Nanome Web" label="Workspace View screen">
 <MapCard icon="stack-2" title="Entries" href="/nanome_web/entries" side="top" area="66.0,29.9,5.6,5.3">The structures and how each is drawn.</MapCard>
@@ -18,7 +18,7 @@ The panel's six tabs are the workspace's main menus:
 <MapCard icon="users" title="Users" href="/nanome_web/collaboration" side="top" area="94.5,29.9,4.4,5.3">Sharing and sending to a headset.</MapCard>
 <MapCard icon="cube-3d-sphere" title="Workspace tabs" href="#workspace-tabs" side="left" area="0.4,7.6,9.0,5.3">One tab for each open workspace, under the top bar.</MapCard>
 <MapCard icon="box" title="Scenes rail" href="#scenes" side="left" area="0.0,12.9,3.1,87.1">The scenes saved in this workspace, on the left.</MapCard>
-<MapCard icon="chevrons-right" title="Workspace panel" href="#workspace-panel" side="right" area="66.2,12.9,33.8,87.1">The workspace's name, project and description, above the six tabs.</MapCard>
+<MapCard icon="chevrons-right" title="Workspace panel" href="#workspace-panel" side="right" area="66.2,12.9,33.8,87.1">The workspace's name, project and description, above the 6 tabs.</MapCard>
 <MapCard icon="lasso" title="Tool rail" href="#tool-rail" side="right" area="62.9,47.0,3.0,19.2">Default, Selection, Measurement and Add a comment, on the view's right edge.</MapCard>
 <MapCard icon="mouse" title="Moving around" href="#moving-around" side="bottom" area="3.2,12.9,62.9,87.1">Rotate, pan and zoom with the mouse or touch.</MapCard>
 <MapCard icon="player-play" title="Bottom bar" href="#bottom-bar" side="bottom" area="3.5,93.7,39.6,5.7">Point of view, scene stepping and playback, Capture image and viewer settings.</MapCard>
@@ -27,12 +27,12 @@ The panel's six tabs are the workspace's main menus:
 
 ## <AppIcon name="chevrons-right" /> Workspace panel {#workspace-panel}
 
-The panel shows the workspace name, project and description above its six tabs. Its header has these buttons:
+The panel shows the workspace name, project and description above its 6 tabs. Its header has these buttons:
 
 <UiList label="Workspace panel header">
 <UiItem icon="chevrons-right" name="Collapse panel">At the top of the panel: collapses it to give the viewer more room.</UiItem>
 <UiItem icon="device-vision-pro" name="Open in XR" href="/nanome_web/collaboration#sending-a-workspace-to-a-headset">Sends this workspace to Nanome XR on your headset. With other people in the headset's session, it asks whether to load it just for you or for everyone.</UiItem>
-<UiItem icon="dots" name="More (...)" href="/nanome_web/home#workspaces">Open in new tab, Edit info, Copy shareable link, Duplicate, Open in XR, Move to project, Export analysis and Delete.</UiItem>
+<UiItem icon="dots" name="More (...)" href="/nanome_web/home#workspaces">Open in new tab, Edit info, Copy shareable link, Duplicate, Open in XR, Move to project, Export analysis and Delete. If you don't own the workspace or its project, Leave takes the place of Delete.</UiItem>
 </UiList>
 
 ## <AppIcon name="sparkles" /> MARA tab {#mara-tab}
@@ -60,7 +60,7 @@ More on what MARA can do is in the [MARA section](/mara/overview).
 
 ## <AppIcon name="lasso" /> Tool rail {#tool-rail}
 
-The four buttons on the right edge of the viewer choose what a click in the 3D view does. Hovering a button names it.
+The 4 buttons on the right edge of the viewer choose what a click in the 3D view does. Hovering a button names it.
 
 <UiList label="Tool rail">
 <UiItem icon="droplet" name="Default" href="#default">Hover highlights a residue, and a click selects it. No modes.</UiItem>
@@ -115,9 +115,9 @@ In Nanome XR, the [Selection Tool](/nanome_v2/toolspanel#selection-tool) can als
 The Measurement tool measures between atoms. The bar sets what it measures:
 
 <UiList label="Measurement modes">
-<UiItem icon="ruler-measure" name="Distance">Click 2 atoms. The distance, in ångströms to two decimal places. The tool opens in this mode.</UiItem>
-<UiItem icon="angle" name="Angle">Click 3 atoms. The angle at the second atom, in degrees to one decimal place.</UiItem>
-<UiItem icon="rotate-clockwise-2" name="Dihedral">Click 4 atoms. The torsion angle around the bond axis from atom 2 to atom 3, in degrees from 0° to 180°, to one decimal place.</UiItem>
+<UiItem icon="ruler-measure" name="Distance">Click 2 atoms. The distance, in ångströms to 2 decimal places. The tool opens in this mode.</UiItem>
+<UiItem icon="angle" name="Angle">Click 3 atoms. The angle at the second atom, in degrees to 1 decimal place.</UiItem>
+<UiItem icon="rotate-clockwise-2" name="Dihedral">Click 4 atoms. The torsion angle around the bond axis from atom 2 to atom 3, in degrees from 0° to 180°, to 1 decimal place.</UiItem>
 <UiItem icon="trash" name="Delete">Removes the measurement that's clicked.</UiItem>
 <UiItem icon="x" name="Exit tool">Goes back to the Default tool.</UiItem>
 </UiList>
@@ -190,19 +190,19 @@ While you're [following someone](/nanome_web/collaboration#following-from-the-we
 
 </Accordion>
 
-When the connection to Nanome's server is slow, a warning icon <AppIcon name="wifi-off" /> appears at the top left of the viewer. Hovering it shows the ping time.
+When the ping to Nanome's server reaches 160 ms, a yellow warning icon <AppIcon name="alert-triangle" /> appears at the top left of the viewer. From 220 ms it turns into a red <AppIcon name="wifi-off" />. Hovering it shows the ping time.
 
 ## <AppIcon name="player-play" /> Bottom bar {#bottom-bar}
 
-The bottom of the viewer has Settings on the left, the scene controls in the middle and Sequence on the right.
+The bottom of the viewer has Settings on the left, the scene controls in the middle and Sequences on the right.
 
 <UiList label="Bottom bar">
 <UiItem icon="settings" name="Settings" href="#viewer-settings">The viewer settings.</UiItem>
 <UiItem icon="scan-eye" name="Set point of view" href="#point-of-view">Saves the current view as the point of view of the active scene.</UiItem>
 <UiItem icon="chevron-right" name="‹ 1/1 ›">Steps to the previous or next scene. The number shows the active scene and the total.</UiItem>
 <UiItem icon="player-play" name="Play scenes" href="#playing-scenes">Plays through the scenes in order.</UiItem>
-<UiItem icon="camera" name="Capture image">Saves an image of the current view.</UiItem>
-<UiItem icon="mist" name="Sequence" href="#sequence-viewer">Opens the sequence viewer, at the bottom right.</UiItem>
+<UiItem icon="camera" name="Capture image">Opens the Capture Image card, with sizes from Single column (1050 × 788) to 8K (7680 × 4320) and switches for Include annotations and Include background. <strong>Capture</strong> saves the image.</UiItem>
+<UiItem icon="mist" name="Sequences" href="#sequence-viewer">Opens the sequence viewer, at the bottom right.</UiItem>
 </UiList>
 
 ### <AppIcon name="settings" /> Viewer settings {#viewer-settings}
@@ -216,7 +216,7 @@ The bottom of the viewer has Settings on the left, the scene controls in the mid
 <UiItem icon="arrows-maximize" name="Fullscreen" area="14.8,74.6,73.8,10.2">Shows the viewer full screen.</UiItem>
 </UiList>
 
-The seven themes match the themes in Nanome XR.
+The 7 themes match the themes in Nanome XR.
 
 </ShotRow>
 
@@ -240,7 +240,7 @@ Each theme has a day palette and a night palette. A palette sets the colors of t
 
 ## <AppIcon name="mist" /> Sequence viewer {#sequence-viewer}
 
-The **Sequence** button at the bottom right of the viewer opens the sequences of every entry in the workspace, one row per entry, with chain labels and residue numbers above the letters. Hovering a residue highlights it in 3D and names it at the top right of the sequence viewer (for example, `4ceo A: GLY 59`). Clicking residues selects them.
+The **Sequences** button at the bottom right of the viewer opens the sequences of every entry in the workspace, one row per entry, with chain labels and residue numbers above the letters. Hovering a residue highlights it in 3D and names it at the top right of the sequence viewer (for example, `4ceo A: GLY 59`). Clicking residues selects them.
 
 <ShotRow src="nanome-web/sequence-panel.webp" alt="The sequence viewer for 4CEO">
 
@@ -261,7 +261,7 @@ The **Sequence** button at the bottom right of the viewer opens the sequences of
 
 A scene is a saved view of the workspace: its components, annotations, molecule positions and point of view. The rail lists scenes by number. A workspace holds up to 50 scenes and always keeps at least 1.
 
-<ShotRow src="nanome-web/scenes-panel-menu.webp" alt="The Scenes panel with a scene menu open">
+<ShotRow src="nanome-web/scenes-panel-menu.webp" alt="The scenes rail with a scene menu open">
 
 <UiList label="Scenes rail">
 <UiItem icon="chevrons-left" name="Collapse / Expand" area="41.0,5.5,6.8,8.8">At the top: narrows the rail to the scene numbers, or widens it again to show the scene names.</UiItem>
@@ -277,7 +277,7 @@ A scene is a saved view of the workspace: its components, annotations, molecule 
 
 - A workspace opens on the scene you last viewed in it, or on its first scene.
 - Switching scenes moves your view to the scene's [point of view](#point-of-view), and stops [following](/nanome_web/collaboration#following-from-the-web) anyone you were following.
-- Creating, renaming, duplicating and deleting scenes, and setting a point of view, need Editor access.
+- Creating, renaming, duplicating, deleting and reordering scenes (by dragging them in the rail), and setting a point of view, need Editor access.
 
 ### <AppIcon name="dots" /> Scene menu {#scene-menu}
 
