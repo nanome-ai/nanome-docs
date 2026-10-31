@@ -42,7 +42,7 @@ Torsion Tool twists rotatable bonds and changes the dihedral angles between atom
 
 ## MedChem Tools
 
-<vimg src="features-page/medchem.gif" alt="Adding rings and atoms to a molecule with the MedChem Rings & Chains and Atoms & Bonds menus" />
+<vimg src="features-page/medchem.gif" alt="Adding a ring from the MedChem Rings & Chains menu, then an alcohol from Functional Groups" />
 
 MedChem Tools let you add and remove atoms with your hands.
 

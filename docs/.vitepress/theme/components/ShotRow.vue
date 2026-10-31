@@ -249,7 +249,9 @@ async function pick(n) {
   line-height: 1.55;
 }
 
-.n-shotrow__legend > :deep(.n-steps p) {
+.n-shotrow__legend > :deep(.n-steps p),
+.n-shotrow__legend > :deep(ol li > p),
+.n-shotrow__legend > :deep(ul li > p) {
   line-height: inherit;
 }
 

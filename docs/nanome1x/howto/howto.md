@@ -21,8 +21,10 @@ Auto Height Adjust can be turned on or off from the action menu. If users are ha
 ## How to export a molecule for future access or other software
 
 1. Select the structure you want to save.
-2. On the Entry List menu, click the [Export button](/nanome1x/navigation/menus#menu-actions)
-3. On the menu that appears after clicking Export, select where on your computer you want to save the structure (Desktop or Documents), and then select the file format you want to export to (pdb, sdf, or mmcif).
+2. On the Entry List menu, click the [Export button](/nanome1x/navigation/menus#menu-actions).
+3. In Save As, name the file and pick the format (.PDB, .SDF or .MMCIF).
+4. Under Where, pick Desktop or Documents.
+5. Select Export.
 
 ## How to load a structure stored on local computer
 

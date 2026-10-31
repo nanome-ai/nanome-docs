@@ -8,9 +8,11 @@ title: Conformer Generator
 
 The Conformer Generator Plugin uses RDKit and UFF minimization to deliver a collection of diverse, low energy conformers of a selected “seed” ligand. 3D results are captured as frames in a single new entry in the workspace. Each conformer's minimized energy and its RMSD to the seed ligand are shown on the Meta Data tab of the Advanced Menu and in the Data Table plugin.
 
+For the seed, the plugin reports the UFF energy of a minimized copy, while the seed frame keeps the original pose. So the seed's conf energy belongs to a nearby energy minimum, at or below the energy of the bound pose.
+
 ## Potential uses
 
-1. Assess whether a protein bound ligand conformation is one of its low energy unbound conformations or if instead it is adopting a higher energy conformation
+1. Check whether the protein-bound pose sits near one of the ligand's low energy conformations, by comparing the seed's energy and RMSD with the conformers'
 2. Compare conformer energy and RMSD to that of the “seed” ligand
 3. Obtain low energy conformers for further analysis in docking protocols
 4. Visualize whether a ligand has many or few diverse low energy conformations available to it, to inform design strategy for more constrained or more flexible analogs
@@ -38,7 +40,7 @@ Access the Conformer Generator plugin from the Stacks menu.
 2. Next, choose the maximum number of conformers (50, 100 or 200) from the pulldown. Conformers too similar to one already kept are left out, so you may get fewer.
 3. Users may optionally choose to have the conformer set locked with the seed structure
 4. Clicking Generate runs the plugin.  During calculation, this button reads “Generating”
-5. Once complete, the “Generating” button returns to “Generate” state and a new entry appears in the entry list
+5. Once complete, the “Generating” button returns to “Generate” state and a new entry appears in the Entry List
 6. The new entry of conformer frames has associated meta data of conformation energy and RMSD to seed ligand
 
 </Steps>
@@ -65,7 +67,7 @@ Access the Conformer Generator plugin from the Stacks menu.
 
 <ShotRow src="plugins-page/conformer-generator/result.png" alt="The Conf Gen panel back in its Generate state next to the Entry List with the new 50D conf entry, its Advanced Menus button, and the conformer in the workspace">
 
-The conformer entry of frames opens in the workspace, and the new entry list item appears, with a link to the Advanced Menu for navigating frames.
+The conformer entry of frames opens in the workspace, and the new Entry List item appears, with a link to the Advanced Menu for navigating frames.
 
 <UiList label="After the run">
 <UiItem name="Generate" area="4.0,81.1,31.0,15.4">Back in its Generate state once the run is done.</UiItem>
@@ -112,7 +114,7 @@ The Data Table plugin can also be used to view results and is accessible through
 <UiList label="Data Table graph">
 <UiItem name="Y Axis" area="74.8,32.9,25.0,10.8">Set to conf rmsd here.</UiItem>
 <UiItem name="X Axis" area="74.8,49.6,24.8,8.1">Set to conf energy here.</UiItem>
-<UiItem name="Seed ligand" area="7.5,73.6,12.9,26.4">At RMSD 0, with an energy of 126.65 kcal/mol.</UiItem>
+<UiItem name="Seed ligand" area="7.5,73.6,12.9,26.4">At RMSD 0, the original pose. Its energy, 126.65 kcal/mol, is for the minimized copy.</UiItem>
 </UiList>
 
 </ShotRow>

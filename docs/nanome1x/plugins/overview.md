@@ -20,7 +20,8 @@ Some examples of plugins:
 - Nanome Vault: drag and drop files on a website and open them on any device running Nanome
 - Molecular Docking: Running and viewing docking results (Smina and AutoDock 4)
 - Chemical Properties: Live chemical property prediction during design with RDKit
-- All of our public plugins are on [GitHub](https://github.com/nanome-ai), with names that start with "plugin-".
+
+All of our public plugins are on [GitHub](https://github.com/nanome-ai), with names that start with "plugin-".
 
 Every new Nanome account gets a 14-day Full license trial.
 
@@ -34,7 +35,7 @@ These plugins have their own pages:
 - [Minimization](minimization.md)
 - [RMSD](rmsd.md)
 - [Real-time Scoring](realtimescoring.md)
-- [Molecular Docking](docking.md)
+- [Docking](docking.md)
 - [Chemical Properties](chemicalproperties.md)
 - [Structure Prep](structureprep.md)
 - [Chemical Interactions](cheminteractions.md)

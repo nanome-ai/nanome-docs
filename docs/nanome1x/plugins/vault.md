@@ -13,7 +13,7 @@ There are three primary folders in the Nanome Vault:
 - my org: shared only with users in your organization (requires an Organization set up at https://home.nanome.ai)
 - account: a folder only you can see
 
-Inside your account folder there are a few preset folders, such as Pictures, Workspaces and Molecules. Users can create new folders, move files around, and even encrypt folders.
+Nanome saves exports to folders inside account, such as Workspaces, Structures, Recordings and Pictures. Each one appears the first time something is saved there. You can also create folders, move files and encrypt folders.
 
 When accessing Vault from the web browser (at https://vault.nanome.ai), it asks you to log in with your Nanome account.
 
