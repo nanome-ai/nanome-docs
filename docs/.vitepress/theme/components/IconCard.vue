@@ -17,6 +17,9 @@ const props = defineProps({
   area: { type: String, default: '' },
 })
 
+/** Off-site links open in a new tab, as Card's do. */
+const external = computed(() => /^https?:/.test(props.href))
+
 const shot = inject('n-hotspots', null)
 const box = parseBox(props.area)
 const card = ref(null)
@@ -34,6 +37,8 @@ const leave = () => n && shot.leave(n)
     class="n-iconcard"
     :class="{ 'is-active': active }"
     :href="href"
+    :target="external ? '_blank' : undefined"
+    :rel="external ? 'noopener noreferrer' : undefined"
     @mouseenter="enter"
     @mouseleave="leave"
     @focus="enter"

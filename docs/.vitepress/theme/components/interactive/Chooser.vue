@@ -118,9 +118,13 @@ function stepNumber(step) {
 </script>
 
 <template>
-  <div class="n-chooser">
+  <div class="n-chooser" :class="{ 'is-bare': !title }">
     <div class="n-chooser__panel">
-      <div v-if="title || answered" class="n-chooser__head">
+      <div
+        v-if="title || answered"
+        class="n-chooser__head"
+        :class="{ 'is-bare': !title }"
+      >
         <p v-if="title" class="n-chooser__title">{{ title }}</p>
         <button
           v-if="answered"
@@ -203,6 +207,7 @@ function stepNumber(step) {
 }
 
 .n-chooser__panel {
+  position: relative;
   padding: 22px 24px;
   border: 1px solid var(--n-border);
   border-radius: var(--n-radius-lg);
@@ -215,6 +220,19 @@ function stepNumber(step) {
   justify-content: space-between;
   gap: 16px;
   margin-bottom: 18px;
+}
+
+/* With no title, "Start over" sits beside the first question, so the first
+   answer doesn't push the options down. The question keeps room for it. */
+.n-chooser__head.is-bare {
+  position: absolute;
+  top: 21px;
+  right: 24px;
+  margin: 0;
+}
+
+.n-chooser.is-bare .n-chooser__step:nth-child(1 of .n-chooser__step) .n-chooser__label {
+  padding-right: 6rem;
 }
 
 .n-chooser__title {
@@ -361,6 +379,11 @@ function stepNumber(step) {
 @media (max-width: 520px) {
   .n-chooser__panel {
     padding: 18px 16px;
+  }
+
+  .n-chooser__head.is-bare {
+    top: 17px;
+    right: 16px;
   }
 
   .n-chooser__options {

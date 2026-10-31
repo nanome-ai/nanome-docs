@@ -47,7 +47,6 @@ onMounted(() => {
         v-if="count > 1"
         type="button"
         class="n-accordions__toggle"
-        :aria-pressed="String(allOpen)"
         @click="toggleAll"
       >
         {{ allOpen ? 'Collapse all' : 'Expand all' }}

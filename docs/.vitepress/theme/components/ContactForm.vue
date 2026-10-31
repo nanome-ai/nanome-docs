@@ -168,9 +168,26 @@ async function onSubmit() {
   width: 100%;
   font-size: 1.1rem;
   padding: 0.5rem;
-  border: 1px solid var(--vp-c-border);
+  /* 3:1 against the page in both themes, so the fields read as fields. */
+  border: 1px solid color-mix(in srgb, var(--n-text) 45%, transparent);
   box-sizing: border-box;
   border-radius: 4px;
+}
+
+/* VitePress turns the outline off on focused fields; put the site's ring back. */
+.contact :is(input, select, textarea):focus-visible {
+  outline: 2px solid var(--n-accent);
+  outline-offset: 1px;
+}
+
+/* The browser arrow is gone (appearance: none), so draw one. Longhands keep
+   base.css's transparent background colour. */
+.contact select {
+  padding-right: 2rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%238a8a8a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.6rem center;
+  background-size: 14px;
 }
 
 .contact span.required,
