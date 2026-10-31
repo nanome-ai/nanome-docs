@@ -13,7 +13,7 @@
  * legend row (`pick`). The expand button opens the full-screen view; on an
  * image with no regions, so does clicking the image itself.
  */
-import { computed } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { imageInfo, parseBox } from './image.js'
 
 const props = defineProps({
@@ -54,17 +54,65 @@ const image = computed(() => {
   }
 })
 
-/** A box in full-image percent, placed inside the cropped frame. */
-function place(box) {
+/** A box in full-image percent, as [x, y, w, h] in percent of the cropped frame. */
+function framed(box) {
   const [cx, cy, cw, ch] = crop.value
   const [x, y, w, h] = box
-  return {
-    left: `${((x - cx) / cw) * 100}%`,
-    top: `${((y - cy) / ch) * 100}%`,
-    width: `${(w / cw) * 100}%`,
-    height: `${(h / ch) * 100}%`,
-  }
+  return [((x - cx) / cw) * 100, ((y - cy) / ch) * 100, (w / cw) * 100, (h / ch) * 100]
 }
+
+/** A box in full-image percent, placed inside the cropped frame. */
+function place(box) {
+  const [x, y, w, h] = framed(box)
+  return { left: `${x}%`, top: `${y}%`, width: `${w}%`, height: `${h}%` }
+}
+
+// The frame's size on screen, to know how much of it the expand button covers.
+const frameEl = ref(null)
+const frameSize = ref(null)
+let sizer = null
+onMounted(() => {
+  if (typeof ResizeObserver === 'undefined' || !frameEl.value) return
+  sizer = new ResizeObserver(([entry]) => {
+    // A frame in a closed tab has no size until the tab opens.
+    const { width, height } = entry.contentRect
+    if (width && height) frameSize.value = [width, height]
+  })
+  sizer.observe(frameEl.value)
+})
+onBeforeUnmount(() => sizer?.disconnect())
+
+/**
+ * The expand button's corner. It sits bottom right unless it would cover part
+ * of a region there, such as a Send or Close button. Then it tries top right,
+ * top left and bottom left in turn, or else takes the corner where it hides
+ * the least of one. A region over a quarter of the frame, such as a whole
+ * panel, doesn't count: the button hides only its edge.
+ */
+const corner = computed(() => {
+  if (!props.spots.length) return ''
+  const [fw, fh] = frameSize.value || [400, 400 / ratio.value]
+  // The button is 25px square, 8px in from the edges; 1px more all round.
+  const bw = (27 / fw) * 100
+  const bh = (27 / fh) * 100
+  const boxes = props.spots.map((s) => framed(s.box)).filter(([, , w, h]) => w * h < 2500)
+  const covers = ([top, left]) => {
+    const x = left ? (7 / fw) * 100 : 100 - (7 / fw) * 100 - bw
+    const y = top ? (7 / fh) * 100 : 100 - (7 / fh) * 100 - bh
+    return Math.max(
+      0,
+      ...boxes.map(([sx, sy, sw, sh]) => {
+        const ox = Math.min(x + bw, sx + sw) - Math.max(x, sx)
+        const oy = Math.min(y + bh, sy + sh) - Math.max(y, sy)
+        return ox > 0 && oy > 0 ? (ox * oy) / (sw * sh) : 0
+      })
+    )
+  }
+  const scored = [[false, false], [true, false], [true, true], [false, true]].map((c) => [covers(c), c])
+  const [, [top, left]] =
+    scored.find(([part]) => part === 0) || scored.reduce((best, c) => (c[0] < best[0] ? c : best))
+  return [top && 'is-top', left && 'is-left'].filter(Boolean).join(' ')
+})
 
 // Larger regions first, so a smaller one inside it stays on top to hover.
 const ordered = computed(() =>
@@ -90,6 +138,7 @@ function pick(spot) {
 <template>
   <div class="hotshot" :class="{ 'has-dark': !!info.dark, 'is-focus': focus }" :style="outer">
     <div
+      ref="frameEl"
       class="hotshot__frame"
       :class="{ 'opens-on-click': opensOnClick }"
       :style="frame"
@@ -121,6 +170,17 @@ function pick(spot) {
         loading="lazy"
         decoding="async"
       />
+      <!-- Full screen, a GIF plays: the original, over its still copy while it loads. -->
+      <img
+        v-if="focus && info.isGif"
+        class="hotshot__img no-zoom"
+        :src="info.zoom"
+        alt=""
+        :width="info.size?.[0]"
+        :height="info.size?.[1]"
+        :style="image"
+        decoding="async"
+      />
 
       <component
         :is="s.href ? 'a' : 'span'"
@@ -146,7 +206,7 @@ function pick(spot) {
       />
 
 
-      <span v-if="info.isGif" class="hotshot__play" aria-hidden="true">&#9654;</span>
+      <span v-if="info.isGif && !focus" class="hotshot__play" aria-hidden="true">&#9654;</span>
       <span v-if="!focus && opensOnClick" class="hotshot__expand" aria-hidden="true">
         <svg viewBox="0 0 24 24" width="15" height="15"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
       </span>
@@ -154,6 +214,7 @@ function pick(spot) {
         v-else-if="!focus"
         type="button"
         class="hotshot__expand is-button"
+        :class="corner"
         :aria-label="`${alt || 'Screenshot'}. Show larger`"
         title="Show larger"
         @click.stop="emit('open')"
@@ -279,6 +340,17 @@ function pick(spot) {
   border: 0;
   cursor: zoom-in;
   pointer-events: auto;
+}
+
+/* Out of the way of a region in the bottom right corner. */
+.hotshot__expand.is-top {
+  top: 8px;
+  bottom: auto;
+}
+
+.hotshot__expand.is-left {
+  right: auto;
+  left: 8px;
 }
 
 .hotshot__expand.is-button:hover {

@@ -117,6 +117,9 @@ async function pick(n) {
       ref="root"
       class="n-shotrow"
       :class="{ 'is-wide': wide, 'is-focus': view.focused.value, 'has-spots': spots.length > 0 }"
+      :role="view.focused.value ? 'dialog' : undefined"
+      :aria-modal="view.focused.value ? 'true' : undefined"
+      :aria-label="(view.focused.value && alt) || undefined"
       @click.capture="view.onClick"
     >
       <button class="n-focus-close" type="button" aria-label="Close" @click="view.close">
