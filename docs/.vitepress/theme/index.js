@@ -1,4 +1,14 @@
-import DefaultTheme from 'vitepress/theme-without-fonts'
+// The default theme's global styles (variables, base, utilities, markdown
+// content, code blocks) come first, so the cascade order is unchanged.
+import 'vitepress/dist/client/theme-default/styles/vars.css'
+import 'vitepress/dist/client/theme-default/styles/base.css'
+import 'vitepress/dist/client/theme-default/styles/icons.css'
+import 'vitepress/dist/client/theme-default/styles/utils.css'
+import 'vitepress/dist/client/theme-default/styles/components/custom-block.css'
+import 'vitepress/dist/client/theme-default/styles/components/vp-code.css'
+import 'vitepress/dist/client/theme-default/styles/components/vp-code-group.css'
+import 'vitepress/dist/client/theme-default/styles/components/vp-doc.css'
+import VPBadge from 'vitepress/dist/client/theme-default/components/VPBadge.vue'
 import mediumZoom from 'medium-zoom'
 import { nextTick, onMounted, watch } from 'vue'
 import { useRoute } from 'vitepress'
@@ -49,14 +59,14 @@ import Steps from './components/interactive/Steps.vue'
 import CopyBlock from './components/interactive/CopyBlock.vue'
 import Callout from './components/interactive/Callout.vue'
 
-// `extends` still gives us the default theme's markdown-level pieces — code
-// group tabs, `<Badge>`, and the local search dialog the nav bar imports.
-// Only the Layout is replaced.
+// The default theme's global styles and `<Badge>` are imported directly at the
+// top, and the nav bar imports its search button and dialog. Only its Layout,
+// and every component under it, is left out.
 export default {
-  extends: DefaultTheme,
   Layout,
 
   enhanceApp({ app }) {
+    app.component('Badge', VPBadge)
     app.component('Vimg', Vimg)
     app.component('ToggleSection', ToggleSection)
     app.component('ContactForm', ContactForm)
@@ -96,10 +106,13 @@ export default {
 
   setup() {
     const route = useRoute()
+    // One zoom for the whole visit. Each page swaps in its own images, so
+    // the zoom's document listeners don't pile up as the reader moves on.
+    let zoom
     const initZoom = () => {
-      mediumZoom('.vimg > img, .vp-doc img:not(.no-zoom)', {
-        background: 'var(--n-bg)',
-      })
+      zoom ??= mediumZoom({ background: 'var(--n-bg)' })
+      zoom.detach()
+      zoom.attach('.vimg > img, .vp-doc img:not(.no-zoom)')
     }
     onMounted(initZoom)
     watch(
