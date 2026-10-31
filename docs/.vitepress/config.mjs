@@ -264,10 +264,10 @@ export default defineConfig({
   // directly. The section highlight in the rails uses the same line.
   scrollOffset: { selector: ['.n-pagebar', '.n-navbar'], padding: 40 },
 
-  srcExclude: isProduction ? ['contributing/**'] : [],
-
   // Each page's image entries go in its own script (see imageData above).
   vite: { plugins: [imageData()] },
+
+  srcExclude: isProduction ? ['contributing/**'] : [],
 
   // A line that starts with <Btn> or <AppIcon> stays a paragraph. VitePress
   // otherwise reads any line that starts with a component as a block of its

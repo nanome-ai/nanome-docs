@@ -10,6 +10,18 @@
 // screenshot and running `npm run docs:compress` is enough. Pass --force to
 // rebuild everything.
 //
+// An image wider than SMALL_MIN also gets a copy SMALL_WIDTH wide,
+// `<name>.w800.webp`, listed in image-small.json. A screenshot beside its
+// legend shows about 390px wide, so 1x and 2x screens load that copy, and the
+// full-screen view loads the full one (see image.js).
+//
+// The theme script doesn't carry the lists this script writes
+// (docs/.vitepress/theme/image-*.json): the build hands each page the entries
+// for the images it names (imageData in docs/.vitepress/config.mjs). Every
+// list is sorted, one image per line, so the same images always give the same
+// files. After a merge that adds or deletes images, run
+// `npm run docs:compress` and commit what it writes (and removes).
+//
 // A screenshot can have a dark-mode twin saved beside it as
 // `<name>.dark.<ext>`. The script lists those pairs in
 // docs/.vitepress/theme/image-variants.json, and <Vimg> shows the twin while
@@ -18,17 +30,6 @@
 // It also records the width of each 2x screenshot (the folders in HIDPI) in
 // image-widths.json, so <Vimg> shows them at their on-screen size instead of
 // stretching a narrow panel across the content column.
-//
-// An image wider than SMALL_MIN also gets a copy SMALL_WIDTH wide,
-// `<name>.w800.webp`, listed in image-small.json. A screenshot beside its
-// legend shows about 390px wide, so 1x and 2x screens load that copy, and the
-// full-screen view loads the full one (see image.js).
-//
-// The theme script doesn't carry these lists: the build hands each page the
-// entries for the images it names (imageData in docs/.vitepress/config.mjs).
-// Every list is sorted, one image per line, so the same images always give the
-// same files. After a merge that adds or deletes images, run
-// `npm run docs:compress` and commit what it writes (and removes).
 
 const sharp = require('sharp')
 const fs = require('fs')
