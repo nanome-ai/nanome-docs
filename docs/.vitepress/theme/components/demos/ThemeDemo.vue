@@ -46,26 +46,29 @@ function flip() {
 
 const current = computed(() => THEMES.find((t) => t.key === theme.value))
 const src = computed(() => themeFrame(props.app, theme.value, night.value))
+// Pure Black has no mountains in Nanome XR: every color in its sky is black.
+function xrText() {
+  return theme.value === 'pure-black'
+    ? 'A plain black sky, the same by day and by night, with the floor under the structures.'
+    : 'Mountains in the theme’s colors all around you, with the floor under the structures.'
+}
 const caption = computed(() => ({
   title: `${current.value.name} · ${night.value ? 'Night' : 'Day'}`,
-  text: props.app === 'xr'
-    ? 'Mountains in the theme’s colors all around you, with the floor under the structures.'
-    : 'The viewer’s background in the theme’s colors.',
+  text: props.app === 'xr' ? xrText() : 'The viewer’s background in the theme’s colors.',
 }))
 </script>
 
 <template>
   <div ref="root" class="n-demo" v-on="auto.hold">
     <div class="n-app-card n-app-themes is-spread" role="group" aria-label="Theme">
-      <div class="n-app-themelist" role="radiogroup" aria-label="Theme">
+      <div class="n-app-themelist" role="group" aria-label="Theme">
         <button
           v-for="t in THEMES"
           :key="t.key"
           type="button"
-          role="radio"
           class="n-app-theme"
           :class="{ 'is-on': theme === t.key }"
-          :aria-checked="theme === t.key"
+          :aria-pressed="theme === t.key"
           @click="pick(t)"
         >{{ t.name }}</button>
       </div>

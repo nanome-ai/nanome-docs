@@ -42,8 +42,8 @@ const frames = computed(() => loaded.value.map((src) => ({ src, info: imageInfo(
       :class="{ 'is-on': f.src === src, 'has-dark': !!f.info.dark }"
       :aria-hidden="f.src === src ? undefined : 'true'"
     >
-      <img class="n-demo-stage__img n-demo-stage__light no-zoom" :src="f.info.light" :alt="f.src === src ? alt : ''" decoding="async" />
-      <img v-if="f.info.dark" class="n-demo-stage__img n-demo-stage__dark no-zoom" :src="f.info.dark" :alt="f.src === src ? alt : ''" decoding="async" />
+      <img class="n-demo-stage__img n-demo-stage__light no-zoom" :src="f.info.light" :alt="f.src === src ? alt : ''" loading="lazy" decoding="async" />
+      <img v-if="f.info.dark" class="n-demo-stage__img n-demo-stage__dark no-zoom" :src="f.info.dark" :alt="f.src === src ? alt : ''" loading="lazy" decoding="async" />
     </div>
     <button
       type="button"
