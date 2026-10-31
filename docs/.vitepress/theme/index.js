@@ -45,6 +45,7 @@ import ColorSchemeDemo from './components/demos/ColorSchemeDemo.vue'
 import ThemeDemo from './components/demos/ThemeDemo.vue'
 import DistanceDemo from './components/demos/DistanceDemo.vue'
 import LigandTableDemo from './components/demos/LigandTableDemo.vue'
+import ToolsDemo from './components/demos/ToolsDemo.vue'
 import './components/demos/app.css'
 
 // Interactive building blocks, usable from any markdown page.
@@ -112,6 +113,7 @@ export default {
     app.component('ThemeDemo', ThemeDemo)
     app.component('DistanceDemo', DistanceDemo)
     app.component('LigandTableDemo', LigandTableDemo)
+    app.component('ToolsDemo', ToolsDemo)
 
     app.component('Chooser', Chooser)
     app.component('ChooserResult', ChooserResult)
