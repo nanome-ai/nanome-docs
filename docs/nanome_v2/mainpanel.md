@@ -363,7 +363,7 @@ Each one comes from an X-ray structure of human p38α MAP kinase (UniProt Q16539
 | A:SB6_800 | [SB6](https://www.rcsb.org/ligand/SB6) | [1BL6](https://www.rcsb.org/structure/1BL6) | SB216995 |
 | A:MSQ_500 | [MSQ](https://www.rcsb.org/ligand/MSQ) | [1DI9](https://www.rcsb.org/structure/1DI9) | |
 | A:PQB_361 | [PQB](https://www.rcsb.org/ligand/PQB) | [2GFS](https://www.rcsb.org/structure/2GFS) | RO3201195 |
-| A:BAX_1 | [BAX](https://www.rcsb.org/ligand/BAX) | [3HEG](https://www.rcsb.org/structure/3HEG) | Sorafenib |
+| A:BAX_1 | [BAX](https://www.rcsb.org/ligand/BAX) | [3HEG](https://www.rcsb.org/structure/3HEG) | sorafenib |
 
 The RDKit calls are `Chem.AddHs` then `GetNumAtoms` for NumAtoms, `GetNumHeavyAtoms` for NumHeavyAtoms, `Descriptors.ExactMolWt` for MolWeight, `Crippen.MolLogP` for LogP, `Chem.MolToInchiKey` for InChIKey, and the matching `rdMolDescriptors` function for TPSA, HbondD, HbondA and the 4 ring counts.
 

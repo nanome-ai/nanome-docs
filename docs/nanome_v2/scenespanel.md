@@ -9,7 +9,7 @@ The Scenes Panel sits in the left sidebar, beside the Main Panel. A scene is a s
 <ScreenMap src="nanome-v2/v2-7/desktop-layout.webp" alt="The left sidebar with the Scenes Panel controls" crop="0,9.6,15.6,60.7" label="Left sidebar">
 <MapCard icon="layout-grid" title="Workspace header" href="#workspace-header" side="top" area="0.5,10.5,14.7,6.2">The workspace name, network health and access.</MapCard>
 <MapCard icon="box" title="Scene controls" href="#controls" side="top" area="0.9,20.1,14.0,4.1">Create, step through and play scenes.</MapCard>
-<MapCard icon="dots" title="Scene menu" href="#scene-menu" side="left" area="1.2,25.3,11.5,5.6">On a scene's row, shown on hover: rename, duplicate, copy a POV, or record a presentation in the scene.</MapCard>
+<MapCard icon="dots" title="Scene menu" href="#scene-menu" side="top" area="1.2,25.3,11.5,5.6">On a scene's row, shown on hover: rename, duplicate, copy a POV, or record a presentation in the scene.</MapCard>
 <MapCard icon="users" title="Users" href="#users-section" side="bottom" area="0.9,55.5,14.0,4.0">Who's in the workspace, Share and Spotlight Me.</MapCard>
 <MapCard icon="crown" title="Spotlight Mode" href="#spotlight-mode" side="bottom" area="0.9,59.7,14.0,4.1">Share your view, or follow someone else's.</MapCard>
 </ScreenMap>
@@ -79,7 +79,7 @@ Since release 2.6, a scene can hold a recorded presentation: the presenter's voi
 
 Switching scenes stops the recording, after a confirmation. A scene with a recording shows <AppIcon name="video" /> and its length in the scene list.
 
-**Play scenes** opens a playback bar: <Btn icon="arrow-left">Previous</Btn> <Btn icon="arrow-right">Next</Btn> <Btn icon="player-play">Play</Btn> <Btn icon="player-stop">Stop playback</Btn> <Btn icon="analyze-filled">Recenter</Btn>
+**Play scenes** opens a playback bar: <Btn icon="arrow-left">Previous scene</Btn> <Btn icon="arrow-right">Next scene</Btn> <Btn icon="player-play">Play</Btn> <Btn icon="player-stop">Stop playback</Btn> <Btn icon="analyze-filled">Recenter</Btn>
 
 <Callout type="note" title="A recording locks the workspace">
 
@@ -97,7 +97,7 @@ At the bottom of the sidebar, the **Users** section shows who's in the workspace
 <UiItem icon="chevrons-right" name="Collapse sidebar">Collapses the sidebar.</UiItem>
 </UiList>
 
-### Multi-User Scene Indicators
+### Multi-user scene indicators
 
 <ShotRow src="nanome-v2/scenes-panel-multiuser-indicators.jpg" alt="Ana's and Ben's Scenes Panels, with colored dots on Scene 1 showing that both are viewing it">
 
@@ -134,7 +134,7 @@ Followers are listed with an <AppIcon name="eye" /> eye icon beside their name.
 
 </ShotRow>
 
-People in Nanome XR see a prompt for about 6 seconds, with **Not now** to decline, before they follow a new spotlight. Since release 2.7, Nanome Web viewers follow straight away. A **You are following** popup has **Stop Following**. After you stop, a **You stopped following** popup offers **Resume Following** for 3 seconds. Holding the grip also stops following.
+People in Nanome XR see a prompt for about 6 seconds, with **Not now** to decline, before they follow a new spotlight. Since release 2.7, people in Nanome Web follow straight away. A **You are following** popup has **Stop Following**. After you stop, a **You stopped following** popup offers **Resume Following** for 3 seconds. Holding the grip also stops following.
 
 <Accordion title="Changes in 2.7" teaser="Joining mid-spotlight, live edits and follow chains.">
 

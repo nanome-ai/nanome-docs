@@ -18,7 +18,7 @@ The Nanome XR environment is a floor with a skybox around it, with the structure
 
 Since release 2.7 the skyboxes are procedurally generated mountains in the colors of each theme, in day and night versions. Pure Black is a plain black sky.
 
-<ShotRow src="nanome-v2/v2-7/settings-tab.webp" alt="The top of the Settings tab, with night mode, floor, theme and passthrough" crop="0,5.5,100,12">
+<ShotRow src="nanome-v2/v2-7/settings-tab.webp" alt="The top of the Settings tab, with night mode, floor, theme and passthrough" crop="0,6.6,100,10.65">
 
 They're set at the top of the [Settings tab](/nanome_v2/mainpanel#settings-tab):
 
@@ -31,7 +31,7 @@ They're set at the top of the [Settings tab](/nanome_v2/mainpanel#settings-tab):
 
 </ShotRow>
 
-Each theme in the copy below shows the view from a headset in it, by day or by night.
+The view below shows each theme from a headset, by day and by night.
 
 <ThemeDemo app="xr" />
 

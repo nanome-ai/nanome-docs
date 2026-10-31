@@ -4,7 +4,7 @@ title: Sequence Panel
 
 # Sequence Panel
 
-The Sequence Panel shows the sequences of all loaded structures, protein and nucleic acid chains alike, in a horizontal, scrollable view. Open it with <Btn icon="mist">Sequences</Btn> at the bottom-right of the [Components tab](/nanome_v2/mainpanel#components-tab).
+The Sequence Panel shows the sequences of all loaded structures, protein and nucleic acid chains alike, in a horizontal, scrollable view. <Btn icon="mist">Sequences</Btn> at the bottom-right of the [Components tab](/nanome_v2/mainpanel#components-tab) opens it.
 
 ## <AppIcon name="mist" /> Features {#features}
 

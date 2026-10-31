@@ -5,7 +5,7 @@ title: Tools Panel
 
 # Tools Panel
 
-The Tools Panel is the column of buttons on the right side of the Main Panel. Choosing a tool changes what the controller does in 3D and opens that tool's panel. The tools, from top to bottom, and the three more buttons below them:
+The Tools Panel is the column of buttons on the right side of the Main Panel. Choosing a tool changes what the controller does in 3D and, for every tool but the Pointer, opens that tool's panel. The tools, from top to bottom, and the three buttons below them:
 
 <ScreenMap src="nanome-v2/v2-7/desktop-layout.webp" alt="The Tools Panel, with the Pointer chosen" crop="40.0,9.5,22.3,60.8" label="Tools Panel buttons">
 <MapCard icon="droplet" title="Pointer" href="#pointer" side="top" area="50.0,11.3,2.3,4.0">Hover over and select whole residues.</MapCard>
@@ -96,7 +96,7 @@ Dihedral angles show from 0° to 180° without a sign, so torsions of −60° an
 
 ## <AppIcon name="message" /> Comments {#comments}
 
-<DocVideo src="v2-7/comments.mp4" caption="Comments, from the v2.7 release video. The Agent tag in the video is for illustration." />
+<DocVideo src="v2-7/comments.mp4" caption="Comments in Nanome Web, from the v2.7 release video. The Agent tag in the video is for illustration." />
 
 Since release 2.7, comments and annotations share one panel: the Comments tool. It holds the workspace's comments and its text and sound notes. A comment can belong to the whole workspace, to a scene or to an annotation, and it can point at specific atoms. Comments appear for everyone in the workspace as they're posted, in Nanome XR and in Nanome Web.
 
@@ -108,7 +108,7 @@ Since release 2.7, comments and annotations share one panel: the Comments tool. 
 <UiItem icon="text-size" name="Text" area="15.4,9.8,24.4,5.6">Editors only: places a text note in 3D.</UiItem>
 <UiItem icon="volume" name="Sound" area="40.4,9.8,27.2,5.6">Editors only: records a sound note.</UiItem>
 <UiItem icon="trash" name="Delete" area="68.6,9.8,27.4,5.6">Editors only: removes notes.</UiItem>
-<UiItem icon="list" name="All" area="80.4,16.0,16.3,5.8">The filter: All, Workspace (comments on the workspace itself) or Scene (comments on the current scene).</UiItem>
+<UiItem icon="list" name="Filter" area="80.4,16.0,16.3,5.8">All, Workspace (comments on the workspace itself) or Scene (comments on the current scene).</UiItem>
 <UiItem name="Comment on this workspace" area="14.6,87.2,82.1,10.1">The box at the bottom: posts a new comment.</UiItem>
 </UiList>
 
@@ -147,7 +147,7 @@ Hidden annotations stay in the workspace and can be shown again.
 
 ## <AppIcon name="link" /> Interactions Tool {#interactions-tool}
 
-The Interactions Tool lists the interactions in the workspace, grouped by entry and interaction type. Each row names the two atoms, such as `A'MET'109:N—A'B96'391:O47`. Hovering a row highlights the interaction in 3D.
+The Interactions Tool lists the interactions in the workspace, grouped by entry and interaction type. Each row names the two atoms, such as `A'MET'109:N—A'B96'391:O47`. For a ring or a charged group, the row names its residue. Hovering a row highlights the interaction in 3D.
 
 <ShotRow src="nanome-v2/v2-7/tool-interactions.webp" alt="The Interactions Tool listing hydrogen bonds in 1KV2">
 
@@ -225,7 +225,7 @@ When **Replace** fuses a ring fragment onto an existing ring, it merges the atom
 
 <Accordion title="Auto relax" teaser="What it runs, and when it's off.">
 
-**Auto relax** runs up to 200 iterations of MMFF94s on the atoms within 2 bonds of the change. It's off by default, the setting is remembered, and it's turned off while a receptor is chosen for minimization.
+**Auto relax** runs up to 200 iterations of MMFF94s on the atoms within 2 bonds of the change. It's off by default and the setting is remembered. It's unavailable while a receptor is chosen for minimization.
 
 </Accordion>
 
@@ -341,7 +341,7 @@ Clicking and holding on a bond rotates the atoms on one side of it. **Display to
 <UiItem icon="arrow-back-up" name="Undo" area="9.7,91.5,4.5,5.7">Steps back through changes.</UiItem>
 <UiItem icon="arrow-forward-up" name="Redo" area="14.4,91.5,4.5,5.7">Steps forward through them again.</UiItem>
 <UiItem name="Cancel" area="21.9,91.5,9.6,5.7">Discards the changes.</UiItem>
-<UiItem icon="device-floppy" name="Save" area="31.8,91.5,10.6,5.7">Commits the changes.</UiItem>
+<UiItem icon="device-floppy" name="Save" area="31.8,91.5,10.6,5.7">Keeps the changes.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -352,7 +352,7 @@ The estimate is a simple cosine term for the dihedral angle (3-fold for sp³-sp�
 
 </Accordion>
 
-### Video: Torsion Tool (Beta)
+### Video: Torsion Tool
 
 <YoutubeEmbed videoId="IBQeKcSOJ8A" title="Nanome v2.5 Quick Tips: Torsion Tool (Beta)" />
 
@@ -360,7 +360,7 @@ The estimate is a simple cosine term for the dihedral angle (3-fold for sp³-sp�
 
 The Residue Editor mutates protein residues and picks their side-chain rotamers. Its rotamer library is the 2010 backbone-dependent library from the Dunbrack lab.
 
-Select one or more protein residues, then pick one. Moving the thumbstick left or right previews the rotamers, scored for clashes and hydrogen bonds.
+It works on the selected protein residues. Picking one in its list edits that residue. Moving the thumbstick left or right previews the rotamers, scored for clashes and hydrogen bonds.
 
 <ShotRow src="nanome-v2/v2-7/tool-residue-editor.webp" alt="The Residue Editor panel">
 
@@ -370,11 +370,13 @@ Select one or more protein residues, then pick one. Moving the thumbstick left o
 <UiItem name="Mutate" area="74.0,37.1,21.6,6.0">Changes the residue to another amino acid.</UiItem>
 <UiItem name="Rotamers" area="14.6,44.9,82.6,36.0">One row per rotamer, with Orig. for the current side chain. The arrows sort by P, Clash or HB.</UiItem>
 <UiItem name="Score against" area="36.0,81.5,40.9,6.0">Whether the scoring counts Visible atoms only or All atoms.</UiItem>
-<UiItem name="Cancel" area="65.7,91.7,14.9,6.0">Discards the change.</UiItem>
-<UiItem icon="device-floppy" name="Save" area="80.6,91.7,16.6,6.0">Keeps the change.</UiItem>
+<UiItem name="Cancel" area="65.7,91.7,14.9,6.0">Discards the changes.</UiItem>
+<UiItem icon="device-floppy" name="Save" area="80.6,91.7,16.6,6.0">Keeps the changes.</UiItem>
 </UiList>
 
 </ShotRow>
+
+<AccordionGroup label="Residue Editor details">
 
 <Accordion title="The rotamer table columns" teaser="P, Clash, HB and the chi angles.">
 
@@ -390,6 +392,8 @@ Select one or more protein residues, then pick one. Moving the thumbstick left o
 The editor works on the picked residue plus up to 5 of the other selected residues whose Cα atoms are nearest to it. Residues from several entries are grouped by entry.
 
 </Accordion>
+
+</AccordionGroup>
 
 ## <AppIcon name="tool" /> MARA Tools {#mara-tools}
 
