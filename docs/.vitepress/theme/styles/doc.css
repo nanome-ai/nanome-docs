@@ -297,7 +297,42 @@
 
 /* --- Tables ------------------------------------------------------------- */
 
+/* A table wider than the column scrolls sideways. Each edge with more of the
+   table beyond it fades out, over the cells' own colours too, and the fade
+   goes once that end is reached. Every rule that lets a table scroll sets
+   `mask-image: var(--n-table-mask)`. */
+@property --n-table-fade-l {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --n-table-fade-r {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+@keyframes n-table-fade {
+  0% {
+    --n-table-fade-l: 0px;
+    --n-table-fade-r: 40px;
+  }
+  8% {
+    --n-table-fade-l: 40px;
+  }
+  92% {
+    --n-table-fade-r: 40px;
+  }
+  100% {
+    --n-table-fade-l: 40px;
+    --n-table-fade-r: 0px;
+  }
+}
+
 .vp-doc table {
+  --n-table-mask: linear-gradient(to right, transparent, #000 var(--n-table-fade-l),
+    #000 calc(100% - var(--n-table-fade-r)), transparent);
   display: table;
   width: 100%;
   margin: 24px 0;
@@ -305,10 +340,25 @@
   font-size: var(--n-text-base);
 }
 
+/* The scroll position drives the fade. A table that fits has nothing to
+   scroll, so it doesn't fade. */
+@supports (animation-timeline: scroll()) {
+  .vp-doc table {
+    animation: n-table-fade linear both;
+    animation-timeline: scroll(self inline);
+  }
+}
+
+/* A focused table shows its whole ring. */
+.vp-doc table:focus-visible {
+  --n-table-mask: none;
+}
+
 @media (max-width: 767px) {
   .vp-doc table {
     display: block;
     overflow-x: auto;
+    mask-image: var(--n-table-mask);
   }
 }
 
@@ -331,6 +381,35 @@
     display: block;
     table-layout: auto;
     overflow-x: auto;
+    mask-image: var(--n-table-mask);
+  }
+}
+
+/* Nine columns don't fit even then, so each cell keeps its longest word whole
+   and the table scrolls sideways if it must. Narrower cell padding lets it
+   fit a wide desktop's column. */
+.vp-doc table:has(tr > :nth-child(9)) {
+  display: block;
+  table-layout: auto;
+  overflow-x: auto;
+  mask-image: var(--n-table-mask);
+}
+
+@media (min-width: 768px) {
+  .vp-doc table:has(tr > :nth-child(9)) :is(th, td) {
+    padding-inline: 12px;
+  }
+}
+
+/* Account Tiers: the seat columns line up from one comparison table to the
+   next. The feature column takes a set share and the seats split the rest. */
+@media (min-width: 768px) {
+  .n-seats .vp-doc table:has(tr > :nth-child(5)) {
+    table-layout: fixed;
+  }
+
+  .n-seats .vp-doc table:has(tr > :nth-child(5)) :is(th, td):first-child {
+    width: 36%;
   }
 }
 
@@ -368,8 +447,9 @@
   vertical-align: top;
 }
 
-/* On the narrowest phones, 3 columns fit without scrolling sideways. */
-@media (max-width: 359px) {
+/* On phones, tables that only just miss the column fit without scrolling
+   sideways, and 3 columns fit on the narrowest. */
+@media (max-width: 480px) {
   .vp-doc th,
   .vp-doc td {
     padding: 10px 8px;
