@@ -13,7 +13,7 @@ The **Entries** tab lists every structure in the workspace and the components th
 <MapCard icon="dots" title="More options" href="#more-options" side="right" area="88.6,35.0,4.4,3.2">Rename, export, load a map or trajectory, delete.</MapCard>
 <MapCard icon="scribble" title="Representations" href="#representations" side="right" area="63.7,39.8,16.4,5.1">How a component is drawn.</MapCard>
 <MapCard icon="palette" title="Colors" href="#colors" side="bottom" area="69.0,63.5,10.8,3.6">Color schemes, from the palette button beside each representation.</MapCard>
-<MapCard icon="link" title="Interactions" href="#interactions" side="bottom" area="20.5,74.6,72.5,4.0">The interaction types a component such as Pocket + Ligand shows.</MapCard>
+<MapCard icon="mist" title="Interactions" href="#interactions" side="bottom" area="20.5,74.6,72.5,4.0">The interaction types a component such as Pocket + Ligand shows.</MapCard>
 </ScreenMap>
 
 ## <AppIcon name="stack-2" /> Entries and components {#entries-and-components}
@@ -29,7 +29,7 @@ An **entry** is one loaded structure, such as a PDB file. Each entry holds **com
 
 <Accordion title="How components are named" teaser="Chain, ligand code and residue number.">
 
-The names come from the chain, the three-character ligand code and the residue number in the file. In the 4CEO example, `G0T` is the ligand's code in the RCSB Chemical Component Dictionary.
+The names come from the chain, the 3-character ligand code and the residue number in the file. In the 4CEO example, `G0T` is the ligand's code in the RCSB Chemical Component Dictionary.
 
 </Accordion>
 
@@ -72,7 +72,7 @@ The palette button beside a representation opens its color schemes. Each scheme 
 
 A map attached with [Load DX map](#more-options) can color a **Surface** by the map's value, sampled 1.4 Å out along each surface normal: red at the minimum, white in the middle and blue at the maximum. Only surfaces take this coloring. The default range is −5 to +5, in the map's own units (APBS maps use kT/e). Nanome doesn't compute the electrostatic potential itself.
 
-Nanome XR applies it with the **Electrostatic** scheme in its [color list](/nanome_v2/mainpanel#color-schemes). A surface colored that way shows the same colors in Nanome Web.
+In Nanome Web, **Electrostatic** is in the color list of every **Surface**. Picking it opens **ESP Color Scale**, where **Min** and **Max** set the range before **Apply**. Nanome XR lists **Electrostatic** in a surface's [color list](/nanome_v2/mainpanel#color-schemes) once the entry has a DX map.
 
 </Accordion>
 
@@ -102,7 +102,7 @@ The representation panel ends with an **Interactions** row. Its count is the num
 
 </ShotRow>
 
-**Export analysis** in the [workspace menu](/nanome_web/home#workspaces) downloads the interactions as CSV files, along with measurements and minimization history.
+**Export analysis** in the [workspace menu](/nanome_web/home#workspaces) downloads the current scene's interactions, measurements and minimization history as a ZIP of CSV files.
 
 <AccordionGroup label="Interaction details">
 
@@ -145,10 +145,10 @@ Anion-π, CH-π and water-bridged interactions aren't detected.
 
 The <AppIcon name="layout-list" /> **Structure actions** button on an entry row opens:
 
-<ShotRow src="nanome-web/entry-structure-actions.webp" alt="The Structure actions menu for an entry" crop="9.8,2.9,78.3,92.8">
+<ShotRow src="nanome-web/entry-structure-actions.webp" alt="The Structure actions menu for an entry" crop="9.8,2.9,78.3,87.6">
 
 <UiList label="Structure actions">
-<UiItem icon="arrow-left-to-arc" name="Align proteins to this" area="17.6,22.1,59.7,10.9">Superposes other protein entries onto this one. Grayed out while the workspace holds a single entry.</UiItem>
+<UiItem icon="arrow-left-to-arc" name="Align proteins to this" area="17.6,22.1,59.7,10.9">Superposes other protein entries onto this one. Grayed out unless this entry and at least one other entry hold a protein, and while an alignment runs.</UiItem>
 <UiItem icon="polygon" name="Create interaction components" href="#interaction-components" area="17.6,35.4,59.7,10.9">Computes interactions and adds components that show them.</UiItem>
 <UiItem icon="square-x" name="Remove interaction components" area="17.6,48.6,59.7,10.9">Removes the interaction components from the entry.</UiItem>
 <UiItem icon="refresh" name="Reset components" area="17.6,61.9,59.7,10.9">Restores the entry's default components.</UiItem>
@@ -171,7 +171,7 @@ Nanome runs the alignment on its server with CE-Align. TM-Align is available in 
 
 <ShotRow src="nanome-web/create-interactions.webp" alt="Create interaction components, on the Polymer-Polymer tab">
 
-**Create interaction components** opens a dialog with two modes:
+**Create interaction components** opens a dialog with 2 modes:
 
 <UiList label="Create interaction components">
 <UiItem name="Polymer-Ligand" area="11.4,13.6,38.1,15.8">Interactions between this entry's polymer, such as a protein, and a ligand in another entry. With no other ligand entries in the workspace, the dialog shows No ligands available.</UiItem>
@@ -198,7 +198,7 @@ Only polymer atoms count toward the interface.
 <Tabs :labels="['Entry menu', 'Component menu']">
 <Tab>
 
-<ShotRow src="nanome-web/entry-more-options.webp" alt="An entry's More options menu" crop="50.9,3.9,46.0,89.8">
+<ShotRow src="nanome-web/entry-more-options.webp" alt="An entry's More options menu" crop="54.6,3.9,42.3,86.6">
 
 <UiList label="Entry More options">
 <UiItem icon="pencil" name="Rename" area="57.5,22.1,33.7,10.9">Renames the entry.</UiItem>
@@ -213,7 +213,7 @@ Only polymer atoms count toward the interface.
 </Tab>
 <Tab>
 
-<ShotRow src="nanome-web/component-more-options.webp" alt="A component's More options menu" crop="50.9,1.8,46.0,91.4">
+<ShotRow src="nanome-web/component-more-options.webp" alt="A component's More options menu" crop="50.9,1.8,46.0,86.6">
 
 <UiList label="Component More options">
 <UiItem icon="pencil" name="Rename" area="57.5,24.3,33.7,12.7">Renames the component.</UiItem>

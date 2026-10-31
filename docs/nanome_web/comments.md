@@ -6,7 +6,7 @@ title: Comments
 
 Comments, added in release 2.7, are threaded discussions stored inside a workspace. A comment can belong to the whole workspace, to a scene, or to an annotation, and it can point at specific atoms. Everyone in the workspace sees new comments as they're posted, in Nanome Web and in Nanome XR.
 
-<IconGrid label="Comments">
+<IconGrid label="Comments" :cols="3">
 <IconCard icon="message" title="The Comments tab" href="#the-comments-tab">The filter and the comment box.</IconCard>
 <IconCard icon="messages" title="Threads" href="#threads">Replies, mentions and reactions.</IconCard>
 <IconCard icon="circle-dot" title="Anchoring to atoms" href="#anchoring-to-atoms">Comments that sit on atoms in the 3D view.</IconCard>
@@ -24,7 +24,7 @@ The **Comments** tab in the workspace panel lists the workspace's comments, with
 <UiItem name="All" area="3.8,30.7,8.5,4.5">Shows all comments.</UiItem>
 <UiItem name="Workspace" area="13.6,30.7,20.5,4.5">Shows only the comments on the workspace.</UiItem>
 <UiItem name="Current Scene" area="35.6,30.7,25.0,4.5">Shows only the comments on the current scene.</UiItem>
-<UiItem name="Comment on this workspace" href="#anchoring-to-atoms" area="2.7,89.3,84.9,8.7">The box at the bottom: posts a new comment. With atoms selected, it anchors the comment to them.</UiItem>
+<UiItem name="Comment on this workspace" href="#anchoring-to-atoms" area="2.7,89.3,84.9,8.7">The box at the bottom: posts a new comment to the workspace. With Current Scene picked, it reads Comment on this scene and posts to the current scene. With atoms selected, it anchors the comment to them.</UiItem>
 <UiItem icon="arrow-up" name="Send" area="87.9,90.5,8.0,6.3">Posts what's in the box.</UiItem>
 </UiList>
 
@@ -35,9 +35,9 @@ A workspace with no comments shows **No comments yet**.
 ## What a comment can hold {#what-a-comment-can-hold}
 
 <UiList label="A comment">
-<UiItem name="Author and time">The author's avatar and name, and how long ago the comment was posted, such as `18m` or `now`.</UiItem>
-<UiItem icon="box" name="Scene chip">On a comment tied to a scene: the scene's number and name, such as `6: 1KV2comments`.</UiItem>
-<UiItem icon="circle-dot" name="Atom chip" href="#anchoring-to-atoms">A link to specific atoms, such as `1KV2 A|B96'391 C4, C5`. Hovering it highlights those atoms in the viewer, and clicking it zooms to them.</UiItem>
+<UiItem name="Author and time">The author's avatar and name, and how long ago the comment was posted, such as <code>18m</code> or <code>now</code>.</UiItem>
+<UiItem icon="cube" name="Scene chip">On a comment tied to a scene: the scene's number and name, such as <code>6: 1KV2comments</code>.</UiItem>
+<UiItem icon="circle-dot" name="Atom chip" href="#anchoring-to-atoms">A link to specific atoms, such as <code>1KV2 A|B96'391 C4, C5</code>. Hovering it highlights those atoms in the viewer, and clicking it zooms to them.</UiItem>
 <UiItem name="@mentions">A comment can mention a colleague by name. The mention is highlighted in the text.</UiItem>
 <UiItem icon="mood-plus" name="Reactions" href="#reactions">Emoji reactions under the comment, with a count beside each emoji.</UiItem>
 <UiItem icon="message" name="Replies" href="#threads">A count under the comment shows how many replies its thread has.</UiItem>
@@ -45,7 +45,7 @@ A workspace with no comments shows **No comments yet**.
 
 ## <AppIcon name="messages" /> Threads {#threads}
 
-Each comment starts a thread. Clicking a comment's reply count opens it: the first comment sits at the top, the replies follow under it in the order they were posted, and the box at the bottom posts a new reply.
+Each comment starts a thread. Clicking a comment's reply count, or <AppIcon name="message" /> **Reply in thread** in the row of buttons that shows on hover, opens it: the first comment sits at the top, the replies follow under it in the order they were posted, and the box at the bottom posts a new reply.
 
 Replies belong to their thread, so they don't show scene or atom chips of their own. They take mentions and reactions like any other comment.
 
@@ -55,9 +55,11 @@ Hovering a comment shows a row of buttons at its top right, starting with thumbs
 
 A reaction is a toggle: picking an emoji you've already added to a comment removes your reaction.
 
+The <AppIcon name="dots" /> **More actions** button at the end of the row has **Watch thread** and **Copy link**, and **Edit** and **Delete** on your own comments.
+
 ## <AppIcon name="circle-dot" /> Anchoring to atoms {#anchoring-to-atoms}
 
-When atoms are selected in the viewer, the comment box shows an **Anchor to** chip that names them, and its placeholder changes to **Annotate the selection**. The new comment is attached to those atoms. The **×** on the chip removes it.
+When atoms are selected in the viewer and the filter is **All** or **Current Scene**, the comment box shows an **Anchor to** chip that names them, and its placeholder changes to **Annotate the selection**. The new comment is attached to those atoms. The **×** on the chip removes it. Anchoring needs Editor access.
 
 <Steps>
 
@@ -101,7 +103,7 @@ The <Btn icon="message">Add a comment</Btn> button on the viewer's [tool rail](/
 
 ## Unread comments {#unread-comments}
 
-Nanome tracks which threads have changed since you last looked, and marks the unread ones. In Nanome XR, a dot on the Comments tool shows that there are unread comments.
+Nanome tracks which threads have changed since you last looked, and marks the unread ones. In Nanome Web, a dot on the **Comments** tab shows there are unread comments, and the list marks where the new ones start. In Nanome XR, a dot on the Comments tool shows that there are unread comments.
 
 Unread state is kept for each signed-in account. Anonymous viewers of a [public workspace](/nanome_web/collaboration#link-access) have none.
 
