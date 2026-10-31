@@ -54,13 +54,13 @@ const show = computed(() => {
 }
 
 .n-classic__text a {
-  color: var(--n-accent);
+  color: var(--n-accent-hover);
   font-weight: 500;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 .n-classic__text a:hover {
-  color: var(--n-accent-hover);
+  text-decoration-thickness: 2px;
 }
 </style>

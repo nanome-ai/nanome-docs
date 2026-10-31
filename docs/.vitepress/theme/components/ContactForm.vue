@@ -64,7 +64,7 @@
       <div v-if="!success && error" class="error">
         {{ error }}
       </div>
-      <button type="submit" :disabled="!!error" class="btn">
+      <button type="submit" :disabled="sending" class="btn">
         <h3>Send</h3>
       </button>
     </form>
@@ -90,9 +90,11 @@ const referrer = ref('')
 const content = ref('')
 const success = ref(false)
 const error = ref('')
+const sending = ref(false)
 
 async function onSubmit() {
   error.value = ''
+  sending.value = true
 
   // Posts to the shared contact endpoint on nanome.ai, which emails the
   // submission to support@nanome.ai via Resend (replaces the old Make webhook).
@@ -124,6 +126,9 @@ async function onSubmit() {
   catch {
     error.value = `There was an error processing your request. Please try again later.`
     success.value = false
+  }
+  finally {
+    sending.value = false
   }
 }
 </script>
@@ -184,5 +189,6 @@ async function onSubmit() {
 
 .contact button h3 {
   margin-bottom: 0;
+  color: inherit;
 }
 </style>

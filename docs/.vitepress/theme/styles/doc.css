@@ -362,7 +362,7 @@
   padding: 0.55em 1.15em;
   border-radius: var(--n-radius-pill);
   background: var(--n-accent);
-  color: #fff !important;
+  color: var(--n-text-inverse) !important;
   font-size: var(--n-text-base);
   font-weight: 600;
   text-decoration: none !important;
@@ -487,7 +487,7 @@
 .vp-doc td.rate-good,
 .vp-doc td[style*="#CFE2F3" i] {
   background: var(--n-accent-soft) !important;
-  color: var(--n-accent);
+  color: var(--n-accent-hover);
 }
 
 /* Depends on hardware */

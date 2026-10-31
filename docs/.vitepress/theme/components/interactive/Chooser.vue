@@ -265,7 +265,7 @@ function stepNumber(step) {
   flex-shrink: 0;
   border-radius: 50%;
   background: var(--n-accent-soft);
-  color: var(--n-accent);
+  color: var(--n-accent-hover);
   font-size: var(--n-text-xs);
   font-weight: 700;
   font-variant-numeric: tabular-nums;
@@ -328,7 +328,7 @@ function stepNumber(step) {
   padding: 1px 7px;
   border-radius: var(--n-radius-pill);
   background: var(--n-accent-soft);
-  color: var(--n-accent);
+  color: var(--n-accent-hover);
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.01em;
