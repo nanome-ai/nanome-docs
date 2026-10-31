@@ -216,7 +216,18 @@ export default defineConfig({
     ],
 
     search: {
-      provider: 'local'
+      provider: 'local',
+      options: {
+        // The search index reads a section's title from the text before the
+        // heading's first `<a`, and matches it in any case, so the <AppIcon> in
+        // front of a heading left the title empty and the section out of the
+        // index. Drop the icons first. `search: false` still leaves a page out.
+        _render(src, env, md) {
+          const html = md.render(src, env)
+          if (env.frontmatter?.search === false) return ''
+          return html.replace(/<\/?AppIcon\b[^>]*>/g, '')
+        }
+      }
     },
 
     sidebar: withSections([

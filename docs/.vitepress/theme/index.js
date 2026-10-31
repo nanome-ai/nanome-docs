@@ -96,8 +96,14 @@ export default {
 
   setup() {
     const route = useRoute()
+    // A click on an image inside a link follows the link, so those images get
+    // no zoom view. The old instance closes on a route change, so its overlay
+    // can't stay on the next page.
+    let zoom
     const initZoom = () => {
-      mediumZoom('.vimg > img, .vp-doc img:not(.no-zoom)', {
+      zoom?.close()
+      zoom?.detach()
+      zoom = mediumZoom('.vimg > img:not(a img), .vp-doc img:not(.no-zoom):not(a img)', {
         background: 'var(--n-bg)',
       })
     }

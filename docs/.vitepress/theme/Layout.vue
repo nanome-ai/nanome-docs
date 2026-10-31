@@ -74,6 +74,24 @@ provide('toggle-appearance', async ({ clientX: x = innerWidth / 2, clientY: y = 
   )
 })
 
+/**
+ * The router handles same-page hash links itself, so the skip link would only
+ * change the URL. Move focus to the content as VitePress's VPSkipLink does: the
+ * next Tab then lands on the first link in the page, not back in the nav bar.
+ */
+function skipToContent() {
+  const el = document.getElementById('n-content')
+  if (!el) return
+  const removeTabIndex = () => {
+    el.removeAttribute('tabindex')
+    el.removeEventListener('blur', removeTabIndex)
+  }
+  el.setAttribute('tabindex', '-1')
+  el.addEventListener('blur', removeTabIndex)
+  el.focus()
+  window.scrollTo(0, 0)
+}
+
 const isHome = computed(() => frontmatter.value.layout === 'home')
 const showAside = computed(() => hasAside.value && !isHome.value)
 
@@ -94,7 +112,7 @@ const showPagebar = computed(
       { 'has-sidebar': hasSidebar, 'has-aside': showAside, 'has-pagebar': showPagebar },
     ]"
   >
-    <a class="n-skip" href="#n-content">Skip to content</a>
+    <a class="n-skip" href="#n-content" @click="skipToContent">Skip to content</a>
 
     <NavBar
       :sidebar-open="sidebarOpen"
@@ -204,6 +222,11 @@ const showPagebar = computed(
   max-width: var(--n-content-max);
   margin: 0 auto;
   padding: 40px var(--n-gutter) 96px;
+}
+
+/* Focused by the skip link only; the focus ring would frame the whole page. */
+.n-column:focus {
+  outline: none;
 }
 
 /* A page that turns the outline off (the home page, `aside: false`) is laying
