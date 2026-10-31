@@ -27,6 +27,7 @@ model-indexing, one model per step.
 - 🆕 **PDB and mmCIF:** ligand bonds come from the RCSB Chemical Component Dictionary when the file has a PDB ID.
 - **PQR:** charges and radii are discarded.
 - **PDBQT:** charges, occupancy and B-factors are discarded, the torsion tree is ignored, and bonds are inferred.
+- **Nanome Web:** its Import tab and drag and drop don't take `.ent`, `.smi` or `.smiles` files. A `.ent` file loads once renamed to `.pdb`, and a molecule drawn with **Sketch new** on the [Ligands tab](/nanome_web/ligands#toolbar) loads as SMILES.
 
 <Callout type="note" title="† Requires a MARA tool">
 
@@ -76,8 +77,8 @@ All of these use the same parser on Nanome's server.
 | Surface | Imports | Exports |
 |---------|---------|---------|
 | **Nanome XR** | RCSB fetch by PDB code | view-only |
-| **Nanome Web and MARA** | all structures, trajectory attach (GRO, XTC, TRR, DCD), and DX | PDB, SDF (molecules); CSV (data tables); FASTA, GenBank (tools) |
-| **Nanome API (GraphQL / REST / MCP)** | every format above | PDB, SDF, SMILES, FASTA |
+| **Nanome Web and MARA** | structures (Nanome Web's Import tab doesn't take `.ent`, `.smi` or `.smiles`, and the † ones need a MARA tool), trajectory attach (GRO, XTC, TRR, DCD), and DX | PDB, SDF (molecules); CSV (data tables); FASTA, GenBank (tools) |
+| **Nanome API (GraphQL / REST / MCP)** | every format above without a † | PDB, SDF, SMILES, FASTA |
 | **LiveDesign gadget** | MAE / MAEGZ (one-way: LiveReport → Nanome) | — |
 
 ## Not supported

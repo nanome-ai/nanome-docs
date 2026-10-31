@@ -36,8 +36,8 @@ A workspace with no comments shows **No comments yet**.
 
 <UiList label="A comment">
 <UiItem name="Author and time">The author's avatar and name, and how long ago the comment was posted, such as <code>18m</code> or <code>now</code>.</UiItem>
-<UiItem icon="cube" name="Scene chip">On a comment tied to a scene: the scene's number and name, such as <code>6: 1KV2comments</code>.</UiItem>
-<UiItem icon="circle-dot" name="Atom chip" href="#anchoring-to-atoms">A link to specific atoms, such as <code>1KV2 A|B96'391 C4, C5</code>. Hovering it highlights those atoms in the viewer, and clicking it zooms to them.</UiItem>
+<UiItem icon="cube" name="Scene chip">On a comment tied to a scene: the scene's number and name, such as <code style="white-space: nowrap">6: 1KV2comments</code>.</UiItem>
+<UiItem icon="circle-dot" name="Atom chip" href="#anchoring-to-atoms">A link to specific atoms, such as <code style="white-space: nowrap">1KV2 A|B96'391 C4, C5</code>. Hovering it highlights those atoms in the viewer, and clicking it zooms to them.</UiItem>
 <UiItem name="@mentions">A comment can mention a colleague by name. The mention is highlighted in the text.</UiItem>
 <UiItem icon="mood-plus" name="Reactions" href="#reactions">Emoji reactions under the comment, with a count beside each emoji.</UiItem>
 <UiItem icon="message" name="Replies" href="#threads">A count under the comment shows how many replies its thread has.</UiItem>
@@ -77,14 +77,14 @@ The comment becomes a text note in the current scene, attached to those atoms. I
 
 <Accordion title="Reading an atom chip" teaser="How a chip names entries, chains, residues and atoms.">
 
-The **Anchor to** chip and the atom chips on comments use the same labels. A label gives the entry and chain, then the residues and atoms: `1KV2 A|B96'391 C4, C5` is atoms C4 and C5 of residue B96 number 391, in chain A of the entry 1KV2.
+The **Anchor to** chip and the atom chips on comments use the same labels. A label gives the entry and chain, then the residues and atoms: <span style="white-space: nowrap">`1KV2 A|B96'391 C4, C5`</span> is atoms C4 and C5 of residue B96 number 391, in chain A of the entry 1KV2.
 
 - A residue is written as its name, an apostrophe and its number, such as `PHE'169`. An insertion code follows the number.
-- A residue with all its atoms picked has no atom names after it. Up to 3 picked atoms are named, and more show as a count, such as `B96'391 (12 atoms)`.
-- Up to 3 residues of a chain are listed, such as `1KV2 A|MET'109 N, B96'391 O47`. More whole residues with consecutive numbers show as a range, such as `1KV2 A|104–110`, and other larger sets as a count, such as `1KV2 A: 12 residues`. When more than 100 residues are picked, not counting whole chains, a chain shows only its residue count.
-- A whole chain shows as the entry and chain, such as `1KV2 A`. 2 or 3 whole chains of one entry show as `1KV2 A, B`.
-- When every picked entry is whole, up to 3 of them show by name, such as `1KV2, 4CEO`.
-- Any other set that spans more than one chain shows as an atom count, such as `57 atoms`.
+- A residue with all its atoms picked has no atom names after it. Up to 3 picked atoms are named, and more show as a count, such as <span style="white-space: nowrap">`B96'391 (12 atoms)`</span>.
+- Up to 3 residues of a chain are listed, such as <code>1KV2&nbsp;A|MET'109&nbsp;N, B96'391&nbsp;O47</code>. More whole residues with consecutive numbers show as a range, such as <span style="white-space: nowrap">`1KV2 A|104–110`</span>, and other larger sets as a count, such as <span style="white-space: nowrap">`1KV2 A: 12 residues`</span>. When more than 100 residues are picked, not counting whole chains, a chain shows only its residue count.
+- A whole chain shows as the entry and chain, such as <span style="white-space: nowrap">`1KV2 A`</span>. 2 or 3 whole chains of one entry show as <span style="white-space: nowrap">`1KV2 A, B`</span>.
+- When every picked entry is whole, up to 3 of them show by name, such as <span style="white-space: nowrap">`1KV2, 4CEO`</span>.
+- Any other set that spans more than one chain shows as an atom count, such as <span style="white-space: nowrap">`57 atoms`</span>.
 
 </Accordion>
 

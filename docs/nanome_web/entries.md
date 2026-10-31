@@ -12,7 +12,7 @@ The **Entries** tab lists every structure in the workspace and the components th
 <MapCard icon="layout-list" title="Structure actions" href="#structure-actions" side="right" area="74.5,35.0,4.4,3.2">Alignment and interaction components.</MapCard>
 <MapCard icon="dots" title="More options" href="#more-options" side="right" area="88.6,35.0,4.4,3.2">Rename, export, load a map or trajectory, delete.</MapCard>
 <MapCard icon="scribble" title="Representations" href="#representations" side="right" area="63.7,39.8,16.4,5.1">How a component is drawn.</MapCard>
-<MapCard icon="palette" title="Colors" href="#colors" side="bottom" area="69.0,63.5,10.8,3.6">Color schemes, from the palette button beside each representation.</MapCard>
+<MapCard icon="palette" title="Colors" href="#colors" side="bottom" area="69.0,63.5,10.8,3.6">Color schemes, from the palette buttons in a representation chip's panel.</MapCard>
 <MapCard icon="mist" title="Interactions" href="#interactions" side="bottom" area="20.5,74.6,72.5,4.0">The interaction types a component such as Pocket + Ligand shows.</MapCard>
 </ScreenMap>
 
@@ -64,7 +64,7 @@ The copy of the panel below works like the app's: each switch shows 1KV2's bindi
 
 ### <AppIcon name="palette" /> Colors {#colors}
 
-The palette button beside a representation opens its color schemes. The copy below colors 1KV2's binding site, drawn as Stick, in each scheme.
+The palette button beside a representation opens its color schemes. The copy below colors 1KV2's binding site, drawn as Stick, in each scheme. A DX map attached with **Load DX map** can also color a **Surface**, as described under **Electrostatic coloring** after the copy.
 
 <ColorSchemeDemo app="web" />
 
@@ -147,10 +147,10 @@ Anion-π, CH-π and water-bridged interactions aren't detected.
 
 The <AppIcon name="layout-list" /> **Structure actions** button on an entry row opens:
 
-<ShotRow src="nanome-web/entry-structure-actions.webp" alt="The Structure actions menu for an entry" crop="9.8,2.9,78.3,87.6">
+<ShotRow src="nanome-web/entry-structure-actions.webp" alt="The Structure actions menu for an entry" crop="9.8,2.9,71.7,86.9">
 
 <UiList label="Structure actions">
-<UiItem icon="arrow-left-to-arc" name="Align proteins to this" area="17.6,22.1,59.7,10.9">Superposes other protein entries onto this one. Grayed out unless this entry and at least one other entry hold a protein, and while an alignment runs.</UiItem>
+<UiItem icon="arrow-left-to-arc" name="Align proteins to this" area="17.6,22.1,59.7,10.9">Opens a list of the other protein entries, each with a checkbox. A checked entry with several chains also gets chips for All or single chains. Align superposes the checked entries onto this one, and Close leaves. The item is grayed out unless this entry and at least one other entry hold a protein, and while an alignment runs.</UiItem>
 <UiItem icon="polygon" name="Create interaction components" href="#interaction-components" area="17.6,35.4,59.7,10.9">Computes interactions and adds components that show them.</UiItem>
 <UiItem icon="square-x" name="Remove interaction components" area="17.6,48.6,59.7,10.9">Removes the interaction components from the entry.</UiItem>
 <UiItem icon="refresh" name="Reset components" area="17.6,61.9,59.7,10.9">Restores the entry's default components.</UiItem>
@@ -163,7 +163,7 @@ Nanome runs the alignment on its server with CE-Align. TM-Align is available in 
 
 <Accordion title="Alignment results" teaser="RMSD, length and the Cα minimum.">
 
-- Each aligned entry gets an RMSD, the Cα RMSD over the aligned residues, and a length, the number of aligned residues.
+- After a run, each aligned entry shows its RMSD, the Cα RMSD over the aligned residues in Å, and its length, the number of aligned residues, beside its name in the **Align proteins to this** list.
 - At least 8 Cα atoms are needed.
 - Switching scenes while an alignment runs cancels it.
 
@@ -200,7 +200,7 @@ Only polymer atoms count toward the interface.
 <Tabs :labels="['Entry menu', 'Component menu']">
 <Tab>
 
-<ShotRow src="nanome-web/entry-more-options.webp" alt="An entry's More options menu" crop="50.9,8.4,46.0,84.0">
+<ShotRow src="nanome-web/entry-more-options.webp" alt="An entry's More options menu" crop="55.2,8.4,41.8,81.4">
 
 <UiList label="Entry More options">
 <UiItem icon="pencil" name="Rename" area="57.5,22.1,33.7,10.9">Renames the entry.</UiItem>
@@ -215,7 +215,7 @@ Only polymer atoms count toward the interface.
 </Tab>
 <Tab>
 
-<ShotRow src="nanome-web/component-more-options.webp" alt="A component's More options menu" crop="50.9,1.4,46.0,97.75">
+<ShotRow src="nanome-web/component-more-options.webp" alt="A component's More options menu" crop="55.2,19.6,41.8,67.9">
 
 <UiList label="Component More options">
 <UiItem icon="pencil" name="Rename" area="57.5,24.3,33.7,12.7">Renames the component.</UiItem>
