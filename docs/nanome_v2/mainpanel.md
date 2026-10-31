@@ -472,6 +472,6 @@ When more than one server is set up, a <AppIcon name="server" /> **Change Server
 
 ### Day/Night mode and themes {#day-night-mode-and-themes}
 
-The themes are Default, Arctic Cyan, Aurora Green, Black & White, Gold Orange, Island and Pure Black. Since release 2.7 the skyboxes are procedurally generated mountains in each theme's colors, and Night mode switches each one between its day and night version.
+The themes are Default, Arctic Cyan, Aurora Green, Black & White, Gold Orange, Island and Pure Black. Since release 2.7 the skyboxes are procedurally generated mountains in each theme's colors, and Night mode switches each one between its day and night version. Pure Black is a plain black sky.
 
 Each theme, by day and by night, is on the [Environment](/nanome_v2/environment#skybox-and-floor) page.

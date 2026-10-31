@@ -28,26 +28,45 @@ onContentUpdated(() => {
 
 watch(() => route.path, () => (open.value = false))
 
-// The list covers the top of the page, so a click anywhere else closes it.
+// The list covers the top of the page, so a click anywhere else closes it,
+// and so do Escape and moving focus past it.
 const root = ref(null)
 
 function closeOutside(event) {
   if (!root.value?.contains(event.target)) open.value = false
 }
 
+function closeOnEscape(event) {
+  if (event.key !== 'Escape') return
+  open.value = false
+  root.value?.querySelector('.n-localnav__button')?.focus()
+}
+
+function closeOnFocusOut(event) {
+  if (open.value && event.relatedTarget && !root.value?.contains(event.relatedTarget)) open.value = false
+}
+
 watch(open, (isOpen) => {
-  if (isOpen) document.addEventListener('click', closeOutside)
-  else document.removeEventListener('click', closeOutside)
+  if (isOpen) {
+    document.addEventListener('click', closeOutside)
+    document.addEventListener('keydown', closeOnEscape)
+  } else {
+    document.removeEventListener('click', closeOutside)
+    document.removeEventListener('keydown', closeOnEscape)
+  }
 })
 
-onUnmounted(() => document.removeEventListener('click', closeOutside))
+onUnmounted(() => {
+  document.removeEventListener('click', closeOutside)
+  document.removeEventListener('keydown', closeOnEscape)
+})
 
 const label = computed(() => resolveTitle(theme.value))
 const hasHeaders = computed(() => headers.value.length > 0)
 </script>
 
 <template>
-  <div v-if="hasHeaders" ref="root" class="n-localnav">
+  <div v-if="hasHeaders" ref="root" class="n-localnav" @focusout="closeOnFocusOut">
     <button
       type="button"
       class="n-localnav__button"
@@ -141,7 +160,9 @@ const hasHeaders = computed(() => headers.value.length > 0)
   top: 100%;
   left: 0;
   right: 0;
-  max-height: 55vh;
+  /* Most of the window below the bars, so a long page's sections all show. */
+  max-height: calc(100vh - var(--n-nav-height) - var(--n-pagebar-height) - 16px);
+  max-height: calc(100dvh - var(--n-nav-height) - var(--n-pagebar-height) - 16px);
   padding: 8px var(--n-gutter) 16px;
   border-bottom: 1px solid var(--n-border);
   background: var(--n-bg);

@@ -298,10 +298,21 @@ function isExternal(href) {
 @media (max-width: 959px) {
   .n-navbar__burger {
     display: grid;
+    flex-shrink: 0;
   }
 
   .n-navbar__brand {
     width: auto;
+    /* No rail to line up with, so the lockup gives its room back. */
+    min-width: 0;
+  }
+}
+
+/* With the burger and the site links in the row, the tagline would push
+   search and the theme switch off the edge. */
+@media (min-width: 768px) and (max-width: 959px) {
+  .n-navbar__title {
+    display: none;
   }
 }
 
@@ -315,7 +326,8 @@ function isExternal(href) {
   }
 }
 
-@media (max-width: 420px) {
+/* The tagline needs about 447px with the burger, search and theme switch. */
+@media (max-width: 479px) {
   .n-navbar__title {
     display: none;
   }

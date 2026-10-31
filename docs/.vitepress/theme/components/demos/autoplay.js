@@ -42,14 +42,18 @@ export function useAutoplay(root, step, interval = 3200) {
 
   function toggle() {
     playing.value = !playing.value
-    if (playing.value) step()
+    if (!playing.value) return
+    // Play is pressed with the pointer and focus on it: carry on regardless.
+    paused.value = false
+    step()
   }
 
+  // Bare event names: v-on="auto.hold" adds the "on" itself.
   const hold = {
-    onMouseenter: () => (paused.value = true),
-    onMouseleave: () => (paused.value = false),
-    onFocusin: () => (paused.value = true),
-    onFocusout: () => (paused.value = false),
+    mouseenter: () => (paused.value = true),
+    mouseleave: () => (paused.value = false),
+    focusin: () => (paused.value = true),
+    focusout: () => (paused.value = false),
   }
 
   return { playing, paused, visible, stop, toggle, hold }
