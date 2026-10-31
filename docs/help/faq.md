@@ -41,9 +41,9 @@ Nanome currently supports up to 20 XR collaborators in a room at once. Up to 50 
 
 <AccordionGroup label="5 questions">
 
-<Accordion title="What VR headsets does Nanome support?" teaser="Meta Quest 3 and 3S, Samsung Galaxy XR, Apple Vision Pro, and Windows PCs over Meta Link.">
+<Accordion title="What VR headsets does Nanome support?" teaser="Meta Quest 2, 3, 3S and Pro, Samsung Galaxy XR, Apple Vision Pro, and Windows PCs over Meta Link.">
 
-Nanome XR runs on Meta Quest 3 and 3S, Samsung Galaxy XR, Apple Vision Pro, and Windows PCs over Meta Link. [Choosing Hardware](/help/choosinghardware) compares them. The older list for Nanome Classic is on [Hardware Requirements](/help/hardwarerequirements).
+Nanome XR runs on Meta Quest 3 and 3S, Samsung Galaxy XR, Apple Vision Pro, and Windows PCs over Meta Link. It also runs on Meta Quest 2 and Quest Pro, the minimum Quest headsets for Nanome XR. Quest 3 and 3S are recommended: Quest 2 and Quest Pro have a little over half their rendering budget, so detail drops with smaller scenes. [Choosing Hardware](/help/choosinghardware) compares them. The older list for Nanome Classic is on [Hardware Requirements](/help/hardwarerequirements).
 
 </Accordion>
 
