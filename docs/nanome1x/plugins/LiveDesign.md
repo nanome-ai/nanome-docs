@@ -21,7 +21,7 @@ When starting the plugin for the first time, this is what the login menu looks l
 
 </ShotRow>
 
-First you will need to click on "Login to LD", which will open the Nanome web browser. Please log in to LiveDesign using your usual credentials.
+First you will need to click on "Login to LD", which will open the Nanome web browser. There you log in to LiveDesign with your usual credentials.
 
 <vimg src="plugins-page/livedesign/okta.jpg" alt="The LiveDesign Login menu beside the Nanome web browser open to a sign-in page, with the keyboard below" />
 
@@ -65,7 +65,7 @@ This plugin allows you to load molecular data from LiveDesign or send ligand pos
 
 To load data from LiveDesign, first select a Project name in the list of projects. Only the first 50 projects will be shown. If the wanted project is not listed, type the first letters of the project name in the "Project filter" input field. The list then shows only projects whose names contain those letters.
 
-Similarly, select a LiveReport name and 3D columns. Remember that you can filter both by typing text in the input fields on top of the dropdown menus.
+Similarly, select a LiveReport name and 3D columns. You can filter both by typing in the input fields above the dropdown menus.
 
 <UiList label="Plugin menu">
 <UiItem name="Project filter" area="0.5,8.9,29.0,8.5">Type the first letters of a project name.</UiItem>
@@ -146,4 +146,4 @@ If not, a new row will be created and poses will be added to it in the "Nanome U
 <vimg src="plugins-page/livedesign/ld.jpg" alt="A LiveReport in LiveDesign with the sent pose in the Nanome Upload (3D) column of the V35000 row" />
 
 ## Experiencing issues or not seeing the plugin?
-Feel free to reach out to support@nanome.ai and we'll get back to you soon. 
+Our team at support@nanome.ai can help and will get back to you soon.

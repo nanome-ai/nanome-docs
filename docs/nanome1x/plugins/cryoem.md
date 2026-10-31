@@ -6,7 +6,7 @@ title: Cryo-EM
 
 The Cryo-EM plugin allows you to load Cryo-EM maps into Nanome.
 
-There are two ways to load a map into Nanome:
+There are 2 ways to load a map into Nanome:
 1) Load a map from the Electron Microscopy Data Bank (EMDB), and align it with its corresponding model from the RCSB PDB.
 
 2) Load Maps and models from your Vault.

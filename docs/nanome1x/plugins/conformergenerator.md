@@ -85,12 +85,12 @@ Advanced Menu allows sorting and playing back through the conformers, as well as
 <UiList label="Advanced Menu">
 <UiItem name="Frames" area="0.5,13.6,24.6,8.4">Lists the conformers, one frame each.</UiItem>
 <UiItem name="Playback" area="24.9,13.6,24.4,8.4">Plays back through the conformers.</UiItem>
-<UiItem icon="chevron-right" name="Previous / Next" area="3.9,24.3,41.9,10.7">Steps one conformer at a time. Here, 5 of 101.</UiItem>
+<UiItem icon="chevron-right" name="Previous / Next" area="3.9,24.3,41.9,10.7">Steps one conformer at a time.</UiItem>
 <UiItem icon="player-pause" name="Play / Pause" area="4.4,73.6,41.3,10.3">Plays the conformers in turn, or pauses.</UiItem>
 <UiItem name="Speed" area="4.4,84.3,33.2,10.5">1x, 5x, 50x or 100x.</UiItem>
-<UiItem name="Meta Data" area="74.6,13.6,24.9,8.4">The data for the current conformer.</UiItem>
+<UiItem name="Meta Data" area="74.6,13.6,24.9,8.4">The data stored with each conformer. The values in this shot are the seed's, from frame 1.</UiItem>
 <UiItem icon="tag" name="conf energy" area="53.4,55.1,39.2,9.8">The conformer's UFF energy, in kcal/mol.</UiItem>
-<UiItem icon="tag" name="conf rmsd" area="53.4,65.4,39.2,9.8">RMSD to the seed ligand.</UiItem>
+<UiItem icon="tag" name="conf rmsd" area="53.4,65.4,39.2,9.8">Heavy-atom RMSD to the seed ligand, in Å.</UiItem>
 </UiList>
 
 </ShotRow>

@@ -4,11 +4,11 @@ title: Vault
 
 # Nanome Vault
 
-Nanome Vault is a plugin that enables easy cloud upload, download and storage from VR headsets and your web browser. This allows users to drag and drop a file to/from their web browser and make it instantly available in their Nanome session.
+Nanome Vault is a plugin for storing files in the cloud. You can upload and download them from a VR headset or a web browser. A file you drop into the browser is then ready to load in your Nanome session.
 
-Standalone headsets such as Quest store files on the headset, so moving files usually means plugging it into a computer and using Android File Transfer. Nanome Vault allows users to open up a web browser on any computer to access cloud storage that is integrated directly into your Nanome session and linked to your Nanome account. You can visit the Nanome-hosted Vault Plugin at https://vault.nanome.ai. _Note that if you are an Enterprise customer, your Organization will have a different web address for the private-cloud deployment of the Nanome Vault, please contact your Nanome administrator for the correct URL_.
+Standalone headsets such as Quest store files on the headset, so moving files usually means plugging it into a computer and using Android File Transfer. Nanome Vault allows users to open up a web browser on any computer to access cloud storage that is integrated directly into your Nanome session and linked to your Nanome account. You can visit the Nanome-hosted Vault Plugin at https://vault.nanome.ai. _Note that if you are an Enterprise customer, your Organization will have a different web address for the private-cloud deployment of the Nanome Vault; your Nanome administrator has the correct URL_.
 
-There are three primary folders in the Nanome Vault:
+There are 3 main folders in Nanome Vault:
 - shared: a public folder everyone can see
 - my org: shared only with users in your organization (requires an Organization set up at https://home.nanome.ai)
 - account: a folder only you can see
