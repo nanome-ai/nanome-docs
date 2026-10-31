@@ -23,9 +23,9 @@ Answers tagged **Classic** describe Nanome Classic (v1.24 and v1.26), the earlie
 
 <AccordionGroup label="2 questions">
 
-<Accordion title="What is Nanome?" teaser="Collaborative VR molecular modelling for researchers.">
+<Accordion title="What is Nanome?" teaser="Collaborative molecular modeling for researchers, in a headset or a browser.">
 
-Nanome is a collaborative virtual-reality molecular modelling tool made for professional researchers working on structures and proteins at the nano scale. You can analyze the 3D arrangement of molecules from inside a protein binding pocket, surround yourself with crystal data, or show your ligand design to colleagues in the same virtual room. It's made for structural biologists, crystallographers, computational chemists, medicinal chemists and protein engineers.
+Nanome is a collaborative molecular modeling tool made for professional researchers working on structures and proteins at the nano scale. It runs in a headset as Nanome XR and in a browser as Nanome Web, with MARA, Nanome's AI assistant, built in. You can analyze the 3D arrangement of molecules from inside a protein binding pocket, surround yourself with crystal data, or show your ligand design to colleagues in the same virtual room. It's made for structural biologists, crystallographers, computational chemists, medicinal chemists and protein engineers.
 
 </Accordion>
 
@@ -129,16 +129,16 @@ We recommend making Nanome the default software for .pdb files. Double-clicking 
 
 | File Type | Description                                      | Source Software      |
 | --------- | ------------------------------------------------ | -------------------- |
-| PDB/MMCIF | Classical Protein file that supports multi-frame | Most MD Softwares    |
+| PDB/MMCIF | Classical Protein file that supports multi-frame | Most MD software     |
 | DCD       | Trajectory File from NAMD                        | NAMD, CHARMM, LAMMPS |
 | GRO       | GROMACS coordinate file                          | GROMACS              |
 | PSF       | Protein Structure File                           | NAMD                 |
-| XTC       | Trajectory File (Compressed)                     | Gromacs              |
-| TRR       | Trajectory File (Lossless) (XDR backend)         | Gromacs              |
+| XTC       | Trajectory File (Compressed)                     | GROMACS              |
+| TRR       | Trajectory File (Lossless) (XDR backend)         | GROMACS              |
 
 Most molecular dynamics data comes as 2 files loaded in parallel: the topology file and the position coordinate file. Trajectories play back from the Advanced Menu of the Entry list for the loaded trajectory.
 
-Nanome subsamples a molecular dynamics file to 500 frames. How many atoms a system can have depends on the device's hardware. A PCVR setup can play back rather large simulated systems at 500 frames (e.g., 200k-300k atoms), while a standalone headset supports a much smaller system (e.g., 5000-6000 atoms).
+Nanome subsamples a molecular dynamics file to 500 frames. How many atoms a system can have depends on the device's hardware. A PCVR setup can play back rather large simulated systems at 500 frames (e.g., 200,000 to 300,000 atoms), while a standalone headset supports a much smaller system (e.g., 5,000 to 6,000 atoms).
 
 The whole trajectory has to be stored in memory and also sent over the network to other users. So on standalone headsets, larger MD files can't load into the small amount of memory of a device equivalent to a smartphone, and other users wait longer to receive all of the data and render it.
 
@@ -178,7 +178,7 @@ Every new account at app.nanome.ai starts with a 14-day Full license trial. For 
 
 <Accordion title="Can I use this for my school?" teaser="Yes, through the academic program.">
 
-Yes. [home.nanome.ai/academic](https://home.nanome.ai/academic) explains how.
+Yes. [nanome.ai/edu](https://nanome.ai/edu) explains how.
 
 </Accordion>
 

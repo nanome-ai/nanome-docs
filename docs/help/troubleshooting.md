@@ -103,7 +103,7 @@ docker compose up -d --wait
 ## <AppIcon name="volume" /> No sound {#audio}
 
 - **Nobody can hear you.** Check <Btn icon="microphone">Mic</Btn> in the [Users tab](/nanome_v2/mainpanel#user-settings): its meter moves when your mic picks up sound. The off-hand controller's primary button (**X**, or **A** when left-handed) also mutes you.
-- **You can't hear one person.** <Btn icon="volume-3">Mute</Btn> in that person's (...) menu, under **Users in workspace**, mutes them for you only. Check you haven't muted them.
+- **You can't hear one person.** <Btn icon="volume-3">Mute</Btn> in that person's <AppIcon name="dots" /> menu, under **Users in workspace**, mutes them for you only. Check you haven't muted them.
 - **No sound at all.** Check the device's own audio: [sound problems in Windows](https://support.microsoft.com/en-us/windows/hardware/audio/fix-sound-or-audio-problems-in-windows), or the [Meta Quest Help Center](https://www.meta.com/help/quest/).
 
 ## <AppIcon name="headset" /> Nanome Classic (v1.24) {#classic}
@@ -149,7 +149,7 @@ Oculus also recommends TCP 3478 and UDP 50000-59999 to each of these sites, but 
 
 </Accordion>
 
-<Accordion title="Oculus for Business only" teaser="TCP 443 to five more hosts.">
+<Accordion title="Oculus for Business only" teaser="TCP 443 to 5 more hosts.">
 
 TCP port 443 for:
 
@@ -214,20 +214,20 @@ Then create the VPN-enabled hotspot:
 
 <Steps>
 
-1. In the Start menu, click **Settings**, then type Firewall in the **Find a Setting** search box.
-2. Click **Windows Firewall** in the results. In the Windows Firewall window, click **Allow an App or Feature through Windows Firewall**.
+1. In the Start menu, choose **Settings**, then type Firewall in the **Find a setting** search box.
+2. Choose **Windows Defender Firewall** in the results. In the Windows Defender Firewall window, choose **Allow an app or feature through Windows Defender Firewall**.
 
-   <vimg src="howto-page/Firewall1.png" alt="Allow an app or feature through Windows Firewall" />
+   <vimg src="howto-page/Firewall1.png" alt="The Windows Defender Firewall window, with Allow an app or feature through Windows Defender Firewall" />
 
-3. In the **Allowed Apps** window, click **Change Settings**, then select the check box for Nanome.
+3. In the **Allowed apps** window, choose **Change settings**, then select the check box for Nanome.
 
-   <vimg src="howto-page/Firewall2.png" alt="The Allowed Apps list with Nanome" />
+   <vimg src="howto-page/Firewall2.png" alt="The Allowed apps window, with Change settings and Allow another app..." />
 
-   If Nanome isn't in the list, click **Allow another app**, then type the path to Nanome.exe or click **Browse** and select it. To find Nanome.exe, see below.
+   If Nanome isn't in the list, choose **Allow another app...**, then type the path to Nanome.exe or choose **Browse** and select it. To find Nanome.exe, see below.
 
-   <vimg src="howto-page/Firewall3.png" alt="The Allow another app dialog" />
+   <vimg src="howto-page/Firewall3.png" alt="The Add an app dialog" />
 
-4. Click **OK**, then **Close** to close the Windows Firewall window.
+4. Choose **OK**, then close the Windows Defender Firewall window.
 
 </Steps>
 

@@ -10,14 +10,14 @@ You manage your account and billing at [home.nanome.ai](https://home.nanome.ai).
 <IconCard icon="list" title="Licenses" href="/home.nanome.ai/licenses">Assign licenses to people, or take them back.</IconCard>
 <IconCard icon="shield-lock" title="Two-Factor Auth" href="/home.nanome.ai/twofactorauth">A 6-digit code at every login.</IconCard>
 <IconCard icon="receipt" title="Invoice" href="/home.nanome.ai/invoice">Get a copy of a receipt or invoice.</IconCard>
-<IconCard icon="star" title="Account Tiers" href="/home.nanome.ai/accounttiers">The four seats, what each includes, and prices.</IconCard>
+<IconCard icon="star" title="Account Tiers" href="/home.nanome.ai/accounttiers">The 4 seats, what each includes, and prices.</IconCard>
 <IconCard icon="calendar" title="Meetings" href="/home.nanome.ai/meetings">Schedule a meeting, or make a quick link.</IconCard>
-<IconCard icon="upload" title="QuickDrop" href="#quickdrop">Drag files in to open them in Nanome Classic.</IconCard>
+<IconCard icon="upload" title="Quick Drop" href="#quickdrop">Drag files in to open them in Nanome Classic.</IconCard>
 </IconGrid>
 
-## <AppIcon name="upload" /> QuickDrop {#quickdrop}
+## <AppIcon name="upload" /> Quick Drop {#quickdrop}
 
-Drag and drop files into the QuickDrop section to load them into Nanome Classic. They're ready the next time you open Nanome Classic on your headset or computer. [Quick Drop](/nanome1x/integration/quickdrop) has the details.
+Drag and drop files into the Quick Drop section to load them into Nanome Classic. They're ready the next time you open Nanome Classic on your headset or computer. [Quick Drop](/nanome1x/integration/quickdrop) has the details.
 
 Supported file types:
 

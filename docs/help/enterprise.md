@@ -2,15 +2,15 @@
 title: Enterprise
 ---
 
-# Enterprise Deployment (Nanome 1.x)
+# Enterprise Deployment (Nanome Classic)
 
-<Callout type="warning" title="Nanome 1.x only">
+<Callout type="warning" title="Nanome Classic (v1.24) only">
 
-This page is for Nanome 1.x only. For Nanome v2 on a private VM, the network requirements are in [Getting Started](/getting-started#on-prem) and installation is in Nanome's [v2 deployment guide](https://nanome.ai/deploy). For help with a deployment, contact your enterprise account manager.
+This page is for Nanome Classic (v1.24) only. For Nanome XR and Nanome Web on a private VM, the network requirements are in [Getting Started](/getting-started#on-prem) and installation is in Nanome's [v2 deployment guide](https://nanome.ai/deploy). For help with a deployment, contact your enterprise account manager.
 
 </Callout>
 
-Information and resources for on-prem enterprise deployments. For help setting up or managing your environments, reach out to your dedicated Nanome representative.
+Information and resources for on-prem enterprise deployments.
 
 <IconGrid label="Enterprise deployment">
 <IconCard icon="topology-star-3" title="Recommended infrastructure" href="#recommended-infrastructure">How network traffic flows in Nanome.</IconCard>
@@ -44,8 +44,8 @@ Recommended specs:
 
 | To | Ports | So that |
 | --- | --- | --- |
-| VM #1 | UDP 5055, 5056; TCP 443, 80, 8888 | VM #1 can connect to the VR devices |
-| VM #2 | TCP 80, 443 | Plugin webpages (like Vault and Data Table) can connect |
+| VM&nbsp;#1 | UDP 5055, 5056; TCP 443, 80, 8888 | VM #1 can connect to the VR devices |
+| VM&nbsp;#2 | TCP 80, 443 | Plugin webpages (like Vault and Data Table) can connect |
 
 ### Outbound, from each VR device
 

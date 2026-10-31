@@ -5,7 +5,7 @@ outline: [2, 3]
 
 # Account Tiers
 
-Each Nanome account has one of four seats. The seat decides where you can work, in the browser at app.nanome.ai or also in a headset, and what you can do there. Everything on this page comes from [nanome.ai/pricing](https://nanome.ai/pricing).
+Each Nanome account has 1 of 4 seats. The seat decides where you can work, in the browser at app.nanome.ai or also in a headset, and what you can do there. Everything on this page comes from [nanome.ai/pricing](https://nanome.ai/pricing).
 
 <CardGrid :cols="2">
 

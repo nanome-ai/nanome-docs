@@ -28,10 +28,10 @@ At home.nanome.ai you can schedule a meeting for later, or make a quick link for
 
 <ShotRow src="home-nanome/dashboard-buttons.webp" alt="Authenticate Device and Schedule meeting at the top right of the dashboard">
 
-You can also start a meeting with **Schedule meeting** at the top right of the dashboard.
+**Schedule meeting**, at the top right of the dashboard, opens the same form on its **Schedule** tab.
 
 <UiList>
-<UiItem icon="calendar" name="Schedule meeting" area="51.7,16.7,44,72.2">Starts a meeting.</UiItem>
+<UiItem icon="calendar" name="Schedule meeting" area="51.7,16.7,44,72.2">Opens the Create Meeting form on its Schedule tab.</UiItem>
 </UiList>
 
 </ShotRow>

@@ -7,18 +7,18 @@ title: Login Screen
 Nanome opens on the login screen. It has two tabs: one for your password, and one for a code you enter on another device.
 
 <ScreenMap src="nanome-v2/v2-7/login-password.webp" alt="The Nanome XR login screen on the Password tab" crop="1.9,0.5,45.1,95" label="Login screen">
-<MapCard icon="password" title="Password" href="#password" side="top" area="10.6,11.9,13.7,4.6">Your Nanome username and password.</MapCard>
+<MapCard icon="password" title="Password" href="#password" side="top" area="10.6,11.9,13.7,4.6">Your Nanome username or email address, and password.</MapCard>
 <MapCard icon="key" title="Code" href="#code" side="top" area="24.6,11.9,13.7,4.6">A 4-character code, entered on another device.</MapCard>
 <MapCard icon="user-plus" title="Create Account" href="#create-account" side="right" area="9.9,55.8,29.1,5.8">A new account, made from the headset.</MapCard>
 </ScreenMap>
 
 ## <AppIcon name="password" /> Password {#password}
 
-The **Password** tab takes your Nanome username or email address and your password. <Btn icon="login-2">Log in</Btn> signs you in.
+The **Password** tab takes your Nanome username or email address and your password. <Btn icon="login-2">Log in</Btn> signs you in. Forgotten passwords are reset at [home.nanome.ai](https://home.nanome.ai), as the line under the field says.
 
 ## <AppIcon name="key" /> Code {#code}
 
-<ShotRow src="nanome-v2/v2-7/login-code.webp" alt="The Code tab with a 4-character code and the time until a new one">
+<ShotRow src="nanome-v2/v2-7/login-code.webp" alt="The Code tab with a 4-character code and the time until a new one" crop="1.9,0.5,45.1,95">
 
 The **Code** tab signs you in from another device.
 

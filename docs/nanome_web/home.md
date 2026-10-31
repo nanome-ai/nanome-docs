@@ -4,88 +4,105 @@ title: Home, Workspaces & Projects
 
 # Home, Workspaces & Projects
 
-Signing in to [app.nanome.ai](https://app.nanome.ai) opens the Home page. It lists recently opened workspaces and projects, and the left sidebar switches between three views: **Recent**, **All Workspaces** and **All Projects**.
+Signing in to [app.nanome.ai](https://app.nanome.ai) opens the Home page. It lists recently opened workspaces and projects, and the left sidebar switches between 3 views: **Recent**, **All Workspaces** and **All Projects**.
 
 A **project** is a folder of workspaces with its own members. A **workspace** is the shared 3D document that holds structures, scenes, comments and permissions. Every workspace belongs to one project.
 
-<IconGrid label="Home page" :cols="3">
-<IconCard icon="clock" title="Recent" href="#recent">The workspaces and projects you opened last.</IconCard>
-<IconCard icon="cube-3d-sphere" title="Join via Code" href="#join-via-code">Opens a workspace from its code.</IconCard>
-<IconCard icon="cube-3d-sphere" title="All Workspaces" href="#workspaces">Every workspace you can open, and the workspace menu.</IconCard>
-<IconCard icon="folder" title="All Projects" href="#projects">Every project, its members and its activity.</IconCard>
-<IconCard icon="plus" title="New" href="#new">Creates a workspace or a project.</IconCard>
-<IconCard icon="home" title="Top bar" href="#top-bar">Navigation, search and your account, on every page.</IconCard>
-</IconGrid>
-
-<vimg src="nanome-web/home-recent.webp" alt="The Home page with recent workspaces and projects" />
+<ScreenMap src="nanome-web/home-recent.webp" alt="The Home page with recent workspaces and projects" label="Home page">
+<MapCard icon="home" title="Home" href="#top-bar" side="top" area="12.7,3.5,3.6,9.2">Returns to this page.</MapCard>
+<MapCard icon="cube-3d-sphere" title="Workspace" href="/nanome_web/workspace" side="top" area="17.1,3.5,6.0,9.2">Returns to your open workspace tabs.</MapCard>
+<MapCard icon="messages" title="Conversations / Tools" href="/mara/overview" side="top" area="24.0,3.5,11.3,9.2">MARA chat and tools, covered in the MARA section.</MapCard>
+<MapCard icon="infinity" title="Credits" href="#top-bar" side="top" area="82.2,2.6,7.8,9.4">Your account's credit balance.</MapCard>
+<MapCard icon="search" title="Search (⌘K)" href="#top-bar" side="top" area="90.5,2.6,2.5,9.4">Finds workspaces and projects.</MapCard>
+<MapCard icon="lock-cog" title="Login via Device Code" href="/nanome_web/account#login-via-device-code" side="top" area="93.5,2.6,2.4,9.4">Signs a headset in to your account.</MapCard>
+<MapCard icon="user-circle" title="Account menu" href="/nanome_web/account" side="top" area="96.3,2.4,2.9,9.8">Account, billing, organization and settings pages, and Logout.</MapCard>
+<MapCard icon="plus" title="New" href="#new" side="bottom" area="0.9,18.0,10.9,8.8">Creates a workspace or a project.</MapCard>
+<MapCard icon="clock" title="Recent" href="#recent" side="bottom" area="0.0,33.3,12.8,10.9">The workspaces and projects you opened last.</MapCard>
+<MapCard icon="cube-3d-sphere" title="All Workspaces" href="#workspaces" side="bottom" area="0.0,44.4,12.8,9.9">Every workspace you can open, and the workspace menu.</MapCard>
+<MapCard icon="folder" title="All Projects" href="#projects" side="bottom" area="0.0,54.7,12.8,10.0">Every project, its members and its activity.</MapCard>
+<MapCard icon="cube-3d-sphere" title="Join via Code" href="#join-via-code" side="bottom" area="82.3,19.8,9.3,8.8">Opens a workspace from its code.</MapCard>
+</ScreenMap>
 
 ## <AppIcon name="clock" /> Recent {#recent}
 
 - **Recent Workspaces** lists the workspaces you opened most recently, with their project, owner, the date you last opened them, and your access level (Owner, Editor or Viewer).
 - **Recent Projects** lists projects with their workspace count, owner, last update and your access level.
 
-The two buttons at the top right switch between a grid of cards and a list.
+The 2 buttons at the top right switch between a grid of cards and a list.
 
 ### <AppIcon name="cube-3d-sphere" /> Join via Code {#join-via-code}
 
-**Join via Code** opens a box for a workspace code in the form `XXXX-XXXX`. The workspace host can read the code from the **Users** tab of the workspace.
+<ShotRow src="nanome-web/join-via-code.webp" alt="The Join via Code box">
 
-<vimg src="nanome-web/join-via-code.webp" alt="The Join via Code box" />
+**Join via Code** opens a box for a workspace code in the form `XXXX-XXXX`. The dash is added for you, and the workspace opens as soon as all 8 characters are in. The workspace host can read the code from the **Users** tab of the workspace.
+
+</ShotRow>
 
 ## <AppIcon name="cube-3d-sphere" /> Workspaces {#workspaces}
 
 The **All Workspaces** view lists every workspace you can open.
 
+<ShotRow src="nanome-web/workspaces-filter.webp" alt="The workspace filter menu">
+
 <UiList label="All Workspaces toolbar">
-<UiItem icon="search" name="Search">Searches the workspace list.</UiItem>
-<UiItem icon="cube-3d-sphere" name="Join via Code" href="#join-via-code">Opens a workspace from its code.</UiItem>
-<UiItem icon="filter" name="Filter">All, My Workspaces (ones you own), or Shared with me.</UiItem>
-<UiItem icon="arrows-sort" name="Sort">By Name or by Date.</UiItem>
-<UiItem name="Grid / List">Switches between a grid of cards and a list.</UiItem>
+<UiItem icon="search" name="Search" area="12.5,5.3,5.7,20.8">Searches the workspace list.</UiItem>
+<UiItem icon="cube-3d-sphere" name="Join via Code" href="#join-via-code" area="18.8,5.3,22.0,20.8">Opens a workspace from its code.</UiItem>
+<UiItem icon="filter" name="Filter" area="41.4,5.0,17.7,21.4">All, My Workspaces (ones you own), or Shared with me.</UiItem>
+<UiItem icon="arrows-sort" name="Sort" area="59.7,5.3,20.2,20.8">By Name or by Date.</UiItem>
+<UiItem icon="layout-grid" name="Grid view" area="80.5,5.3,7.7,20.8">Shows the workspaces as a grid of cards.</UiItem>
+<UiItem icon="list" name="List view" area="88.2,5.3,7.8,20.8">Shows the workspaces as a list.</UiItem>
 </UiList>
 
-<vimg src="nanome-web/workspaces-filter.webp" alt="The workspace filter menu" />
+</ShotRow>
+
+<ShotRow src="nanome-web/workspaces-row-menu.webp" alt="A workspace row's menu">
 
 Right-clicking a workspace row, or clicking its <AppIcon name="dots" /> **(...)** button, opens the same menu that sits in the header of an open workspace:
 
 <UiList label="Workspace menu">
-<UiItem name="Open in new tab">Opens the workspace in a new browser tab.</UiItem>
-<UiItem name="Edit info">Changes the workspace name and description.</UiItem>
-<UiItem name="Copy shareable link">Copies a link to the workspace. If Link access is Members only, it first changes it to Anyone can view.</UiItem>
-<UiItem name="Duplicate">Makes a copy of the workspace.</UiItem>
-<UiItem name="Open in XR" href="/nanome_web/collaboration#sending-a-workspace-to-a-headset">Sends the workspace to Nanome XR on your headset. With other people in the headset's session, it asks Just Me or Load for All.</UiItem>
-<UiItem name="Move to project">Moves the workspace into another project.</UiItem>
-<UiItem name="Export analysis">A ZIP of CSV files: chemical interactions, measurements and minimization history. Works from an open workspace's menu; grayed out in the list.</UiItem>
-<UiItem name="Delete">Deletes the workspace. If you don't own the workspace or its project, this item is Leave, which removes you from it.</UiItem>
+<UiItem name="Open in new tab" area="63.8,21.0,31.5,8.5">Opens the workspace in a new browser tab.</UiItem>
+<UiItem icon="pencil" name="Edit info" area="63.8,30.1,31.5,8.5">Changes the workspace name and description.</UiItem>
+<UiItem icon="link" name="Copy shareable link" area="63.8,39.3,31.5,8.5">Copies a link to the workspace. If Link access is Members only, it first changes it to Anyone can view.</UiItem>
+<UiItem icon="copy" name="Duplicate" area="63.8,48.6,31.5,8.5">Makes a copy of the workspace.</UiItem>
+<UiItem icon="device-vision-pro" name="Open in XR" href="/nanome_web/collaboration#sending-a-workspace-to-a-headset" area="63.8,57.9,31.5,8.5">Sends the workspace to Nanome XR on your headset. With other people in the headset's session, it asks Just Me or Load for All.</UiItem>
+<UiItem name="Move to project" area="63.8,67.2,31.5,8.5">Moves the workspace into another project.</UiItem>
+<UiItem name="Export analysis" area="63.8,76.5,31.5,8.5">A ZIP of CSV files for the current scene: chemical interactions, measurements and minimization history. Only the open workspace's menu has it; in the list it shows on that workspace's row, grayed out.</UiItem>
+<UiItem icon="trash" name="Delete" area="63.8,85.8,31.5,8.5">Deletes the workspace. If you don't own the workspace or its project, this item is Leave, which removes you from it.</UiItem>
 </UiList>
 
-<vimg src="nanome-web/workspaces-row-menu.webp" alt="A workspace row's menu" />
+</ShotRow>
 
 ## <AppIcon name="folder" /> Projects {#projects}
+
+<ShotRow src="nanome-web/projects-row-menu.webp" alt="A project row's menu">
 
 The **All Projects** view lists projects with their workspace count, owner, last update and your access level. It has the same search, filter, sort and layout controls as the All Workspaces view.
 
 The row menu has **Open in new tab**, **Edit info**, **Manage members** and **Delete** (**Leave** on a project you don't own).
 
-<vimg src="nanome-web/projects-row-menu.webp" alt="A project row's menu" />
+</ShotRow>
 
 ### Project page
 
+<ShotRow src="nanome-web/project-members.webp" alt="A project's Members tab and Activity feed">
+
 <UiList label="Project page">
-<UiItem name="Description, Focus, Lead">The fields across the top.</UiItem>
-<UiItem name="Activity">A feed on the right that records when workspaces in the project are created and edited.</UiItem>
-<UiItem name="Move Workspaces">Moves workspaces you own from other projects into this one.</UiItem>
-<UiItem name="Workspaces">A tab that lists the project's workspaces.</UiItem>
-<UiItem name="Members">A tab that adds people by email as Editor or Viewer and lists current members with their role.</UiItem>
+<UiItem name="Description, Focus, Lead" area="1.0,18.5,72.9,19.0">The fields across the top.</UiItem>
+<UiItem name="Activity" area="74.2,18.4,24.2,81.5">A feed on the right that records when workspaces in the project are created and edited.</UiItem>
+<UiItem name="Move Workspaces" area="86.6,4.7,11.7,11.0">Moves workspaces you own from other projects into this one.</UiItem>
+<UiItem name="Workspaces" area="1.2,41.2,8.6,12.8">A tab that lists the project's workspaces.</UiItem>
+<UiItem name="Members" area="10.0,41.2,7.4,12.8">A tab that adds people by email as Editor or Viewer and lists current members with their role.</UiItem>
 </UiList>
 
-<vimg src="nanome-web/project-members.webp" alt="A project's Members tab and Activity feed" />
+</ShotRow>
 
 ## <AppIcon name="plus" /> New {#new}
 
+<ShotRow src="nanome-web/new-menu.webp" alt="The New menu">
+
 The **New** button at the top of the sidebar creates a **Workspace** or a **Project**.
 
-<vimg src="nanome-web/new-menu.webp" alt="The New menu" />
+</ShotRow>
 
 ## <AppIcon name="home" /> Top bar {#top-bar}
 
@@ -95,14 +112,19 @@ The top bar is on every page.
 <UiItem name="Home">Returns to this page.</UiItem>
 <UiItem name="Workspace">Returns to your open workspace tabs.</UiItem>
 <UiItem name="Conversations / Tools" href="/mara/overview">MARA chat and tools, covered in the MARA section.</UiItem>
-<UiItem icon="infinity" name="Credits">Your account's credit balance. It can be hidden in Settings.</UiItem>
-<UiItem icon="search" name="Search (⌘K)">Searches workspaces and projects by name. On Windows and Linux the shortcut is Ctrl+K. Workspace results show the project, owner and last-opened date.</UiItem>
+<UiItem icon="infinity" name="Credits">Your account's credit balance. Accounts with unlimited credits can hide it in Settings.</UiItem>
 <UiItem icon="cube-3d-sphere" name="Join Workspace via Code">Opens a workspace from its 8-character code, on pages without their own Join via Code button.</UiItem>
 <UiItem icon="lock-cog" name="Login via Device Code" href="/nanome_web/account#login-via-device-code">Signs a headset in to your account.</UiItem>
 <UiItem name="Account menu" href="/nanome_web/account">Your initial: account, billing, organization and settings pages, plus Logout and the web app version.</UiItem>
 </UiList>
 
-<vimg src="nanome-web/search.webp" alt="Search results for 4ceo" />
+<ShotRow src="nanome-web/search.webp" alt="Search results for 4ceo">
+
+<UiList label="Search">
+<UiItem icon="search" name="Search (⌘K)" area="1.7,5.1,96.7,25.9">Finds workspaces by name, project or owner, and projects by name. On Windows and Linux the shortcut is Ctrl+K. Workspace results show the project, owner and last-opened date.</UiItem>
+</UiList>
+
+</ShotRow>
 
 ## Account limits
 
