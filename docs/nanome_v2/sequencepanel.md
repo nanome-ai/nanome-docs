@@ -8,18 +8,19 @@ The Sequence Panel shows the sequences of all loaded structures, protein and nuc
 
 ## <AppIcon name="mist" /> Features {#features}
 
-<ShotRow src="nanome-v2/v2-7/sequence-viewer.webp" alt="The Sequence Panel for 1KV2 with its parts labeled">
-
-- Clicking the chain letter, such as "A", selects the whole chain.
-- Clicking residues in the sequence selects them, and selected residues are highlighted.
-- Hovering a residue shows its details at the bottom of the panel, such as "1KV2 A: THR 106".
+<ShotRow src="nanome-v2/v2-7/sequence-panel.webp" alt="The Sequence Panel for 1KV2, with chain A's sequence and some residues selected">
 
 <UiList label="Sequence Panel">
-<UiItem name="Filter hidden structures" area="11.9,59.7,22.4,6.9">Leaves out structures that have no visible representation.</UiItem>
-<UiItem name="Clear" area="80.8,57.9,6.5,10.4">Clears the selection.</UiItem>
-<UiItem name="Create" area="87.6,57.5,7.6,11.1">Creates a component from the selected residues.</UiItem>
+<UiItem name="Entry" area="1.4,27.7,4.9,12.2">The structure the sequences belong to, such as 1KV2.</UiItem>
+<UiItem name="Chain" area="10.7,12.8,1.9,10.6">The chain letter, such as A. Clicking it selects the whole chain.</UiItem>
+<UiItem name="Residue numbers" area="10.8,25.5,87.1,9.6">The chain's first residue number, then every tenth.</UiItem>
+<UiItem name="Selected residues" area="48.5,35.1,48.5,13.8">Clicking residues selects them, and selected residues are highlighted.</UiItem>
+<UiItem name="Filter hidden structures" area="2.9,70.7,25.6,16.5">Leaves out structures that have no visible representation.</UiItem>
+<UiItem name="Clear" area="81.9,67.6,7.2,22.9">Clears the selection.</UiItem>
+<UiItem name="Create" area="89.9,67.6,8.2,22.9">Creates a component from the selected residues.</UiItem>
 </UiList>
 
-When a component is active in the panel, its name shows beside the buttons and **Create** becomes **Update**, which updates that component with the current selection. Selecting the name ends that, and the button goes back to **Create**.
+- Hovering a residue shows its details at the bottom of the panel, such as "1KV2 A: THR 106".
+- When a component is active in the panel, its name shows beside the buttons and **Create** becomes **Update**, which updates that component with the current selection. Selecting the name ends that, and the button goes back to **Create**.
 
 </ShotRow>
