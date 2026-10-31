@@ -85,9 +85,10 @@ onBeforeUnmount(() => sizer?.disconnect())
 /**
  * The expand button's corner. It sits bottom right unless it would cover part
  * of a region there, such as a Send or Close button. Then it tries top right,
- * top left and bottom left in turn, or else takes the corner where it hides
- * the least of one. A region over a quarter of the frame, such as a whole
- * panel, doesn't count: the button hides only its edge.
+ * top left and bottom left in turn. When every corner holds a region, as on a
+ * sequence strip at phone width, it sits just under the frame's bottom-right
+ * corner instead. A region over a quarter of the frame, such as a whole panel,
+ * doesn't count: the button hides only its edge.
  */
 const corner = computed(() => {
   if (!props.spots.length) return ''
@@ -108,11 +109,13 @@ const corner = computed(() => {
       })
     )
   }
-  const scored = [[false, false], [true, false], [true, true], [false, true]].map((c) => [covers(c), c])
-  const [, [top, left]] =
-    scored.find(([part]) => part === 0) || scored.reduce((best, c) => (c[0] < best[0] ? c : best))
+  const free = [[false, false], [true, false], [true, true], [false, true]].find((c) => covers(c) === 0)
+  if (!free) return 'is-below'
+  const [top, left] = free
   return [top && 'is-top', left && 'is-left'].filter(Boolean).join(' ')
 })
+
+const below = computed(() => corner.value === 'is-below')
 
 // Larger regions first, so a smaller one inside it stays on top to hover.
 const ordered = computed(() =>
@@ -136,7 +139,7 @@ function pick(spot) {
 </script>
 
 <template>
-  <div class="hotshot" :class="{ 'has-dark': !!info.dark, 'is-focus': focus }" :style="outer">
+  <div class="hotshot" :class="{ 'has-dark': !!info.dark, 'is-focus': focus, 'has-expand-below': below && !focus }" :style="outer">
     <div
       ref="frameEl"
       class="hotshot__frame"
@@ -213,7 +216,7 @@ function pick(spot) {
         <svg viewBox="0 0 24 24" width="15" height="15"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
       </span>
       <button
-        v-else-if="!focus"
+        v-else-if="!focus && !below"
         type="button"
         class="hotshot__expand is-button"
         :class="corner"
@@ -224,6 +227,17 @@ function pick(spot) {
         <svg viewBox="0 0 24 24" width="15" height="15"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
       </button>
     </div>
+    <!-- Every corner holds a region, so the button sits under the frame. -->
+    <button
+      v-if="!focus && below"
+      type="button"
+      class="hotshot__expand is-button is-below"
+      :aria-label="`${alt || 'Screenshot'}. Show larger`"
+      title="Show larger"
+      @click.stop="emit('open')"
+    >
+      <svg viewBox="0 0 24 24" width="15" height="15"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+    </button>
   </div>
 </template>
 
@@ -357,6 +371,33 @@ function pick(spot) {
 
 .hotshot__expand.is-button:hover {
   background: rgba(0, 0, 0, 0.75);
+}
+
+/* Under the frame's bottom-right corner, on the page instead of the image,
+   with room kept for it so it never reaches what follows. */
+.hotshot.has-expand-below {
+  position: relative;
+  padding-bottom: 31px;
+}
+
+.hotshot__expand.is-below {
+  right: 0;
+  bottom: 0;
+  padding: 4px;
+  border: 1px solid var(--n-border);
+  background: var(--n-surface);
+  color: var(--n-text-muted);
+}
+
+.hotshot__expand.is-below:hover {
+  border-color: var(--n-accent-border);
+  background: var(--n-surface-hover);
+  color: var(--n-text);
+}
+
+.hotshot:hover .hotshot__expand.is-below,
+.hotshot__expand.is-below:focus-visible {
+  opacity: 1;
 }
 
 .hotshot__expand.is-button:focus-visible {
