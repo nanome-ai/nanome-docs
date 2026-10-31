@@ -151,7 +151,11 @@ const caption = computed(() => {
 })
 const alt = computed(() => `1D3Z, model ${model.value} of 10, as Cartoon`)
 
-// Nanome Web fills the arrows of the direction that's playing.
+// Nanome Web fills the arrows of the direction that's playing. Its row button
+// and arrows follow playbackEntrySerial, which pausing clears: PausePlayback
+// sets the playing entry to null and GetPlaybackState sends that as
+// entrySerial (PlaybackViewModelWeb.cs). So while paused the row shows play
+// and neither arrow is filled, as here.
 const filled = (back) => !xr.value && playing.value && backward.value === back
 </script>
 

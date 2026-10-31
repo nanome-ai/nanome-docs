@@ -236,13 +236,24 @@ function removeFilter(i) {
   }
 }
 
+// Nanome Web keeps a ligand when its entry is in the 3D view's entry list,
+// which holds hidden entries too (WorkspaceLigandsTable, BuildEntriesState).
+const VISIBLE_TEXT = {
+  xr: {
+    on: 'Lists only ligands drawn in the 3D view. In this copy 1BL6 and 1BL7 stand in for hidden entries.',
+    off: 'Ligands of hidden entries are listed again.',
+  },
+  web: {
+    on: 'Lists only ligands of entries loaded in the 3D view. In this copy 1BL6 and 1BL7 stand in for entries it hasn’t loaded.',
+    off: 'Ligands of every entry are listed again.',
+  },
+}
+
 function setVisible(on) {
   visibleOnly.value = on
   note.value = {
     title: `Filter by currently visible · ${on ? 'on' : 'off'}`,
-    text: on
-      ? 'Lists only ligands drawn in the 3D view. In this copy 1BL6 and 1BL7 stand in for hidden entries.'
-      : 'Ligands of hidden entries are listed again.',
+    text: VISIBLE_TEXT[xr.value ? 'xr' : 'web'][on ? 'on' : 'off'],
     count: true,
   }
 }
@@ -328,8 +339,14 @@ function deletePreset(p) {
   clearTimeout(confirmTimer)
   if (confirming.value !== p.id) {
     confirming.value = p.id
-    confirmTimer = setTimeout(() => (confirming.value = null), 3000)
     note.value = { title: confirmLabel.value, text: `The trash button turns into a check. A second click within 3 seconds deletes ${p.name}.` }
+    // Read back, so it's the same reactive copy note holds.
+    const pending = note.value
+    // When the 3 seconds run out with nothing else said, the caption says so.
+    confirmTimer = setTimeout(() => {
+      confirming.value = null
+      if (note.value === pending) note.value = { title: `${p.name} · kept`, text: 'No second click came within 3 seconds, so the check is a trash button again and the preset stays.' }
+    }, 3000)
     return
   }
   confirming.value = null

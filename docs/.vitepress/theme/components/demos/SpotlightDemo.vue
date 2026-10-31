@@ -24,12 +24,14 @@ import { useAutoplay } from './autoplay.js'
 
 const O = 'nanome-v2/v2-7/options/'
 
-// Participant colors as the 2.7.1 captures show them. The chip text is the
-// contrast color the app picks: black on Ana's yellow, white on Ben's blue.
-const YOU = { color: '#f35286', ink: '#fff' }
+// Participant colors as the 2.7.1 captures show them. The app picks white
+// text on Ben's blue and on your pink (MenuDetailUtils.GetContrastColor), but
+// that's 3.4:1 and 3.3:1 for bold 15 and 16px labels, so the copy uses black
+// there, as it does on Ana's yellow, to reach 4.5:1.
+const YOU = { color: '#f35286', ink: '#000' }
 const PEOPLE = {
   ana: { name: 'Ana', color: '#fabf26', ink: '#000', her: 'her', she: 'she', src: `${O}follow-ana.webp`, alt: "1KV2 as Ana sees it, with Ben's avatar to the left" },
-  ben: { name: 'Ben', color: '#218cf2', ink: '#fff', her: 'his', she: 'he', src: `${O}follow-ben.webp`, alt: "1KV2 as Ben sees it, with Ana's avatar to the right" },
+  ben: { name: 'Ben', color: '#218cf2', ink: '#000', her: 'his', she: 'he', src: `${O}follow-ben.webp`, alt: "1KV2 as Ben sees it, with Ana's avatar to the right" },
 }
 const OWN = { src: `${O}follow-you.webp`, alt: "1KV2 from your seat, with Ana's and Ben's avatars across it" }
 

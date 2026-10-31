@@ -81,7 +81,7 @@ const alt = computed(() => {
         >{{ t.name }}</button>
       </div>
       <div class="n-app-themebar">
-        <button type="button" class="n-app-round" role="switch" :aria-checked="night" :aria-label="night ? 'Night. Switch to day' : 'Day. Switch to night'" @click="flip">
+        <button type="button" class="n-app-round" role="switch" :aria-checked="night" aria-label="Night" @click="flip">
           <AppIcon :name="night ? 'moon' : 'sun'" size="1.1rem" />
         </button>
         <span class="n-app-field">{{ current.name }}</span>
