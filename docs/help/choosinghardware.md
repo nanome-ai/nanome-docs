@@ -152,11 +152,12 @@ in [Getting Started](/getting-started#mdm).
 | | Minimum | Recommended |
 | --- | --- | --- |
 | **Headsets** | Meta Quest 2, Meta Quest Pro | Meta Quest 3, Meta Quest 3S |
-| **Rendering budget in Nanome XR** | 750,000 triangles | 1.3 million triangles |
+| **Drawing budget in Nanome XR** | A little over half the Quest 3 budget | The full Quest 3 budget |
 
-When a scene needs more than the budget, Nanome XR lowers the detail of the
-largest structures first. Quest 2 and Quest Pro have a little over half the
-budget of Quest 3 and 3S, so detail drops with smaller scenes. The comfort
+When a scene needs more than its drawing budget, Nanome XR lowers the detail
+of the largest entries first, and hides whole entries if the scene stays far
+over budget. Quest 2 and Quest Pro get a little over half the Quest 3 drawing
+budget, so heavy scenes lose detail and hide entries sooner. The comfort
 tables below don't rate Quest 2 or Quest Pro.
 
 ## <AppIcon name="ban" /> Headsets not supported {#headsets-not-supported}
@@ -168,7 +169,10 @@ tables below don't rate Quest 2 or Quest Pro.
 The tables below show how much structure each platform shows comfortably.
 'Shown Atom Count' is what's displayed in the workspace, not what's loaded.
 
-<Accordion title="Notes 1 to 6 on the comfort tables" teaser="What the atom counts assume, and how the Web, Galaxy XR and M5 columns are rated.">
+The ratings Comfortable, Moderate and Not recommended are Nanome's guidance
+for each platform, with nothing else on screen.
+
+<Accordion title="Notes 1 to 6 on the comfort tables" teaser="What the atom counts assume, and how the PCVR, Web, Galaxy XR and M5 columns are rated.">
 
 1. 'Shown Atom Count' only refers to the count of atoms displayed in the
    workspace. Larger structures can be loaded within the workspace and hidden.
@@ -177,36 +181,21 @@ The tables below show how much structure each platform shows comfortably.
    performance in different ways significantly. The 'Shown Atom Count' column
    is given assuming nothing else is displayed in the scene.
 3. Desktop is assumed to be "VR ready"; see the
-   [minimum and recommended PC specs](/help/pchardware).
+   [minimum and recommended PC specs](/help/pchardware). PCVR ratings carry
+   over from Nanome Classic (v1.24). Nanome XR sets no drawing budget on PCVR,
+   so the PC's graphics card sets the limit.
 4. Web performance depends entirely on the computer's GPU, so the Web column
    has no single rating. The example column shows an Apple M1 Max (32-core
-   GPU); a lower-end laptop GPU will sit a band or two lower, and a desktop GPU
-   higher.
-5. Samsung Galaxy XR's Snapdragon XR2+ Gen 2 carries the same GPU as the
-   Quest 3 clocked 15% higher, and its 16 GB of memory (Quest 3: 8 GB) helps
-   large structures load.
-6. Apple Vision Pro with M5 ratings are projected from the M2 model. The M5's
-   10-core GPU rates about 1.4 times the M2's, and reviews describe the M2
-   model as GPU-bound where the M5 is not; the M5 also renders 10% more pixels.
-   Net, that is roughly 1.4 to 1.5 times the headroom.
+   GPU); a lower-end laptop GPU will sit a rating or two lower, and a desktop
+   GPU higher.
+5. Samsung Galaxy XR ratings are estimates. Nanome XR gives Galaxy XR the same
+   drawing budget as Quest 3, so the ratings match Quest 3's. Its Snapdragon
+   XR2+ Gen 2 carries the same GPU as the Quest 3 clocked 15% higher, but its
+   displays have about 3 times as many pixels. The 16 GB of memory (Quest 3:
+   8 GB) helps large structures load.
+6. Ratings for Apple Vision Pro with M5 are projected from the M2 model.
 
 </Accordion>
-
-### Comfort legend {#comfort-legend}
-
-<table class="legend">
-  <thead>
-    <tr>
-      <th>Comfortability</th>
-      <th>Frames Per Second (FPS)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td class="rate-good">Comfortable</td><td>72 FPS +</td></tr>
-    <tr><td class="rate-ok">Moderate</td><td>60 FPS +</td></tr>
-    <tr><td class="rate-bad">Not recommended</td><td>30 FPS or less</td></tr>
-  </tbody>
-</table>
 
 ### Comfort comparison: XR {#comfort-comparison-xr}
 
@@ -248,7 +237,7 @@ The tables below show how much structure each platform shows comfortably.
     <tr>
       <td>15,000</td>
       <td class="rate-bad">Not recommended</td>
-      <td class="rate-ok">Moderate</td>
+      <td class="rate-bad">Not recommended</td>
       <td class="rate-good">Comfortable</td>
       <td class="rate-good">Comfortable</td>
     </tr>
