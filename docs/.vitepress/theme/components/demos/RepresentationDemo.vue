@@ -117,9 +117,20 @@ function toggleType(t, e) {
 const caption = computed(() => {
   if (note.value) return note.value
   if (showList.value) {
+    // Only the types 1KV2's binding site has are drawn, so name those.
+    const shown = [
+      ['hb', 'hydrogen bonds in yellow'],
+      ['salt', 'salt bridges in orange'],
+      ['hydrophobic', 'hydrophobic contacts in gray'],
+    ].filter(([k]) => ints[k]).map(([, s]) => s)
+    const list = shown.length > 1 ? `${shown.slice(0, -1).join(', ')} and ${shown.at(-1)}` : shown[0]
     return {
-      title: `Interactions · ${count.value} types on`,
-      text: 'Dashed lines between the atoms that interact. In this binding site: hydrogen bonds in yellow, salt bridges in orange and hydrophobic contacts in gray.',
+      title: `Interactions · ${count.value} ${count.value === 1 ? 'type' : 'types'} on`,
+      text: list
+        ? `Dashed lines between the atoms that interact. In this binding site: ${list}.`
+        : count.value
+          ? "1KV2's binding site has none of the types that are on, so no lines show."
+          : 'Every type is off, so no lines show.',
     }
   }
   if (extra.value === 'surface') {
@@ -147,8 +158,8 @@ const alt = computed(() => `1KV2's binding site: ${caption.value.title}`)
         <span class="n-app-palette" :class="{ 'is-on': atom === a.key }" aria-hidden="true"><AppIcon name="palette" size="0.95rem" /></span>
       </label>
 
-      <div class="n-app-seg" role="radiogroup" aria-label="Hydrogens">
-        <button v-for="h in HYDROGENS" :key="h.key" type="button" role="radio" :aria-checked="hydrogen === h.key" :class="{ 'is-on': hydrogen === h.key }" @click="pickHydrogen(h.key)">
+      <div class="n-app-seg" role="group" aria-label="Hydrogens">
+        <button v-for="h in HYDROGENS" :key="h.key" type="button" :aria-pressed="hydrogen === h.key" :class="{ 'is-on': hydrogen === h.key }" @click="pickHydrogen(h.key)">
           <span><AppIcon :name="h.icon" size="0.85rem" />{{ label(h) }}</span>
         </button>
       </div>
@@ -171,8 +182,8 @@ const alt = computed(() => `1KV2's binding site: ${caption.value.title}`)
         <input type="checkbox" role="switch" class="n-app-switch" :checked="extra === 'surface' && !showList" @change="toggleExtra('surface', $event)" />
         <span class="n-app-palette" :class="{ 'is-on': extra === 'surface' && !showList }" aria-hidden="true"><AppIcon name="palette" size="0.95rem" /></span>
       </label>
-      <div class="n-app-seg" role="radiogroup" aria-label="Surface look">
-        <button v-for="s in SURFACES" :key="s.key" type="button" role="radio" :aria-checked="surface === s.key" :class="{ 'is-on': surface === s.key }" @click="pickSurface(s.key)">
+      <div class="n-app-seg" role="group" aria-label="Surface look">
+        <button v-for="s in SURFACES" :key="s.key" type="button" :aria-pressed="surface === s.key" :class="{ 'is-on': surface === s.key }" @click="pickSurface(s.key)">
           <span><AppIcon :name="s.icon" size="0.85rem" />{{ s.name }}</span>
         </button>
       </div>

@@ -61,15 +61,14 @@ const caption = computed(() => {
 <template>
   <div ref="root" class="n-demo" v-on="auto.hold">
     <div class="n-app-card n-app-schemes is-spread" role="group" aria-label="Color schemes">
-      <div class="n-app-schemelist" role="radiogroup" aria-label="Color scheme">
+      <div class="n-app-schemelist" role="group" aria-label="Color scheme">
         <button
           v-for="s in schemes"
           :key="s.key"
           type="button"
-          role="radio"
           class="n-app-scheme"
           :class="{ 'is-on': scheme === s.key }"
-          :aria-checked="scheme === s.key"
+          :aria-pressed="scheme === s.key"
           :disabled="s.disabled"
           :title="s.disabled ? 'Listed when the entry has a DX map loaded' : undefined"
           @click="pick(s)"

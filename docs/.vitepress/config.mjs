@@ -154,6 +154,29 @@ export default defineConfig({
 
   srcExclude: isProduction ? ['contributing/**'] : [],
 
+  // A line that starts with <Btn> or <AppIcon> stays a paragraph. VitePress
+  // otherwise reads any line that starts with a component as a block of its
+  // own, so the line loses its paragraph spacing, or runs on into the next
+  // paragraph or the line before it.
+  markdown: {
+    component: { inlineTags: ['Btn', 'AppIcon'] },
+
+    // A heading's permalink is named for the heading's text, without the
+    // <AppIcon> in front of it or the {#id} after it.
+    config(md) {
+      md.core.ruler.after('anchor', 'n-anchor-label', (state) => {
+        for (const token of state.tokens) {
+          if (token.type !== 'inline') continue
+          for (const child of token.children || []) {
+            if (child.type !== 'link_open' || !(child.attrGet('class') || '').includes('header-anchor')) continue
+            const text = headingText(token.content.replace(/[ \t]*\{[^{}]*\}[ \t]*$/, '')).replace(/\s+/g, ' ').trim()
+            child.attrSet('aria-label', `Permalink to "${text}"`)
+          }
+        }
+      })
+    }
+  },
+
   head: [
     ['link', { rel: 'icon', href: '/assets/favicon.ico' }],
     [
