@@ -115,11 +115,12 @@ a.n-uiitem__row:hover :deep(.n-appicon),
   line-height: 1.4;
 }
 
-/* A text button: drawn as the pill the app shows. */
+/* A text button: drawn as the pill the app shows. A one-line name gets fully
+   round ends, and a name that wraps becomes a box with rounded corners. */
 .n-uiitem__name.is-textbutton {
   padding: 0 10px;
   border: 1px solid var(--n-border);
-  border-radius: var(--n-radius-pill);
+  border-radius: 0.8em;
   background: var(--n-surface-sunken);
   font-size: var(--n-text-sm);
 }
