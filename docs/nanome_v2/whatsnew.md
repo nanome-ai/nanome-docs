@@ -4,17 +4,17 @@ title: What's New in 2.7
 
 # What's New in 2.7
 
-Release 2.7 shipped on October 12, 2026, and 2.7.1 followed as a patch. The full release notes are at [nanome.ai/versions](https://nanome.ai/versions), and the [v2.7 announcement](https://nanome.ai/blog/nanome-v2.7:-comments-pocket-minimization-ligand-builder-upgrades-and-more) tells the story with video.
+Release 2.7 shipped on October 12, 2026, and 2.7.1 followed as a patch. The full release notes are at [nanome.ai/versions](https://nanome.ai/versions), and the [v2.7 announcement](https://nanome.ai/blog/nanome-v2.7:-comments-pocket-minimization-ligand-builder-upgrades-and-more) has the videos.
 
 <IconGrid label="What's new in 2.7" :cols="3">
 <IconCard icon="message" title="Comments" href="/nanome_v2/toolspanel#comments">Threaded comments, tied to atoms.</IconCard>
 <IconCard icon="hexagon-plus-2" title="Ligand Builder" href="/nanome_v2/toolspanel#builder-tool">Attachment points, ring fusion and auto relax.</IconCard>
 <IconCard icon="minimize" title="Pocket minimization" href="/nanome_v2/toolspanel#pocket-minimization">Minimize a ligand inside its binding site.</IconCard>
+<IconCard icon="atom" title="Rendering" href="#rendering">GPU impostors, finer surfaces and new skyboxes.</IconCard>
 <IconCard icon="lasso" title="Hover, select and measure" href="/nanome_web/workspace#tool-rail">The selection and measurement tools on desktop and web.</IconCard>
 <IconCard icon="droplet" title="Pointing in XR" href="/nanome_v2/toolspanel#pointer">Whole-residue hover, tooltips and the off-hand pointer.</IconCard>
 <IconCard icon="crown" title="Following" href="/nanome_v2/scenespanel#spotlight-mode">Followers see the leader's tool and edits live.</IconCard>
 <IconCard icon="player-play" title="Trajectories and file loading" href="/nanome_web/mdplayback">Playback, GROMACS files and ligand bonds.</IconCard>
-<IconCard icon="atom" title="Rendering" href="#rendering">GPU impostors, finer surfaces and new skyboxes.</IconCard>
 <IconCard icon="dots" title="Everything else" href="#everything-else">Alignment, rotamers, exports and more.</IconCard>
 </IconGrid>
 

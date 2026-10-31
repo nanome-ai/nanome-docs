@@ -8,11 +8,11 @@ The Sequence Panel shows the sequences of all loaded structures, protein and nuc
 
 ## <AppIcon name="mist" /> Features {#features}
 
-<ShotRow src="nanome-v2/v2-7/sequence-viewer.webp" alt="The Sequence Panel for 1KV2 with its parts labelled">
+<ShotRow src="nanome-v2/v2-7/sequence-viewer.webp" alt="The Sequence Panel for 1KV2 with its parts labeled">
 
 - Clicking the chain letter, such as "A", selects the whole chain.
 - Clicking residues in the sequence selects them, and selected residues are highlighted.
-- Hovering a residue shows its details at the bottom of the panel, such as "5CEO A: TYR 226".
+- Hovering a residue shows its details at the bottom of the panel, such as "1KV2 A: THR 106".
 
 <UiList label="Sequence Panel">
 <UiItem name="Filter hidden structures" area="11.9,59.7,22.4,6.9">Leaves out structures that have no visible representation.</UiItem>

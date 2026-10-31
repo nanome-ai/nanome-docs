@@ -39,11 +39,11 @@ The view below shows each theme from a headset, by day and by night.
 
 Pointers are positioned relative to the structures. As someone moves their controllers around a structure, everyone in the session sees their pointer pointing at the same structural feature. A pointer shows its owner's name, and the name of the tool they're holding when it isn't the Pointer.
 
-Pointing at an interaction, a measurement or a text note shows a tooltip with its details.
+With the Pointer, pointing at an interaction, a measurement or a text note shows a tooltip with its details.
 
 ## <AppIcon name="users-group" /> Avatars {#avatars}
 
-An avatar is a shape for the person's head, with a name tag above it, and abstract shapes for their hands. The name tag shows their name, whether their mic is on, and the number of the scene they're in. In a session, avatars are laid out in a circle around the structures as people arrive. They show who's in the room, and the pointers do the signalling on the structure.
+An avatar is a shape for the person's head, with a name tag above it, and abstract shapes for their hands. The name tag shows their name, whether their mic is on, and the number of the scene they're in. In a session, avatars are laid out in a circle around the structures as people arrive. They show who's in the room, and the pointers do the signaling on the structure.
 
 <UiList label="Avatar setting">
 <UiItem icon="users-group" name="Show other user Avatars">In the Settings tab: turns avatars on. They're hidden by default since release 2.6.</UiItem>

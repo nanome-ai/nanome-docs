@@ -4,7 +4,7 @@ title: Sample Workflows
 
 # Sample Workflows and Usage
 
-Examples of workflows in Nanome XR, including using MARA to open and prep structures.
+Examples of workflows in Nanome XR, including using MARA to load a structure and open it in Nanome XR.
 
 <IconGrid label="Workflows">
 <IconCard icon="sparkles" title="Opening from MARA" href="#opening-from-mara">Load a structure in a MARA chat, then open it in XR.</IconCard>
@@ -30,13 +30,13 @@ Examples of workflows in Nanome XR, including using MARA to open and prep struct
 
 - A new workspace starts as private. Its permissions can be changed afterwards with **Share** in the [Users tab](/nanome_v2/mainpanel#share).
 - **Open in XR** can add the structure to an existing workspace or start a new one.
-- Representations might not match exactly between Mol* and Nanome. In those cases, our team is happy to help. Please reach out to us at support@nanome.ai to help us build solutions for representations.
+- Representations might not match exactly between Mol* and Nanome. If one looks wrong, support@nanome.ai can help.
 
 </Callout>
 
-## <AppIcon name="share" /> Sharing Workspace {#sharing-workspace}
+## <AppIcon name="share" /> Sharing a workspace {#sharing-workspace}
 
-Open the Users tab and click <Btn icon="share">Share</Btn>. There are two main methods:
+Sharing starts with <Btn icon="share">Share</Btn> in the Users tab. There are 2 ways to share:
 
 <Tabs :labels="['Share the code', 'Invite by email']">
 <Tab>
@@ -53,19 +53,19 @@ Each user added by email appears in the Share dialog's list. Each user's <AppIco
 </Tab>
 </Tabs>
 
-## <AppIcon name="polygon" /> Displaying Interactions Between Structures {#displaying-interactions-between-structures}
+## <AppIcon name="polygon" /> Displaying interactions between structures {#displaying-interactions-between-structures}
 
 ### Video: Cross-Entry Interaction Components
 
 <YoutubeEmbed videoId="tgocYV6N0X8" title="Nanome v2.4 Quick Tips: Cross-Entry Interaction Components" />
 
-<ShotRow src="nanome-v2/display-interactions.gif" alt="Creating interaction components between two entries">
+<ShotRow src="nanome-v2/display-interactions.gif" alt="Creating interaction components between 2 entries">
 
 <Steps>
 
 1. Make sure your structures show up as entries in the Main Panel's Components tab.
-2. Find one of the entries, then click <Btn icon="layout-list">Structure actions</Btn>, to the right of the entry name.
-3. Choose <Btn icon="polygon">Create interaction components</Btn>, then **Polymer-Ligand** or **Polymer-Polymer**, depending on the type of interaction you want to display. Polymer-Polymer works **Between Chains** or **Between Molecules**.
+2. Find one of the entries and click <Btn icon="layout-list">Structure actions</Btn> to the right of its name.
+3. Choose <Btn icon="polygon">Create interaction components</Btn> and then **Polymer-Ligand** or **Polymer-Polymer**, depending on the type of interaction you want to display. Polymer-Polymer works **Between Chains** or **Between Molecules**.
 4. Select the target and click **Create**.
 
 </Steps>
@@ -76,16 +76,16 @@ Each user added by email appears in the Share dialog's list. Each user's <AppIco
 
 <YoutubeEmbed videoId="YHOGQq1dUck" title="Nanome v2.5 Quick Tips: Chemical Interactions Menu" />
 
-Once interaction components exist, the <AppIcon name="link" /> **Interactions Tool** lists every interaction found, under **Visible**, **Pinned** and **All**. Hover over a row to highlight the interaction in 3D, and **Pin** the ones you want to keep to hand. A pinned interaction can also be labelled. Interaction types, including clashes, are switched on and off in the component's [representation panel](/nanome_v2/mainpanel#interactions).
+Once interaction components exist, the <AppIcon name="link" /> **Interactions Tool** lists every interaction found, under **Visible**, **Pinned** and **All**. Hovering over a row highlights the interaction in 3D, and **Pin** adds it to the **Pinned** list. A pinned interaction can also be labeled. Interaction types, including clashes, are switched on and off in the component's [representation panel](/nanome_v2/mainpanel#interactions).
 
-## <AppIcon name="minimize" /> Minimizing a Ligand in Its Pocket {#minimizing-a-ligand-in-its-pocket}
+## <AppIcon name="minimize" /> Minimizing a ligand in its pocket {#minimizing-a-ligand-in-its-pocket}
 
 <DocVideo src="v2-7/pocket-minimization.mp4" caption="Pocket minimization in Nanome XR, from the v2.7 release." />
 
 <Steps>
 
 1. Open the <Btn icon="hexagon-plus-2">Builder Tool</Btn> and pick the ligand in 3D or from the list.
-2. Click <Btn icon="settings">Minimization settings</Btn>, the gear beside **Minimize**, and choose the protein entry as the **Receptor**.
+2. Click <Btn icon="settings">Minimization settings</Btn> (the gear beside **Minimize**) and choose the protein entry as the **Receptor**.
 3. Choose a **Receptor flexibility** (Rigid receptor, Flexible pocket or Flexible side chains) and a **Pocket radius**, then click **Apply**.
 4. Click <Btn icon="minimize">Minimize</Btn>. The result shows the energy, the ligand RMSD and the pocket RMSD. <Btn icon="arrow-back-up">Undo</Btn> returns to the starting coordinates.
 5. <Btn icon="device-floppy">Save</Btn> keeps the minimized ligand as a new ligand or updates the original.
@@ -98,19 +98,19 @@ The energy is the force-field energy that the minimization tool reports for the 
 
 </Callout>
 
-## <AppIcon name="arrow-left-to-arc" /> Aligning Proteins in XR {#aligning-proteins-in-xr}
+## <AppIcon name="arrow-left-to-arc" /> Aligning proteins in XR {#aligning-proteins-in-xr}
 
 ### Video: Aligning Proteins
 
 <YoutubeEmbed videoId="jNaFAtmfaRE" title="Nanome v2.4 Quick Tips: Aligning Proteins" />
 
-<ShotRow src="nanome-v2/align-proteins.gif" alt="Aligning two proteins with Align proteins to this">
+<ShotRow src="nanome-v2/align-proteins.gif" alt="Aligning 2 proteins with Align proteins to this">
 
 <Steps>
 
 1. Make sure your proteins show up as entries in the Main Panel's Components tab.
-2. Find one of the entries, then click <Btn icon="layout-list">Structure actions</Btn>, to the right of the entry name.
-3. Choose <Btn icon="arrow-left-to-arc">Align proteins to this</Btn>, then **CE-Align** or **TM-Align**.
+2. Find one of the entries and click <Btn icon="layout-list">Structure actions</Btn> to the right of its name.
+3. Choose <Btn icon="arrow-left-to-arc">Align proteins to this</Btn> and then **CE-Align** or **TM-Align**.
 4. Choose which entries to align and click **Align**. Each aligned row shows the Cα **RMSD** and the number of aligned residues (**Length**).
 
 </Steps>

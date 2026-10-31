@@ -34,6 +34,8 @@ The top of the sidebar shows the workspace name and two icons:
 <UiItem name="Drag handle (=)">Dragging it reorders the scenes.</UiItem>
 </UiList>
 
+Create scene, Scene settings, the drag handle and each scene's <AppIcon name="dots" /> menu need Editor access.
+
 ### <AppIcon name="settings" /> Scene settings {#scene-settings}
 
 <ShotRow src="nanome-v2/v2-7/scenes-settings.webp" alt="The scene settings menu">

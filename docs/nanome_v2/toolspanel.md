@@ -84,7 +84,7 @@ Each measurement is listed in the panel with its type and value. Hovering a row 
 
 </ShotRow>
 
-<ShotRow src="nanome-v2/v2-7/measurement-types.webp" alt="A distance, a dihedral and an angle measured on the 1KV2 ligand">
+<ShotRow src="nanome-v2/v2-7/measurement-types.webp" alt="A distance from the 1KV2 ligand to Met109, and a dihedral and an angle on the ligand">
 
 <Callout type="note" title="Dihedrals show without a sign">
 
