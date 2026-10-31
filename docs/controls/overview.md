@@ -42,7 +42,7 @@ title: Nanome Controls
 
 ## 2D Controller Bindings
 
-<ShotRow src="controls-page/2D_Controller.png" alt="A gamepad with the Nanome bindings for each button">
+<ShotRow src="controls-page/2D_Controller.png" alt="A gamepad with the Nanome bindings for each button" crop="28,4,48,93">
 
 **Joystick**
 
@@ -88,7 +88,7 @@ title: Nanome Controls
 **Axes values preset**
 
 <UiList label="Axes values preset">
-<UiItem name="Presets" area="2.7,81.3,14.7,16.0">Low: Max = 1.5. Medium: Max = 3. High: Max = 5. Max: Max = 10.</UiItem>
+<UiItem name="Presets">Low: Max = 1.5. Medium: Max = 3. High: Max = 5. Max: Max = 10.</UiItem>
 </UiList>
 
 </ShotRow>

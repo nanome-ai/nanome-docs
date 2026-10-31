@@ -360,5 +360,5 @@ The tables below show how much structure each platform shows comfortably.
 
 Keeping a session inside these numbers is covered in
 [Keep it comfortable](/session-guide#comfort): hide what a scene does not need,
-step surfaces down a density, and show one atomistic representation per
-component.
+keep surfaces to the pocket or hide them, and show one atomistic
+representation per component.

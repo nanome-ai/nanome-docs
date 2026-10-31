@@ -20,7 +20,7 @@ release, see [Choosing Hardware](/help/choosinghardware).
 
 ## <AppIcon name="device-vision-pro" /> Headset comparison matrix {#nanome-classic-v1-24-headset-comparison-matrix}
 
-<table>
+<table class="matrix">
     <col style="width: 15%;" />
     <!-- <col style="width: 10%;" />
     <col style="width: 10%;" />
@@ -185,7 +185,7 @@ significantly. ‘Shown Atom Count’ column is given nothing else is displayed 
 
 ### Comfort legend {#comfort-legend-nanome-classic-v1-24}
 
-<table>
+<table class="legend">
     <thead>
         <tr>
             <th>Comfortability</th>
@@ -210,7 +210,7 @@ significantly. ‘Shown Atom Count’ column is given nothing else is displayed 
 
 ### Comfort comparison {#comfort-comparison-nanome-classic-v1-24}
 
-<table>
+<table class="comfort">
     <thead>
         <tr>
             <th></th>
