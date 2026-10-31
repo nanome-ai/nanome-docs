@@ -56,14 +56,15 @@
 /* On a phone the render sits above the panel. Where the screen is tall
    enough, the render stays under the breadcrumb strip while the panel
    scrolls up behind it, so a lower switch changes a render that's still in
-   view; it leaves with the end of the demo. On a shorter phone it would
-   cover most of the screen, so it scrolls as before.
+   view; it leaves with the end of the demo. On a shorter phone, or in a
+   window less than 1.5 times as tall as it is wide, such as half a laptop
+   screen, it would cover most of the screen, so it scrolls as before.
    - The figure's own box steps aside, so the render can stick on its own.
    - The render keeps one size, and its caption moves under the panel, so a
      longer or shorter caption never moves the switch that changed it.
    - A band of page color around the render hides the panel passing behind.
    - A control reached with the keyboard scrolls clear of the render. */
-@media (max-width: 759.98px) and (min-height: 700px) {
+@media (max-width: 759.98px) and (min-height: 700px) and (max-aspect-ratio: 2/3) {
   .n-demo {
     --n-demo-stage-h: calc((100vw - 40px) * 3 / 4);
   }
