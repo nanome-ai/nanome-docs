@@ -16,6 +16,8 @@ classic: true
 
 <vimg src="gettingStarted-page/SupportedHeadsets2023-2.png" alt="Supported headsets" />
 
+Pictured, row by row: Meta Quest 3, Pico 4, HTC Vive XR Elite, Meta Quest 2 and Quest Pro, Pico Neo 3, HTC Vive Focus 3, Oculus Rift S, Varjo XR-3, HTC Vive Pro, Windows Mixed Reality (HP Reverb G2), Valve Index and HTC Vive Cosmos.
+
 ## <AppIcon name="device-laptop" /> Lightweight VR-ready laptops {#laptops}
 
 For example:
