@@ -35,25 +35,18 @@ const containsActive = computed(
     inTrail(pageTrail.value, props.item)
 )
 
-const hashIndex = computed(() => props.item.link?.indexOf('#') ?? -1)
-
 /**
  * A page row is current on its page. A `#` row points at one section of a
- * page, so it is current while that section is in view, whatever hash the
- * URL carries.
+ * page and is never current: the page's own row already lists its sections
+ * and marks the one in view, so the `#` row stays a plain link.
  */
 const isCurrent = computed(() => {
   const link = props.item.link
-  if (!link) return false
-  if (hashIndex.value < 0) return isActive(page.value.relativePath, link)
-  return (
-    isActive(page.value.relativePath, link.slice(0, hashIndex.value)) &&
-    sectionId.value === link.slice(hashIndex.value + 1)
-  )
+  return !!link && !link.includes('#') && isActive(page.value.relativePath, link)
 })
 
 const sections = computed(() =>
-  isCurrent.value && hashIndex.value < 0
+  isCurrent.value
     ? (props.item.sections || []).map((section) => ({
         ...section,
         id: section.link.slice(section.link.indexOf('#') + 1),
@@ -90,7 +83,7 @@ const isToggleOnly = computed(() => hasChildren.value && !props.item.link)
         :type="item.link ? undefined : 'button'"
         class="n-nav-link"
         :class="{ 'is-active': isCurrent, 'is-parent': isToggleOnly }"
-        :aria-current="isCurrent ? (hashIndex < 0 ? 'page' : 'location') : undefined"
+        :aria-current="isCurrent ? 'page' : undefined"
         :aria-expanded="hasChildren ? String(open) : undefined"
         @click="isToggleOnly ? toggle() : null"
       >
@@ -212,13 +205,6 @@ const isToggleOnly = computed(() => hasChildren.value && !props.item.link)
   font-weight: 600;
 }
 
-/* A `#` row's page row is current too, and bold, so the `#` row marks the
-   section in view the way the section list does: accent, normal weight. */
-.n-nav-link.is-active[aria-current='location'] {
-  color: var(--n-accent);
-  font-weight: 500;
-}
-
 /* A subsection is lighter than the section label above it, and takes the full
    text colour once it is open. */
 .n-nav-link.is-parent[aria-expanded='true'] {
@@ -239,8 +225,13 @@ const isToggleOnly = computed(() => hasChildren.value && !props.item.link)
   transition: transform var(--n-transition), color var(--n-transition);
 }
 
+/* A group without a page of its own shows the bare arrow, drawn at the 14px
+   the button arrows use and kept in the same 22px box. */
 .n-nav-caret--static {
   pointer-events: none;
+  width: 14px;
+  height: 14px;
+  margin: 4px;
 }
 
 .n-nav-caret:hover {

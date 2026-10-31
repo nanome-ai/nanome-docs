@@ -1,8 +1,8 @@
 ---
-title: Antibodies Representation
+title: Antibody Representation
 ---
 
-# Antibodies Representation
+# Antibody Representation
 
 The Antibody Representation plugin adds the IMGT color scheme, labels antibody regions on a selected protein, and highlights CDR loops.  A table of Antibody Regions allows independent selection of CDR loops for calculations or representational changes.  Importantly, only antibodies and fragments of antibodies are modified; the representation of antigens in the complex is unchanged.
 

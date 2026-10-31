@@ -1,8 +1,8 @@
 ---
-title: Macros In Nanome
+title: Macros in Nanome
 ---
 
-# Macros In Nanome
+# Macros in Nanome
 
 Macros are custom shortcuts you’ll be able to program yourself to speed up your work.
 

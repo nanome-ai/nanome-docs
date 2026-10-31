@@ -9,6 +9,7 @@ import './styles/doc.css'
 import './styles/components.css'
 
 import Layout from './Layout.vue'
+import NotFound from './NotFound.vue'
 
 // Content components carried over from the previous theme.
 import Vimg from './components/Vimg.vue'
@@ -51,12 +52,33 @@ import Callout from './components/interactive/Callout.vue'
 
 // `extends` still gives us the default theme's markdown-level pieces — code
 // group tabs, `<Badge>`, and the local search dialog the nav bar imports.
-// Only the Layout is replaced.
+// Only the Layout is replaced. The router shows NotFound in place of the page
+// for a missing URL.
 export default {
   extends: DefaultTheme,
   Layout,
+  NotFound,
 
-  enhanceApp({ app }) {
+  enhanceApp({ app, router }) {
+    // A new page opens at its top, at its #section, or where Back left it,
+    // straight away. The smooth scrolling base.css sets is for links within a
+    // page, and would sweep the new page there from the old one's offset.
+    // Back and Forward skip onBeforeRouteChange, so this starts in
+    // onBeforePageLoad. Smooth scrolling comes back two frames after the
+    // route change, once the router's own scroll has run.
+    if (typeof window !== 'undefined') {
+      const root = document.documentElement
+      router.onBeforePageLoad = () => {
+        root.style.scrollBehavior = 'auto'
+      }
+      router.onAfterRouteChange = () =>
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() => {
+            root.style.scrollBehavior = ''
+          })
+        )
+    }
+
     app.component('Vimg', Vimg)
     app.component('ToggleSection', ToggleSection)
     app.component('ContactForm', ContactForm)
@@ -96,8 +118,14 @@ export default {
 
   setup() {
     const route = useRoute()
+    // A click on an image inside a link follows the link, so those images get
+    // no zoom view. The old instance closes on a route change, so its overlay
+    // can't stay on the next page.
+    let zoom
     const initZoom = () => {
-      mediumZoom('.vimg > img, .vp-doc img:not(.no-zoom)', {
+      zoom?.close()
+      zoom?.detach()
+      zoom = mediumZoom('.vimg > img:not(a img), .vp-doc img:not(.no-zoom):not(a img)', {
         background: 'var(--n-bg)',
       })
     }

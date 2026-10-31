@@ -590,7 +590,7 @@ whatever global level the workspace is set to, from a browser or a headset.
    lets nobody in.
 2. Read the code out, paste it into a calendar invite, or send it in chat.
 3. In a headset, users enter it under **Join Workspace** in the Workspaces tab.
-   In a browser, it goes in the same place at app.nanome.ai.
+   In a browser, it goes in **Join Workspace via Code** at app.nanome.ai.
 
 </Steps>
 
