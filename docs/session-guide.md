@@ -79,7 +79,7 @@ much structure is on screen. Settle those first.
 
 - Set the global permission to Viewer before sharing the code. Viewers explore, spotlight, follow, and move through scenes without changing the workspace.
 - Prepare the scenes first. A Viewer walking into a finished sequence needs no setup time.
-- Budget the atom count for the weakest headset in the room, not the strongest.
+- Budget the atom count for the weakest headset in the room.
 
 </ChooserResult>
 
@@ -177,8 +177,8 @@ anywhere else.
       when: 'surface=mcp',
       options: [
         { id: 'claude', label: 'Claude Code', detail: 'The client Nanome documents, with the command below' },
-        { id: 'codex', label: 'Codex', detail: 'Listed in the MCP setup panel in the web app' },
-        { id: 'gemini', label: 'Gemini CLI', detail: 'Listed in the MCP setup panel in the web app' }
+        { id: 'codex', label: 'Codex', detail: 'Listed under MCP Setup in Settings in the web app' },
+        { id: 'gemini', label: 'Gemini CLI', detail: 'Listed under MCP Setup in Settings in the web app' }
       ]
     },
     {
@@ -220,8 +220,8 @@ anywhere else.
 
 <Steps>
 
-1. In the Workspaces tab, choose **+ New** to start a workspace, or open one
-   that already exists.
+1. In the Workspaces tab, choose <Btn icon="plus">New</Btn> to start a
+   workspace, or open one that already exists.
 2. Load a structure by PDB code. Components appear the same way they do in the
    browser.
 3. Set representations from the Components tab, hide what the view doesn't need,
@@ -268,8 +268,9 @@ about 2 minutes.
 
 <Steps>
 
-1. Open the MCP setup panel in the web app. It carries the exact command for
-   your client alongside the other clients.
+1. Open **MCP Setup** in Settings in the web app
+   ([MCP setup](/nanome_web/account#mcp-setup)). It carries the exact command
+   for your client alongside the other clients.
 2. Run that command, then sign in when the browser opens. The same Nanome
    account applies.
 3. Restart the client so the tools load into the session.
@@ -277,7 +278,7 @@ about 2 minutes.
 
 </Steps>
 
-[MCP setup panel](https://app.nanome.ai/mcp)
+[MCP Setup in Settings](https://app.nanome.ai/settings)
 
 </ChooserResult>
 
@@ -362,21 +363,23 @@ variation cheap and a clean slate equally cheap.
 
 ### Building a sequence
 
-<ShotRow src="nanome-v2/v2-7/scenes-panel.webp" alt="The Scenes Panel controls, labelled">
+<ShotRow src="nanome-v2/v2-7/scenes-panel.webp" alt="The Scenes Panel controls, labeled">
 
 *Scenes Panel controls. Every button is described on [Scenes Panel](/nanome_v2/scenespanel).*
 
 <Steps>
 
-1. Set the view, then <Btn icon="plus">Create Scene</Btn>. The scene keeps the
+1. Set the view, then <Btn icon="plus">Create scene</Btn>. The scene keeps the
    representations and visibility exactly as they are at that moment.
-2. Use <Btn icon="scan-eye">Set Scene POV</Btn> so switching to the scene lands
-   every user in the same framing, and leave
-   <Btn icon="perspective">Enable Scene POV</Btn> on for the session.
-3. **Duplicate Scene** for the next step, change one thing, and keep going. Each
-   scene reveals a little more than the one before it.
-4. **Reorder Scenes** by dragging, and rename from **Scene Options**, so the
-   order matches how the session runs.
+2. Use <Btn icon="scan-eye">Set scene POV</Btn> so switching to the scene lands
+   every user in the same framing, and leave scene POVs on for the session with
+   <Btn icon="perspective">Enable/disable scene POVs</Btn>.
+3. Choose **Duplicate** in the scene's <AppIcon name="dots" /> menu for the next
+   step, change one thing, and keep going. Each scene reveals a little more than
+   the one before it.
+4. Drag a scene by its handle to reorder it, and choose **Rename** in its
+   <AppIcon name="dots" /> menu, so the order and names match how the session
+   runs.
 
 </Steps>
 
@@ -459,9 +462,9 @@ and labels each move the number on their own.
 
 <Card title="Hide first">
 
-**Hide/Show All** clears the view, and **Hide/Show Entry** brings back one
-component at a time. Everything shown counts, whether or not it's visible behind
-something else.
+<Btn icon="eye">Hide All</Btn> clears the view, and the eye button on each
+component's row brings back one component at a time. Everything shown counts,
+whether or not it's visible behind something else.
 
 </Card>
 
@@ -531,7 +534,7 @@ Makes all changes, and invites others to view or edit.
 
 <Card title="Owner">
 
-Everything an Editor can do, plus deleting the workspace.
+Everything an Editor can do, plus removing users and deleting the workspace.
 
 </Card>
 
@@ -559,7 +562,8 @@ being built.
 3. Add named users by email with their own level. The address has to match
    exactly, since the field has no autocomplete.
 4. Change one user later from the <AppIcon name="dots" /> menu next to their
-   name, which offers **Make Editor** and **Remove User**.
+   name, which offers **Make Editor** or **Make Viewer** and, for the Owner,
+   **Remove User**.
 
 </Steps>
 
@@ -613,8 +617,8 @@ needs to edit while the rest only watch.
 <Callout type="note" title="Taking access back">
 
 Access can be pulled back at any point. The global level can drop to **None**,
-and one user can be changed or removed from the <AppIcon name="dots" /> menu
-beside their name without affecting anyone else.
+and one user can be changed, or removed by the Owner, from the
+<AppIcon name="dots" /> menu beside their name without affecting anyone else.
 
 </Callout>
 
@@ -628,14 +632,14 @@ points where.
 
 ### Spotlight and follow
 
-<ShotRow src="nanome-v2/scenes-panel-spotlight-mode.jpg" alt="Spotlighting, seen by the user spotlighting and by a follower">
+<ShotRow src="nanome-v2/scenes-panel-spotlight-mode.jpg" alt="Spotlighting, seen by the user spotlighting and by a follower" crop="0,2,100,96">
 
 *Spotlighting, seen from both sides.*
 
 <UiList label="Spotlight and follow">
-<UiItem icon="crown" name="Spotlight Me" area="2.8,81.6,20.1,6.0">Makes your view the shared view. Followers see it with a crown icon.</UiItem>
+<UiItem icon="crown" name="Spotlighting 1/1" area="2.8,81.6,20.1,6.0">Shown after you choose Spotlight Me. Your view is the shared view, and followers see it with a crown icon. The count is how many of the other users follow you, and selecting the button stops spotlighting.</UiItem>
 <UiItem name="Stop" area="76.3,82.4,4.9,5.4">Lets a follower break away.</UiItem>
-<UiItem icon="analyze-filled" name="Reset Orientation" area="73.3,82.4,2.9,5.4">Brings back a follower who got turned around.</UiItem>
+<UiItem icon="analyze-filled" name="Reset orientation" area="73.3,82.4,2.9,5.4">Brings back a follower who got turned around.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -669,7 +673,7 @@ The **Users** tab shows a mic input level, a display name anyone can change, and
 a per-user menu for muting another user locally. The Wrist Menu carries a mute
 button for the moments between speaking.
 
-<vimg src="nanome-v2/v2-7/users-tab-annotated.webp" alt="The Users tab, labelled" />
+<vimg src="nanome-v2/v2-7/users-tab-annotated.webp" alt="The Users tab, labeled" />
 
 *Users tab.*
 
@@ -678,10 +682,10 @@ button for the moments between speaking.
 <Accordion title="Move the group, or move alone" teaser="Load for All brings the group; Load moves one user.">
 
 **Load for All** takes every user in the current workspace to the next one, with
-a notification that lets them opt out or go immediately. Users without permission
-on the destination are prompted for one, which is another reason to set
-permissions before the session. **Load** moves one user and leaves the rest where
-they are.
+a notification that lets them opt out or go immediately. When some users can't
+open the destination, Nanome asks whoever chose Load for All to add them as
+Viewers or Editors, which is another reason to set permissions before the
+session. **Load** moves one user and leaves the rest where they are.
 
 </Accordion>
 
@@ -703,7 +707,7 @@ headsets cannot reach.
 
 <AccordionGroup label="6 checks">
 
-<Accordion title="The headset feels slow or uncomfortable" teaser="Almost always the shown atom count, not the network.">
+<Accordion title="The headset feels slow or uncomfortable" teaser="Almost always the shown atom count.">
 
 Hide everything, then bring back only what the current scene is about. Keeping a
 surface to the pocket, or hiding it, buys the most frames.

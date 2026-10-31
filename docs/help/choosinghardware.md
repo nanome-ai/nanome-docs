@@ -5,7 +5,7 @@ pageClass: n-wide
 
 # Choosing Hardware
 
-<Callout type="note" title="Nanome v2, as of v2.6.1">
+<Callout type="note" title="Nanome XR, as of 2.7.1">
 
 This page covers the current release of Nanome. For Nanome Classic (v1.24), see
 [Choosing Hardware (Nanome Classic)](/help/choosinghardware-classic).
@@ -17,7 +17,7 @@ Windows PCs over Meta Link (PCVR), and in any modern browser at app.nanome.ai.
 
 <IconGrid label="Choosing hardware" :cols="3">
 <IconCard icon="device-vision-pro" title="Comparison matrix" href="#nanome-headset-comparison-matrix">Processor, display, installing, MDM, sign-in and price.</IconCard>
-<IconCard icon="ban" title="Not supported" href="#headsets-not-supported">Headsets Nanome v2 doesn't run on.</IconCard>
+<IconCard icon="ban" title="Not supported" href="#headsets-not-supported">Headsets Nanome XR doesn't run on.</IconCard>
 <IconCard icon="mood-smile" title="Comfort comparison" href="#comfort-comparison">How much structure each platform shows comfortably.</IconCard>
 </IconGrid>
 
@@ -59,9 +59,9 @@ Windows PCs over Meta Link (PCVR), and in any modern browser at app.nanome.ai.
     </tr>
     <tr>
       <th>Mixed reality passthrough</th>
-      <td>Yes, full colour, stereoscopic (Quest 3 adds a depth sensor)</td>
-      <td>Yes, full colour, stereoscopic</td>
-      <td>Yes, full colour, stereoscopic</td>
+      <td>Yes, full color, stereoscopic (Quest 3 adds a depth sensor)</td>
+      <td>Yes, full color, stereoscopic</td>
+      <td>Yes, full color, stereoscopic</td>
       <td>No</td>
       <td>No</td>
     </tr>
@@ -102,7 +102,7 @@ Windows PCs over Meta Link (PCVR), and in any modern browser at app.nanome.ai.
       <td>No</td>
       <td>No</td>
       <td>No</td>
-      <td>The installer runs offline; signing in needs a network</td>
+      <td>The download runs offline once unzipped; signing in needs a network</td>
       <td>No</td>
     </tr>
     <tr>
@@ -360,5 +360,5 @@ The tables below show how much structure each platform shows comfortably.
 
 Keeping a session inside these numbers is covered in
 [Keep it comfortable](/session-guide#comfort): hide what a scene does not need,
-step surfaces down a density, and show one atomistic representation per
-component.
+keep surfaces to the pocket or hide them, and show one atomistic
+representation per component.

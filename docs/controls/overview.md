@@ -42,15 +42,15 @@ title: Nanome Controls
 
 ## 2D Controller Bindings
 
-<ShotRow src="controls-page/2D_Controller.png" alt="A gamepad with the Nanome bindings for each button">
+<ShotRow src="controls-page/2D_Controller.png" alt="A gamepad with the Nanome bindings for each button" crop="28,4,48,93">
 
 **Joystick**
 
 <UiList label="Joystick">
 <UiItem name="Left stick" area="35.9,35.7,4.7,9.9">Modifier: while clicked, rotate axes is MAX.</UiItem>
-<UiItem name="L3" area="35.9,35.7,4.7,9.9">Modifier: while clicked, move axes is MAX.</UiItem>
+<UiItem name="L3" area="37.0,38.2,2.4,5.0">Modifier: while clicked, move axes is MAX.</UiItem>
 <UiItem name="Right stick" area="49.6,46.7,4.9,10.1">Set move axes to low preset.</UiItem>
-<UiItem name="R3" area="49.6,46.7,4.9,10.1">Modifier: while clicked, rotate axes is MAX.</UiItem>
+<UiItem name="R3" area="50.8,49.2,2.5,5.1">Modifier: while clicked, rotate axes is MAX.</UiItem>
 </UiList>
 
 **D-Pad**
@@ -88,7 +88,7 @@ title: Nanome Controls
 **Axes values preset**
 
 <UiList label="Axes values preset">
-<UiItem name="Presets" area="2.7,81.3,14.7,16.0">Low: Max = 1.5. Medium: Max = 3. High: Max = 5. Max: Max = 10.</UiItem>
+<UiItem name="Presets">Low: Max = 1.5. Medium: Max = 3. High: Max = 5. Max: Max = 10.</UiItem>
 </UiList>
 
 </ShotRow>

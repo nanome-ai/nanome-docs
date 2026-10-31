@@ -1,5 +1,6 @@
 ---
 title: Hardware Requirements
+classic: true
 ---
 
 # Hardware Requirements

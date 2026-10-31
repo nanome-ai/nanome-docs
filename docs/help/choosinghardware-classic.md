@@ -20,7 +20,7 @@ release, see [Choosing Hardware](/help/choosinghardware).
 
 ## <AppIcon name="device-vision-pro" /> Headset comparison matrix {#nanome-classic-v1-24-headset-comparison-matrix}
 
-<table>
+<table class="matrix">
     <col style="width: 15%;" />
     <!-- <col style="width: 10%;" />
     <col style="width: 10%;" />
@@ -46,7 +46,7 @@ release, see [Choosing Hardware](/help/choosinghardware).
             <td>Meta Quest 3</td>
             <td>Meta Quest 2</td>
             <td>Vive XR Elite</td>
-            <td>Pico Neo 4</td>
+            <td>Pico 4</td>
             <td>Pico Neo 3</td>
             <td>Meta Quest Link (Supports Meta Quest Pro & Meta Quest 2/3)</td>
             <td>SteamVR (Supports Valve Index, HTC Vive Pro)</td>
@@ -100,7 +100,7 @@ release, see [Choosing Hardware](/help/choosinghardware).
             <td>Partial Support (requires sideloaded APK file)</td>
             <td>Partial Support (requires sideloaded APK file)</td>
             <td>Partial Support (requires sideloaded APK file)</td>
-            <td>Yes has Full Support</td>
+            <td>Yes, full support</td>
             <td>Partial Support (requires sideloaded APK file)</td>
             <td>Partial Support (requires sideloaded APK file)</td>
             <td colspan=2 style="text-align: center">Yes, with PC</td>
@@ -144,7 +144,7 @@ release, see [Choosing Hardware](/help/choosinghardware).
             <td>Through Nanome Inc. or <a href="https://www.meta.com/quest/products/quest-2/">Meta Quest 2</a><br></td>
             <td>Through Nanome Inc. or <a href="https://business.vive.com/eu/solutions/streaming/">HTC</a></td>
             <td><a href="https://www.picoxr.com/global/products/pico4">PicoXR</a><br></td>
-            <td><a href="https://www.picoxr.com/global/products/pico4">PicoXR</a><br></td>
+            <td>PicoXR<br></td>
             <td><a href="https://www.meta.com/help/quest/articles/headsets-and-accessories/oculus-link/meta-quest-link-compatibility/">Meta Quest Link Cable Requirements</a></td>
             <td></td>
         </tr>
@@ -178,14 +178,14 @@ The tables below give a brief overview of what the Meta Quest Pro, Meta Quest 2 
 structures can be loaded within the workspace in the Meta Quest 2 & Vive Focus 3.
 2. Surfaces (on/off), secondary structures (ribbons on/off), and supplemental materials
 (PDF/JPEGs, whiteboards, web browsers, labels) all affect performance in different ways
-significantly. ‘Shown Atom Count’ column is given nothing else is displayed in the scene.
+significantly. ‘Shown Atom Count’ column is given assuming nothing else is displayed in the scene.
 3. Desktop is assumed to be “VR ready” (Nvidia GTX 1060 or greater).
 
 </Accordion>
 
 ### Comfort legend {#comfort-legend-nanome-classic-v1-24}
 
-<table>
+<table class="legend">
     <thead>
         <tr>
             <th>Comfortability</th>
@@ -210,7 +210,7 @@ significantly. ‘Shown Atom Count’ column is given nothing else is displayed 
 
 ### Comfort comparison {#comfort-comparison-nanome-classic-v1-24}
 
-<table>
+<table class="comfort">
     <thead>
         <tr>
             <th></th>
@@ -286,7 +286,7 @@ significantly. ‘Shown Atom Count’ column is given nothing else is displayed 
         <tr>
             <td><b>Voice Commands</b></td>
             <td>Not Compatible</td>
-            <td>Compatible (full list here)</td>
+            <td>Compatible (<a href="/nanome1x/navigation/voicecommand">full list</a>)</td>
         </tr>
         <tr>
             <td><b>in-VR Web browser</b></td>
