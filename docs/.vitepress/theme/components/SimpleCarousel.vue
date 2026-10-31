@@ -27,7 +27,7 @@
           :aria-hidden="isClone(index) ? 'true' : undefined"
         >
           <!-- Clones carry `clone`, so their links can leave the Tab order. -->
-          <slot :item="item" :index="index % items.length" :clone="isClone(index)" />
+          <slot :item="item" :index="index % items.length" :clone="isClone(index)" :near="near" />
         </div>
       </div>
 
@@ -95,6 +95,13 @@ const currentDot = ref(0)
 const currentIndex = ref(0)
 const autoplayTimer = ref(null)
 const isTransitioning = ref(false)
+
+// True once the carousel comes near the screen. Until then slide images
+// stay lazy; after, they all load, so a slide change never waits on its
+// image. Browsers differ on when a lazy image off to the side of a scroller
+// loads.
+const near = ref(false)
+let nearObserver = null
 
 const slideWidth = computed(() => {
   return `${100 / props.slidesToShow}%`
@@ -271,6 +278,16 @@ onMounted(() => {
   }
   window.addEventListener('resize', onResize)
   startAutoplay()
+  if (!('IntersectionObserver' in window)) {
+    near.value = true
+  } else if (root.value) {
+    nearObserver = new IntersectionObserver((entries) => {
+      if (!entries.some((e) => e.isIntersecting)) return
+      near.value = true
+      nearObserver.disconnect()
+    }, { rootMargin: '600px 0px' })
+    nearObserver.observe(root.value)
+  }
 })
 
 onUnmounted(() => {
@@ -278,6 +295,7 @@ onUnmounted(() => {
   if (scrollListener) track.value?.removeEventListener(...scrollListener)
   clearTimeout(settleTimer)
   stopAutoplay()
+  nearObserver?.disconnect()
 })
 </script>
 

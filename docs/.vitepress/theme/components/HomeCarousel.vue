@@ -7,11 +7,11 @@
       :show-arrows="true"
       :show-dots="false"
     >
-      <template #default="{ item, clone }">
+      <template #default="{ item, clone, near }">
         <a :href="getSlideURL(item)" target="_blank" :tabindex="clone ? -1 : undefined">
           <div class="slide">
             <!-- The title below names the link, so the image adds nothing. -->
-            <div class="img"><img :src="item.img" alt="" /></div>
+            <div class="img"><img :src="item.img" alt="" :loading="near ? 'eager' : 'lazy'" /></div>
             <div class="title">{{ item.title }}</div>
             <div v-if="item.description" class="description">
               {{ item.description }}
