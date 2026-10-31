@@ -3,7 +3,8 @@
 // Pages show the copy in docs/public/assets/compressed (via <Vimg>), and
 // clicking it opens the original. The copy is a WebP no wider than
 // MAX_WIDTH, which is twice the 768px content column, so screenshots stay
-// sharp on high-density screens.
+// sharp on high-density screens. Images in WIDE keep more pixels, because
+// pages show them cropped, so a small part of the image fills the column.
 //
 // A copy is rebuilt whenever its original is newer, so replacing a
 // screenshot and running `npm run docs:compress` is enough. Pass --force to
@@ -32,6 +33,12 @@ const versionsFile = path.join(__dirname, '../docs/.vitepress/theme/image-versio
 
 const HIDPI = /^(nanome-web|nanome-v2\/v2-7|home-nanome)\//
 const MAX_WIDTH = 1600
+// The desktop layout is shown cropped to one panel on the Tools Panel and
+// Scenes Panel pages, about 4.5 times its full-width size.
+const WIDE = {
+  'nanome-v2/v2-7/desktop-layout.webp': 3840,
+  'nanome-v2/v2-7/desktop-layout.dark.webp': 3840,
+}
 const QUALITY = 80
 const force = process.argv.includes('--force')
 
@@ -50,7 +57,7 @@ const force = process.argv.includes('--force')
     fs.mkdirSync(path.dirname(out), { recursive: true })
     // GIFs get a still of their first frame; the original plays on click.
     await sharp(file, { pages: 1 })
-      .resize({ width: MAX_WIDTH, withoutEnlargement: true })
+      .resize({ width: WIDE[rel.split(path.sep).join('/')] || MAX_WIDTH, withoutEnlargement: true })
       .webp({ quality: QUALITY })
       .toFile(out)
     built++

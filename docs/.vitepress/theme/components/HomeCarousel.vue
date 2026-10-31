@@ -7,10 +7,11 @@
       :show-arrows="true"
       :show-dots="false"
     >
-      <template #default="{ item }">
-        <a :href="getSlideURL(item)" target="_blank">
+      <template #default="{ item, clone }">
+        <a :href="getSlideURL(item)" target="_blank" :tabindex="clone ? -1 : undefined">
           <div class="slide">
-            <div class="img"><img :src="item.img" /></div>
+            <!-- The title below names the link, so the image adds nothing. -->
+            <div class="img"><img :src="item.img" alt="" /></div>
             <div class="title">{{ item.title }}</div>
             <div v-if="item.description" class="description">
               {{ item.description }}
@@ -105,6 +106,9 @@ function getSlideURL(slide) {
 .home-carousel .img img {
   width: 100%;
   height: 100%;
+  margin: 0; /* drop the page's image margin and frame; the wrapper rounds */
+  border: 0;
+  border-radius: 0;
   object-fit: cover;
 }
 

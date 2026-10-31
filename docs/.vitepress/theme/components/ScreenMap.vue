@@ -44,9 +44,24 @@ export default defineComponent({
     const root = ref(null)
     const view = useFocusView(root)
 
-    const enter = (n) => (active.value = n)
+    // A click on a region can scroll the page to its card, which slides the
+    // image under the pointer. Hovers during that scroll aren't the reader's,
+    // so they're ignored until it ends, and the card stays lit.
+    let holding = 0
+    let holds = 0
+    const enter = (n) => {
+      if (!holding) active.value = n
+    }
     const leave = (n) => {
-      if (active.value === n) active.value = 0
+      if (!holding && active.value === n) active.value = 0
+    }
+    const holdWhileScrolling = () => {
+      const mine = ++holds
+      holding = mine
+      const end = () => setTimeout(() => holding === mine && (holding = 0), 100)
+      addEventListener('scrollend', end, { once: true })
+      // For a browser without scrollend.
+      setTimeout(end, 1500)
     }
     provide('n-screenmap', { active, enter, leave })
 
@@ -61,7 +76,10 @@ export default defineComponent({
       const bar = document.querySelector('.n-pagebar') || document.querySelector('.n-navbar')
       const chrome = bar ? bar.getBoundingClientRect().bottom : 56
       const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
-      if (r.top < chrome + 24 || r.bottom > window.innerHeight) el.scrollIntoView({ block: 'center', behavior })
+      if (r.top < chrome + 24 || r.bottom > window.innerHeight) {
+        holdWhileScrolling()
+        el.scrollIntoView({ block: 'center', behavior })
+      }
     }
 
     return () => {
@@ -123,8 +141,9 @@ export default defineComponent({
             {
               ref: root,
               class: classes,
-              role: props.label ? 'region' : undefined,
-              'aria-label': props.label || undefined,
+              role: view.focused.value ? 'dialog' : props.label ? 'region' : undefined,
+              'aria-modal': view.focused.value ? 'true' : undefined,
+              'aria-label': props.label || (view.focused.value && props.alt) || undefined,
               onClickCapture: view.onClick,
             },
             [
@@ -204,6 +223,8 @@ export default defineComponent({
       'bottom bottom bottom';
     gap: 14px;
     align-items: center;
+    /* A tall screen stays short enough to see whole in the window. */
+    --hotshot-maxh: calc(100vh - var(--n-nav-height) - var(--n-pagebar-space) - 60px);
   }
 
   .n-screenmap.has-left {
@@ -251,6 +272,13 @@ export default defineComponent({
     grid-area: top;
   }
 
+  /* With cards only on the right, the rows above and below the image span
+     just the image's column, so they line up with the parts they point to. */
+  .n-screenmap.has-right:not(.has-left) > .n-screenmap__top,
+  .n-screenmap.has-right:not(.has-left) > .n-screenmap__bottom {
+    grid-column: 1 / 3;
+  }
+
   .n-screenmap__left {
     grid-area: left;
   }
@@ -280,8 +308,8 @@ export default defineComponent({
   padding: 56px max(24px, 3vw) 32px;
   overflow: auto;
   /* Centered when it fits; a map taller than the window starts at the top, so
-     all of it can be scrolled to. */
-  align-content: center;
+     all of it can be scrolled to. A browser without `safe` keeps the start. */
+  align-content: start;
   align-content: safe center;
   background: var(--n-bg);
   --hotshot-cap: 4000px;

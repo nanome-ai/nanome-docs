@@ -6,7 +6,9 @@
  * A few pages have no row (older Classic pages that redirects still reach,
  * and MARA's placeholder page). They sit under the deepest group whose own
  * rows include a page from the same folder, so the rail still opens where
- * they belong and the breadcrumb still names it.
+ * they belong and the breadcrumb still names it. A page whose folder points
+ * at the wrong group names its top-level group in its frontmatter instead,
+ * such as `trail: Help`.
  */
 import { computed } from 'vue'
 import { useData } from 'vitepress'
@@ -67,6 +69,10 @@ export function usePageTrail() {
     const sidebar = getSidebar(theme.value.sidebar, path)
     const trail = rowTrail(sidebar, path)
     if (trail) return { groups: trail.slice(0, -1), row: trail[trail.length - 1] }
+
+    const named = page.value.frontmatter?.trail
+    const group = named && sidebar.find((item) => item.text === named)
+    if (group) return { groups: [group], row: null }
 
     const folder = folderOf(path)
     return { groups: (folder && folderTrail(sidebar, folder)) || [], row: null }

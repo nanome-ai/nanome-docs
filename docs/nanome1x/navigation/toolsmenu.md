@@ -4,45 +4,45 @@ title: Tools Menu
 
 # Tools Menu
 
-<vimg src="navigating-page/tools-menu-updated.gif" />
+<vimg src="navigating-page/tools-menu-updated.gif" alt="The tools menu around the right hand: Hand, Measure, Select, Whiteboard, MedChem and Torsion" />
 
-Press and hold the menu button to activate the tool selection menu, hover over the desired selection and then release the button. If no selection is made, the hand tool will be chosen by default. If you are using a Vive system, press and hold the touch pad on your right controller to activate the menu. If you are using an Oculus system, press and hold the B button on your right controller to activate the menu.
+The right top button (B on Oculus controllers, the touchpad on Vive) opens the tools menu while you hold it. Pointing at a tool and releasing the button switches to that tool. If you don't pick one, you get the Hand Tool.
 
 ## Hand Tool
 
-<vimg src="navigating-page/Tool-Laser.jpg" />
+<vimg src="navigating-page/Tool-Laser.jpg" alt="A hand pointing a yellow laser pointer" />
 
-Holding down the joystick at any moment to trigger your laser pointer that is visible to other users in the room. You can use this laser to point at a point of interest for your colleagues.
+Holding down the joystick at any time shows a laser pointer that other users in the room can see. You can use this laser to point at a point of interest for your colleagues.
 
-<vimg src="navigating-page/Tool-Hand.jpg" />
+<vimg src="navigating-page/Tool-Hand.jpg" alt="The open hand of the Hand Tool" />
 
 The Hand Tool is the default state of the hand and allows for basic interaction including grabbing and clicking.
 
 ## Measurement Tool
 
-<vimg src="navigating-page/Tool-Measurement.jpg" />
+<vimg src="navigating-page/Tool-Measurement.jpg" alt="The Measurement Tool in hand, with Current Mode: Distance above it" />
 
-<vimg src="navigating-page/Measurement_Distance.gif" />
+<vimg src="navigating-page/Measurement_Distance.gif" alt="Picking two atoms with the Measurement Tool to show the distance between them" />
 
 Measurement Tool places measurement points and measure the distances and angles between atoms and points of interests.
 
 ## Selection Tool
 
-<vimg src="navigating-page/Tool-Selection.jpg" />
+<vimg src="navigating-page/Tool-Selection.jpg" alt="The Selection Tool in hand, with Current Mode: Residues above it" />
 
-<vimg src="navigating-page/Selection_Residue.gif" />
+<vimg src="navigating-page/Selection_Residue.gif" alt="Selecting residues one at a time with the Selection Tool" />
 
 Selection Tool selects structures directly in the workspace.
 
 ## Torsion Tool
 
-<vimg src="navigating-page/Tool-Torsion.jpg" />
+<vimg src="navigating-page/Tool-Torsion.jpg" alt="A hand with the Torsion Tool icon on its back" />
 
 Torsion Tool twists rotatable bonds and changes the dihedral angles between atoms.
 
 ## MedChem Tools
 
-<vimg src="features-page/medchem.gif" />
+<vimg src="features-page/medchem.gif" alt="Adding rings and atoms to a molecule with the MedChem Rings & Chains and Atoms & Bonds menus" />
 
 MedChem Tools enable editing the atoms directly using hands, bundling a rich set of features including atom addition and removal.
 
@@ -103,13 +103,13 @@ Select any atom type from the periodic table to use in build mode.
 
 </ShotRow>
 
-## Draw Tool
+## Whiteboard Tool {#draw-tool}
 
-<vimg src="navigating-page/whiteboard.gif" />
+<vimg src="navigating-page/whiteboard.gif" alt="Users in one room writing and drawing on whiteboards" />
 
 <ShotRow src="navigating-page/updated_whiteboard.png" alt="The whiteboard with the Share toggle and the undo, redo and save buttons">
 
-The Draw Tool puts a marker in your hand and brings up a whiteboard that you can draw/write on. Toggle the right joystick sideways (left/right) to switch between your marker and eraser. On the right of the whiteboard, there are undo/redo buttons as well as a button to save your drawing as a PNG file.
+The Whiteboard tool puts a marker in your hand and brings up a whiteboard that you can draw/write on. Toggle the right joystick sideways (left/right) to switch between your marker and eraser. On the right of the whiteboard, there are undo/redo buttons as well as a button to save your drawing as a PNG file.
 
 <UiList label="Whiteboard">
 <UiItem name="Share" area="49.6,3.0,20.6,11.8">Shares the whiteboard with other users in your workspace.</UiItem>
@@ -120,8 +120,8 @@ The Draw Tool puts a marker in your hand and brings up a whiteboard that you can
 
 </ShotRow>
 
-To share your whiteboard with other users in your workspace, toggle the slider at the top of the menu on your left hand. In the same left-hand menu, you can change the marker color and hide the whiteboard.
+The Share switch at the top of the whiteboard shares it with other users in your workspace. In the left-hand menu, you can change the marker color and hide the whiteboard.
 
-<vimg src="navigating-page/pdf_drawing.gif" />
+<vimg src="navigating-page/pdf_drawing.gif" alt="A person in a headset drawing with the marker on a loaded paper and on an image" />
 
 Additionally, you can use the marker to draw on PDFs or images that are loaded into the workspace.

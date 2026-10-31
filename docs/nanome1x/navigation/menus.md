@@ -28,8 +28,8 @@ The Load, Stacks (plugins), Display, Color, Modify, Select, Macro, and Content (
 
 The Device Limiter is an indicator that shows how close the current amount of atoms is to hitting the limit of a standalone device's computing capability. This indicator only shows up when using a device in standalone mode (if applicable). When the amount of atoms approaches or hits the limit, the following prompts will show up.
 
-<vimg src="navigating-page/Limiter-Close.jpg" />
-<vimg src="navigating-page/Limiter-Max.jpg" />
+<vimg src="navigating-page/Limiter-Close.jpg" alt="The Close to max limit! prompt, with Dismiss and Ribbon Only buttons" />
+<vimg src="navigating-page/Limiter-Max.jpg" alt="The Max limit reached! prompt, with Dismiss and Ribbon Only buttons" />
 
 ## Hierarchy Menu
 
@@ -62,7 +62,7 @@ The Hierarchy Menu lists out the components of an entity, such as chains and res
 
 </ShotRow>
 
-### Different Browsing Modes (Small, Medium, Large)
+### Different Viewing Modes (Small, Medium, Large) {#different-browsing-modes-small-medium-large}
 
 <ShotRow src="navigating-page/Entry-SmallIcon.jpg" alt="The Entry Hierarchy menu for chain A of 6LU7, with small icons">
 
@@ -126,7 +126,7 @@ Frame data allows users to navigate and modify different frames of the same stru
 
 ### Electron Density Maps
 
-<vimg src="features-page/edm.gif" />
+<vimg src="features-page/edm.gif" alt="An electron density map shown as a blue mesh around a structure" />
 
 <ShotRow src="navigating-page/Entry-EDM.jpg" alt="The Electron Density menu for 1A0M with two maps loaded">
 
@@ -194,7 +194,7 @@ Action buttons on the Entry List provide quick access to common actions on the w
 
 ### Spatial ("Quick") Anchor
 
-<vimg src="navigating-page/quick-anchor.png" />
+<vimg src="navigating-page/quick-anchor.png" alt="The Save Workspace panel with the Create Quick Anchor box, and the Quick Anchor Your Physical Location tip beside it" />
 
 When saving a workspace, you have the option to create a spatial anchor for your current physical location. When you re-launch Nanome in this same physical location, you'll be able to quickly access this workspace from the Nanome Lobby. (Only one workspace can be saved with a spatial anchor at a time.)
 
@@ -203,13 +203,13 @@ When saving a workspace, you have the option to create a spatial anchor for your
 Load molecules or structures into your workspace. Supported file formats include (v1.26):
 
 _Structural Coordinate File Formats_ <br />
-.pdb, .cif, .mmcif, .pse, .nanome, .sdf, .mol, .xyz, .mol2
+.pdb, .cif, .mmcif, .pse, .nanome, .sdf, .mol, .xyz, .mol2, .pqr
 
 _Electron Density Map File Formats_ <br />
 .ccp4, .dsn6
 
 _Trajectory/Molecular Dynamics File Formats_ <br />
-.dcd, .gro, .pqr, .trr, .xtc, .psf
+.dcd, .gro, .trr, .xtc, .psf
 
 _Image File Formats_ <br />
 .png, .jpg, .jpeg, .pdf
@@ -219,35 +219,35 @@ For the file formats supported in Nanome v2, see [Supported File Formats](/nanom
 
 ### Featured
 
-<vimg src="navigating-page/Load-Featured-Workspace.jpg" />
+<vimg src="navigating-page/Load-Featured-Workspace.jpg" alt="The Load menu's Featured tab on Workspace, with Covid-19 Main Protease selected" />
 
 Workspaces that contain featured structures and tutorials.
 
-<vimg src="navigating-page/Load-Featured-Molecule.jpg" />
+<vimg src="navigating-page/Load-Featured-Molecule.jpg" alt="The Load menu's Featured tab on Molecule, with the COVID-19 Spike, 6VYB, selected" />
 
 Molecules featured by Nanome for their interesting properties or background.
 
-### Database
+### Source {#database}
 
-<vimg src="navigating-page/Load-Database.jpg" />
+<vimg src="navigating-page/Load-Database.jpg" alt="The Load menu's Source tab, listing RCSB MMCIF, RCSB PDB, RCSB EDM, DrugBank and PubChem" />
 
-From the Database tab, structures can be directly loaded from RCSB, DrugBank (Academic and Enterprise only), or Pubchem (Academic and Enterprise only). Custom database can also be added by changing the config file.
+From the Source tab, structures can be loaded directly from RCSB, DrugBank (Academic and Enterprise only) or PubChem (Academic and Enterprise only). A custom database can be added in the config file.
 
-### Keyword
+### Search {#keyword}
 
-<vimg src="navigating-page/Load-Keyword.jpg" />
+<vimg src="navigating-page/Load-Keyword.jpg" alt="The Load menu's Search tab, with an Enter keyword box" />
 
-From the Keyword tab, structure can be loaded from a keyword search.
+From the Search tab, find and load a structure by keyword.
 
-### My Files
+### Files {#my-files}
 
-<vimg src="navigating-page/Load-MyFiles.jpg" />
+<vimg src="navigating-page/Load-MyFiles.jpg" alt="The Load menu's Files tab, with Favorites, Desktop, Downloads and other folders, and Recent at the bottom of the list" />
 
-My Files tab allows users to load structures from their local directory.
+The Files tab loads structures from your computer. Recent files are listed under Files.
 
 ### Recent
 
-<vimg src="navigating-page/Load-Recent.jpg" />
+<vimg src="navigating-page/Load-Recent.jpg" alt="An older Load menu on its Recent tab, with 2hiu under Recently Opened" />
 
 Recent files loaded in Nanome.
 
@@ -256,17 +256,13 @@ Recent files loaded in Nanome.
 <table>
 <tbody>
 <tr>
-<td width="50%" ></td>
-<td width="50%" ></td>
-</tr>
-<tr>
-<td><vimg src="navigating-page/loadingtoolong.png" /></td>
-<td><vimg src="navigating-page/cancelledload.png" /></td>
+<td width="50%"><vimg src="navigating-page/loadingtoolong.png" alt="The Load menu while 4WFB downloads, with a Cancel button below it" /></td>
+<td width="50%"><vimg src="navigating-page/cancelledload.png" alt="The Load menu after a cancelled load, with Loading was cancelled below it" /></td>
 </tr>
 </tbody>
 </table>
 
-Cancel the loading of structures from the menu source tab, perfect for if your structure is taking too long to load or you made a mistake in the PDB code.
+Cancel a load from the Source tab if it's taking too long or the PDB code is wrong.
 
 ## Stacks
 
@@ -294,7 +290,7 @@ This tab contains options for the visual of atoms and bonds.
 <UiList label="Atom tab">
 <UiItem name="Wire" area="20.4,17.9,25.1,38.8">Hide atoms and show bonds in thin wire visual.</UiItem>
 <UiItem name="Stick" area="45.5,17.9,24.4,38.8">Show small atoms and bonds in volumetric stick visual.</UiItem>
-<UiItem name="Van Der Waals" area="70.0,17.9,24.8,38.8">Show atoms in thin Van Der Waals visual and hide bonds.</UiItem>
+<UiItem name="Van Der Waals" area="70.0,17.9,24.8,38.8">Shows each atom as a sphere at its van der Waals radius, with no bonds.</UiItem>
 <UiItem name="Adapt to color" area="20.4,56.7,25.1,38.7">Also called Adaptive. Show atoms with radius proportional to their b-factor value and hide bonds.</UiItem>
 <UiItem name="Ball & Stick" area="45.5,56.7,24.4,38.7">Show atoms as small balls joined by stick bonds.</UiItem>
 <UiItem icon="eye-off" name="Hide" area="70.0,56.7,24.8,38.7">Hide all atoms and bonds.</UiItem>
@@ -337,12 +333,14 @@ This tab contains options for the visual of ribbons.
 
 <ShotRow src="navigating-page/Display-Surface-Menu-updated.png" alt="The Display menu on its Surface tab">
 
-Toggle the visibility of solvent-excluded-surface, change its opacity, or change the probe length (in Angstroms).
+Show or hide the surface, change its opacity, or change the probe radius (in Å).
 
 <UiList label="Surface tab">
 <UiItem name="Show Surface" area="22.0,17.6,35.7,23.5">Shows the surface.</UiItem>
 <UiItem name="Hide Surface" area="57.7,17.6,35.6,23.5">Hides the surface.</UiItem>
-<UiItem name="SAS Probe Radius" area="22.0,66.5,71.3,15.5">The probe length, in Angstroms.</UiItem>
+<UiItem name="Ignore Ligands" area="22.0,43.2,71.3,9.0">Leaves ligands out of the surface.</UiItem>
+<UiItem name="Solvent Accessible Surface" area="22.0,54.6,71.3,9.2">Shows the solvent-accessible surface. Off, the surface is solvent-excluded.</UiItem>
+<UiItem name="SAS Probe Radius" area="22.0,66.5,71.3,15.5">The radius of the solvent probe, in Å.</UiItem>
 <UiItem name="Opacity" area="22.0,84.7,71.3,15.1">The surface's opacity.</UiItem>
 </UiList>
 
@@ -350,7 +348,7 @@ Toggle the visibility of solvent-excluded-surface, change its opacity, or change
 
 #### Mesh Surfaces (PCVR only)
 
-<vimg src="navigating-page/mesh-surface.png" />
+<vimg src="navigating-page/mesh-surface.png" alt="A protein with a mesh surface, beside the action menu open at Display / Styles, Surface Styles" />
 
 If you are using PCVR, you also have the option to display a mesh surface. This option can be found in the [Action Menu](/nanome1x/navigation/actionmenu).
 Navigate to Display/Styles > Surface Styles, then check the "Mesh Surface" option.
@@ -378,7 +376,7 @@ Navigate to Display/Styles > Surface Styles, then check the "Mesh Surface" optio
 <UiList label="Labels tab">
 <UiItem icon="tag" name="Atom" area="23.3,29.5,68.5,11.7">Show labels on atoms.</UiItem>
 <UiItem icon="tag" name="Residue" area="23.3,50.3,68.5,11.7">Show labels on residues.</UiItem>
-<UiItem icon="tag" name="Chain" area="23.3,71.1,68.5,11.8">Greyed out in this screenshot.</UiItem>
+<UiItem icon="tag" name="Chain" area="23.3,71.1,68.5,11.8">Grayed out in this screenshot.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -427,7 +425,7 @@ Colors picked in schemes are applied in a certain pattern.
 <UiItem name="Occupancy" area="37.3,53.6,28.5,8.0">Colors the selected structures by occupancy.</UiItem>
 <UiItem name="BFactor" area="37.3,61.7,28.5,8.0">Colors the selected structures by b-factor.</UiItem>
 <UiItem name="Rainbow" area="37.3,69.8,28.5,8.0">Colors the selected structures in rainbow colors.</UiItem>
-<UiItem name="YRB Hydrophobe" area="66.0,69.8,28.6,8.0">Color selected structures by their hydrophobicity with yellow, red, blue colors.</UiItem>
+<UiItem name="YRB Hydrophobe" area="66.0,69.8,28.6,8.0">Colors carbons not bound to nitrogen or oxygen yellow, the charged oxygens of Asp and Glu red, and the charged nitrogens of Lys and Arg blue. Everything else is white.</UiItem>
 <UiItem name="IMGT" area="37.3,86.0,28.5,8.2">Color selected antibody structures by their regions.</UiItem>
 </UiList>
 
@@ -436,8 +434,6 @@ Colors picked in schemes are applied in a certain pattern.
 | YRB Hydrophobe | IMGT |
 |:-----:|:-----:|
 | <vimg src="navigating-page/Color-Hydrophobe-Small.jpg" alt="A protein surface in YRB Hydrophobe colors" /> | <vimg src="navigating-page/Color-IMGT-Small.jpg" alt="An antibody colored by its IMGT regions" /> |
-
-Other available color schemes include coloring by occupancy, b-factor, rainbow and so on.
 
 ## Modify
 
@@ -474,7 +470,7 @@ Apply certain computations on the selected structures and modify them according 
 <UiList label="Compute tab">
 <UiItem name="Add" area="24.1,27.6,34.5,12.4">Under Hydrogens: adds hydrogens to the selected structures.</UiItem>
 <UiItem name="Delete" area="58.7,27.6,34.4,12.4">Under Hydrogens: deletes hydrogens from the selected structures.</UiItem>
-<UiItem name="Calculate ESP" area="24.1,47.0,56.3,12.1">Generate the Electron Potential Map of the selected structure.</UiItem>
+<UiItem name="Calculate ESP" area="24.1,47.0,56.3,12.1">Calculates the electrostatic potential (ESP) of the selected structure.</UiItem>
 <UiItem icon="palette" name="ESP color key" area="80.5,47.0,12.6,12.1">Shows the Electrostatic Potential color key. It's on in the picture below.</UiItem>
 <UiItem name="Calculate Clashes" area="24.1,59.1,56.3,11.7">Calculates atom clashes.</UiItem>
 <UiItem name="Calculate H-bonds" area="24.1,70.8,56.3,11.7">Calculates h-bonds. Marked BETA.</UiItem>
@@ -484,7 +480,7 @@ Apply certain computations on the selected structures and modify them according 
 
 </ShotRow>
 
-<vimg src="navigating-page/Modify-ESP.jpg" alt="A protein surface colored by its Electron Potential Map, with the Electrostatic Potential color key beside the Modify menu" />
+<vimg src="navigating-page/Modify-ESP.jpg" alt="A protein surface colored by its electrostatic potential, with the Electrostatic Potential color key beside the Modify menu" />
 
 <ShotRow src="navigating-page/Modify-Compute-Clashes.jpg" alt="The Clashes menu">
 
@@ -641,21 +637,22 @@ Expand or shrink the selection range by physical proximity.
 
 <UiList label="Distance tab">
 <UiItem icon="ruler-2" name="Angstrom" area="27.9,20.2,62.7,18.7">The distance, in Angstroms. 5 here.</UiItem>
-<UiItem icon="arrows-maximize" name="Extend Selection" area="28.1,43.0,62.2,15.6">Grows the selection by the distance above. Greyed out here.</UiItem>
-<UiItem icon="minimize" name="Shrink Selection" area="28.1,58.8,62.2,15.8">Shrinks the selection by the distance above. Greyed out here.</UiItem>
+<UiItem icon="arrows-maximize" name="Extend Selection" area="28.1,43.0,62.2,15.6">Grows the selection by the distance above. Grayed out here.</UiItem>
+<UiItem icon="minimize" name="Shrink Selection" area="28.1,58.8,62.2,15.8">Shrinks the selection by the distance above. Grayed out here.</UiItem>
+<UiItem name="Select Entire Residue" area="28.1,78.5,62.5,9.0">When on, distance selection takes whole residues.</UiItem>
 </UiList>
 
 </ShotRow>
 
 ## Macro
 
-<vimg src="navigating-page/Macro.jpg" />
+<vimg src="navigating-page/Macro.jpg" alt="The Macro menu with Site View (All) selected and its Run button" />
 
 [Please view the macros page to learn more.](/nanome1x/macros/overview)
 
 ## Content Discovery
 
-<vimg src="navigating-page/content_discovery_menu.png" />
+<vimg src="navigating-page/content_discovery_menu.png" alt="The Content Discovery menu, listing videos such as Intro to Nanome" />
 
 Tutorials of advanced concepts and features in Nanome, presented using spatial recordings.
 
@@ -665,12 +662,12 @@ See [Content Discovery](#content-discovery).
 
 ## Spatial Recordings
 
-<vimg src="navigating-page/spat_rec_menu.png" />
+<vimg src="navigating-page/spat_rec_menu.png" alt="The Spatial Recording menu with Name, Show avatars, Record voice, Set spectator location and Record" />
 
 Record your entire workspace, including structures, menus, and virtual movements; then, playback at a later time. During the playback you can pause and even interact with the structures in the recording.
 
 Spatial recordings can be accessed from either the Wrist Menu (see below) or the [Action Menu](/nanome1x/navigation/actionmenu).
 
-<vimg src="navigating-page/wrist_menu_spatrec.png" />
+<vimg src="navigating-page/wrist_menu_spatrec.png" alt="The wrist menu with its Spatial Recording button" />
 
-As of April 2021 (Nanome 1.20), this feature is in BETA - in particular, spatial recordings created in version 1.20 will not be playable in future versions.
+Spatial recordings were a beta feature in Nanome 1.20. Recordings made in 1.20 can't be played in later versions.

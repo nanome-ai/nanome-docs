@@ -6,7 +6,7 @@ title: Supported File Formats
 
 Current through release 2.7.1. All parsing is server-side, and the format is detected by file extension.
 
-Capability key: 👁 view static · ▶️ animates (substrate noted) · ✏️ editable · 💾 exportable · 🆕 new or changed in 2.7 · † loads via a MARA tool, not directly in a workspace (see below).
+Capability key: 👁 view static · ▶️ animates (type noted) · ✏️ editable · 💾 exportable · 🆕 new or changed in 2.7 · † loads via a MARA tool, not directly in a workspace (see below).
 
 ## Structures
 
@@ -34,7 +34,7 @@ A Nanome workspace on its own can't load `.bcif`, `.mcif`, `.sd`, `.mol` or `.mo
 | Format | Extensions | Import | Notes |
 |--------|------------|--------|-------|
 | **MAE (Maestro)** | `.mae` | 👁 | Schrödinger. Also the LiveDesign ingestion format. |
-| **MAEGZ** | `.mae.gz` `.maegz` | 👁 | Via the LiveDesign gadget, or uploaded directly. |
+| **MAEGZ** | `.mae.gz` `.maegz` | 👁 | Via the LiveDesign gadget. Nanome Web's Import tab needs these unzipped to `.mae` first. |
 | **MOE** | `.moe` | 👁 | CCG's Molecular Operating Environment. |
 | **PSE (PyMOL session)** | `.pse` | 👁 | QM/MM link atoms can break loading. |
 
@@ -44,10 +44,10 @@ Frame-trajectory formats.
 
 | Format | Extensions | Import | Animates? | Limits |
 |--------|------------|--------|-----------|--------|
-| **GRO** | `.gro` | standalone | ▶️ frame-trajectory | 🆕 split into chains where residue numbering restarts; ACE, NME and NH2 caps stay in the protein |
+| **GRO** | `.gro` | standalone, or attach to a loaded model | ▶️ frame-trajectory | 🆕 split into chains where residue numbering restarts; ACE, NME and NH2 caps stay in the protein |
 | **XTC** | `.xtc` | attach to a loaded model | ▶️ frame-trajectory | atom count must match the host; file up to 200 MB |
 | **TRR** | `.trr` | attach to a loaded model | ▶️ frame-trajectory | atom count must match the host; file up to 200 MB |
-| **DCD** | `.dcd` | attach to a loaded model | ▶️ frame-trajectory | file up to 200 MB; 64-bit CHARMM DCD and fixed-atom DCD are not supported |
+| **DCD** | `.dcd` | attach to a loaded model | ▶️ frame-trajectory | file up to 200 MB; 64-bit CHARMM DCD and fixed-atom DCD aren't supported |
 
 ## Maps / volumetric
 
@@ -57,25 +57,25 @@ Frame-trajectory formats.
 
 ## Export
 
-Molecule export is single-frame, to **PDB, SDF, or SMILES**. PDB and SDF are offered on every export surface. SMILES (new in 2.6.0) is produced through the WorkspaceAPI/MCP `export_entry` route, and is not yet a download option in the client or MARA. The WorkspaceAPI also exports sequences as FASTA.
+Molecule export is single-frame, to **PDB, SDF, or SMILES**. Nanome Web, MARA and the API export PDB and SDF. SMILES (new in 2.6.0) comes from the API's MCP `export_entry` route, and isn't yet a download option in Nanome Web. The API also exports sequences as FASTA.
 
-Since 2.7.0, **Export analysis** in Nanome Web downloads a workspace's chemical interactions, measurements and minimization history as a ZIP of CSV files.
+Since 2.7.0, **Export analysis** in Nanome Web downloads the current scene's chemical interactions, measurements and minimization history as a ZIP of 3 CSV files.
 
 ## Import and export surfaces
 
-Every surface funnels into the same server-side parser.
+All of these use the same parser on Nanome's server.
 
 | Surface | Imports | Exports |
 |---------|---------|---------|
 | **Nanome XR** | RCSB fetch by PDB code | view-only |
-| **MARA (web app)** | all structures, trajectory attach (GRO/XTC/TRR/DCD), and DX | PDB, SDF (molecules); CSV (data tables); FASTA/GenBank (tools) |
-| **WorkspaceAPI (GraphQL / REST / MCP)** | every format above | PDB, SDF, SMILES, FASTA |
+| **Nanome Web and MARA** | all structures, trajectory attach (GRO/XTC/TRR/DCD), and DX | PDB, SDF (molecules); CSV (data tables); FASTA/GenBank (tools) |
+| **Nanome API (GraphQL / REST / MCP)** | every format above | PDB, SDF, SMILES, FASTA |
 | **LiveDesign gadget** | MAE / MAEGZ (one-way: LiveReport → Nanome) | — |
 
 ## Not supported
 
-- **Electron density maps**: CCP4, MRC and DSN6 are not supported.
-- **LAMMPS** native trajectories (`.lammpstrj` / dump) are not read directly. LAMMPS can write DCD or XTC, which attach to a structure with the same atom count.
+- **Electron density maps**: CCP4, MRC and DSN6 aren't supported.
+- **LAMMPS** native trajectories (`.lammpstrj` / dump) aren't read directly. LAMMPS can write DCD or XTC, which attach to a structure with the same atom count.
 - **No workspace-file export**: workspaces live in the database, and there's no portable workspace file.
 - **No trajectory export**: export is single-frame only.
 - **No export** for mmCIF, MAE, MOE, or PSE (import-only).
@@ -85,10 +85,10 @@ Every surface funnels into the same server-side parser.
 
 Both animation types are driven by the same play, pause, and scrub controls, but they step over different things.
 
-| Substrate | A "step" is… | Source formats |
+| Type | A "step" is… | Source formats |
 |-----------|--------------|----------------|
 | **Model-indexing** | a whole model (full topology) | multi-MODEL **PDB / mmCIF**, multi-record **SDF**, multi-block **XYZ** |
-| **Frame-trajectory** | a coordinate set on one shared model | **GRO** (standalone), **XTC / TRR / DCD** (attached to a loaded model) |
+| **Frame-trajectory** | a coordinate set on one shared model | **GRO** (standalone or attached), **XTC / TRR / DCD** (attached to a loaded model) |
 
 There's no frame limit. An attached trajectory file can be up to **200 MB**, and every frame's atom count must equal the host model's.
 

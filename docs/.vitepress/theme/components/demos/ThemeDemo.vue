@@ -9,6 +9,7 @@
 import { computed, ref } from 'vue'
 import AppIcon from '../AppIcon.vue'
 import DemoStage from './DemoStage.vue'
+import { arrowPick } from './arrows.js'
 import { useAutoplay } from './autoplay.js'
 import { THEMES, themeFrame } from './data.js'
 
@@ -61,7 +62,7 @@ const caption = computed(() => ({
 <template>
   <div ref="root" class="n-demo" v-on="auto.hold">
     <div class="n-app-card n-app-themes is-spread" role="group" aria-label="Theme">
-      <div class="n-app-themelist" role="group" aria-label="Theme">
+      <div class="n-app-themelist" role="group" aria-label="Theme" @keydown="arrowPick">
         <button
           v-for="t in THEMES"
           :key="t.key"
