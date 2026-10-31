@@ -34,7 +34,7 @@ A Nanome workspace on its own can't load `.bcif`, `.mcif`, `.sd`, `.mol` or `.mo
 | Format | Extensions | Import | Notes |
 |--------|------------|--------|-------|
 | **MAE (Maestro)** | `.mae` | 👁 | Schrödinger. Also the LiveDesign ingestion format. |
-| **MAEGZ** | `.mae.gz` `.maegz` | 👁 | Via the LiveDesign gadget, or uploaded directly. |
+| **MAEGZ** | `.mae.gz` `.maegz` | 👁 | Via the LiveDesign gadget. Nanome Web's Import tab needs these unzipped to `.mae` first. |
 | **MOE** | `.moe` | 👁 | CCG's Molecular Operating Environment. |
 | **PSE (PyMOL session)** | `.pse` | 👁 | QM/MM link atoms can break loading. |
 

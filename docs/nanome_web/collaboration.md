@@ -41,7 +41,7 @@ Someone can have access to a workspace in more than one way, and Nanome gives th
 
 ## <AppIcon name="cube-3d-sphere" /> Join via Code {#join-via-code}
 
-Every workspace has an 8-character code, shown at the top of the tab in the form `XXXX-XXXX`. Anyone with access can type the code into **Join via Code** in Nanome Web, or into the **Workspaces** tab in Nanome XR.
+Every workspace has an 8-character code, shown at the top of the tab in the form <span style="white-space: nowrap">`XXXX-XXXX`</span>. Anyone with access can type the code into **Join via Code** in Nanome Web, or into the **Workspaces** tab in Nanome XR.
 
 <UiList label="Workspace code">
 <UiItem icon="link" name="Copy link">Copies a link to the workspace, instead of the code.</UiItem>

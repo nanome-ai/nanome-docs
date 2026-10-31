@@ -6,7 +6,7 @@ title: Comments
 
 Comments, added in release 2.7, are threaded discussions stored inside a workspace. A comment can belong to the whole workspace, to a scene, or to an annotation, and it can point at specific atoms. Everyone in the workspace sees new comments as they're posted, in Nanome Web and in Nanome XR.
 
-<IconGrid label="Comments">
+<IconGrid label="Comments" :cols="3">
 <IconCard icon="message" title="The Comments tab" href="#the-comments-tab">The filter and the comment box.</IconCard>
 <IconCard icon="messages" title="Threads" href="#threads">Replies, mentions and reactions.</IconCard>
 <IconCard icon="circle-dot" title="Anchoring to atoms" href="#anchoring-to-atoms">Comments that sit on atoms in the 3D view.</IconCard>

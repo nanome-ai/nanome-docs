@@ -42,15 +42,15 @@ Nanome XR can sign in with a 4-character code. The headset's login page shows th
 
 ### System
 
-<ShotRow src="nanome-web/settings-api-keys.webp" alt="API Keys in System settings">
-
 **API Keys** authenticate requests to Nanome's server from tool routes and the `mara-client` Python package. Each key shows only its last characters and its expiry date.
 
+<ShotRow src="nanome-web/settings-api-keys.webp" alt="API Keys in System settings">
+
 <UiList label="API Keys">
-<UiItem name="+ Create" area="84.4,37.3,11.4,8.5">Makes a new key.</UiItem>
-<UiItem icon="eye" name="Reveal" area="81.6,67.4,2.4,4.5">Shows the key.</UiItem>
+<UiItem name="+ Create" area="84.4,37.3,11.4,8.5">Makes a new key and copies it to the clipboard.</UiItem>
+<UiItem icon="eye" name="Show" area="81.6,67.4,2.4,4.5">Shows the key. Hide covers it again.</UiItem>
 <UiItem icon="copy" name="Copy" area="85.9,67.4,2.4,4.5">Copies the key.</UiItem>
-<UiItem icon="trash" name="Delete" area="90.3,67.4,2.4,4.5">Deletes the key.</UiItem>
+<UiItem icon="trash" name="Revoke" area="90.3,67.4,2.4,4.5">Revokes the key, after a confirmation.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -61,6 +61,7 @@ Nanome XR can sign in with a 4-character code. The headset's login page shows th
 
 ```bash
 claude mcp add --transport http nanome https://workspaces.nanome.ai/mcp
+claude mcp login nanome
 ```
 
 The assistant asks you to sign in and approve access in a browser the first time it connects. Through the MCP server, an assistant can list and manage projects, workspaces, scenes, entries and components, read a summary of each workspace (chains, residue ranges, ligands and ions), export ligands as SDF, and add annotations.
@@ -73,7 +74,7 @@ The assistant asks you to sign in and approve access in a browser the first time
 <UiItem name="Auto-open Files" area="3.5,9.1,92.7,9.1">Opens supported files in the split view when they're added to a chat.</UiItem>
 <UiItem name="Auto-run Workflows" area="3.5,27.9,92.7,9.1">Runs workflows in chat automatically.</UiItem>
 <UiItem name="Dark Mode" area="3.5,46.7,92.7,9.2">Darker colors for the web app.</UiItem>
-<UiItem name="Hide Credits" area="3.5,65.6,92.7,8.6">Hides the credits display.</UiItem>
+<UiItem name="Hide Credits" area="3.5,65.6,92.7,8.6">Hides the credits display. The switch shows only for accounts with unlimited credits.</UiItem>
 <UiItem name="Reset chats" area="3.5,84.2,92.7,9.2">Delete all permanently deletes all MARA chats and uploaded files.</UiItem>
 </UiList>
 

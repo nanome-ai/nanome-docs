@@ -20,10 +20,10 @@ When a structure has a bound ligand, Nanome builds a binding-site view automatic
 
 ## <AppIcon name="upload" /> Upload from your computer {#upload-from-your-computer}
 
-<Btn icon="upload">Click to Upload</Btn> opens a file picker, and files can also be dragged onto the workspace. The web app accepts the full range of [supported formats](/nanome_web/fileformats): structures, session files, trajectories and electrostatic maps.
+The <Btn icon="upload">Click to Upload</Btn> button opens a file picker, and files can also be dragged onto the workspace. The web app accepts the full range of [supported formats](/nanome_web/fileformats): structures, session files, trajectories and electrostatic maps.
 
 - Some formats that a workspace can't open on its own, such as `.bcif`, `.mcif`, `.sd`, `.mol` and `.mol2`, are loaded through a MARA tool that supports them.
-- Trajectories and DX maps attach to an entry that's already loaded. They're added from the entry's <AppIcon name="dots" /> **(...)** menu with **Load trajectory** or **Load DX map**. See [MD Trajectory Playback](/nanome_web/mdplayback).
+- Trajectories and DX maps attach to an entry. They're added from the entry's <AppIcon name="dots" /> **(...)** menu with **Load trajectory** or **Load DX map**, or uploaded like any other file. An uploaded one attaches to a structure uploaded with it under the same name, such as `run1.pdb` with `run1.xtc`. Otherwise it goes to the workspace's only entry, and with more entries **Attach to Entry** asks which one. See [MD Trajectory Playback](/nanome_web/mdplayback).
 
 ## <AppIcon name="messages" /> Import from Chat {#import-from-chat}
 

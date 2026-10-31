@@ -13,7 +13,7 @@ The **Entries** tab lists every structure in the workspace and the components th
 <MapCard icon="dots" title="More options" href="#more-options" side="right" area="88.6,35.0,4.4,3.2">Rename, export, load a map or trajectory, delete.</MapCard>
 <MapCard icon="scribble" title="Representations" href="#representations" side="right" area="63.7,39.8,16.4,5.1">How a component is drawn.</MapCard>
 <MapCard icon="palette" title="Colors" href="#colors" side="bottom" area="69.0,63.5,10.8,3.6">Color schemes, from the palette button beside each representation.</MapCard>
-<MapCard icon="link" title="Interactions" href="#interactions" side="bottom" area="20.5,74.6,72.5,4.0">The interaction types a component such as Pocket + Ligand shows.</MapCard>
+<MapCard icon="mist" title="Interactions" href="#interactions" side="bottom" area="20.5,74.6,72.5,4.0">The interaction types a component such as Pocket + Ligand shows.</MapCard>
 </ScreenMap>
 
 ## <AppIcon name="stack-2" /> Entries and components {#entries-and-components}
@@ -145,7 +145,7 @@ Anion-π, CH-π and water-bridged interactions aren't detected.
 
 The <AppIcon name="layout-list" /> **Structure actions** button on an entry row opens:
 
-<ShotRow src="nanome-web/entry-structure-actions.webp" alt="The Structure actions menu for an entry" crop="9.8,2.9,78.3,92.8">
+<ShotRow src="nanome-web/entry-structure-actions.webp" alt="The Structure actions menu for an entry" crop="9.8,2.9,78.3,87.6">
 
 <UiList label="Structure actions">
 <UiItem icon="arrow-left-to-arc" name="Align proteins to this" area="17.6,22.1,59.7,10.9">Superposes other protein entries onto this one. Grayed out unless this entry and at least one other entry hold a protein, and while an alignment runs.</UiItem>
@@ -198,7 +198,7 @@ Only polymer atoms count toward the interface.
 <Tabs :labels="['Entry menu', 'Component menu']">
 <Tab>
 
-<ShotRow src="nanome-web/entry-more-options.webp" alt="An entry's More options menu" crop="50.9,3.9,46.0,89.8">
+<ShotRow src="nanome-web/entry-more-options.webp" alt="An entry's More options menu" crop="54.6,3.9,42.3,86.6">
 
 <UiList label="Entry More options">
 <UiItem icon="pencil" name="Rename" area="57.5,22.1,33.7,10.9">Renames the entry.</UiItem>
@@ -213,7 +213,7 @@ Only polymer atoms count toward the interface.
 </Tab>
 <Tab>
 
-<ShotRow src="nanome-web/component-more-options.webp" alt="A component's More options menu" crop="50.9,1.8,46.0,91.4">
+<ShotRow src="nanome-web/component-more-options.webp" alt="A component's More options menu" crop="50.9,1.8,46.0,86.6">
 
 <UiList label="Component More options">
 <UiItem icon="pencil" name="Rename" area="57.5,24.3,33.7,12.7">Renames the component.</UiItem>

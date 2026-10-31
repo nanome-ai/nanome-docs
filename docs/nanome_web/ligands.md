@@ -57,7 +57,7 @@ Each row shows the ligand's 2D drawing, its entry, its name, and the chosen prop
 
 <ShotRow src="nanome-web/ligand-row-menu.webp" alt="A ligand row's menu" crop="30,0,70,100">
 
-In the fullscreen table, each row has a checkbox and a <AppIcon name="dots-vertical" /> menu:
+Each row has a checkbox and a <AppIcon name="dots-vertical" /> menu, at the right end of the table:
 
 <UiList label="Ligand row menu">
 <UiItem icon="cloud-download" name="Download SDF" area="62.5,32.2,25.3,6.6">Downloads the ligand as an SDF file.</UiItem>
@@ -83,9 +83,9 @@ In the fullscreen table, each row has a checkbox and a <AppIcon name="dots-verti
 
 ## <AppIcon name="bookmark" /> Filters and view presets {#filters-and-presets}
 
-<AppIcon name="filter" /> **Filter ligands** narrows the table by property values. Its count shows how many ligands pass, out of the total.
+<AppIcon name="filter" /> **Filter ligands** narrows the table by property values. Its count shows how many ligands pass, out of the total. **Filter by currently visible** keeps only the ligands of entries loaded in the 3D view.
 
-<AppIcon name="bookmark" /> **View presets** are saved views of the table. Each one has a name, a set of columns and a set of filters, and picking one sets the table to match. Presets belong to the project, so every workspace in the project offers the same list, here and in the [Nanome XR Ligands tab](/nanome_v2/mainpanel#ligands-tab).
+<AppIcon name="bookmark" /> **View presets** are saved views of the table. Each one has a name, a set of columns and a set of filters, and picking one sets the table to match. Presets belong to the project, so the button shows only for a workspace in a project, and every workspace in the project offers the same list, here and in the [Nanome XR Ligands tab](/nanome_v2/mainpanel#ligands-tab).
 
 ## <AppIcon name="tag" /> Tags and ratings {#tags-and-ratings}
 

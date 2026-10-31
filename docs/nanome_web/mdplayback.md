@@ -13,7 +13,7 @@ Nanome plays molecular dynamics trajectories in Nanome Web and streams them to N
 
 A frame trajectory attaches to a structure that's already loaded. In the **Entries** tab, the entry's <Btn icon="dots">(...)</Btn> menu has **Load trajectory**.
 
-<ShotRow src="nanome-web/entry-more-options.webp" alt="An entry's More options menu, with Load trajectory">
+<ShotRow src="nanome-web/entry-more-options.webp" alt="An entry's More options menu, with Load trajectory" crop="54.6,3.9,42.3,86.6">
 
 <UiList label="Attaching a trajectory">
 <UiItem icon="dots" name="More options" href="/nanome_web/entries#more-options" area="89.0,8.2,3.5,6.6">On the entry's row. Opens the entry's menu.</UiItem>
@@ -31,7 +31,7 @@ Supported formats and limits are on [Supported File Formats](/nanome_web/filefor
 
 ## <AppIcon name="player-play" /> Playing it back {#playing-it-back}
 
-While a trajectory is open, its entry row shows the current frame out of the total, with buttons to step and play. For a multi-model file, it counts models instead. **Exit playback** at the top of the Entries tab leaves playback.
+While a trajectory is open, its entry row shows the current frame out of the total, with buttons to step and play. The play button opens the playback controls: Play backwards, play and pause, Play forwards, and speeds from ×1 to ×20. For a multi-model file, the row counts models instead. **Exit playback** at the top of the Entries tab leaves playback.
 
 Stepping and playback wrap around. After the last frame comes the first, and stepping back from the first frame goes to the last, so playback keeps looping until it's stopped.
 
@@ -39,7 +39,7 @@ Stepping and playback wrap around. After the last frame comes the first, and ste
 - Switching to another scene ends playback.
 - Removing the entry that's playing ends playback.
 
-In Nanome XR, the playback buttons are on the entry's row in the Components tab, with Play backwards, Play forwards and speeds from ×1 to ×20. They're described under [Model and trajectory playback](/nanome_v2/mainpanel#model-and-trajectory-playback).
+In Nanome XR, the same controls are on the entry's row in the Components tab. They're described under [Model and trajectory playback](/nanome_v2/mainpanel#model-and-trajectory-playback).
 
 <Accordion title="Playback since release 2.7" teaser="Frame computing, what stays visible, and load speed.">
 
