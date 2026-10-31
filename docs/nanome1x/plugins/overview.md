@@ -4,31 +4,31 @@ title: Overview
 
 # Overview
 
-*The Nanome Platform's flexibility and extensibility comes from a robust Python API known as the Plugin System. It allows scientists and users to highly customize everything from the user interface to the integration of external molecular simulation tools.*
+*The Plugin System, Nanome's Python API, lets scientists customize the interface and connect outside molecular simulation tools.*
 
 ## Plugin System and Python API
 
 
-The Plugin System was built with interface extensibility at its core and enables computational chemistry tools and calculations all to happen in the cloud. This is critical for supporting all-in-one devices such as the Oculus Quest 2 and standalone Augmented Reality glasses. Plugins are also easily configurable and swappable for different computation packages to easily adapt to different workflows. Plugins extend your scientific capabilities by leveraging existing expert tools and radically advanced computation techniques whose only limit is your AWS credits and creativity.
+The Plugin System runs computational chemistry tools and calculations in the cloud, so standalone headsets such as Quest and standalone AR glasses can use them. A plugin can be set up to use a different computation package to fit a workflow.
 
-Since there can be many different molecular computational packages for a wide variety of scientists and use-cases - it makes sense to group relevant plugins together which we call "*Nanome Stacks*".
+There are many molecular computation packages for many kinds of scientists and uses, so it makes sense to group related plugins together. We call these groups "*Nanome Stacks*".
 
-For example, in our "MedChem Stack", it includes critical integrations that are most commonly used by Medicinal Chemists such as real-time Minimization, Chemical Property prediction, and Molecular Docking. These plugins were built with swappability and extensibility in mind. This means it is easy to change what software package or algorithm is doing the calculation.
+For example, the MedChem Stack includes the integrations medicinal chemists use most, such as real-time Minimization, Chemical Property prediction and Molecular Docking. These plugins were built so the software package or algorithm doing the calculation can be changed.
 
 
-Some examples of plugins that our customers love are:
-- Nanome Vault: Drag and Drop files on a website and access them on any device running Nanome (Amazing for Quest storage)
-- Molecular Docking: Running and viewing docking results (Autodock, etc)
+Some examples of plugins:
+- Nanome Vault: drag and drop files on a website and open them on any device running Nanome
+- Molecular Docking: Running and viewing docking results (Smina and AutoDock 4)
 - Chemical Properties: Live chemical property prediction during design with RDKit
-- All of our public plugins are available on our [Github](https://github.com/nanome-ai) with the "plugins-" prefix.
+- All of our public plugins are on [GitHub](https://github.com/nanome-ai), with names that start with "plugin-".
 
-New users who sign up for a Nanome account get a 30-day free trial unlocking premium license capabilities and also early access to Nanome's cloud-hosted plugins.
+Every new Nanome account gets a 14-day Full license trial.
 
-If you would like to develop plugins for Nanome, please reach out to us by [contacting us](mailto:hello@nanome.ai) and take a look at our development resources such as our [API documentation](https://nanome.readthedocs.org).
+To develop plugins for Nanome, [email us](mailto:hello@nanome.ai) and see the [API documentation](https://nanome.readthedocs.io).
 
 ## Nanome Plugins List
 
-The following is the list of some of our favorite plugins we have made so far:
+These plugins have their own pages:
 
 - [Vault](vault.md)
 - [Minimization](minimization.md)
@@ -39,9 +39,12 @@ The following is the list of some of our favorite plugins we have made so far:
 - [Structure Prep](structureprep.md)
 - [Chemical Interactions](cheminteractions.md)
 - [Superimpose Proteins](superimpose.md)
-- Hydrogens
-- Electrostatic Potential Maps
-- 2D Chemical Preview
+- [Antibody Representation](antibodies.md)
+- [Conformer Generator](conformergenerator.md)
+- [Cryo-EM](cryoem.md)
+- [LiveDesign](LiveDesign.md)
+- [Scene Viewer](sceneviewer.md)
 
+Other plugins include Hydrogens, Electrostatic Potential Maps and 2D Chemical Preview.
 
-A general rule of thumb is that any 3rd Party application that can interact using a command line or a python script would be easy to build a plugin for. Plugins can be designed and run from different environments including Windows, Linux, and Mac operating systems depending on the requirements needed from the plugin.
+Any third-party application that can be driven from a command line or a Python script is a good fit for a plugin. Plugins can run on Windows, Linux or Mac, depending on what the plugin needs.

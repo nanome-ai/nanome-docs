@@ -419,6 +419,11 @@
   background: var(--n-accent-hover);
 }
 
+/* Buttons in a row keep apart, on one line or wrapped onto 2. */
+.vp-doc p:has(> .btn + .btn) > .btn {
+  margin: 0.25em 0.5em 0.25em 0;
+}
+
 .vp-doc .btn:disabled,
 .vp-doc .btn.disabled {
   opacity: 0.5;

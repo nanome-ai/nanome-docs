@@ -4,11 +4,11 @@ title: Superimpose Proteins
 
 # Superimpose Proteins
 
-The Superimpose Proteins plugin overlays two or more proteins in 3D space for visual comparison and calculates Root Mean Square Deviation (RMSD) values as a numeric metric on structural similarity.
+The Superimpose Proteins plugin overlays two or more proteins in 3D space for visual comparison and calculates Root Mean Square Deviation (RMSD) values, a number in Å that measures how far apart the structures are.
 
-Protein overlay is done either by using backbone (alpha-carbons) or by using all heavy protein atoms; and the alignment can be done on the full protein or limited to a chain.
+Protein overlay is done either by using backbone (alpha carbons) or by using all heavy protein atoms; and the alignment can be done on the full protein or limited to a chain.
 
-A **Fixed Reference** structure is chosen, and **Moving Structures** are translocated to be superimposed upon the Fixed Reference. RMSD values are reported between the Fixed Reference and each Moving Structure.
+A **Fixed Reference** structure is chosen, and **Moving Structures** are rotated and moved onto the Fixed Reference. RMSD values are reported between the Fixed Reference and each Moving Structure.
 
 ## Instructions
 
@@ -19,17 +19,17 @@ A **Fixed Reference** structure is chosen, and **Moving Structures** are translo
     -   **All Heavy Atoms**: Uses backbone atoms and side chain atoms (all protein atoms except for Hydrogen) for paired residues.
 
 2. In the upper right, there are 4 available alignment modes.
-    -   **Align to Entire Fixed Reference**: Uses a sequence based alignment to superimpose entire proteins on top of each other.
-    -   **1 specific Chain from the Fixed Reference**: Uses a sequence based alignment to superimpose the moving structures onto a specified chain on the Fixed Reference.
+    -   **Entire Fixed Reference**: Uses a sequence based alignment to superimpose entire proteins on top of each other.
+    -   **1 specific chain from the Fixed Reference**: Uses a sequence based alignment to superimpose the moving structures onto a specified chain on the Fixed Reference.
     -   **By Binding Site**: The user selects a ligand on the Fixed Reference, and the surrounding binding site is aligned to the moving structures using Site-Motif (See Methodologies for more details)
-    -   **By Selection**:   The user selects specific residues in the fixed reference and the moving structures are aligned by that selection only.  Users may choose to specify residues on both the fixed and moving structures but only selections in the fixed reference are required for the plugin to run.
+    -   **By Selection** (not in this screenshot; see step 6): The user selects specific residues in the fixed reference and the moving structures are aligned by that selection only.  Users may choose to specify residues on both the fixed and moving structures but only selections in the fixed reference are required for the plugin to run.
 
 3. A list of proteins in the workspace appears in the main panel.  In this panel, choose **Fixed Reference** and **Moving Structures**, and subselect a chain or ligand for each, if aligning by chain or binding site, respectively (see 4, below).
     - By default, the first entry is set as Fixed, and designated by the yellow pin. When selected as Fixed, the box under Moving will be inactive.  To change this selection, select the pin next to the desired Fixed Reference protein.
 
     - Choose one or more Moving Structures by selecting the boxes under the Moving Structures column.  This box will turn green when selected.
 
-    - Once selections are made, the Superimpose button in the lower right will become active and show the number of proteins selected.  (e.g. “Superimpose (3)” for a Fixed Reference and 2 Moving Structures).  Click this button to superimpose the proteins and calculate RMSD values.   The button will change to “calculating” as the process is being completed.
+    - Once selections are made, the Superimpose button in the lower right will become active and show the number of proteins selected.  (e.g. “Superimpose (3)” for a Fixed Reference and 2 Moving Structures).  Click this button to superimpose the proteins and calculate RMSD values.   The button will change to “Calculating...” as the process is being completed.
 
     - Once complete, the proteins will be superimposed and locked, for visual inspection. The RMSD tables pulldown menu in the lower left will become active. Each superimpose run will generate a new table, with the most recent run appearing at the top of the pulldown list.  Select the run to open the table in the workspace. Tables can be closed and reopened in the workspace.
 
@@ -48,9 +48,8 @@ A **Fixed Reference** structure is chosen, and **Moving Structures** are translo
 
 </ShotRow>
 
-<vimg src="plugins-page/superimpose/superimpose_protein.png" />
+<vimg src="plugins-page/superimpose/superimpose_protein.png" alt="The purple and orange proteins, 3AP1 and 5WRI, superimposed" />
 <em>Two superimposed proteins</em>
-<p></p>
 
 <ShotRow src="plugins-page/superimpose/superimpose_rmsd_menu.png" alt="RMSD Run 1 table with 3AP1 purple tpst2 as the Fixed Reference and 5WRI orange tpst1 at RMSD 1.64">
 
@@ -115,21 +114,21 @@ The RMSD table for a chain run names the chain with each structure.
 
 </ShotRow>
 
-<vimg src="plugins-page/superimpose/superimpose-5b.png" />
+<vimg src="plugins-page/superimpose/superimpose-5b.png" alt="RMSD Run 1 table with 1xbb blue as the Fixed Reference, 4xg2 gold at RMSD 0.59 and 5y5t red-orange at 0.65, above the superimposed proteins" />
 
 
 6. When aligning by selection, the user must make a selection in the **Fixed Reference**.  These selections can be made by using the selector tool on the 3D structure itself, or by using menus such as Hierarchy and Antibody Regions table
 
-    <vimg src="plugins-page/superimpose/superimpose-6a.png" />
+    <vimg src="plugins-page/superimpose/superimpose-6a.png" alt="The Entry Hierarchy for chain A of 4xg2 yellow, with residues selected in the sequence, beside the yellow and orange structures" />
     *Making a selection in the Fixed Reference using the hierarchy menu.*
     <br><br>
-    <vimg src="plugins-page/superimpose/superimpose-6b.png" />
+    <vimg src="plugins-page/superimpose/superimpose-6b.png" alt="The Superimpose Proteins menu with By Selection picked, 4xg2 yellow as the Fixed Reference and 5y5t orange as a Moving Structure, beside the superimposed structures" />
     *Structures superimposed based on a selection in the fixed reference*
 
 
 7. **RMSD tables** report out fixed and moving structures (with chain when relevant) RMSD values, **paired residues**, and paired atoms
     - Note that when superimposing by backbone alpha carbons, the # of paired residues = # of paired atoms;  when superimposing by all heavy atoms, the # of paired residues will be ~8x less than the # of paired atoms because there are on average ~8 heavy atoms per residue.
-    - For two identical proteins, the RMSD would be zero.  Values close to zero indicate highly similar proteins.  Values over 10 are very different.  A combination of visual inspection and RMSD values gives a reasonable indication of how similar the structures are.
+    - For two identical proteins, the RMSD would be zero.  Values close to zero indicate highly similar proteins.  Values over 10 Å mean very different structures.  A combination of visual inspection and RMSD values gives a reasonable indication of how similar the structures are.
 
 
 ## Methodologies
@@ -138,7 +137,7 @@ We have two primary approaches to superimposing proteins:
 
 Full Protein and Chain alignments both use a sequence based approach.
 
-Binding site overlays use the Site-Motif algorithm, with FPocket for identifying inputs.
+Binding site overlays use the Site-Motif algorithm, with fpocket for identifying inputs.
 
 ### Sequence Alignment
 
@@ -159,13 +158,13 @@ After all moving atoms have been transformed, we update the complexes in the wor
 #### Implementation Details
 
 ##### Alignment
-- For Entry mode, the entire protein sequence is aligned.
-- For Chain mode, only the specified chains are aligned.
+- For Entire Fixed Reference, the whole protein sequence is aligned.
+- For 1 specific chain, only the chosen chains are aligned.
 
 ##### Global alignment scoring values
 - match = 2
 - mismatch = -1
-- gap penalty = -10
+- gap open penalty = -10
 - gap extend penalty = -.5
 
 #### Superimpose
@@ -173,25 +172,24 @@ After all moving atoms have been transformed, we update the complexes in the wor
 - If all heavy atoms overlay method is selected, we attempt to pair all heavy atoms. In some cases, we cannot get a 1-1 pairing of heavy atoms. In this case, those residues are excluded from the superimpose
 
 ### Binding Site Alignments using Site-Motif
-Site-motif is described as *a graph based method for aligning protein binding sites in sequence-order independent fashion*. It can analyze the binding site of a protein and find the best alignment on another protein.
+Site-Motif is described as *a graph based method for aligning protein binding sites in sequence-order independent fashion*. It can analyze the binding site of a protein and find the best alignment on another protein.
 
-Our algorithm uses FPocket to identify potential binding sites on the moving protein, and those results are compared to the fixed binding site using Site-Motif. Site-Motif calculates alignments of each FPocket result to the fixed binding site, and the result with the longest alignment is used as the corresponding binding site. A transformation matrix is calculated to superimpose the moving binding site onto the fixed.
+Our algorithm uses fpocket to identify potential binding sites on the moving protein, and those results are compared to the fixed binding site using Site-Motif. Site-Motif calculates alignments of each fpocket result to the fixed binding site, and the result with the longest alignment is used as the corresponding binding site. A transformation matrix is calculated to superimpose the moving binding site onto the fixed.
 
 #### Source Code
 [Site-Motif](https://github.com/nanome-ai/site-motif)<br>
 [Fpocket](https://github.com/Discngine/fpocket)
 
 Note that Nanome maintains a fork of the code from the original paper.
-The original codebase can be found [here](https://github.com/santhoshgits/MAPP-3D)
+The original code is [MAPP-3D on GitHub](https://github.com/santhoshgits/MAPP-3D).
 
 Improvements to the codebase include:
-- Updating to Python3
-- Cut out unnecessary features for our use case
-- Logging
+- Ported to Python 3
+- Removed features we don't use
+- Added logging
 
 #### Overview
-<br>
-<vimg src="plugins-page/superimpose/superimpose_binding_site_diagram.png" />
+<vimg src="plugins-page/superimpose/superimpose_binding_site_diagram.png" alt="Diagram: the fixed ligand sets the fixed binding site, fpocket finds pockets on the moving complex, Site-Motif picks the best match, and the two binding sites are superimposed" />
 
 #### References
 Sankar S, Chandra N (2022) SiteMotif: A graph-based algorithm for deriving structural motifs in Protein Ligand binding sites. PLoS Comput Biol 18(2): e1009901. https://doi.org/10.1371/journal.pcbi.1009901
