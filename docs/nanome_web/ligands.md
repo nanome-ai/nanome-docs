@@ -19,7 +19,7 @@ In Nanome XR, the Ligands tab also has Zoom, Bulk-Display, 3D property labels, a
 <UiItem icon="filter" name="Filter ligands" href="#filters-and-presets" area="2.8,29.9,13.6,5.4">Narrows the table. The button shows how many ligands are listed out of the total, for example 2/2.</UiItem>
 <UiItem icon="columns-3" name="Select property columns" href="#property-columns" area="17.5,29.9,6.8,5.4">Chooses which properties appear as columns.</UiItem>
 <UiItem icon="bookmark" name="View presets" href="#filters-and-presets" area="25.3,29.9,6.8,5.4">Saved sets of columns and filters, shared across the project.</UiItem>
-<UiItem name="Search ligands" area="57.6,29.9,31.8,5.5">Filters by name.</UiItem>
+<UiItem name="Search ligands" area="57.6,29.9,31.8,5.5">Filters by name, tag or any property value.</UiItem>
 <UiItem icon="window-maximize" name="Fullscreen" href="#the-table" area="90.5,29.9,6.8,5.4">Opens the table in a larger window.</UiItem>
 </UiList>
 
@@ -63,7 +63,7 @@ In the fullscreen table, each row has a checkbox and a <AppIcon name="dots-verti
 <UiItem icon="cloud-download" name="Download SDF" area="62.5,32.2,25.3,6.6">Downloads the ligand as an SDF file.</UiItem>
 <UiItem icon="hexagon-plus-2" name="Sketch variant" area="62.5,39.9,25.3,6.6">Opens the ligand in the 2D sketcher to draw a variant.</UiItem>
 <UiItem icon="info-circle" name="Properties" area="62.5,47.7,25.3,6.6">Shows the ligand's calculated properties.</UiItem>
-<UiItem icon="tag" name="Tag" href="#tags-and-ratings" area="62.5,56.8,25.3,37.5">Hit, Lead, Add to Synthesis, or New tag... for a custom tag. The tag appears in the Tag column.</UiItem>
+<UiItem icon="tag" name="Tag" href="#tags-and-ratings" area="62.5,56.8,25.3,37.5">Hit, Lead, Add to Synthesis, or New tag… for a custom tag. On a tagged ligand, Remove tag clears it. The tag appears in the Tag column.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -92,7 +92,7 @@ In the fullscreen table, each row has a checkbox and a <AppIcon name="dots-verti
 A tag marks where a ligand stands, such as a hit or a lead. The **Tag** list in the [row menu](#row-menu) sets it.
 
 - A ligand has 1 tag at most. Picking another replaces it.
-- By default the list has **Hit**, **Lead** and **Add to Synthesis**. **New tag...** adds a custom tag to the workspace's list.
+- By default the list has **Hit**, **Lead** and **Add to Synthesis**. **New tag…** adds a custom tag to the workspace's list.
 - Tags are saved with the workspace, so everyone in it sees them, in Nanome Web and in the [Nanome XR Ligands tab](/nanome_v2/mainpanel#ligands-tab).
 - A ligand without a tag shows a dash in the **Tag** column.
 
@@ -115,18 +115,18 @@ Nanome calculates these properties with RDKit on its server. SDF data fields fro
 | Column | What it is |
 |--------|------------|
 | **NumAtoms** | Number of atoms, including hydrogens. Shown as **Atoms**. For G0T (C₃₀H₃₂N₂O₈) it's 72: 30 C, 32 H, 2 N and 8 O |
-| **NumHeavyAtoms** | Number of non-hydrogen atoms |
+| **NumHeavyAtoms** | Number of non-hydrogen atoms. Shown as **Heavy Atoms** |
 | **MolWeight** | Monoisotopic (exact) mass in daltons, including hydrogens. Shown as **MW** |
-| **HeavyAtomMolWeight** | Mass of the non-hydrogen atoms only |
-| **LogP** | Wildman-Crippen estimate of log P, the base-10 logarithm of the octanol-water partition coefficient |
+| **HeavyAtomMolWeight** | Mass of the non-hydrogen atoms only. Shown as **Heavy Atom MW** |
+| **LogP** | Wildman-Crippen estimate of log P, the base-10 logarithm of the octanol-water partition coefficient. Shown as **Log P** |
 | **TPSA** | Topological polar surface area (Ertl method, from N and O atoms only), in Å² |
-| **HbondD** | Hydrogen-bond donor count (RDKit's pattern-based definition, which differs from Lipinski's N-H plus O-H count) |
-| **HbondA** | Hydrogen-bond acceptor count (RDKit's pattern-based definition, which differs from Lipinski's N plus O count) |
-| **NumRotatableBonds** | Rotatable bond count |
-| **NumRings** | Ring count |
-| **NumAromaticRings** | Aromatic ring count |
-| **NumAliphaticRings** | Count of rings with at least one non-aromatic bond |
-| **NumSaturatedRings** | Count of rings made only of single bonds |
+| **HbondD** | Hydrogen-bond donor count (RDKit's pattern-based definition, which differs from Lipinski's N-H plus O-H count). Shown as **HBD** |
+| **HbondA** | Hydrogen-bond acceptor count (RDKit's pattern-based definition, which differs from Lipinski's N plus O count). Shown as **HBA** |
+| **NumRotatableBonds** | Rotatable bond count. Shown as **Rotatable Bonds** |
+| **NumRings** | Ring count. Shown as **Rings** |
+| **NumAromaticRings** | Aromatic ring count. Shown as **Aromatic Rings** |
+| **NumAliphaticRings** | Count of rings with at least one non-aromatic bond. Shown as **Aliphatic Rings** |
+| **NumSaturatedRings** | Count of rings made only of single bonds. Shown as **Saturated Rings** |
 | **SMILES** | SMILES string |
 | **InChIKey** | Standard InChIKey |
 | **Rating** | A value people enter, stored with the ligand. See [Tags and ratings](#tags-and-ratings) |
