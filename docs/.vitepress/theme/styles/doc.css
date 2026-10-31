@@ -28,11 +28,18 @@
   scroll-margin-top: calc(var(--n-pagebar-space) + 40px);
 }
 
+/* A heading that runs to two lines splits evenly instead of leaving one word
+   on the second. */
+.vp-doc :is(h1, h2, h3) {
+  text-wrap: balance;
+}
+
 /* Keyboard focus on the page's links and controls clears the breadcrumb strip
-   too. Headings set their own, larger margin above. */
+   too, and so does a code block or table that scrolls sideways, which the
+   keyboard can reach. Headings set their own, larger margin above. */
 .n-column
   :is(a[href], button, input, select, textarea, summary, video[controls],
-    iframe, [tabindex]:not([tabindex='-1'])) {
+    iframe, pre, table, [tabindex]:not([tabindex='-1'])) {
   scroll-margin-top: var(--n-pagebar-space);
 }
 
@@ -103,6 +110,25 @@
 @media (hover: none) {
   .vp-doc .header-anchor {
     display: none;
+  }
+}
+
+/* VitePress drops the h2 anchor 24px to clear its own padding, which the
+   inherited padding above already does. */
+.vp-doc h2 .header-anchor {
+  top: 0;
+}
+
+/* A phone-width window has no gutter to spare, so the # sits at the
+   heading's right edge, inside the column, in room the heading keeps free. */
+@media (max-width: 640px) and (hover: hover) {
+  .vp-doc :is(h1, h2, h3, h4):has(> .header-anchor) {
+    padding-right: 0.8em;
+  }
+
+  .vp-doc .header-anchor {
+    left: auto;
+    right: 0;
   }
 }
 
@@ -282,6 +308,14 @@
   }
 }
 
+/* Side-by-side screenshots get equal columns, so each image's size doesn't
+   depend on how long its header is. */
+@media (min-width: 768px) {
+  .vp-doc table:has(.vimg) {
+    table-layout: fixed;
+  }
+}
+
 /* Dense comparison tables: a size down, and the row label column stays put. */
 .vp-doc table.matrix,
 .vp-doc table.comfort {
@@ -376,6 +410,11 @@
   transition: background var(--n-transition);
 }
 
+/* Link buttons side by side, or wrapped onto a second line, keep a gap. */
+.vp-doc a.btn {
+  margin: 0 8px 8px 0;
+}
+
 .vp-doc .btn:hover {
   background: var(--n-accent-hover);
 }
@@ -436,17 +475,6 @@
   .n-layout.has-sidebar.has-aside:not(.n-wide) .vp-doc > div > div > .n-shotrow-hold .n-shotrow.is-wide:not(.is-focus) .hotshot {
     margin-inline: auto;
   }
-}
-
-.vimg__play-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  font-size: 7rem;
-  text-shadow: 0 0 10px #000;
-  pointer-events: none;
 }
 
 /* Outbound-link icon stays hidden, as it was before. */

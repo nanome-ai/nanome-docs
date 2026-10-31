@@ -130,6 +130,13 @@ function version(src) {
   font-size: 7rem;
   text-shadow: 0 0 10px black;
 }
+
+/* A phone-width thumbnail keeps most of its picture in view. */
+@media (max-width: 767px) {
+  .vimg__play-btn {
+    font-size: 3.5rem;
+  }
+}
 </style>
 
 <!-- Unscoped, because these rules follow the .dark class on <html>, which is

@@ -96,6 +96,7 @@ const leave = () => n && shot.leave(n)
   font-size: var(--n-text-base);
   font-weight: 600;
   line-height: 1.4;
+  text-wrap: balance;
 }
 
 .n-iconcard__desc {

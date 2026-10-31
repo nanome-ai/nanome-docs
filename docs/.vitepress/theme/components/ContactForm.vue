@@ -135,7 +135,6 @@ async function onSubmit() {
 
 <style scoped>
 .contact h2 {
-  border-bottom: 2px solid #29a1ff;
   padding: 1rem 0;
 }
 

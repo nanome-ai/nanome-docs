@@ -41,7 +41,7 @@ newUpdates:
   title: "What's New in Nanome 2.7"
   description: Comments tied to the atoms they're about, pocket minimization in the Ligand Builder, a new atom and bond renderer, and hover, select and measure in Nanome Web.
   img: /assets/compressed/nanome-web/workspace-overview.webp
-  url: /nanome_v2/whatsnew.html
+  url: /nanome_v2/whatsnew
 quickTips:
   - title: 'Nanome v2.5 Quick Tips: Web App Basics'
     img: /assets/carousels/quicktips/web-app-basics.jpg
@@ -72,7 +72,7 @@ quickTips:
     description: Create polymer interaction components and explore the interactions report in VR
     url: https://youtu.be/YHOGQq1dUck
 carousels:
-  - title: Nanome Youtube Channel
+  - title: Nanome YouTube Channel
     numSlides: 4
     slides:
       - title: 'COVID19 in VR: D614G mutation in SARS-CoV-2 Spike protein'
