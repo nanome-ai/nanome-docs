@@ -29,9 +29,17 @@ defineProps({
   font-weight: 600;
   line-height: 1.5;
   white-space: nowrap;
+  max-width: 100%;
   vertical-align: 0.05em;
   /* Rows of pills wrap; this keeps the rows apart and off the next paragraph. */
   margin: 3px 0;
+}
+
+/* On a small phone a long label wraps inside its pill. */
+@media (max-width: 420px) {
+  .n-btn {
+    white-space: normal;
+  }
 }
 
 .n-btn :deep(.n-appicon) {

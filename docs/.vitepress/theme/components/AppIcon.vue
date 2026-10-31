@@ -57,6 +57,13 @@ const glyph = computed(() => ({
   mask: var(--n-appicon-src) center / contain no-repeat;
 }
 
+/* This glyph only fills the middle of its box, so it's drawn larger to read
+   as an "i" rather than a dot. */
+.n-appicon__glyph[style*='info-small'] {
+  -webkit-mask-size: 170%;
+  mask-size: 170%;
+}
+
 .n-appicon.is-button {
   width: calc(var(--n-appicon-size) * 2);
   height: calc(var(--n-appicon-size) * 2);

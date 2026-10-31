@@ -1,6 +1,7 @@
 <template>
   <figure class="doc-video">
     <video
+      ref="video"
       :src="`/assets/videos/${src}`"
       :poster="poster ? `/assets/videos/${poster}` : undefined"
       autoplay
@@ -16,12 +17,27 @@
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue'
+
 // Frame sizes of the videos that aren't 16:9, so the page keeps their space
 // before they load (a heading lower down would otherwise move as they do).
 const SIZES = {
   'v2-7/web-hover-select-measure.mp4': '1280 / 932',
   'v2-7/web-md-playback.mp4': '1024 / 746',
 }
+
+// With reduced motion a video waits for its play button. It shows the frame
+// at 1s, since some of the videos fade in from black.
+const video = ref(null)
+onMounted(() => {
+  const v = video.value
+  if (!v || !window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return
+  v.autoplay = false
+  v.pause()
+  const still = () => v.paused && v.currentTime < 1 && (v.currentTime = Math.min(1, v.duration / 2))
+  if (v.readyState >= 1) still()
+  else v.addEventListener('loadedmetadata', still, { once: true })
+})
 
 defineProps({
   src: {
@@ -54,6 +70,6 @@ defineProps({
 .doc-video figcaption {
   margin-top: 6px;
   font-size: 0.85em;
-  opacity: 0.75;
+  color: var(--n-text-muted);
 }
 </style>
