@@ -234,7 +234,7 @@ export const LIGANDS = [
     smiles: 'c1cc(cc(c1)OC[C@H](CO)O)C(=O)c2cnn(c2N)c3ccc(cc3)F',
     props: { NumAtoms: 45, NumHeavyAtoms: 27, MolWeight: 371.128, LogP: 1.557, TPSA: 110.6, HbondD: 3, HbondA: 6, NumRings: 3, NumAromaticRings: 3, NumAliphaticRings: 0, NumSaturatedRings: 0, InChIKey: 'IJDQETGUEUJVTB-HNNXBMFYSA-N' } },
   { ccd: 'BAX', pdb: '3HEG', entry: '3heg', name: 'A:BAX_1', tag: '', formula: 'C21 H16 Cl F3 N4 O3',
-    about: 'Sorafenib',
+    about: 'sorafenib',
     smiles: 'CNC(=O)c1cc(ccn1)Oc2ccc(cc2)NC(=O)Nc3ccc(c(c3)C(F)(F)F)Cl',
     props: { NumAtoms: 48, NumHeavyAtoms: 32, MolWeight: 464.086, LogP: 5.55, TPSA: 92.35, HbondD: 3, HbondA: 4, NumRings: 3, NumAromaticRings: 3, NumAliphaticRings: 0, NumSaturatedRings: 0, InChIKey: 'MLDQJTXFUGDVEO-UHFFFAOYSA-N' } },
 ]

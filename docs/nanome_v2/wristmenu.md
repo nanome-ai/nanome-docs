@@ -22,6 +22,6 @@ Opens the [MARA](/mara/overview) assistant. It needs Editor access to the worksp
 
 ## <AppIcon name="microphone" /> Mute {#mute}
 
-Mutes or unmutes your microphone. **X** on the off-hand controller (the left controller by default) does the same.
+Mutes or unmutes your microphone. The off-hand controller's primary button (**X**, or **A** when left-handed) does the same.
 
 When the headset hasn't been given microphone permission, the button is disabled. The **Mic** control in the [Users tab](/nanome_v2/mainpanel#user-settings) explains why.
