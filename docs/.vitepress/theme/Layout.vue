@@ -41,6 +41,9 @@ const {
 watch(() => route.path, closeSidebar)
 useCloseSidebarOnEscape(sidebarOpen, closeSidebar)
 
+// The page behind the open drawer holds still (see base.css).
+watch(sidebarOpen, (isOpen) => document.documentElement.classList.toggle('n-drawer-open', isOpen))
+
 /** Cross-fade the theme switch when the browser supports it. */
 provide('toggle-appearance', async ({ clientX: x = innerWidth / 2, clientY: y = innerHeight / 2 } = {}) => {
   const flip = () => (isDark.value = !isDark.value)

@@ -130,6 +130,7 @@ function pick(spot) {
         :class="{ 'is-active': s.n === active }"
         :style="place(s.box)"
         :href="s.href || undefined"
+        :tabindex="s.href ? -1 : undefined"
         :aria-label="s.href ? s.label : undefined"
         :title="s.label || undefined"
         @mouseenter="emit('enter', s.n)"

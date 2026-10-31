@@ -41,10 +41,13 @@ function flipWhole() {
   whole.value = !whole.value
   note.value = null
 }
-function flip(r, title, text) {
+// By name: the template unwraps refs, so it can't pass the ref itself.
+const opts = { ignoreSelf, includeLigands, allEntries }
+function flip(key, title, on, off) {
   auto.stop()
+  const r = opts[key]
   r.value = !r.value
-  note.value = { title: `${title} ${r.value ? 'on' : 'off'}`, text: `${text} The renders here use the setting it starts with.` }
+  note.value = { title: `${title} ${r.value ? 'on' : 'off'}`, text: `${r.value ? on : off} The renders here use the setting it starts with.` }
 }
 
 const caption = computed(() => {
@@ -75,15 +78,15 @@ const caption = computed(() => {
       </label>
       <label class="n-app-row">
         <span class="n-app-row__name">Ignore self</span>
-        <input type="checkbox" role="switch" class="n-app-switch" :checked="ignoreSelf" @change="flip(ignoreSelf, 'Ignore self', 'Leaves the starting component\'s own atoms out of the new one.')" />
+        <input type="checkbox" role="switch" class="n-app-switch" :checked="ignoreSelf" @change="flip('ignoreSelf', 'Ignore self', 'Leaves the starting component\'s own atoms out of the new one.', 'The starting component\'s own atoms go into the new one too.')" />
       </label>
       <label class="n-app-row">
         <span class="n-app-row__name">Include ligands</span>
-        <input type="checkbox" role="switch" class="n-app-switch" :checked="includeLigands" @change="flip(includeLigands, 'Include ligands', 'Counts other ligands in range. Off to start.')" />
+        <input type="checkbox" role="switch" class="n-app-switch" :checked="includeLigands" @change="flip('includeLigands', 'Include ligands', 'Counts other ligands in range. Off to start.', 'Leaves other ligands in range out. Off to start.')" />
       </label>
       <label class="n-app-row">
         <span class="n-app-row__name">All entries</span>
-        <input type="checkbox" role="switch" class="n-app-switch" :checked="allEntries" @change="flip(allEntries, 'All entries', 'Takes atoms from every entry in the workspace, not only this one.')" />
+        <input type="checkbox" role="switch" class="n-app-switch" :checked="allEntries" @change="flip('allEntries', 'All entries', 'Takes atoms from every entry in the workspace.', 'Takes atoms from this entry only.')" />
       </label>
     </div>
 

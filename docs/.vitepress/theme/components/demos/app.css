@@ -7,7 +7,9 @@
 
 .n-demo {
   --app-text: #334155;
-  --app-muted: #64748b;
+  /* A shade darker than the app's #64748b, so 13px labels on the grey pills
+     reach 4.5:1. */
+  --app-muted: #5f6f86;
   --app-soft: #475569;
   --app-line: #e2e8f0;
   --app-fill: #f1f5f9;
@@ -20,6 +22,8 @@
   --app-thumb: #fff;
   --app-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
   display: grid;
+  /* One column the width of the page, so a wide control can't stretch it. */
+  grid-template-columns: minmax(0, 1fr);
   gap: 18px;
   margin: 20px 0 32px;
 }
@@ -169,7 +173,8 @@
 }
 
 .n-app-switch:focus-visible,
-.n-app-card button:focus-visible {
+.n-app-card button:focus-visible,
+.n-app-slider input[type='range']:focus-visible {
   outline: 2px solid var(--app-purple);
   outline-offset: 2px;
 }
@@ -305,6 +310,19 @@
   font-size: 14px;
   text-align: center;
   cursor: pointer;
+}
+
+/* On the narrowest phones the long scheme names and the surface segments
+   only fit a little smaller, and the segments without their icons. */
+@media (max-width: 359px) {
+  .n-app-scheme {
+    padding-inline: 3px;
+    font-size: 12px;
+  }
+
+  .n-app-seg button > span .n-appicon {
+    display: none;
+  }
 }
 
 .n-app-scheme:hover:not(:disabled),

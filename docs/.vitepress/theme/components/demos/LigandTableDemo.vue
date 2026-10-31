@@ -317,6 +317,10 @@ function onPointerDown(e) {
 function onKey(e) {
   if (e.key === 'Escape' && (menu.value || picker.value)) closeAndRefocus()
 }
+// Tabbing out of the column picker closes it, as Tab does for the row menu.
+function onPickerFocusOut(e) {
+  if (picker.value && e.relatedTarget && !e.currentTarget.contains(e.relatedTarget)) picker.value = false
+}
 onMounted(() => {
   document.addEventListener('pointerdown', onPointerDown)
   document.addEventListener('keydown', onKey)
@@ -358,7 +362,7 @@ const caption = computed(() => {
           <AppIcon name="filter" size="16px" />{{ rows.length }}/{{ LIGANDS.length }}
         </button>
 
-        <div class="n-ltab__pickwrap">
+        <div class="n-ltab__pickwrap" @focusout="onPickerFocusOut">
           <button
             ref="pickBtn"
             type="button"

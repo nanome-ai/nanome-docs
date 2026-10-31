@@ -128,6 +128,8 @@ a.n-uiitem__row:hover :deep(.n-appicon),
   min-width: 0;
   color: var(--n-text-muted);
   font-size: var(--n-text-sm);
+  /* A linked row is an <a>, and the doc's link weight would reach this. */
+  font-weight: 400;
   line-height: 1.5;
 }
 
