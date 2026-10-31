@@ -27,8 +27,8 @@
 // The theme script doesn't carry these lists: the build hands each page the
 // entries for the images it names (imageData in docs/.vitepress/config.mjs).
 // Every list is sorted, one image per line, so the same images always give the
-// same files. After a merge brings in new images, run `npm run docs:compress`
-// and commit what it writes.
+// same files. After a merge that adds or deletes images, run
+// `npm run docs:compress` and commit what it writes (and removes).
 
 const sharp = require('sharp')
 const fs = require('fs')
@@ -148,9 +148,11 @@ const force = process.argv.includes('--force')
 
   // The smaller copy's width and short hash, for each image that has one.
   const smalls = []
+  const kept = new Set()
   for (const f of Object.keys(sizes).sort()) {
     const small = smallCopy(f)
     if (!small || sizes[f][0] <= SMALL_MIN) continue
+    kept.add(small)
     const copy = path.join(compressedDir, small)
     const { width } = await sharp(copy).metadata()
     const hash = crypto.createHash('sha1').update(fs.readFileSync(copy)).digest('hex').slice(0, 8)
@@ -158,6 +160,17 @@ const force = process.argv.includes('--force')
   }
   fs.writeFileSync(smallFile, `{\n${smalls.join(',\n')}\n}\n`)
   console.log(`${smalls.length} images have a smaller copy`)
+
+  // A smaller copy whose image is gone, or no longer gets one, goes too, so a
+  // merge that deletes an image leaves no copy of it behind.
+  const copies = new Set(files.map((f) => f.replace(/\.\w+$/, '.webp')))
+  for (const file of walk(compressedDir)) {
+    const rel = path.relative(compressedDir, file).split(path.sep).join('/')
+    if (/\.w\d+\.webp$/.test(rel) && !kept.has(rel) && !copies.has(rel)) {
+      fs.unlinkSync(file)
+      console.log(`- removed ${rel}`)
+    }
+  }
 })()
 
 /** True when the copy is missing or older than its original, or with --force. */
