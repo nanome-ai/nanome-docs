@@ -4,7 +4,7 @@ title: Wrist Menu
 
 # Wrist Menu
 
-Wrist menu contains access to features independent from the content of the workspace such as quick menu access, room management.
+Wrist menu contains access to features independent from the content of the workspace such as quick menu access and room management.
 
 <ScreenMap src="navigating-page/wrist-menu-1-24.png" alt="The Wrist Menu in Nanome 1.24" crop="5.0,10.0,95.0,90.0" label="Wrist Menu buttons">
 <MapCard icon="users" title="Room" href="#room" side="top" area="21.7,15.9,27.1,29.7">Manage users and presenter requests.</MapCard>
@@ -115,7 +115,7 @@ Change your display name, hairstyle, hair color, eyeglasses color, and shirt col
 <ShotRow src="navigating-page/Wrist_Settings_Room_2.png" alt="The Room tab of the Settings menu" crop="31.9,16.8,64.0,39.4">
 
 <UiList label="Room">
-<UiItem name="Sky" area="34.5,20.0,58.9,10.0">The environment background, from six choices.</UiItem>
+<UiItem name="Sky" area="34.5,20.0,58.9,10.0">The environment background, from 6 choices.</UiItem>
 <UiItem name="Show Floor" area="34.5,31.7,58.9,6.3">Shows or hides the floor.</UiItem>
 <UiItem name="Menu Animation Style" area="34.5,38.3,58.9,7.1">The easing of menu animations, such as EaseInOutSine.</UiItem>
 <UiItem name="Menu Animation Timing" area="34.5,45.4,58.9,7.1">How long menu animations take, such as 250 ms.</UiItem>
