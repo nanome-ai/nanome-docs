@@ -74,6 +74,6 @@ Since release 2.7, sign-in errors say what went wrong, with a **Details** button
 - an account without a license for Nanome XR
 - network problems
 
-Each account can be signed in on a limited number of devices at once. When the limit is reached, a **Device Limit** screen lists the other sessions, each with **Sign Out**, and **Retry** continues. Signing in on another device can sign this one out, with a notice.
+Each Nanome license covers one device at a time. When the account is already in use on another device, a **Device Limit** screen lists the other sessions, each with **Sign Out**, and **Retry** continues. Signing in on another device can sign this one out, with a notice.
 
 Nanome warns when your license will expire within 30 days. When it expires, Nanome signs out with a notice.
