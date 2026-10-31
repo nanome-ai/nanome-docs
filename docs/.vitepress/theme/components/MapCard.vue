@@ -94,6 +94,8 @@ a.n-mapcard:hover :deep(.n-appicon),
   font-size: var(--n-text-base);
   font-weight: 600;
   line-height: 1.35;
+  /* A title that wraps splits evenly, without one word alone on a line. */
+  text-wrap: balance;
 }
 
 .n-mapcard__desc {

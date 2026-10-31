@@ -19,7 +19,7 @@ In Nanome XR, the Ligands tab also has Zoom, Bulk-Display, 3D property labels, a
 <UiItem icon="filter" name="Filter ligands" href="#filters-and-presets" area="2.8,29.9,13.6,5.4">Narrows the table. The button shows how many ligands are listed out of the total, for example 2/2.</UiItem>
 <UiItem icon="columns-3" name="Select property columns" href="#property-columns" area="17.5,29.9,6.8,5.4">Chooses which properties appear as columns.</UiItem>
 <UiItem icon="bookmark" name="View presets" href="#filters-and-presets" area="25.3,29.9,6.8,5.4">Saved sets of columns and filters, shared across the project.</UiItem>
-<UiItem name="Search ligands" area="57.6,29.9,31.8,5.5">Filters by name.</UiItem>
+<UiItem name="Search ligands" area="57.6,29.9,31.8,5.5">Filters by name, tag or any property value.</UiItem>
 <UiItem icon="window-maximize" name="Fullscreen" href="#the-table" area="90.5,29.9,6.8,5.4">Opens the table in a larger window.</UiItem>
 </UiList>
 
@@ -27,7 +27,7 @@ Along the bottom of the tab:
 
 <UiList label="Ligands tab bottom bar">
 <UiItem icon="eye" name="Preview all" href="#preview" area="2.8,92.5,23.9,5.5">Opens a 3D preview that steps through the listed ligands one model at a time, with a download button for each.</UiItem>
-<UiItem icon="cloud-download" name="Download all" area="27.7,92.5,26.5,5.5">Downloads the listed ligands.</UiItem>
+<UiItem icon="cloud-download" name="Download all" area="27.7,92.5,26.5,5.5">Downloads the listed ligands, as a Combined multi-model SDF or a ZIP of individual SDFs.</UiItem>
 <UiItem icon="hexagon-plus-2" name="Sketch new" area="55.1,92.5,25.2,5.5">Opens the 2D sketcher to draw a new ligand.</UiItem>
 </UiList>
 
@@ -47,7 +47,7 @@ Each row shows the ligand's 2D drawing, its entry, its name, and the chosen prop
 <UiItem icon="info-circle" name="Column info" href="#property-columns" area="67.0,42.5,1.3,5.8">Shows what the column means.</UiItem>
 <UiItem name="Tag" href="#tags-and-ratings" area="84.0,41.7,4.2,48.1">The ligand's tag. A dash means it has none.</UiItem>
 <UiItem icon="dots-vertical" name="Row menu" href="#row-menu" area="93.2,61.0,1.3,6.5">Download SDF, Sketch variant, Properties and Tag.</UiItem>
-<UiItem name="Checkboxes" area="96.4,41.4,1.8,49.5">One on each row, and one in the header row.</UiItem>
+<UiItem name="Checkboxes" area="96.4,41.4,1.8,49.5">One on each row, and one in the header row. With rows checked, the bottom buttons show the count, such as Preview 2 and Download 2, and act on those rows only.</UiItem>
 <UiItem icon="x" name="Close" area="95.4,5.8,3.4,15.9">Closes the full-screen table.</UiItem>
 </UiList>
 
@@ -57,13 +57,13 @@ Each row shows the ligand's 2D drawing, its entry, its name, and the chosen prop
 
 <ShotRow src="nanome-web/ligand-row-menu.webp" alt="A ligand row's menu" crop="30,0,70,100">
 
-In the fullscreen table, each row has a checkbox and a <AppIcon name="dots-vertical" /> menu:
+Each row has a checkbox and a <AppIcon name="dots-vertical" /> menu, at the right end of the table:
 
 <UiList label="Ligand row menu">
 <UiItem icon="cloud-download" name="Download SDF" area="62.5,32.2,25.3,6.6">Downloads the ligand as an SDF file.</UiItem>
 <UiItem icon="hexagon-plus-2" name="Sketch variant" area="62.5,39.9,25.3,6.6">Opens the ligand in the 2D sketcher to draw a variant.</UiItem>
 <UiItem icon="info-circle" name="Properties" area="62.5,47.7,25.3,6.6">Shows the ligand's calculated properties.</UiItem>
-<UiItem icon="tag" name="Tag" href="#tags-and-ratings" area="62.5,56.8,25.3,37.5">Hit, Lead, Add to Synthesis, or New tag... for a custom tag. The tag appears in the Tag column.</UiItem>
+<UiItem icon="tag" name="Tag" href="#tags-and-ratings" area="62.5,56.8,25.3,37.5">Hit, Lead, Add to Synthesis, or New tag… for a custom tag. On a tagged ligand, Remove tag clears it. The tag appears in the Tag column.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -83,20 +83,20 @@ In the fullscreen table, each row has a checkbox and a <AppIcon name="dots-verti
 
 ## <AppIcon name="bookmark" /> Filters and view presets {#filters-and-presets}
 
-<AppIcon name="filter" /> **Filter ligands** narrows the table by property values. Its count shows how many ligands pass, out of the total.
+<AppIcon name="filter" /> **Filter ligands** narrows the table by property values. Its count shows how many ligands pass, out of the total. **Filter by currently visible** keeps only the ligands of entries loaded in the 3D view.
 
-<AppIcon name="bookmark" /> **View presets** are saved views of the table. Each one has a name, a set of columns and a set of filters, and picking one sets the table to match. Presets belong to the project, so every workspace in the project offers the same list, here and in the [Nanome XR Ligands tab](/nanome_v2/mainpanel#ligands-tab).
+<AppIcon name="bookmark" /> **View presets** are saved views of the table. Each one has a name, a set of columns and a set of filters, and picking one sets the table to match. Presets belong to the project, so the button shows only for a workspace in a project, and every workspace in the project offers the same list, here and in the [Nanome XR Ligands tab](/nanome_v2/mainpanel#ligands-tab).
 
 ## <AppIcon name="tag" /> Tags and ratings {#tags-and-ratings}
 
 A tag marks where a ligand stands, such as a hit or a lead. The **Tag** list in the [row menu](#row-menu) sets it.
 
 - A ligand has 1 tag at most. Picking another replaces it.
-- By default the list has **Hit**, **Lead** and **Add to Synthesis**. **New tag...** adds a custom tag to the workspace's list.
+- By default the list has **Hit**, **Lead** and **Add to Synthesis**. **New tag…** adds a custom tag to the workspace's list.
 - Tags are saved with the workspace, so everyone in it sees them, in Nanome Web and in the [Nanome XR Ligands tab](/nanome_v2/mainpanel#ligands-tab).
 - A ligand without a tag shows a dash in the **Tag** column.
 
-**Rating** is a column too. It holds a value people enter, stored with each ligand, so everyone in the workspace sees the same rating. In Nanome XR, people set it with up to 5 stars in the Rating column.
+**Rating** is a column too: up to 5 stars, stored with each ligand, so everyone in the workspace sees the same rating. Editors set it by clicking the stars in the Rating column, in Nanome Web or Nanome XR.
 
 ## <AppIcon name="columns-3" /> Property columns {#property-columns}
 
@@ -115,18 +115,18 @@ Nanome calculates these properties with RDKit on its server. SDF data fields fro
 | Column | What it is |
 |--------|------------|
 | **NumAtoms** | Number of atoms, including hydrogens. Shown as **Atoms**. For G0T (C₃₀H₃₂N₂O₈) it's 72: 30 C, 32 H, 2 N and 8 O |
-| **NumHeavyAtoms** | Number of non-hydrogen atoms |
+| **NumHeavyAtoms** | Number of non-hydrogen atoms. Shown as **Heavy Atoms** |
 | **MolWeight** | Monoisotopic (exact) mass in daltons, including hydrogens. Shown as **MW** |
-| **HeavyAtomMolWeight** | Mass of the non-hydrogen atoms only |
-| **LogP** | Wildman-Crippen estimate of log P, the base-10 logarithm of the octanol-water partition coefficient |
+| **HeavyAtomMolWeight** | Monoisotopic mass of the non-hydrogen atoms only. Shown as **Heavy Atom MW** |
+| **LogP** | Wildman-Crippen estimate of log P, the base-10 logarithm of the octanol-water partition coefficient. Shown as **Log P** |
 | **TPSA** | Topological polar surface area (Ertl method, from N and O atoms only), in Å² |
-| **HbondD** | Hydrogen-bond donor count (RDKit's pattern-based definition, which differs from Lipinski's N-H plus O-H count) |
-| **HbondA** | Hydrogen-bond acceptor count (RDKit's pattern-based definition, which differs from Lipinski's N plus O count) |
-| **NumRotatableBonds** | Rotatable bond count |
-| **NumRings** | Ring count |
-| **NumAromaticRings** | Aromatic ring count |
-| **NumAliphaticRings** | Count of rings with at least one non-aromatic bond |
-| **NumSaturatedRings** | Count of rings made only of single bonds |
+| **HbondD** | Hydrogen-bond donor count (RDKit's pattern-based definition, which differs from Lipinski's N-H plus O-H count). Shown as **HBD** |
+| **HbondA** | Hydrogen-bond acceptor count (RDKit's pattern-based definition, which differs from Lipinski's N plus O count). Shown as **HBA** |
+| **NumRotatableBonds** | Rotatable bond count. Shown as **Rotatable Bonds** |
+| **NumRings** | Ring count. Shown as **Rings** |
+| **NumAromaticRings** | Aromatic ring count. Shown as **Aromatic Rings** |
+| **NumAliphaticRings** | Count of rings with at least one non-aromatic bond. Shown as **Aliphatic Rings** |
+| **NumSaturatedRings** | Count of rings made only of single bonds. Shown as **Saturated Rings** |
 | **SMILES** | SMILES string |
 | **InChIKey** | Standard InChIKey |
 | **Rating** | A value people enter, stored with the ligand. See [Tags and ratings](#tags-and-ratings) |
@@ -158,7 +158,7 @@ Each one comes from an X-ray structure of human p38α MAP kinase (UniProt Q16539
 
 The RDKit calls are `Chem.AddHs` then `GetNumAtoms` for NumAtoms, `GetNumHeavyAtoms` for NumHeavyAtoms, `Descriptors.ExactMolWt` for MolWeight, `Crippen.MolLogP` for LogP, `Chem.MolToInchiKey` for InChIKey, and the matching `rdMolDescriptors` function for TPSA, HbondD, HbondA and the 4 ring counts.
 
-The copy lists HeavyAtomMolWeight, NumRotatableBonds, Rating and SMILES in its picker but leaves their columns out. The first 2 depend on RDKit settings that haven't been matched to Nanome's, people enter Rating, and one molecule can be written as many valid SMILES. The tags are examples.
+The copy lists HeavyAtomMolWeight, NumRotatableBonds, Rating and SMILES in its picker but leaves their columns out. NumRotatableBonds depends on RDKit settings that haven't been matched to Nanome's, people enter Rating, and one molecule can be written as many valid SMILES. The tags are examples.
 
 </Accordion>
 

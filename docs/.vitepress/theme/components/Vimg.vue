@@ -11,6 +11,9 @@
         :style="ratio(size)"
         loading="lazy"
         decoding="async"
+        v-bind="playable"
+        @keydown.enter.prevent="play"
+        @keydown.space.prevent="play"
       />
       <img
         v-if="darkSrc"
@@ -23,6 +26,9 @@
         :style="ratio(darkSize)"
         loading="lazy"
         decoding="async"
+        v-bind="playable"
+        @keydown.enter.prevent="play"
+        @keydown.space.prevent="play"
       />
       <div v-if="isGif" class="vimg__play-btn">&#9654;</div>
     </div>
@@ -50,6 +56,23 @@ const props = defineProps({
 const isGif = computed(() => {
   return props.src.lastIndexOf('.gif') !== -1
 })
+
+// A GIF shows a still until it's opened, so the keyboard needs a way in too:
+// Enter or Space clicks it, which is what medium-zoom listens for.
+const playable = computed(() =>
+  isGif.value
+    ? { tabindex: 0, role: 'button', 'aria-label': `${props.alt || 'Animation'}. Play` }
+    : {}
+)
+
+// medium-zoom hides the image while it's open, which drops focus, so hand it
+// back on close.
+function play(event) {
+  if (!isGif.value || event.repeat) return
+  const img = event.currentTarget
+  img.addEventListener('medium-zoom:closed', () => img.focus({ preventScroll: true }), { once: true })
+  img.click()
+}
 
 // scripts/compress.js writes a WebP copy, up to 1600px wide, for every
 // original, and records which images have a `.dark` twin for dark mode.
@@ -106,6 +129,13 @@ function version(src) {
   color: white;
   font-size: 7rem;
   text-shadow: 0 0 10px black;
+}
+
+/* A phone-width thumbnail keeps most of its picture in view. */
+@media (max-width: 767px) {
+  .vimg__play-btn {
+    font-size: 3.5rem;
+  }
 }
 </style>
 

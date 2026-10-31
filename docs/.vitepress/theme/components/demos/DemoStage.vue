@@ -5,7 +5,7 @@
  * the autoplay will show is loaded ahead of time. A frame with a dark copy
  * swaps with the site theme.
  */
-import { computed, ref, watch } from 'vue'
+import { computed, nextTick, ref, watch } from 'vue'
 import AppIcon from '../AppIcon.vue'
 import { imageInfo } from '../image.js'
 
@@ -18,10 +18,31 @@ const props = defineProps({
 const emit = defineEmits(['toggle'])
 
 const loaded = ref([props.src])
+const stage = ref(null)
+
+// The frame on show. A newly picked frame takes over once its image has
+// loaded (or failed), so the stage keeps the last render until then.
+const shown = ref(props.src)
+const ready = new Set([props.src])
+function onReady(s) {
+  ready.add(s)
+  if (s === props.src) shown.value = s
+}
+
+// True when the image this frame shows in the current theme is already in.
+function painted(src) {
+  const frame = stage.value?.children[loaded.value.indexOf(src)]
+  const img = frame && [...frame.querySelectorAll('img')].find((i) => i.offsetWidth > 0)
+  return !!img && img.complete && img.naturalWidth > 0
+}
+
 watch(
   () => [props.src, props.next],
   ([src, next]) => {
     for (const s of [src, next]) if (s && !loaded.value.includes(s)) loaded.value.push(s)
+    nextTick(() => {
+      if (src === props.src && (ready.has(src) || painted(src))) shown.value = src
+    })
   }
 )
 
@@ -34,16 +55,16 @@ const frames = computed(() => loaded.value.map((src) => ({ src, info: imageInfo(
 </script>
 
 <template>
-  <div class="n-demo-stage" :style="{ '--stage-ar': ratio }">
+  <div ref="stage" class="n-demo-stage" :style="{ '--stage-ar': ratio }">
     <div
       v-for="f in frames"
       :key="f.src"
       class="n-demo-stage__frame"
-      :class="{ 'is-on': f.src === src, 'has-dark': !!f.info.dark }"
-      :aria-hidden="f.src === src ? undefined : 'true'"
+      :class="{ 'is-on': f.src === shown, 'has-dark': !!f.info.dark }"
+      :aria-hidden="f.src === shown ? undefined : 'true'"
     >
-      <img class="n-demo-stage__img n-demo-stage__light no-zoom" :src="f.info.light" :alt="f.src === src ? alt : ''" loading="lazy" decoding="async" />
-      <img v-if="f.info.dark" class="n-demo-stage__img n-demo-stage__dark no-zoom" :src="f.info.dark" :alt="f.src === src ? alt : ''" loading="lazy" decoding="async" />
+      <img class="n-demo-stage__img n-demo-stage__light no-zoom" :src="f.info.light" :alt="f.src === shown ? alt : ''" loading="lazy" decoding="async" @load="onReady(f.src)" @error="onReady(f.src)" />
+      <img v-if="f.info.dark" class="n-demo-stage__img n-demo-stage__dark no-zoom" :src="f.info.dark" :alt="f.src === shown ? alt : ''" loading="lazy" decoding="async" @load="onReady(f.src)" @error="onReady(f.src)" />
     </div>
     <button
       type="button"

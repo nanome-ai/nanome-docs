@@ -9,7 +9,7 @@ The Scenes Panel sits in the left sidebar, beside the Main Panel. A scene is a s
 <ScreenMap src="nanome-v2/v2-7/desktop-layout.webp" alt="The left sidebar with the Scenes Panel controls" crop="0,9.6,15.6,60.7" label="Left sidebar">
 <MapCard icon="layout-grid" title="Workspace header" href="#workspace-header" side="top" area="0.5,10.5,14.7,6.2">The workspace name, network health and access.</MapCard>
 <MapCard icon="box" title="Scene controls" href="#controls" side="top" area="0.9,20.1,14.0,4.1">Create, step through and play scenes.</MapCard>
-<MapCard icon="dots" title="Scene menu" href="#scene-menu" side="left" area="1.2,25.3,11.5,5.6">On a scene's row, shown on hover: rename, duplicate, copy a POV, or record a presentation in the scene.</MapCard>
+<MapCard icon="dots" title="Scene menu" href="#scene-menu" side="top" area="1.2,25.3,11.5,5.6">On a scene's row, shown on hover: rename, duplicate, copy a POV, or record a presentation in the scene.</MapCard>
 <MapCard icon="users" title="Users" href="#users-section" side="bottom" area="0.9,55.5,14.0,4.0">Who's in the workspace, Share and Spotlight Me.</MapCard>
 <MapCard icon="crown" title="Spotlight Mode" href="#spotlight-mode" side="bottom" area="0.9,59.7,14.0,4.1">Share your view, or follow someone else's.</MapCard>
 </ScreenMap>
@@ -19,20 +19,22 @@ The Scenes Panel sits in the left sidebar, beside the Main Panel. A scene is a s
 The top of the sidebar shows the workspace name and two icons:
 
 <UiList label="Workspace header">
-<UiItem icon="alert-triangle" name="Network health">Appears when the connection degrades, showing High ping, Reconnecting or Connection lost.</UiItem>
-<UiItem icon="lock" name="Access">Shows whether the workspace is private or shared, its project and its code.</UiItem>
+<UiItem icon="alert-triangle" name="Network health">Appears when the connection degrades. Its tooltip shows the ping, or that the connection was lost.</UiItem>
+<UiItem icon="user" name="Access">A lock when the workspace is private, a person or two people when it's shared. Hovering the workspace name shows its project, and its code when it has one.</UiItem>
 </UiList>
 
 ## <AppIcon name="box" /> Controls {#controls}
 
 <UiList label="Scene controls">
 <UiItem icon="plus" name="Create scene">Adds a scene.</UiItem>
-<UiItem icon="settings" name="Scene settings" href="#scene-settings">Recenter Self, Set scene POV, and Enable/disable scene POVs.</UiItem>
+<UiItem icon="settings" name="Scene settings" href="#scene-settings">Recenter Self, Set scene POV, and Disable Scene POVs.</UiItem>
 <UiItem icon="arrow-left" name="Previous scene">Steps back through the scenes.</UiItem>
 <UiItem icon="arrow-right" name="Next scene">Steps forward through the scenes.</UiItem>
 <UiItem icon="player-play" name="Play scenes">Plays the scenes, with their recordings.</UiItem>
 <UiItem name="Drag handle (=)">Dragging it reorders the scenes.</UiItem>
 </UiList>
+
+Create scene, Scene settings, the drag handle and each scene's <AppIcon name="dots" /> menu need Editor access.
 
 ### <AppIcon name="settings" /> Scene settings {#scene-settings}
 
@@ -41,7 +43,7 @@ The top of the sidebar shows the workspace name and two icons:
 <UiList label="Scene settings">
 <UiItem icon="target" name="Recenter Self" area="28.0,26.3,64.2,5.3">Resets your position as the viewing origin.</UiItem>
 <UiItem icon="scan-eye" name="Set scene POV" area="28.0,33.3,64.2,5.2">Saves your current perspective as the scene's point of view.</UiItem>
-<UiItem icon="perspective" name="Enable/disable scene POVs" area="28.0,40.1,64.2,5.2">Sets whether switching scenes moves your view to each scene's point of view.</UiItem>
+<UiItem icon="perspective" name="Disable Scene POVs" area="28.0,40.1,64.2,5.2">Sets whether switching scenes moves your view to each scene's point of view. It reads Enable Scene POVs while they're off.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -79,7 +81,7 @@ Since release 2.6, a scene can hold a recorded presentation: the presenter's voi
 
 Switching scenes stops the recording, after a confirmation. A scene with a recording shows <AppIcon name="video" /> and its length in the scene list.
 
-**Play scenes** opens a playback bar: <Btn icon="arrow-left">Previous</Btn> <Btn icon="arrow-right">Next</Btn> <Btn icon="player-play">Play</Btn> <Btn icon="player-stop">Stop playback</Btn> <Btn icon="analyze-filled">Recenter</Btn>
+**Play scenes** opens a playback bar: <Btn icon="arrow-left">Previous scene</Btn> <Btn icon="arrow-right">Next scene</Btn> <Btn icon="player-play">Play</Btn> <Btn icon="player-stop">Stop playback</Btn> <Btn icon="analyze-filled">Recenter</Btn>
 
 <Callout type="note" title="A recording locks the workspace">
 
@@ -97,7 +99,7 @@ At the bottom of the sidebar, the **Users** section shows who's in the workspace
 <UiItem icon="chevrons-right" name="Collapse sidebar">Collapses the sidebar.</UiItem>
 </UiList>
 
-### Multi-User Scene Indicators
+### Multi-user scene indicators
 
 <ShotRow src="nanome-v2/scenes-panel-multiuser-indicators.jpg" alt="Ana's and Ben's Scenes Panels, with colored dots on Scene 1 showing that both are viewing it">
 
@@ -107,7 +109,7 @@ With several people in a workspace, colored dots on each scene show who's viewin
 
 ## <AppIcon name="crown" /> Spotlight Mode {#spotlight-mode}
 
-<ShotRow src="nanome-v2/scenes-panel-spotlight-mode.jpg" alt="Ben spotlighting with Ana following, as each of them sees it">
+<ShotRow src="nanome-v2/scenes-panel-spotlight-mode.jpg" alt="Ben spotlighting with Ana following, as each of them sees it" crop="0,0,82.9,100">
 
 **Spotlight Me** makes your view the shared perspective for everyone who follows you.
 
@@ -134,7 +136,7 @@ Followers are listed with an <AppIcon name="eye" /> eye icon beside their name.
 
 </ShotRow>
 
-People in Nanome XR see a prompt for about 6 seconds, with **Not now** to decline, before they follow a new spotlight. Since release 2.7, Nanome Web viewers follow straight away. A **You are following** popup has **Stop Following**. After you stop, a **You stopped following** popup offers **Resume Following** for 3 seconds. Holding the grip also stops following.
+People in Nanome XR see a prompt for about 6 seconds, with **Not now** to decline, before they follow a new spotlight. Since release 2.7, people in Nanome Web follow straight away. A **You are following** popup has **Stop Following**. After you stop, a **You stopped following** popup offers **Resume Following** for 3 seconds. Holding the grip also stops following.
 
 <Accordion title="Changes in 2.7" teaser="Joining mid-spotlight, live edits and follow chains.">
 

@@ -2,11 +2,14 @@
 title: Home
 aside: false
 hero:
-  - img: /assets/carousels/hero/resonac.webp
+  - title: Resonac case study
+    img: /assets/carousels/hero/resonac.webp
     url: https://nanome.ai/blog/how-resonac-turned-two-years-of-misaligned-randd-into-a-single-afternoon-breakthrough
-  - img: /assets/carousels/hero/nimbus.png
+  - title: Nimbus Therapeutics case study
+    img: /assets/carousels/hero/nimbus.png
     url: https://nanome.ai/case-studies/nimbus-therapeutics
-  - img: /assets/carousels/hero/novartis.png
+  - title: Novartis case study
+    img: /assets/carousels/hero/novartis.png
     url: https://nanome.ai/case-studies/novartis
 start:
   - icon: device-vision-pro
@@ -39,9 +42,9 @@ classic:
   url: /nanome1x/overview
 newUpdates:
   title: "What's New in Nanome 2.7"
-  description: Comments tied to the atoms they're about, pocket minimization in the Ligand Builder, a new atom and bond renderer, and hover, select and measure in Nanome Web.
+  description: Comments tied to the atoms they're about, pocket minimization in the Builder Tool, a new atom and bond renderer, and hover, select and measure in Nanome Web.
   img: /assets/compressed/nanome-web/workspace-overview.webp
-  url: /nanome_v2/whatsnew.html
+  url: /nanome_v2/whatsnew
 quickTips:
   - title: 'Nanome v2.5 Quick Tips: Web App Basics'
     img: /assets/carousels/quicktips/web-app-basics.jpg
@@ -72,13 +75,13 @@ quickTips:
     description: Create polymer interaction components and explore the interactions report in VR
     url: https://youtu.be/YHOGQq1dUck
 carousels:
-  - title: Nanome Youtube Channel
+  - title: Nanome YouTube Channel
     numSlides: 4
     slides:
-      - title: 'COVID19 in VR: D614G mutation in SARS-CoV-2 Spike protein'
+      - title: 'COVID-19 in VR: D614G mutation in SARS-CoV-2 Spike protein'
         img: https://i.ytimg.com/vi/de89sFYbc4E/hqdefault.jpg
         url: https://youtu.be/de89sFYbc4E
-      - title: 'KRAS in VR: Novel Covalent Allosteric Binders for KRAS G12C3'
+      - title: 'KRAS in VR: Novel Covalent Allosteric Binders for KRAS G12C'
         img: https://i.ytimg.com/vi/WbB6xFRkX-c/hqdefault.jpg
         url: https://youtu.be/WbB6xFRkX-c
       - title: 'GPCRs in VR: Identification of Cannabinoid CB1 Receptor Allosteric Sites to Treat Epilepsy'
@@ -99,10 +102,10 @@ carousels:
       - title: 'Leveraging VR in the Chemistry Classroom - A Discussion with Chemistry Educators'
         img: https://i.ytimg.com/vi/vI3tm_-ckiI/hqdefault.jpg
         url: https://youtu.be/vI3tm_-ckiI
-      - title: 'COVID19 in VR: Emerging U.S. Variants - L452R and Q677P/H'
+      - title: 'COVID-19 in VR: Emerging U.S. Variants - L452R and Q677P/H'
         img: https://i.ytimg.com/vi/5sZzMYOaaTQ/hqdefault.jpg
         url: https://youtu.be/5sZzMYOaaTQ
-      - title: 'Covid-19 in VR: Exploring Spike Protein Mutations with Dr. Kuiper from CSIRO Data61'
+      - title: 'COVID-19 in VR: Exploring Spike Protein Mutations with Dr. Kuiper from CSIRO Data61'
         img: https://i.ytimg.com/vi/daaoazyBml8/hqdefault.jpg
         url: https://youtu.be/daaoazyBml8
 blogCarousels:
