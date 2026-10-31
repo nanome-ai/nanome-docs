@@ -15,7 +15,7 @@ title: Technical Documentation
 
 MARA can run inside an organization's firewall and connect to its internal informatics systems. The layout of an enterprise deployment:
 
-<vimg src="mara/architecture.png" alt="Enterprise deployment layout" />
+<vimg src="mara/architecture.png" alt="Inside the customer firewall: the MARA server, the tool server, an internally hosted LLM API, users, and internal services and databases. Outside it: Nanome's authentication and SSO provider, and third-party services and public databases." />
 
 ## <AppIcon name="tool" /> Tool creation {#tool-creation}
 
@@ -35,6 +35,6 @@ The same tab has [MCP setup](/nanome_web/account#mcp-setup), which connects an A
 
 ## <AppIcon name="lock" /> Authentication {#authentication}
 
-MARA supports single sign-on (SSO) through standard SAML methods, so organizations can manage identity in one place with providers such as Microsoft Azure Active Directory (AD), Okta and other SAML-compliant platforms.
+MARA supports single sign-on (SSO) through standard SAML methods, so organizations can manage identity in one place with providers such as Microsoft Entra ID (formerly Azure Active Directory), Okta and other SAML-compliant platforms.
 
-Administrators can also set organization-wide API keys for specific tools. They give controlled access to MARA's resources, keep integrations secure, and make user permissions simpler to manage across the organization.
+Tools can also share secrets, such as an API key, across an organization. Under **Secrets** on the [Tools page](/mara/tools), **Create for** sets a secret for **my org** or for **myself**.

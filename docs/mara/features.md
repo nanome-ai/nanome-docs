@@ -40,7 +40,7 @@ Some of the tasks MARA can do:
 </Tab>
 <Tab>
 
-- Aligning reference polymer structures to sets of mobile structures.
+- Aligning sets of mobile structures to a reference polymer structure.
 - Computing solvent accessible surface area (SASA) of proteins.
 - Calculating RMSD from MD trajectories.
 
@@ -54,7 +54,7 @@ Some of the tasks MARA can do:
 </Tab>
 </Tabs>
 
-Besides plain language, a message can carry files, a structure drawn with <Btn icon="hexagon">Draw SMILES</Btn>, or a specific tool or workflow to run. MAE, MOE and PSE session files can be attached too. The four [example chats](/mara/conversations#examples) show complete tasks from start to finish.
+Besides plain language, a message can carry files, a structure drawn with <Btn icon="hexagon">Draw SMILES</Btn>, or a specific tool or workflow to run. MAE, MOE and PSE session files can be attached too. The 4 [example chats](/mara/conversations#examples) show complete tasks from start to finish.
 
 ## <AppIcon name="table" /> Tables {#tables}
 
@@ -67,7 +67,7 @@ With a CSV file in the chat, you can ask MARA to:
 - Summarize the file's contents, for a first look at the data.
 - Write the results to a new CSV file, or overwrite one, to export them.
 
-Tables for the chat live in the **Tables** section of the [Files panel](/mara/conversations#files-panel). Drop a CSV or SDF file there, or ask MARA to make a table from a file in the chat.
+Tables for the chat live in the **Tables** section of the [Files panel](/mara/conversations#files-panel). Drop a CSV or SDF file there, choose Open as Data Table in a file's menu, or ask MARA to make a table from a file in the chat.
 
 ## <AppIcon name="atom" /> Structures {#structures}
 
