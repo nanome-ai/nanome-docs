@@ -75,11 +75,11 @@ A workspace sent from Nanome Web with **Open in XR** opens straight away when yo
 
 ## <AppIcon name="crown" /> Spotlight and follow {#spotlight-and-follow}
 
-<ShotRow src="nanome-v2/multiuser_view.png" alt="Storyboard: 2 people, blue and red, moving between their own view and the spotlight">
+Following another person shows you their view and their scene, and when others follow you, you're the spotlight.
 
-Following another person shows what they're showing. When others follow you, you're the spotlight: they see your view and your scene. The controls are under [Spotlight Mode](/nanome_v2/scenespanel#spotlight-mode).
+<SpotlightDemo />
 
-</ShotRow>
+The controls are under [Spotlight Mode](/nanome_v2/scenespanel#spotlight-mode) on the Scenes Panel page.
 
 Pointers point relative to the structures, so even when nobody is following, everyone sees a pointer on the same structural feature.
 

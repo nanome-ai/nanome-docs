@@ -1,9 +1,13 @@
 <script setup>
 /**
  * A screenshot beside its legend: the image on the left and the icons and
- * what they do on the right, once the column is wide enough. On a narrow
- * screen the legend comes first and the image follows. The image stays in
- * view while a long legend scrolls past.
+ * what they do on the right, once the column is wide enough. The image stays
+ * in view while a long legend scrolls past. Whenever the two stack, on a
+ * narrow screen or for a wide image, the image comes first and the legend
+ * follows it, in the page and to a screen reader alike.
+ *
+ * `stack` stacks them at every width: the image, centered and no taller than
+ * min(70vh, 640px), then the legend under it.
  *
  * A legend row (<UiItem>) or card (<IconCard>) with an `area` ("x,y,w,h",
  * percent of the image) lights up that part of the image while it's hovered,
@@ -15,7 +19,7 @@
  * width under its legend, since it can't be read at a third of the page.
  * Full screen it comes first, with the legend under it.
  *
- *   <ShotRow src="nanome-v2/v2-7/settings-tab.webp" alt="The Settings tab">
+ *   <ShotRow src="nanome-v2/v2-7/settings-tab.webp" alt="The Settings tab" stack>
  *
  *   <UiList>
  *   <UiItem icon="moon" name="Night mode" area="6,13,6,8">…</UiItem>
@@ -32,6 +36,7 @@ const props = defineProps({
   src: { type: String, required: true },
   alt: { type: String, default: '' },
   crop: { type: String, default: '' },
+  stack: { type: Boolean, default: false },
 })
 
 const wide = computed(() => {
@@ -117,7 +122,7 @@ async function pick(n) {
     <div
       ref="root"
       class="n-shotrow"
-      :class="{ 'is-wide': wide, 'is-focus': view.focused.value, 'has-spots': spots.length > 0 }"
+      :class="{ 'is-wide': wide, 'is-stack': stack, 'is-focus': view.focused.value, 'has-spots': spots.length > 0 }"
       :role="view.focused.value ? 'dialog' : undefined"
       :aria-modal="view.focused.value ? 'true' : undefined"
       :aria-label="(view.focused.value && alt) || undefined"
@@ -127,7 +132,6 @@ async function pick(n) {
         <svg viewBox="0 0 24 24" width="18" height="18"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
       </button>
       <div class="n-shotrow__grid">
-        <div class="n-shotrow__legend"><slot /></div>
         <div class="n-shotrow__shot">
           <HotShot
             :src="src"
@@ -142,6 +146,7 @@ async function pick(n) {
             @pick="pick"
           />
         </div>
+        <div class="n-shotrow__legend"><slot /></div>
       </div>
     </div>
   </div>
@@ -170,7 +175,8 @@ async function pick(n) {
   margin-bottom: 0;
 }
 
-.n-shotrow__shot {
+/* Stacked, the legend follows the image. */
+.n-shotrow__legend {
   margin-top: 16px;
 }
 
@@ -247,9 +253,25 @@ async function pick(n) {
   line-height: inherit;
 }
 
+/* With `stack`, the image sits in the middle of the column, short enough to
+   see whole, and the legend keeps to the width of the text around it. */
+.n-shotrow.is-stack:not(.is-focus) .n-shotrow__shot {
+  --hotshot-maxh: min(70vh, 640px);
+}
+
+.n-shotrow.is-stack:not(.is-focus) :deep(.hotshot) {
+  margin-inline: auto;
+}
+
+.n-shotrow.is-stack:not(.is-focus) .n-shotrow__legend {
+  max-width: calc(var(--n-content-max) - 2 * var(--n-gutter));
+  margin-inline: auto;
+}
+
 /* Side by side once there's room for both: about 46% for the image. */
 @container shotrow (min-width: 600px) {
-  .n-shotrow:not(.is-wide) .n-shotrow__grid {
+  .n-shotrow:not(.is-wide, .is-stack) .n-shotrow__grid,
+  .n-shotrow.is-focus:not(.is-wide) .n-shotrow__grid {
     display: grid;
     grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
     grid-template-areas: 'shot legend';
@@ -257,11 +279,14 @@ async function pick(n) {
     gap: 28px;
   }
 
-  .n-shotrow:not(.is-wide) .n-shotrow__legend {
+  .n-shotrow:not(.is-wide, .is-stack) .n-shotrow__legend,
+  .n-shotrow.is-focus:not(.is-wide) .n-shotrow__legend {
     grid-area: legend;
+    margin-top: 0;
   }
 
-  .n-shotrow:not(.is-wide) .n-shotrow__shot {
+  .n-shotrow:not(.is-wide, .is-stack) .n-shotrow__shot,
+  .n-shotrow.is-focus:not(.is-wide) .n-shotrow__shot {
     grid-area: shot;
     position: sticky;
     /* Clears the nav bar and the breadcrumb strip under it. */
@@ -297,29 +322,10 @@ async function pick(n) {
   cursor: pointer;
 }
 
-/* On a phone the full-screen view opens on the image, with the legend under it. */
-@container shotrow (max-width: 599.98px) {
-  .n-shotrow.is-focus .n-shotrow__grid {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .n-shotrow.is-focus .n-shotrow__shot {
-    order: -1;
-    margin: 0 0 16px;
-  }
-}
-
-/* So does a wide image at any size. It stays short enough that a legend of a
-   few rows fits under it in the window, and a long legend scrolls. */
-.n-shotrow.is-focus.is-wide .n-shotrow__grid {
-  display: flex;
-  flex-direction: column;
-}
-
+/* On a phone the full-screen view opens on the image, with the legend under
+   it. So does a wide image at any size: it stays short enough that a legend of
+   a few rows fits under it in the window, and a long legend scrolls. */
 .n-shotrow.is-focus.is-wide .n-shotrow__shot {
-  order: -1;
-  margin: 0 0 16px;
   --hotshot-maxh: max(50vh, 100vh - 300px);
 }
 

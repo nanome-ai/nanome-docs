@@ -40,11 +40,14 @@ import Btn from './components/Btn.vue'
 import ShotRow from './components/ShotRow.vue'
 import ScreenMap from './components/ScreenMap.vue'
 import MapCard from './components/MapCard.vue'
+import SpotlightDemo from './components/demos/SpotlightDemo.vue'
 import RepresentationDemo from './components/demos/RepresentationDemo.vue'
 import ColorSchemeDemo from './components/demos/ColorSchemeDemo.vue'
 import ThemeDemo from './components/demos/ThemeDemo.vue'
 import DistanceDemo from './components/demos/DistanceDemo.vue'
+import PlaybackDemo from './components/demos/PlaybackDemo.vue'
 import LigandTableDemo from './components/demos/LigandTableDemo.vue'
+import ToolsDemo from './components/demos/ToolsDemo.vue'
 import './components/demos/app.css'
 
 // Interactive building blocks, usable from any markdown page.
@@ -107,11 +110,14 @@ export default {
     app.component('ShotRow', ShotRow)
     app.component('ScreenMap', ScreenMap)
     app.component('MapCard', MapCard)
+    app.component('SpotlightDemo', SpotlightDemo)
     app.component('RepresentationDemo', RepresentationDemo)
     app.component('ColorSchemeDemo', ColorSchemeDemo)
     app.component('ThemeDemo', ThemeDemo)
     app.component('DistanceDemo', DistanceDemo)
+    app.component('PlaybackDemo', PlaybackDemo)
     app.component('LigandTableDemo', LigandTableDemo)
+    app.component('ToolsDemo', ToolsDemo)
 
     app.component('Chooser', Chooser)
     app.component('ChooserResult', ChooserResult)

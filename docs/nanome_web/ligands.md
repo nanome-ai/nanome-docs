@@ -13,13 +13,13 @@ In Nanome XR, the Ligands tab also has Zoom, Bulk-Display, 3D property labels, a
 
 ## <AppIcon name="filter" /> Toolbar {#toolbar}
 
-<ShotRow src="nanome-web/ligands-tab.webp" alt="The Ligands tab" crop="0,20,100,80">
+<ShotRow src="nanome-web/ligands-tab.webp" alt="The Ligands tab" crop="0,20,100,80" stack>
 
 <UiList label="Ligands toolbar">
 <UiItem icon="filter" name="Filter ligands" href="#filters-and-presets" area="2.8,29.9,13.6,5.4">Narrows the table. The button shows how many ligands are listed out of the total, for example 2/2.</UiItem>
 <UiItem icon="columns-3" name="Select property columns" href="#property-columns" area="17.5,29.9,6.8,5.4">Chooses which properties appear as columns.</UiItem>
 <UiItem icon="bookmark" name="View presets" href="#filters-and-presets" area="25.3,29.9,6.8,5.4">Saved sets of columns and filters, shared across the project.</UiItem>
-<UiItem name="Search ligands" area="57.6,29.9,31.8,5.5">Filters by name, tag or any property value.</UiItem>
+<UiItem name="Search ligands" area="57.6,29.9,31.8,5.5">Matches the name, the tag or any property value.</UiItem>
 <UiItem icon="window-maximize" name="Fullscreen" href="#the-table" area="90.5,29.9,6.8,5.4">Opens the table in a larger window.</UiItem>
 </UiList>
 
@@ -83,9 +83,32 @@ Each row has a checkbox and a <AppIcon name="dots-vertical" /> menu, at the righ
 
 ## <AppIcon name="bookmark" /> Filters and view presets {#filters-and-presets}
 
-<AppIcon name="filter" /> **Filter ligands** narrows the table by property values. Its count shows how many ligands pass, out of the total. **Filter by currently visible** keeps only the ligands of entries loaded in the 3D view.
+<AppIcon name="filter" /> **Filter ligands** narrows the table by property values. Its count shows how many ligands pass, out of the total, and the button fills in while a filter or **Filter by currently visible** is on.
 
-<AppIcon name="bookmark" /> **View presets** are saved views of the table. Each one has a name, a set of columns and a set of filters, and picking one sets the table to match. Presets belong to the project, so the button shows only for a workspace in a project, and every workspace in the project offers the same list, here and in the [Nanome XR Ligands tab](/nanome_v2/mainpanel#ligands-tab).
+<UiList label="Filter ligands">
+<UiItem name="Filter by currently visible">Keeps only the ligands of entries loaded in the 3D view. It shows once the 3D view is ready.</UiItem>
+<UiItem name="Filter list">One line per filter, such as <span style="white-space: nowrap">MolWeight &lt; 500</span>, with <AppIcon name="x" /> to remove it. With none, it reads No filters yet.</UiItem>
+<UiItem name="Select item">The property to test: any property the ligands have, plus Rating.</UiItem>
+<UiItem name="Operator">For numbers: =, ≠, &lt;, ≤, &gt; and ≥. For text: =, ≠, contains, does not contain, starts with and ends with. It starts on =.</UiItem>
+<UiItem name="Value">The value to compare with. <AppIcon name="plus" />, or Enter, adds the filter.</UiItem>
+</UiList>
+
+- A property counts as a number when any ligand's value for it is a number. Rating always does.
+- Numbers compare by value. Text compares without regard to case.
+- A ligand without the property fails that filter.
+- The table lists a ligand only when it passes every filter, the search and, while it's on, **Filter by currently visible**.
+
+<AppIcon name="bookmark" /> **View presets** are saved views of the table. Each one has a name, a set of columns and a set of filters. Presets belong to the project, so the button shows only for a workspace in a project, and every workspace in the project offers the same list, here and in the [Nanome XR Ligands tab](/nanome_v2/mainpanel#ligands-tab).
+
+<UiList label="View presets">
+<UiItem name="Preset">One button per preset, by name, with the tooltip Apply columns and filters. Picking one sets the table's columns and filters to the preset's.</UiItem>
+<UiItem icon="trash" name="Delete preset">The first click asks to confirm, and a second click within 3 seconds deletes the preset.</UiItem>
+<UiItem name="New preset name">A name for the current columns and filters. <AppIcon name="plus" />, or Enter, saves them as a new preset.</UiItem>
+</UiList>
+
+A project without presets shows **No presets in this project yet.** Only people who can edit the project see **Delete preset** and **New preset name**.
+
+The copy of the table under [Property columns](#property-columns) filters and applies presets the same way.
 
 ## <AppIcon name="tag" /> Tags and ratings {#tags-and-ratings}
 
@@ -158,7 +181,7 @@ Each one comes from an X-ray structure of human p38α MAP kinase (UniProt Q16539
 
 The RDKit calls are `Chem.AddHs` then `GetNumAtoms` for NumAtoms, `GetNumHeavyAtoms` for NumHeavyAtoms, `Descriptors.ExactMolWt` for MolWeight, `Crippen.MolLogP` for LogP, `Chem.MolToInchiKey` for InChIKey, and the matching `rdMolDescriptors` function for TPSA, HbondD, HbondA and the 4 ring counts.
 
-The copy lists HeavyAtomMolWeight, NumRotatableBonds, Rating and SMILES in its picker but leaves their columns out. NumRotatableBonds depends on RDKit settings that haven't been matched to Nanome's, people enter Rating, and one molecule can be written as many valid SMILES. The tags are examples.
+The copy lists HeavyAtomMolWeight, NumRotatableBonds, Rating and SMILES in its picker but leaves their columns out. NumRotatableBonds depends on RDKit settings that haven't been matched to Nanome's, people enter Rating, and one molecule can be written as many valid SMILES. The tags, the 2 entries that Filter by currently visible leaves out and the 2 presets are examples.
 
 </Accordion>
 
