@@ -1,11 +1,15 @@
 <script setup>
 /**
  * A working copy of the color scheme menu, as Nanome Web draws it, beside a
- * render of 1KV2 in the scheme that's picked. Carbons only switches to the
- * render with that option on, where it changes the picture. Both apps hide
- * Carbons only and turn it off while Element Type is picked (ColorThemePopup
- * in XR), so the copy does too. It steps through the schemes by itself until
- * the reader picks one.
+ * render of 1KV2's binding site (Pocket + Ligand A:B96_391 as Stick) in the
+ * scheme that's picked. It starts where both apps start an atom style:
+ * Chain Instance with Carbons only on. Carbons only switches to the render
+ * with that option, except with Potential Interactions, which it doesn't
+ * change. Both apps hide Carbons only while Element Type is picked; Nanome
+ * Web also turns it off then, and when a Uniform color is picked, while
+ * Nanome XR keeps it. Uniform shows three of Nanome XR's preset colors.
+ * It steps through every scheme by itself, with Carbons only on, until the
+ * reader picks one.
  *
  *   <ColorSchemeDemo app="xr" />   the schemes Nanome XR lists
  *   <ColorSchemeDemo app="web" />  the schemes Nanome Web lists
@@ -14,57 +18,103 @@ import { computed, ref } from 'vue'
 import DemoStage from './DemoStage.vue'
 import { arrowPick } from './arrows.js'
 import { useAutoplay } from './autoplay.js'
-import { CARBONS_DESC, SCHEMES, schemeFrame } from './data.js'
+import { CARBONS_DESC, SCHEMES, UNIFORM_DESC, UNIFORM_SWATCHES, schemeFrame } from './data.js'
 
 const props = defineProps({ app: { type: String, default: 'web' } })
 const schemes = computed(() => SCHEMES.filter((s) => props.app === 'xr' || !s.xrOnly))
-const playable = computed(() => schemes.value.filter((s) => !s.disabled))
 
-const scheme = ref('element-type')
-const carbons = ref(false)
-const showCarbons = ref(false)
+const scheme = ref('chain-instance')
+const carbons = ref(true)
+const hex = ref('ffffff')
+/** What the reader changed last, which the caption speaks to. */
+const changed = ref(null)
 
+// The tour: every scheme with Carbons only on, Uniform in each of its colors.
+const tour = computed(() =>
+  schemes.value.flatMap((s) =>
+    s.key === 'uniform' ? UNIFORM_SWATCHES.map((u) => ({ scheme: s.key, hex: u.hex })) : [{ scheme: s.key }]
+  )
+)
+// The step after the scheme on show, so Play carries on from the reader's pick.
+const after = computed(() => {
+  const i = tour.value.findIndex((t) => t.scheme === scheme.value && (!t.hex || t.hex === hex.value))
+  return tour.value[(i + 1) % tour.value.length]
+})
 const root = ref(null)
 const auto = useAutoplay(root, () => {
-  const list = playable.value
-  const i = list.findIndex((s) => s.key === scheme.value)
-  scheme.value = list[(i + 1) % list.length].key
-  showCarbons.value = false
+  const t = after.value
+  scheme.value = t.scheme
+  if (t.hex) hex.value = t.hex
+  carbons.value = true
+  changed.value = null
 })
-const next = computed(() => {
-  const list = playable.value
-  const i = list.findIndex((s) => s.key === scheme.value)
-  return schemeFrame(list[(i + 1) % list.length].key, carbons.value)
-})
+const next = computed(() => schemeFrame(props.app, after.value.scheme, true, after.value.hex))
 
 function pick(s) {
-  if (s.disabled) return
   auto.stop()
   scheme.value = s.key
-  if (s.key === 'element-type') carbons.value = false
-  showCarbons.value = false
+  changed.value = null
+  if (props.app !== 'web') return
+  // Nanome Web turns Carbons only off for Element Type, and its Uniform
+  // starts white each time.
+  if (s.noCarbons) carbons.value = false
+  if (s.key === 'uniform') hex.value = 'ffffff'
+}
+function pickSwatch(u) {
+  auto.stop()
+  hex.value = u.hex
+  changed.value = 'swatch'
+  // Nanome Web's color picker sets the color alone, so Carbons only goes off.
+  if (props.app === 'web' && carbons.value) {
+    carbons.value = false
+    changed.value = 'swatch-carbons'
+  }
 }
 function flipCarbons() {
   auto.stop()
   carbons.value = !carbons.value
-  showCarbons.value = true
+  changed.value = 'carbons'
 }
 
 const current = computed(() => SCHEMES.find((s) => s.key === scheme.value))
-const src = computed(() => schemeFrame(scheme.value, carbons.value))
+const carbonsOn = computed(() => carbons.value && !current.value.noCarbons)
+const src = computed(() => schemeFrame(props.app, scheme.value, carbons.value, hex.value))
+
 const caption = computed(() => {
   const s = current.value
-  if (showCarbons.value) {
-    const same = s.carbons ? '' : ` With ${s.name}, it makes no difference in this view.`
-    return { title: `Carbons only ${carbons.value ? 'on' : 'off'}`, text: `${CARBONS_DESC}${same}` }
+  const on = carbonsOn.value
+  const name = s.key === 'uniform' ? `Uniform · #${hex.value.toUpperCase()}` : s.name
+  if (changed.value === 'carbons') {
+    const effect =
+      s.key === 'potential-interactions'
+        ? 'With Potential Interactions it makes no difference.'
+        : on
+          ? 'Here nitrogen, oxygen and sulfur go back to their element colors.'
+          : 'Here every atom takes the scheme’s color.'
+    return { title: `${name} · Carbons only ${on ? 'on' : 'off'}`, text: `${CARBONS_DESC} ${effect}` }
   }
-  return { title: s.name, text: s.desc }
+  if (s.key === 'chain-instance' && on) {
+    return {
+      title: `${name} · Carbons only`,
+      text: 'The default for atom styles: carbons take each chain’s color and the other atoms keep their element colors. 1KV2 has one chain, so every carbon here is the same lavender.',
+    }
+  }
+  let text = s.key === 'uniform' ? UNIFORM_DESC[props.app] : s.desc
+  if (on) {
+    text += s.carbons
+      ? ' Carbons only is on, so nitrogen, oxygen and sulfur keep their element colors.'
+      : ' Carbons only makes no difference with this scheme.'
+  }
+  if (changed.value === 'swatch-carbons') text += ' Picking a color in Nanome Web turns Carbons only off.'
+  return { title: on ? `${name} · Carbons only` : name, text }
 })
+
+const alt = computed(() => `1KV2's binding site colored by ${caption.value.title}`)
 </script>
 
 <template>
   <div ref="root" class="n-demo" v-on="auto.hold">
-    <div class="n-app-card n-app-schemes is-spread" role="group" aria-label="Color schemes">
+    <div class="n-app-card n-app-schemes" role="group" aria-label="Color schemes">
       <div class="n-app-schemelist" role="group" aria-label="Color scheme" @keydown="arrowPick">
         <button
           v-for="s in schemes"
@@ -73,20 +123,32 @@ const caption = computed(() => {
           class="n-app-scheme"
           :class="{ 'is-on': scheme === s.key }"
           :aria-pressed="scheme === s.key"
-          :disabled="s.disabled"
-          :title="s.disabled ? 'Listed when the entry has a DX map loaded' : undefined"
           @click="pick(s)"
         >{{ s.name }}</button>
       </div>
+      <div v-if="scheme === 'uniform'" class="n-app-swatches" role="group" aria-label="Uniform color" @keydown="arrowPick">
+        <button
+          v-for="u in UNIFORM_SWATCHES"
+          :key="u.hex"
+          type="button"
+          class="n-app-swatch"
+          :class="{ 'is-on': hex === u.hex }"
+          :style="{ background: `#${u.hex}` }"
+          :aria-pressed="hex === u.hex"
+          :aria-label="`${u.name}, #${u.hex.toUpperCase()}`"
+          :title="`#${u.hex.toUpperCase()}`"
+          @click="pickSwatch(u)"
+        />
+      </div>
       <!-- Hidden while Element Type is picked, keeping its space so the card doesn't jump. -->
-      <label class="n-app-row" :style="{ visibility: scheme === 'element-type' ? 'hidden' : null }">
+      <label class="n-app-row" :style="{ visibility: current.noCarbons ? 'hidden' : null }">
         <span class="n-app-row__name">Carbons only</span>
-        <input type="checkbox" role="switch" class="n-app-switch" :checked="carbons" :disabled="scheme === 'element-type'" @change="flipCarbons" />
+        <input type="checkbox" role="switch" class="n-app-switch" :checked="carbons" :disabled="current.noCarbons" @change="flipCarbons" />
       </label>
     </div>
 
     <figure class="n-demo__view">
-      <DemoStage :src="src" :next="auto.playing.value ? next : ''" :alt="`1KV2 colored by ${current.name}`" :playing="auto.playing.value" @toggle="auto.toggle" />
+      <DemoStage :src="src" :next="auto.playing.value ? next : ''" :alt="alt" :playing="auto.playing.value" @toggle="auto.toggle" />
       <figcaption class="n-demo__caption" aria-live="polite"><strong>{{ caption.title }}</strong> {{ caption.text }}</figcaption>
     </figure>
   </div>

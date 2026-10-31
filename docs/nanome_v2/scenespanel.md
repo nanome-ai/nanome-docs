@@ -91,52 +91,70 @@ A workspace that holds a recording is locked against changes, with a banner that
 
 ## <AppIcon name="users" /> Users section {#users-section}
 
-At the bottom of the sidebar, the **Users** section shows who's in the workspace. Each person has a personal color, shown on their name chip and their crown. Selecting a chip follows that person.
-
-<UiList label="Users section">
-<UiItem icon="share" name="Share" href="/nanome_v2/mainpanel#share">Opens the Share dialog.</UiItem>
-<UiItem icon="crown" name="Spotlight Me" href="#spotlight-mode">Starts Spotlight Mode.</UiItem>
-<UiItem icon="chevrons-right" name="Collapse sidebar">Collapses the sidebar.</UiItem>
-</UiList>
+At the bottom of the sidebar, the **Users** section shows who's in the workspace. Each person has a personal color, shown on their name chip, their scene dot and their crown. Selecting a chip follows that person.
 
 ### Multi-user scene indicators
 
-<ShotRow src="nanome-v2/scenes-panel-multiuser-indicators.jpg" alt="Ana's and Ben's Scenes Panels, with colored dots on Scene 1 showing that both are viewing it">
+With several people in a workspace, colored dots on each scene show who's in it, in each person's color.
 
-With several people in a workspace, colored dots on each scene show who's viewing it, in each person's color.
+<ShotRow src="nanome-v2/v2-7/scenes-multiuser.webp" alt="The left sidebar with Ana and Ben in the workspace: Ben's dot on Overview, yours and Ana's on Binding site, and their name chips above Spotlight Me">
+
+<UiList label="Users section">
+<UiItem name="Scene dots" area="8.7,40.5,11.8,4.1">One dot per person in that scene, in their color, you included. Pointing at the dots lists the names. No dots show while you're alone in the workspace.</UiItem>
+<UiItem name="Name chips" area="5.4,76.6,88.9,5.7">Each person's name, in their color. Selecting a chip follows them. Up to 4 chips fit, and with more people, 3 chips show beside a button with the number of others.</UiItem>
+<UiItem icon="share" name="Share" href="/nanome_v2/mainpanel#share" area="63.7,70.1,30.9,5.7">Opens the Share dialog.</UiItem>
+<UiItem icon="crown" name="Spotlight Me" href="#spotlight-mode" area="5.4,82.9,89.3,6.7">Starts Spotlight Mode. The crown is in your color.</UiItem>
+<UiItem icon="chevrons-right" name="Collapse sidebar" area="2.5,90.9,94.9,7.9">Collapses the sidebar.</UiItem>
+</UiList>
 
 </ShotRow>
 
 ## <AppIcon name="crown" /> Spotlight Mode {#spotlight-mode}
 
-<ShotRow src="nanome-v2/scenes-panel-spotlight-mode.jpg" alt="Ben spotlighting with Ana following, as each of them sees it" crop="0,0,82.9,100">
+**Spotlight Me** makes your view the shared perspective for everyone who follows you. The bar under the name chips shows your part in it.
 
-**Spotlight Me** makes your view the shared perspective for everyone who follows you.
-
-<Tabs :labels="['Spotlighter', 'Follower']">
+<Tabs :labels="['Spotlighter', 'Prompt', 'Follower']">
 <Tab>
 
+<ShotRow src="nanome-v2/v2-7/spotlight-spotlighting.webp" alt="The Users section while you spotlight: Spotlighting 2/2, with Ana and Ben following">
+
 <UiList label="Spotlighter's view">
-<UiItem icon="crown" name="Spotlighting 1/1" area="2.7,81.4,20.3,6.5">Shows that Spotlight Mode is on and how many people follow.</UiItem>
+<UiItem icon="crown" name="Spotlighting 2/2" area="2.0,62.7,96.0,30.8">In your color: how many people follow you, out of everyone else here. Selecting it stops spotlighting. The sidebar's border takes your color too.</UiItem>
+<UiItem icon="eye" name="Followers" area="2.0,33.9,95.7,26.3">An eye on the chip of each person following you. Their chips can't be selected while they follow.</UiItem>
 </UiList>
 
-Followers are listed with an <AppIcon name="eye" /> eye icon beside their name.
+</ShotRow>
 
 </Tab>
 <Tab>
 
-<UiList label="Follower's view">
-<UiItem icon="crown" name="Spotlighter's name" area="62.0,82.7,5.1,5.0">Shows who you're following.</UiItem>
-<UiItem icon="analyze-filled" name="Reset orientation" area="73.2,82.4,3.0,5.5">Resets your orientation.</UiItem>
-<UiItem name="Stop" area="76.2,82.4,5.0,5.5">Stops following.</UiItem>
+<ShotRow src="nanome-v2/v2-7/spotlight-pending.webp" alt="The Users section after Ana starts a spotlight: Spotlighting Ana..., a progress bar and Not now">
+
+<UiList label="Spotlight prompt">
+<UiItem name="Spotlighting Ana..." area="2.0,63.8,62.6,28.5">Someone started a spotlight. The bar fills over 5 seconds, and a headset follows them after 6 seconds.</UiItem>
+<UiItem name="Not now" area="66.6,65.0,31.4,26.3">Declines the spotlight, so you stay in your own view.</UiItem>
 </UiList>
+
+</ShotRow>
+
+</Tab>
+<Tab>
+
+<ShotRow src="nanome-v2/v2-7/spotlight-following.webp" alt="The Users section while you follow Ana: her chip with a user icon, and her name, Reset orientation and Stop">
+
+<UiList label="Follower's view">
+<UiItem icon="user" name="Leader's chip" area="2.0,33.9,47.8,26.3">A user icon on the chip of the person you follow. Their chip moves to the front.</UiItem>
+<UiItem icon="crown" name="Leader's name" area="6.6,65.0,21.9,26.3">Who you're following, with the crown in their color. The sidebar's border takes their color too. When you follow someone who's following another person, it names the person at the end, for example Ana (via Ben).</UiItem>
+<UiItem icon="analyze-filled" name="Reset orientation" area="60.6,65.0,13.4,26.3">Resets your orientation, so the leader's view lines up again with the way you face.</UiItem>
+<UiItem name="Stop" area="74.2,65.0,22.6,26.3">Stops following.</UiItem>
+</UiList>
+
+</ShotRow>
 
 </Tab>
 </Tabs>
 
-</ShotRow>
-
-People in Nanome XR see a prompt for about 6 seconds, with **Not now** to decline, before they follow a new spotlight. Since release 2.7, people in Nanome Web follow straight away. A **You are following** popup has **Stop Following**. After you stop, a **You stopped following** popup offers **Resume Following** for 3 seconds. Holding the grip also stops following.
+Since release 2.7, people in Nanome Web follow a new spotlight straight away, with no prompt. A **You are following** popup has **Stop Following**. After you stop, a **You stopped following** popup offers **Resume Following** for 3 seconds. Holding the grip also stops following.
 
 <Accordion title="Changes in 2.7" teaser="Joining mid-spotlight, live edits and follow chains.">
 

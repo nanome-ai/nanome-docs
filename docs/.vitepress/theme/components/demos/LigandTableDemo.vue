@@ -3,18 +3,35 @@
  * A working copy of Nanome Web's full-screen Ligands table, holding 8
  * inhibitors of p38 alpha MAP kinase from the PDB (ligands.js says where each
  * value comes from). The column picker shows and hides the property columns,
- * a header sorts, the search box filters, and the row menu sets the tag. The
- * line under the table explains the column or control last used; the filter
- * and preset buttons only change that line.
+ * a header sorts, the search box filters, the filter button filters on
+ * property values and visibility, the presets button applies, saves and
+ * deletes view presets, and the row menu sets the tag. The line under the
+ * table explains the column or control last used.
  *
- * Both copies sort and search the way both apps do, from their source: a
- * third click on a header goes back to the default order (NanoTable.CycleSort
- * in XR, removable-sort on Nanome Web's table), and search matches the name,
- * the tag or any property value (LigandsMenuViewModel.MatchesFilters in XR,
- * WorkspaceLigands in Nanome Web). The default copy heads its columns and
- * puts info icons where Nanome Web does (ligands.js). With app="xr" a drawing
- * also shows larger while the pointer is on it (LigandsMenu,
- * #ligand-large-preview), which Nanome Web wasn't seen doing.
+ * Both copies sort, search and filter the way both apps do, from their
+ * source: a third click on a header goes back to the default order
+ * (NanoTable.CycleSort in XR, removable-sort on Nanome Web's table); search
+ * matches the name, the tag or any property value
+ * (LigandsMenuViewModel.MatchesFilters in XR, `Si` in Nanome Web); and a
+ * ligand is listed only when it passes every filter, the visible switch and
+ * the search (MatchesFilters; `xi` and WorkspaceLigandsTable in Nanome Web).
+ *
+ * The filter and presets popovers follow each app's own (LigandFiltersPopup,
+ * LigandPresetsPopup and LigandPresetReplacePopup in XR;
+ * WorkspaceLigandsFilters and WorkspaceLigandsPresets in Nanome Web): XR
+ * writes operators as symbols with their names as tooltips, starts on <, keeps
+ * the property after adding a filter, titles its presets View Presets and asks
+ * before replacing a preset of the same name; Nanome Web writes text operators
+ * as words, starts on =, clears the row after adding, fills the filter button
+ * while a filter or the visible switch is on, and saves a second preset under
+ * a name already in use. Both delete a preset on a second click within 3
+ * seconds (NanoButton confirmTooltip; NConfirmButton). Presets live for the
+ * page visit only.
+ *
+ * The default copy heads its columns and puts info icons where Nanome Web does
+ * (ligands.js). With app="xr" a drawing also shows larger while the pointer is
+ * on it (LigandsMenu, #ligand-large-preview), which Nanome Web wasn't seen
+ * doing.
  *
  * Measured from the app: header cells 12px 16px on #f8fafc, 16px text, rows
  * 66px tall, the drawing frozen in an 88px first column, numbers to 3
@@ -23,10 +40,13 @@
  *   <LigandTableDemo />
  *   <LigandTableDemo app="xr" />
  */
-import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { withBase } from 'vitepress'
 import AppIcon from '../AppIcon.vue'
-import { COLUMNS, DEFAULT_COLUMNS, FIXED, LEFT_OUT, LIGANDS, depiction, formatValue } from './ligands.js'
+import {
+  COLUMNS, DEFAULT_COLUMNS, FIXED, LEFT_OUT, LIGANDS, NUMERIC_OPS, OPERATORS, PRESETS, RATING, TEXT_OPS,
+  depiction, formatValue,
+} from './ligands.js'
 
 const props = defineProps({ app: { type: String, default: 'web' } })
 const xr = computed(() => props.app === 'xr')
@@ -54,6 +74,10 @@ const root = ref(null)
 const menuEl = ref(null)
 const pickBtn = ref(null)
 const pickField = ref(null)
+const filterBtn = ref(null)
+const filterPop = ref(null)
+const presetsBtn = ref(null)
+const presetsPop = ref(null)
 // The row-menu button that opened the menu, so focus can go back to it.
 let menuTrigger = null
 
@@ -92,9 +116,209 @@ function matches(l, q) {
   return tag.toLowerCase().includes(q) || Object.values(l.props).some((v) => String(v).toLowerCase().includes(q))
 }
 
+/* --- Filters ------------------------------------------------------------ */
+
+const filterOpen = ref(false)
+const filters = ref([])
+const visibleOnly = ref(false)
+
+/** The properties a filter can use: every property the ligands have, plus Rating, sorted. */
+const FILTER_KEYS = [...COLUMNS.map((c) => c.key), RATING].sort((a, b) => a.localeCompare(b))
+
+const toNumber = (v) => (v === undefined || v === null || String(v).trim() === '' ? NaN : Number(v))
+const isNumericKey = (key) => key === RATING || LIGANDS.some((l) => !Number.isNaN(toNumber(l.props[key])))
+const opLabel = (op) => OPERATORS[op][xr.value ? 'xr' : 'web']
+
+/**
+ * Whether a ligand passes a filter: numbers compare as numbers when both sides
+ * are numbers, anything else as text without regard to case, and a ligand
+ * without the property fails. No sample ligand has a Rating. Nanome XR finds
+ * no order between pieces of text, while Nanome Web sorts them.
+ */
+function passes(l, f) {
+  const v = f.key === RATING ? undefined : l.props[f.key]
+  if (v === undefined || v === null) return false
+  const a = toNumber(v)
+  const b = toNumber(f.value)
+  const s = String(v).toLowerCase()
+  const t = String(f.value).toLowerCase()
+  const cmp = !Number.isNaN(a) && !Number.isNaN(b) ? Math.sign(a - b) : xr.value ? null : Math.sign(s.localeCompare(t))
+  switch (f.op) {
+    case 'EQUALS': return cmp === null ? s === t : cmp === 0
+    case 'NOT_EQUALS': return cmp === null ? s !== t : cmp !== 0
+    case 'LESS_THAN': return cmp !== null && cmp < 0
+    case 'LESS_THAN_OR_EQUAL': return cmp !== null && cmp <= 0
+    case 'GREATER_THAN': return cmp !== null && cmp > 0
+    case 'GREATER_THAN_OR_EQUAL': return cmp !== null && cmp >= 0
+    case 'CONTAINS': return s.includes(t)
+    case 'NOT_CONTAINS': return !s.includes(t)
+    case 'STARTS_WITH': return s.startsWith(t)
+    case 'ENDS_WITH': return s.endsWith(t)
+    default: return true
+  }
+}
+
+/** The add row. XR starts on <, Nanome Web on =. */
+const blankDraft = () => ({ key: '', op: xr.value ? 'LESS_THAN' : 'EQUALS', value: '' })
+const draft = ref(blankDraft())
+// With no property picked, XR offers the number operators; Nanome Web greys the list out.
+const draftOps = computed(() => (!draft.value.key || isNumericKey(draft.value.key) ? NUMERIC_OPS : TEXT_OPS))
+const canAdd = computed(() => !!draft.value.key && draft.value.value !== '')
+// An operator the new property doesn't offer goes back to the first one, =.
+watch(() => draft.value.key, () => {
+  if (!draftOps.value.includes(draft.value.op)) draft.value.op = draftOps.value[0]
+})
+
+const filterActive = computed(() => filters.value.length > 0 || visibleOnly.value)
+
+const listOps = (ops) => ops.map((op) => (xr.value && OPERATORS[op].xr !== OPERATORS[op].web ? `${OPERATORS[op].xr} (${OPERATORS[op].web})` : opLabel(op))).join(', ')
+const describe = (f) => `${f.key} ${opLabel(f.op)} ${f.value}`
+
+function pickKey() {
+  const key = draft.value.key
+  if (!key) return
+  const numeric = isNumericKey(key)
+  note.value = {
+    title: `${key} · ${numeric ? 'numbers' : 'text'}`,
+    text: key === RATING
+      ? `Rating counts as a number, so its operators are ${listOps(NUMERIC_OPS)}.`
+      : `Its values are ${numeric ? 'numbers' : 'text'}, so its operators are ${listOps(numeric ? NUMERIC_OPS : TEXT_OPS)}.`,
+  }
+}
+
+function addFilter() {
+  if (!canAdd.value) return
+  const f = { key: draft.value.key, op: draft.value.op, value: String(draft.value.value) }
+  filters.value = [...filters.value, f]
+  // XR keeps the property and operator for the next filter; Nanome Web clears the row.
+  draft.value = xr.value ? { ...draft.value, value: '' } : blankDraft()
+  const sym = xr.value && OPERATORS[f.op].xr !== OPERATORS[f.op].web ? `${OPERATORS[f.op].xr} is ${OPERATORS[f.op].name}. ` : ''
+  let text = `${sym}Compared as text, without regard to case. A ligand is listed only when it passes every filter.`
+  if (f.key === RATING) text = 'No sample ligand has a rating, and a ligand without the property fails, so none passes.'
+  else if (isNumericKey(f.key)) text = `Compared as numbers. A ligand is listed only when it passes every filter.`
+  note.value = { title: describe(f), text, count: true }
+}
+
+function removeFilter(i) {
+  const f = filters.value[i]
+  filters.value = filters.value.filter((_, j) => j !== i)
+  note.value = {
+    title: `${describe(f)} · removed`,
+    text: filters.value.length ? 'The other filters still apply.' : 'No filters are left.',
+    count: true,
+  }
+}
+
+function setVisible(on) {
+  visibleOnly.value = on
+  note.value = {
+    title: `Filter by currently visible · ${on ? 'on' : 'off'}`,
+    text: on
+      ? 'Lists only ligands drawn in the 3D view. In this copy 1BL6 and 1BL7 stand in for hidden entries.'
+      : 'Ligands of hidden entries are listed again.',
+    count: true,
+  }
+}
+
+const FILTER_NOTE = {
+  title: 'Filter ligands',
+  text: 'A ligand is listed when it passes every filter, the visible switch and the search. The button counts the ligands listed out of all of them.',
+}
+
+/* --- View presets ----------------------------------------------------------- */
+
+const presetsOpen = ref(false)
+const presets = ref(PRESETS.map((p, i) => ({ ...p, id: i + 1 })))
+let nextPreset = presets.value.length + 1
+const presetName = ref('')
+/** XR only: the preset whose name the new one repeats, while Replace waits. */
+const replacing = ref(null)
+/** The preset whose delete button waits 3 seconds for a second click. */
+const confirming = ref(null)
+let confirmTimer = 0
+
+const headList = (keys) => {
+  const names = keys.map((k) => head(BY_KEY[k]))
+  return names.length > 1 ? `${names.slice(0, -1).join(', ')} and ${names[names.length - 1]}` : names[0] || ''
+}
+
+function applyPreset(p) {
+  selected.value = p.columns.length ? [...p.columns] : [...DEFAULT_COLUMNS]
+  filters.value = p.filters.map((f) => ({ ...f }))
+  if (sort.value.key && !FIXED.some((c) => c.key === sort.value.key) && !selected.value.includes(sort.value.key)) {
+    sort.value = { key: null, dir: 1 }
+  }
+  closeAndRefocus()
+  const out = LIGANDS.filter((l) => !p.filters.every((f) => passes(l, f))).map((l) => l.ccd)
+  const one = p.filters.length === 1
+  const leftOut = out.length ? `, which ${one ? 'leaves' : 'leave'} out ${out.length > 1 ? `${out.slice(0, -1).join(', ')} and ${out[out.length - 1]}` : out[0]}` : ''
+  const set = p.filters.length ? ` ${one ? 'The filter is' : 'The filters are'} ${p.filters.map(describe).join(' and ')}${leftOut}.` : ' It has no filters.'
+  note.value = { title: p.name, text: `The columns are ${headList(selected.value)}.${set}`, count: true }
+}
+
+function savePreset() {
+  const name = presetName.value.trim()
+  if (!name) return
+  const twin = presets.value.find((p) => p.name.toLowerCase() === name.toLowerCase())
+  if (xr.value && twin) {
+    replacing.value = twin
+    note.value = {
+      title: 'Preset already exists',
+      text: `Replace saves the current columns and filters as ${twin.name}. Cancel keeps it as it is.`,
+    }
+    return
+  }
+  presets.value = [...presets.value, { id: nextPreset++, name, columns: [...selected.value], filters: filters.value.map((f) => ({ ...f })) }]
+  presetName.value = ''
+  note.value = {
+    title: `${name} · saved`,
+    text: twin
+      ? 'Nanome Web saves it beside the one of the same name, so the project now has both. This copy keeps it until the page closes.'
+      : 'The current columns and filters, saved to the project for everyone in it. This copy keeps it until the page closes.',
+  }
+}
+
+function replacePreset() {
+  const p = replacing.value
+  if (!p) return
+  presets.value = presets.value.map((q) => (q.id === p.id ? { ...q, columns: [...selected.value], filters: filters.value.map((f) => ({ ...f })) } : q))
+  replacing.value = null
+  presetName.value = ''
+  note.value = { title: `${p.name} · replaced`, text: 'It now holds the current columns and filters.' }
+}
+
+function cancelReplace() {
+  replacing.value = null
+  note.value = { title: 'Cancel', text: 'The preset stays as it was, and the name stays in the field.' }
+}
+
+const confirmLabel = computed(() => (xr.value ? 'Confirm delete' : 'Confirm delete preset'))
+
+function deletePreset(p) {
+  clearTimeout(confirmTimer)
+  if (confirming.value !== p.id) {
+    confirming.value = p.id
+    confirmTimer = setTimeout(() => (confirming.value = null), 3000)
+    note.value = { title: confirmLabel.value, text: `The trash button turns into a check. A second click within 3 seconds deletes ${p.name}.` }
+    return
+  }
+  confirming.value = null
+  presets.value = presets.value.filter((q) => q.id !== p.id)
+  note.value = { title: `${p.name} · deleted`, text: 'Gone from the project for everyone. The table keeps its columns and filters.' }
+}
+
+const PRESETS_NOTE = computed(() => ({
+  title: 'View presets',
+  text: xr.value
+    ? 'Saved sets of columns and filters, kept in the project. Picking one sets the table to match; the visible switch and the search stay as they are.'
+    : 'Saved sets of columns and filters, kept in the project, so the button shows only for a workspace in a project. Picking one sets the table to match.',
+}))
+
 const rows = computed(() => {
   const q = query.value.trim().toLowerCase()
-  const list = LIGANDS.filter((l) => !q || matches(l, q))
+  const list = LIGANDS.filter(
+    (l) => (!q || matches(l, q)) && filters.value.every((f) => passes(l, f)) && (!visibleOnly.value || !l.hidden)
+  )
   const { key, dir } = sort.value
   return key ? [...list].sort((a, b) => dir * compare(value(a, key), value(b, key))) : list
 })
@@ -107,30 +331,68 @@ const subscript = (formula) => formula.replace(/\s+/g, '').replace(/\d/g, (d) =>
 function closeAll() {
   picker.value = false
   menu.value = null
+  filterOpen.value = false
+  presetsOpen.value = false
+  replacing.value = null
 }
 
 // Closes a popup and, when focus was in the demo, hands it back to the button
 // that opened the popup.
 function closeAndRefocus() {
-  const back = menu.value ? menuTrigger : picker.value ? pickBtn.value : null
+  const back = menu.value
+    ? menuTrigger
+    : picker.value
+      ? pickBtn.value
+      : filterOpen.value
+        ? filterBtn.value
+        : presetsOpen.value
+          ? presetsBtn.value
+          : null
   const inside = root.value?.contains(document.activeElement)
   closeAll()
   if (inside && back?.isConnected) back.focus({ preventScroll: true })
 }
 
-// The filter and preset buttons only explain themselves.
-const FILTER_NOTE = {
-  title: 'Filter ligands',
-  text: 'Narrows the table by property values. The button shows how many ligands are listed out of the total.',
-}
-const PRESETS_NOTE = {
-  title: 'View presets',
-  text: 'Saved sets of columns and filters, shared across the project. Picking one sets the table to match.',
-}
-function say(n) {
+/** Opens or closes the filter or presets popover. From the keyboard, focus goes into it. */
+function togglePop(which, e) {
+  const open = which === 'filter' ? !filterOpen.value : !presetsOpen.value
   closeAll()
-  note.value = n
+  if (which === 'filter') filterOpen.value = open
+  else presetsOpen.value = open
+  if (!open) return
+  note.value = which === 'filter' ? FILTER_NOTE : PRESETS_NOTE.value
+  if (e?.detail === 0) {
+    nextTick(() => (which === 'filter' ? filterPop : presetsPop).value?.querySelector('input, select, button')?.focus())
+  }
 }
+
+// Tabbing out of a popover closes it, as Tab does for the row menu.
+function onPopFocusOut(e, which) {
+  if (!e.relatedTarget || e.currentTarget.contains(e.relatedTarget)) return
+  if (which === 'filter') filterOpen.value = false
+  else {
+    presetsOpen.value = false
+    replacing.value = null
+  }
+}
+
+/**
+ * A popover taller than the table below it would hang over the page, so the
+ * table grows until it fits, as it does for the row menu.
+ */
+const popGrow = ref(0)
+watch(
+  [filterOpen, presetsOpen, replacing, () => filters.value.length, () => presets.value.length, () => rows.value.length],
+  async () => {
+    popGrow.value = 0
+    await nextTick()
+    const pop = filterPop.value || presetsPop.value
+    if (!pop || !root.value) return
+    const over = pop.getBoundingClientRect().bottom + 12 - root.value.getBoundingClientRect().bottom
+    if (over > 0) popGrow.value = Math.ceil(over)
+  },
+  { flush: 'post' }
+)
 
 /** Ascending, then descending, then a third click goes back to the default order. */
 function sortBy(c) {
@@ -163,6 +425,9 @@ function explain(c) {
 
 function togglePicker(e) {
   menu.value = null
+  filterOpen.value = false
+  presetsOpen.value = false
+  replacing.value = null
   picker.value = !picker.value
   pickerQuery.value = ''
   if (picker.value) {
@@ -230,6 +495,9 @@ function pick(l) {
  */
 async function openMenu(l, e) {
   picker.value = false
+  filterOpen.value = false
+  presetsOpen.value = false
+  replacing.value = null
   if (menu.value?.ccd === l.ccd) {
     closeAndRefocus()
     return
@@ -269,7 +537,9 @@ const menuStyle = computed(() => {
   if (!m) return {}
   return { right: `${m.right}px`, top: `${m.top}px`, visibility: m.hidden ? 'hidden' : undefined }
 })
-const growStyle = computed(() => (menu.value?.grow ? { paddingBottom: `${menu.value.grow}px` } : undefined))
+// The room goes under the last rows, or under "No ligands" when there are none.
+const grow = computed(() => Math.max(menu.value?.grow || 0, popGrow.value))
+const growStyle = computed(() => (grow.value && rows.value.length ? { paddingBottom: `${grow.value}px` } : undefined))
 
 // Arrow keys, Home and End move through the menu; Tab leaves it.
 function onMenuKey(e) {
@@ -317,7 +587,7 @@ function onPointerDown(e) {
   if (!e.target.closest?.('.n-ltab__img')) preview.value = null
 }
 function onKey(e) {
-  if (e.key === 'Escape' && (menu.value || picker.value)) closeAndRefocus()
+  if (e.key === 'Escape' && (menu.value || picker.value || filterOpen.value || presetsOpen.value)) closeAndRefocus()
 }
 // Tabbing out of the column picker closes it, as Tab does for the row menu.
 function onPickerFocusOut(e) {
@@ -330,6 +600,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   document.removeEventListener('pointerdown', onPointerDown)
   document.removeEventListener('keydown', onKey)
+  clearTimeout(confirmTimer)
 })
 
 const caption = computed(() => {
@@ -341,6 +612,7 @@ const caption = computed(() => {
       text: 'Matches the name, the tag or any property value.',
     }
   }
+  if (n?.count) return { title: `${n.title} · ${rows.value.length} of ${LIGANDS.length}`, text: n.text }
   return n || {
     title: `${LIGANDS.length} p38α MAP kinase inhibitors`,
     text: 'Each comes from its own PDB entry. Atoms and MW show to start, and the column picker has the other properties.',
@@ -354,15 +626,91 @@ const caption = computed(() => {
       <div class="n-ltab__title" aria-hidden="true">Ligands</div>
 
       <div class="n-ltab__bar">
-        <button
-          type="button"
-          class="n-ltab__pill"
-          title="Filter ligands"
-          :aria-label="`Filter ligands, ${rows.length} of ${LIGANDS.length} listed`"
-          @click="say(FILTER_NOTE)"
-        >
-          <AppIcon name="filter" size="16px" />{{ rows.length }}/{{ LIGANDS.length }}
-        </button>
+        <div class="n-ltab__popwrap" @focusout="onPopFocusOut($event, 'filter')">
+          <!-- Nanome Web fills the button while a filter or the visible switch is on; XR leaves it as it is. -->
+          <button
+            ref="filterBtn"
+            type="button"
+            class="n-ltab__pill n-ltab__popbtn"
+            :class="{ 'is-open': filterOpen, 'is-filled': !xr && filterActive }"
+            title="Filter ligands"
+            :aria-label="`Filter ligands, ${rows.length} of ${LIGANDS.length} listed`"
+            :aria-expanded="filterOpen"
+            @click="togglePop('filter', $event)"
+          >
+            <AppIcon name="filter" size="16px" />{{ rows.length }}/{{ LIGANDS.length }}
+          </button>
+
+          <div
+            v-if="filterOpen"
+            ref="filterPop"
+            class="n-ltab__fpop n-ltab__pop"
+            :class="xr ? 'is-xr' : 'is-web'"
+            role="dialog"
+            aria-label="Filter ligands"
+          >
+            <label class="n-ltab__visible">
+              <span>Filter by currently visible</span>
+              <input
+                type="checkbox"
+                role="switch"
+                class="n-app-switch"
+                :checked="visibleOnly"
+                @change="setVisible($event.target.checked)"
+              />
+            </label>
+
+            <div v-if="!filters.length" class="n-ltab__nofilters">
+              <AppIcon name="filter-off" size="24px" />
+              <span>No filters yet</span>
+            </div>
+            <div v-else class="n-ltab__filters" role="list" aria-label="Filters">
+              <div v-for="(f, i) in filters" :key="`${f.key}-${i}`" class="n-ltab__filter" role="listitem">
+                <template v-if="xr">
+                  <span class="n-ltab__fkey" :title="f.key">{{ f.key }}</span>
+                  <span :title="OPERATORS[f.op].name">{{ opLabel(f.op) }}</span>
+                  <span class="n-ltab__fval" :title="f.value">{{ f.value }}</span>
+                </template>
+                <span v-else class="n-ltab__fkey">{{ describe(f) }}</span>
+                <button
+                  type="button"
+                  class="n-ltab__iconbtn"
+                  :title="xr ? 'Remove filter' : undefined"
+                  :aria-label="`Remove filter ${describe(f)}`"
+                  @click="removeFilter(i)"
+                >
+                  <AppIcon :name="xr ? 'trash' : 'x'" size="16px" />
+                </button>
+              </div>
+            </div>
+
+            <div class="n-ltab__addrow">
+              <span class="n-ltab__select is-key">
+                <select v-model="draft.key" aria-label="Property" @change="pickKey">
+                  <option value="" disabled>Select item</option>
+                  <option v-for="k in FILTER_KEYS" :key="k" :value="k">{{ k }}</option>
+                </select>
+                <AppIcon name="chevron-down" size="14px" />
+              </span>
+              <span class="n-ltab__select is-op">
+                <!-- As wide as the picked operator, as the app's dropdown is. -->
+                <select
+                  v-model="draft.op"
+                  aria-label="Operator"
+                  :disabled="!xr && !draft.key"
+                  :style="{ width: `calc(${opLabel(draft.op).length}ch + 40px)` }"
+                >
+                  <option v-for="op in draftOps" :key="op" :value="op" :title="OPERATORS[op].name">{{ opLabel(op) }}</option>
+                </select>
+                <AppIcon name="chevron-down" size="14px" />
+              </span>
+              <input v-model="draft.value" class="n-ltab__input n-ltab__value" type="text" aria-label="Value" @keydown.enter.prevent="addFilter" />
+              <button type="button" class="n-ltab__add" :disabled="!canAdd" aria-label="Add filter" @click="addFilter">
+                <AppIcon name="plus" size="16px" />
+              </button>
+            </div>
+          </div>
+        </div>
 
         <div class="n-ltab__pickwrap" @focusout="onPickerFocusOut">
           <button
@@ -419,15 +767,91 @@ const caption = computed(() => {
           </div>
         </div>
 
-        <button
-          type="button"
-          class="n-ltab__round"
-          title="View presets"
-          aria-label="View presets"
-          @click="say(PRESETS_NOTE)"
-        >
-          <AppIcon name="bookmark" size="16px" />
-        </button>
+        <div class="n-ltab__popwrap" @focusout="onPopFocusOut($event, 'presets')">
+          <button
+            ref="presetsBtn"
+            type="button"
+            class="n-ltab__round n-ltab__popbtn"
+            :class="{ 'is-open': presetsOpen }"
+            title="View presets"
+            aria-label="View presets"
+            :aria-expanded="presetsOpen"
+            @click="togglePop('presets', $event)"
+          >
+            <AppIcon name="bookmark" size="16px" />
+          </button>
+
+          <div
+            v-if="presetsOpen"
+            ref="presetsPop"
+            class="n-ltab__fpop n-ltab__ppop n-ltab__pop"
+            :class="xr ? 'is-xr' : 'is-web'"
+            role="dialog"
+            aria-label="View presets"
+          >
+            <div v-if="xr" class="n-ltab__ptitle">View Presets</div>
+
+            <div v-if="!presets.length" class="n-ltab__nopresets">
+              <template v-if="xr">
+                <AppIcon name="bookmark" size="24px" />
+                <span>No presets yet</span>
+              </template>
+              <span v-else>No presets in this project yet.</span>
+            </div>
+            <div v-else class="n-ltab__plist">
+              <div v-for="p in presets" :key="p.id" class="n-ltab__prow">
+                <button
+                  type="button"
+                  class="n-ltab__papply"
+                  :title="xr ? 'Apply preset' : 'Apply columns and filters'"
+                  @click="applyPreset(p)"
+                >{{ p.name }}</button>
+                <button
+                  type="button"
+                  class="n-ltab__iconbtn is-danger"
+                  :class="{ 'is-confirm': confirming === p.id }"
+                  :title="confirming === p.id ? confirmLabel : 'Delete preset'"
+                  :aria-label="confirming === p.id ? `${confirmLabel} ${p.name}` : `Delete preset ${p.name}`"
+                  @click="deletePreset(p)"
+                >
+                  <AppIcon :name="confirming === p.id ? 'check' : 'trash'" size="16px" />
+                </button>
+              </div>
+            </div>
+
+            <div class="n-ltab__prow is-new">
+              <input
+                v-model="presetName"
+                class="n-ltab__input"
+                type="text"
+                placeholder="New preset name"
+                aria-label="New preset name"
+                @keydown.enter.prevent="savePreset"
+              />
+              <button
+                type="button"
+                class="n-ltab__add"
+                :disabled="!presetName.trim()"
+                :title="xr ? 'Save current view as a new preset' : undefined"
+                aria-label="Save current view as a new preset"
+                @click="savePreset"
+              >
+                <AppIcon name="plus" size="16px" />
+              </button>
+            </div>
+
+            <div v-if="replacing" class="n-ltab__replace" role="alertdialog" aria-label="Preset already exists">
+              <strong>Preset already exists</strong>
+              <span>A preset named "{{ replacing.name }}" already exists. Replace it with the current view?</span>
+              <span class="n-ltab__replacebtns">
+                <button type="button" class="n-ltab__textbtn" @click="cancelReplace">Cancel</button>
+                <button type="button" class="n-ltab__textbtn is-primary" @click="replacePreset">
+                  <AppIcon name="device-floppy" size="16px" />Replace
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
 
         <input v-model="query" class="n-ltab__search" type="search" placeholder="Search ligands" aria-label="Search ligands" @input="onSearch" />
       </div>
@@ -508,7 +932,7 @@ const caption = computed(() => {
           </table>
         </div>
         <!-- Outside the scrolling box, so it stays in view when the table is scrolled sideways. -->
-        <p v-if="!rows.length" class="n-ltab__empty">No ligands</p>
+        <p v-if="!rows.length" class="n-ltab__empty" :style="grow ? { paddingBottom: `${28 + grow}px` } : undefined">No ligands</p>
       </div>
 
       <!-- Centered on the whole card and no taller than it, however few rows show. -->
@@ -551,3 +975,333 @@ const caption = computed(() => {
     <div class="n-demo__caption" aria-live="polite"><strong>{{ caption.title }}</strong> {{ caption.text }}</div>
   </div>
 </template>
+
+<style>
+/* The filter and View presets popovers, in the table's own colors (app.css).
+   Nanome Web's are 22rem and 18rem wide. XR's filter popup is a little wider
+   than its presets popup, so its copy is 24rem, room for its wider value field. */
+.n-ltab__popwrap {
+  position: relative;
+  flex: none;
+}
+
+.n-ltab__fpop {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 22rem;
+  padding: 12px;
+  border: 1px solid var(--lt-line);
+  border-radius: 8px;
+  background: var(--lt-card);
+  box-shadow: var(--lt-shadow);
+  font-size: 14px;
+  text-align: left;
+}
+
+.n-ltab__fpop.is-xr {
+  width: 24rem;
+}
+
+.n-ltab__fpop.n-ltab__ppop {
+  width: 18rem;
+}
+
+/* On a phone a popover spans the toolbar, as the column picker does. */
+@media (max-width: 520px) {
+  .n-ltab__popwrap {
+    position: static;
+  }
+
+  .n-ltab__fpop,
+  .n-ltab__fpop.is-xr,
+  .n-ltab__fpop.n-ltab__ppop {
+    top: calc(100% - 6px);
+    right: 16px;
+    left: 16px;
+    width: auto;
+  }
+}
+
+/* While a filter or the visible switch is on, Nanome Web fills the button. */
+.n-ltab .n-ltab__pill.is-filled {
+  border-color: var(--lt-hover);
+  background: var(--lt-hover);
+}
+
+.n-ltab .n-ltab__pill.is-filled:hover,
+.n-ltab .n-ltab__pill.is-open {
+  background: var(--lt-line);
+}
+
+.n-ltab__visible {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+  cursor: pointer;
+}
+
+/* Nanome Web rules the switch off from the list. */
+.n-ltab__fpop.is-web .n-ltab__visible {
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--lt-line);
+}
+
+.n-ltab__nofilters,
+.n-ltab__fpop.is-xr .n-ltab__nopresets {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 0;
+  color: var(--lt-muted);
+}
+
+.n-ltab__fpop.is-web .n-ltab__nopresets {
+  padding: 4px;
+  color: var(--lt-muted);
+}
+
+.n-ltab__filters,
+.n-ltab__plist {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.n-ltab__filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+}
+
+.n-ltab__fpop.is-xr .n-ltab__filter {
+  font-size: 16px;
+}
+
+.n-ltab__fkey,
+.n-ltab__fval {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.n-ltab__fkey {
+  flex: 1;
+}
+
+.n-ltab__fval {
+  max-width: 8em;
+}
+
+/* The add row: property, operator, value and +. It wraps on a phone. */
+.n-ltab__addrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.n-ltab__fpop.is-web .n-ltab__addrow {
+  padding-top: 12px;
+  border-top: 1px solid var(--lt-line);
+}
+
+.n-ltab__select {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  min-width: 0;
+}
+
+.n-ltab__select.is-key {
+  flex: 1 1 6rem;
+}
+
+.n-ltab__select .n-appicon {
+  position: absolute;
+  right: 8px;
+  color: var(--lt-muted);
+  pointer-events: none;
+}
+
+.n-ltab__select select,
+.n-ltab__input {
+  height: 32px;
+  min-width: 0;
+  margin: 0;
+  border: 1px solid var(--lt-input-line);
+  border-radius: 6px;
+  background: var(--lt-input);
+  color: var(--lt-text);
+  font: inherit;
+  font-size: 14px;
+}
+
+.n-ltab__select select {
+  width: 100%;
+  padding: 0 28px 0 10px;
+  appearance: none;
+  cursor: pointer;
+}
+
+.n-ltab__select select:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.n-ltab__select.is-op select {
+  min-width: 3.5rem;
+}
+
+.n-ltab__input {
+  padding: 0 10px;
+}
+
+.n-ltab__value {
+  flex: 0 1 4rem;
+  width: 4rem;
+}
+
+.n-ltab__fpop.is-xr .n-ltab__value {
+  flex-basis: 6rem;
+  width: 6rem;
+}
+
+.n-ltab__select select:focus-visible {
+  outline: 2px solid var(--lt-purple);
+  outline-offset: -2px;
+}
+
+/* Round icon buttons: remove, delete and +. */
+.n-ltab__iconbtn,
+.n-ltab__add {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.n-ltab__iconbtn:hover {
+  background: var(--lt-hover);
+}
+
+.n-ltab .n-ltab__iconbtn.is-danger {
+  color: #ef4444;
+}
+
+/* Nanome Web's + is grey, XR's is the purple primary button. */
+.n-ltab__add {
+  background: var(--lt-hover);
+}
+
+.n-ltab__fpop.is-xr .n-ltab__add {
+  background: var(--lt-purple);
+  color: var(--lt-on-purple);
+}
+
+.n-ltab .n-ltab__add:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.n-ltab__ptitle {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.n-ltab__prow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.n-ltab__prow.is-new {
+  gap: 8px;
+}
+
+.n-ltab__prow.is-new .n-ltab__input {
+  flex: 1;
+}
+
+.n-ltab__fpop.is-web .n-ltab__prow.is-new {
+  padding-top: 4px;
+  border-top: 1px solid var(--lt-line);
+}
+
+/* A preset: a text button in Nanome Web, a grey button in XR. */
+.n-ltab__papply {
+  flex: 1;
+  min-width: 0;
+  height: 32px;
+  padding: 0 12px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.n-ltab__papply:hover {
+  background: var(--lt-hover);
+}
+
+.n-ltab__fpop.is-xr .n-ltab__papply {
+  background: var(--lt-hover);
+  text-align: center;
+}
+
+.n-ltab__fpop.is-xr .n-ltab__papply:hover {
+  background: var(--lt-line);
+}
+
+/* XR's Preset already exists prompt, under the name field it answers. */
+.n-ltab__replace {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--lt-line);
+  border-radius: 8px;
+  background: var(--lt-table);
+}
+
+.n-ltab__replacebtns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.n-ltab__textbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--lt-hover);
+}
+
+.n-ltab .n-ltab__textbtn.is-primary {
+  background: var(--lt-purple);
+  color: var(--lt-on-purple);
+}
+</style>
