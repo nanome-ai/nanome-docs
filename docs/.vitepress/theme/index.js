@@ -23,7 +23,6 @@ import NotFound from './NotFound.vue'
 
 // Content components carried over from the previous theme.
 import Vimg from './components/Vimg.vue'
-import ToggleSection from './components/ToggleSection.vue'
 import ContactForm from './components/ContactForm.vue'
 import LandingPage from './components/LandingPage.vue'
 import HeroCarousel from './components/HeroCarousel.vue'
@@ -90,7 +89,6 @@ export default {
 
     app.component('Badge', VPBadge)
     app.component('Vimg', Vimg)
-    app.component('ToggleSection', ToggleSection)
     app.component('ContactForm', ContactForm)
     app.component('LandingPage', LandingPage)
     app.component('HeroCarousel', HeroCarousel)
