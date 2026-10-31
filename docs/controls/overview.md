@@ -48,9 +48,9 @@ title: Nanome Controls
 
 <UiList label="Joystick">
 <UiItem name="Left stick" area="35.9,35.7,4.7,9.9">Modifier: while clicked, rotate axes is MAX.</UiItem>
-<UiItem name="L3" area="35.9,35.7,4.7,9.9">Modifier: while clicked, move axes is MAX.</UiItem>
+<UiItem name="L3" area="37.0,38.2,2.4,5.0">Modifier: while clicked, move axes is MAX.</UiItem>
 <UiItem name="Right stick" area="49.6,46.7,4.9,10.1">Set move axes to low preset.</UiItem>
-<UiItem name="R3" area="49.6,46.7,4.9,10.1">Modifier: while clicked, rotate axes is MAX.</UiItem>
+<UiItem name="R3" area="50.8,49.2,2.5,5.1">Modifier: while clicked, rotate axes is MAX.</UiItem>
 </UiList>
 
 **D-Pad**

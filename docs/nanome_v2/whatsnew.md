@@ -8,7 +8,7 @@ Release 2.7 shipped on October 12, 2026, and 2.7.1 followed as a patch. The full
 
 <IconGrid label="What's new in 2.7" :cols="3">
 <IconCard icon="message" title="Comments" href="/nanome_v2/toolspanel#comments">Threaded comments, tied to atoms.</IconCard>
-<IconCard icon="hexagon-plus-2" title="Ligand Builder" href="/nanome_v2/toolspanel#builder-tool">Attachment points, ring fusion and auto relax.</IconCard>
+<IconCard icon="hexagon-plus-2" title="Builder Tool" href="/nanome_v2/toolspanel#builder-tool">Attachment points, ring fusion and auto relax.</IconCard>
 <IconCard icon="minimize" title="Pocket minimization" href="/nanome_v2/toolspanel#pocket-minimization">Minimize a ligand inside its binding site.</IconCard>
 <IconCard icon="lasso" title="Hover, select and measure" href="/nanome_web/workspace#tool-rail">The selection and measurement tools on desktop and web.</IconCard>
 <IconCard icon="droplet" title="Pointing in XR" href="/nanome_v2/toolspanel#pointer">Whole-residue hover, tooltips and the off-hand pointer.</IconCard>
@@ -24,7 +24,7 @@ Release 2.7 shipped on October 12, 2026, and 2.7.1 followed as a patch. The full
 
 Comments live inside the workspace, threaded and tied to the atoms they're about. They can belong to an annotation, a scene or the whole workspace, with replies, @mentions, reactions and unread tracking. Annotations and comments now share one panel.
 
-## <AppIcon name="hexagon-plus-2" /> Ligand Builder {#ligand-builder}
+## <AppIcon name="hexagon-plus-2" /> Builder Tool {#ligand-builder}
 
 - Attachment points follow each atom's valence and hybridization, fragments preview before they attach, torsions snap to favorable angles, and rings close automatically.
 - **Replace** can fuse a ring fragment onto an existing ring, with an aromatic preview.

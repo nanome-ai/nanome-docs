@@ -79,7 +79,7 @@ much structure is on screen. Settle those first.
 
 - Set the global permission to Viewer before sharing the code. Viewers explore, spotlight, follow, and move through scenes without changing the workspace.
 - Prepare the scenes first. A Viewer walking into a finished sequence needs no setup time.
-- Budget the atom count for the weakest headset in the room, not the strongest.
+- Budget the atom count for the weakest headset in the room.
 
 </ChooserResult>
 
@@ -363,7 +363,7 @@ variation cheap and a clean slate equally cheap.
 
 ### Building a sequence
 
-<ShotRow src="nanome-v2/v2-7/scenes-panel.webp" alt="The Scenes Panel controls, labelled">
+<ShotRow src="nanome-v2/v2-7/scenes-panel.webp" alt="The Scenes Panel controls, labeled">
 
 *Scenes Panel controls. Every button is described on [Scenes Panel](/nanome_v2/scenespanel).*
 
@@ -632,12 +632,12 @@ points where.
 
 ### Spotlight and follow
 
-<ShotRow src="nanome-v2/scenes-panel-spotlight-mode.jpg" alt="Spotlighting, seen by the user spotlighting and by a follower">
+<ShotRow src="nanome-v2/scenes-panel-spotlight-mode.jpg" alt="Spotlighting, seen by the user spotlighting and by a follower" crop="0,2,100,96">
 
 *Spotlighting, seen from both sides.*
 
 <UiList label="Spotlight and follow">
-<UiItem icon="crown" name="Spotlight Me" area="2.8,81.6,20.1,6.0">Makes your view the shared view. Followers see it with a crown icon.</UiItem>
+<UiItem icon="crown" name="Spotlighting 1/1" area="2.8,81.6,20.1,6.0">Shown after you choose Spotlight Me. Your view is the shared view, and followers see it with a crown icon. The count is how many of the other users follow you, and selecting the button stops spotlighting.</UiItem>
 <UiItem name="Stop" area="76.3,82.4,4.9,5.4">Lets a follower break away.</UiItem>
 <UiItem icon="analyze-filled" name="Reset orientation" area="73.3,82.4,2.9,5.4">Brings back a follower who got turned around.</UiItem>
 </UiList>
@@ -673,7 +673,7 @@ The **Users** tab shows a mic input level, a display name anyone can change, and
 a per-user menu for muting another user locally. The Wrist Menu carries a mute
 button for the moments between speaking.
 
-<vimg src="nanome-v2/v2-7/users-tab-annotated.webp" alt="The Users tab, labelled" />
+<vimg src="nanome-v2/v2-7/users-tab-annotated.webp" alt="The Users tab, labeled" />
 
 *Users tab.*
 
@@ -707,7 +707,7 @@ headsets cannot reach.
 
 <AccordionGroup label="6 checks">
 
-<Accordion title="The headset feels slow or uncomfortable" teaser="Almost always the shown atom count, not the network.">
+<Accordion title="The headset feels slow or uncomfortable" teaser="Almost always the shown atom count.">
 
 Hide everything, then bring back only what the current scene is about. Keeping a
 surface to the pocket, or hiding it, buys the most frames.
