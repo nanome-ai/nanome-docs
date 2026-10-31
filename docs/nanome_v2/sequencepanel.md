@@ -20,6 +20,6 @@ The Sequence Panel shows the sequences of all loaded structures, protein and nuc
 <UiItem name="Create" area="87.6,57.5,7.6,11.1">Creates a component from the selected residues.</UiItem>
 </UiList>
 
-When a component is active in the panel, an **Update** button also appears. It updates that component with the current selection.
+When a component is active in the panel, its name shows beside the buttons and **Create** becomes **Update**, which updates that component with the current selection. Selecting the name ends that, and the button goes back to **Create**.
 
 </ShotRow>

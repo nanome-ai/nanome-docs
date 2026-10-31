@@ -19,15 +19,15 @@ The Scenes Panel sits in the left sidebar, beside the Main Panel. A scene is a s
 The top of the sidebar shows the workspace name and two icons:
 
 <UiList label="Workspace header">
-<UiItem icon="alert-triangle" name="Network health">Appears when the connection degrades, showing High ping, Reconnecting or Connection lost.</UiItem>
-<UiItem icon="lock" name="Access">Shows whether the workspace is private or shared, its project and its code.</UiItem>
+<UiItem icon="alert-triangle" name="Network health">Appears when the connection degrades. Its tooltip shows the ping, or that the connection was lost.</UiItem>
+<UiItem icon="user" name="Access">A lock when the workspace is private, a person or two people when it's shared. Hovering the workspace name shows its project, and its code when it has one.</UiItem>
 </UiList>
 
 ## <AppIcon name="box" /> Controls {#controls}
 
 <UiList label="Scene controls">
 <UiItem icon="plus" name="Create scene">Adds a scene.</UiItem>
-<UiItem icon="settings" name="Scene settings" href="#scene-settings">Recenter Self, Set scene POV, and Enable/disable scene POVs.</UiItem>
+<UiItem icon="settings" name="Scene settings" href="#scene-settings">Recenter Self, Set scene POV, and Disable Scene POVs.</UiItem>
 <UiItem icon="arrow-left" name="Previous scene">Steps back through the scenes.</UiItem>
 <UiItem icon="arrow-right" name="Next scene">Steps forward through the scenes.</UiItem>
 <UiItem icon="player-play" name="Play scenes">Plays the scenes, with their recordings.</UiItem>
@@ -41,7 +41,7 @@ The top of the sidebar shows the workspace name and two icons:
 <UiList label="Scene settings">
 <UiItem icon="target" name="Recenter Self" area="28.0,26.3,64.2,5.3">Resets your position as the viewing origin.</UiItem>
 <UiItem icon="scan-eye" name="Set scene POV" area="28.0,33.3,64.2,5.2">Saves your current perspective as the scene's point of view.</UiItem>
-<UiItem icon="perspective" name="Enable/disable scene POVs" area="28.0,40.1,64.2,5.2">Sets whether switching scenes moves your view to each scene's point of view.</UiItem>
+<UiItem icon="perspective" name="Disable Scene POVs" area="28.0,40.1,64.2,5.2">Sets whether switching scenes moves your view to each scene's point of view. It reads Enable Scene POVs while they're off.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -107,7 +107,7 @@ With several people in a workspace, colored dots on each scene show who's viewin
 
 ## <AppIcon name="crown" /> Spotlight Mode {#spotlight-mode}
 
-<ShotRow src="nanome-v2/scenes-panel-spotlight-mode.jpg" alt="Ben spotlighting with Ana following, as each of them sees it">
+<ShotRow src="nanome-v2/scenes-panel-spotlight-mode.jpg" alt="Ben spotlighting with Ana following, as each of them sees it" crop="0,0,82.9,100">
 
 **Spotlight Me** makes your view the shared perspective for everyone who follows you.
 

@@ -8,7 +8,7 @@ title: Tools Panel
 The Tools Panel is the column of buttons on the right side of the Main Panel. Choosing a tool changes what the controller does in 3D and opens that tool's panel. The tools, from top to bottom, and the three more buttons below them:
 
 <ScreenMap src="nanome-v2/v2-7/desktop-layout.webp" alt="The Tools Panel, with the Pointer chosen" crop="40.0,9.5,22.3,60.8" label="Tools Panel buttons">
-<MapCard icon="droplet" title="Pointer" href="#pointer" side="top" area="50.0,11.3,2.3,4.0">Hover over and select residues and atoms.</MapCard>
+<MapCard icon="droplet" title="Pointer" href="#pointer" side="top" area="50.0,11.3,2.3,4.0">Hover over and select whole residues.</MapCard>
 <MapCard icon="lasso" title="Selection Tool" href="#selection-tool" side="left" area="50.0,15.5,2.3,4.0">Build a selection by clicking or dragging over atoms.</MapCard>
 <MapCard icon="ruler-2" title="Measurement Tool" href="#measurement-tool" side="left" area="50.0,19.6,2.3,4.0">Measure distances, angles and dihedrals.</MapCard>
 <MapCard icon="message" title="Comments" href="#comments" side="left" area="50.0,23.8,2.3,4.0">Comments, text notes and sound notes.</MapCard>
@@ -24,7 +24,7 @@ The Tools Panel is the column of buttons on the right side of the Main Panel. Ch
 
 <Callout type="note" title="Viewer or Editor">
 
-Viewers can use <Btn icon="droplet">Pointer</Btn> and <Btn icon="lasso">Selection Tool</Btn>, and post comments. Everything else needs Editor access: the other tools, the Comments tool's Text, Sound and Delete modes, <Btn icon="download">Load Structure</Btn> and <Btn icon="sparkles">Open MARA</Btn>.
+Viewers can use <Btn icon="droplet">Pointer</Btn>, <Btn icon="lasso">Selection Tool</Btn> and <Btn icon="bug">Report a problem</Btn>, and post comments. Everything else needs Editor access: the other tools, the Selection Tool's **Create** button, the Comments tool's Text, Sound and Delete modes and hiding annotations, <Btn icon="download">Load Structure</Btn> and <Btn icon="sparkles">Open MARA</Btn>.
 
 </Callout>
 

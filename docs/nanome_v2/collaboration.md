@@ -41,10 +41,10 @@ Both start from **Users in organization**, in the Users tab.
 
 <UiList label="Invitations and join requests">
 <UiItem icon="plus" name="Invite">Beside a colleague: invites them to your workspace.</UiItem>
-<UiItem icon="login" name="Join">Takes you to the colleague's workspace. Without access, it sends the owner a join request.</UiItem>
+<UiItem icon="login" name="Join">Takes you to the colleague's workspace. Without access, it sends the colleague a join request. Join is off when the colleague has less than Editor access there.</UiItem>
 </UiList>
 
-An invited colleague sees **Join Workspace?** with <Btn icon="x">Refuse</Btn> or <Btn icon="check">Accept</Btn>. The owner can accept a join request as <Btn icon="eye">Viewer</Btn> or <Btn icon="edit">Editor</Btn>, or <Btn icon="ban">Deny</Btn> it.
+An invited colleague sees **Join Workspace?** with <Btn icon="x">Refuse</Btn> or <Btn icon="check">Accept</Btn>. The colleague can accept a join request as <Btn icon="eye">Viewer</Btn> or <Btn icon="edit">Editor</Btn>, or <Btn icon="ban">Deny</Btn> it.
 
 ## <AppIcon name="layout-grid" /> Load for All vs. Load for Me {#load-for-all-vs-load-for-me}
 

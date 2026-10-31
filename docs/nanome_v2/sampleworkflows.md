@@ -21,15 +21,15 @@ Examples of workflows in Nanome XR, including using MARA to open and prep struct
 1. Sign in to Nanome Web and to Nanome XR with the same account.
 2. In Nanome Web, open **Conversations** and start a new chat.
 3. Ask MARA to load a structure, for example "Load 1KV2". MARA shows it in its 3D viewer (Mol*).
-4. Click **Open in XR**, and a message appears in MARA.
-5. Go to the Nanome app in your XR headset. The structure is there as a new workspace named after the chat.
+4. Click **Open in XR**. In **Add to Workspace**, pick a workspace or type a name for a new one, then click **Upload**.
+5. Nanome Web opens that workspace and sends it to Nanome XR. In the headset it opens straight away when you're alone, or with a [Load from Web](/nanome_v2/collaboration#load-for-all-vs-load-for-me) prompt when others are in your session.
 
 </Steps>
 
 <Callout type="note" title="After opening">
 
-- The new workspace starts as private. Its permissions can be changed afterwards with **Share** in the [Users tab](/nanome_v2/mainpanel#share).
-- Each **Open in XR** from MARA creates a new workspace.
+- A new workspace starts as private. Its permissions can be changed afterwards with **Share** in the [Users tab](/nanome_v2/mainpanel#share).
+- **Open in XR** can add the structure to an existing workspace or start a new one.
 - Representations might not match exactly between Mol* and Nanome. In those cases, our team is happy to help. Please reach out to us at support@nanome.ai to help us build solutions for representations.
 
 </Callout>

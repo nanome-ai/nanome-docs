@@ -33,7 +33,7 @@ Every structure in the workspace, and the components that control how it's drawn
 <UiItem icon="caret-down-filled" name="Collapse All" area="2.7,9.5,8.0,7.5">Collapses every entry.</UiItem>
 <UiItem icon="eye" name="Hide All" area="11.5,9.5,8.0,7.5">Hides every entry.</UiItem>
 <UiItem icon="sort-ascending-letters" name="Sort by Name" area="20.3,9.5,8.0,7.5">Sorts entries alphabetically.</UiItem>
-<UiItem icon="copy-plus" name="Create Component" area="29.1,9.5,8.0,7.5">Makes a component from the current selection.</UiItem>
+<UiItem icon="copy-plus" name="Create Component" area="29.1,9.5,8.0,7.5">Makes a component of a type, an amino acid or a nucleotide, in all entries or the ones you pick.</UiItem>
 <UiItem name="Search" area="56.2,10.2,41.2,6.2">Filters entries and components by name.</UiItem>
 <UiItem name="Position Molecules" area="4.7,92.2,38.1,4.7">At the bottom: lets structures be moved one by one.</UiItem>
 <UiItem icon="mist" name="Sequences" area="74.8,91.3,22.7,6.3">At the bottom: opens the Sequence Panel.</UiItem>
@@ -41,7 +41,7 @@ Every structure in the workspace, and the components that control how it's drawn
 
 </ShotRow>
 
-While a structure loads, a progress bar appears at the bottom of the tab, and the load can be cancelled.
+While a structure loads, a **Loading...** button with a progress bar takes the place of the list. Clicking it cancels the load.
 
 <Accordion title="Loading Report" teaser="Shown when the server has notes on a file you load.">
 
@@ -71,7 +71,7 @@ Each structure you load is an **entry**. Its row has these buttons:
 
 </ShotRow>
 
-- Hovering a row shows how many atoms it holds. An empty component is grayed out.
+- Pointing at a component's name shows how many atoms it holds. An empty component is grayed out.
 - An entry with more than one model or a trajectory also has [playback buttons](#model-and-trajectory-playback).
 - An entry with an electrostatic map loaded shows a <AppIcon name="paperclip" /> paperclip.
 
@@ -148,11 +148,11 @@ The copy of the panel below works like the app's: each switch shows 1KV2's bindi
 
 ### Interactions {#interactions}
 
-Components that carry interactions show an <AppIcon name="mist" /> **Interactions** row with a count. **Show** lists each type with its own switch:
+Each component's representations end with an <AppIcon name="mist" /> **Interactions** row and the number of interaction types switched on. **Show** lists each type with its own switch:
 
 <Btn>Hydrogen Bonds</Btn> <Btn>VDW Clashes</Btn> <Btn>π Stacking</Btn> <Btn>Salt Bridges</Btn> <Btn>Cation-π</Btn> <Btn>Halogen Bonds</Btn> <Btn>Halogen-π</Btn> <Btn>Hydrophobic</Btn> <Btn>Metal Coordination</Btn>
 
-The <AppIcon name="filter" /> **Filter** switch shows only interactions between ligand and non-ligand atoms. To list and pin interactions, use the [Interactions Tool](/nanome_v2/toolspanel#interactions-tool).
+The <AppIcon name="filter" /> **Filter** switch, there when the component has a ligand and a type is on, shows only interactions between ligand and non-ligand atoms. To list and pin interactions, use the [Interactions Tool](/nanome_v2/toolspanel#interactions-tool).
 
 <AccordionGroup label="Interaction details">
 
@@ -326,7 +326,7 @@ Nanome calculates the properties with RDKit on its server, and Nanome Web shows 
 | **NumAtoms** | Number of atoms, including hydrogens. For B96 in 1KV2 (C₃₁H₃₇N₅O₃) it's 76: 31 C, 37 H, 5 N and 3 O |
 | **NumHeavyAtoms** | Number of non-hydrogen atoms |
 | **MolWeight** | Monoisotopic (exact) mass in daltons, including hydrogens |
-| **HeavyAtomMolWeight** | Mass of the non-hydrogen atoms only |
+| **HeavyAtomMolWeight** | Monoisotopic (exact) mass of the non-hydrogen atoms only |
 | **LogP** | Wildman-Crippen estimate of log P, the base-10 logarithm of the octanol-water partition coefficient |
 | **TPSA** | Topological polar surface area (Ertl method, from N and O atoms only), in Å² |
 | **HbondD** | Hydrogen-bond donor count (RDKit's pattern-based definition, which differs from Lipinski's N-H plus O-H count) |
@@ -367,7 +367,7 @@ Each one comes from an X-ray structure of human p38α MAP kinase (UniProt Q16539
 
 The RDKit calls are `Chem.AddHs` then `GetNumAtoms` for NumAtoms, `GetNumHeavyAtoms` for NumHeavyAtoms, `Descriptors.ExactMolWt` for MolWeight, `Crippen.MolLogP` for LogP, `Chem.MolToInchiKey` for InChIKey, and the matching `rdMolDescriptors` function for TPSA, HbondD, HbondA and the 4 ring counts.
 
-The copy lists HeavyAtomMolWeight, NumRotatableBonds, Rating and SMILES in its picker but leaves their columns out. The first 2 depend on RDKit settings that haven't been matched to Nanome's, people enter Rating, and one molecule can be written as many valid SMILES. The tags are examples.
+The copy lists HeavyAtomMolWeight, NumRotatableBonds, Rating and SMILES in its picker but leaves their columns out. NumRotatableBonds depends on RDKit settings that haven't been matched to Nanome's, people enter Rating, and one molecule can be written as many valid SMILES. The tags are examples.
 
 </Accordion>
 
@@ -451,8 +451,8 @@ A free license gives Viewer access to workspaces others own.
 <ShotRow src="nanome-v2/v2-7/settings-tab.webp" alt="The Settings tab">
 
 <UiList label="Settings">
-<UiItem icon="moon" name="Night mode" area="4.4,9.1,6.9,5.3">Night or day skybox, when passthrough is off.</UiItem>
-<UiItem icon="view-360" name="Floor" area="12.0,9.1,6.9,5.3">Shows or hides the floor.</UiItem>
+<UiItem icon="moon" name="Night mode" area="4.4,9.1,6.9,5.3">Night or day skybox, when passthrough is off. The icon is a sun while it's off.</UiItem>
+<UiItem icon="view-360" name="Floor" area="12.0,9.1,6.9,5.3">Shows or hides the floor. The icon is crossed out while the floor is hidden.</UiItem>
 <UiItem name="Skybox theme" href="#day-night-mode-and-themes" area="19.7,9.2,25.2,5.1">Seven themes, each with a day and a night version.</UiItem>
 <UiItem icon="scan-eye" name="Passthrough" area="50.9,9.1,44.4,5.3">Mixed reality or a full skybox. On to start where the headset supports it, grayed out where it doesn't.</UiItem>
 <UiItem icon="hand-stop" name="Left-handed mode" area="4.4,19.0,90.9,5.4">Makes the left hand dominant.</UiItem>
