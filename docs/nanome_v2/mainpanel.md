@@ -9,7 +9,7 @@ The Main Panel is where you manage structures, ligands, workspaces, people and s
 
 The [Scenes Panel](/nanome_v2/scenespanel) sits on the left of the Main Panel and the [Tools Panel](/nanome_v2/toolspanel) on the right. The 2 buttons at the panel's top right change the panel itself.
 
-<ShotRow src="nanome-v2/v2-7/main-panel-header.webp" alt="The top of the Main Panel: the 5 tabs, then Lock menu position and Increase menu size">
+<ShotRow src="nanome-v2/v2-7/main-panel-header.webp" alt="The top of the Main Panel: the 5 tabs, then Lock menu position and Increase menu size" stack>
 
 <UiList label="Main Panel tabs and controls">
 <UiItem icon="hierarchy" name="Components" href="#components-tab" area="0.3,2.0,20.2,42.0">The structures in the workspace and how each is drawn.</UiItem>
@@ -27,7 +27,7 @@ The [Scenes Panel](/nanome_v2/scenespanel) sits on the left of the Main Panel an
 
 Every structure in the workspace, and the components that control how it's drawn. It's the same list as the [Entries tab](/nanome_web/entries) in Nanome Web.
 
-<ShotRow src="nanome-v2/v2-7/components-tab.webp" alt="The Components tab with 1KV2 and its components">
+<ShotRow src="nanome-v2/v2-7/components-tab.webp" alt="The Components tab with 1KV2 and its components" stack>
 
 <UiList label="Components toolbar">
 <UiItem icon="caret-down-filled" name="Collapse All" area="2.7,9.5,8.0,7.5">Collapses every entry.</UiItem>
@@ -37,6 +37,17 @@ Every structure in the workspace, and the components that control how it's drawn
 <UiItem name="Search" area="56.2,10.2,41.2,6.2">Filters entries and components by name.</UiItem>
 <UiItem name="Position Molecules" area="4.7,92.2,38.1,4.7">At the bottom: lets structures be moved one by one.</UiItem>
 <UiItem icon="mist" name="Sequences" href="/nanome_v2/sequencepanel" area="74.8,91.3,22.7,6.3">At the bottom: opens the Sequence Panel.</UiItem>
+</UiList>
+
+**Default components**: what a structure with a ligand, such as 1KV2, loads with.
+
+<UiList label="Default components">
+<UiItem name="1KV2" area="4.4,19.5,91.2,5.8">An entry: one loaded structure.</UiItem>
+<UiItem name="Protein" area="11.3,28.1,84.4,6.0">The protein, as Cartoon.</UiItem>
+<UiItem name="Site A:B96_391" area="11.3,36.9,33.3,5.8">A binding-site group for the ligand.</UiItem>
+<UiItem name="Ligand A:B96_391" area="18.2,45.6,77.5,6.0">The ligand, as Stick.</UiItem>
+<UiItem name="Pocket A:B96_391" area="18.2,54.4,77.5,6.0">Every whole residue with an atom within 4 Å of the ligand, as Wire with a surface.</UiItem>
+<UiItem name="Pocket + Ligand A:B96_391" area="18.2,63.1,77.5,6.0">Both together, carrying their interactions.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -57,7 +68,7 @@ The report lists warnings and errors, with the line number when it's known.
 
 ### Entry rows
 
-<ShotRow src="nanome-v2/v2-7/entry-more-options.webp" alt="An entry's More options menu with Rename, Duplicate and Delete">
+<ShotRow src="nanome-v2/v2-7/entry-more-options.webp" alt="An entry's More options menu with Rename, Duplicate and Delete" stack>
 
 Each structure you load is an **entry**. Its row has these buttons:
 
@@ -77,18 +88,7 @@ Each structure you load is an **entry**. Its row has these buttons:
 
 ### Entries and components
 
-<ShotRow src="nanome-v2/v2-7/components-breakdown.webp" alt="The default components of 1KV2, labeled">
-
-Each entry holds **components**: named parts of the structure, each with its own look. A structure with a ligand loads with a default breakdown:
-
-- **Protein**: Cartoon
-- **Water** and **Ion**, when the file has them: Stick, hidden by default
-- **Site A:B96_391**, a binding-site group with:
-  - **Ligand A:B96_391**: the ligand, as Stick
-  - **Pocket A:B96_391**: every whole residue with an atom within 4 Å of the ligand, as Wire with a surface
-  - **Pocket + Ligand A:B96_391**: both together, carrying their interactions
-
-</ShotRow>
+Each entry holds **components**: named parts of the structure, each with its own look. A structure with a ligand loads with a default breakdown, listed under **Default components** in the [Components tab](#components-tab). Water and Ion components appear when the file has them: Stick, hidden by default.
 
 In a headset, **Load Structure** in the Tools Panel loads a structure by PDB code. Other file types are loaded in [Nanome Web](/nanome_web/loading), and the workspace updates in XR.
 
@@ -98,7 +98,7 @@ In a headset, **Load Structure** in the Tools Panel loads a structure by PDB cod
 
 ### Component menu
 
-<ShotRow src="nanome-v2/v2-7/component-more-options.webp" alt="A component's More options menu">
+<ShotRow src="nanome-v2/v2-7/component-more-options.webp" alt="A component's More options menu" stack>
 
 <UiList label="Component More options">
 <UiItem icon="pencil" name="Rename" area="68.2,49.0,30.0,4.7">Renames the component.</UiItem>
@@ -117,13 +117,24 @@ In a headset, **Load Structure** in the Tools Panel loads a structure by PDB cod
 
 #### Distance components {#distance-components}
 
-**Create Distance Component** makes a component of the atoms within a set distance of this one, named for it, such as `within 4Å of Ligand A:B96_391`. The copy of its popup below shows what each distance picks around the 1KV2 ligand.
+**Create Distance Component** makes a component of the atoms within a set distance of this one, named for it, such as `within 4Å of Ligand A:FOL_161`. The copy of its popup below shows what each distance and switch picks around folate in 1RX2: E. coli dihydrofolate reductase, with folate and NADP+ bound side by side. A second entry, 1RX3, sits in the same place.
 
 <DistanceDemo />
 
 - The distance runs from 2 Å to 10 Å, with 4 Å to start.
-- **Include ligands** is off to start, so other ligands are left out. **All entries** searches every entry in the workspace, and the name then starts with "all within".
+- **Include ligands** is off to start, so other ligands, such as NADP+ here, are left out. Waters and ions in range still count. **All entries** searches every entry in the workspace, and the name then starts with "all within".
 - A distance component's menu also has **Update Distance Filter**, which changes the distance and keeps the other options. The name stays as it was.
+
+<Accordion title="Where the distance example comes from" teaser="1RX2 and 1RX3, E. coli DHFR, from Sawaya and Kraut (1997).">
+
+Both entries are crystal structures of E. coli dihydrofolate reductase from Sawaya and Kraut, Biochemistry 36:586-603 (1997), [doi:10.1021/bi962337c](https://doi.org/10.1021/bi962337c).
+
+- [1RX2](https://www.rcsb.org/structure/1RX2) holds folate and NADP+, at 1.8 Å. The substrate site and the cofactor site sit side by side: NADP+'s nicotinamide is 3.1 Å from folate, so Include ligands brings NADP+ in from 4 Å.
+- [1RX3](https://www.rcsb.org/structure/1RX3) holds methotrexate, an antifolate drug that binds where folate does, and its cofactor, at 2.2 Å. The two crystals have the same space group and nearly the same cell, so their Cα atoms agree to 0.23 Å RMSD as deposited and the entries overlay without an alignment.
+
+Waters in range come along even with Include ligands off, because it leaves out only ligands.
+
+</Accordion>
 
 ### Representations
 
@@ -189,11 +200,11 @@ Anion-π, CH-π and water-bridged interactions aren't detected.
 
 ### Color schemes
 
-The <AppIcon name="palette" /> button beside a style opens its colors. Each scheme in the copy below shows 1KV2 colored that way.
+The <AppIcon name="palette" /> button beside a style opens its colors. The copy below colors 1KV2's binding site, drawn as Stick, with each scheme.
 
 <ColorSchemeDemo app="xr" />
 
-**Uniform** opens a color picker with a hex field and swatches.
+**Uniform** shows 19 preset colors and a custom color with a hex field.
 
 <Accordion title="Electrostatic coloring" teaser="In a surface's colors, when the entry has a DX map loaded.">
 
@@ -203,17 +214,17 @@ The <AppIcon name="palette" /> button beside a style opens its colors. Each sche
 
 ### <AppIcon name="layout-list" /> Structure actions {#structure-actions}
 
-<ShotRow src="nanome-v2/v2-7/structure-actions.webp" alt="The Structure actions menu for 1KV2">
+<ShotRow src="nanome-v2/v2-7/structure-actions.webp" alt="The Structure actions menu for 1KV2, with 1A9U loaded below it" stack>
 
 <UiList label="Structure actions">
-<UiItem icon="arrow-left-to-arc" name="Align proteins to this" area="62.2,27.1,35.8,6.0">Superposes other protein entries onto this one.</UiItem>
-<UiItem icon="copy-plus" name="Create component" area="62.2,33.5,35.8,6.0">From ligands, residues, molecule types, amino acids or nucleotides.</UiItem>
-<UiItem icon="list-check" name="Copy components" area="62.2,39.8,35.8,6.0">Copies this entry's components to other scenes.</UiItem>
-<UiItem icon="refresh" name="Reset components" area="62.2,46.2,35.8,6.0">Restores the default components in this scene.</UiItem>
-<UiItem icon="polygon" name="Create interaction components" area="62.2,52.6,35.8,6.0">Computes interactions with a ligand or between chains.</UiItem>
-<UiItem icon="square-x" name="Remove interaction components" area="62.2,58.9,35.8,6.0">Removes them from the scene.</UiItem>
-<UiItem icon="list-check" name="Copy position" area="62.2,65.3,35.8,6.0">Copies the entry's position to other scenes.</UiItem>
-<UiItem icon="progress-x" name="Reset position" area="62.2,71.7,35.8,6.0">Moves the entry back to its original coordinates.</UiItem>
+<UiItem icon="arrow-left-to-arc" name="Align proteins to this" area="57.1,26.9,35.9,6.2">Superposes other protein entries onto this one.</UiItem>
+<UiItem icon="copy-plus" name="Create component" area="57.1,33.3,35.9,6.2">From ligands, residues, molecule types, amino acids or nucleotides.</UiItem>
+<UiItem icon="list-check" name="Copy components" area="57.1,39.6,35.9,6.2">Copies this entry's components to other scenes.</UiItem>
+<UiItem icon="refresh" name="Reset components" area="57.1,46.0,35.9,6.2">Restores the default components in this scene.</UiItem>
+<UiItem icon="polygon" name="Create interaction components" area="57.1,52.4,35.9,6.2">Computes interactions with a ligand or between chains.</UiItem>
+<UiItem icon="square-x" name="Remove interaction components" area="57.1,58.8,35.9,6.2">Removes them from the scene.</UiItem>
+<UiItem icon="list-check" name="Copy position" area="57.1,65.2,35.9,6.2">Copies the entry's position to other scenes.</UiItem>
+<UiItem icon="progress-x" name="Reset position" area="57.1,71.6,35.9,6.2">Moves the entry back to its original coordinates.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -250,7 +261,7 @@ The options are **Ligands**, **Residues**, a **Type** (protein, nucleic acid, li
 
 Entries with several models, such as a multi-MODEL PDB, and entries with a trajectory get playback buttons on their row.
 
-<ShotRow src="nanome-v2/v2-7/model-playback.webp" alt="1D3Z, an entry with 10 models, playing, with the playback settings open below its row">
+<ShotRow src="nanome-v2/v2-7/model-playback.webp" alt="1D3Z, an entry with 10 models, playing, with the playback settings open below its row" stack>
 
 <UiList label="Playback">
 <UiItem name="Model or frame" area="42.6,36.3,5.1,6.2">Which one is showing, out of how many.</UiItem>
@@ -270,11 +281,15 @@ Entries with several models, such as a multi-MODEL PDB, and entries with a traje
 - Speeds of ×5 and above may run slowly on standalone headsets.
 - While it plays, that entry's Surface switch is grayed out.
 
+Each speed steps that many models or frames a second, so ×1 plays 1 a second and ×20 plays 20. A model or frame that isn't ready yet holds playback until it is. The copy below plays 1D3Z's 10 NMR models at each speed.
+
+<PlaybackDemo app="xr" />
+
 ## <AppIcon name="affiliate" /> Ligands tab {#ligands-tab}
 
 Every ligand in the workspace in one table, with a 2D drawing and calculated properties for each. Nanome Web's [Ligands tab](/nanome_web/ligands) lists the same ligands with the same properties.
 
-<ShotRow src="nanome-v2/v2-7/ligands-tab.webp" alt="The Ligands tab">
+<ShotRow src="nanome-v2/v2-7/ligands-tab.webp" alt="The Ligands tab" stack>
 
 <UiList label="Ligands toolbar">
 <UiItem icon="filter" name="Filter ligands" area="2.7,9.5,14.6,7.6">Filters on property values, or to the ligands that are visible. It shows how many ligands are listed out of the total.</UiItem>
@@ -300,7 +315,7 @@ While Bulk-Display is on, the table lists only ligands from entries with more th
 
 ### <AppIcon name="columns-3" /> Property columns {#ligand-property-columns}
 
-<ShotRow src="nanome-v2/v2-7/ligand-property-columns.webp" alt="The property column picker, with NumAtoms and MolWeight picked">
+<ShotRow src="nanome-v2/v2-7/ligand-property-columns.webp" alt="The property column picker, with NumAtoms and MolWeight picked" stack>
 
 **Select property columns** lists every property the ligands have, including SDF data fields from the source file. Each one you pick becomes a column when you save.
 
@@ -346,7 +361,7 @@ Nanome calculates the properties with RDKit on its server, and Nanome Web shows 
 
 </Callout>
 
-The table below holds 8 inhibitors of p38α MAP kinase from the PDB. It looks like Nanome Web's table, with NumAtoms headed **Atoms** and MolWeight **MW**, and it sorts, searches and enlarges drawings the way Nanome XR does.
+The table below holds 8 inhibitors of p38α MAP kinase from the PDB. It looks like Nanome Web's table, with NumAtoms headed **Atoms** and MolWeight **MW**, and it sorts, searches, filters, keeps view presets and enlarges drawings the way Nanome XR does.
 
 <LigandTableDemo app="xr" />
 
@@ -367,13 +382,15 @@ Each one comes from an X-ray structure of human p38α MAP kinase (UniProt Q16539
 
 The RDKit calls are `Chem.AddHs` then `GetNumAtoms` for NumAtoms, `GetNumHeavyAtoms` for NumHeavyAtoms, `Descriptors.ExactMolWt` for MolWeight, `Crippen.MolLogP` for LogP, `Chem.MolToInchiKey` for InChIKey, and the matching `rdMolDescriptors` function for TPSA, HbondD, HbondA and the 4 ring counts.
 
-The copy lists HeavyAtomMolWeight, NumRotatableBonds, Rating and SMILES in its picker but leaves their columns out. NumRotatableBonds depends on RDKit settings that haven't been matched to Nanome's, people enter Rating, and one molecule can be written as many valid SMILES. The tags are examples.
+The copy lists HeavyAtomMolWeight, NumRotatableBonds, Rating and SMILES in its picker but leaves their columns out. NumRotatableBonds depends on RDKit settings that haven't been matched to Nanome's, people enter Rating, and one molecule can be written as many valid SMILES.
+
+The tags are examples, and so are the 2 hidden entries, 1BL6 and 1BL7, that **Filter by currently visible** leaves out, and the 2 view presets, **MW < 500, LogP ≤ 5** and **TPSA over 80**.
 
 </Accordion>
 
 ## <AppIcon name="layout-grid" /> Workspaces tab {#workspaces-tab}
 
-<ShotRow src="nanome-v2/v2-7/workspaces-tab.webp" alt="The Workspaces tab">
+<ShotRow src="nanome-v2/v2-7/workspaces-tab.webp" alt="The Workspaces tab" stack>
 
 <UiList label="Workspaces tab">
 <UiItem name="Join Workspace" area="2.7,9.5,94.7,9.7">An 8-character code, shown as XXXX-XXXX. Go joins that workspace.</UiItem>
@@ -393,7 +410,7 @@ The copy lists HeavyAtomMolWeight, NumRotatableBonds, Rating and SMILES in its p
 
 ### Projects
 
-<ShotRow src="nanome-v2/v2-7/workspaces-tab-projects.webp" alt="The Projects list in the Workspaces tab">
+<ShotRow src="nanome-v2/v2-7/workspaces-tab-projects.webp" alt="The Projects list in the Workspaces tab" stack>
 
 The **Projects** tab lists projects with their workspace count, owner and modified date. Choosing a project filters the workspace list to it. Projects are edited in [Nanome Web](/nanome_web/home#projects).
 
@@ -407,24 +424,25 @@ Who is in the workspace, your mic, and who can open it.
 
 ### User settings {#user-settings}
 
-<ShotRow src="nanome-v2/v2-7/users-tab-annotated.webp" alt="The Users tab with its controls labeled">
+<ShotRow src="nanome-v2/v2-7/users-tab.webp" alt="The Users tab: My Permission and Share, Display Name and Mic, then Users in workspace and Users in organization" stack>
 
 <UiList label="Users tab">
-<UiItem name="Display Name" area="25.6,18.2,30.9,10.4">The name others see.</UiItem>
-<UiItem icon="microphone" name="Mic" area="56.7,22.0,13.1,6.5">Mutes or unmutes you. The meter moves when your mic picks up sound.</UiItem>
-<UiItem icon="share" name="Share" href="#share" area="63.8,9.6,6.9,5.4">Who can open the workspace, and with what access.</UiItem>
+<UiItem name="My Permission" area="2.6,10.4,35.7,4.1">Your access to this workspace.</UiItem>
+<UiItem icon="share" name="Share" href="#share" area="83.1,9.7,14.2,5.1">Who can open the workspace, and with what access.</UiItem>
+<UiItem name="Display Name" area="4.3,18.2,63.6,10.4">The name others see.</UiItem>
+<UiItem icon="microphone" name="Mic" area="68.5,22.2,26.7,6.4">Mutes or unmutes you. The meter moves when your mic picks up sound.</UiItem>
+<UiItem name="Users in workspace" area="5.0,34.8,44.1,5.3">The other people in the workspace. Each one's menu has Mute, which mutes them for you only.</UiItem>
+<UiItem name="Users in organization" area="49.3,34.8,46.2,5.3">Colleagues who are online.</UiItem>
 </UiList>
 
 </ShotRow>
 
-- Your access shows at the top as **My Permission**.
 - The off-hand controller's primary button (**X**, or **A** when left-handed) also mutes you.
-- Under **Users in workspace**, each person's <AppIcon name="dots" /> menu has <AppIcon name="volume-3" /> **Mute**, which mutes them for you only.
-- **Users in organization** lists colleagues who are online. <AppIcon name="login" /> **Join** goes to a colleague's workspace, or asks to join it, and the owner lets you in as a Viewer or Editor, or denies it. <AppIcon name="plus" /> **Invite** asks a colleague to yours, and they see **Join Workspace?** with **Refuse** or **Accept**.
+- In **Users in organization**, <AppIcon name="login" /> **Join** goes to a colleague's workspace, or asks to join it, and the owner lets you in as a Viewer or Editor, or denies it. <AppIcon name="plus" /> **Invite** asks a colleague to yours, and they see **Join Workspace?** with **Refuse** or **Accept**.
 
 ### <AppIcon name="share" /> Share {#share}
 
-<ShotRow src="nanome-v2/v2-7/users-tab-share-dialog.webp" alt="The Share dialog with the workspace code and the people with access">
+<ShotRow src="nanome-v2/v2-7/users-tab-share-dialog.webp" alt="The Share dialog with the workspace code and the people with access" stack>
 
 The dialog shows the workspace code, and has:
 
@@ -448,7 +466,7 @@ A free license gives Viewer access to workspaces others own.
 
 ## <AppIcon name="settings" /> Settings tab {#settings-tab}
 
-<ShotRow src="nanome-v2/v2-7/settings-tab.webp" alt="The Settings tab">
+<ShotRow src="nanome-v2/v2-7/settings-tab.webp" alt="The Settings tab" stack>
 
 <UiList label="Settings">
 <UiItem icon="moon" name="Night mode" area="4.4,9.1,6.9,5.3">Night or day skybox, when passthrough is off. The icon is a sun while it's off.</UiItem>
