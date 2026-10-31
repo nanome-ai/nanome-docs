@@ -95,6 +95,16 @@ export const COLUMNS = [
     desc: "Hydrogen-bond donors, by RDKit's pattern-based definition. It differs from Lipinski's count of N-H plus O-H.",
   },
   {
+    // Nanome computes it with calcExactMW(mol, true) (RdkitCommandGenerateMetadata.cs
+    // in WorkspaceAPI), a monoisotopic mass, unlike RDKit's average-mass
+    // Descriptors.HeavyAtomMolWt. The Python call below is the same C++ function.
+    key: 'HeavyAtomMolWeight',
+    label: 'HeavyAtomMolWeight',
+    web: 'Heavy Atom MW',
+    rdkit: 'rdMolDescriptors.CalcExactMolWt(mol, onlyHeavy=True)',
+    desc: 'Monoisotopic mass of the non-hydrogen atoms only.',
+  },
+  {
     key: 'InChIKey',
     label: 'InChIKey',
     rdkit: 'Chem.MolToInchiKey(mol)', // matches the CCD's InChI 1.03 key for all 8
@@ -179,8 +189,6 @@ export const DEFAULT_COLUMNS = ['NumAtoms', 'MolWeight']
  * /nanome_web/ligands#property-columns.
  */
 export const LEFT_OUT = [
-  { key: 'HeavyAtomMolWeight', desc: 'Monoisotopic mass of the non-hydrogen atoms only.',
-    why: "Nanome computes it with calcExactMW(mol, true) (RdkitCommandGenerateMetadata.cs in WorkspaceAPI), a monoisotopic mass, unlike RDKit's average-mass HeavyAtomMolWt. The demo's ligands don't carry the value yet." },
   { key: 'NumRotatableBonds', desc: 'Rotatable bond count.',
     why: "RDKit's count changes with its strict or non-strict pattern and with explicit hydrogens: 3 or 4 for SB4, 7 or 10 for PQB. No Nanome value is known to tell which." },
   { key: 'Rating', desc: 'A value people enter, stored with the ligand.',
@@ -205,40 +213,45 @@ export function formatValue(v) {
  * Tags are demo values, and so is `hidden`: it stands in for an entry hidden
  * in the 3D view, which Filter by currently visible leaves out (1BL6 and 1BL7
  * here, so turning it on lists 6 of 8).
+ *
+ * B96's HeavyAtomMolWeight is 490.00011386, kept as 490.0001 so formatValue
+ * shows 490.000, as Nanome Web does. Rounded to 490 it would show without
+ * decimals. Nanome XR shows the stored text for a value this close to a whole
+ * number (Mathf.Approximately in LigandsMenu.FormatMetadataValue).
  */
 export const LIGANDS = [
   { ccd: 'B96', pdb: '1KV2', entry: '1kv2', name: 'A:B96_391', tag: 'Lead', formula: 'C31 H37 N5 O3',
     about: 'BIRB 796 (doramapimod)',
     smiles: 'Cc1ccc(cc1)n2c(cc(n2)C(C)(C)C)NC(=O)Nc3ccc(c4c3cccc4)OCCN5CCOCC5',
-    props: { NumAtoms: 76, NumHeavyAtoms: 39, MolWeight: 527.29, LogP: 5.986, TPSA: 80.65, HbondD: 2, HbondA: 5, NumRings: 5, NumAromaticRings: 4, NumAliphaticRings: 1, NumSaturatedRings: 1, InChIKey: 'MVCOAUNKQVWQHZ-UHFFFAOYSA-N' } },
+    props: { NumAtoms: 76, NumHeavyAtoms: 39, MolWeight: 527.29, HeavyAtomMolWeight: 490.0001, LogP: 5.986, TPSA: 80.65, HbondD: 2, HbondA: 5, NumRings: 5, NumAromaticRings: 4, NumAliphaticRings: 1, NumSaturatedRings: 1, InChIKey: 'MVCOAUNKQVWQHZ-UHFFFAOYSA-N' } },
   { ccd: 'BMU', pdb: '1KV1', entry: '1kv1', name: 'A:BMU_391', tag: 'Hit', formula: 'C15 H19 Cl N4 O',
     about: '',
     smiles: 'CC(C)(C)c1cc(n(n1)C)NC(=O)Nc2ccc(cc2)Cl',
-    props: { NumAtoms: 40, NumHeavyAtoms: 21, MolWeight: 306.125, LogP: 4.015, TPSA: 58.95, HbondD: 2, HbondA: 2, NumRings: 2, NumAromaticRings: 2, NumAliphaticRings: 0, NumSaturatedRings: 0, InChIKey: 'FWIJKWMXNHRSRO-UHFFFAOYSA-N' } },
+    props: { NumAtoms: 40, NumHeavyAtoms: 21, MolWeight: 306.125, HeavyAtomMolWeight: 286.976, LogP: 4.015, TPSA: 58.95, HbondD: 2, HbondA: 2, NumRings: 2, NumAromaticRings: 2, NumAliphaticRings: 0, NumSaturatedRings: 0, InChIKey: 'FWIJKWMXNHRSRO-UHFFFAOYSA-N' } },
   { ccd: 'SB2', pdb: '1A9U', entry: '1a9u', name: 'A:SB2_800', tag: '', formula: 'C21 H16 F N3 O S',
     about: 'SB203580',
     smiles: 'C[S@](=O)c1ccc(cc1)c2[nH]c(c(n2)c3ccc(cc3)F)c4ccncc4',
-    props: { NumAtoms: 43, NumHeavyAtoms: 27, MolWeight: 377.1, LogP: 4.682, TPSA: 58.64, HbondD: 1, HbondA: 3, NumRings: 4, NumAromaticRings: 4, NumAliphaticRings: 0, NumSaturatedRings: 0, InChIKey: 'CDMGBJANTYXAIV-MHZLTWQESA-N' } },
+    props: { NumAtoms: 43, NumHeavyAtoms: 27, MolWeight: 377.1, HeavyAtomMolWeight: 360.975, LogP: 4.682, TPSA: 58.64, HbondD: 1, HbondA: 3, NumRings: 4, NumAromaticRings: 4, NumAliphaticRings: 0, NumSaturatedRings: 0, InChIKey: 'CDMGBJANTYXAIV-MHZLTWQESA-N' } },
   { ccd: 'SB4', pdb: '1BL7', entry: '1bl7', name: 'A:SB4_800', tag: '', hidden: true, formula: 'C18 H19 F N6',
     about: 'SB220025',
     smiles: 'c1cc(ccc1c2c(n(cn2)C3CCNCC3)c4ccnc(n4)N)F',
-    props: { NumAtoms: 44, NumHeavyAtoms: 25, MolWeight: 338.166, LogP: 2.653, TPSA: 81.65, HbondD: 2, HbondA: 5, NumRings: 4, NumAromaticRings: 3, NumAliphaticRings: 1, NumSaturatedRings: 1, InChIKey: 'VSPFURGQAYMVAN-UHFFFAOYSA-N' } },
+    props: { NumAtoms: 44, NumHeavyAtoms: 25, MolWeight: 338.166, HeavyAtomMolWeight: 319.017, LogP: 2.653, TPSA: 81.65, HbondD: 2, HbondA: 5, NumRings: 4, NumAromaticRings: 3, NumAliphaticRings: 1, NumSaturatedRings: 1, InChIKey: 'VSPFURGQAYMVAN-UHFFFAOYSA-N' } },
   { ccd: 'SB6', pdb: '1BL6', entry: '1bl6', name: 'A:SB6_800', tag: '', hidden: true, formula: 'C18 H16 F N3',
     about: 'SB216995',
     smiles: 'c1cc(ccc1c2c(n(cn2)CC3CC3)c4ccncc4)F',
-    props: { NumAtoms: 38, NumHeavyAtoms: 22, MolWeight: 293.133, LogP: 4.161, TPSA: 30.71, HbondD: 0, HbondA: 2, NumRings: 4, NumAromaticRings: 3, NumAliphaticRings: 1, NumSaturatedRings: 1, InChIKey: 'ROKOFZNQCIIJMI-UHFFFAOYSA-N' } },
+    props: { NumAtoms: 38, NumHeavyAtoms: 22, MolWeight: 293.133, HeavyAtomMolWeight: 277.008, LogP: 4.161, TPSA: 30.71, HbondD: 0, HbondA: 2, NumRings: 4, NumAromaticRings: 3, NumAliphaticRings: 1, NumSaturatedRings: 1, InChIKey: 'ROKOFZNQCIIJMI-UHFFFAOYSA-N' } },
   { ccd: 'MSQ', pdb: '1DI9', entry: '1di9', name: 'A:MSQ_500', tag: 'Hit', formula: 'C17 H17 N3 O2 S',
     about: '',
     smiles: 'COc1cc2c(cc1OC)ncnc2Nc3cccc(c3)SC',
-    props: { NumAtoms: 40, NumHeavyAtoms: 23, MolWeight: 327.104, LogP: 4.113, TPSA: 56.27, HbondD: 1, HbondA: 6, NumRings: 3, NumAromaticRings: 3, NumAliphaticRings: 0, NumSaturatedRings: 0, InChIKey: 'FUSDVOSGGMBSMK-UHFFFAOYSA-N' } },
+    props: { NumAtoms: 40, NumHeavyAtoms: 23, MolWeight: 327.104, HeavyAtomMolWeight: 309.971, LogP: 4.113, TPSA: 56.27, HbondD: 1, HbondA: 6, NumRings: 3, NumAromaticRings: 3, NumAliphaticRings: 0, NumSaturatedRings: 0, InChIKey: 'FUSDVOSGGMBSMK-UHFFFAOYSA-N' } },
   { ccd: 'PQB', pdb: '2GFS', entry: '2gfs', name: 'A:PQB_361', tag: 'Lead', formula: 'C19 H18 F N3 O4',
     about: 'RO3201195',
     smiles: 'c1cc(cc(c1)OC[C@H](CO)O)C(=O)c2cnn(c2N)c3ccc(cc3)F',
-    props: { NumAtoms: 45, NumHeavyAtoms: 27, MolWeight: 371.128, LogP: 1.557, TPSA: 110.6, HbondD: 3, HbondA: 6, NumRings: 3, NumAromaticRings: 3, NumAliphaticRings: 0, NumSaturatedRings: 0, InChIKey: 'IJDQETGUEUJVTB-HNNXBMFYSA-N' } },
+    props: { NumAtoms: 45, NumHeavyAtoms: 27, MolWeight: 371.128, HeavyAtomMolWeight: 352.987, LogP: 1.557, TPSA: 110.6, HbondD: 3, HbondA: 6, NumRings: 3, NumAromaticRings: 3, NumAliphaticRings: 0, NumSaturatedRings: 0, InChIKey: 'IJDQETGUEUJVTB-HNNXBMFYSA-N' } },
   { ccd: 'BAX', pdb: '3HEG', entry: '3heg', name: 'A:BAX_1', tag: '', formula: 'C21 H16 Cl F3 N4 O3',
     about: 'sorafenib',
     smiles: 'CNC(=O)c1cc(ccn1)Oc2ccc(cc2)NC(=O)Nc3ccc(c(c3)C(F)(F)F)Cl',
-    props: { NumAtoms: 48, NumHeavyAtoms: 32, MolWeight: 464.086, LogP: 5.55, TPSA: 92.35, HbondD: 3, HbondA: 4, NumRings: 3, NumAromaticRings: 3, NumAliphaticRings: 0, NumSaturatedRings: 0, InChIKey: 'MLDQJTXFUGDVEO-UHFFFAOYSA-N' } },
+    props: { NumAtoms: 48, NumHeavyAtoms: 32, MolWeight: 464.086, HeavyAtomMolWeight: 447.961, LogP: 5.55, TPSA: 92.35, HbondD: 3, HbondA: 4, NumRings: 3, NumAromaticRings: 3, NumAliphaticRings: 0, NumSaturatedRings: 0, InChIKey: 'MLDQJTXFUGDVEO-UHFFFAOYSA-N' } },
 ]
 
 /**

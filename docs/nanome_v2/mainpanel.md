@@ -5,7 +5,7 @@ title: Main Panel
 
 # Main Panel
 
-The Main Panel is where you manage structures, ligands, workspaces, people and settings. Open it from the [Wrist Menu](/nanome_v2/wristmenu) or with the **Menu** button on your off-hand controller. Everyone in a session has their own.
+The Main Panel is where you manage structures, ligands, workspaces, people and settings. It opens from the [Wrist Menu](/nanome_v2/wristmenu) or with the **Menu** button on the off-hand controller. Everyone in a session has their own.
 
 The [Scenes Panel](/nanome_v2/scenespanel) sits on the left of the Main Panel and the [Tools Panel](/nanome_v2/toolspanel) on the right. The 2 buttons at the panel's top right change the panel itself.
 
@@ -30,8 +30,8 @@ Every structure in the workspace, and the components that control how it's drawn
 <ShotRow src="nanome-v2/v2-7/components-tab.webp" alt="The Components tab with 1KV2 and its components" stack>
 
 <UiList label="Components toolbar">
-<UiItem icon="caret-down-filled" name="Collapse All" area="2.7,9.5,8.0,7.5">Collapses every entry.</UiItem>
-<UiItem icon="eye" name="Hide All" area="11.5,9.5,8.0,7.5">Hides every entry.</UiItem>
+<UiItem icon="caret-down-filled" name="Collapse All" area="2.7,9.5,8.0,7.5">Collapses every entry. With every entry collapsed it reads Expand All and expands them.</UiItem>
+<UiItem icon="eye" name="Hide All" area="11.5,9.5,8.0,7.5">Hides everything in the list. While anything is hidden it reads Show All and shows it all again.</UiItem>
 <UiItem icon="sort-ascending-letters" name="Sort by Name" area="20.3,9.5,8.0,7.5">Sorts entries by name, Z to A first, then A to Z.</UiItem>
 <UiItem icon="copy-plus" name="Create Component" area="29.1,9.5,8.0,7.5">Makes a component of a type, an amino acid or a nucleotide, in all entries or the ones you pick.</UiItem>
 <UiItem name="Search" area="56.2,10.2,41.2,6.2">Filters entries and components by name.</UiItem>
@@ -130,9 +130,7 @@ In a headset, **Load Structure** in the Tools Panel loads a structure by PDB cod
 Both entries are crystal structures of E. coli dihydrofolate reductase from Sawaya and Kraut, Biochemistry 36:586-603 (1997), [doi:10.1021/bi962337c](https://doi.org/10.1021/bi962337c).
 
 - [1RX2](https://www.rcsb.org/structure/1RX2) holds folate and NADP+, at 1.8 Å. The substrate site and the cofactor site sit side by side: NADP+'s nicotinamide is 3.1 Å from folate, so Include ligands brings NADP+ in from 4 Å.
-- [1RX3](https://www.rcsb.org/structure/1RX3) holds methotrexate, an antifolate drug that binds where folate does, and its cofactor, at 2.2 Å. The two crystals have the same space group and nearly the same cell, so their Cα atoms agree to 0.23 Å RMSD as deposited and the entries overlay without an alignment.
-
-Waters in range come along even with Include ligands off, because it leaves out only ligands.
+- [1RX3](https://www.rcsb.org/structure/1RX3) holds methotrexate, an antifolate drug that binds where folate does, with the enzyme's NADP cofactor beside it, at 2.2 Å. The two crystals have the same space group and nearly the same cell, so their Cα atoms agree to 0.23 Å RMSD as deposited and the entries overlay without an alignment.
 
 </Accordion>
 
@@ -159,7 +157,7 @@ The copy of the panel below works like the app's: each switch shows 1KV2's bindi
 
 ### Interactions {#interactions}
 
-Each component's representations end with an <AppIcon name="mist" /> **Interactions** row and the number of interaction types switched on. **Show** lists each type with its own switch:
+Each component's representations end with an **Interactions** row and the number of interaction types switched on. **Show** lists each type with its own switch:
 
 <Btn>Hydrogen Bonds</Btn> <Btn>VDW Clashes</Btn> <Btn>π Stacking</Btn> <Btn>Salt Bridges</Btn> <Btn>Cation-π</Btn> <Btn>Halogen Bonds</Btn> <Btn>Hydrophobic</Btn> <Btn>Metal Coordination</Btn> <Btn>Halogen-π</Btn>
 
@@ -380,9 +378,9 @@ Each one comes from an X-ray structure of human p38α MAP kinase (UniProt Q16539
 | A:PQB_361 | [PQB](https://www.rcsb.org/ligand/PQB) | [2GFS](https://www.rcsb.org/structure/2GFS) | RO3201195 |
 | A:BAX_1 | [BAX](https://www.rcsb.org/ligand/BAX) | [3HEG](https://www.rcsb.org/structure/3HEG) | sorafenib |
 
-The RDKit calls are `Chem.AddHs` then `GetNumAtoms` for NumAtoms, `GetNumHeavyAtoms` for NumHeavyAtoms, `Descriptors.ExactMolWt` for MolWeight, `Crippen.MolLogP` for LogP, `Chem.MolToInchiKey` for InChIKey, and the matching `rdMolDescriptors` function for TPSA, HbondD, HbondA and the 4 ring counts.
+The RDKit calls are `Chem.AddHs` then `GetNumAtoms` for NumAtoms, `GetNumHeavyAtoms` for NumHeavyAtoms, `Descriptors.ExactMolWt` for MolWeight, `rdMolDescriptors.CalcExactMolWt` with `onlyHeavy=True` for HeavyAtomMolWeight, `Crippen.MolLogP` for LogP, `Chem.MolToInchiKey` for InChIKey, and the matching `rdMolDescriptors` function for TPSA, HbondD, HbondA and the 4 ring counts.
 
-The copy lists HeavyAtomMolWeight, NumRotatableBonds, Rating and SMILES in its picker but leaves their columns out. NumRotatableBonds depends on RDKit settings that haven't been matched to Nanome's, people enter Rating, and one molecule can be written as many valid SMILES.
+The copy lists NumRotatableBonds, Rating and SMILES in its picker but leaves their columns out. NumRotatableBonds depends on RDKit settings that haven't been matched to Nanome's, people enter Rating, and one molecule can be written as many valid SMILES.
 
 The tags are examples, and so are the 2 hidden entries, 1BL6 and 1BL7, that **Filter by currently visible** leaves out, and the 2 view presets, **MW < 500, LogP ≤ 5** and **TPSA over 80**.
 

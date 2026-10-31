@@ -5,9 +5,9 @@ title: Tools Panel
 
 # Tools Panel
 
-The Tools Panel is the column of buttons on the right side of the Main Panel. Choosing a tool changes what the controller does in 3D and, for every tool but the Pointer, opens that tool's panel. The tools, from top to bottom, and the three buttons below them:
+The Tools Panel is the column of buttons on the right side of the Main Panel. Choosing a tool changes what the controller does in 3D and, for every tool but the Pointer, opens that tool's panel. The tools, from top to bottom, and the 3 buttons below them:
 
-<ScreenMap src="nanome-v2/v2-7/desktop-layout.webp" alt="The Tools Panel, with the Pointer chosen" crop="40.0,9.5,22.3,60.8" label="Tools Panel buttons">
+<ScreenMap src="nanome-v2/v2-7/desktop-layout.webp" alt="The Tools Panel, with the Pointer chosen" crop="33.6,9.5,28.7,60.8" label="Tools Panel buttons">
 <MapCard icon="droplet" title="Pointer" href="#pointer" side="top" area="50.0,11.3,2.3,4.0">Hover over and select whole residues.</MapCard>
 <MapCard icon="lasso" title="Selection Tool" href="#selection-tool" side="left" area="50.0,15.5,2.3,4.0">Build a selection by clicking or dragging over atoms.</MapCard>
 <MapCard icon="ruler-2" title="Measurement Tool" href="#measurement-tool" side="left" area="50.0,19.6,2.3,4.0">Measure distances, angles and dihedrals.</MapCard>
@@ -24,13 +24,13 @@ The Tools Panel is the column of buttons on the right side of the Main Panel. Ch
 
 <Callout type="note" title="Viewer or Editor">
 
-Viewers can use <Btn icon="droplet">Pointer</Btn>, <Btn icon="lasso">Selection Tool</Btn> and <Btn icon="bug">Report a problem</Btn>, and post comments. Everything else needs Editor access: the other tools, the Selection Tool's **Create** button, the Comments tool's Text, Sound and Delete modes and hiding annotations, <Btn icon="download">Load Structure</Btn> and <Btn icon="sparkles">Open MARA</Btn>.
+Viewers can use <span style="white-space: nowrap"><Btn icon="droplet">Pointer</Btn>,</span> <Btn icon="lasso">Selection Tool</Btn> and <span style="white-space: nowrap"><Btn icon="bug">Report a problem</Btn>,</span> and post comments. Everything else needs Editor access: the other tools, the Selection Tool's **Create** button, the Comments tool's Text, Sound and Delete modes and hiding annotations, <Btn icon="download">Load Structure</Btn> and <span style="white-space: nowrap"><Btn icon="sparkles">Open MARA</Btn>.</span>
 
 </Callout>
 
 ## <AppIcon name="hand-click" /> The controller in each tool {#controller}
 
-Choosing a tool also changes what your dominant-hand controller shows: the tool's badge and, for tools with modes, the current mode above the thumbstick.
+Choosing a tool also changes what your dominant-hand controller shows: the tool's badge, the white tip sphere at its tip, and, for tools with 2 or more modes, the current mode above the thumbstick.
 
 <ToolsDemo />
 
@@ -40,7 +40,7 @@ The Pointer is the default tool.
 
 - It highlights whole residues as it passes over them.
 - A trigger pull adds the hovered residue to the selection, or removes it.
-- To clear the selection, aim your dominant hand at the sky (within 30° of straight up, with nothing under the pointer) and pull the trigger. A **Deselect all** hint shows while you're aimed there. This works with any tool.
+- A trigger pull with your dominant hand aimed at the sky (within 30° of straight up, with nothing under the pointer) clears the selection. A **Deselect all** hint shows while you're aimed there. This works with any tool.
 - Pointing at an interaction, a measurement or a text note shows a tooltip with its details, such as the interaction type, the distance and the groups involved.
 
 The off-hand controller always works as a pointer for hovering and selecting, whatever tool the main hand holds.
@@ -49,7 +49,7 @@ The off-hand controller always works as a pointer for hovering and selecting, wh
 
 <ShotRow src="nanome-v2/v2-7/tool-selection.webp" alt="The Selection Tool panel">
 
-The Selection Tool selects by clicking on atoms, or by dragging over them. The three buttons at the top set what a click picks:
+The Selection Tool selects by clicking on atoms, or by dragging over them. The 3 buttons at the top set what a click picks:
 
 <UiList label="Selection modes">
 <UiItem icon="atom" name="Atom" area="22.8,9.8,23.2,5.4">A click picks an atom.</UiItem>
@@ -93,9 +93,9 @@ Each measurement is listed in the panel with its type and value. Hovering a row 
 <ShotRow src="nanome-v2/v2-7/measurement-types.webp" alt="A distance from the 1KV2 ligand to Met109, and a dihedral and an angle on the ligand">
 
 <UiList label="Measurement types">
-<UiItem icon="ruler-measure" name="Distance" area="19.9,40.7,8.9,22.9">2 atoms, in Å.</UiItem>
-<UiItem icon="rotate-clockwise-2" name="Dihedral" area="60.4,32.1,16.1,12.9">4 atoms: the torsion around the axis from atom 2 to atom 3, in degrees.</UiItem>
-<UiItem icon="angle" name="Angle" area="67.7,45.7,8.2,17.9">3 atoms, measured at the second atom, in degrees.</UiItem>
+<UiItem icon="ruler-measure" name="Distance" area="19.9,40.7,8.9,22.9">The 2.90 Å hydrogen bond from the ligand's morpholine O to the backbone N of Met109 in the hinge.</UiItem>
+<UiItem icon="rotate-clockwise-2" name="Dihedral" area="60.4,32.1,16.1,12.9">4.4° between the urea's C=O and the bond from its N to the pyrazole: the urea is close to planar.</UiItem>
+<UiItem icon="angle" name="Angle" area="67.7,45.7,8.2,17.9">118.1° at the urea carbon, between its 2 N atoms.</UiItem>
 </UiList>
 
 <Callout type="note" title="Dihedrals show without a sign">
@@ -121,7 +121,7 @@ Since release 2.7, comments and annotations share one panel: the Comments tool. 
 <UiItem icon="volume" name="Sound" area="40.4,9.8,27.2,5.6">Editors only: records a sound note.</UiItem>
 <UiItem icon="trash" name="Delete" area="68.6,9.8,27.4,5.6">Editors only: removes notes.</UiItem>
 <UiItem icon="list" name="Filter" area="80.4,16.0,16.3,5.8">All, Workspace (comments on the workspace itself) or Scene (comments on the current scene).</UiItem>
-<UiItem name="Comment on this workspace" area="14.6,87.2,82.1,10.1">The box at the bottom: posts a new comment.</UiItem>
+<UiItem name="Comment on this workspace" area="14.6,87.2,82.1,10.1">The box at the bottom: posts a new comment on the workspace. With the Scene filter it reads Comment on this scene and posts on the current scene. Inside a thread it reads Reply in thread.</UiItem>
 </UiList>
 
 A count shows how many comments match the filter.
@@ -145,7 +145,7 @@ Each comment starts a thread.
 
 ### Text and sound notes {#text-and-sound-notes}
 
-- A text note has **Text**, **Size** and **Color**. Pointing at a text note in 3D shows a tooltip with its text.
+- A text note has **Text**, **Size** and **Color**. With the Pointer, pointing at a text note in 3D shows its first line as a tooltip.
 - A sound note has a **Title**, a <Btn icon="microphone">Record</Btn> button and a playback speed. Recordings can be up to 5 minutes long, and the recorder shows the elapsed and maximum time.
 
 ### Hiding annotations {#hiding-annotations}
@@ -159,7 +159,7 @@ Hidden annotations stay in the workspace and can be shown again.
 
 ## <AppIcon name="link" /> Interactions Tool {#interactions-tool}
 
-The Interactions Tool lists the interactions in the workspace, grouped by entry and interaction type. Each row names the two atoms, such as `A'MET'109:N—A'B96'391:O47`. For a ring or a charged group, the row names its residue. Hovering a row highlights the interaction in 3D.
+The Interactions Tool lists the interactions in the workspace, grouped by entry and interaction type. Each row names the 2 atoms, such as `A'MET'109:N—A'B96'391:O47`. For a ring or a charged group, the row names its residue. Hovering a row highlights the interaction in 3D.
 
 <ShotRow src="nanome-v2/v2-7/tool-interactions.webp" alt="The Interactions Tool listing hydrogen bonds in 1KV2">
 
@@ -195,7 +195,7 @@ The Builder Tool builds new ligands and edits existing ones. On opening, the pan
 <UiList label="Builder modes">
 <UiItem icon="plus" name="Build" area="4.2,9.0,23.2,6.4">Adds atoms and groups.</UiItem>
 <UiItem icon="replace" name="Replace" area="28.0,9.0,22.7,6.4">Swaps an atom or group for another. It can also fuse a ring fragment onto an existing ring.</UiItem>
-<UiItem icon="line" name="Bond" area="51.2,9.0,22.4,6.4">Clicking two atoms bonds them, and clicking a bond changes its order.</UiItem>
+<UiItem icon="line" name="Bond" area="51.2,9.0,22.4,6.4">Clicking 2 atoms bonds them, and clicking a bond changes its order.</UiItem>
 <UiItem icon="trash" name="Delete" area="74.2,9.0,23.2,6.4">Clicking atoms or bonds deletes them.</UiItem>
 </UiList>
 
@@ -215,7 +215,7 @@ While a minimization runs, <AppIcon name="x" /> **Cancel minimization** stops it
 
 </ShotRow>
 
-<ShotRow src="nanome-v2/v2-7/builder-categories.webp" alt="The six fragment categories in the Builder Tool">
+<ShotRow src="nanome-v2/v2-7/builder-categories.webp" alt="The 6 fragment categories in the Builder Tool">
 
 In **Build**, groups come from **Recent**, **Atoms**, **Rings**, **R Groups**, **Amino Acids**, **BioMolecules** and **Functional Groups**. The atoms are H, C, N, O, F, P, S and Cl.
 
@@ -298,7 +298,7 @@ Choosing a receptor entry shows what the minimization runs with: OpenMM, using t
 
 </Accordion>
 
-<Accordion title="Receptor flexibility" teaser="What moves in each of the three options.">
+<Accordion title="Receptor flexibility" teaser="What moves in each of the 3 options.">
 
 - **Rigid receptor**: only the ligand moves.
 - **Flexible pocket**: the ligand and every receptor atom in the pocket move. The rest of the protein stays fixed.
@@ -378,7 +378,7 @@ It works on the selected protein residues. Picking one in its list edits that re
 
 <UiList label="Residue Editor">
 <UiItem icon="info-circle" name="Rotamer library" area="92.2,3.4,5.0,4.0">Hovering shows the library in use.</UiItem>
-<UiItem name="Residues" area="14.6,13.3,82.6,21.9">The selected residues, grouped by entry. Pick one to edit it.</UiItem>
+<UiItem name="Residues" area="14.6,13.3,82.6,21.9">The selected residues, grouped by entry. Picking one edits it.</UiItem>
 <UiItem name="Mutate" area="74.0,37.1,21.6,6.0">Changes the residue to another amino acid.</UiItem>
 <UiItem name="Rotamers" area="14.6,44.9,82.6,36.0">One row per rotamer, with Orig. for the current side chain. The arrows sort by P, Clash or HB.</UiItem>
 <UiItem name="Score against" area="36.0,81.5,40.9,6.0">Whether the scoring counts Visible atoms only or All atoms.</UiItem>
@@ -426,7 +426,7 @@ The panel opens with a notice: MARA Tools in XR are in beta. Every tool is liste
 <UiList label="MARA Tools list">
 <UiItem icon="filter" name="Filter" area="15.2,9.2,31.2,6.7">All, Pinned, Disabled, or a single category.</UiItem>
 <UiItem name="Search" area="47.9,9.2,48.7,6.7">Searches the tool list.</UiItem>
-<UiItem name="Tool" area="16.6,19.1,75.4,15.9">Its name and the start of its description. Pick one to open it.</UiItem>
+<UiItem name="Tool" area="16.6,19.1,75.4,15.9">Its name and the start of its description. Picking one opens it.</UiItem>
 </UiList>
 
 </ShotRow>
