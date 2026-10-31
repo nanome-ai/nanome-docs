@@ -31,7 +31,7 @@ Nanome opens on a login window.
 <UiItem name="Create Account">Opens a sign-up form: email, username, password, the kind of organization (Classroom, Academic Lab, National Research Lab, Commercial Company or Other), an optional company or institution, and a newsletter switch.</UiItem>
 </UiList>
 
-The window also shows the app version. There's no Code tab: signing in with a code from another device is on Quest only.
+The window also shows the app version. There's no Code tab: signing in with a code from another device works in Nanome XR on the other headsets.
 
 ## <AppIcon name="hand-grab" /> Gestures {#gestures}
 
@@ -62,12 +62,16 @@ The window has three columns: the sidebar on the left, the open tab in the middl
 
 The structures in the workspace, each with its components. The **Position Molecules** switch at the top lets structures be moved one by one.
 
+Each structure's row has these buttons:
+
 <UiList label="Entry row">
 <UiItem name="Eye">Hides or shows the structure. A structure with no components shows a plus instead, which adds the default components.</UiItem>
-<UiItem name="Previous, Play, Next">For structures with several models or frames, with a frame count. Playback runs at ×1, ×2, ×5, ×10 or ×20, and only you and the people following you see it.</UiItem>
+<UiItem name="Previous, Play, Next">For structures with several models or frames, with a frame count. Long-pressing Play picks a speed: ×1, ×2, ×5, ×10 or ×20. Only you and the people following you see the playback.</UiItem>
 <UiItem name="Zoom">Brings the structure into view.</UiItem>
 <UiItem name="More">Rename, Duplicate, Delete (after a confirmation), Copy Entry Position and Copy Components. Under Structure Actions: Reset Components, Reset Position and Remove Interaction Components.</UiItem>
 </UiList>
+
+Each component sits under its structure, with 2 buttons:
 
 <UiList label="Component row">
 <UiItem name="Eye">Hides or shows the component.</UiItem>
