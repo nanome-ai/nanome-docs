@@ -16,7 +16,7 @@ Your invoices are under **Billing** at [home.nanome.ai](https://home.nanome.ai).
 
    <vimg src="home-nanome/dashboard-menu.webp" alt="Billing in the dashboard's left menu" />
 
-3. Under **Invoices**, click the cloud button to view your invoice.
+3. Under **Invoices**, choose the cloud button in the **Download** column to download the invoice.
 
    <vimg src="nanome-page/Step3.png" alt="The cloud button beside an invoice" />
 
