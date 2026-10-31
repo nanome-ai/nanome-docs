@@ -40,6 +40,7 @@ import Btn from './components/Btn.vue'
 import ShotRow from './components/ShotRow.vue'
 import ScreenMap from './components/ScreenMap.vue'
 import MapCard from './components/MapCard.vue'
+import SpotlightDemo from './components/demos/SpotlightDemo.vue'
 import RepresentationDemo from './components/demos/RepresentationDemo.vue'
 import ColorSchemeDemo from './components/demos/ColorSchemeDemo.vue'
 import ThemeDemo from './components/demos/ThemeDemo.vue'
@@ -109,6 +110,7 @@ export default {
     app.component('ShotRow', ShotRow)
     app.component('ScreenMap', ScreenMap)
     app.component('MapCard', MapCard)
+    app.component('SpotlightDemo', SpotlightDemo)
     app.component('RepresentationDemo', RepresentationDemo)
     app.component('ColorSchemeDemo', ColorSchemeDemo)
     app.component('ThemeDemo', ThemeDemo)
