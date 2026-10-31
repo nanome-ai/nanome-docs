@@ -6,9 +6,9 @@ title: Technical Documentation
 
 <IconGrid label="Technical topics">
 <IconCard icon="topology-star-3" title="Architecture and deployment" href="#architecture">How an enterprise deployment is laid out.</IconCard>
-<IconCard icon="tool" title="Tool creation" href="#tool-creation">Build your own tools for MARA.</IconCard>
-<IconCard icon="key" title="API keys" href="#api-keys">Use MARA and Nanome from other applications.</IconCard>
-<IconCard icon="lock" title="Authentication" href="#authentication">Single sign-on with SAML, and organization-wide keys.</IconCard>
+<IconCard icon="tool" title="Tool creation" href="#tool-creation">Making your own tools for MARA.</IconCard>
+<IconCard icon="key" title="API keys" href="#api-keys">Using MARA and Nanome from other applications.</IconCard>
+<IconCard icon="lock" title="Authentication" href="#authentication">Single sign-on with SAML, and secrets shared across an organization.</IconCard>
 </IconGrid>
 
 ## <AppIcon name="topology-star-3" /> Architecture and deployment {#architecture}

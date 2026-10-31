@@ -13,20 +13,20 @@ title: Tools
 <MapCard icon="route" title="Workflows" href="#workflows" side="bottom" area="0,45.2,12.8,7.9">Sequences of tools, saved as steps for MARA to follow.</MapCard>
 <MapCard icon="file-info" title="Knowledge" href="#knowledge" side="bottom" area="0,53.7,12.8,8.1">Background information MARA uses in its answers.</MapCard>
 <MapCard icon="search" title="Search" side="top" area="75.2,17.3,2.1,5.8">Searches the tools by name and description.</MapCard>
-<MapCard icon="sparkles" title="What's New?" side="top" area="77.7,16.9,7.7,6.4">The tools added or updated most recently, with their authors and dates.</MapCard>
+<MapCard icon="sparkles" title="What's New?" side="top" area="77.7,16.9,7.7,6.4">The newest tools, by the date they were added, with who made them. A number on the button counts the ones added since you last opened it.</MapCard>
 <MapCard icon="player-play" title="Tutorial" side="top" area="85.7,16.9,6.6,6.4">Plays the tool-creation part of the Welcome to MARA video.</MapCard>
 <MapCard icon="plus" title="Create" href="#creating-a-tool" side="top" area="92.5,16.9,6.5,6.4">New Tool, Import from GitHub or Request a Tool.</MapCard>
 <MapCard icon="key" title="All / Secrets" side="bottom" area="14.1,27.4,9.2,8.4">Every tool, or the secrets (such as API keys) that tools use.</MapCard>
-<MapCard icon="filter" title="Filters" side="bottom" area="14.2,38.9,25.8,7.4">A category, then All, Custom or Nanome tools. In an organization, Custom also splits into Org and Me.</MapCard>
+<MapCard icon="filter" title="Filters" side="bottom" area="14.2,38.9,25.8,7.4">A category, then All, Custom or Nanome tools. Nanome's own team sees Public in place of Nanome, as in this screenshot. In an organization, Custom also splits into Org and Me.</MapCard>
 <MapCard icon="eye-off" title="Disabled" side="bottom" area="90.7,38.9,8.4,7.0">Shows the tools that are turned off or missing a secret instead.</MapCard>
 <MapCard icon="list" title="A tool" side="bottom" area="14.3,49.3,83.7,23.3">Its name, tags and description. Clicking it opens the tool's page.</MapCard>
-<MapCard icon="world" title="Tags" href="#tool-tags" side="bottom" area="46.6,54.3,10.5,5.2">The tool's type, such as Python, and Premium or integration where they apply.</MapCard>
+<MapCard icon="world" title="Tags" href="#tool-tags" side="bottom" area="46.6,54.3,10.5,5.2">The tool's type, such as Python, and Premium or integration where they apply. Nanome's own team also sees Public, as here.</MapCard>
 <MapCard icon="dots" title="Tool menu" href="#tool-menu" side="bottom" area="94.6,58.8,1.8,4.8">Who the tool is on for, Edit and Delete.</MapCard>
 </ScreenMap>
 
 ## <AppIcon name="tool" /> Tools {#tools}
 
-The list shows every tool MARA can run, including your organization's custom tools and public ones. Clicking one opens its page, with its description, its arguments (**Args**), its script or endpoint, and a **Run** section that tests the tool on a file you pick.
+The list shows every tool MARA can run, including your organization's custom tools and public ones. Clicking one opens its page, with its description, its arguments (**Args**), its script or endpoint, and a **Run** section that runs the tool with values you enter for its arguments.
 
 ### Tool tags {#tool-tags}
 
@@ -96,7 +96,7 @@ An integration connects MARA to another platform, such as CDD Vault, KNIME Serve
 
 ## <AppIcon name="route" /> Workflows {#workflows}
 
-A workflow is a sequence of tools saved as steps, which MARA follows to plan more accurately. To run one, choose <Btn icon="route">Run workflow</Btn> in the [message box](/mara/conversations#message-box).
+A workflow is a sequence of tools saved as steps, which MARA follows to plan more accurately. <Btn icon="route">Run workflow</Btn> in the [message box](/mara/conversations#message-box) runs one.
 
 <ShotRow src="mara/workflows.webp" alt="The Workflows page">
 
@@ -121,7 +121,7 @@ A workflow is a sequence of tools saved as steps, which MARA follows to plan mor
 
 ## <AppIcon name="file-info" /> Knowledge {#knowledge}
 
-<ShotRow src="mara/knowledge.webp" alt="The Base knowledge tab">
+<ShotRow src="mara/knowledge.webp" alt="The Base knowledge tab" crop="0,0,100,83">
 
 <UiList label="Knowledge tabs">
 <UiItem name="Org knowledge" area="1.9,20.7,9.8,10.6">Your organization's notes for MARA, written in Markdown. <strong>Edit</strong> changes them. Headers that group related notes work best.</UiItem>

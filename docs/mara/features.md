@@ -9,7 +9,7 @@ You ask MARA in plain language, in a [chat](/mara/conversations#chat) or a works
 <IconGrid label="MARA features" :cols="3">
 <IconCard icon="messages" title="Tasks" href="#tasks">What you can ask for, by kind of task.</IconCard>
 <IconCard icon="table" title="Tables" href="#tables">Query, filter, plot and export CSV data.</IconCard>
-<IconCard icon="atom" title="Structures" href="#structures">See results in 3D and send them to a workspace.</IconCard>
+<IconCard icon="atom" title="Structures" href="#structures">Results in 3D, and sending them to a workspace.</IconCard>
 </IconGrid>
 
 ## <AppIcon name="messages" /> Tasks {#tasks}
@@ -67,7 +67,7 @@ With a CSV file in the chat, you can ask MARA to:
 - Summarize the file's contents, for a first look at the data.
 - Write the results to a new CSV file, or overwrite one, to export them.
 
-Tables for the chat live in the **Tables** section of the [Files panel](/mara/conversations#files-panel). Drop a CSV or SDF file there, choose Open as Data Table in a file's menu, or ask MARA to make a table from a file in the chat.
+Tables for the chat live in the **Tables** section of the [Files panel](/mara/conversations#files-panel). A table comes from a CSV or SDF file dropped there, from Open as Data Table in a file's menu, or from MARA when asked in the chat.
 
 ## <AppIcon name="atom" /> Structures {#structures}
 

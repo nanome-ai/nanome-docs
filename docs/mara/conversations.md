@@ -18,20 +18,17 @@ Chats started in a workspace's MARA tab stay with that workspace, so this page d
 
 The Chat tab lists the chats started on this page, newest first: pinned chats at the top, then Today, Past week, Past month, the earlier months of this year, and older years. With no chat open, the page shows 3 starting points, a few prompts to try, and the message box.
 
-<ShotRow src="mara/conversations.webp" alt="The Conversations page with the Chat tab open and no chat selected">
+<ShotRow src="mara/conversations.webp" alt="The Conversations page with the Chat tab open and no chat selected" stack>
 
-<UiList label="Chat list">
+<UiList label="Chat page">
 <UiItem icon="plus" name="New Chat" area="0.9,15.6,15.0,4.5">Starts a new chat.</UiItem>
-<UiItem icon="search" name="Search (⌘F)" area="0.9,20.7,15.0,4.6">Searches your chat titles.</UiItem>
-</UiList>
-
-Hovering a chat in the list shows <AppIcon name="pin" /> **Pin**, which moves it to Pinned at the top, and <AppIcon name="trash" /> **Delete**, which asks for a second click.
-
-<UiList label="Starting points">
+<UiItem icon="search" name="Search (⌘F)" area="0.9,20.7,15.0,4.6">Searches your chat titles. On Windows and Linux the shortcut is Ctrl+F.</UiItem>
 <UiItem icon="play" name="Learn the Basics" area="39.1,40.6,11.0,15.4">Plays a walkthrough video of Nanome and MARA.</UiItem>
 <UiItem icon="message-2-share" name="Open Examples" href="#examples" area="50.7,40.6,10.9,15.4">Four example chats, one for each field.</UiItem>
 <UiItem icon="upload" name="Click to upload files" area="62.5,40.6,15.8,15.4">Opens a file picker, then asks what to do with the files, such as attach them to the chat or add them to a workspace. Files dropped anywhere on the page upload too.</UiItem>
 </UiList>
+
+Hovering a chat in the list shows <AppIcon name="pin" /> **Pin**, which moves it to Pinned at the top, and <AppIcon name="trash" /> **Delete**, which asks for a second click.
 
 </ShotRow>
 
@@ -55,7 +52,7 @@ The same message box sits in each workspace's [MARA tab](/nanome_web/workspace#m
 
 **Open Examples** shows one card for each field, with the tasks its example covers. **Open** on a card opens that example chat.
 
-<ShotRow src="mara/open-examples.webp" alt="The 4 example chat cards">
+<ShotRow src="mara/open-examples.webp" alt="The 4 example chat cards" crop="0.9,2.7,98.3,95.3">
 
 <UiList label="Example chats">
 <UiItem icon="hexagons" name="Cheminformatics" area="2.5,7.3,22.8,86">Calculate molecular properties, analyze SAR data, visualize data.</UiItem>
@@ -70,21 +67,16 @@ An example chat is marked **Example** and has no message box. **Continue this ch
 
 ## <AppIcon name="messages" /> In a chat {#in-a-chat}
 
-<ShotRow src="mara/example-chat.webp" alt="The Cheminformatics - PCA example chat, with a tool step, file links and a plot">
+<ShotRow src="mara/example-chat.webp" alt="The Cheminformatics - PCA example chat, with a tool step, file links and a plot" stack>
 
-<UiList label="Chat header">
-<UiItem icon="files" name="Files" href="#files-panel" area="91.6,1.4,7.8,6.3">The chat's files, tables and context.</UiItem>
-</UiList>
-
-In your own chats, the header also has <AppIcon name="pencil" /> **Edit title** next to the title, and <AppIcon name="share-2" /> [Share](#sharing).
+In your own chats, the header has <AppIcon name="pencil" /> **Edit title** next to the title, and <AppIcon name="share-2" /> [Share](#sharing).
 
 Above each answer, MARA names the tool or workflow it ran. The <AppIcon name="chevron-right" /> chevron beside it expands the step to show the tool's inputs and output. Files that MARA makes appear as links in the answer, and images and structures show under it.
 
-<UiList label="Under an answer">
+<UiList label="In a chat">
+<UiItem icon="files" name="Files" href="#files-panel" area="91.6,1.4,7.8,6.3">The chat's files, tables and context.</UiItem>
 <UiItem icon="eye-off" name="hide 1 file" area="18.7,84.1,9,5.5">Hides the file previews under the answer.</UiItem>
 </UiList>
-
-<AppIcon name="cloud-download" /> **Download**, next to a file's name, downloads that file.
 
 </ShotRow>
 
@@ -95,9 +87,12 @@ A structure file opens in a small 3D viewer inside the chat.
 <ShotRow src="mara/chat-3d-viewer.webp" alt="Docking poses in the chat's 3D viewer" crop="1.9,2.1,94.7,94.8">
 
 <UiList label="3D viewer">
-<UiItem name="First Model / Previous Model / Next Model" area="3.8,4,45.1,9.4">Steps through the models in a file with several, such as docking poses. The bar shows which model is on screen.</UiItem>
+<UiItem name="First Model" area="4.4,4.6,8.0,7.9">Goes to the first model in a file with several, such as docking poses.</UiItem>
+<UiItem name="Previous Model" area="12.4,4.6,8.0,7.9">Steps back one model.</UiItem>
+<UiItem name="Next Model" area="20.4,4.6,8.0,7.9">Steps forward one model. The bar shows which model is on screen, such as Model 1 / 9.</UiItem>
 <UiItem name="Reset Zoom" area="85.5,4.1,9.1,8.9">Fits the structure back into the view.</UiItem>
 <UiItem name="Screenshot / State Snapshot" area="85.5,13.1,9.1,9">Saves an image or the viewer's state.</UiItem>
+<UiItem icon="cloud-download" name="Download" area="90.4,91.0,4.6,4.2">Beside the file's name under the viewer. Downloads the structure file.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -117,6 +112,8 @@ A structure file opens in a small 3D viewer inside the chat.
 
 </ShotRow>
 
+Someone else who opens a shared chat sees it marked **View Only**, with the owner's name under the title and no message box.
+
 Chats in a workspace's MARA tab have no Share button.
 
 ### <AppIcon name="files" /> Files panel {#files-panel}
@@ -131,7 +128,7 @@ Chats in a workspace's MARA tab have no Share button.
 <UiItem icon="file-arrow-right" name="Add to Workspace" area="3.1,55.8,46.5,4.6">Loads the ticked files into a workspace.</UiItem>
 <UiItem icon="cloud-download" name="Download" area="50.7,55.9,9.4,4.4">Downloads the ticked files.</UiItem>
 <UiItem icon="trash" name="Delete" area="61,55.8,9.7,4.6">Deletes the ticked files.</UiItem>
-<UiItem icon="table" name="Tables" href="/mara/features#tables" area="3.1,74.8,93.3,15.8">Data tables for the chat. Drop CSV or SDF files here, or ask MARA to make a table from a file.</UiItem>
+<UiItem icon="table" name="Tables" href="/mara/features#tables" area="3.1,74.8,93.3,15.8">Data tables for the chat. CSV or SDF files dropped here become tables, and MARA can make one from a file.</UiItem>
 <UiItem name="Context" area="3.3,93,93.2,5.3">Values from tool results and the conversation that MARA keeps for this chat. In your own chats you can edit it.</UiItem>
 </UiList>
 
@@ -185,11 +182,11 @@ In the MARA tab, clicking a file link opens a dialog with 4 choices. On this pag
 
 The Threads tab lists the comment threads you watch, from all your workspaces. Each row shows who started the thread, the workspace, the first comment and the number of replies. Clicking a row opens the thread on the right. A thread's menu has **Unwatch thread**, or **Watch thread** on one you don't watch.
 
-<ShotRow src="mara/threads.webp" alt="The Threads tab with a thread open">
+<ShotRow src="mara/threads.webp" alt="The Threads tab with a thread open" stack>
 
 <UiList label="Threads">
 <UiItem icon="mail" name="Unread" area="1.1,8.6,8.7,5.1">Shows only threads with comments you haven't read.</UiItem>
-<UiItem icon="search" name="Search (⌘F)" area="10,8.6,14,5.4">Searches the threads.</UiItem>
+<UiItem icon="search" name="Search (⌘F)" area="10,8.6,14,5.4">Searches the threads. On Windows and Linux the shortcut is Ctrl+F.</UiItem>
 <UiItem name="Open Workspace" area="87.7,8.5,11.7,5.5">Opens the thread's workspace.</UiItem>
 <UiItem name="Reply in thread" href="/nanome_web/comments" area="33.8,91,58.1,8">Adds a reply, the same as in the workspace's Comments tab.</UiItem>
 </UiList>

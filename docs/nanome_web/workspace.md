@@ -10,17 +10,17 @@ An open workspace has the workspace panel on the right, the 3D view in the middl
 The panel's 6 tabs are the workspace's main menus:
 
 <ScreenMap src="nanome-web/workspace-overview.webp" alt="A workspace in Nanome Web" label="Workspace View screen">
+<MapCard icon="cube-3d-sphere" title="Workspace tabs" href="#workspace-tabs" side="top" area="0.4,7.6,9.0,5.3">One tab for each open workspace, under the top bar.</MapCard>
+<MapCard icon="chevrons-right" title="Workspace panel" href="#workspace-panel" side="top" area="66.2,12.9,33.8,87.1">The workspace's name, project and description, above the 6 tabs.</MapCard>
 <MapCard icon="stack-2" title="Entries" href="/nanome_web/entries" side="top" area="66.0,29.9,5.6,5.3">The structures and how each is drawn.</MapCard>
 <MapCard icon="hexagon" title="Ligands" href="/nanome_web/ligands" side="top" area="71.7,29.9,5.4,5.3">Every ligand in a table, with properties.</MapCard>
 <MapCard icon="message" title="Comments" href="/nanome_web/comments" side="top" area="77.4,29.9,6.6,5.3">Threaded comments.</MapCard>
 <MapCard icon="sparkles" title="MARA" href="#mara-tab" side="top" area="84.4,29.9,4.7,5.3">A MARA chat inside the workspace.</MapCard>
 <MapCard icon="upload" title="Import" href="/nanome_web/loading" side="top" area="89.4,29.9,4.8,5.3">Loading structures.</MapCard>
 <MapCard icon="users" title="Users" href="/nanome_web/collaboration" side="top" area="94.5,29.9,4.4,5.3">Sharing and sending to a headset.</MapCard>
-<MapCard icon="cube-3d-sphere" title="Workspace tabs" href="#workspace-tabs" side="left" area="0.4,7.6,9.0,5.3">One tab for each open workspace, under the top bar.</MapCard>
-<MapCard icon="box" title="Scenes rail" href="#scenes" side="left" area="0.0,12.9,3.1,87.1">The scenes saved in this workspace, on the left.</MapCard>
-<MapCard icon="chevrons-right" title="Workspace panel" href="#workspace-panel" side="right" area="66.2,12.9,33.8,87.1">The workspace's name, project and description, above the 6 tabs.</MapCard>
-<MapCard icon="lasso" title="Tool rail" href="#tool-rail" side="right" area="62.9,47.0,3.0,19.2">Default, Selection, Measurement and Add a comment, on the view's right edge.</MapCard>
+<MapCard icon="box" title="Scenes rail" href="#scenes" side="bottom" area="0.0,12.9,3.1,87.1">The scenes saved in this workspace, on the left.</MapCard>
 <MapCard icon="mouse" title="Moving around" href="#moving-around" side="bottom" area="3.2,12.9,62.9,87.1">Rotate, pan and zoom with the mouse or touch.</MapCard>
+<MapCard icon="lasso" title="Tool rail" href="#tool-rail" side="bottom" area="62.9,47.0,3.0,19.2">Default, Selection, Measurement and Add a comment, on the view's right edge.</MapCard>
 <MapCard icon="player-play" title="Bottom bar" href="#bottom-bar" side="bottom" area="3.5,93.7,39.6,5.7">Point of view, scene stepping and playback, Capture image and viewer settings.</MapCard>
 <MapCard icon="mist" title="Sequence viewer" href="#sequence-viewer" side="bottom" area="62.9,93.8,3.0,5.5">The sequences of every entry, for hovering and selecting residues.</MapCard>
 </ScreenMap>
@@ -77,7 +77,7 @@ A click only counts when the mouse moves 4 pixels or less between pressing and r
 
 ### <AppIcon name="droplet" /> Default {#default}
 
-<ShotRow src="nanome-web/hover-highlight.webp" alt="A residue on the ribbon highlighted and labeled on hover">
+<ShotRow src="nanome-web/hover-highlight.webp" alt="A residue on the ribbon highlighted and labeled on hover" stack>
 
 Hovering highlights the whole residue under the cursor, whether the cursor is on an atom, a bond or the ribbon. Clicking adds that residue to the selection, or removes it when it's already selected. Clicking empty space clears the selection, and double-clicking zooms to a residue or an entry.
 
@@ -197,8 +197,6 @@ While you're [following someone](/nanome_web/collaboration#following-from-the-we
 - Double-clicking frames what's highlighted under the cursor: the residue with the Default tool, or the atom, residue or chain with the Selection tool. Double-clicking inside an entry's bounding box, but off its atoms and ribbon, frames the whole entry, as long as the box covers less than 75% of the view.
 
 </Accordion>
-
-When the ping to Nanome's server reaches 160 ms, a yellow warning icon <AppIcon name="alert-triangle" /> appears at the top left of the viewer. From 220 ms it turns into a red <AppIcon name="wifi-off" />. Hovering it shows the ping time.
 
 ## <AppIcon name="player-play" /> Bottom bar {#bottom-bar}
 
@@ -322,3 +320,7 @@ A scene can hold a recorded presentation, made in Nanome XR with [Add Recording]
 <UiItem icon="cube-3d-sphere" name="Workspace tab">Each open workspace gets a tab under the top bar.</UiItem>
 <UiItem icon="plus" name="New tab">Opens another workspace tab.</UiItem>
 </UiList>
+
+## <AppIcon name="wifi-off" /> Connection warning {#connection-warning}
+
+When the ping to Nanome's server reaches 160 ms, a yellow warning icon <AppIcon name="alert-triangle" /> appears at the top left of the viewer. From 220 ms it turns into a red <AppIcon name="wifi-off" />. Hovering it shows the ping time.
