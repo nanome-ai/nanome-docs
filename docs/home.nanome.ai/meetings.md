@@ -2,34 +2,38 @@
 title: Create Meetings
 ---
 
-# How to create a meeting link
+# Create a meeting link
 
-## Step 1: Log into your account at https://home.nanome.ai
+At home.nanome.ai you can schedule a meeting for later, or make a quick link for a session now.
 
-<vimg src="nanome-page/account-login-page.png" />
+<Steps>
 
-## Step 2: On the dashboard, navigate to the left-hand side and click on “Meetings”
+1. Log in to your account at [home.nanome.ai](https://home.nanome.ai).
 
-<vimg src="nanome-page/dashboard-go-to-meetings.png" />
+   <vimg src="nanome-page/account-login-page.png" alt="The home.nanome.ai login page" />
 
-## Step 3: From here, you can schedule a meeting for later ("Meetings") or you can set up a meeting link ("Quick Link").
+2. On the dashboard, choose **Meetings** on the left.
 
-<vimg src="nanome-page/meetings-section.png" />
+   <vimg src="nanome-page/dashboard-go-to-meetings.png" alt="Meetings in the dashboard's left menu" />
 
-In the appropriate section, click "Create One" to create a meeting.
+3. Choose **Create One** in the section you need: **Meetings** to schedule a meeting for later, or **Quick Links** to set up a meeting link.
 
-Alternatively, you can click on "Schedule a Meeting" in the upper right corner of the dashboard to create a meeting.
+   <vimg src="nanome-page/meetings-section.png" alt="The Meetings and Quick Links sections" />
 
-<vimg src="nanome-page/dashboard-schedule-meetings-button.png" />
+</Steps>
 
-### Scheduled Meetings
+You can also start a meeting with **Schedule meeting** at the top right of the dashboard.
 
-<vimg src="nanome-page/create-scheduled-meeting.png" />
+<vimg src="nanome-page/dashboard-schedule-meetings-button.png" alt="The Schedule meeting button on the dashboard" />
 
-You can schedule a meeting with a specific date and time. Include details such as the room name (and optional password), event title, and description.
+## <AppIcon name="calendar" /> Scheduled meetings {#scheduled-meetings}
 
-### Quick Link
+<vimg src="nanome-page/create-scheduled-meeting.png" alt="The form for a scheduled meeting" />
 
-<vimg src="nanome-page/create-quick-link.png" />
+A scheduled meeting has a date and time. Add details such as the room name (and an optional password), the event title and a description.
 
-This will generate a link which you can send to others to join your Nanome session now (or for as long as the link is active).
+## <AppIcon name="link" /> Quick Links {#quick-link}
+
+<vimg src="nanome-page/create-quick-link.png" alt="The form for a quick link" />
+
+A quick link is a link you send to others so they can join your Nanome session now, or for as long as the link is active.

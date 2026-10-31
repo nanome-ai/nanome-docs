@@ -22,7 +22,25 @@
   color: var(--n-text);
   font-weight: 600;
   letter-spacing: var(--n-tracking-tight);
-  scroll-margin-top: calc(var(--n-nav-height) + 24px);
+  /* On top of the nav bar's scroll padding (base.css): the breadcrumb strip,
+     then a 40px gap, the same place VitePress scrolls a clicked anchor link to
+     (`scrollOffset` in config.mjs). */
+  scroll-margin-top: calc(var(--n-pagebar-space) + 40px);
+}
+
+/* A heading that runs to two lines splits evenly instead of leaving one word
+   on the second. */
+.vp-doc :is(h1, h2, h3) {
+  text-wrap: balance;
+}
+
+/* Keyboard focus on the page's links and controls clears the breadcrumb strip
+   too, and so does a code block or table that scrolls sideways, which the
+   keyboard can reach. Headings set their own, larger margin above. */
+.n-column
+  :is(a[href], button, input, select, textarea, summary, video[controls],
+    iframe, pre, table, [tabindex]:not([tabindex='-1'])) {
+  scroll-margin-top: var(--n-pagebar-space);
 }
 
 .vp-doc h1 {
@@ -38,6 +56,9 @@
   border-top: 1px solid var(--n-border-soft);
   font-size: var(--n-text-xl);
   line-height: 1.35;
+  /* The 28px padding is most of the gap, so the rule lands 12px under the
+     strip and the text where an h3's would. */
+  scroll-margin-top: calc(var(--n-pagebar-space) + 12px);
 }
 
 .vp-doc h3 {
@@ -89,6 +110,25 @@
 @media (hover: none) {
   .vp-doc .header-anchor {
     display: none;
+  }
+}
+
+/* VitePress drops the h2 anchor 24px to clear its own padding, which the
+   inherited padding above already does. */
+.vp-doc h2 .header-anchor {
+  top: 0;
+}
+
+/* A phone-width window has no gutter to spare, so the # sits at the
+   heading's right edge, inside the column, in room the heading keeps free. */
+@media (max-width: 640px) and (hover: hover) {
+  .vp-doc :is(h1, h2, h3, h4):has(> .header-anchor) {
+    padding-right: 0.8em;
+  }
+
+  .vp-doc .header-anchor {
+    left: auto;
+    right: 0;
   }
 }
 
@@ -212,6 +252,13 @@
   line-height: 1.65;
 }
 
+/* Four GitHub theme colours fall under 4.5:1 on the code background; swap in
+   darker (light) or lighter (dark) shades of the same hue. */
+.vp-doc span[style*="--shiki-light:#D73A49"] { --shiki-light: #B31D28 !important; }
+.vp-doc span[style*="--shiki-light:#6A737D"] { --shiki-light: #57606A !important; }
+.vp-doc span[style*="--shiki-light:#E36209"] { --shiki-light: #B35000 !important; }
+.vp-doc span[style*="--shiki-dark:#6A737D"] { --shiki-dark: #8B949E !important; }
+
 .vp-doc div[class*='language-'] .lang {
   position: absolute;
   top: 8px;
@@ -261,6 +308,14 @@
   }
 }
 
+/* Side-by-side screenshots get equal columns, so each image's size doesn't
+   depend on how long its header is. */
+@media (min-width: 768px) {
+  .vp-doc table:has(.vimg) {
+    table-layout: fixed;
+  }
+}
+
 /* Dense comparison tables: a size down, and the row label column stays put. */
 .vp-doc table.matrix,
 .vp-doc table.comfort {
@@ -276,7 +331,7 @@
 
 .vp-doc table.legend {
   width: auto;
-  min-width: 320px;
+  min-width: min(320px, 100%);
 }
 
 .vp-doc th,
@@ -348,15 +403,25 @@
   padding: 0.55em 1.15em;
   border-radius: var(--n-radius-pill);
   background: var(--n-accent);
-  color: #fff !important;
+  color: var(--n-text-inverse) !important;
   font-size: var(--n-text-base);
   font-weight: 600;
   text-decoration: none !important;
   transition: background var(--n-transition);
 }
 
+/* Link buttons side by side, or wrapped onto a second line, keep a gap. */
+.vp-doc a.btn {
+  margin: 0 8px 8px 0;
+}
+
 .vp-doc .btn:hover {
   background: var(--n-accent-hover);
+}
+
+/* Buttons in a row keep apart, on one line or wrapped onto 2. */
+.vp-doc p:has(> .btn + .btn) > .btn {
+  margin: 0.25em 0.5em 0.25em 0;
 }
 
 .vp-doc .btn:disabled,
@@ -392,18 +457,29 @@
 
 .vimg {
   position: relative;
-  display: inline-block;
 }
 
-.vimg__play-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  font-size: 7rem;
-  text-shadow: 0 0 10px #000;
-  pointer-events: none;
+/* A screenshot row, screen map or option panel at the top level of a page
+   also takes the space beside the text column on a wide screen, up to
+   1040px, so the image and its legend both have room. */
+@media (min-width: 1280px) {
+  .n-layout.has-sidebar.has-aside .vp-doc > div > div > .n-shotrow-hold,
+  .n-layout.has-sidebar.has-aside .vp-doc > div > div > .n-screenmap-hold,
+  .n-layout.has-sidebar.has-aside .vp-doc > div > div > .n-demo {
+    --n-room: min(100vw - var(--n-sidebar-width) - var(--n-outline-width) - 2 * var(--n-gutter) - 16px, 1040px);
+    margin-inline: min(0px, (100% - var(--n-room)) / 2);
+  }
+
+  /* A wide screenshot sits under its legend, so the legend keeps to the text
+     column like the paragraphs around it, and the image is centered under it. */
+  .n-layout.has-sidebar.has-aside:not(.n-wide) .vp-doc > div > div > .n-shotrow-hold .n-shotrow.is-wide:not(.is-focus) .n-shotrow__legend {
+    max-width: calc(var(--n-content-max) - 2 * var(--n-gutter));
+    margin-inline: auto;
+  }
+
+  .n-layout.has-sidebar.has-aside:not(.n-wide) .vp-doc > div > div > .n-shotrow-hold .n-shotrow.is-wide:not(.is-focus) .hotshot {
+    margin-inline: auto;
+  }
 }
 
 /* Outbound-link icon stays hidden, as it was before. */
@@ -451,7 +527,7 @@
 .vp-doc td.rate-good,
 .vp-doc td[style*="#CFE2F3" i] {
   background: var(--n-accent-soft) !important;
-  color: var(--n-accent);
+  color: var(--n-accent-hover);
 }
 
 /* Depends on hardware */

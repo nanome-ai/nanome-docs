@@ -4,16 +4,22 @@ title: Sequence Panel
 
 # Sequence Panel
 
-<vimg src="nanome-v2/sequence-panel.jpg" />
+The Sequence Panel shows the sequences of all loaded structures, protein and nucleic acid chains alike, in a horizontal, scrollable view. <Btn icon="mist">Sequences</Btn> at the bottom-right of the [Components tab](/nanome_v2/mainpanel#components-tab) opens it.
 
-The Sequence Panel is opened by clicking the **Sequences** button at the bottom-right of the [Components Tab](/nanome_v2/mainpanel#components-tab). It displays the amino acid sequences of all loaded structures in a horizontal, scrollable view.
+## <AppIcon name="mist" /> Features {#features}
 
-## Features
+<ShotRow src="nanome-v2/v2-7/sequence-viewer.webp" alt="The Sequence Panel for 1KV2 with its parts labeled">
 
-- **Select by chain** — Click the chain letter (e.g., "A") to select an entire chain.
-- **Select by residue** — Click individual residues in the sequence to select them. Selected residues are highlighted.
-- **Hover for info** — Hovering over a residue shows its details (e.g., "5CEO A: TYR 226") at the bottom of the panel.
-- **Clear** — Clear the current selection.
-- **Create** — Create a new component from the current residue selection.
+- Clicking the chain letter, such as "A", selects the whole chain.
+- Clicking residues in the sequence selects them, and selected residues are highlighted.
+- Hovering a residue shows its details at the bottom of the panel, such as "1KV2 A: THR 106".
 
-When a component is active in the sequence panel, an **Update** button appears to update the existing component with the current selection.
+<UiList label="Sequence Panel">
+<UiItem name="Filter hidden structures" area="11.9,59.7,22.4,6.9">Leaves out structures that have no visible representation.</UiItem>
+<UiItem name="Clear" area="80.8,57.9,6.5,10.4">Clears the selection.</UiItem>
+<UiItem name="Create" area="87.6,57.5,7.6,11.1">Creates a component from the selected residues.</UiItem>
+</UiList>
+
+When a component is active in the panel, its name shows beside the buttons and **Create** becomes **Update**, which updates that component with the current selection. Selecting the name ends that, and the button goes back to **Create**.
+
+</ShotRow>

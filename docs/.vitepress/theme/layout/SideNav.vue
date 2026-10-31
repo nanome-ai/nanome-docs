@@ -7,21 +7,34 @@
  * reader can fold away — with ~90 pages, showing every one at once would bury
  * the section the reader is actually in. Groups without `collapsed` stay open
  * as a plain labelled list.
+ *
+ * On every page, the groups holding it are open and the others are closed, so
+ * the rail always shows where the reader is. A page the sidebar doesn't list
+ * opens the group its folder belongs to (page-trail.js). The page's own row
+ * lists its sections (SideNavItem), and the rail scrolls itself to keep the
+ * page and the section in view.
  */
-import { computed, ref } from 'vue'
+import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useData } from 'vitepress'
 import { hasActiveLink } from 'vitepress/dist/client/theme-default/support/sidebar.js'
 import { useSidebar } from 'vitepress/dist/client/theme-default/composables/sidebar.js'
 import SideNavItem from './SideNavItem.vue'
+import { useSectionSpy } from './section-spy.js'
+import { inTrail, usePageTrail } from './page-trail.js'
 
-defineProps({
+const props = defineProps({
   open: { type: Boolean, default: false },
 })
+
+// Any link, including a section on the same page, so the drawer can close.
+const emit = defineEmits(['navigate'])
 
 // Active state is matched against the page's source path, not the URL — that
 // is what VitePress's own helpers compare, and it survives `cleanUrls`.
 const { page } = useData()
 const { sidebarGroups } = useSidebar()
+const sectionId = useSectionSpy()
+const pageTrail = usePageTrail()
 
 /**
  * Open state is derived rather than stored: the section holding the current
@@ -30,11 +43,62 @@ const { sidebarGroups } = useSidebar()
  */
 const overrides = ref({})
 
+const rail = ref(null)
+
+/**
+ * Scrolls the rail until `el` is in sight, leaving the page where it is. A
+ * row that has to come into view lands near the top, so the sections under
+ * it show too; a section only moves as far as it must.
+ */
+function reveal(el, { nearest = false } = {}) {
+  if (!el || !rail.value) return
+  const box = rail.value.getBoundingClientRect()
+  const row = el.getBoundingClientRect()
+  const margin = 24
+  if (row.top >= box.top + margin && row.bottom <= box.bottom - margin) return
+  rail.value.scrollTop +=
+    nearest && row.bottom > box.bottom - margin
+      ? row.bottom - box.bottom + margin
+      : row.top - box.top - (nearest ? margin : 2 * margin)
+}
+
+function revealPage() {
+  nextTick(() => reveal(rail.value?.querySelector('[aria-current="page"]')))
+}
+
+function onClick(event) {
+  if (event.target.closest('a')) emit('navigate')
+}
+
+watch(
+  () => page.value.relativePath,
+  () => {
+    overrides.value = {}
+    revealPage()
+  }
+)
+
+watch(sectionId, () =>
+  nextTick(() =>
+    reveal(rail.value?.querySelector('[aria-current="location"]'), { nearest: true })
+  )
+)
+
+// The drawer is laid out while hidden, but only worth scrolling once open.
+watch(
+  () => props.open,
+  (isOpen) => isOpen && revealPage()
+)
+
+onMounted(revealPage)
+
 const groups = computed(() =>
   sidebarGroups.value.map((group) => ({
     ...group,
     collapsible: group.collapsed != null && !!group.text,
-    active: hasActiveLink(page.value.relativePath, group.items || []),
+    active:
+      hasActiveLink(page.value.relativePath, group.items || []) ||
+      inTrail(pageTrail.value, group),
   }))
 )
 
@@ -51,11 +115,12 @@ function toggle(group) {
 
 <template>
   <aside
+    ref="rail"
     class="n-sidenav n-scroll"
     :class="{ 'is-open': open }"
     aria-label="Documentation sections"
   >
-    <nav class="n-sidenav__inner">
+    <nav class="n-sidenav__inner" @click="onClick">
       <div
         v-for="group in groups"
         :key="group.text || 'top'"

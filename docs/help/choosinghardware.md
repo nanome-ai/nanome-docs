@@ -5,19 +5,23 @@ pageClass: n-wide
 
 # Choosing Hardware
 
-<Callout type="note" title="Nanome v2, as of v2.6.1">
+<Callout type="note" title="Nanome XR, as of 2.7.1">
 
 This page covers the current release of Nanome. For Nanome Classic (v1.24), see
 [Choosing Hardware (Nanome Classic)](/help/choosinghardware-classic).
 
 </Callout>
 
-Nanome v2 runs on Meta Quest 3 and 3S, Apple Vision Pro, Samsung Galaxy XR,
-Windows PCs over Meta Link (PCVR), and in any modern browser at
-[app.nanome.ai](https://app.nanome.ai). Setting up a fleet of headsets is
-covered step by step in [Getting Started](/getting-started).
+Nanome XR runs on Meta Quest 3 and 3S, Apple Vision Pro, Samsung Galaxy XR,
+Windows PCs over Meta Link (PCVR), and in any modern browser at app.nanome.ai.
 
-## Nanome Headset Comparison Matrix
+<IconGrid label="Choosing hardware" :cols="3">
+<IconCard icon="device-vision-pro" title="Comparison matrix" href="#nanome-headset-comparison-matrix">Processor, display, installing, MDM, sign-in and price.</IconCard>
+<IconCard icon="ban" title="Not supported" href="#headsets-not-supported">Headsets Nanome XR doesn't run on.</IconCard>
+<IconCard icon="mood-smile" title="Comfort comparison" href="#comfort-comparison">How much structure each platform shows comfortably.</IconCard>
+</IconGrid>
+
+## <AppIcon name="device-vision-pro" /> Headset comparison matrix {#nanome-headset-comparison-matrix}
 
 <table class="matrix">
   <thead>
@@ -55,9 +59,9 @@ covered step by step in [Getting Started](/getting-started).
     </tr>
     <tr>
       <th>Mixed reality passthrough</th>
-      <td>Yes, full colour, stereoscopic (Quest 3 adds a depth sensor)</td>
-      <td>Yes, full colour, stereoscopic</td>
-      <td>Yes, full colour, stereoscopic</td>
+      <td>Yes, full color, stereoscopic (Quest 3 adds a depth sensor)</td>
+      <td>Yes, full color, stereoscopic</td>
+      <td>Yes, full color, stereoscopic</td>
       <td>No</td>
       <td>No</td>
     </tr>
@@ -98,7 +102,7 @@ covered step by step in [Getting Started](/getting-started).
       <td>No</td>
       <td>No</td>
       <td>No</td>
-      <td>The installer runs offline; signing in needs a network</td>
+      <td>The download runs offline once unzipped; signing in needs a network</td>
       <td>No</td>
     </tr>
     <tr>
@@ -128,7 +132,7 @@ covered step by step in [Getting Started](/getting-started).
     <tr>
       <th>Where to buy</th>
       <td><a href="https://www.meta.com/quest/quest-3/">Meta</a>, Best Buy, Amazon, or preconfigured <a href="https://dashboard.vr-expert.com/order-form/a0jTg00000LTeqnIAD">Nanome kits from VR Expert</a></td>
-      <td><a href="https://www.samsung.com/us/xr/galaxy-xr/">Samsung</a>, or preconfigured <a href="https://dashboard.vr-expert.com/order-form/a0jTg00000LTeqnIAD">Nanome kits from VR Expert</a></td>
+      <td><a href="https://www.samsung.com/us/xr/galaxy-xr/galaxy-xr/">Samsung</a>, or preconfigured <a href="https://dashboard.vr-expert.com/order-form/a0jTg00000LTeqnIAD">Nanome kits from VR Expert</a></td>
       <td><a href="https://www.apple.com/apple-vision-pro/">Apple</a></td>
       <td><a href="https://www.meta.com/help/quest/140991407990979/">Meta Link requirements</a></td>
       <td>—</td>
@@ -140,16 +144,17 @@ Prices are list prices at the time of writing and change; the links above carry
 the current figure. MDM details, enrollment steps and network requirements are
 in [Getting Started](/getting-started#mdm).
 
-## Headsets Not Supported
+## <AppIcon name="ban" /> Headsets not supported {#headsets-not-supported}
 
-**Meta Quest 1**, originally sold as Oculus Quest, is not supported. Nanome v2
-targets Meta Quest 3 and 3S; Quest 2 and Quest Pro run Nanome Classic (v1.24),
-covered on the [Classic hardware page](/help/choosinghardware-classic).
+**Meta Quest 1**, originally sold as Oculus Quest, is not supported. Nanome XR
+targets Meta Quest 3 and 3S; Quest 2 and Quest Pro run Nanome Classic (v1.24).
 
-## Nanome All-In-One vs PCVR vs Web Comfort Comparison
+## <AppIcon name="mood-smile" /> All-in-one vs PCVR vs Web comfort comparison {#comfort-comparison}
 
-The tables below show how much structure each platform shows comfortably. Please
-also note the following:
+The tables below show how much structure each platform shows comfortably.
+'Shown Atom Count' is what's displayed in the workspace, not what's loaded.
+
+<Accordion title="Notes 1 to 6 on the comfort tables" teaser="What the atom counts assume, and how the Web, Galaxy XR and M5 columns are rated.">
 
 1. 'Shown Atom Count' only refers to the count of atoms displayed in the
    workspace. Larger structures can be loaded within the workspace and hidden.
@@ -171,7 +176,9 @@ also note the following:
    model as GPU-bound where the M5 is not; the M5 also renders 10% more pixels.
    Net, that is roughly 1.4 to 1.5 times the headroom.
 
-### Comfort Legend
+</Accordion>
+
+### Comfort legend {#comfort-legend}
 
 <table class="legend">
   <thead>
@@ -187,7 +194,7 @@ also note the following:
   </tbody>
 </table>
 
-### Comfort Comparison XR
+### Comfort comparison: XR {#comfort-comparison-xr}
 
 <table class="comfort">
   <colgroup>
@@ -283,7 +290,7 @@ also note the following:
   </tbody>
 </table>
 
-### Comfort Comparison PC & Web
+### Comfort comparison: PC and Web {#comfort-comparison-pc-web}
 
 <table class="comfort">
   <colgroup>
@@ -353,5 +360,5 @@ also note the following:
 
 Keeping a session inside these numbers is covered in
 [Keep it comfortable](/session-guide#comfort): hide what a scene does not need,
-step surfaces down a density, and show one atomistic representation per
-component.
+keep surfaces to the pocket or hide them, and show one atomistic
+representation per component.

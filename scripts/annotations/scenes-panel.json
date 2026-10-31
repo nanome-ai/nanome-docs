@@ -1,0 +1,123 @@
+{
+  "source": "scenes-panel.webp",
+  "output": "nanome-v2/v2-7/scenes-panel.webp",
+  "pad": [
+    0,
+    700,
+    0,
+    640
+  ],
+  "radius": 14,
+  "display": 640,
+  "callouts": [
+    {
+      "text": "Workspace name",
+      "at": [
+        22,
+        86
+      ],
+      "label": [
+        -50,
+        86
+      ],
+      "align": "right"
+    },
+    {
+      "text": "New scene",
+      "at": [
+        77,
+        272
+      ],
+      "label": [
+        -50,
+        210
+      ],
+      "align": "right"
+    },
+    {
+      "text": "Scene settings",
+      "at": [
+        168,
+        305
+      ],
+      "label": [
+        -50,
+        345
+      ],
+      "align": "right"
+    },
+    {
+      "text": "Previous and next scene",
+      "at": [
+        390,
+        240
+      ],
+      "label": [
+        662,
+        150
+      ],
+      "align": "left"
+    },
+    {
+      "text": "Play the scenes",
+      "at": [
+        524,
+        300
+      ],
+      "label": [
+        662,
+        300
+      ],
+      "align": "left"
+    },
+    {
+      "text": "Scenes, drag to reorder",
+      "at": [
+        470,
+        400
+      ],
+      "label": [
+        662,
+        450
+      ],
+      "align": "left"
+    },
+    {
+      "text": "Share",
+      "at": [
+        560,
+        1030
+      ],
+      "label": [
+        662,
+        1000
+      ],
+      "align": "left"
+    },
+    {
+      "text": "Spotlight Me",
+      "at": [
+        560,
+        1126
+      ],
+      "label": [
+        662,
+        1140
+      ],
+      "align": "left",
+      "tone": "green"
+    },
+    {
+      "text": "Collapse the sidebar",
+      "at": [
+        560,
+        1239
+      ],
+      "label": [
+        662,
+        1280
+      ],
+      "align": "left"
+    }
+  ]
+}

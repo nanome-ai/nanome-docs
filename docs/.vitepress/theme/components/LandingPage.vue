@@ -1,14 +1,31 @@
 <template>
   <div class="landing-page">
-    <!-- v2.4 Quick Tips — hero carousel style -->
-    <HeroCarousel :slides="data.quickTips" />
+    <!-- Start here: one card per place a reader might be coming from. -->
+    <section v-if="data.start" class="start">
+      <h1 class="start__title">Nanome Help</h1>
+      <p class="start__lede">Pick where you're working.</p>
+      <IconGrid :cols="3" label="Start here">
+        <IconCard
+          v-for="item in data.start"
+          :key="item.url"
+          :icon="item.icon"
+          :title="item.title"
+          :href="item.url"
+        >{{ item.description }}</IconCard>
+      </IconGrid>
+      <p v-if="data.classic" class="start__classic">
+        {{ data.classic.text }}
+        <a :href="data.classic.url">{{ data.classic.link }} →</a>
+      </p>
+    </section>
 
     <!-- New Updates Section -->
     <div v-if="data.newUpdates" class="new-updates">
       <h2>New Updates</h2>
       <div class="update-card">
-        <a :href="data.newUpdates.url">
-          <img :src="data.newUpdates.img" :alt="data.newUpdates.title" />
+        <a :href="data.newUpdates.url" class="update-image" :class="{ 'has-dark': !!updateImage.dark }">
+          <img class="update-light" :src="updateImage.light" :alt="data.newUpdates.title" />
+          <img v-if="updateImage.dark" class="update-dark" :src="updateImage.dark" :alt="data.newUpdates.title" />
         </a>
         <div class="update-content">
           <h3>{{ data.newUpdates.title }}</h3>
@@ -18,6 +35,9 @@
       </div>
     </div>
 
+    <!-- Quick Tips videos, below the start cards and what's new -->
+    <HeroCarousel :slides="data.quickTips" />
+
     <!-- Blog Carousels — below New Updates -->
     <HomeCarousel
       v-for="carousel in data.blogCarousels"
@@ -25,85 +45,88 @@
       v-bind="carousel"
     />
 
-    <!-- Middle Carousels (v1.24 content, YouTube Channel) -->
+    <!-- Nanome YouTube channel -->
     <HomeCarousel
       v-for="carousel in data.carousels"
       :key="carousel.title"
       v-bind="carousel"
     />
 
-    <h2>Featured Sections</h2>
-    <div class="featured">
-      <a href="/nanome_v2/mainpanel">
-        <div class="home-video">
-          <img
-            src="/assets/original/nanome-v2/display-interactions.gif"
-            alt="Cross-entry interaction components in Nanome v2"
-          />
-        </div>
-        <h3>Main Panel</h3>
-        <span>Manage structures, representations, and collaboration</span>
-      </a>
-      <a href="/nanome_v2/sampleworkflows">
-        <div class="home-video">
-          <img
-            src="/assets/original/nanome-v2/align-proteins.gif"
-            alt="Aligning proteins in Nanome v2"
-          />
-        </div>
-        <h3>Sample Workflows</h3>
-        <span>Align proteins, display interactions, and more</span>
-      </a>
-      <a href="/mara/overview">
-        <div class="home-video">
-          <img
-            src="/assets/original/mara/mara-chat.png"
-            alt="MARA AI assistant for molecular analysis"
-          />
-        </div>
-        <h3>MARA</h3>
-        <span>AI-powered molecular analysis and reasoning assistant</span>
-      </a>
-    </div>
-
-    <!-- Hero Carousel — below Featured Sections -->
+    <!-- Case studies -->
+    <h2>Case Studies</h2>
     <HeroCarousel :slides="data.hero" />
+    <p class="case-studies-all">
+      <a href="https://nanome.ai/case-studies">All case studies</a>
+    </p>
 
-    <h2>v1.24 Compatible Headsets</h2>
-    <div class="text-center">
-      <img
-        class="headsets"
-        src="/assets/original/gettingStarted-page/SupportedHeadsets2023-2.png"
-        alt="headsets"
-      />
-    </div>
-
-    <h2>Requirements</h2>
-    <div class="requirements">
-      <div>
-        <h3>
-          <a href="/help/pchardware">
-            Please see minimum and recommended PC requirements here.
-          </a>
-        </h3>
-      </div>
-    </div>
   </div>
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import HeroCarousel from './HeroCarousel.vue'
 import HomeCarousel from './HomeCarousel.vue'
+import { imageInfo } from './image.js'
 
-defineProps({
+const props = defineProps({
   data: {
     type: Object,
     required: true
   }
 })
+
+// The New Updates image, with its dark copy when there is one. `img` is the
+// image's path under assets/original or assets/compressed.
+const updateImage = computed(() => {
+  const img = props.data.newUpdates?.img || ''
+  const key = img.replace(/^\/assets\/(compressed|original)\//, '')
+  return key === img ? { light: img, dark: '' } : imageInfo(key)
+})
 </script>
 
+<style>
+/* The New Updates image follows the site theme when it has a dark copy. */
+.update-image.has-dark .update-dark,
+.dark .update-image.has-dark .update-light {
+  display: none;
+}
+
+.dark .update-image.has-dark .update-dark {
+  display: block;
+}
+</style>
+
 <style scoped>
+.landing-page .start {
+  margin: 0 0 1rem;
+}
+
+.landing-page .start__title {
+  margin: 0;
+  font-size: var(--n-text-3xl, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.landing-page .start__lede {
+  margin: 6px 0 0;
+  color: var(--n-text-muted);
+}
+
+.landing-page .start__classic {
+  margin: -12px 0 0;
+  padding: 12px 16px;
+  border: 1px solid var(--n-border);
+  border-radius: var(--n-radius);
+  background: var(--n-surface);
+  color: var(--n-text-muted);
+}
+
+.landing-page .start__classic a {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
 .landing-page h2 {
   font-size: 1.5em;
   border: unset;
@@ -117,16 +140,17 @@ defineProps({
 
 .landing-page .update-card {
   display: flex;
-  align-items: center;
-  gap: 2rem;
-  padding: 2rem;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1.25rem;
+  padding: 1.25rem;
   background: var(--vp-c-bg-soft);
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .landing-page .update-card img {
-  max-width: 400px;
+  max-width: 100%;
   width: 100%;
   height: auto;
   border-radius: 4px;
@@ -143,15 +167,16 @@ defineProps({
 
 .landing-page .update-content h3 {
   margin-top: 0;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   color: var(--vp-c-text-1);
+  text-wrap: balance;
 }
 
 .landing-page .update-content p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--vp-c-text-2);
   line-height: 1.6;
-  margin: 1rem 0 1.5rem;
+  margin: 0.5rem 0 1rem;
 }
 
 @media (max-width: 768px) {
@@ -164,37 +189,13 @@ defineProps({
   }
 }
 
-.landing-page .featured {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-auto-columns: 1fr;
-  grid-gap: 1rem;
-}
-
-.landing-page .featured > a {
-  text-align: center;
-  margin: 0 0 1rem;
-}
-
-.landing-page .featured h3,
-.landing-page .headsets {
-  margin: 1rem 0 0;
-}
-
-.landing-page .requirements {
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-  margin-bottom: 2em;
-}
-
-.landing-page .requirements > div {
-  display: inline-block;
-  padding: 1em;
+.landing-page .case-studies-all {
+  margin: 0.75rem 0 0;
+  text-align: right;
+  font-weight: 600;
 }
 
 .landing-page .btn {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 </style>

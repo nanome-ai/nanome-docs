@@ -1,13 +1,21 @@
 <script setup>
 /**
  * One row in the left rail. Recursive: a row either links to a page, opens a
- * nested group, or does both. Groups start open when they contain the page
- * being read, so a deep link never lands with its own section collapsed.
+ * nested group, or does both. Groups open when they contain the page being
+ * read and close when they don't, so a deep link never lands with its own
+ * section collapsed, and the rail never holds open a group the reader has
+ * left.
+ *
+ * The current page's row also lists the page's h2 sections, from the
+ * `sections` config.mjs builds out of the markdown, with the one in view
+ * marked as the reader scrolls.
  */
 import { computed, ref, watch } from 'vue'
 import { useData } from 'vitepress'
 import { isActive } from 'vitepress/dist/client/shared.js'
 import { hasActiveLink } from 'vitepress/dist/client/theme-default/support/sidebar.js'
+import { useSectionSpy } from './section-spy.js'
+import { inTrail, usePageTrail } from './page-trail.js'
 
 const props = defineProps({
   item: { type: Object, required: true },
@@ -15,27 +23,48 @@ const props = defineProps({
 })
 
 const { page } = useData()
+const sectionId = useSectionSpy()
+const pageTrail = usePageTrail()
 
 const hasChildren = computed(() => !!props.item.items?.length)
 
-const containsActive = computed(() =>
-  hasActiveLink(page.value.relativePath, props.item)
+// A page the sidebar doesn't list counts as inside its folder's group.
+const containsActive = computed(
+  () =>
+    hasActiveLink(page.value.relativePath, props.item) ||
+    inTrail(pageTrail.value, props.item)
 )
 
-const isCurrent = computed(
-  () =>
-    !!props.item.link && isActive(page.value.relativePath, props.item.link)
+/**
+ * A page row is current on its page. A `#` row points at one section of a
+ * page and is never current: the page's own row already lists its sections
+ * and marks the one in view, so the `#` row stays a plain link.
+ */
+const isCurrent = computed(() => {
+  const link = props.item.link
+  return !!link && !link.includes('#') && isActive(page.value.relativePath, link)
+})
+
+const sections = computed(() =>
+  isCurrent.value
+    ? (props.item.sections || []).map((section) => ({
+        ...section,
+        id: section.link.slice(section.link.indexOf('#') + 1),
+      }))
+    : []
 )
 
 // `collapsed: false` in the config means "start open"; anything else starts
 // closed unless the current page lives inside.
-const open = ref(props.item.collapsed === false || containsActive.value)
+const isOpenHere = () => props.item.collapsed === false || containsActive.value
+const open = ref(isOpenHere())
 
-// Navigating into a collapsed group opens it; navigating away leaves it be, so
-// the reader's own expansions survive a route change.
-watch(containsActive, (inside) => {
-  if (inside) open.value = true
-})
+// Each new page resets the group to that rule, so the reader's own
+// expansions last until they move on.
+watch(
+  () => page.value.relativePath,
+  () => (open.value = isOpenHere())
+)
 
 function toggle() {
   open.value = !open.value
@@ -99,6 +128,23 @@ const isToggleOnly = computed(() => hasChildren.value && !props.item.link)
         />
       </svg>
     </div>
+
+    <ul
+      v-if="sections.length"
+      class="n-nav-sections"
+      :aria-label="`Sections of ${item.text}`"
+    >
+      <li v-for="section in sections" :key="section.id">
+        <a
+          class="n-nav-section"
+          :class="{ 'is-active': section.id === sectionId }"
+          :href="section.link"
+          :aria-current="section.id === sectionId ? 'location' : undefined"
+        >
+          {{ section.text }}
+        </a>
+      </li>
+    </ul>
 
     <ul v-if="hasChildren && open" class="n-nav-children">
       <SideNavItem
@@ -179,8 +225,13 @@ const isToggleOnly = computed(() => hasChildren.value && !props.item.link)
   transition: transform var(--n-transition), color var(--n-transition);
 }
 
+/* A group without a page of its own shows the bare arrow, drawn at the 14px
+   the button arrows use and kept in the same 22px box. */
 .n-nav-caret--static {
   pointer-events: none;
+  width: 14px;
+  height: 14px;
+  margin: 4px;
 }
 
 .n-nav-caret:hover {
@@ -202,5 +253,45 @@ const isToggleOnly = computed(() => hasChildren.value && !props.item.link)
 /* The active row marks the hairline it hangs from. */
 .n-nav-children:has(> .n-nav-item > .n-nav-row > .is-active) {
   border-left-color: var(--n-border-strong);
+}
+
+/* The current page's sections hang under its row on their own hairline, a
+   size down and a shade fainter than page rows so the two never blur. The
+   section in view takes the accent on the line and in its label, as in the
+   right-hand outline. */
+.n-nav-sections {
+  margin: 1px 0 6px 9px;
+  padding: 0;
+  border-left: 1px solid var(--n-border);
+  list-style: none;
+}
+
+.n-nav-section {
+  display: block;
+  /* The 2px marker sits over the 1px hairline. */
+  margin-left: -1px;
+  padding: 3px 8px 3px 12px;
+  border-left: 2px solid transparent;
+  color: var(--n-text-faint);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  text-decoration: none;
+  transition: color var(--n-transition), border-color var(--n-transition);
+}
+
+.n-nav-section:hover {
+  color: var(--n-text);
+}
+
+.n-nav-section.is-active {
+  border-left-color: var(--n-accent);
+  color: var(--n-accent);
+  font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .n-nav-section {
+    transition: none;
+  }
 }
 </style>

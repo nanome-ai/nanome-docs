@@ -2,25 +2,26 @@
 title: Quest for Business
 ---
 
-# Quest for Business: Device Management tailored for Meta Quest Headsets
+# Quest for Business
 
-Quest for Business (QFB) offers a native solution for managing Meta Quest headsets within your organization. With a suite of powerful tools, QFB ensures effortless management, enhanced security, and seamless integration with existing systems. (For more information, check out the official Quest for Business page here.)
+Quest for Business (QFB) is Meta's native solution for managing Meta Quest headsets in an organization. You configure devices, deploy apps and manage business accounts from its Admin Web Portal.
 
-**Effortless Management**
+## Management {#management}
 
-QFB simplifies the management of Meta Quest headsets, enabling you to configure devices, deploy applications, and manage business accounts with ease. From bulk provisioning and setting device profiles to reviewing device statuses and configuring WiFi support, everything is streamlined through the Admin Web Portal.
+The Admin Web Portal handles bulk provisioning, device profiles, device status and Wi-Fi setup.
 
-**Enhanced Security**
+## Security {#security}
 
-With enterprise-grade security measures such as SSO, SOC2 type 2 compliance, and certificate-based WiFi support, QFB ensures compatibility with enterprise-grade networks. Features like remote wipe capabilities and secure access also exist and these safeguards protect scientists’ valuable data and proprietary structures.
+QFB has enterprise-grade security, such as SSO, SOC2 type 2 compliance and certificate-based Wi-Fi, so it works on enterprise-grade networks. Remote wipe and secure access help protect scientists' data and proprietary structures.
 
-**Seamless Integration**
+## Integration {#integration}
 
-QFB integrates with major Mobile Device Management (MDM) platforms, including Microsoft Intune, VMware Workspace ONE, and Ivanti (formerly MobileIron). This allows the preservation of existing device management workflows.
+QFB works with major mobile device management (MDM) platforms, including Microsoft Intune, VMware Workspace ONE and Ivanti (formerly MobileIron), so existing device management workflows stay as they are.
 
-**Supported Devices**
+## Supported devices {#supported-devices}
+
 - Meta Quest 2
 - Meta Quest Pro
 - Meta Quest 3
 
-For more information, check out official quest for business page [here](https://forwork.meta.com/quest/business-subscription/).
+More on the [official Quest for Business page](https://forwork.meta.com/quest/business-subscription/).

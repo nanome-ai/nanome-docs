@@ -1,7 +1,8 @@
 <script setup>
 /**
  * The page shell: fixed nav bar, left section rail, centre column, right
- * in-page rail.
+ * in-page rail, and the page bar: a sticky strip over the centre column that
+ * holds the breadcrumb, and below 1280px the "On this page" menu.
  *
  * The content wrapper keeps VitePress's `.VPDoc` class. That is not cosmetic —
  * `getHeaders()` in the outline composable selects `.VPDoc :where(h1,…,h6)`,
@@ -17,11 +18,16 @@ import NavBar from './layout/NavBar.vue'
 import SideNav from './layout/SideNav.vue'
 import Outline from './layout/Outline.vue'
 import LocalNav from './layout/LocalNav.vue'
+import Breadcrumb from './layout/Breadcrumb.vue'
 import DocFooter from './layout/DocFooter.vue'
 import ClassicBanner from './layout/ClassicBanner.vue'
+import { provideSectionSpy } from './layout/section-spy.js'
 
 const { frontmatter, isDark, page } = useData()
 const route = useRoute()
+
+// One scroll listener for the rail and the breadcrumb.
+provideSectionSpy()
 
 const {
   isOpen: sidebarOpen,
@@ -34,6 +40,9 @@ const {
 
 watch(() => route.path, closeSidebar)
 useCloseSidebarOnEscape(sidebarOpen, closeSidebar)
+
+// The page behind the open drawer holds still (see base.css).
+watch(sidebarOpen, (isOpen) => document.documentElement.classList.toggle('n-drawer-open', isOpen))
 
 /** Cross-fade the theme switch when the browser supports it. */
 provide('toggle-appearance', async ({ clientX: x = innerWidth / 2, clientY: y = innerHeight / 2 } = {}) => {
@@ -65,8 +74,31 @@ provide('toggle-appearance', async ({ clientX: x = innerWidth / 2, clientY: y = 
   )
 })
 
+/**
+ * The router handles same-page hash links itself, so the skip link would only
+ * change the URL. Move focus to the content as VitePress's VPSkipLink does: the
+ * next Tab then lands on the first link in the page, not back in the nav bar.
+ */
+function skipToContent() {
+  const el = document.getElementById('n-content')
+  if (!el) return
+  const removeTabIndex = () => {
+    el.removeAttribute('tabindex')
+    el.removeEventListener('blur', removeTabIndex)
+  }
+  el.setAttribute('tabindex', '-1')
+  el.addEventListener('blur', removeTabIndex)
+  el.focus()
+  window.scrollTo(0, 0)
+}
+
 const isHome = computed(() => frontmatter.value.layout === 'home')
 const showAside = computed(() => hasAside.value && !isHome.value)
+
+// Every trail starts at the site's home page, so it has none of its own.
+const showPagebar = computed(
+  () => !isHome.value && !page.value.isNotFound && page.value.relativePath !== 'index.md'
+)
 </script>
 
 <template>
@@ -77,10 +109,10 @@ const showAside = computed(() => hasAside.value && !isHome.value)
     class="n-layout"
     :class="[
       frontmatter.pageClass,
-      { 'has-sidebar': hasSidebar, 'has-aside': showAside },
+      { 'has-sidebar': hasSidebar, 'has-aside': showAside, 'has-pagebar': showPagebar },
     ]"
   >
-    <a class="n-skip" href="#n-content">Skip to content</a>
+    <a class="n-skip" href="#n-content" @click="skipToContent">Skip to content</a>
 
     <NavBar
       :sidebar-open="sidebarOpen"
@@ -96,10 +128,16 @@ const showAside = computed(() => hasAside.value && !isHome.value)
       />
     </Transition>
 
-    <SideNav v-if="hasSidebar" :open="sidebarOpen" />
+    <!-- A section link keeps the route, so the drawer closes on any link. -->
+    <SideNav v-if="hasSidebar" :open="sidebarOpen" @navigate="closeSidebar" />
 
     <div class="n-body">
-      <LocalNav v-if="showAside" />
+      <div v-if="showPagebar" class="n-pagebar">
+        <div class="n-pagebar__inner">
+          <Breadcrumb />
+          <LocalNav v-if="showAside" />
+        </div>
+      </div>
 
       <div class="n-main">
         <main id="n-content" class="n-column">
@@ -108,7 +146,8 @@ const showAside = computed(() => hasAside.value && !isHome.value)
             <div class="vp-doc">
               <Content />
             </div>
-            <DocFooter v-if="!isHome && !page.isNotFound" />
+            <!-- The home page starts the sidebar, so it has no previous or next. -->
+            <DocFooter v-if="!isHome && !page.isNotFound && page.relativePath !== 'index.md'" />
           </div>
         </main>
 
@@ -141,6 +180,39 @@ const showAside = computed(() => hasAside.value && !isHome.value)
   opacity: 0;
 }
 
+/* --- Page bar ------------------------------------------------------------ */
+
+/* Headings, focus and sticky content read `--n-pagebar-space` to clear the
+   strip, so it is only set while the strip is there. */
+.n-layout.has-pagebar {
+  --n-pagebar-space: var(--n-pagebar-height);
+}
+
+/* A fixed height keeps the anchor offset steady: VitePress measures the
+   strip's bottom edge (`scrollOffset` in config.mjs), and the margins in
+   doc.css add the same height. */
+.n-pagebar {
+  position: sticky;
+  top: var(--n-nav-height);
+  z-index: 40;
+  height: var(--n-pagebar-height);
+  border-bottom: 1px solid var(--n-border-soft);
+  background: color-mix(in srgb, var(--n-bg) 88%, transparent);
+  backdrop-filter: saturate(150%) blur(12px);
+}
+
+/* Same measure and gutter as the column, so the trail starts where the text
+   does. */
+.n-pagebar__inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 100%;
+  max-width: var(--n-content-max);
+  margin: 0 auto;
+  padding: 0 var(--n-gutter);
+}
+
 /* --- Columns ------------------------------------------------------------- */
 
 .n-main {
@@ -153,11 +225,18 @@ const showAside = computed(() => hasAside.value && !isHome.value)
   padding: 40px var(--n-gutter) 96px;
 }
 
+/* Focused by the skip link only; the focus ring would frame the whole page. */
+.n-column:focus {
+  outline: none;
+}
+
 /* A page that turns the outline off (the home page, `aside: false`) is laying
    itself out rather than running prose, so give it the full measure instead of
    the 768px one that keeps body copy readable. */
 .n-layout:not(.has-aside) .n-column,
-.n-layout.n-wide .n-column {
+.n-layout.n-wide .n-column,
+.n-layout:not(.has-aside) .n-pagebar__inner,
+.n-layout.n-wide .n-pagebar__inner {
   max-width: 1200px;
 }
 
@@ -186,12 +265,18 @@ const showAside = computed(() => hasAside.value && !isHome.value)
   .n-column {
     padding: 28px 20px 72px;
   }
+
+  .n-pagebar__inner {
+    padding: 0 20px;
+  }
 }
 </style>
 
 <style>
 /* The view-transition cross-fade needs the old and new snapshots stacked
-   rather than blended, so the expanding circle reads as a wipe. */
+   rather than blended, so the expanding circle reads as a wipe. The new
+   theme always sits on top, because the circle that grows is on the new
+   snapshot; that keeps the wipe the same in both directions. */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
@@ -204,13 +289,5 @@ const showAside = computed(() => hasAside.value && !isHome.value)
 
 ::view-transition-new(root) {
   z-index: 2;
-}
-
-.dark::view-transition-old(root) {
-  z-index: 2;
-}
-
-.dark::view-transition-new(root) {
-  z-index: 1;
 }
 </style>

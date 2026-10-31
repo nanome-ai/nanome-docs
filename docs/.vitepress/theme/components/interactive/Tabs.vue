@@ -60,7 +60,7 @@ function onKey(event) {
         class="n-tabs__tab"
         :class="{ 'is-active': active === i }"
         :aria-selected="active === i ? 'true' : 'false'"
-        :aria-controls="panelId(i)"
+        :aria-controls="active === i ? panelId(i) : undefined"
         :tabindex="active === i ? 0 : -1"
         @click="active = i"
       >
@@ -110,8 +110,33 @@ function onKey(event) {
   transition: color var(--n-transition), border-color var(--n-transition);
 }
 
+/* On a phone the tabs share one row and their labels wrap. A tab only
+   moves to a second row when a single word won't fit, so none hides past
+   the edge. */
+@media (max-width: 639px) {
+  .n-tabs__list {
+    flex-wrap: wrap;
+  }
+
+  /* A column, so labels of one and two lines all start at the top. */
+  .n-tabs__tab {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    padding: 10px 8px;
+    white-space: normal;
+  }
+}
+
 .n-tabs__tab:hover {
   color: var(--n-text);
+}
+
+/* Inset, so the strip's scroll box doesn't clip the ring. */
+.n-tabs__tab:focus-visible {
+  outline: 2px solid var(--n-accent);
+  outline-offset: -2px;
+  border-radius: var(--n-radius-sm);
 }
 
 .n-tabs__tab.is-active {

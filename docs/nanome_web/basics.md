@@ -4,19 +4,17 @@ title: Web App Basics
 
 # Web App Basics
 
-### Video: Web App Basics
-
 <YoutubeEmbed videoId="sseI0CxNrDc" title="Nanome v2.5 Quick Tips: Web App Basics" />
 
-A full walkthrough of the Nanome web interface at app.nanome.ai, and a foundational orientation for anyone getting started with Nanome on the web.
+A full walkthrough of the Nanome web interface at app.nanome.ai, recorded in v2.5. These pages cover each topic it shows:
 
-The tutorial covers:
-
-- **Workspaces and projects** — Create workspaces within a project.
-- **Loading structures** — Import entries from the RCSB.
-- **Representations** — Switch between cartoon, beta factor coloring, and surface.
-- **MARA** — Make representation changes using natural language.
-- **Permissions and sharing** — Set access levels and share via link or 8-digit code.
-- **Scenes** — Save scene perspectives.
-- **Ligand editing** — Edit ligands in the sketch tool.
-- **Importing from chat** — Pull files in from previous MARA chats.
+<IconGrid label="Topics in the video">
+<IconCard icon="cube-3d-sphere" title="Workspaces and projects" href="/nanome_web/home">Creating workspaces within a project.</IconCard>
+<IconCard icon="upload" title="Loading structures" href="/nanome_web/loading">Importing entries from the RCSB.</IconCard>
+<IconCard icon="scribble" title="Representations" href="/nanome_web/entries#representations">Switching between cartoon and surface, and coloring by B-factor.</IconCard>
+<IconCard icon="sparkles" title="MARA" href="/mara/overview">Making representation changes using natural language.</IconCard>
+<IconCard icon="users" title="Permissions and sharing" href="/nanome_web/collaboration">Setting access levels and sharing via link or 8-character code.</IconCard>
+<IconCard icon="box" title="Scenes" href="/nanome_web/workspace#scenes">Saving scene perspectives.</IconCard>
+<IconCard icon="hexagon-plus-2" title="Ligand editing" href="/nanome_web/ligands">Editing ligands in the sketch tool.</IconCard>
+<IconCard icon="messages" title="Importing from chat" href="/nanome_web/loading#import-from-chat">Pulling files in from previous MARA chats.</IconCard>
+</IconGrid>

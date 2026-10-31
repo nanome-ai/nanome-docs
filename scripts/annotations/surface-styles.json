@@ -1,0 +1,11 @@
+{
+  "source": "surface-styles.webp",
+  "output": "nanome-v2/v2-7/surface-styles.webp",
+  "display": 768,
+  "callouts": [
+    { "text": "Wire", "label": [800, 90], "align": "center" },
+    { "text": "Sheer · 15% opacity", "label": [2440, 90], "align": "center" },
+    { "text": "Semi · 50% opacity", "label": [800, 1430], "align": "center" },
+    { "text": "Opaque", "label": [2440, 1430], "align": "center" }
+  ]
+}

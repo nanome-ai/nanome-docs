@@ -4,6 +4,24 @@ title: Wrist Menu
 
 # Wrist Menu
 
-<vimg src="nanome-v2/wristmenu.jpg" />
+The Wrist Menu sits at the wrist end of your off-hand controller. It shows only in a headset.
 
-This is a small menu that is attached to your virtual "wrist". There is a large button displaying the time - clicking this button will show/hide the [Main Panel](/nanome_v2/mainpanel). The Mara button will summon the [MARA](/mara/overview) representation agent and mute button will toggle muting for your device's microphone.
+<ScreenMap src="nanome-v2/v2-7/wrist-menu.webp" alt="The Wrist Menu below the off-hand controller: the clock and menu button, MARA, and a muted mic" crop="18,4,52,88" label="Wrist Menu buttons">
+<MapCard icon="menu-2" title="Clock and menu" href="#time" side="left" area="23.0,55.3,28.2,25.7">The big button. Shows or hides the Main Panel.</MapCard>
+<MapCard icon="sparkles" title="MARA" href="#mara" side="right" area="51.6,69.2,11.2,10.2">Opens the MARA assistant.</MapCard>
+<MapCard icon="microphone" title="Mute" href="#mute" side="right" area="44.4,78.6,11.1,10.0">Mutes or unmutes your microphone.</MapCard>
+</ScreenMap>
+
+## <AppIcon name="menu-2" /> Clock and menu {#time}
+
+The large button shows the Nanome logo and the time. Selecting it shows or hides the Main Panel, which opens in front of you. The **Menu** button on the off-hand controller does the same.
+
+## <AppIcon name="sparkles" /> MARA {#mara}
+
+Opens the [MARA](/mara/overview) assistant. It needs Editor access to the workspace.
+
+## <AppIcon name="microphone" /> Mute {#mute}
+
+Mutes or unmutes your microphone. The off-hand controller's primary button (**X**, or **A** when left-handed) does the same.
+
+When the headset hasn't been given microphone permission, the button is disabled. The **Mic** control in the [Users tab](/nanome_v2/mainpanel#user-settings) explains why.

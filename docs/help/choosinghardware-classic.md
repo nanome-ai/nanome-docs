@@ -12,9 +12,15 @@ release, see [Choosing Hardware](/help/choosinghardware).
 
 </Callout>
 
-## Nanome Classic (v1.24) Headset Comparison Matrix
+<IconGrid label="Choosing hardware for Nanome Classic" :cols="3">
+<IconCard icon="device-vision-pro" title="Comparison matrix" href="#nanome-classic-v1-24-headset-comparison-matrix">Passthrough, MDM, VPN, deployment rating and cost.</IconCard>
+<IconCard icon="ban" title="Not supported" href="#headsets-not-supported">Headsets Nanome Classic doesn't run on.</IconCard>
+<IconCard icon="mood-smile" title="Comfort and capability" href="#comfort-comparison">Atom counts and features, all-in-one vs PCVR.</IconCard>
+</IconGrid>
 
-<table>
+## <AppIcon name="device-vision-pro" /> Headset comparison matrix {#nanome-classic-v1-24-headset-comparison-matrix}
+
+<table class="matrix">
     <col style="width: 15%;" />
     <!-- <col style="width: 10%;" />
     <col style="width: 10%;" />
@@ -40,7 +46,7 @@ release, see [Choosing Hardware](/help/choosinghardware).
             <td>Meta Quest 3</td>
             <td>Meta Quest 2</td>
             <td>Vive XR Elite</td>
-            <td>Pico Neo 4</td>
+            <td>Pico 4</td>
             <td>Pico Neo 3</td>
             <td>Meta Quest Link (Supports Meta Quest Pro & Meta Quest 2/3)</td>
             <td>SteamVR (Supports Valve Index, HTC Vive Pro)</td>
@@ -94,7 +100,7 @@ release, see [Choosing Hardware](/help/choosinghardware).
             <td>Partial Support (requires sideloaded APK file)</td>
             <td>Partial Support (requires sideloaded APK file)</td>
             <td>Partial Support (requires sideloaded APK file)</td>
-            <td>Yes has Full Support</td>
+            <td>Yes, full support</td>
             <td>Partial Support (requires sideloaded APK file)</td>
             <td>Partial Support (requires sideloaded APK file)</td>
             <td colspan=2 style="text-align: center">Yes, with PC</td>
@@ -138,7 +144,7 @@ release, see [Choosing Hardware](/help/choosinghardware).
             <td>Through Nanome Inc. or <a href="https://www.meta.com/quest/products/quest-2/">Meta Quest 2</a><br></td>
             <td>Through Nanome Inc. or <a href="https://business.vive.com/eu/solutions/streaming/">HTC</a></td>
             <td><a href="https://www.picoxr.com/global/products/pico4">PicoXR</a><br></td>
-            <td><a href="https://www.picoxr.com/global/products/pico4">PicoXR</a><br></td>
+            <td>PicoXR<br></td>
             <td><a href="https://www.meta.com/help/quest/articles/headsets-and-accessories/oculus-link/meta-quest-link-compatibility/">Meta Quest Link Cable Requirements</a></td>
             <td></td>
         </tr>
@@ -156,26 +162,30 @@ release, see [Choosing Hardware](/help/choosinghardware).
     </tbody>
 </table>
 
-## Headsets Not Supported
+## <AppIcon name="ban" /> Headsets not supported {#headsets-not-supported}
 
 **Meta Quest 1**, originally sold as Oculus Quest, is not supported. It does not appear as
 a supported platform on any current Nanome store listing. Meta Quest 2 is the oldest
 all-in-one headset Nanome supports.
 
-## Nanome Classic (v1.24): All-In-One (Quest Pro, Quest 2 & Focus 3) vs PCVR Feature Comparison
+## <AppIcon name="mood-smile" /> All-in-one (Quest Pro, Quest 2 and Focus 3) vs PCVR {#comfort-comparison}
 
-The following tables below show brief overviews of the capabilities of the Meta Quest Pro, Meta Quest 2, Vive Focus 3
-vs Desktop VR. Please also note the following:
+The tables below give a brief overview of what the Meta Quest Pro, Meta Quest 2 and Vive Focus 3 can do compared with desktop VR.
+
+<Accordion title="Notes 1 to 3 on the tables" teaser="What the atom counts assume, and what counts as VR-ready.">
+
 1. ‘Shown Atom Count’ only refers to the count of atoms displayed in the workspace and larger
 structures can be loaded within the workspace in the Meta Quest 2 & Vive Focus 3.
 2. Surfaces (on/off), secondary structures (ribbons on/off), and supplemental materials
 (PDF/JPEGs, whiteboards, web browsers, labels) all affect performance in different ways
-significantly. ‘Shown Atom Count’ column is given nothing else is displayed in the scene.
+significantly. ‘Shown Atom Count’ column is given assuming nothing else is displayed in the scene.
 3. Desktop is assumed to be “VR ready” (Nvidia GTX 1060 or greater).
 
-### Comfort Legend (Nanome Classic v1.24)
+</Accordion>
 
-<table>
+### Comfort legend {#comfort-legend-nanome-classic-v1-24}
+
+<table class="legend">
     <thead>
         <tr>
             <th>Comfortability</th>
@@ -198,9 +208,9 @@ significantly. ‘Shown Atom Count’ column is given nothing else is displayed 
     </tbody>
 </table>
 
-### Comfort Comparison (Nanome Classic v1.24)
+### Comfort comparison {#comfort-comparison-nanome-classic-v1-24}
 
-<table>
+<table class="comfort">
     <thead>
         <tr>
             <th></th>
@@ -254,7 +264,7 @@ significantly. ‘Shown Atom Count’ column is given nothing else is displayed 
     </tbody>
 </table>
 
-### Capability & Plugin Recommendation Comparison (Nanome Classic v1.24)
+### Capability and plugin recommendations {#capability-plugin-recommendation-comparison-nanome-classic-v1-24}
 
 <table>
     <tbody>
@@ -276,7 +286,7 @@ significantly. ‘Shown Atom Count’ column is given nothing else is displayed 
         <tr>
             <td><b>Voice Commands</b></td>
             <td>Not Compatible</td>
-            <td>Compatible (full list here)</td>
+            <td>Compatible (<a href="/nanome1x/navigation/voicecommand">full list</a>)</td>
         </tr>
         <tr>
             <td><b>in-VR Web browser</b></td>

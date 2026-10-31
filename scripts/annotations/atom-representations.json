@@ -1,0 +1,39 @@
+{
+  "source": "atom-representations.webp",
+  "output": "nanome-v2/v2-7/atom-representations.webp",
+  "display": 768,
+  "callouts": [
+    {
+      "text": "Ball & Stick",
+      "label": [
+        1400,
+        110
+      ],
+      "align": "center"
+    },
+    {
+      "text": "Stick",
+      "label": [
+        4240,
+        110
+      ],
+      "align": "center"
+    },
+    {
+      "text": "Wire",
+      "label": [
+        1400,
+        1950
+      ],
+      "align": "center"
+    },
+    {
+      "text": "Van der Waals",
+      "label": [
+        4240,
+        1950
+      ],
+      "align": "center"
+    }
+  ]
+}

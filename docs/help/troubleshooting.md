@@ -4,46 +4,69 @@ title: Troubleshooting
 
 # Troubleshooting
 
-## Having Trouble Logging into Nanome?
+Fixes for trouble logging in, network ports, firewalls and sound.
 
-### These ports are REQUIRED from each machine/VR device:
+<IconGrid label="Troubleshooting topics">
+<IconCard icon="wifi" title="Ports Nanome needs" href="#ports">What each machine or headset has to reach to log in.</IconCard>
+<IconCard icon="plug-connected" title="Oculus and Steam" href="#oculus-and-steam">Ports for the Oculus and Steam apps themselves.</IconCard>
+<IconCard icon="lock" title="Quest on a VPN" href="#vpn">Using a Quest on a VPN network.</IconCard>
+<IconCard icon="brand-windows" title="Windows Firewall" href="#firewall">Allow Nanome through the firewall.</IconCard>
+<IconCard icon="volume" title="No sound" href="#audio">Audio fixes for Windows, Oculus, Vive and Nanome.</IconCard>
+</IconGrid>
 
-- (Authentication) TCP Port 443 to DNS api.nanome.ai
-- (Collaboration) UDP Ports 5055-5056 to DNS collaboration.nanome.ai, collaboration-us-east.nanome.ai, and collaboration-us-west.nanome.ai
-- (Plugins) TCP Port 8888 to DNS plugins.nanome.ai
+## <AppIcon name="wifi" /> Trouble logging in: ports Nanome needs {#ports}
 
-### These ports are OPTIONAL from each machine/VR device
+These are **required** from each machine or VR device:
 
-(Molecular Databases)
-- TCP 443 to DNS files.rcsb.org
-- TCP 443 to DNS pubchem.ncbi.nlm.nih.gov
-- TCP 443 to DNS www.drugbank.ca
+| For | Port | To |
+| --- | --- | --- |
+| Authentication | TCP 443 | api.nanome.ai |
+| Collaboration | UDP 5055-5056 | collaboration.nanome.ai, collaboration-us-east.nanome.ai and collaboration-us-west.nanome.ai |
+| Plugins | TCP 8888 | plugins.nanome.ai |
 
-### If you are unable to get the Steam or Oculus applications to work regardless of Nanome, try opening these ports from each device:
+These are **optional**, for molecular databases:
 
-#### Oculus (according to their documentation)
+| For | Port | To |
+| --- | --- | --- |
+| Molecular databases | TCP 443 | files.rcsb.org, pubchem.ncbi.nlm.nih.gov and www.drugbank.ca |
 
-TCP port 80 & 443 for
+## <AppIcon name="plug-connected" /> Oculus and Steam {#oculus-and-steam}
+
+If the Steam or Oculus apps don't work at all, with or without Nanome, try opening these ports from each device.
+
+<AccordionGroup label="3 port lists">
+
+<Accordion title="Oculus" teaser="TCP 80 and 443, according to Oculus's documentation.">
+
+TCP ports 80 and 443 for:
+
 - oculus.com
 - facebook.com
 - fbcdn.net
 - akamaihd.net
 
-They also recommend TCP 3478 and UDP 500000-59999 to each of the above sites, but the drivers tend to work without them.
+Oculus also recommends TCP 3478 and UDP 50000-59999 to each of these sites, but the drivers tend to work without them.
 
-#### Oculus for Business Only:
+</Accordion>
 
-TCP Port 443 for:
+<Accordion title="Oculus for Business only" teaser="TCP 443 to five more hosts.">
+
+TCP port 443 for:
+
 - graph.oculus.com
 - graph.facebook-hardware.com
 - graph.facebook.com
 - mqtt.facebook.com
 - my.workplace.com
 
+[Oculus for Business FAQ](https://developer.oculus.com/documentation/ofb/latest/concepts/ofb-developer-reference/)
 
-#### Steam and SteamVR (according to their documentation)
+</Accordion>
 
-TCP port 80 & 443 for
+<Accordion title="Steam and SteamVR" teaser="TCP 80 and 443, according to Steam's documentation.">
+
+TCP ports 80 and 443 for:
+
 - steampowered.com
 - steamcommunity.com
 - steamgames.com
@@ -52,92 +75,88 @@ TCP port 80 & 443 for
 - steamstatic.com
 - akamaihd.net
 
-They also recommend opening network traffic to the Steam application for UDP Ports 27015-27030 and TCP Ports 27015-27030
+Steam also recommends opening network traffic to the Steam application on UDP ports 27015-27030 and TCP ports 27015-27030.
 
+</Accordion>
 
-#### Tips to use your Oculus Quest in a VPN network
+</AccordionGroup>
 
+## <AppIcon name="lock" /> Using a Quest on a VPN network {#vpn}
 
-##### New Method
-The Oculus Quest 2 with the v29 firmware update from Oculus enables the use of arbitrary APK files (Android apps) to be used on the device. This means that you can sideload / install the APK file of your favorite VPN to the device, log in, and use as if you would for an Android device. Note that your VPN provider must offer an APK for this to work. We have seen it work properly with NordVPN, ExpressVPN, Cisco AnyConnect, and several others.
+The Oculus Quest 2 with Oculus's v29 firmware update can run arbitrary APK files (Android apps). So you can sideload the APK of your VPN, log in, and use it as you would on an Android device. Your VPN provider has to offer an APK for this to work. We've seen it work with NordVPN, ExpressVPN, Cisco AnyConnect and several others.
 
-##### Old method
+<Accordion title="Older method: a VPN-enabled hotspot from a Windows 10 PC" teaser="Share a PC's VPN connection with the Quest over a mobile hotspot.">
 
-Method 1: VPN-enabled Hotspot from a Windows 10 PC
-Requirements:
+You need:
+
 1. An existing organizational VPN and VPN software on your PC
 2. Admin access to your Windows 10 PC
-3. Have VPN Credentials on hand
-4. Validate your Wireless card can support this! https://www.quora.com/How-do-i-know-if-i-have-Qualcomm-Atheros-wireless-card
+3. Your VPN credentials
+4. A wireless card that supports this. Check it: https://www.quora.com/How-do-i-know-if-i-have-Qualcomm-Atheros-wireless-card
 
-Once all requirements are met, follow these steps to create a VPN-enabled hotspot:
+Then create the VPN-enabled hotspot:
 
-Step 1: Open your VPN Software, Enter your credentials, and connect to your VPN
+<Steps>
 
-Verify you have an internet connection through the VPN and check your IP address to validate it changed and note the location/IP for later (https://whatismyipaddress.com/)
+1. Open your VPN software, enter your credentials and connect to your VPN. Check that you have an internet connection through the VPN, and check that your IP address changed. Note the location and IP for later (https://whatismyipaddress.com/).
+2. Press the Windows key and type Mobile Hotspot. Open **Mobile Hotspot**, change your Wi-Fi name and password, then turn on the hotspot.
+3. Open **Control Panel** > **Network and Internet** > **Network and Sharing Center** > **Change adapter settings**.
+4. Find the Ethernet # connection marked "Unidentified Network, TAP-&lt;VPNType&gt; Windows Adapter".
+5. Right-click it and go to the **Sharing** tab.
+6. Check allow sharing for other users in the network. From the dropdown, select your mobile hotspot connection, "Local Area Connection #". It should be labeled WiFi Direct Virtual Adapter.
+7. Join the Mobile Hotspot Wi-Fi from your Oculus Quest.
+8. Check that the VPN applies by checking your IP and location (https://whatismyipaddress.com/).
+9. Launch Nanome behind your firewall.
 
-Step 2: Hit Windows Key + type Mobile Hotspot
+</Steps>
 
-Open Mobile Hotspot and change your wifi name and password then turn on the hotspot
+</Accordion>
 
-Step 3: Open your Control Panel > Network and Internet > Network and Sharing Center > Change adapter settings.
+## <AppIcon name="brand-windows" /> Allow Nanome through Windows Firewall {#firewall}
 
-Step 4. Identify which connection is your Ethernet # with the indicator "Unidentified Network, TAP-&lt;VPNType&gt; Windows Adapter
+<Steps>
 
-Step 5: Right click it and go to the Sharing tab
+1. In the Start menu, click **Settings**, then type Firewall in the **Find a Setting** search box.
+2. Click **Windows Firewall** in the results. In the Windows Firewall window, click **Allow an App or Feature through Windows Firewall**.
 
-Step 6: Check allow sharing for other users in the network. From the dropdown, select your mobile hotspot connection "Local Area Connection #". It should be labeled as WiFi Direct Virtual Adapter
+   <vimg src="howto-page/Firewall1.png" alt="Allow an app or feature through Windows Firewall" />
 
-Step 7: Join the Mobile Hotspot Wifi from your Oculus Quest
+3. In the **Allowed Apps** window, click **Change Settings**, then select the check box for Nanome.
 
-Step 8: Verify you have the VPN applied by checking your IP/location (https://whatismyipaddress.com/)
+   <vimg src="howto-page/Firewall2.png" alt="The Allowed Apps list with Nanome" />
 
-Step 9: Launch and enjoy Nanome behind your firewall!
+   If Nanome isn't in the list, click **Allow another app**, then type the path to Nanome.exe or click **Browse** and select it. To find Nanome.exe, see below.
 
-Oculus for Business FAQ
-[https://developer.oculus.com/documentation/ofb/latest/concepts/ofb-developer-reference/](https://developer.oculus.com/documentation/ofb/latest/concepts/ofb-developer-reference/)
+   <vimg src="howto-page/Firewall3.png" alt="The Allow another app dialog" />
 
-### Allow Nanome through firewall
+4. Click **OK**, then **Close** to close the Windows Firewall window.
 
-#### 1. In the Start menu click Settings, and then enter Firewall in the Find a Setting search box.
+</Steps>
 
-#### 2. Click Windows Firewall in the search results. In the resulting Windows Firewall window, click Allow an App or Feature through Windows Firewall.
-<vimg src="howto-page/Firewall1.png" />
+### Find Nanome.exe {#find-nanome-exe}
 
-#### 3. In the Allowed Apps window that appears, click the Change Settings button, and then select the check box for Nanome.
-<vimg src="howto-page/Firewall2.png" />
+<Tabs :labels="['Installed with Oculus', 'Installed with Steam']">
+<Tab>
 
-If you can't find Nanome in this list, click the Allow another app button, and type in the path to Nanome.exe or click the Browse button and select it.
-<vimg src="howto-page/Firewall3.png" />
+Click the three dots button, then **Details**. The location of Nanome is on the right.
 
-#### Find Nanome.exe if you installed Nanome using Oculus
+<vimg src="howto-page/Path_Oculus0.png" alt="The three dots menu for Nanome in the Oculus app" />
+<vimg src="howto-page/Path_Oculus1.png" alt="Nanome's install location in the Oculus app" />
 
-<vimg src="howto-page/Path_Oculus0.png" />
-<vimg src="howto-page/Path_Oculus1.png" />
-If you installed Nanome using Oculus, click on the three dots button and click Details. You can find the location of Nanome to the right.
+</Tab>
+<Tab>
 
-#### Find Nanome.exe if you installed Nanome using Steam
+Right-click Nanome in the library and click **Properties**. Select the **Local Files** tab and click **Browse Local Files** to open the folder that holds Nanome.
 
-<vimg src="howto-page/Path_Steam0.png" />
-<vimg src="howto-page/Path_Steam1.png" />
-If you installed Nanome using Steam, right click on Nanome in the library and click Properties. Select Local Files tab and click Browse Local Files to open the folder containing Nanome.
+<vimg src="howto-page/Path_Steam0.png" alt="Nanome's Properties in the Steam library" />
+<vimg src="howto-page/Path_Steam1.png" alt="The Local Files tab in Steam" />
 
-#### 4. Click OK and then click the Close button to close the Windows Firewall window.
+</Tab>
+</Tabs>
 
-## Having Trouble Hearing Anything?
+## <AppIcon name="volume" /> Trouble hearing anything? {#audio}
 
-#### Windows Audio Troubleshooting
-
-[How to fix Windows audio](https://support.microsoft.com/en-us/help/4520288/windows-10-fix-sound-problems)
-
-#### Oculus Audio Troubleshooting
-
-[How to fix Oculus audio](https://support.oculus.com/948087951934283/)
-
-#### Vive Audio Troubleshooting
-
-[How to fix Vive audio](https://www.vive.com/uk/support/vive/category_howto/no-audio-while-using-extension-cable.html)
-
-#### Nanome Audio Troubleshooting
-
-[My Windows and Oculus audio are working, but I can't hear anything in Nanome](/nanome1x/navigating#settings)
+- Windows: [How to fix Windows audio](https://support.microsoft.com/en-us/help/4520288/windows-10-fix-sound-problems)
+- Oculus: [How to fix Oculus audio](https://support.oculus.com/948087951934283/)
+- Vive: [How to fix Vive audio](https://www.vive.com/uk/support/vive/category_howto/no-audio-while-using-extension-cable.html)
+- Windows and Oculus audio work, but there's no sound in Nanome: [Settings in Nanome](/nanome1x/navigating#settings)

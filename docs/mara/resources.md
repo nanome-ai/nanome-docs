@@ -4,42 +4,37 @@ title: User Resources
 
 # Resources for using MARA
 
-<vimg src="mara/what_mara_do.png" />
+Videos and articles to help you get started with MARA.
 
-## Tutorials
+<vimg src="mara/what_mara_do.png" alt="What can MARA do: data analysis, bioinformatics and cheminformatics" />
 
-We have a few tutorials available to help you get started with using MARA.
+## <AppIcon name="player-play" /> Tutorials {#tutorials}
 
-- [Welcome to Mara Onboarding Tutorial](https://youtu.be/7ZVdwAtM_Gg)
+<IconGrid label="Tutorials">
+<IconCard icon="player-play" title="Welcome to MARA" href="https://youtu.be/7ZVdwAtM_Gg">Onboarding tutorial video.</IconCard>
+<IconCard icon="player-play" title="CDD Vault + MARA" href="https://youtu.be/T1mjK3Z8qfQ">An example workflow, on video.</IconCard>
+<IconCard icon="player-play" title="Integrating Nanome and MARA" href="https://youtu.be/hXa2LUorsVM">MARA onboarding video.</IconCard>
+</IconGrid>
 
-- [Example Use Workflow: CDD Vault + Mara](https://youtu.be/T1mjK3Z8qfQ)
+## <AppIcon name="route" /> Example use cases and workflows {#examples}
 
-- [Mara Onboarding - Integrating Nanome and Mara](https://youtu.be/hXa2LUorsVM)
+Blog posts on how different people use MARA, and in which workflows.
 
-## Example Use Cases / Workflows
+<IconGrid label="Example use cases">
+<IconCard icon="file-text" title="Bioinformatics Workflow" href="https://nanome.ai/blog/mara-bioinformatics-workflow/">Blog post.</IconCard>
+<IconCard icon="file-text" title="MARA and CDD Integration Example" href="https://nanome.ai/blog/mara-and-cdd-integration-example/">Blog post.</IconCard>
+<IconCard icon="file-text" title="Computer-Aided Drug Discovery and Design through MARA" href="https://nanome.ai/blog/computer-aided-drug-discovery-and-design-through-mara/">Blog post.</IconCard>
+</IconGrid>
 
-See below for blogs discussing the use of MARA by different personas or in different workflows.
+## <AppIcon name="video" /> Webinars {#webinars}
 
-- [Bioinformatics Workflow](https://nanome.ai/blog/mara-bioinformatics-workflow/)
+The vision for MARA as a scientific co-pilot.
 
-- [MARA & CDD Integration Example](https://nanome.ai/blog/mara-and-cdd-integration-example/)
+<IconGrid label="Webinars">
+<IconCard icon="video" title="Amplifying the Human Element for AI in Drug Discovery" href="https://youtu.be/sQEPZvZ_htw">Introducing MARA by Nanome.</IconCard>
+<IconCard icon="video" title="Data Democratization with MARA by Nanome" href="https://youtu.be/fc78gIVqkeI">How to turn bench scientists into data scientists.</IconCard>
+</IconGrid>
 
-- [Computer-Aided Drug Discovery & Design through MARA](https://nanome.ai/blog/computer-aided-drug-discovery-and-design-through-mara/)
+## <AppIcon name="bulb" /> Update announcements {#latest-update}
 
-## Webinars
-
-View the webinars below to learn more about the vision of MARA and how it will become your scientific co-pilot.
-
-- [Amplifying the Human Element for AI in Drug Discovery: Introducing MARA by Nanome](https://youtu.be/sQEPZvZ_htw)
-
-- [Data Democratization with MARA by Nanome: How to Turn Bench Scientists into Data Scientists](https://youtu.be/fc78gIVqkeI)
-
-## Latest Update Announcement
-
-Current version: v0.12.10
-
-You can refer to [this blog](https://nanome.ai/blog/mara-update:-v0.12.10) for more information on the latest MARA version.
-
-## Previous Update Announcements
-
-Coming soon!
+The [MARA v0.12.10 update announcement](https://nanome.ai/blog/mara-update:-v0.12.10) describes that release.
