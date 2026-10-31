@@ -30,12 +30,12 @@ More tasks by kind, and what MARA does with tables and structures, are under [Wh
 
 ## <AppIcon name="device-vision-pro" /> In Nanome XR {#in-nanome-xr}
 
-<ShotRow src="nanome-v2/v2-7/xr-first-person.webp" alt="The Wrist Menu and the Tools Panel in a headset, with MARA's buttons on each" crop="16,28,50,46">
+<ShotRow src="mara/xr-mara-buttons.webp" alt="The Wrist Menu and the Tools Panel in a headset, with MARA's buttons on each">
 
 <UiList label="MARA in Nanome XR">
-<UiItem icon="sparkles" name="MARA on the Wrist Menu" href="#talking-to-mara" area="25.0,64.3,3.2,5.3">Opens MARA and starts listening.</UiItem>
-<UiItem icon="sparkles" name="Open MARA" href="#talking-to-mara" area="61.1,61.2,0.9,1.5">At the bottom of the Tools Panel. The same as the Wrist Menu button.</UiItem>
-<UiItem icon="tool" name="MARA Tools" href="/nanome_v2/toolspanel#mara-tools" area="61.1,52.6,0.9,1.5">In the Tools Panel, in beta. Runs your MARA tools from the headset.</UiItem>
+<UiItem icon="sparkles" name="MARA on the Wrist Menu" href="#talking-to-mara" area="18.0,78.9,6.4,11.5">Opens MARA and starts listening.</UiItem>
+<UiItem icon="sparkles" name="Open MARA" href="#talking-to-mara" area="90.2,72.2,1.8,3.3">At the bottom of the Tools Panel. The same as the Wrist Menu button.</UiItem>
+<UiItem icon="tool" name="MARA Tools" href="/nanome_v2/toolspanel#mara-tools" area="90.2,53.5,1.8,3.3">In the Tools Panel, in beta. Runs your MARA tools from the headset.</UiItem>
 </UiList>
 
 </ShotRow>
