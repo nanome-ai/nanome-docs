@@ -27,7 +27,7 @@ Along the bottom of the tab:
 
 <UiList label="Ligands tab bottom bar">
 <UiItem icon="eye" name="Preview all" href="#preview" area="2.8,92.5,23.9,5.5">Opens a 3D preview that steps through the listed ligands one model at a time, with a download button for each.</UiItem>
-<UiItem icon="cloud-download" name="Download all" area="27.7,92.5,26.5,5.5">Downloads the listed ligands.</UiItem>
+<UiItem icon="cloud-download" name="Download all" area="27.7,92.5,26.5,5.5">Downloads the listed ligands, as a Combined multi-model SDF or a ZIP of individual SDFs.</UiItem>
 <UiItem icon="hexagon-plus-2" name="Sketch new" area="55.1,92.5,25.2,5.5">Opens the 2D sketcher to draw a new ligand.</UiItem>
 </UiList>
 
@@ -47,7 +47,7 @@ Each row shows the ligand's 2D drawing, its entry, its name, and the chosen prop
 <UiItem icon="info-circle" name="Column info" href="#property-columns" area="67.0,42.5,1.3,5.8">Shows what the column means.</UiItem>
 <UiItem name="Tag" href="#tags-and-ratings" area="84.0,41.7,4.2,48.1">The ligand's tag. A dash means it has none.</UiItem>
 <UiItem icon="dots-vertical" name="Row menu" href="#row-menu" area="93.2,61.0,1.3,6.5">Download SDF, Sketch variant, Properties and Tag.</UiItem>
-<UiItem name="Checkboxes" area="96.4,41.4,1.8,49.5">One on each row, and one in the header row.</UiItem>
+<UiItem name="Checkboxes" area="96.4,41.4,1.8,49.5">One on each row, and one in the header row. With rows checked, the bottom buttons show the count, such as Preview 2 and Download 2, and act on those rows only.</UiItem>
 <UiItem icon="x" name="Close" area="95.4,5.8,3.4,15.9">Closes the full-screen table.</UiItem>
 </UiList>
 
@@ -96,7 +96,7 @@ A tag marks where a ligand stands, such as a hit or a lead. The **Tag** list in 
 - Tags are saved with the workspace, so everyone in it sees them, in Nanome Web and in the [Nanome XR Ligands tab](/nanome_v2/mainpanel#ligands-tab).
 - A ligand without a tag shows a dash in the **Tag** column.
 
-**Rating** is a column too. It holds a value people enter, stored with each ligand, so everyone in the workspace sees the same rating. In Nanome XR, people set it with up to 5 stars in the Rating column.
+**Rating** is a column too: up to 5 stars, stored with each ligand, so everyone in the workspace sees the same rating. Editors set it by clicking the stars in the Rating column, in Nanome Web or Nanome XR.
 
 ## <AppIcon name="columns-3" /> Property columns {#property-columns}
 

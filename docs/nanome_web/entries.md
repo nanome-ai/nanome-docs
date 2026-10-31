@@ -72,7 +72,7 @@ The palette button beside a representation opens its color schemes. Each scheme 
 
 A map attached with [Load DX map](#more-options) can color a **Surface** by the map's value, sampled 1.4 Å out along each surface normal: red at the minimum, white in the middle and blue at the maximum. Only surfaces take this coloring. The default range is −5 to +5, in the map's own units (APBS maps use kT/e). Nanome doesn't compute the electrostatic potential itself.
 
-Nanome XR applies it with the **Electrostatic** scheme in its [color list](/nanome_v2/mainpanel#color-schemes). A surface colored that way shows the same colors in Nanome Web.
+In Nanome Web, **Electrostatic** is in the color list of every **Surface**. Picking it opens **ESP Color Scale**, where **Min** and **Max** set the range before **Apply**. Nanome XR lists **Electrostatic** in a surface's [color list](/nanome_v2/mainpanel#color-schemes) once the entry has a DX map.
 
 </Accordion>
 
@@ -102,7 +102,7 @@ The representation panel ends with an **Interactions** row. Its count is the num
 
 </ShotRow>
 
-**Export analysis** in the [workspace menu](/nanome_web/home#workspaces) downloads the interactions as CSV files, along with measurements and minimization history.
+**Export analysis** in the [workspace menu](/nanome_web/home#workspaces) downloads the current scene's interactions, measurements and minimization history as a ZIP of CSV files.
 
 <AccordionGroup label="Interaction details">
 
@@ -148,7 +148,7 @@ The <AppIcon name="layout-list" /> **Structure actions** button on an entry row 
 <ShotRow src="nanome-web/entry-structure-actions.webp" alt="The Structure actions menu for an entry" crop="9.8,2.9,78.3,92.8">
 
 <UiList label="Structure actions">
-<UiItem icon="arrow-left-to-arc" name="Align proteins to this" area="17.6,22.1,59.7,10.9">Superposes other protein entries onto this one. Grayed out while the workspace holds a single entry.</UiItem>
+<UiItem icon="arrow-left-to-arc" name="Align proteins to this" area="17.6,22.1,59.7,10.9">Superposes other protein entries onto this one. Grayed out unless this entry and at least one other entry hold a protein, and while an alignment runs.</UiItem>
 <UiItem icon="polygon" name="Create interaction components" href="#interaction-components" area="17.6,35.4,59.7,10.9">Computes interactions and adds components that show them.</UiItem>
 <UiItem icon="square-x" name="Remove interaction components" area="17.6,48.6,59.7,10.9">Removes the interaction components from the entry.</UiItem>
 <UiItem icon="refresh" name="Reset components" area="17.6,61.9,59.7,10.9">Restores the entry's default components.</UiItem>
