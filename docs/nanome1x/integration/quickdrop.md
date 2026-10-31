@@ -80,7 +80,7 @@ Self-hosted Quick Drop is slightly simplified compared to Nanome-hosted Quick Dr
 The basic flow for uploading files to self-hosted Quick Drop is as follows:
 - Get user unique ID from Nanome API
 - Upload files to Quick Drop server
-- Notify Quick Drop server that files are uploaded
+- Notify Nanome API that files are uploaded
 
 The following code snippet demonstrates this flow:
 ```js
@@ -106,7 +106,7 @@ let done = 0
 const onFileUploaded = async () => {
     if (++done != files.length) return
 
-    // notify Quick Drop server that all files are uploaded
+    // notify Nanome API that all files are uploaded
     await fetch(`${NANOME_API}/quickdrop/${unique}/update`, {
         method: 'POST'
     })
