@@ -53,6 +53,47 @@
   }
 }
 
+/* On a phone the render sits above the panel. Where the screen is tall
+   enough, the render stays under the breadcrumb strip while the panel
+   scrolls up behind it, so a lower switch changes a render that's still in
+   view; it leaves with the end of the demo. On a shorter phone it would
+   cover most of the screen, so it scrolls as before.
+   - The figure's own box steps aside, so the render can stick on its own.
+   - The render keeps one size, and its caption moves under the panel, so a
+     longer or shorter caption never moves the switch that changed it.
+   - A band of page color around the render hides the panel passing behind.
+   - A control reached with the keyboard scrolls clear of the render. */
+@media (max-width: 759.98px) and (min-height: 700px) {
+  .n-demo {
+    --n-demo-stage-h: calc((100vw - 40px) * 3 / 4);
+  }
+
+  .n-demo:has(.n-app-themes) {
+    --n-demo-stage-h: calc((100vw - 40px) * 9 / 16);
+  }
+
+  .n-demo__view {
+    display: contents;
+  }
+
+  .n-demo__view > :first-child {
+    position: sticky;
+    top: calc(var(--n-nav-height) + var(--n-pagebar-space) + 10px);
+    z-index: 3;
+    order: -1;
+    box-shadow: 0 0 0 10px var(--n-bg);
+  }
+
+  .n-demo__view > .n-demo__caption {
+    order: 1;
+    margin-top: -8px;
+  }
+
+  .n-demo:has(> .n-demo__view) > :not(.n-demo__view) :is(a[href], button, input, select, [tabindex]:not([tabindex='-1'])) {
+    scroll-margin-top: calc(var(--n-pagebar-space) + var(--n-demo-stage-h) + 20px);
+  }
+}
+
 .n-demo__caption {
   flex: none;
   min-height: 4.5em;
