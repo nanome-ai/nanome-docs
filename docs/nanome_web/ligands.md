@@ -64,7 +64,7 @@ Each row has a checkbox and a <AppIcon name="dots-vertical" /> menu, at the righ
 <UiList label="Ligand row menu">
 <UiItem icon="cloud-download" name="Download SDF" area="62.5,32.2,25.3,6.6">Downloads the ligand as an SDF file.</UiItem>
 <UiItem icon="hexagon-plus-2" name="Sketch variant" area="62.5,39.9,25.3,6.6">Opens the ligand in the 2D sketcher to draw a variant. Saving it adds a new entry, named sketch 1, sketch 2 and so on, aligned onto the ligand it came from.</UiItem>
-<UiItem icon="info-circle" name="Properties" area="62.5,47.7,25.3,6.6">Shows the ligand's calculated properties.</UiItem>
+<UiItem icon="info-circle" name="Properties" area="62.5,47.7,25.3,6.6">Shows the ligand's properties by their property names, in 2 groups: Imported Properties from the file and Computed Properties.</UiItem>
 <UiItem icon="tag" name="Tag" href="#tags-and-ratings" area="62.5,56.8,25.3,37.5">Hit, Lead, Add to Synthesis, or New tag… for a custom tag. On a tagged ligand, Remove tag clears it. The tag appears in the Tag column.</UiItem>
 </UiList>
 

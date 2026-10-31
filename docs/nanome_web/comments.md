@@ -38,7 +38,7 @@ A workspace with no comments shows **No comments yet**.
 <UiItem name="Author and time">The author's avatar and name, and how long ago the comment was posted, such as <code>18m</code> or <code>now</code>.</UiItem>
 <UiItem icon="cube" name="Scene chip">On a comment tied to a scene: the scene's number and name, such as <code style="white-space: nowrap">6: 1KV2comments</code>.</UiItem>
 <UiItem icon="circle-dot" name="Atom chip" href="#anchoring-to-atoms">A link to specific atoms, such as <code style="white-space: nowrap">1KV2 A|B96'391 C4, C5</code>. Hovering it highlights those atoms in the viewer, and clicking it zooms to them.</UiItem>
-<UiItem name="@mentions">A comment can mention a colleague by name. The mention is highlighted in the text.</UiItem>
+<UiItem name="@mentions">A comment can mention a colleague by name. The mention is highlighted in the text, and that person is notified. When someone mentioned has no access to the workspace, the comment box warns that they won't be notified, and an Editor can add them from there.</UiItem>
 <UiItem icon="mood-plus" name="Reactions" href="#reactions">Emoji reactions under the comment, with a count beside each emoji.</UiItem>
 <UiItem icon="message" name="Replies" href="#threads">A count under the comment shows how many replies its thread has.</UiItem>
 </UiList>
@@ -109,4 +109,4 @@ Unread state is kept for each signed-in account. Anonymous viewers of a [public 
 
 ## AI assistants {#ai-assistants}
 
-AI assistants connected through the Nanome MCP server can read a summary of a workspace and add text, distance, angle and dihedral annotations to it. Setup is on [Account & Settings](/nanome_web/account#mcp-setup).
+AI assistants connected through the Nanome MCP server can read a summary of a workspace and add text, distance, angle and dihedral annotations to it. The MCP server has no tools for comments, so assistants can't read or post them. Setup is on [Account & Settings](/nanome_web/account#mcp-setup).

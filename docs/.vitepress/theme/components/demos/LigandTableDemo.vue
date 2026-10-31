@@ -562,8 +562,9 @@ function act(kind) {
   if (kind === 'sketch') note.value = { title: 'Sketch variant', text: `Opens ${l.name} in the 2D sketcher, to draw a variant of it.` }
   if (kind === 'new') note.value = { title: 'New tag…', text: 'Adds a custom tag to the workspace’s list.' }
   if (kind === 'props') {
-    const list = COLUMNS.map((c) => `${c.label} ${formatValue(l.props[c.key])}`).join(', ')
-    note.value = { title: `${l.name} · Properties`, text: `${list}.` }
+    // Nanome Web's popover lists the raw property names under Computed Properties.
+    const list = COLUMNS.map((c) => `${xr.value ? c.label : c.key} ${formatValue(l.props[c.key])}`).join(', ')
+    note.value = { title: `${l.name} · Properties`, text: xr.value ? `${list}.` : `Computed Properties: ${list}.` }
   }
 }
 

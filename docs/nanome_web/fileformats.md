@@ -92,7 +92,7 @@ All of these use the same parser on Nanome's server.
 
 ## How animation works
 
-Both animation types are driven by the same play, pause, and scrub controls, but they step over different things.
+Both animation types use the same step, play and speed controls, but they step over different things.
 
 | Type | A "step" is… | Source formats |
 |-----------|--------------|----------------|

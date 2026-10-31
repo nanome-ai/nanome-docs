@@ -13,7 +13,7 @@ Nanome plays molecular dynamics trajectories in Nanome Web and streams them to N
 
 A frame trajectory attaches to a structure that's already loaded. In the **Entries** tab, the entry's <AppIcon name="dots" /> **(...)** menu has **Load trajectory**.
 
-<ShotRow src="nanome-web/entry-more-options.webp" alt="An entry's More options menu, with Load trajectory" crop="54.6,3.9,42.3,86.6">
+<ShotRow src="nanome-web/entry-more-options.webp" alt="An entry's More options menu, with Load trajectory" crop="17.5,0,79.4,87.3">
 
 <UiList label="Attaching a trajectory">
 <UiItem icon="dots" name="More options" href="/nanome_web/entries#more-options" area="89.0,8.2,3.5,6.6">On the entry's row. Opens the entry's menu.</UiItem>
@@ -73,7 +73,7 @@ Resonac's computational and experimental chemists reviewed their GROMACS traject
 
 </Callout>
 
-### Video: MD Trajectory Playback
+## Video: MD Trajectory Playback
 
 <YoutubeEmbed videoId="cNW8DnFap6A" title="Nanome v2.5 Quick Tips: MD Trajectory Playback" />
 
