@@ -6,7 +6,7 @@ title: Nanome Controls
 
 ## In-VR Controls
 
-<ShotRow src="controls-page/2_Grip.png" alt="Side view of a controller, with the trigger at the front and the grip below it" crop="4.0,12.6,43.0,83.5">
+<ShotRow src="controls-page/2_Grip.png" alt="Side view of a controller, with the trigger at the front and the grip below it" crop="3.2,11.0,44.7,86.8">
 
 **Trigger and grip**
 
@@ -17,7 +17,7 @@ title: Nanome Controls
 
 </ShotRow>
 
-<ShotRow src="controls-page/3_RTB.png" alt="The right controller seen from above, with its top button and joystick" crop="6.9,7.1,36.7,84.6">
+<ShotRow src="controls-page/3_RTB.png" alt="The right controller seen from above, with its top button and joystick" crop="2.9,6.0,44.7,86.8">
 
 **Right controller**
 
@@ -28,7 +28,7 @@ title: Nanome Controls
 
 </ShotRow>
 
-<ShotRow src="controls-page/6_MenuButton.png" alt="The left controller seen from above, with its top button, joystick and menu button" crop="6.9,7.1,36.7,84.6">
+<ShotRow src="controls-page/6_MenuButton.png" alt="The left controller seen from above, with its top button, joystick and menu button" crop="2.9,6.0,44.7,86.8">
 
 **Left controller**
 
@@ -65,15 +65,15 @@ title: Nanome Controls
 **Bumpers**
 
 <UiList label="Bumpers">
-<UiItem name="L bumper" area="49.4,10.4,3.4,6.0">Set move axes to low preset.</UiItem>
-<UiItem name="R bumper" area="66.2,9.4,3.6,7.4">Set rotate axes to low preset.</UiItem>
+<UiItem name="L bumper" area="66.2,9.4,3.6,7.4">Set move axes to low preset.</UiItem>
+<UiItem name="R bumper" area="49.4,10.4,3.4,6.0">Set rotate axes to low preset.</UiItem>
 </UiList>
 
 **Triggers**
 
 <UiList label="Triggers">
-<UiItem name="L trigger" area="47.4,15.8,4.4,7.8">Move Avatar/Camera down.</UiItem>
-<UiItem name="R trigger" area="63.9,17.1,4.8,9.7">Move Avatar/Camera up.</UiItem>
+<UiItem name="L trigger" area="63.9,17.1,4.8,9.7">Move Avatar/Camera down.</UiItem>
+<UiItem name="R trigger" area="47.4,15.8,4.4,7.8">Move Avatar/Camera up.</UiItem>
 </UiList>
 
 **Face Buttons**
