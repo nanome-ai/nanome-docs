@@ -14,6 +14,10 @@ classic: true
 
 ## <AppIcon name="device-vision-pro" /> Recommended headsets {#headsets}
 
+These headsets are for Nanome Classic. For Nanome XR on Meta Quest, Quest 2
+and Quest Pro are the minimum and Quest 3 and 3S are recommended, as
+[Choosing Hardware](/help/choosinghardware#quest-minimum-recommended) explains.
+
 <vimg src="gettingStarted-page/SupportedHeadsets2023-2.png" alt="Supported headsets" />
 
 ## <AppIcon name="device-laptop" /> Lightweight VR-ready laptops {#laptops}
@@ -30,5 +34,5 @@ Recommended specs:
 
 - 1 quad core CPU (e.g., Intel Xeon 3440, E3-1230 etc.)
 - 4 GB RAM
-- 1 GBps NIC / uplink port speed
+- 1 Gbps NIC / uplink port speed
 - Windows Server 2012 and above

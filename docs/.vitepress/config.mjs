@@ -154,6 +154,11 @@ export default defineConfig({
 
   srcExclude: isProduction ? ['contributing/**'] : [],
 
+  // Retired pages that public/_redirects sends to their replacements, so an
+  // old link to one still lands somewhere. The Troubleshooting page links to
+  // /nanome1x/navigating until its Nanome Classic update lands.
+  ignoreDeadLinks: ['/nanome1x/navigating', '/nanome1x/features'],
+
   // A line that starts with <Btn> or <AppIcon> stays a paragraph. VitePress
   // otherwise reads any line that starts with a component as a block of its
   // own, so the line loses its paragraph spacing, or runs on into the next
