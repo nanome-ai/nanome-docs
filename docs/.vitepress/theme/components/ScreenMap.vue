@@ -114,14 +114,40 @@ export default defineComponent({
       )
       fitHeight.value = rows.length && room >= 0.9 * pageHeight.value && tallest <= room ? Math.floor(room) : 0
     }
+    // Full screen on a phone, an image wider than the screen pans sideways.
+    // It opens on its middle, with faded edges where there's more to see and
+    // a hint under it, as a wide <ShotRow> does.
+    const pan = ref(false)
+    const more = ref({ left: false, right: false })
+    const edges = () => {
+      const el = root.value?.querySelector('.n-screenmap__shot')
+      more.value =
+        pan.value && el
+          ? { left: el.scrollLeft > 1, right: el.scrollLeft + el.clientWidth < el.scrollWidth - 1 }
+          : { left: false, right: false }
+    }
+    const fitPan = async (center) => {
+      const el = root.value?.querySelector('.n-screenmap__shot')
+      pan.value = !!el && view.focused.value && matchMedia('(max-width: 639px)').matches && el.scrollWidth > el.clientWidth + 1
+      if (pan.value && center === true) el.scrollLeft = (el.scrollWidth - el.clientWidth) / 2
+      await nextTick()
+      edges()
+    }
+    const resized = () => {
+      fit()
+      fitPan()
+    }
+
     watch(view.focused, (on) => {
-      if (on) addEventListener('resize', fit)
+      if (on) addEventListener('resize', resized)
       else {
-        removeEventListener('resize', fit)
+        removeEventListener('resize', resized)
         fitHeight.value = 0
+        pan.value = false
+        more.value = { left: false, right: false }
       }
     })
-    onBeforeUnmount(() => removeEventListener('resize', fit))
+    onBeforeUnmount(() => removeEventListener('resize', resized))
 
     const open = async () => {
       const frame = root.value?.querySelector('.hotshot__frame')
@@ -132,6 +158,7 @@ export default defineComponent({
       fit()
       await nextTick()
       fit()
+      fitPan(true)
     }
 
     // A click on a region whose card has no link: light the card and bring
@@ -225,6 +252,8 @@ export default defineComponent({
           'is-fit': view.focused.value && fitHeight.value > 0,
           // Cards on both sides of a screenshot that isn't tall.
           'is-flanked': sides.left.length > 0 && sides.right.length > 0 && ar >= 0.75,
+          // A tall screen, which stays as it is full screen on a phone.
+          'is-tall': Number.isFinite(ar) && ar < 0.9,
         },
         ...SIDES.map((s) => ({ [`has-${s}`]: sides[s].length > 0 })),
       ]
@@ -268,20 +297,38 @@ export default defineComponent({
                 // reaches them in the order they're read when they're listed
                 // under the image. Around the image, grid areas place them.
                 [
-                  h('div', { class: 'n-screenmap__shot' }, [
-                    h(HotShot, {
-                      src: props.src,
-                      alt: props.alt,
-                      crop: props.crop,
-                      spots,
-                      active: active.value,
-                      focus: view.focused.value,
-                      onEnter: enter,
-                      onLeave: leave,
-                      onOpen: open,
-                      onPick: pick,
-                    }),
-                  ]),
+                  h(
+                    'div',
+                    {
+                      class: ['n-screenmap__shot', { 'more-left': more.value.left, 'more-right': more.value.right }],
+                      tabindex: pan.value ? 0 : undefined,
+                      role: pan.value ? 'region' : undefined,
+                      'aria-label': pan.value ? `${props.alt || 'Screenshot'}, scrolls sideways` : undefined,
+                      onScrollPassive: edges,
+                    },
+                    [
+                      h(HotShot, {
+                        src: props.src,
+                        alt: props.alt,
+                        crop: props.crop,
+                        spots,
+                        active: active.value,
+                        focus: view.focused.value,
+                        onEnter: enter,
+                        onLeave: leave,
+                        onOpen: open,
+                        onPick: pick,
+                      }),
+                    ]
+                  ),
+                  pan.value
+                    ? h('p', { class: 'n-screenmap__hint', 'aria-hidden': 'true' }, [
+                        h('svg', { viewBox: '0 0 24 24', width: 14, height: 14 }, [
+                          h('path', { d: 'M7 8l-4 4 4 4M17 8l4 4-4 4M3 12h18', fill: 'none', stroke: 'currentColor', 'stroke-width': 2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }),
+                        ]),
+                        'Scrolls sideways',
+                      ])
+                    : null,
                   column('top'),
                   column('left'),
                   column('right'),
@@ -451,16 +498,19 @@ export default defineComponent({
     justify-content: center;
   }
 
-  /* A row over the image alone still holds 2 cards side by side, and the
-     image keeps to the cards on its right. */
-  .n-screenmap.is-focus.has-right:not(.has-left):is(.has-top, .has-bottom) {
+  /* With cards only on its right, in the page too, the image's column is
+     as wide as the image, so the cards sit close to it. A row over the image
+     alone still holds 2 cards side by side, and the image keeps to the cards
+     on its right. */
+  .n-screenmap.has-right:not(.has-left):is(.has-top, .has-bottom) {
     grid-template-columns:
       0px
       minmax(0, max(calc(var(--hotshot-maxh) * var(--sm-ar, 1)), 26rem))
       minmax(0, var(--n-sm-right, 0px));
+    justify-content: center;
   }
 
-  .n-screenmap.is-focus.has-right:not(.has-left) .hotshot {
+  .n-screenmap.has-right:not(.has-left) .hotshot {
     margin-right: 0;
   }
 
@@ -481,7 +531,8 @@ export default defineComponent({
    would leave it half its size. Until the map is 1000px wide, the image comes
    first and the cards follow in a list instead. */
 @container screenmap (max-width: 999.98px) {
-  .n-screenmap.is-flanked {
+  /* As specific as the full-screen columns above, so this wins there too. */
+  .n-screenmap.is-flanked:is(.has-left, .has-right) {
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
     grid-template-areas: none;
     gap: 10px;
@@ -586,15 +637,46 @@ html.n-focus-open {
 
 /* On a phone, full screen shows the image larger than the page can: up to
    2.5 screens wide, as long as it stays short enough for the window, and the
-   image scrolls sideways. A tall screen stays as it is. */
+   image scrolls sideways (fitPan() in the script). A tall screen stays as it
+   is. */
 @media (max-width: 639px) {
-  .n-screenmap.is-focus .n-screenmap__shot {
+  .n-screenmap.is-focus:not(.is-tall) .n-screenmap__shot {
+    --fade: 32px;
     overflow-x: auto;
+    overscroll-behavior-x: contain;
   }
 
-  .n-screenmap.is-focus .n-screenmap__shot .hotshot {
+  .n-screenmap.is-focus:not(.is-tall) .n-screenmap__shot .hotshot {
     width: max(100%, min(var(--hotshot-shown), 250vw, (var(--hotshot-maxh, 100vh - 120px)) * var(--hotshot-ar)));
     max-width: none;
+  }
+
+  .n-screenmap.is-focus .n-screenmap__shot.more-right {
+    mask-image: linear-gradient(to left, transparent, #000 var(--fade));
+  }
+
+  .n-screenmap.is-focus .n-screenmap__shot.more-left {
+    mask-image: linear-gradient(to right, transparent, #000 var(--fade));
+  }
+
+  .n-screenmap.is-focus .n-screenmap__shot.more-left.more-right {
+    mask-image: linear-gradient(to right, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent);
+  }
+
+  .n-screenmap.is-focus .n-screenmap__shot[tabindex]:focus-visible {
+    outline: 2px solid var(--n-accent);
+    outline-offset: 2px;
+    mask-image: none;
+  }
+
+  .n-screenmap > .n-screenmap__hint {
+    display: flex;
+    grid-column: 1 / -1;
+    align-items: center;
+    gap: 6px;
+    margin: -4px 0 4px;
+    color: var(--n-text-muted);
+    font-size: var(--n-text-xs);
   }
 }
 </style>

@@ -119,9 +119,9 @@
   top: 0;
 }
 
-/* A phone-width window has no gutter to spare, so the # sits at the
+/* A narrow window has too little gutter for the #, so it sits at the
    heading's right edge, inside the column, in room the heading keeps free. */
-@media (max-width: 640px) and (hover: hover) {
+@media (max-width: 820px) and (hover: hover) {
   .vp-doc :is(h1, h2, h3, h4):has(> .header-anchor) {
     padding-right: 0.8em;
   }

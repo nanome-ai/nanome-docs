@@ -13,7 +13,7 @@
  * legend row (`pick`). The expand button opens the full-screen view; on an
  * image with no regions, so does clicking the image itself.
  */
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { imageInfo, parseBox } from './image.js'
 
 const props = defineProps({
@@ -86,6 +86,19 @@ onMounted(() => {
   sizer.observe(frameEl.value)
 })
 onBeforeUnmount(() => sizer?.disconnect())
+
+// Leaving full screen, the frame is measured as soon as it's back in the page,
+// before the ResizeObserver reports it. The expand button then renders in its
+// final place, in the frame or under it, before focus returns to it, so the
+// button that gets focus is the one that stays.
+watch(
+  () => props.focus,
+  () => {
+    const el = frameEl.value
+    if (el?.clientWidth && el.clientHeight) frameSize.value = [el.clientWidth, el.clientHeight]
+  },
+  { flush: 'post' }
+)
 
 /**
  * The expand button's corner. It sits bottom right unless it would cover part

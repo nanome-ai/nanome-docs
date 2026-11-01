@@ -15,8 +15,9 @@
  * to the row's link, or brings the row into view when it has none. The expand
  * button opens the image full screen with the legend beside it.
  *
- * A wide image (about 2:1 or wider), such as a sequence strip, stays full
- * width under its legend, since it can't be read at a third of the page.
+ * A wide image (about 2:1 or wider, and over 400px wide), such as a sequence
+ * strip, stays full width under its legend, since it can't be read at a third
+ * of the page. A small panel of that shape sits beside its legend instead.
  * Full screen it comes first, with the legend under it. When it's much wider
  * than the screen, as on a phone, it shows at a readable height instead and
  * scrolls sideways.
@@ -51,7 +52,13 @@ const ar = computed(() => {
   return (w * cw) / (h * ch)
 })
 
-const wide = computed(() => ar.value > 1.9)
+/** The width the image shows at, after the crop. */
+const shownWidth = computed(() => {
+  const [, , cw] = parseBox(props.crop) || [0, 0, 100, 100]
+  return ((imageInfo(props.src).shown || 0) * cw) / 100
+})
+
+const wide = computed(() => ar.value > 1.9 && shownWidth.value > 400)
 // A tall panel: kept under half a phone screen high, it's narrower than the screen.
 const tall = computed(() => ar.value < 0.9)
 
@@ -113,7 +120,7 @@ const view = useFocusView(root)
 async function reveal() {
   if (!view.focused.value) return
   await nextTick()
-  const shot = root.value?.querySelector('.n-shotrow__shot')
+  const shot = scroller.value
   const parts = [...(shot?.querySelectorAll('.hotshot__spot.is-active') || [])].map((el) => el.getBoundingClientRect())
   if (!parts.length || shot.scrollWidth <= shot.clientWidth) return
   const s = shot.getBoundingClientRect()
@@ -135,12 +142,37 @@ const strip = ref(false)
 const scroller = ref(null)
 const more = ref({ left: false, right: false })
 
+/**
+ * Full screen on a phone, an image outside the strip that shows wider than
+ * the screen pans sideways too, with the same faded edges and hint (`pan`).
+ * One that would come out only a little wider than the screen fits it
+ * instead (`fit`): a few pixels more aren't worth cutting off its edge.
+ */
+const pan = ref(false)
+const fit = ref(false)
+
 function edges() {
   const el = scroller.value
   more.value =
-    strip.value && el
+    (strip.value || pan.value) && el
       ? { left: el.scrollLeft > 1, right: el.scrollLeft + el.clientWidth < el.scrollWidth - 1 }
       : { left: false, right: false }
+}
+
+async function fitPan() {
+  const on = view.focused.value && !strip.value && matchMedia('(max-width: 639px)').matches
+  fit.value = false
+  pan.value = false
+  if (on) {
+    await nextTick()
+    const el = scroller.value
+    if (el && view.focused.value) {
+      fit.value = el.scrollWidth > el.clientWidth && el.scrollWidth < 1.15 * el.clientWidth
+      pan.value = !fit.value && el.scrollWidth > el.clientWidth + 1
+    }
+  }
+  await nextTick()
+  edges()
 }
 
 function fitStrip() {
@@ -154,7 +186,7 @@ function fitStrip() {
     const readable = Math.min(shown, 0.6 * innerHeight * ((w * cw) / (h * ch)))
     strip.value = readable > 1.5 * document.documentElement.clientWidth
   }
-  nextTick(edges)
+  nextTick(fitPan)
 }
 
 watch(view.focused, (on) => {
@@ -245,10 +277,21 @@ async function pick(n) {
   if (r.top < top || r.bottom > window.innerHeight) {
     holdWhileScrolling()
     const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+    await nextTick()
+    const parts = [...root.value.querySelectorAll('.hotshot__spot.is-active')].map((p) => p.getBoundingClientRect())
     // A sticky image stays put, so the row comes to the middle. One that
     // scrolls with the page is above the row, so a row below the window comes
-    // up only as far as it must, and as much of the image as can stays in view.
-    el.scrollIntoView({ block: sticky || r.top < top ? 'center' : 'nearest', behavior })
+    // up only as far as it must, and never so far that the part just tapped
+    // goes under the bar at the top. When the two don't fit together, the part
+    // stays just under the bar, with as much of the legend below it as fits.
+    if (!view.focused.value && !sticky && r.top >= top && parts.length) {
+      const room = Math.min(...parts.map((p) => p.top)) - (top - 24)
+      const rest = r.bottom - innerHeight
+      const by = rest <= room ? Math.min(rest + 16, Math.max(room - 8, rest)) : room - 8
+      window.scrollBy({ top: Math.max(0, by), behavior })
+    } else {
+      el.scrollIntoView({ block: sticky || r.top < top ? 'center' : 'nearest', behavior })
+    }
   }
 }
 </script>
@@ -261,7 +304,7 @@ async function pick(n) {
     <div
       ref="root"
       class="n-shotrow"
-      :class="{ 'is-wide': wide, 'is-tall': tall, 'is-stack': stack, 'is-focus': view.focused.value, 'is-strip': strip, 'has-spots': spots.length > 0 }"
+      :class="{ 'is-wide': wide, 'is-tall': tall, 'is-stack': stack, 'is-focus': view.focused.value, 'is-strip': strip, 'is-pan': pan, 'is-fit': fit, 'has-spots': spots.length > 0 }"
       :role="view.focused.value ? 'dialog' : undefined"
       :aria-modal="view.focused.value ? 'true' : undefined"
       :aria-label="(view.focused.value && alt) || undefined"
@@ -276,9 +319,9 @@ async function pick(n) {
             ref="scroller"
             class="n-shotrow__scroll"
             :class="{ 'more-left': more.left, 'more-right': more.right }"
-            :tabindex="strip ? 0 : undefined"
-            :role="strip ? 'region' : undefined"
-            :aria-label="strip ? `${alt || 'Screenshot'}, scrolls sideways` : undefined"
+            :tabindex="strip || pan ? 0 : undefined"
+            :role="strip || pan ? 'region' : undefined"
+            :aria-label="strip || pan ? `${alt || 'Screenshot'}, scrolls sideways` : undefined"
             @scroll.passive="edges"
           >
             <HotShot
@@ -294,7 +337,7 @@ async function pick(n) {
               @pick="pick"
             />
           </div>
-          <p v-if="strip" class="n-shotrow__hint" aria-hidden="true">
+          <p v-if="strip || pan" class="n-shotrow__hint" aria-hidden="true">
             <svg viewBox="0 0 24 24" width="14" height="14"><path d="M7 8l-4 4 4 4M17 8l4 4-4 4M3 12h18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
             Scrolls sideways
           </p>
@@ -416,7 +459,13 @@ async function pick(n) {
   --hotshot-maxh: min(70vh, 640px);
 }
 
+/* An image that would reach less than 36px past the text column on each side
+   keeps to the column, so its edges line up with the text and the legend. A
+   wider one still takes the room beside the column. */
 .n-shotrow.is-stack:not(.is-focus) :deep(.hotshot) {
+  --shot-w: min(var(--hotshot-shown), 100%, calc((var(--hotshot-maxh, 100000px) - 2px) * var(--hotshot-ar) + 2px));
+  --shot-col: calc(var(--n-content-max) - 2 * var(--n-gutter));
+  max-width: max(min(var(--shot-w), var(--shot-col)), min(var(--shot-w), (var(--shot-w) - var(--shot-col) - 72px) * 1000));
   margin-inline: auto;
 }
 
@@ -531,28 +580,37 @@ async function pick(n) {
 }
 
 .n-shotrow.is-strip .n-shotrow__scroll {
-  --fade: 32px;
   padding: 4px max(24px, 3vw) 6px;
   overflow-x: auto;
   overscroll-behavior-x: contain;
 }
 
-.n-shotrow.is-strip .n-shotrow__scroll.more-right {
+.n-shotrow:is(.is-strip, .is-pan) .n-shotrow__scroll {
+  --fade: 32px;
+}
+
+.n-shotrow:is(.is-strip, .is-pan) .n-shotrow__scroll.more-right {
   mask-image: linear-gradient(to left, transparent, #000 var(--fade));
 }
 
-.n-shotrow.is-strip .n-shotrow__scroll.more-left {
+.n-shotrow:is(.is-strip, .is-pan) .n-shotrow__scroll.more-left {
   mask-image: linear-gradient(to right, transparent, #000 var(--fade));
 }
 
-.n-shotrow.is-strip .n-shotrow__scroll.more-left.more-right {
+.n-shotrow:is(.is-strip, .is-pan) .n-shotrow__scroll.more-left.more-right {
   mask-image: linear-gradient(to right, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent);
 }
 
-.n-shotrow.is-strip .n-shotrow__scroll:focus-visible {
+.n-shotrow:is(.is-strip, .is-pan) .n-shotrow__scroll:focus-visible {
   outline: 2px solid var(--n-accent);
   outline-offset: -2px;
   mask-image: none;
+}
+
+/* With no padding round the image, a ring inside it would be under the
+   image, so it goes just outside. */
+.n-shotrow.is-pan .n-shotrow__scroll:focus-visible {
+  outline-offset: 2px;
 }
 
 .n-shotrow.is-strip :deep(.hotshot) {
@@ -568,6 +626,11 @@ async function pick(n) {
   margin: 4px max(24px, 3vw) 0;
   color: var(--n-text-muted);
   font-size: var(--n-text-xs);
+}
+
+/* Outside the strip, the image and its hint keep to the column. */
+.n-shotrow.is-pan .n-shotrow__hint {
+  margin-inline: 0;
 }
 
 @container shotrow (min-width: 600px) {
@@ -595,16 +658,21 @@ async function pick(n) {
 
 /* On a phone, full screen shows the image larger than the page can: up to
    2.5 screens wide, as long as it stays short enough for the window, and the
-   image scrolls sideways. A tall panel stays as it is, and a wide image in
-   the strip scrolls in the strip. */
+   image scrolls sideways (fitPan() in the script). A tall panel stays as it
+   is, and a wide image in the strip scrolls in the strip. */
 @media (max-width: 639px) {
-  .n-shotrow.is-focus:not(.is-strip) .n-shotrow__shot {
+  .n-shotrow.is-focus:not(.is-strip, .is-tall) .n-shotrow__scroll {
     overflow-x: auto;
+    overscroll-behavior-x: contain;
   }
 
-  .n-shotrow.is-focus:not(.is-strip) .n-shotrow__shot :deep(.hotshot) {
+  .n-shotrow.is-focus:not(.is-strip, .is-tall) .n-shotrow__shot :deep(.hotshot) {
     width: max(100%, min(var(--hotshot-shown), 250vw, (var(--hotshot-maxh, 100vh - 120px)) * var(--hotshot-ar)));
     max-width: none;
+  }
+
+  .n-shotrow.is-focus.is-fit .n-shotrow__shot :deep(.hotshot) {
+    width: 100%;
   }
 }
 </style>

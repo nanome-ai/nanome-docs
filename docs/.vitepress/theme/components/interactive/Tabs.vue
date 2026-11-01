@@ -109,7 +109,9 @@ onBeforeUnmount(() => removeEventListener('hashchange', fromHash))
   display: flex;
   gap: 4px;
   overflow-x: auto;
-  border-bottom: 1px solid var(--n-border);
+  /* The rule under the tabs is drawn inside the list too, so the active
+     tab's line covers it instead of sitting above it. */
+  box-shadow: inset 0 -1px 0 var(--n-border);
   scrollbar-width: none;
 }
 
@@ -140,7 +142,7 @@ onBeforeUnmount(() => removeEventListener('hashchange', fromHash))
   .n-tabs__list {
     flex-wrap: wrap;
     gap: 0;
-    border-bottom: 0;
+    box-shadow: none;
   }
 
   /* A column, so labels of one and two lines all start at the top. The side
