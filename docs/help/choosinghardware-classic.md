@@ -188,7 +188,7 @@ significantly. ‘Shown Atom Count’ column is given assuming nothing else is d
 <table class="legend">
     <thead>
         <tr>
-            <th>Comfortability</th>
+            <th>Comfort</th>
             <th>Frames Per Second (FPS)</th>
         </tr>
     </thead>
@@ -203,7 +203,7 @@ significantly. ‘Shown Atom Count’ column is given assuming nothing else is d
         </tr>
         <tr>
             <td style="background-color:#F4CCCC">Not recommended</td>
-            <td style="background-color:#FFFFFF">30 FPS or less</td>
+            <td style="background-color:#FFFFFF">Under 60 FPS</td>
         </tr>
     </tbody>
 </table>
