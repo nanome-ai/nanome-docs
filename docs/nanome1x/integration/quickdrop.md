@@ -107,7 +107,7 @@ const onFileUploaded = async () => {
     if (++done != files.length) return
 
     // notify Quick Drop server that all files are uploaded
-    await fetch(`${NANOME_API}/quickdrop/${unique}/update`, {
+    await fetch(`${QUICKDROP_API}/quickdrop/${unique}/update`, {
         method: 'POST'
     })
 }

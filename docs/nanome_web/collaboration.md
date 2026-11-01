@@ -20,7 +20,7 @@ The **Users** tab of a workspace controls who can open it and what they can chan
 A role sets what someone can do in a workspace. The Users tab shows each person's role beside their address, and the Home page lists yours in the **Access** column.
 
 <UiList label="Roles">
-<UiItem icon="crown" name="Owner">The person who creates a workspace becomes its Owner. Each workspace has 1 Owner, who can do everything an Editor can and can't be removed from it.</UiItem>
+<UiItem name="Owner">The person who creates a workspace becomes its Owner. Each workspace has 1 Owner, who can do everything an Editor can and can't be removed from it.</UiItem>
 <UiItem name="Editor">Can change the workspace.</UiItem>
 <UiItem name="Viewer">Can open the workspace and look around without changing it.</UiItem>
 <UiItem name="None">No access. Someone who isn't a member of the workspace or its project has None while Link access is Members only and Public workspace is off.</UiItem>
@@ -80,22 +80,26 @@ Editors and the Owner can change **Link access**, and only the Owner sees **Publ
 
 <UiList label="Adding people">
 <UiItem name="Workspace" area="2.6,3.3,21.7,20.5">The tab under the sharing settings: the people added to this workspace and their role.</UiItem>
-<UiItem name="My Org" area="24.7,3.3,15.1,20.5">The tab that lists colleagues in your organization.</UiItem>
+<UiItem name="My Org" area="24.7,3.3,15.1,20.5">The tab that lists colleagues in your organization. Each shows In Workspace, Offline, or Invite and Join buttons. Invite first asks which role to give someone without access.</UiItem>
 <UiItem name="Add people by email" area="2.6,28.8,57.7,18.1">Takes an email address. It has to match their Nanome account exactly.</UiItem>
 <UiItem name="Viewer / Editor" href="#roles" area="60.9,28.8,23.5,59">The role menu beside the address.</UiItem>
 <UiItem name="+ Add" area="84.6,28.6,12.9,18.3">Invites them.</UiItem>
 <UiItem name="Person" area="4.1,55.5,32.0,10.5">Someone added to the workspace, by their email address.</UiItem>
 <UiItem name="Role" href="#roles" area="85.4,54.3,12.0,13.3">Their role. Here it's Owner, the role the workspace's creator gets.</UiItem>
+<UiItem name="Role menu">On another member's row: changes their role between Viewer and Editor. Project members show Project Viewer or Project Editor instead.</UiItem>
+<UiItem icon="dots" name="More">On another member's row: Remove takes them out of the workspace.</UiItem>
 </UiList>
 
 </ShotRow>
 
 People added to the workspace's project already have their project role in the workspace, up to Editor. Adding them here as well gives them the higher of the 2 roles.
 
+Only Editors and the Owner see the add form, the role menus, Remove, Invite and Queue for All.
+
 ## <AppIcon name="device-vision-pro" /> Sending a workspace to a headset {#sending-a-workspace-to-a-headset}
 
 <UiList label="Sending to Nanome XR">
-<UiItem icon="device-vision-pro" name="Open in XR">In the workspace header: sends the workspace to Nanome XR on your headset.</UiItem>
+<UiItem icon="device-vision-pro" name="Open in XR">In the workspace header: sends the workspace to Nanome XR on your headset. While it's queued, the button is highlighted and its tooltip reads Queued for XR, and clicking it again cancels the queue. With another workspace already queued, it first asks Replace existing queue?</UiItem>
 <UiItem icon="device-vision-pro" name="Queue for All">At the bottom of the Users tab: sends the workspace to every member. People in a headset move to it right away, and the rest get it the next time they open Nanome XR. A prompt asks first.</UiItem>
 </UiList>
 
@@ -123,9 +127,10 @@ Nanome Web can follow someone in Nanome XR, so the browser view tracks what they
 - Clicking someone's initial at the top of the workspace panel follows them.
 - Following moves Nanome Web to the leader's scene, and to each scene they move to after that.
 - Dragging still rotates or pans the view. When you let go, the view eases back to the leader's.
-- Following stops when the leader leaves the workspace.
+- While you follow, a border in the leader's color frames the 3D view, and a bar names the leader. **Stop** ends following, and **Reset orientation** lines your view up with theirs again.
+- Following also stops when the leader leaves the workspace.
 
-<AppIcon name="crown" /> **Spotlight Me**, the crown button beside the initials, starts a spotlight from the browser. When someone starts a spotlight, Nanome Web follows them straight away. A headset first shows a prompt for about 6 seconds. People who open the workspace during a spotlight follow it too, and its followers stop following when it ends. The headset's controls are under [Spotlight Mode](/nanome_v2/scenespanel#spotlight-mode).
+<AppIcon name="crown" /> **Spotlight Me**, the crown button beside the initials, starts a spotlight from the browser. While you spotlight, a Spotlighting bar counts your followers, and **Stop** ends the spotlight. When someone starts a spotlight, Nanome Web follows them straight away. A headset first shows a prompt for about 6 seconds. People who open the workspace during a spotlight follow it too, and its followers stop following when it ends. The headset's controls are under [Spotlight Mode](/nanome_v2/scenespanel#spotlight-mode).
 
 <Accordion title="What following shows" teaser="The leader's tool and edits, and chains of followers.">
 

@@ -1,4 +1,5 @@
 ---
+outline: [2, 3]
 title: Account & Settings
 ---
 
@@ -10,9 +11,11 @@ The account menu sits at the right end of the top bar, under your initial. It sh
 
 <UiList label="Account menu">
 <UiItem icon="lock-cog" name="Login via Device Code" href="#login-via-device-code" area="37.9,31.6,54.0,6.5">Signs a headset in.</UiItem>
-<UiItem name="Account / Billing / Organization" area="37.9,41.3,54.0,25.0">Account opens the Account tab of Settings. Billing and Organization open their own pages.</UiItem>
-<UiItem name="Settings" href="#settings" area="37.9,69.4,54.0,6.3">API keys, MCP setup and display preferences.</UiItem>
-<UiItem name="Logout" area="37.9,79.0,54.0,6.2">Signs out of Nanome Web.</UiItem>
+<UiItem icon="user" name="Account" area="37.9,41.2,54.0,6.4">Opens the Account tab of Settings.</UiItem>
+<UiItem icon="list" name="Billing" area="37.9,50.6,54.0,6.4">Opens the Billing page.</UiItem>
+<UiItem icon="building" name="Organization" area="37.9,60.0,54.0,6.4">Opens the Organization page.</UiItem>
+<UiItem icon="settings" name="Settings" href="#settings" area="37.9,69.4,54.0,6.3">API keys, MCP setup and display preferences.</UiItem>
+<UiItem icon="logout" name="Logout" area="37.9,79.0,54.0,6.2">Signs out of Nanome Web.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -27,7 +30,7 @@ Nanome XR can sign in with a 4-character code. The headset's login page shows th
 
 ## Settings {#settings}
 
-**Settings** has 2 tabs: **Account** and **System**. System holds API Keys, MCP Setup and the preference switches.
+**Settings** has 2 tabs: **Account** and **System**. System holds API Keys, MCP Setup and the preference switches. Below the tabs, **Help** opens this site's [MARA overview](/mara/overview), and **Feedback** sends Nanome feedback or a bug report.
 
 ### Account
 
@@ -68,7 +71,7 @@ The assistant asks you to sign in and approve access in a browser the first time
 
 ### Preferences
 
-<ShotRow src="nanome-web/settings-preferences.webp" alt="The preference switches in System settings">
+<ShotRow src="nanome-web/settings-preferences.webp" alt="The preference switches in System settings" stack>
 
 <UiList label="Preferences">
 <UiItem name="Auto-open Files" area="3.5,9.1,92.7,9.1">Opens supported files in the split view when they're added to a chat.</UiItem>

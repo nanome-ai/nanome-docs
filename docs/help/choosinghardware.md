@@ -14,9 +14,12 @@ This page covers the current release of Nanome. For Nanome Classic (v1.24), see
 
 Nanome XR runs on Meta Quest 3 and 3S, Apple Vision Pro, Samsung Galaxy XR,
 Windows PCs over Meta Link (PCVR), and in any modern browser at app.nanome.ai.
+It also runs on Meta Quest 2 and Quest Pro, the minimum Quest headsets for
+Nanome XR.
 
-<IconGrid label="Choosing hardware" :cols="3">
+<IconGrid label="Choosing hardware">
 <IconCard icon="device-vision-pro" title="Comparison matrix" href="#nanome-headset-comparison-matrix">Processor, display, installing, MDM, sign-in and price.</IconCard>
+<IconCard icon="headset" title="Minimum and recommended" href="#quest-minimum-recommended">Quest 2 and Pro at minimum, Quest 3 and 3S recommended.</IconCard>
 <IconCard icon="ban" title="Not supported" href="#headsets-not-supported">Headsets Nanome XR doesn't run on.</IconCard>
 <IconCard icon="mood-smile" title="Comfort comparison" href="#comfort-comparison">How much structure each platform shows comfortably.</IconCard>
 </IconGrid>
@@ -144,10 +147,21 @@ Prices are list prices at the time of writing and change; the links above carry
 the current figure. MDM details, enrollment steps and network requirements are
 in [Getting Started](/getting-started#mdm).
 
+## <AppIcon name="headset" /> Minimum and recommended Quest headsets {#quest-minimum-recommended}
+
+| | Minimum | Recommended |
+| --- | --- | --- |
+| **Headsets** | Meta Quest 2, Meta Quest Pro | Meta Quest 3, Meta Quest 3S |
+| **Rendering budget in Nanome XR** | 750,000 triangles | 1.3 million triangles |
+
+When a scene needs more than the budget, Nanome XR lowers the detail of the
+largest structures first. Quest 2 and Quest Pro have a little over half the
+budget of Quest 3 and 3S, so detail drops with smaller scenes. The comfort
+tables below don't rate Quest 2 or Quest Pro.
+
 ## <AppIcon name="ban" /> Headsets not supported {#headsets-not-supported}
 
-**Meta Quest 1**, originally sold as Oculus Quest, is not supported. Nanome XR
-targets Meta Quest 3 and 3S; Quest 2 and Quest Pro run Nanome Classic (v1.24).
+**Meta Quest 1**, originally sold as Oculus Quest, is not supported.
 
 ## <AppIcon name="mood-smile" /> All-in-one vs PCVR vs Web comfort comparison {#comfort-comparison}
 

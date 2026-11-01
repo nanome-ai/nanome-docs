@@ -6,7 +6,7 @@ title: Web App Basics
 
 <YoutubeEmbed videoId="sseI0CxNrDc" title="Nanome v2.5 Quick Tips: Web App Basics" />
 
-A full walkthrough of the Nanome web interface at app.nanome.ai, recorded in v2.5. These pages cover each topic it shows:
+A full walkthrough of Nanome Web at [app.nanome.ai](https://app.nanome.ai), recorded in v2.5. These pages cover each topic it shows:
 
 <IconGrid label="Topics in the video">
 <IconCard icon="cube-3d-sphere" title="Workspaces and projects" href="/nanome_web/home">Creating workspaces within a project.</IconCard>
