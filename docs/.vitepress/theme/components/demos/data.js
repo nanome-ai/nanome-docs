@@ -9,14 +9,17 @@
  * molecular set has an `xr` copy with Nanome XR's floor and a `web` copy
  * without it, as Nanome Web draws no floor.
  *
- * - rep, surface, int (1600 x 1200): 1KV2's binding site. Every state shares
- *   one base scene: Ligand A:B96_391 in the state's style (Stick when the
- *   state isn't a ligand style), Pocket A:B96_391 as Wire, and Protein
- *   hidden. Cartoon adds the Protein (colored by secondary structure),
- *   Residue Label labels the pocket, the surface states add the pocket's
- *   surface, and the int states show Pocket + Ligand A:B96_391 with no atom
- *   style, so only its interaction lines draw. Colors are the app defaults
- *   (Chain Instance with Carbons only).
+ * - rep, surface, int (1600 x 1200): 1KV2's binding site, from one copy of
+ *   1KV2 with hydrogens added (pH 7; heavy atoms as deposited), so None,
+ *   Polar and All each have their own frame (`-h-<none|polar|all>`), set on
+ *   both the ligand and the pocket. Every state shares one base scene:
+ *   Ligand A:B96_391 in the state's style (Stick when the state isn't a
+ *   ligand style), Pocket A:B96_391 as Wire, and Protein hidden. Cartoon
+ *   adds the Protein (colored by secondary structure), Residue Label labels
+ *   the pocket, the surface states add the pocket's surface, and the int
+ *   states show Pocket + Ligand A:B96_391 with no atom style, so only its
+ *   interaction lines draw. Colors are the app defaults (Chain Instance with
+ *   Carbons only).
  * - col (1600 x 1200): the same view with only Pocket + Ligand A:B96_391
  *   shown, as Stick, colored by each scheme.
  * - dist (1600 x 1200, XR only): E. coli dihydrofolate reductase, 1RX2 with
@@ -46,11 +49,19 @@ export const HYDROGENS = [
   { key: 'all', xr: 'All', web: 'All H', icon: 'circle-filled' },
 ]
 
+/**
+ * What each setting shows. 1KV2's file has no hydrogens, so they were added
+ * for these renders; the counts are what the app draws on the ligand and the
+ * pocket.
+ */
 export const HYDROGEN_DESC = {
   none: 'Hides every hydrogen.',
-  polar: 'Shows every hydrogen except those bonded to carbon.',
-  all: 'Shows every hydrogen.',
+  polar: 'Shows every hydrogen except those bonded to carbon: here the ligand’s 2 urea N-H and 29 on the pocket, most of them backbone N-H.',
+  all: 'Shows every hydrogen: here 37 on the ligand and 171 on the pocket.',
 }
+
+/** 1KV2's file has none, so the renders say where theirs came from. */
+export const HYDROGEN_ADDED = '1KV2’s file has none, so they were added for these renders.'
 
 export const MACRO = [
   { key: 'cartoon', icon: 'scribble', xr: 'Cartoon', web: 'Cartoon', file: 'cartoon', desc: 'Ribbons for helices, strands and loops, here colored by secondary structure, with the ligand as Stick and the pocket as Wire.' },
@@ -58,8 +69,8 @@ export const MACRO = [
 ]
 
 /** A render of the representation set: a ligand style, Cartoon or Residue Label. */
-export function repFrame(app, file) {
-  return `${O}rep-${app}-${file}.webp`
+export function repFrame(app, file, h) {
+  return `${O}rep-${app}-${file}-h-${h}.webp`
 }
 
 export const SURFACES = [
@@ -71,17 +82,23 @@ export const SURFACES = [
 
 export const SURFACE_DESC = "The solvent-excluded molecular surface, computed with a 1.4 Å probe. Here it's the pocket's surface, around the ligand as Stick."
 
-export function surfaceFrame(app, key) {
-  return `${O}surface-${app}-${key}.webp`
+/** The surface is built from all the pocket's atoms, hydrogens included, whatever the setting. */
+export const SURFACE_H = 'The surface includes the hydrogens whatever the setting, so only the sticks and wires change.'
+
+export function surfaceFrame(app, key, h) {
+  return `${O}surface-${app}-${key}-h-${h}.webp`
 }
 
 /**
  * In the app's order. `here` is the number of each type 1KV2's binding site
- * has, as Pocket + Ligand A:B96_391 draws them (it shows every interaction
- * inside it, so some join pocket residues to each other).
+ * has, as Pocket + Ligand A:B96_391 draws them with hydrogens shown (it shows
+ * every interaction inside it, so some join pocket residues to each other).
+ * With hydrogens on the file, each hydrogen bond line starts at the hydrogen,
+ * and a line draws only while all its atoms do, so with None the hydrogen
+ * bonds hide too (`needsH`).
  */
 export const INTERACTIONS = [
-  { key: 'hb', name: 'Hydrogen Bonds', color: '#ffff00', on: true, here: 7, shown: (n) => `${n} hydrogen bonds in yellow`, desc: 'Between a hydrogen-bond donor and an acceptor.' },
+  { key: 'hb', name: 'Hydrogen Bonds', color: '#ffff00', on: true, here: 5, needsH: true, shown: (n) => `${n} hydrogen bonds in yellow`, desc: 'Between a hydrogen-bond donor and an acceptor.' },
   { key: 'vdw', name: 'VDW Clashes', color: '#cc003d', on: false, desc: 'Atoms in different entries that sit closer than the sum of their van der Waals radii. Off to start.' },
   { key: 'pi', name: 'π Stacking', color: '#6443ff', on: true, here: 1, shown: () => '1 π-stacking pair in violet', desc: 'Between aromatic rings.' },
   { key: 'salt', name: 'Salt Bridges', color: '#ff6600', on: true, here: 2, shown: (n) => `${n} salt bridges in orange`, desc: 'Between oppositely charged groups.' },
@@ -93,11 +110,14 @@ export const INTERACTIONS = [
 ]
 
 /** The render for the types that are on, from those 1KV2's binding site has. */
-export function interactionFrame(app, on) {
+export function interactionFrame(app, on, h) {
   const parts = ['hb', 'salt', 'hydrophobic'].filter((k) => on[k])
   const name = parts.length === 3 ? 'all' : parts.length ? parts.join('-') : 'none'
-  return `${O}int-${app}-${name}${on.pi ? '' : '-nopi'}.webp`
+  return `${O}int-${app}-${name}${on.pi ? '' : '-nopi'}-h-${h}.webp`
 }
+
+/** What the hydrogen bond lines do with None (No H in Nanome Web). */
+export const HB_HIDDEN = (none) => `With ${none} the hydrogen bond lines hide too, as each one here starts at a hydrogen.`
 
 /**
  * The schemes for an atom style, in the app's order. Electrostatic is left

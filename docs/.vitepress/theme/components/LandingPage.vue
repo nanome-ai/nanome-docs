@@ -24,8 +24,10 @@
       <h2>New Updates</h2>
       <div class="update-card">
         <a :href="data.newUpdates.url" class="update-image" :class="{ 'has-dark': !!updateImage.dark }">
-          <img class="update-light" :src="updateImage.light" :alt="data.newUpdates.title" />
-          <img v-if="updateImage.dark" class="update-dark" :src="updateImage.dark" :alt="data.newUpdates.title" />
+          <!-- Width and height keep the card's space while the image loads.
+               The dark copy loads only in dark mode, where it shows. -->
+          <img class="update-light" :src="updateImage.light" :alt="data.newUpdates.title" :width="updateImage.size?.[0]" :height="updateImage.size?.[1]" />
+          <img v-if="updateImage.dark" class="update-dark" :src="updateImage.dark" :alt="data.newUpdates.title" :width="updateImage.darkSize?.[0]" :height="updateImage.darkSize?.[1]" loading="lazy" />
         </a>
         <div class="update-content">
           <h3>{{ data.newUpdates.title }}</h3>
@@ -37,7 +39,7 @@
 
     <!-- Quick Tips videos, below the start cards and what's new -->
     <h2>Quick Tips</h2>
-    <HeroCarousel :slides="data.quickTips" />
+    <HeroCarousel :slides="data.quickTips" eager />
 
     <!-- Blog Carousels — below New Updates -->
     <HomeCarousel

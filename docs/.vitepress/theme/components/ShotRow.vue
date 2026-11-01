@@ -17,7 +17,12 @@
  *
  * A wide image (about 2:1 or wider), such as a sequence strip, stays full
  * width under its legend, since it can't be read at a third of the page.
- * Full screen it comes first, with the legend under it.
+ * Full screen it comes first, with the legend under it. When it's much wider
+ * than the screen, as on a phone, it shows at a readable height instead and
+ * scrolls sideways.
+ *
+ * Two or more legends in one row share one name column, so all their
+ * descriptions start at the same place.
  *
  *   <ShotRow src="nanome-v2/v2-7/settings-tab.webp" alt="The Settings tab" stack>
  *
@@ -27,7 +32,7 @@
  *
  *   </ShotRow>
  */
-import { computed, nextTick, provide, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, provide, ref, watch } from 'vue'
 import HotShot from './HotShot.vue'
 import { imageInfo, parseBox } from './image.js'
 import { useFocusView } from './focus.js'
@@ -91,7 +96,8 @@ provide('n-hotspots', {
   },
   enter(n) {
     enter(n)
-    reveal()
+    if (strip.value) slideTo(n)
+    else reveal()
   },
   leave,
 })
@@ -101,7 +107,8 @@ const view = useFocusView(root)
 
 /**
  * Full screen on a phone, an image wider than the window pans sideways, so a
- * legend row can light a part that's out of view. Pan the image to it.
+ * legend row can light a part that's out of view. Pan the image to it. (A
+ * wide image in the strip below slides there instead.)
  */
 async function reveal() {
   if (!view.focused.value) return
@@ -116,6 +123,96 @@ async function reveal() {
   const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
   shot.scrollBy({ left: (left + right) / 2 - (s.left + s.right) / 2, behavior })
 }
+
+/**
+ * Full screen, a wide image that fits the screen's width can come out smaller
+ * than in the page. When its readable size (about 60% of the window's height,
+ * and no larger than its own) is well over the screen's width, it shows at
+ * that size in a strip that scrolls sideways, with faded edges where there's
+ * more to see.
+ */
+const strip = ref(false)
+const scroller = ref(null)
+const more = ref({ left: false, right: false })
+
+function edges() {
+  const el = scroller.value
+  more.value =
+    strip.value && el
+      ? { left: el.scrollLeft > 1, right: el.scrollLeft + el.clientWidth < el.scrollWidth - 1 }
+      : { left: false, right: false }
+}
+
+function fitStrip() {
+  if (!view.focused.value || !wide.value) {
+    strip.value = false
+  } else {
+    const info = imageInfo(props.src)
+    const [w, h] = info.size || [16, 9]
+    const [, , cw, ch] = parseBox(props.crop) || [0, 0, 100, 100]
+    const shown = info.shown ? (info.shown * cw) / 100 : w
+    const readable = Math.min(shown, 0.6 * innerHeight * ((w * cw) / (h * ch)))
+    strip.value = readable > 1.5 * document.documentElement.clientWidth
+  }
+  nextTick(edges)
+}
+
+watch(view.focused, (on) => {
+  if (on) addEventListener('resize', fitStrip)
+  else removeEventListener('resize', fitStrip)
+  fitStrip()
+})
+
+/** In the strip, a region lit from its legend row slides into view. */
+function slideTo(n) {
+  const el = scroller.value
+  const spot = strip.value && spots.value.find((s) => s.n === n)
+  const frame = spot && el?.querySelector('.hotshot__frame')
+  if (!frame) return
+  const [cx, , cw] = parseBox(props.crop) || [0, 0, 100, 100]
+  const from = frame.getBoundingClientRect().left - el.getBoundingClientRect().left + el.scrollLeft
+  const start = from + ((spot.box[0] - cx) / cw) * frame.clientWidth
+  const end = start + (spot.box[2] / cw) * frame.clientWidth
+  if (start >= el.scrollLeft && end <= el.scrollLeft + el.clientWidth) return
+  const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+  el.scrollTo({ left: (start + end - el.clientWidth) / 2, behavior })
+}
+
+// Two or more legends in the row share the widest of their name columns. Each
+// list sizes its own first, so a long name still wraps as it did.
+const legend = ref(null)
+let lister = null
+let legendWidth = 0
+
+function alignLists() {
+  const lists = [...(legend.value?.querySelectorAll('.n-uilist') || [])].filter((l) => l.getClientRects().length)
+  for (const l of lists) l.style.removeProperty('--uil-name-col')
+  if (lists.length < 2) return
+  const tracks = lists.map((l) => getComputedStyle(l).gridTemplateColumns.split(' '))
+  // A narrow list puts each description under its name, so they line up already.
+  if (tracks.some((t) => t.length !== 3)) return
+  const widest = Math.ceil(Math.max(...tracks.map((t) => parseFloat(t[1]))))
+  for (const l of lists) l.style.setProperty('--uil-name-col', `${widest}px`)
+}
+
+onMounted(() => {
+  if (typeof ResizeObserver === 'undefined' || !legend.value) return
+  if (legend.value.querySelectorAll('.n-uilist').length < 2) return
+  lister = new ResizeObserver(([entry]) => {
+    const width = entry.contentRect.width
+    if (width && width !== legendWidth) {
+      legendWidth = width
+      alignLists()
+    }
+  })
+  lister.observe(legend.value)
+  document.fonts?.ready.then(alignLists)
+})
+
+onBeforeUnmount(() => {
+  lister?.disconnect()
+  removeEventListener('resize', fitStrip)
+})
 
 /** A click on a region with no link: light its row and bring it into view if it's out of view. */
 async function pick(n) {
@@ -164,7 +261,7 @@ async function pick(n) {
     <div
       ref="root"
       class="n-shotrow"
-      :class="{ 'is-wide': wide, 'is-tall': tall, 'is-stack': stack, 'is-focus': view.focused.value, 'has-spots': spots.length > 0 }"
+      :class="{ 'is-wide': wide, 'is-tall': tall, 'is-stack': stack, 'is-focus': view.focused.value, 'is-strip': strip, 'has-spots': spots.length > 0 }"
       :role="view.focused.value ? 'dialog' : undefined"
       :aria-modal="view.focused.value ? 'true' : undefined"
       :aria-label="(view.focused.value && alt) || undefined"
@@ -175,20 +272,34 @@ async function pick(n) {
       </button>
       <div class="n-shotrow__grid">
         <div class="n-shotrow__shot">
-          <HotShot
-            :src="src"
-            :alt="alt"
-            :crop="crop"
-            :spots="spots"
-            :active="active"
-            :focus="view.focused.value"
-            @enter="enter"
-            @leave="leave"
-            @open="view.open"
-            @pick="pick"
-          />
+          <div
+            ref="scroller"
+            class="n-shotrow__scroll"
+            :class="{ 'more-left': more.left, 'more-right': more.right }"
+            :tabindex="strip ? 0 : undefined"
+            :role="strip ? 'region' : undefined"
+            :aria-label="strip ? `${alt || 'Screenshot'}, scrolls sideways` : undefined"
+            @scroll.passive="edges"
+          >
+            <HotShot
+              :src="src"
+              :alt="alt"
+              :crop="crop"
+              :spots="spots"
+              :active="active"
+              :focus="view.focused.value"
+              @enter="enter"
+              @leave="leave"
+              @open="view.open"
+              @pick="pick"
+            />
+          </div>
+          <p v-if="strip" class="n-shotrow__hint" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path d="M7 8l-4 4 4 4M17 8l4 4-4 4M3 12h18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            Scrolls sideways
+          </p>
         </div>
-        <div class="n-shotrow__legend"><slot /></div>
+        <div ref="legend" class="n-shotrow__legend"><slot /></div>
       </div>
     </div>
   </div>
@@ -354,6 +465,12 @@ async function pick(n) {
     /* A tall panel stays short enough to see whole beside the legend. */
     --hotshot-maxh: calc(100vh - var(--n-nav-height) - var(--n-pagebar-space) - 60px);
   }
+
+  /* A narrow or tall image sits against its legend, so each row's region
+     stays close to the row that lights it. */
+  .n-shotrow:not(.is-wide, .is-stack, .is-focus) .n-shotrow__shot :deep(.hotshot) {
+    margin-left: auto;
+  }
 }
 
 /* Full screen: the image as large as the window allows, the legend beside it. */
@@ -371,7 +488,7 @@ async function pick(n) {
   position: fixed;
   top: 12px;
   right: 16px;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   padding: 8px;
   border: 1px solid var(--n-border);
@@ -407,6 +524,52 @@ async function pick(n) {
   }
 }
 
+/* Much wider than the screen: a readable height, up to the image's own size,
+   in a strip that runs to the screen's edges and scrolls sideways. */
+.n-shotrow.is-strip .n-shotrow__shot {
+  margin-inline: calc(-1 * max(24px, 3vw));
+}
+
+.n-shotrow.is-strip .n-shotrow__scroll {
+  --fade: 32px;
+  padding: 4px max(24px, 3vw) 6px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+
+.n-shotrow.is-strip .n-shotrow__scroll.more-right {
+  mask-image: linear-gradient(to left, transparent, #000 var(--fade));
+}
+
+.n-shotrow.is-strip .n-shotrow__scroll.more-left {
+  mask-image: linear-gradient(to right, transparent, #000 var(--fade));
+}
+
+.n-shotrow.is-strip .n-shotrow__scroll.more-left.more-right {
+  mask-image: linear-gradient(to right, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent);
+}
+
+.n-shotrow.is-strip .n-shotrow__scroll:focus-visible {
+  outline: 2px solid var(--n-accent);
+  outline-offset: -2px;
+  mask-image: none;
+}
+
+.n-shotrow.is-strip :deep(.hotshot) {
+  width: min(var(--hotshot-shown), 60vh * var(--hotshot-ar));
+  max-width: none;
+  margin-inline: 0;
+}
+
+.n-shotrow__hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px max(24px, 3vw) 0;
+  color: var(--n-text-muted);
+  font-size: var(--n-text-xs);
+}
+
 @container shotrow (min-width: 600px) {
   /* The image's column is as wide as the image at full height, so a tall
      panel sits next to its legend, and the two are centered together. A
@@ -432,13 +595,14 @@ async function pick(n) {
 
 /* On a phone, full screen shows the image larger than the page can: up to
    2.5 screens wide, as long as it stays short enough for the window, and the
-   image scrolls sideways. A tall panel stays as it is. */
+   image scrolls sideways. A tall panel stays as it is, and a wide image in
+   the strip scrolls in the strip. */
 @media (max-width: 639px) {
-  .n-shotrow.is-focus .n-shotrow__shot {
+  .n-shotrow.is-focus:not(.is-strip) .n-shotrow__shot {
     overflow-x: auto;
   }
 
-  .n-shotrow.is-focus .n-shotrow__shot :deep(.hotshot) {
+  .n-shotrow.is-focus:not(.is-strip) .n-shotrow__shot :deep(.hotshot) {
     width: max(100%, min(var(--hotshot-shown), 250vw, (var(--hotshot-maxh, 100vh - 120px)) * var(--hotshot-ar)));
     max-width: none;
   }
