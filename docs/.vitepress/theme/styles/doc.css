@@ -83,11 +83,14 @@
   margin-top: 0;
 }
 
-/* Anchor links appear on hover, in the gutter, so they never shift the text. */
+/* Anchor links appear on hover, in the gutter, so they never shift the text.
+   VitePress also pulls the # left by a margin, which would add to `left` and
+   put it under the sidebar or past the window's edge. */
 .vp-doc .header-anchor {
   position: absolute;
   top: 0;
   left: -0.75em;
+  margin-left: 0;
   padding-top: inherit;
   color: var(--n-text-faint);
   font-weight: 400;

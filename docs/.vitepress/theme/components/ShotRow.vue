@@ -114,12 +114,42 @@ provide('n-hotspots', {
     enter(n)
     if (strip.value) slideTo(n)
     else reveal()
+    showLit(n)
   },
   leave,
 })
 
 const root = ref(null)
 const view = useFocusView(root)
+
+/**
+ * On a touch screen a legend row is tapped, often well under the image, so
+ * the part it lights can be scrolled out of view, in the page or full screen.
+ * When little or none of it shows, scroll just far enough to bring it in, as
+ * pick() brings a row in the other way round. A mouse only hovers the rows,
+ * so it never scrolls the page, and a tapped row with a link goes to its
+ * section instead.
+ */
+async function showLit(n) {
+  if (!matchMedia('(hover: none)').matches || spots.value.find((s) => s.n === n)?.href) return
+  await nextTick()
+  if (active.value !== n || !root.value) return
+  const parts = [...root.value.querySelectorAll('.hotshot__spot.is-active')].map((p) => p.getBoundingClientRect())
+  if (!parts.length) return
+  const top = Math.min(...parts.map((r) => r.top))
+  const bottom = Math.max(...parts.map((r) => r.bottom))
+  // What shows: the full-screen view, or the window under the sticky bars.
+  const bar = document.querySelector('.n-pagebar') || document.querySelector('.n-navbar')
+  const box = view.focused.value ? root.value.getBoundingClientRect() : null
+  const from = box ? box.top : Math.max(0, bar ? bar.getBoundingClientRect().bottom : 0)
+  const to = box ? box.bottom : innerHeight
+  const shown = Math.min(bottom, to) - Math.max(top, from)
+  if (shown >= Math.min(24, (bottom - top) / 2)) return
+  const by = top < from ? top - from - 12 : bottom - to + 12
+  holdWhileScrolling()
+  const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+  ;(box ? root.value : window).scrollBy({ top: by, behavior })
+}
 
 /**
  * Full screen on a phone, an image wider than the window pans sideways, so a
@@ -437,10 +467,15 @@ async function pick(n) {
 }
 
 .n-shotrow__legend :deep(.n-uilist) {
-  --uil-mark: 1.75rem;
   column-gap: 10px;
   row-gap: 0;
   padding: 4px;
+}
+
+/* With an icon anywhere in the legend, every list in it keeps the icon
+   column, so lists with and without icons share their name column. */
+.n-shotrow__legend:has(.n-uiitem__mark .n-appicon) :deep(.n-uilist) {
+  --uil-mark: 1.75rem;
 }
 
 .n-shotrow__legend :deep(.n-uiitem__row) {

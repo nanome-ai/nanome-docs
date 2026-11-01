@@ -654,6 +654,12 @@ export default defineComponent({
     --hotshot-maxh: calc(100vh - var(--n-nav-height) - var(--n-pagebar-space) - 60px);
   }
 
+  /* A tall image would fill the window, so it leaves room for the first row
+     of cards under it: a card and a part at the image's top fit together. */
+  .n-screenmap.is-flanked.is-tall:not(.is-focus) {
+    --hotshot-maxh: calc(100vh - var(--n-nav-height) - var(--n-pagebar-space) - 190px);
+  }
+
   .n-screenmap.is-flanked.is-focus {
     --hotshot-maxh: calc(100vh - 150px);
   }
