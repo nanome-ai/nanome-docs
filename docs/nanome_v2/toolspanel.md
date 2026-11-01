@@ -30,7 +30,7 @@ Viewers can use <span style="white-space: nowrap"><Btn icon="droplet">Pointer</B
 
 ## <AppIcon name="hand-click" /> The controller in each tool {#controller}
 
-Choosing a tool also changes what your dominant-hand controller shows: the tool's badge, the white tip sphere at its tip, and, for tools with 2 or more modes, the current mode above the thumbstick.
+Choosing a tool also changes what your dominant-hand controller shows: the tool's badge, the white tip sphere, and, for tools with 2 or more modes, the current mode above the thumbstick.
 
 <ToolsDemo />
 

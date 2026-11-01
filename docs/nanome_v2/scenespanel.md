@@ -20,7 +20,7 @@ The top of the sidebar shows the workspace name and 2 icons:
 
 <UiList label="Workspace header">
 <UiItem icon="alert-triangle" name="Network health">Appears when the connection degrades. Its tooltip shows the ping, or that the connection was lost.</UiItem>
-<UiItem icon="user" name="Access">A lock when the workspace is private, a person or two people when it's shared. Hovering the workspace name shows its project, and its code when it has one.</UiItem>
+<UiItem icon="user" name="Access">A lock when the workspace is private, 1 person or 2 people when it's shared. Hovering the workspace name shows its project, and its code when it has one.</UiItem>
 </UiList>
 
 ## <AppIcon name="box" /> Controls {#controls}
