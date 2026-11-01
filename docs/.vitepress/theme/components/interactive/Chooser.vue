@@ -36,6 +36,7 @@ const props = defineProps({
 const route = useRoute()
 const answers = reactive({})
 const ready = ref(false)
+const root = ref(null)
 
 /** Steps whose own `when` condition currently holds. */
 const activeSteps = computed(() =>
@@ -62,9 +63,42 @@ const complete = computed(() =>
 
 const answered = computed(() => Object.keys(answers).some((k) => answers[k]))
 
-function choose(stepId, optionId) {
-  answers[stepId] = answers[stepId] === optionId ? undefined : optionId
+function choose(stepId, optionId, event) {
+  const picked = answers[stepId] !== optionId
+  answers[stepId] = picked ? optionId : undefined
   pruneStranded()
+  if (picked) revealNext(event.currentTarget)
+}
+
+/**
+ * A choice can open the next question or the result below the fold, where the
+ * click looks like it did nothing. Scroll just far enough to show it, but stop
+ * before the clicked option would pass under the nav bar and breadcrumb strip,
+ * so the reader keeps their place. Nothing moves if it's already in view. The
+ * scroll follows the page's scroll-behavior: smooth, or instant when reduced
+ * motion is on (base.css).
+ */
+async function revealNext(option) {
+  await nextTick()
+  if (!root.value) return
+  const steps = root.value.querySelectorAll('.n-chooser__step')
+  const next = complete.value
+    ? root.value.querySelector('.n-chooser__results')
+    : steps[steps.length - 1]
+  const box = next?.getBoundingClientRect()
+  if (!box?.height) return
+
+  const gap = 24
+  const hidden = box.bottom - (window.innerHeight - gap)
+  if (hidden <= 0) return
+
+  const top =
+    (parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0) +
+    (parseFloat(getComputedStyle(option).scrollMarginTop) || 0)
+  const room = option.getBoundingClientRect().top - top - gap
+  const by = Math.min(hidden, room)
+  // A nudge smaller than the gap isn't worth the motion.
+  if (by >= gap) window.scrollBy({ top: by })
 }
 
 /**
@@ -118,7 +152,7 @@ function stepNumber(step) {
 </script>
 
 <template>
-  <div class="n-chooser" :class="{ 'is-bare': !title }">
+  <div ref="root" class="n-chooser" :class="{ 'is-bare': !title }">
     <div class="n-chooser__panel">
       <div
         v-if="title || answered"
@@ -160,7 +194,7 @@ function stepNumber(step) {
             class="n-choice"
             :class="{ 'is-selected': answers[step.id] === option.id }"
             :aria-pressed="answers[step.id] === option.id ? 'true' : 'false'"
-            @click="choose(step.id, option.id)"
+            @click="choose(step.id, option.id, $event)"
           >
             <span class="n-choice__text">
               <span class="n-choice__title">
