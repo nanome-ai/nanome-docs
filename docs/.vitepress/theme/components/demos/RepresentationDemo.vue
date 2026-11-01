@@ -40,10 +40,11 @@ const hbHidden = () => HB_HIDDEN(label(HYDROGENS[0]))
 const atom = ref('bs')
 /** What's added to it: null, cartoon, label or surface. */
 const extra = ref(null)
-// Nanome XR draws every atom style with All hydrogens, and a new surface is
-// Semi (Atomistic.cs, MolecularSurface.Default).
-const surface = ref(props.app === 'xr' ? 'semi' : 'wire')
-const hydrogen = ref(props.app === 'xr' ? 'all' : 'none')
+// Both apps draw every atom style with All hydrogens (Atomistic.cs), and the
+// pocket's surface starts Semi (MolecularSurface.DefaultSubsurface), as does
+// a new surface in Nanome XR (MolecularSurface.Default).
+const surface = ref('semi')
+const hydrogen = ref('all')
 const showList = ref(false)
 const ints = reactive(Object.fromEntries(INTERACTIONS.map((t) => [t.key, t.on])))
 const note = ref(null)
@@ -98,8 +99,10 @@ function syncAt() {
   if (i >= 0) at.value = i
 }
 
-// Nanome XR lights a surface look only while Surface is on (RepresentationsPopup).
-const lookOn = (key) => surface.value === key && (props.app !== 'xr' || (extra.value === 'surface' && !showList.value))
+// Nanome XR lights a surface look, and lets one be picked, only while Surface
+// is on (RepresentationsPopup).
+const looksOff = computed(() => props.app === 'xr' && (extra.value !== 'surface' || showList.value))
+const lookOn = (key) => surface.value === key && !looksOff.value
 
 /** A switch is checked only when the state says so, whatever was clicked. */
 function sync(e, on) {
@@ -238,7 +241,7 @@ const alt = computed(() => `1KV2's binding site: ${base.value.title}, ${H_ALT[hy
         <span class="n-app-palette" :class="{ 'is-on': extra === 'surface' && !showList }" aria-hidden="true" @click.prevent><AppIcon name="palette" size="0.95rem" /></span>
       </label>
       <div class="n-app-seg" role="group" aria-label="Surface look" @keydown="arrowPick">
-        <button v-for="s in SURFACES" :key="s.key" type="button" :aria-pressed="lookOn(s.key)" :class="{ 'is-on': lookOn(s.key) }" @click="pickSurface(s.key)">
+        <button v-for="s in SURFACES" :key="s.key" type="button" :disabled="looksOff" :aria-pressed="lookOn(s.key)" :class="{ 'is-on': lookOn(s.key) }" @click="pickSurface(s.key)">
           <span><AppIcon :name="s.icon" size="0.85rem" />{{ s.name }}</span>
         </button>
       </div>
