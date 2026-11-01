@@ -70,6 +70,9 @@ const pickerQuery = ref('')
 const menu = ref(null)
 const note = ref(null)
 const scrolled = ref(false)
+/** More columns sit off to the right: the table fades at its right edge. */
+const more = ref(false)
+const scrollBox = ref(null)
 const root = ref(null)
 const menuEl = ref(null)
 const pickBtn = ref(null)
@@ -128,6 +131,22 @@ const FILTER_KEYS = [...COLUMNS.map((c) => c.key), RATING].sort((a, b) => a.loca
 const toNumber = (v) => (v === undefined || v === null || String(v).trim() === '' ? NaN : Number(v))
 const isNumericKey = (key) => key === RATING || LIGANDS.some((l) => !Number.isNaN(toNumber(l.props[key])))
 const opLabel = (op) => OPERATORS[op][xr.value ? 'xr' : 'web']
+
+/**
+ * When an action removes or disables the control that has focus in a
+ * popover, focus moves to `pick(popover)` instead of dropping to the page.
+ * Called after the change, so its update to the page comes first.
+ */
+function keepFocus(pop, pick) {
+  const was = document.activeElement
+  if (!pop.value?.contains(was)) return
+  nextTick(() => {
+    if (was.isConnected && !was.disabled) return
+    pick(pop.value)?.focus({ preventScroll: true })
+  })
+}
+const PROPERTY = 'select[aria-label="Property"]'
+const PRESET_NAME = 'input[aria-label="New preset name"]'
 
 /**
  * Whether a ligand passes a filter: numbers compare as numbers when both sides
@@ -192,6 +211,9 @@ function addFilter() {
   filters.value = [...filters.value, f]
   // XR keeps the property and operator for the next filter; Nanome Web clears the row.
   draft.value = xr.value ? { ...draft.value, value: '' } : blankDraft()
+  // Add turns off as the value clears, so focus goes on to the value in XR
+  // and back to the property on Nanome Web.
+  keepFocus(filterPop, (pop) => pop.querySelector(xr.value ? 'input[aria-label="Value"]' : PROPERTY))
   const sym = xr.value && OPERATORS[f.op].xr !== OPERATORS[f.op].web ? `${OPERATORS[f.op].xr} is ${OPERATORS[f.op].name}. ` : ''
   let text = `${sym}Compared as text, without regard to case. A ligand is listed only when it passes every filter.`
   if (f.key === RATING) text = 'No sample ligand has a rating, and a ligand without the property fails, so none passes.'
@@ -202,6 +224,11 @@ function addFilter() {
 function removeFilter(i) {
   const f = filters.value[i]
   filters.value = filters.value.filter((_, j) => j !== i)
+  // On to the filter that takes its place, or the property when none is left.
+  keepFocus(filterPop, (pop) => {
+    const left = pop.querySelectorAll('.n-ltab__filter button')
+    return left.length ? left[Math.min(i, left.length - 1)] : pop.querySelector(PROPERTY)
+  })
   note.value = {
     title: `${describe(f)} · removed`,
     text: filters.value.length ? 'The other filters still apply.' : 'No filters are left.',
@@ -209,13 +236,24 @@ function removeFilter(i) {
   }
 }
 
+// Nanome Web keeps a ligand when its entry is in the 3D view's entry list,
+// which holds hidden entries too (WorkspaceLigandsTable, BuildEntriesState).
+const VISIBLE_TEXT = {
+  xr: {
+    on: 'Lists only ligands drawn in the 3D view. In this copy 1BL6 and 1BL7 stand in for hidden entries.',
+    off: 'Ligands of hidden entries are listed again.',
+  },
+  web: {
+    on: 'Lists only ligands of entries loaded in the 3D view. In this copy 1BL6 and 1BL7 stand in for entries it hasn’t loaded.',
+    off: 'Ligands of every entry are listed again.',
+  },
+}
+
 function setVisible(on) {
   visibleOnly.value = on
   note.value = {
     title: `Filter by currently visible · ${on ? 'on' : 'off'}`,
-    text: on
-      ? 'Lists only ligands drawn in the 3D view. In this copy 1BL6 and 1BL7 stand in for hidden entries.'
-      : 'Ligands of hidden entries are listed again.',
+    text: VISIBLE_TEXT[xr.value ? 'xr' : 'web'][on ? 'on' : 'off'],
     count: true,
   }
 }
@@ -270,6 +308,7 @@ function savePreset() {
   }
   presets.value = [...presets.value, { id: nextPreset++, name, columns: [...selected.value], filters: filters.value.map((f) => ({ ...f })) }]
   presetName.value = ''
+  keepFocus(presetsPop, (pop) => pop.querySelector(PRESET_NAME))
   note.value = {
     title: `${name} · saved`,
     text: twin
@@ -284,11 +323,13 @@ function replacePreset() {
   presets.value = presets.value.map((q) => (q.id === p.id ? { ...q, columns: [...selected.value], filters: filters.value.map((f) => ({ ...f })) } : q))
   replacing.value = null
   presetName.value = ''
+  keepFocus(presetsPop, (pop) => pop.querySelector(PRESET_NAME))
   note.value = { title: `${p.name} · replaced`, text: 'It now holds the current columns and filters.' }
 }
 
 function cancelReplace() {
   replacing.value = null
+  keepFocus(presetsPop, (pop) => pop.querySelector(PRESET_NAME))
   note.value = { title: 'Cancel', text: 'The preset stays as it was, and the name stays in the field.' }
 }
 
@@ -298,12 +339,24 @@ function deletePreset(p) {
   clearTimeout(confirmTimer)
   if (confirming.value !== p.id) {
     confirming.value = p.id
-    confirmTimer = setTimeout(() => (confirming.value = null), 3000)
     note.value = { title: confirmLabel.value, text: `The trash button turns into a check. A second click within 3 seconds deletes ${p.name}.` }
+    // Read back, so it's the same reactive copy note holds.
+    const pending = note.value
+    // When the 3 seconds run out with nothing else said, the caption says so.
+    confirmTimer = setTimeout(() => {
+      confirming.value = null
+      if (note.value === pending) note.value = { title: `${p.name} · kept`, text: 'No second click came within 3 seconds, so the check is a trash button again and the preset stays.' }
+    }, 3000)
     return
   }
   confirming.value = null
+  const at = presets.value.findIndex((q) => q.id === p.id)
   presets.value = presets.value.filter((q) => q.id !== p.id)
+  // On to the preset that takes its place, or the name field when none is left.
+  keepFocus(presetsPop, (pop) => {
+    const left = pop.querySelectorAll('.n-ltab__papply')
+    return left.length ? left[Math.min(at, left.length - 1)] : pop.querySelector(PRESET_NAME)
+  })
   note.value = { title: `${p.name} · deleted`, text: 'Gone from the project for everyone. The table keeps its columns and filters.' }
 }
 
@@ -562,8 +615,9 @@ function act(kind) {
   if (kind === 'sketch') note.value = { title: 'Sketch variant', text: `Opens ${l.name} in the 2D sketcher, to draw a variant of it.` }
   if (kind === 'new') note.value = { title: 'New tag…', text: 'Adds a custom tag to the workspace’s list.' }
   if (kind === 'props') {
-    const list = COLUMNS.map((c) => `${c.label} ${formatValue(l.props[c.key])}`).join(', ')
-    note.value = { title: `${l.name} · Properties`, text: `${list}.` }
+    // Nanome Web's popover lists the raw property names under Computed Properties.
+    const list = COLUMNS.map((c) => `${xr.value ? c.label : c.key} ${formatValue(l.props[c.key])}`).join(', ')
+    note.value = { title: `${l.name} · Properties`, text: xr.value ? `${list}.` : `Computed Properties: ${list}.` }
   }
 }
 
@@ -576,8 +630,13 @@ function setTag(t) {
     : { title: `${l.name} · Remove tag`, text: 'The ligand has no tag now, and its Tag cell shows a dash.' }
 }
 
+function measureMore() {
+  const el = scrollBox.value
+  more.value = !!el && el.scrollLeft + el.clientWidth < el.scrollWidth - 1
+}
 function onScroll(e) {
   scrolled.value = e.target.scrollLeft > 0
+  measureMore()
   menu.value = null
 }
 
@@ -593,13 +652,21 @@ function onKey(e) {
 function onPickerFocusOut(e) {
   if (picker.value && e.relatedTarget && !e.currentTarget.contains(e.relatedTarget)) picker.value = false
 }
+// The box and the table both change size: with the window, and as columns
+// and rows come and go.
+let resizeObs = null
 onMounted(() => {
   document.addEventListener('pointerdown', onPointerDown)
   document.addEventListener('keydown', onKey)
+  measureMore()
+  resizeObs = new ResizeObserver(measureMore)
+  resizeObs.observe(scrollBox.value)
+  resizeObs.observe(scrollBox.value.firstElementChild)
 })
 onBeforeUnmount(() => {
   document.removeEventListener('pointerdown', onPointerDown)
   document.removeEventListener('keydown', onKey)
+  resizeObs?.disconnect()
   clearTimeout(confirmTimer)
 })
 
@@ -858,8 +925,9 @@ const caption = computed(() => {
 
       <div class="n-ltab__body">
         <div
+          ref="scrollBox"
           class="n-ltab__scroll"
-          :class="{ 'is-scrolled': scrolled, 'is-empty': !rows.length }"
+          :class="{ 'is-scrolled': scrolled, 'has-more': more, 'is-empty': !rows.length }"
           :style="growStyle"
           @scroll="onScroll"
         >
@@ -952,8 +1020,9 @@ const caption = computed(() => {
         @keydown="onMenuKey"
       >
         <div class="n-ltab__menuhead">Actions</div>
-        <button type="button" role="menuitem" tabindex="-1" @click="act('sdf')"><AppIcon name="cloud-download" size="16px" />Download SDF</button>
-        <button type="button" role="menuitem" tabindex="-1" @click="act('sketch')"><AppIcon name="hexagon-plus-2" size="16px" />Sketch variant</button>
+        <!-- Nanome XR's row has neither (LigandsMenu). -->
+        <button v-if="!xr" type="button" role="menuitem" tabindex="-1" @click="act('sdf')"><AppIcon name="cloud-download" size="16px" />Download SDF</button>
+        <button v-if="!xr" type="button" role="menuitem" tabindex="-1" @click="act('sketch')"><AppIcon name="hexagon-plus-2" size="16px" />Sketch variant</button>
         <button type="button" role="menuitem" tabindex="-1" @click="act('props')"><AppIcon name="info-circle" size="16px" />Properties</button>
         <div class="n-ltab__menuhead">Tag</div>
         <button

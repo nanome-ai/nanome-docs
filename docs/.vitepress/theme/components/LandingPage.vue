@@ -36,6 +36,7 @@
     </div>
 
     <!-- Quick Tips videos, below the start cards and what's new -->
+    <h2>Quick Tips</h2>
     <HeroCarousel :slides="data.quickTips" />
 
     <!-- Blog Carousels — below New Updates -->
@@ -54,7 +55,7 @@
 
     <!-- Case studies -->
     <h2>Case Studies</h2>
-    <HeroCarousel :slides="data.hero" />
+    <HeroCarousel :slides="data.hero" ratio="2 / 1" />
     <p class="case-studies-all">
       <a href="https://nanome.ai/case-studies">All case studies</a>
     </p>

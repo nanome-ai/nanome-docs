@@ -150,6 +150,13 @@ const frames = computed(() => loaded.value.map((src) => ({ src, info: imageInfo(
   background: rgba(0, 0, 0, 0.72);
 }
 
+/* The site's ring, which VitePress's own button rule would otherwise replace. */
+.n-demo-stage__play:focus-visible {
+  outline: 2px solid var(--n-accent);
+  outline-offset: 2px;
+  border-radius: 999px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .n-demo-stage__frame {
     transition: none;

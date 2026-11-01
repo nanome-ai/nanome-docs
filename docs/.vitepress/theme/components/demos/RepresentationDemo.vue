@@ -37,8 +37,10 @@ const label = (o) => (props.app === 'xr' ? o.xr : o.web)
 const atom = ref('bs')
 /** What's added to it: null, cartoon, label or surface. */
 const extra = ref(null)
-const surface = ref('wire')
-const hydrogen = ref('none')
+// Nanome XR draws every atom style with All hydrogens, and a new surface is
+// Semi (Atomistic.cs, MolecularSurface.Default).
+const surface = ref(props.app === 'xr' ? 'semi' : 'wire')
+const hydrogen = ref(props.app === 'xr' ? 'all' : 'none')
 const showList = ref(false)
 const ints = reactive(Object.fromEntries(INTERACTIONS.map((t) => [t.key, t.on])))
 const note = ref(null)
@@ -61,22 +63,40 @@ function apply(next) {
   showList.value = !!next.list
 }
 
-// The tour: each atomistic style, Cartoon, Residue Label, each surface look,
-// then the interactions.
+// The tour: each atomistic style, Cartoon, Residue Label, then each surface
+// look. It leaves the interaction list closed, so the page below the card
+// doesn't move; the reader opens it with Show.
 const TOUR = [
   ...ATOMISTIC.map((a) => ({ atom: a.key })),
   ...MACRO.map((m) => ({ atom: 'stick', extra: m.key })),
   ...SURFACES.map((s) => ({ atom: 'stick', extra: 'surface', surface: s.key })),
-  { atom: 'stick', list: true },
 ]
-let at = 0
+const at = ref(0)
 const root = ref(null)
 const auto = useAutoplay(root, () => {
-  at = (at + 1) % TOUR.length
+  at.value = (at.value + 1) % TOUR.length
   note.value = null
-  apply(TOUR[at])
+  apply(TOUR[at.value])
 })
-const next = computed(() => frameFor({ surface: surface.value, ...TOUR[(at + 1) % TOUR.length] }))
+const next = computed(() => frameFor({ surface: surface.value, ...TOUR[(at.value + 1) % TOUR.length] }))
+
+/**
+ * Points the tour at the state on show, so Play carries on from the reader's
+ * pick. The open interaction list isn't in the tour, so Play starts it over.
+ */
+function syncAt() {
+  if (showList.value) {
+    at.value = TOUR.length - 1
+    return
+  }
+  const i = TOUR.findIndex(
+    (t) => t.atom === atom.value && (t.extra ?? null) === extra.value && (t.surface ?? surface.value) === surface.value
+  )
+  if (i >= 0) at.value = i
+}
+
+// Nanome XR lights a surface look only while Surface is on (RepresentationsPopup).
+const lookOn = (key) => surface.value === key && (props.app !== 'xr' || (extra.value === 'surface' && !showList.value))
 
 /** A switch is checked only when the state says so, whatever was clicked. */
 function sync(e, on) {
@@ -88,29 +108,43 @@ function pickAtom(key, e) {
   note.value = null
   apply({ atom: key })
   sync(e, true)
+  syncAt()
 }
 function toggleExtra(key, e) {
   auto.stop()
   note.value = null
   if (extra.value === key && !showList.value) apply({ atom: atom.value })
-  else apply({ atom: 'stick', extra: key })
+  // Nanome XR makes a new surface Semi each time Surface is switched on.
+  else apply({ atom: 'stick', extra: key, surface: key === 'surface' && props.app === 'xr' ? 'semi' : undefined })
   sync(e, extra.value === key)
+  syncAt()
 }
 function pickSurface(key) {
   auto.stop()
   note.value = null
   apply({ atom: 'stick', extra: 'surface', surface: key })
+  syncAt()
 }
 function pickHydrogen(key) {
   auto.stop()
   hydrogen.value = key
   note.value = { title: `Hydrogens · ${label(HYDROGENS.find((h) => h.key === key))}`, text: `${HYDROGEN_DESC[key]} 1KV2's file has no hydrogen atoms, so the render stays the same.` }
 }
+// In the app, Show and Hide only open and close the list. The copy's
+// interaction renders draw the ligand as Stick, so Hide puts back the
+// representation that was on before Show.
+let beforeList = null
 function toggleList() {
   auto.stop()
   note.value = null
-  if (showList.value) apply({ atom: atom.value, extra: extra.value })
-  else apply({ atom: 'stick', list: true })
+  if (showList.value) {
+    apply(beforeList ?? { atom: atom.value })
+    beforeList = null
+  } else {
+    beforeList = { atom: atom.value, extra: extra.value, surface: surface.value }
+    apply({ atom: 'stick', list: true })
+  }
+  syncAt()
 }
 function toggleType(t, e) {
   auto.stop()
@@ -154,13 +188,13 @@ const alt = computed(() => `1KV2's binding site: ${caption.value.title}`)
 </script>
 
 <template>
-  <div ref="root" class="n-demo" v-on="auto.hold">
+  <div ref="root" class="n-demo n-reps-demo" v-on="auto.hold">
     <div class="n-app-card n-app-reps" role="group" :aria-label="app === 'xr' ? 'Representations, as in Nanome XR' : 'Representations, as in Nanome Web'">
       <label v-for="a in ATOMISTIC" :key="a.key" class="n-app-row">
         <AppIcon :name="a.icon" size="1rem" />
         <span class="n-app-row__name">{{ label(a) }}</span>
         <input type="checkbox" role="switch" class="n-app-switch" :checked="atom === a.key" @change="pickAtom(a.key, $event)" />
-        <span class="n-app-palette" :class="{ 'is-on': atom === a.key }" aria-hidden="true"><AppIcon name="palette" size="0.95rem" /></span>
+        <span class="n-app-palette" :class="{ 'is-on': atom === a.key }" aria-hidden="true" @click.prevent><AppIcon name="palette" size="0.95rem" /></span>
       </label>
 
       <div class="n-app-seg" role="group" aria-label="Hydrogens" @keydown="arrowPick">
@@ -176,7 +210,7 @@ const alt = computed(() => `1KV2's binding site: ${caption.value.title}`)
           <AppIcon :name="m.icon" size="1rem" />
           <span class="n-app-row__name">{{ label(m) }}</span>
           <input type="checkbox" role="switch" class="n-app-switch" :checked="extra === m.key && !showList" @change="toggleExtra(m.key, $event)" />
-          <span class="n-app-palette" :class="{ 'is-on': extra === m.key && !showList }" aria-hidden="true"><AppIcon name="palette" size="0.95rem" /></span>
+          <span class="n-app-palette" :class="{ 'is-on': extra === m.key && !showList }" aria-hidden="true" @click.prevent><AppIcon name="palette" size="0.95rem" /></span>
         </label>
         <hr />
       </template>
@@ -185,10 +219,10 @@ const alt = computed(() => `1KV2's binding site: ${caption.value.title}`)
         <AppIcon name="egg-fried" size="1rem" />
         <span class="n-app-row__name">Surface</span>
         <input type="checkbox" role="switch" class="n-app-switch" :checked="extra === 'surface' && !showList" @change="toggleExtra('surface', $event)" />
-        <span class="n-app-palette" :class="{ 'is-on': extra === 'surface' && !showList }" aria-hidden="true"><AppIcon name="palette" size="0.95rem" /></span>
+        <span class="n-app-palette" :class="{ 'is-on': extra === 'surface' && !showList }" aria-hidden="true" @click.prevent><AppIcon name="palette" size="0.95rem" /></span>
       </label>
       <div class="n-app-seg" role="group" aria-label="Surface look" @keydown="arrowPick">
-        <button v-for="s in SURFACES" :key="s.key" type="button" :aria-pressed="surface === s.key" :class="{ 'is-on': surface === s.key }" @click="pickSurface(s.key)">
+        <button v-for="s in SURFACES" :key="s.key" type="button" :aria-pressed="lookOn(s.key)" :class="{ 'is-on': lookOn(s.key) }" @click="pickSurface(s.key)">
           <span><AppIcon :name="s.icon" size="0.85rem" />{{ s.name }}</span>
         </button>
       </div>
@@ -196,7 +230,8 @@ const alt = computed(() => `1KV2's binding site: ${caption.value.title}`)
       <hr />
 
       <div class="n-app-row n-app-ints">
-        <AppIcon name="mist" size="1rem" />
+        <!-- Nanome Web draws a mist icon here. Nanome XR's label is a NanoText, which has no icon. -->
+        <AppIcon v-if="app !== 'xr'" name="mist" size="1rem" />
         <span class="n-app-row__name">Interactions <span class="n-app-badge">{{ count }}</span></span>
         <button type="button" class="n-app-pill" :aria-expanded="showList" @click="toggleList">
           <span class="n-app-caret" :class="{ 'is-up': showList }" aria-hidden="true" />{{ showList ? 'Hide' : 'Show' }}
@@ -213,7 +248,29 @@ const alt = computed(() => `1KV2's binding site: ${caption.value.title}`)
 
     <figure class="n-demo__view">
       <DemoStage :src="src" :next="auto.playing.value ? next : ''" :alt="alt" :playing="auto.playing.value" @toggle="auto.toggle" />
-      <figcaption class="n-demo__caption" aria-live="polite"><strong>{{ caption.title }}</strong> {{ caption.text }}</figcaption>
+      <figcaption class="n-demo__caption" :aria-live="auto.playing.value ? 'off' : 'polite'"><strong>{{ caption.title }}</strong> {{ caption.text }}</figcaption>
     </figure>
   </div>
 </template>
+
+<style>
+/* Under the render on a phone, room for the longest caption in the tour, so
+   the page below doesn't move as it steps. */
+@media (max-width: 599px) {
+  .n-reps-demo .n-demo__caption {
+    min-height: 6em;
+  }
+}
+
+@media (max-width: 413px) {
+  .n-reps-demo .n-demo__caption {
+    min-height: 7.5em;
+  }
+}
+
+@media (max-width: 349px) {
+  .n-reps-demo .n-demo__caption {
+    min-height: 9em;
+  }
+}
+</style>

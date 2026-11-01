@@ -2,17 +2,20 @@
   <div
     ref="root"
     class="simple-carousel"
-    :class="{ 'carousel-dark': dark }"
+    :class="{ 'carousel-dark': dark, 'has-dots': showDots }"
     @mouseenter="onPointerEnter"
     @mouseleave="onPointerLeave"
     @focusin="onFocusIn"
     @focusout="onFocusOut"
+    @pointerdown="stopForGood"
+    @touchstart.passive="stopForGood"
+    @keydown="stopForGood"
   >
     <div class="carousel-container">
       <button
         v-if="showArrows"
         class="carousel-nav carousel-prev"
-        @click="scrollPrev"
+        @click="stopForGood(); scrollPrev()"
         aria-label="Previous"
       >
         ‹
@@ -34,7 +37,7 @@
       <button
         v-if="showArrows"
         class="carousel-nav carousel-next"
-        @click="scrollNext"
+        @click="stopForGood(); scrollNext()"
         aria-label="Next"
       >
         ›
@@ -47,7 +50,7 @@
         :key="index"
         :class="{ active: currentDot === index }"
       >
-        <button @click="scrollToSlide(index)" :aria-label="`Go to slide ${index + 1}`">
+        <button @click="stopForGood(); scrollToSlide(index)" :aria-label="`Go to slide ${index + 1}`">
           •
         </button>
       </li>
@@ -189,7 +192,7 @@ function scrollToSlide(dotIndex) {
 }
 
 function startAutoplay() {
-  if (!props.autoplay || autoplayTimer.value || reducedMotion()) return
+  if (!props.autoplay || userStopped || autoplayTimer.value || reducedMotion()) return
   autoplayTimer.value = setInterval(scrollNext, props.autoplaySpeed)
 }
 
@@ -203,6 +206,15 @@ function stopAutoplay() {
 // Autoplay waits while the pointer or keyboard focus is in the carousel.
 let hovering = false
 let focusInside = false
+
+// A tap, click, swipe or key press in the carousel stops autoplay for good.
+// A phone has no hover to hold it, so this is how a reader there stops it.
+let userStopped = false
+
+function stopForGood() {
+  userStopped = true
+  stopAutoplay()
+}
 
 function onPointerEnter() {
   hovering = true
@@ -314,6 +326,14 @@ onUnmounted(() => {
 .carousel-container:hover .carousel-nav,
 .carousel-nav:focus-visible {
   opacity: 1;
+}
+
+/* A touch screen has no hover to show them. Without dots, they stay in view
+   to show that there are more slides. */
+@media (hover: none) {
+  .simple-carousel:not(.has-dots) .carousel-nav {
+    opacity: 1;
+  }
 }
 
 /* Inset, like the dots' ring, so it stays inside the slide. */

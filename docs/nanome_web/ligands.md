@@ -26,21 +26,23 @@ In Nanome XR, the Ligands tab also has Zoom, Bulk-Display, 3D property labels, a
 Along the bottom of the tab:
 
 <UiList label="Ligands tab bottom bar">
-<UiItem icon="eye" name="Preview all" href="#preview" area="2.8,92.5,23.9,5.5">Opens a 3D preview that steps through the listed ligands one model at a time, with a download button for each.</UiItem>
+<UiItem icon="eye" name="Preview all" href="#preview" area="2.8,92.5,23.9,5.5">Opens a 3D preview of the listed ligands, or the checked ones, as one multi-model SDF that steps through them one model at a time.</UiItem>
 <UiItem icon="cloud-download" name="Download all" area="27.7,92.5,26.5,5.5">Downloads the listed ligands, as a Combined multi-model SDF or a ZIP of individual SDFs.</UiItem>
-<UiItem icon="hexagon-plus-2" name="Sketch new" area="55.1,92.5,25.2,5.5">Opens the 2D sketcher to draw a new ligand.</UiItem>
+<UiItem icon="hexagon-plus-2" name="Sketch new" area="55.1,92.5,25.2,5.5">Opens the 2D sketcher to draw a new ligand. Saving it adds a new entry named sketch 1, sketch 2 and so on.</UiItem>
 </UiList>
+
+**Preview all** and **Download all** show when the tab has 2 or more ligands.
 
 </ShotRow>
 
 ## The table {#the-table}
 
-<ShotRow src="nanome-web/ligands-fullscreen.webp" alt="The Ligands table in full screen">
+<ShotRow src="nanome-web/ligands-fullscreen.webp" alt="The Ligands table in full screen" crop="0,2.3,100,97.7">
 
 Each row shows the ligand's 2D drawing, its entry, its name, and the chosen property columns. **Atoms** and **MW** are shown by default.
 
 <UiList label="Ligands table">
-<UiItem name="Image" area="4.0,55.9,6.8,38.0">The ligand's 2D drawing.</UiItem>
+<UiItem name="Image" area="4.0,55.9,6.8,38.0">The ligand's 2D drawing. Clicking it opens a 3D preview of that ligand alone, with its own Download button.</UiItem>
 <UiItem name="Entry" area="15.3,41.7,5.1,48.1">The structure the ligand belongs to.</UiItem>
 <UiItem name="Name" area="30.8,41.7,7.0,48.1">Chain, ligand code and residue number.</UiItem>
 <UiItem icon="arrows-sort" name="Sort" area="50.3,41.7,5.6,6.4">A column header with arrows sorts the table by that column.</UiItem>
@@ -61,10 +63,12 @@ Each row has a checkbox and a <AppIcon name="dots-vertical" /> menu, at the righ
 
 <UiList label="Ligand row menu">
 <UiItem icon="cloud-download" name="Download SDF" area="62.5,32.2,25.3,6.6">Downloads the ligand as an SDF file.</UiItem>
-<UiItem icon="hexagon-plus-2" name="Sketch variant" area="62.5,39.9,25.3,6.6">Opens the ligand in the 2D sketcher to draw a variant.</UiItem>
-<UiItem icon="info-circle" name="Properties" area="62.5,47.7,25.3,6.6">Shows the ligand's calculated properties.</UiItem>
+<UiItem icon="hexagon-plus-2" name="Sketch variant" area="62.5,39.9,25.3,6.6">Opens the ligand in the 2D sketcher to draw a variant. Saving it adds a new entry, named sketch 1, sketch 2 and so on, aligned onto the ligand it came from.</UiItem>
+<UiItem icon="info-circle" name="Properties" area="62.5,47.7,25.3,6.6">Shows the ligand's properties by their property names, in 2 groups: Imported Properties from the file and Computed Properties.</UiItem>
 <UiItem icon="tag" name="Tag" href="#tags-and-ratings" area="62.5,56.8,25.3,37.5">Hit, Lead, Add to Synthesis, or New tag… for a custom tag. On a tagged ligand, Remove tag clears it. The tag appears in the Tag column.</UiItem>
 </UiList>
+
+Only Editors see **Sketch variant**, the **Tag** list and **Sketch new**.
 
 </ShotRow>
 
@@ -75,8 +79,8 @@ Each row has a checkbox and a <AppIcon name="dots-vertical" /> menu, at the righ
 <AppIcon name="eye" /> **Preview all** opens this view:
 
 <UiList label="Ligand preview">
-<UiItem name="File name" area="38.7,91.6,51.0,8.1">The ligand shown, as an SDF file name: entry, chain, ligand code and residue number.</UiItem>
-<UiItem icon="cloud-download" name="Download" area="92.6,93.3,5.8,5.1">Downloads the ligand shown.</UiItem>
+<UiItem name="File name" area="38.7,91.6,51.0,8.1">The SDF file name, taken from the first ligand: entry, chain, ligand code and residue number.</UiItem>
+<UiItem icon="cloud-download" name="Download" area="92.6,93.3,5.8,5.1">Downloads the whole preview as one SDF file.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -115,7 +119,7 @@ The copy of the table under [Property columns](#property-columns) filters and ap
 A tag marks where a ligand stands, such as a hit or a lead. The **Tag** list in the [row menu](#row-menu) sets it.
 
 - A ligand has 1 tag at most. Picking another replaces it.
-- By default the list has **Hit**, **Lead** and **Add to Synthesis**. **New tag…** adds a custom tag to the workspace's list.
+- By default the list has **Hit**, **Lead** and **Add to Synthesis**. **New tag…** adds a custom tag to the workspace's list and tags the ligand with it.
 - Tags are saved with the workspace, so everyone in it sees them, in Nanome Web and in the [Nanome XR Ligands tab](/nanome_v2/mainpanel#ligands-tab).
 - A ligand without a tag shows a dash in the **Tag** column.
 
@@ -138,18 +142,18 @@ Nanome calculates these properties with RDKit on its server. SDF data fields fro
 | Column | What it is |
 |--------|------------|
 | **NumAtoms** | Number of atoms, including hydrogens. Shown as **Atoms**. For G0T (C₃₀H₃₂N₂O₈) it's 72: 30 C, 32 H, 2 N and 8 O |
-| **NumHeavyAtoms** | Number of non-hydrogen atoms. Shown as **Heavy Atoms** |
-| **MolWeight** | Monoisotopic (exact) mass in daltons, including hydrogens. Shown as **MW** |
-| **HeavyAtomMolWeight** | Monoisotopic mass of the non-hydrogen atoms only. Shown as **Heavy Atom MW** |
+| **Num<wbr>Heavy<wbr>Atoms** | Number of non-hydrogen atoms. Shown as **Heavy Atoms** |
+| **Mol<wbr>Weight** | Monoisotopic (exact) mass in daltons, including hydrogens. Shown as **MW** |
+| **Heavy<wbr>Atom<wbr>Mol<wbr>Weight** | Monoisotopic mass of the non-hydrogen atoms only. Shown as **Heavy Atom MW** |
 | **LogP** | Wildman-Crippen estimate of log P, the base-10 logarithm of the octanol-water partition coefficient. Shown as **Log P** |
 | **TPSA** | Topological polar surface area (Ertl method, from N and O atoms only), in Å² |
 | **HbondD** | Hydrogen-bond donor count (RDKit's pattern-based definition, which differs from Lipinski's N-H plus O-H count). Shown as **HBD** |
 | **HbondA** | Hydrogen-bond acceptor count (RDKit's pattern-based definition, which differs from Lipinski's N plus O count). Shown as **HBA** |
-| **NumRotatableBonds** | Rotatable bond count. Shown as **Rotatable Bonds** |
+| **Num<wbr>Rotatable<wbr>Bonds** | Rotatable bond count. Shown as **Rotatable Bonds** |
 | **NumRings** | Ring count. Shown as **Rings** |
-| **NumAromaticRings** | Aromatic ring count. Shown as **Aromatic Rings** |
-| **NumAliphaticRings** | Count of rings with at least one non-aromatic bond. Shown as **Aliphatic Rings** |
-| **NumSaturatedRings** | Count of rings made only of single bonds. Shown as **Saturated Rings** |
+| **Num<wbr>Aromatic<wbr>Rings** | Aromatic ring count. Shown as **Aromatic Rings** |
+| **Num<wbr>Aliphatic<wbr>Rings** | Count of rings with at least one non-aromatic bond. Shown as **Aliphatic Rings** |
+| **Num<wbr>Saturated<wbr>Rings** | Count of rings made only of single bonds. Shown as **Saturated Rings** |
 | **SMILES** | SMILES string |
 | **InChIKey** | Standard InChIKey |
 | **Rating** | A value people enter, stored with the ligand. See [Tags and ratings](#tags-and-ratings) |
@@ -179,9 +183,9 @@ Each one comes from an X-ray structure of human p38α MAP kinase (UniProt Q16539
 | A:PQB_361 | [PQB](https://www.rcsb.org/ligand/PQB) | [2GFS](https://www.rcsb.org/structure/2GFS) | RO3201195 |
 | A:BAX_1 | [BAX](https://www.rcsb.org/ligand/BAX) | [3HEG](https://www.rcsb.org/structure/3HEG) | Sorafenib |
 
-The RDKit calls are `Chem.AddHs` then `GetNumAtoms` for NumAtoms, `GetNumHeavyAtoms` for NumHeavyAtoms, `Descriptors.ExactMolWt` for MolWeight, `Crippen.MolLogP` for LogP, `Chem.MolToInchiKey` for InChIKey, and the matching `rdMolDescriptors` function for TPSA, HbondD, HbondA and the 4 ring counts.
+The RDKit calls are `Chem.AddHs` then `GetNumAtoms` for NumAtoms, `GetNumHeavyAtoms` for NumHeavyAtoms, `Descriptors.ExactMolWt` for MolWeight, `rdMolDescriptors.CalcExactMolWt(mol, onlyHeavy=True)` for HeavyAtomMolWeight, `Crippen.MolLogP` for LogP, `Chem.MolToInchiKey` for InChIKey, and the matching `rdMolDescriptors` function for TPSA, HbondD, HbondA and the 4 ring counts.
 
-The copy lists HeavyAtomMolWeight, NumRotatableBonds, Rating and SMILES in its picker but leaves their columns out. NumRotatableBonds depends on RDKit settings that haven't been matched to Nanome's, people enter Rating, and one molecule can be written as many valid SMILES. The tags, the 2 entries that Filter by currently visible leaves out and the 2 presets are examples.
+The copy lists NumRotatableBonds, Rating and SMILES in its picker but leaves their columns out. NumRotatableBonds depends on RDKit settings that haven't been matched to Nanome's, people enter Rating, and one molecule can be written as many valid SMILES. The tags, the 2 entries that Filter by currently visible leaves out and the 2 presets are examples.
 
 </Accordion>
 
@@ -190,3 +194,14 @@ The copy lists HeavyAtomMolWeight, NumRotatableBonds, Rating and SMILES in its p
 Calculated values depend on the hydrogens and bond orders in the loaded structure. For a PDB or mmCIF file that carries a PDB ID, ligand bonds come from the Chemical Component Dictionary (fetched from the RCSB since 2.7, and from PDBe before that), with any bonds written in the file applied too. Without an ID, the remaining bonds are inferred from the coordinates.
 
 </Accordion>
+
+<style scoped>
+/* The long RDKit names in the Property columns table break at their <wbr>
+   points only on a phone. Wider screens drop those break points, so each
+   name stays on one line. */
+@media (min-width: 640px) {
+  table td:first-child wbr {
+    display: none;
+  }
+}
+</style>

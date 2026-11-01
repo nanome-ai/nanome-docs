@@ -9,13 +9,13 @@ Nanome Web is the browser version of Nanome, at [app.nanome.ai](https://app.nano
 <IconGrid label="Top bar">
 <IconCard icon="home" title="Home" href="/nanome_web/home">The start page: workspace and project lists, search and joining by code.</IconCard>
 <IconCard icon="cube-3d-sphere" title="Workspace" href="/nanome_web/workspace">Your open workspaces: the 3D viewer, its tools, scenes and the sequence viewer.</IconCard>
-<IconCard icon="messages" title="Conversations" href="/mara/features#chat">Chat with MARA, and go back to earlier chats.</IconCard>
+<IconCard icon="messages" title="Conversations" href="/mara/features#chat">MARA chats, plus the comment threads you watch and comments that mention you.</IconCard>
 <IconCard icon="tool" title="Tools" href="/mara/navigation#tools">Every tool MARA can use, and your custom tools.</IconCard>
 </IconGrid>
 
 <vimg src="nanome-web/workspace-overview.webp" alt="A workspace in Nanome Web" />
 
-These pages describe Nanome Web as of release 2.7.1.
+These pages describe Nanome Web as of Nanome release 2.7.1. The last line of the [account menu](/nanome_web/account) shows the web app's own version, which was 1.4.4 when these pages were written.
 
 ## Pages in this section
 

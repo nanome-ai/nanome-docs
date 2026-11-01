@@ -116,7 +116,7 @@ const alt = computed(() => `Folate in 1RX2 and the atoms a distance component pi
   <div ref="root" class="n-demo" v-on="auto.hold">
     <div class="n-app-card n-app-distance" role="group" aria-label="Distance component">
       <label class="n-app-slider">
-        <span class="n-app-slider__head"><span>Distance (Å)</span><output>{{ distance.toFixed(1) }}</output></span>
+        <span class="n-app-slider__head"><span>Distance (Å)</span><output>{{ distance }}</output></span>
         <input type="range" min="2" max="10" step="2" :value="distance" @input="onSlide" />
       </label>
       <hr />
@@ -140,7 +140,7 @@ const alt = computed(() => `Folate in 1RX2 and the atoms a distance component pi
 
     <figure class="n-demo__view">
       <DemoStage :src="src" :next="auto.playing.value ? next : ''" :alt="alt" :playing="auto.playing.value" @toggle="auto.toggle" />
-      <figcaption class="n-demo__caption" aria-live="polite"><strong>{{ caption.title }}</strong> {{ caption.text }}</figcaption>
+      <figcaption class="n-demo__caption" :aria-live="auto.playing.value ? 'off' : 'polite'"><strong>{{ caption.title }}</strong> {{ caption.text }}</figcaption>
     </figure>
   </div>
 </template>

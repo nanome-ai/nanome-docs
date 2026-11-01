@@ -15,7 +15,7 @@ Nanome macros provide functionality for all of the following:
 - Selection manipulation (Highlight and Focus on certain parts of the loaded entities)
 - Command scheduling (edit the rendering and content of the selection)
 - Molecular manipulation (read and write Workspace, Complexes, Molecules, Chains, Residues, Atoms)
-- Search and find (Locate, search or find molecular structures, residues, atoms etc within the scene)
+- Search and find (Locate, search or find molecular structures, residues, atoms etc. within the scene)
 - Menu manipulation (read, locate and move the UI menus available to the user)
 - User manipulation (read, locate and move the User that is using the macro)
 - Store manipulation (allow you to save/load states between macros)
@@ -25,7 +25,7 @@ Nanome macros provide functionality for all of the following:
 
 ## Using Macros
 
-To access macros, you can open the Macro submenu on your wrist or under the Entry List. We’ve set up some preset Macros already as seen on these menus. These macros let you focus on the active site(s) of a protein.
+You can open macros from the Macro submenu on your wrist or on the left side of the Entry List. Some preset macros are already there, and several of them focus on a protein's active sites.
 
 ## Building Your Own Macros
 
@@ -33,7 +33,7 @@ To customize and/or create your own, open up your Nanome download files in Windo
 
 <vimg src="macros-page/macros1.png" alt="File Explorer in Oculus Apps, Software, with the nanome-nanome folder selected" />
 
-Click the folder named ‘Build’, then ‘BuildAssets’, then ‘Macros’ to open up the folder seen below.
+Click the folder named ‘Build’, then ‘BuildAssets’, then ‘Macros’. The screenshot below shows the same folders in a downloaded copy of Nanome.
 
 <vimg src="macros-page/macros2.png" alt="File Explorer in Build, BuildAssets, Macros, with the SiteView.All, SiteView.Cycle and SiteView.Selection Lua files" />
 
@@ -45,7 +45,7 @@ Each of these Lua files will appear in your Macro menu as a separate Macro.
 
 ## Hello world!
 
-A macro can be just a few lines of code
+A macro can be just a few lines of code.
 
 ```lua
 --[[
@@ -80,4 +80,4 @@ C:\Users\<USERNAME>\Documents\Nanome\
 C:\Users\<USERNAME>\Documents\Nanome\Macros\
 ```
 
-Optionally, a macro can be hosted through an HTTP server (configurable in the config-file)
+Optionally, a macro can be hosted through an HTTP server (configurable in the config-file).
