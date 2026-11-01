@@ -38,7 +38,7 @@ Here are the voice commands and combinations currently available:
   - Boxes
   - Waters
   - Hydrogens
-  - heteroatom(s)
+  - Heteroatoms
   - Selection
   - All
 - Display using +

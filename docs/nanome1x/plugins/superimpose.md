@@ -4,7 +4,7 @@ title: Superimpose Proteins
 
 # Superimpose Proteins
 
-The Superimpose Proteins plugin overlays two or more proteins in 3D space for visual comparison and calculates Root Mean Square Deviation (RMSD) values, a number in Å that measures how far apart the structures are.
+The Superimpose Proteins plugin overlays 2 or more proteins in 3D space for visual comparison and calculates root-mean-square deviation (RMSD) values, a number in Å that measures how far apart the structures are.
 
 Protein overlay uses either the backbone (alpha carbons) or all heavy protein atoms. The alignment can use the full protein, one chain, a ligand's binding site, or a selection.
 
@@ -15,14 +15,14 @@ A **Fixed Reference** structure is chosen, and **Moving Structures** are rotated
 <ShotRow src="plugins-page/superimpose/superimpose_menu.png" alt="The Superimpose Proteins menu with Backbone α carbons and Entire Fixed Reference picked, and 5KHX as the Fixed Reference">
 
 1. In the upper left, under **Overlay using**, pick how structures are overlaid.
-    -   **Backbone α carbons**: Overlay structures based on all paired alpha carbons between the two proteins.
-    -   **All Heavy Atoms**: Uses backbone atoms and side chain atoms (all protein atoms except for Hydrogen) for paired residues.
+    -   **Backbone α carbons**: Overlay structures based on all paired alpha carbons between the 2 proteins.
+    -   **All Heavy Atoms**: Uses backbone atoms and side chain atoms (all protein atoms except for hydrogen) for paired residues.
 2. In the upper right, under **Align Structure(s) to**, there are 4 alignment modes.
     -   **Entire Fixed Reference**: Uses a sequence based alignment to superimpose entire proteins on top of each other.
     -   **1 specific chain from the Fixed Reference**: Uses a sequence based alignment to superimpose the moving structures onto a specified chain on the Fixed Reference.
-    -   **By Binding Site**: The user selects a ligand on the Fixed Reference, and the surrounding binding site is aligned to the moving structures using Site-Motif (See Methodologies for more details)
-    -   **By Selection** (not in this screenshot; see step 6): The user selects specific residues in the fixed reference and the moving structures are aligned by that selection only.  Users may choose to specify residues on both the fixed and moving structures but only selections in the fixed reference are required for the plugin to run.
-3. A list of proteins in the workspace appears in the main panel.  In this panel, choose **Fixed Reference** and **Moving Structures**, and subselect a chain or ligand for each, if aligning by chain or binding site, respectively (see 4, below).
+    -   **By Binding Site**: The user picks a ligand on the Fixed Reference, and each Moving Structure is aligned onto the binding site around it, using Site-Motif (see Methodologies).
+    -   **By Selection** (not in this screenshot; see step 6): The user selects specific residues in the Fixed Reference and the moving structures are aligned by that selection only.  Users may choose to specify residues on both the fixed and moving structures but only selections in the Fixed Reference are required for the plugin to run.
+3. A list of proteins in the workspace appears in the main panel.  In this panel, choose **Fixed Reference** and **Moving Structures**, and pick a chain for each when aligning by chain, or a ligand on the Fixed Reference when aligning by binding site (see 4 and 5, below).
     - By default, the first entry is set as Fixed, and designated by the yellow pin. When selected as Fixed, the box under Moving will be inactive.  To change this selection, select the pin next to the desired Fixed Reference protein.
     - Choose one or more Moving Structures by selecting the boxes under the Moving Structures column.  This box will turn green when selected.
     - Once selections are made, the Superimpose button in the lower right will become active and show the number of proteins selected.  (e.g. “Superimpose (3)” for a Fixed Reference and 2 Moving Structures).  Click this button to superimpose the proteins and calculate RMSD values.   The button will change to “Calculating...” as the process is being completed.
@@ -33,7 +33,7 @@ A **Fixed Reference** structure is chosen, and **Moving Structures** are rotated
 <UiItem name="All Heavy Atoms" area="5.1,29.3,43.2,5.3">Overlays backbone and side chain atoms, all but hydrogen.</UiItem>
 <UiItem name="Entire Fixed Reference" area="51.6,24.0,44.1,5.3">Sequence alignment of the entire proteins. Picked here.</UiItem>
 <UiItem name="1 specific chain from the Fixed Reference" area="51.7,29.4,43.9,5.1">Aligns the moving structures onto one chain of the Fixed Reference.</UiItem>
-<UiItem name="By Binding Site" area="51.7,34.8,43.8,5.1">Aligns the binding site around a ligand on the Fixed Reference, using Site-Motif.</UiItem>
+<UiItem name="By Binding Site" area="51.7,34.8,43.8,5.1">Aligns each Moving Structure onto the binding site around a ligand on the Fixed Reference, using Site-Motif.</UiItem>
 <UiItem name="Fixed" area="5.7,49.1,8.8,26.1">The yellow pin marks the Fixed Reference. Select another pin to change it.</UiItem>
 <UiItem name="Moving Structures" area="14.8,49.1,8.8,26.1">Select one or more. A selected box turns green.</UiItem>
 <UiItem name="Chains" area="53.2,49.5,25.3,25.3">The chain for each protein, when aligning by chain.</UiItem>
@@ -44,7 +44,7 @@ A **Fixed Reference** structure is chosen, and **Moving Structures** are rotated
 </ShotRow>
 
 <vimg src="plugins-page/superimpose/superimpose_protein.png" alt="The purple and orange proteins, 3AP1 and 5WRI, superimposed" />
-<em>Two superimposed proteins</em>
+<em>2 superimposed proteins</em>
 
 <ShotRow src="plugins-page/superimpose/superimpose_rmsd_menu.png" alt="RMSD Run 1 table with 3AP1 purple tpst2 as the Fixed Reference and 5WRI orange tpst1 at RMSD 1.64">
 
@@ -54,7 +54,7 @@ A **Fixed Reference** structure is chosen, and **Moving Structures** are rotated
 <UiItem name="Fixed Reference" area="0.4,21.1,96.4,12.3">The top row, marked with the yellow pin.</UiItem>
 <UiItem name="Moving Structures" area="0.4,33.9,96.4,10.8">One numbered row each.</UiItem>
 <UiItem name="RMSD" area="50.1,11.8,12.9,31.8">Values close to zero mean highly similar proteins.</UiItem>
-<UiItem name="Paired residue count" area="65.4,9.0,12.1,34.7">Residues paired between the two structures.</UiItem>
+<UiItem name="Paired residue count" area="65.4,9.0,12.1,34.7">Residues paired between the 2 structures.</UiItem>
 <UiItem name="Paired atom count" area="81.9,9.0,11.8,34.7">Atoms paired. Equals the residue count for backbone α carbons.</UiItem>
 </UiList>
 
@@ -83,7 +83,7 @@ The RMSD table for a chain run names the chain with each structure.
 <UiList label="RMSD table for a chain run">
 <UiItem name="Fixed Reference" area="0.0,41.2,76.7,22.8">3AP1 purple tpst2, chain B.</UiItem>
 <UiItem name="Moving Structure" area="0.0,64.4,76.7,21.3">5WRI orange tpst1, chain B, at RMSD 0.54.</UiItem>
-<UiItem name="Superimposed proteins" area="79.2,17.1,20.6,79.3">The two proteins after the run.</UiItem>
+<UiItem name="Superimposed proteins" area="79.2,17.1,20.6,79.3">The 2 proteins after the run.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -92,7 +92,7 @@ The RMSD table for a chain run names the chain with each structure.
 
 5. When aligning by Binding Site, the Overlay method will automatically change to **All Heavy Atoms**.
     - An option to **Extract binding sites into new entry items** appears.  This creates a new set of entries containing only the superimposed binding site atoms of each protein.
-    - Choose **Fixed** and **Moving Structures** as above and additionally choose a ligand from the Fixed reference to establish the binding site for superimposition.
+    - Choose **Fixed** and **Moving Structures** as above and additionally choose a ligand from the Fixed Reference to establish the binding site for superimposition.
 
     *Note the Extract binding sites into new entry items button*
 
@@ -103,7 +103,7 @@ The RMSD table for a chain run names the chain with each structure.
 <UiItem name="Fixed" area="4.1,65.7,8.1,8.2">1xbb blue is the Fixed Reference.</UiItem>
 <UiItem name="Ligand" area="56.3,66.5,34.3,6.7">The ligand that sets the binding site. STI here.</UiItem>
 <UiItem name="Moving Structures" area="12.4,47.9,8.3,16.6">4xg2 gold and 5y5t red-orange are selected.</UiItem>
-<UiItem name="Superimpose (3)" area="64.1,90.8,32.7,7.4">The Fixed Reference and two Moving Structures.</UiItem>
+<UiItem name="Superimpose (3)" area="64.1,90.8,32.7,7.4">The Fixed Reference and 2 Moving Structures.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -117,12 +117,12 @@ The RMSD table for a chain run names the chain with each structure.
     *Making a selection in the Fixed Reference using the Entry Hierarchy.*
     <br><br>
     <vimg src="plugins-page/superimpose/superimpose-6b.png" alt="The Superimpose Proteins menu with By Selection picked, 4xg2 yellow as the Fixed Reference and 5y5t orange as a Moving Structure, beside the superimposed structures" />
-    *Structures superimposed based on a selection in the fixed reference*
+    *Structures superimposed based on a selection in the Fixed Reference*
 
 
 7. **RMSD tables** report out fixed and moving structures (with chain when relevant) RMSD values, **paired residues**, and paired atoms
     - Note that when superimposing by backbone alpha carbons, the # of paired residues = # of paired atoms;  when superimposing by all heavy atoms, the # of paired residues will be ~8x less than the # of paired atoms because there are on average ~8 heavy atoms per residue.
-    - For two identical proteins, the RMSD would be zero.  Values close to zero indicate highly similar proteins.  Values over 10 Å mean very different structures.  A combination of visual inspection and RMSD values gives a reasonable indication of how similar the structures are.
+    - For 2 identical proteins, the RMSD would be zero.  Values close to zero indicate highly similar proteins.  Values over 10 Å mean very different structures.  A combination of visual inspection and RMSD values gives a reasonable indication of how similar the structures are.
 
 
 ## Methodologies
@@ -184,7 +184,7 @@ Improvements to the codebase include:
 - Added logging
 
 #### Overview
-<vimg src="plugins-page/superimpose/superimpose_binding_site_diagram.png" alt="Diagram: the fixed ligand sets the fixed binding site, fpocket finds pockets on the moving complex, Site-Motif picks the best match, and the two binding sites are superimposed" />
+<vimg src="plugins-page/superimpose/superimpose_binding_site_diagram.png" alt="Diagram: the fixed ligand sets the fixed binding site, fpocket finds pockets on the moving complex, Site-Motif picks the best match, and the 2 binding sites are superimposed" />
 
 #### References
 Sankar S, Chandra N (2022) SiteMotif: A graph-based algorithm for deriving structural motifs in Protein Ligand binding sites. PLoS Comput Biol 18(2): e1009901. https://doi.org/10.1371/journal.pcbi.1009901

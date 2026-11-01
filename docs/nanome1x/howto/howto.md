@@ -8,7 +8,7 @@ title: How To
 
 <ShotRow src="howto-page/autoheightsetting.png" alt="The Action Menu with Auto Height Adjust selected and its Enabled toggle open">
 
-Auto Height Adjust can be turned on or off from the action menu. If users are having height issues, we recommend using this toggle to help troubleshoot the issue. By default, the toggle is off when users are in Mixed Reality Passthrough and turned on when users are in virtual reality. If height issues persist, we recommend resetting your floor height by calibrating your device. On Meta headsets, that means resetting the Guardian.
+Auto Height Adjust can be turned on or off from the action menu. If users are having height issues, we recommend using this toggle to help troubleshoot the issue. By default, the toggle is off when users are in Mixed Reality Passthrough and turned on when users are in virtual reality. If height issues persist, we recommend resetting your floor height by calibrating your device. On Meta headsets, that means resetting the Boundary (formerly called Guardian).
 
 <UiList label="Action Menu">
 <UiItem name="Auto Height Adjust" area="32.7,77.9,30.8,8.4">Opens the toggle for auto height adjustment.</UiItem>
@@ -121,7 +121,7 @@ Click on the [Build Menu](/nanome1x/navigation/toolsmenu#build) Tab Button on th
 
 <vimg src="howto-page/WindowsContent.gif" alt="Opening Oculus Dash in Nanome and pinning a desktop window beside the menus" />
 
-When using the Oculus Rift/Rift S or Oculus Link (Quest connected to a desktop), users can use Oculus Dash to ‘pin’ windows or their entire desktop in VR and Nanome. This means users can view excel sheets, websites, and other 3rd party software while the headset is on. This way, users can work in Nanome with their existing desktop apps. However, please note that this pinned window is not visible to other users in the same room. If you want to collaboratively view a PDF file with your colleague in Nanome, please [load](/nanome1x/navigation/menus#load) the PDF file into your workspace.
+When using the Oculus Rift/Rift S or Oculus Link (Quest connected to a desktop), users can use Oculus Dash to ‘pin’ windows or their entire desktop in VR and Nanome. This means users can view Excel sheets, websites, and other 3rd party software while the headset is on. This way, users can work in Nanome with their existing desktop apps. However, please note that this pinned window is not visible to other users in the same room. If you want to collaboratively view a PDF file with your colleague in Nanome, please [load](/nanome1x/navigation/menus#load) the PDF file into your workspace.
 
 To view a tutorial on how to use Oculus Dash to pin windows, we recommend this UploadVR article here: [https://uploadvr.com/oculus-dash-windows-button/](https://uploadvr.com/oculus-dash-windows-button/)
 
@@ -146,7 +146,7 @@ A log file's name follows the format of "YYYY-MM-DD_HH-MM-SS_details.txt" and is
 
 ## How to access Nanome on the Oculus Quest family of headsets
 
-Nanome can be loaded onto the Oculus Quest or Oculus Quest 2 via a few different methods. In 2021, Nanome was added to the Oculus App Lab (see [here](https://www.oculus.com/experiences/quest/3077598929010226/)). You can find it by searching for Nanome in the Meta Horizon Store. The animation below shows the 2021 App Lab search on a smartphone.
+Nanome can be loaded onto the Oculus Quest or Oculus Quest 2 via a few different methods. In 2021, Nanome was added to the [Oculus App Lab](https://www.oculus.com/experiences/quest/3077598929010226/). You can find it by searching for Nanome in the Meta Horizon Store. The animation below shows the 2021 App Lab search on a smartphone.
 
 <vimg src="howto-page/nanome_on_oculus_quest.gif" alt="Searching for Nanome in the Oculus phone app and opening its App Lab page" />
 
@@ -168,7 +168,7 @@ On the Steam store, you can switch to the beta release by following [this guide]
 
 If you are participating in our Oculus Quest Nanome beta, please request the pre-release beta of the next version by emailing [support@nanome.ai](mailto:support@nanome.ai).
 
-**REMINDER:** During collaborative sessions with other users, those on different versions will NOT be able to see each other’s lobbies or will have features that may not fully function. For collaborative sessions with other users, please ensure you are on the same version of Nanome.
+**Reminder:** During collaborative sessions, users on different versions can't see each other's lobbies, and some features may not work. For collaborative sessions, everyone should be on the same version of Nanome.
 
 If you'd like to leave us any feedback on the beta releases, you can fill out [this form](https://forms.gle/DsTkDCuqAzhP4vJR8).
 

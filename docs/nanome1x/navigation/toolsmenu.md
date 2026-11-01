@@ -68,7 +68,7 @@ Offers options to quickly access binding sites and set up the auxiliary features
 
 <ShotRow src="navigating-page/Medchem-Build.jpg" alt="The Build tab of the MedChem menu">
 
-Select a substructure from the build menu and build it on top of existing atoms using the MedChem tool.
+The Build tab picks a substructure for the MedChem tool to build on top of existing atoms.
 
 <UiList label="Build tab">
 <UiItem name="Substructures" area="9.3,13.6,62.2,37.7">The build menu. Pick one to build with.</UiItem>
@@ -96,7 +96,7 @@ Hold the trigger at an empty space to place a new structure.
 
 <ShotRow src="navigating-page/Medchem-PeriodicTable.jpg" alt="The MedChem periodic table">
 
-Select any atom type from the periodic table to use in build mode.
+The periodic table offers every element for build mode.
 
 <UiList label="Periodic Table">
 <UiItem name="Elements" area="6.6,25.0,87.6,65.6">Each tile is one element.</UiItem>

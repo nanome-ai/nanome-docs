@@ -9,9 +9,9 @@ Nanome is accessible from a keyboard and mouse setup on a 2D monitor as well.
 <ScreenMap src="navigating-page/2D.jpg" alt="Nanome on a 2D monitor, with the Entry List in the middle and the side panel on the right" label="2D screen">
 <MapCard icon="list" title="Entry List" href="/nanome1x/navigation/menus#entry-list" side="top" area="36.5,32.1,26.8,44.7">A list of all the structures loaded into the environment.</MapCard>
 <MapCard icon="keyboard" title="Control Guide" href="#controls-tab" side="bottom" area="1.9,88.3,15.5,11.0">Press H to show or hide the controls.</MapCard>
-<MapCard icon="stack-2" title="Menu Management" href="#menu-management-tab" side="top" area="91.1,0.0,2.2,3.0">Toggle or manage menus.</MapCard>
-<MapCard icon="users-group" title="Room" href="#room-tab" side="top" area="93.3,0.0,2.2,3.0">Manage users or request presenter privilege.</MapCard>
-<MapCard icon="camera" title="View Navigation" href="#view-navigation-tab" side="top" area="95.6,0.0,2.2,3.0">Change options for view control.</MapCard>
+<MapCard icon="stack-2" title="Menu Management" href="#menu-management-tab" side="top" area="91.1,0.0,2.2,3.0">Opens, closes and arranges menus.</MapCard>
+<MapCard icon="users-group" title="Room" href="#room-tab" side="top" area="93.3,0.0,2.2,3.0">Lists the users, and can request presenter privilege.</MapCard>
+<MapCard icon="camera" title="View Navigation" href="#view-navigation-tab" side="top" area="95.6,0.0,2.2,3.0">Sets how the view moves.</MapCard>
 <MapCard icon="settings" title="Setting" href="#settings-tab" side="top" area="97.8,0.0,2.2,3.0">Volume and environment background.</MapCard>
 <MapCard icon="plus" title="Load" href="/nanome1x/navigation/menus#load" side="bottom" area="36.8,77.0,3.6,8.2">Opens the Load menu.</MapCard>
 <MapCard icon="plug-connected" title="Plugin" href="/nanome1x/plugins/overview" side="bottom" area="40.6,77.0,3.6,8.2">Opens the Plugin menu.</MapCard>
@@ -26,7 +26,7 @@ Nanome is accessible from a keyboard and mouse setup on a 2D monitor as well.
 
 <ShotRow src="navigating-page/2D-Room.jpg" alt="The Room tab with Request Presenter, Leave and the Users list">
 
-Manage users or request presenter privilege.
+The Room tab lists the users in the room, and can request presenter privilege.
 
 <UiList label="Room tab">
 <UiItem icon="crown" name="Request Presenter" area="7.1,13.2,84.3,8.0">Asks for presenter privilege.</UiItem>
@@ -40,7 +40,7 @@ Manage users or request presenter privilege.
 
 <ShotRow src="navigating-page/2D-Menu.jpg" alt="The Menu Management tab with its menu buttons">
 
-Toggle or manage menus.
+The Menu Management tab opens, closes and arranges menus.
 
 <UiList label="Menu Management tab">
 <UiItem icon="list" name="Entry Menu" area="5.5,22.8,91.5,8.7">Opens the Entry Menu.</UiItem>
@@ -58,7 +58,7 @@ Toggle or manage menus.
 
 <ShotRow src="navigating-page/2D-View.jpg" alt="The View Navigation tab with Movement, Sensitivity and Camera">
 
-Change options for view control.
+The View Navigation tab sets how the view moves.
 
 <UiList label="View Navigation tab">
 <UiItem name="Movement" area="4.1,28.7,79.7,7.7">Orbit or Freefly.</UiItem>
@@ -72,7 +72,7 @@ Change options for view control.
 
 <ShotRow src="navigating-page/2D-Setting.jpg" alt="The Setting tab with the Skybox and Volume sliders">
 
-Change settings including volume and environment background.
+The Setting tab changes settings such as volume and the environment background.
 
 <UiList label="Setting tab">
 <UiItem name="Skybox" area="5.3,21.6,78.9,25.1">The environment background.</UiItem>

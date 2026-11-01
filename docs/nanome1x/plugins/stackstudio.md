@@ -25,7 +25,7 @@ You can send feedback to bugs@nanome.ai or chat with us in our Slack user group 
 
 3. Create a JSON file at your preferred location. Copy the [RMSD plugin menu JSON](https://raw.githubusercontent.com/nanome-ai/plugin-rmsd/master/plugin/rmsd_pluginator.json) into the JSON file.
 
-4. Open file option in Stack Studio and select [Import]. Choose the JSON file that you just created.
+4. Open the **File** menu in Stack Studio and choose **Import**, then pick the JSON file that you just created.
 <vimg src="plugins-page/pluginator/import.JPG" alt="The File menu with Import highlighted" />
 
 5. Once the JSON file is loaded, you'll see the interface below.
@@ -47,35 +47,35 @@ Menu view renders a 2D interactable preview of the menu that you are creating. A
 
 <vimg src="plugins-page/pluginator/outline.JPG" alt="The Outline view with the Root node, and the Add Node and Delete Node buttons" />
 
-Nanome plugin UI is managed in a hierarchical fashion, and Outline view shows this hierarchy. Each component in the menu is called a node. A node can't be larger than its parent node. You can collapse or expand a node that contains multiple children nodes. Click on the eye icon on a node to toggle its visibility. Drag and drop a node to move it in the hierarchy and change its parent.
+Nanome plugin UI is managed in a hierarchical fashion, and Outline view shows this hierarchy. Each component in the menu is called a node. A node can't be larger than its parent node. You can collapse or expand a node that contains multiple children nodes. The eye icon on a node toggles its visibility, and dragging a node moves it to a new parent.
 
 ### Editor View
 
 <vimg src="plugins-page/pluginator/editor.JPG" alt="The Editor view on the Content tab, with an Add Content button" />
 
-The Editor has options for a node's layout and content, and for the menu size. These options are organized into 3 tabs. Switch tab by clicking on the tab that you want to view or edit. Switch what node you are editing by clicking on that node in the outline view.
+The Editor has options for a node's layout and content, and for the menu size. These options are organized into 3 tabs. Clicking a tab switches the view, and clicking a node in the Outline picks the node to edit.
 
 #### Layout Tab
 
 <vimg src="plugins-page/pluginator/layout.JPG" alt="The Layout tab for the Root node, with Name, Orientation, Sizing Type, Padding and other settings" />
 
-Here in layout tab, you can change the way children nodes are laid out under the node that you are editing.
+In the Layout tab, you can change the way children nodes are laid out under the node that you are editing.
 
 #### Content Tab
 
 <vimg src="plugins-page/pluginator/content.JPG" alt="The Content tab for a node with no content, showing only Add Content" />
 
-Here in content tab, you can change the properties of a node's content. The properties that get displayed here depend on the type of the content. By default, a new node does not have any content. Click on [Add Content] to give this node content.
+In the Content tab, you can change the properties of a node's content. The properties that get displayed here depend on the type of the content. By default, a new node does not have any content. The **Add Content** button gives it content.
 
 <vimg src="plugins-page/pluginator/button_content.JPG" alt="The Content tab for a button named newButton, with its Text, Icon, Mesh, Outline and Tooltip settings" />
 
-When a node is assigned a content type, you can view and edit its properties, such as name and padding. The picture above shows the properties of a button. To learn more about what properties are available, check out the [UI Components](/nanome1x/plugins/stackstudio#ui-components) section.
+When a node is assigned a content type, you can view and edit its properties, such as name and padding. The picture above shows the properties of a button. [UI Components](#ui-components) describes each content type.
 
 #### Window Tab
 
 <vimg src="plugins-page/pluginator/window.JPG" alt="The Window tab with the title Header, width 0.7 and height 0.6" />
 
-Here in window tab, you can change the menu window title and size. This tab changes the menu window properties, so it is independent from the node you selected to edit.
+In the Window tab, you can change the menu window title and size. This tab changes the menu window properties, so it is independent from the node you selected to edit.
 
 ## UI Components
 
@@ -139,7 +139,7 @@ To integrate a menu made with Stack Studio into a plugin:
 
 <vimg src="plugins-page/pluginator/export.jpg" alt="The File menu with Export highlighted" />
 
-Open the file dropdown menu and select [Export].
+Open the **File** menu and choose **Export**.
 
 ### 2. Place the exported JSON file in the folder where you are creating your plugin
 
@@ -150,11 +150,11 @@ Be sure to check that this is the same folder as the plugin script that you are 
 ## Hotkeys
 __ctrl-n__: spawn a new menu
 
-__n__: add a layoutnode
+__n__: add a node
 
 __c__: add a content
 
-__1,2,3__: change tabs on the inspector
+__1,2,3__: switch tabs in the Editor
 
 __up, down__: change selected node to the one above, below
 

@@ -4,7 +4,7 @@ title: Wrist Menu
 
 # Wrist Menu
 
-Wrist menu contains access to features independent from the content of the workspace such as quick menu access and room management.
+The Wrist Menu holds features that don't depend on what's in the workspace, such as quick menu access and room management.
 
 <ScreenMap src="navigating-page/wrist-menu-1-24.png" alt="The Wrist Menu in Nanome 1.24" crop="5.0,10.0,95.0,90.0" label="Wrist Menu buttons">
 <MapCard icon="crown" title="Presenter" href="#presenter" side="left" area="10.4,14.8,11.7,19.6">Request presenter, or see and grant requests.</MapCard>
@@ -26,7 +26,7 @@ Wrist menu contains access to features independent from the content of the works
 
 <ShotRow src="navigating-page/Wrist-QuickMenus.jpg" alt="The Quick Menus panel above the Wrist Menu" crop="4.4,5.5,66.1,90.9">
 
-Toggle each menu on or off quickly. This screenshot shows the wrist menu's earlier design.
+Quick Menus turns each menu on or off. This screenshot shows the wrist menu's earlier design.
 
 <UiList label="Quick Menus">
 <UiItem name="Menu buttons" area="12.2,7.5,49.0,39.5">Each one toggles its menu on or off.</UiItem>
@@ -79,7 +79,7 @@ In version 1.24.6, one Presenter (crown) button on the Wrist Menu both requests 
 
 <vimg src="navigating-page/Wrist-Menu.jpg" alt="The wrist menu with Focus On Menu, Grid Lock Menus, Hide Menus and Lock Menus" />
 
-Quickly manage the enabled menus and format them in certain layouts. This screenshot shows the wrist menu's earlier design.
+The Menu Layouts buttons arrange, hide and lock the open menus. This screenshot shows the wrist menu's earlier design.
 
 ## Settings
 
@@ -126,12 +126,12 @@ This screenshot shows the wrist menu's earlier design.
 
 **Avatar Customizations**
 
-Change your display name, hairstyle, hair color, eyeglasses color, and shirt color.
+Avatar Settings changes your display name, hairstyle, hair color, eyeglasses color and shirt color.
 
 <UiList label="Avatar Settings">
-<UiItem name="Hairstyle" area="60.1,60.0,29.7,10.0">Pick a hairstyle.</UiItem>
-<UiItem name="Hair, Eyeglasses, Shirt" area="60.5,71.6,29.5,6.3">Pick what to color.</UiItem>
-<UiItem name="Colors" area="61.3,78.4,27.8,12.6">Pick its color.</UiItem>
+<UiItem name="Hairstyle" area="60.1,60.0,29.7,10.0">Picks a hairstyle.</UiItem>
+<UiItem name="Hair, Eyeglasses, Shirt" area="60.5,71.6,29.5,6.3">Picks what to color.</UiItem>
+<UiItem name="Colors" area="61.3,78.4,27.8,12.6">Picks its color.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -191,7 +191,7 @@ Change your display name, hairstyle, hair color, eyeglasses color, and shirt col
 
 <vimg src="navigating-page/Wrist-ScreenshotTool.gif" alt="Opening the camera from the wrist menu and taking a picture of a protein" />
 
-Use the screenshot tool to take a screenshot of your workspace and send it via email.
+The screenshot tool takes a picture of your workspace and can email it.
 
 ### Camera as Desktop View
 
@@ -203,11 +203,11 @@ Use the screenshot tool to take a screenshot of your workspace and send it via e
 
 </ShotRow>
 
-## Notepad
+## Shared Notepad {#notepad}
 
 <ShotRow src="navigating-page/notepad.png" alt="The Shared Notepad">
 
-The shared notepad can be used as a sticky note.
+The Shared Notepad works as a sticky note.
 
 <UiList label="Shared Notepad">
 <UiItem icon="text-size" name="Text Size" area="6.7,86.2,46.4,7.3">S, M or L.</UiItem>

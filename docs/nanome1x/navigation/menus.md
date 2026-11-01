@@ -201,7 +201,7 @@ When saving a workspace, you have the option to create a spatial anchor for your
 
 ## Load
 
-Load molecules or structures into your workspace. Supported file formats include (v1.24):
+The Load menu loads molecules or structures into your workspace. Supported file formats (v1.24):
 
 _Structural Coordinate File Formats_ <br />
 .pdb, .cif, .mmcif, .pse, .nanome, .sdf, .mol, .xyz, .mol2, .pqr, .mae (Maestro), .moe (MOE), and SMILES files
@@ -277,7 +277,7 @@ Cancel a load from the Source tab if it's taking too long or the PDB code is wro
 
 </ShotRow>
 
-[Please view the Nanome Stacks page to learn more.](/nanome1x/plugins/overview)
+[The Nanome Stacks page](/nanome1x/plugins/overview) has more.
 
 ## Display
 
@@ -388,17 +388,17 @@ Navigate to Display/Styles > Surface Styles, then check the "Mesh Surface" optio
 
 ## Color
 
-Apply a solid color or a color scheme on the selected structures.
+The Color menu applies a solid color or a color scheme to the selected structures.
 
 ### Picker
 
 <ShotRow src="navigating-page/Color-Picker-Menu.jpg" alt="The Color menu on its Picker tab, with Carbonite on">
 
-Colors picked in picker are applied in a solid style.
+Colors from the picker apply as one solid color.
 
 <UiList label="Picker tab">
 <UiItem name="Carbonite" area="37.1,31.7,29.1,11.1">Carbonite color applies only to carbons.</UiItem>
-<UiItem name="Monochrome" area="66.2,31.7,28.7,11.1">Monochrome color applies to all atoms indifferently.</UiItem>
+<UiItem name="Monochrome" area="66.2,31.7,28.7,11.1">Monochrome color applies to every atom.</UiItem>
 <UiItem icon="palette" name="Color picker" area="51.8,45.5,42.7,37.7">Picks a color to apply in a solid style.</UiItem>
 <UiItem icon="star" name="Add Favorite" area="51.5,84.1,33.9,10.0">Adds the picked color as a favorite.</UiItem>
 <UiItem icon="list-check" name="Apply on" area="4.4,17.8,23.2,43.0">Which parts get the color: Surface, Ribbon and Atom.</UiItem>
@@ -419,7 +419,7 @@ Colors picked in picker are applied in a solid style.
 
 <ShotRow src="navigating-page/Color-Scheme-Menu.jpg" alt="The Color menu on its Schemes tab, with Element picked">
 
-Colors picked in schemes are applied in a certain pattern.
+A scheme colors the selected structures by a property, such as element or chain.
 
 <UiList label="Schemes tab">
 <UiItem name="Carbonite / Monochrome" area="37.0,30.9,57.9,11.1">As in the Picker tab.</UiItem>
@@ -449,7 +449,7 @@ Colors picked in schemes are applied in a certain pattern.
 
 <ShotRow src="navigating-page/Modify-Edit.jpg" alt="The Modify menu on its Edit tab">
 
-Edit the selected structures by applying actions from the buttons.
+The Edit tab's buttons change the selected structures.
 
 <UiList label="Edit tab">
 <UiItem icon="copy-plus" name="Duplicate" area="24.6,18.6,68.3,10.1">Copies the selected structures.</UiItem>
@@ -473,7 +473,7 @@ Edit the selected structures by applying actions from the buttons.
 
 <ShotRow src="navigating-page/Modify-Compute.jpg" alt="The Modify menu on its Compute tab">
 
-Apply certain computations on the selected structures and modify them according to the result.
+The Compute tab runs calculations on the selected structures, such as clashes and h-bonds. It can also add hydrogens to them and minimize them.
 
 <UiList label="Compute tab">
 <UiItem name="Add" area="24.1,27.6,34.5,12.4">Under Hydrogens: adds hydrogens to the selected structures.</UiItem>
@@ -533,7 +533,7 @@ Apply certain computations on the selected structures and modify them according 
 
 <ShotRow src="navigating-page/Modify-Tools.jpg" alt="The Modify menu on its Tools tab">
 
-Switch to a certain tool to directly apply modification to the structures.
+The Tools tab switches the tool in your hand, to measure, select or edit structures directly.
 
 <UiList label="Tools tab">
 <UiItem icon="hand-stop" name="Hand" href="/nanome1x/navigation/toolsmenu#hand-tool" area="24.6,18.6,23.1,37.4">The default tool, for grabbing and clicking.</UiItem>
@@ -550,7 +550,7 @@ Switch to a certain tool to directly apply modification to the structures.
 
 <ShotRow src="navigating-page/Mutate.jpg" alt="The Mutate menu with amino acids grouped by polarity">
 
-Mutate the R-groups of the selected amino acids.
+The Mutate menu swaps the R-groups of the selected amino acids.
 
 <UiList label="Mutate menu">
 <UiItem name="Polarity" area="3.8,26.8,25.1,15.6">Under Layout: lays the amino acids out by polarity, as here.</UiItem>
@@ -566,13 +566,13 @@ Mutate the R-groups of the selected amino acids.
 
 ## Select
 
-Quickly modify selection range using certain criteria.
+The Selection menu changes the selection by atom type, residue type or distance.
 
 ### Refine
 
 <ShotRow src="navigating-page/Selection-Refine.jpg" alt="The Selection menu on its Refine tab">
 
-Refine selection by applying certain changes.
+The Refine tab clears the selection, or replaces, adds to, filters or removes from it.
 
 <UiList label="Refine tab">
 <UiItem icon="square-x" name="Deselect All" area="28.8,25.5,62.2,13.7">Deselects everything.</UiItem>
@@ -613,7 +613,7 @@ Refine selection by applying certain changes.
 
 <ShotRow src="navigating-page/Selection.jpg" alt="The Selection menu on its Atom Type tab">
 
-Select or deselect certain types of atoms.
+The Atom Type tab selects or deselects every carbon or every hetatom.
 
 <UiList label="Atom Type tab">
 <UiItem icon="plus" name="Select all carbons" area="28.7,24.4,62.2,15.1">Selects every carbon atom.</UiItem>
@@ -628,7 +628,7 @@ Select or deselect certain types of atoms.
 
 <ShotRow src="navigating-page/Selection-ResidueType.jpg" alt="The Selection menu on its Residue Type tab">
 
-Select or deselect certain types of residues.
+The Residue Type tab selects or deselects every water or every amino acid.
 
 <UiList label="Residue Type tab">
 <UiItem icon="plus" name="Select all waters" area="28.1,23.8,62.7,15.1">Selects every water.</UiItem>
@@ -643,7 +643,7 @@ Select or deselect certain types of residues.
 
 <ShotRow src="navigating-page/Selection-Distance.jpg" alt="The Selection menu on its Distance tab">
 
-Expand or shrink the selection range by physical proximity.
+The Distance tab grows or shrinks the selection by a distance in Å.
 
 <UiList label="Distance tab">
 <UiItem icon="ruler-2" name="Angstrom" area="27.9,20.2,62.7,18.7">The distance, in Angstroms. 5 here.</UiItem>
@@ -658,7 +658,7 @@ Expand or shrink the selection range by physical proximity.
 
 <vimg src="navigating-page/Macro.jpg" alt="The Macro menu with Site View (All) selected and its Run button" />
 
-[Please view the macros page to learn more.](/nanome1x/macros/overview)
+The [macros page](/nanome1x/macros/overview) has more.
 
 ## Content Discovery
 
@@ -674,7 +674,7 @@ In version 1.24.6, [Content Discovery](#content-discovery) replaced the Advanced
 
 <vimg src="navigating-page/spat_rec_menu.png" alt="The Spatial Recording menu with Name, Show avatars, Record voice, Set spectator location and Record" />
 
-Record your entire workspace, including structures, menus, and virtual movements, and play it back later. During the playback you can pause and even interact with the structures in the recording.
+A spatial recording captures your entire workspace, including structures, menus and virtual movements, to play back later. During playback you can pause and even interact with the structures in the recording.
 
 Spatial recordings can be accessed from either the Wrist Menu (see below) or the [Action Menu](/nanome1x/navigation/actionmenu).
 

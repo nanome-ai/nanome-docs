@@ -4,7 +4,7 @@ title: Macros in Nanome
 
 # Macros in Nanome
 
-Macros are custom shortcuts you’ll be able to program yourself to speed up your work.
+Macros are custom shortcuts you program yourself to speed up your work.
 
 <vimg src="macros-page/macros.gif" alt="Running the SiteView.All macro from the Macro menu, which changes how the protein is shown" />
 

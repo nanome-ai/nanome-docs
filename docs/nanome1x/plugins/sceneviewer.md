@@ -7,9 +7,9 @@ title: Scene Viewer
 
 The Scene Viewer is an extension of Nanome’s Vault.  Users can arrange content in 3D with informative rendering and label annotations and save these Scenes into a Scene Deck, a .nanoscenes file that is saved in Vault.  This provides a way to organize presentations and work that involves multiple protein entries that are best studied alone or in smaller groups, sequentially.
 
-In **Edit** mode, users can create scenes, name them, and provide short descriptions to help direct focus on key aspects of the scene.  Scenes can be updated, reordered, added, and deleted.   Content from one scene may be copied and pasted into another scene.
+In **Edit Mode**, users can create scenes, name them, and provide short descriptions to help direct focus on key aspects of the scene.  Scenes can be updated, reordered, added, and deleted.   Content from one scene may be copied and pasted into another scene.
 
-In view mode (Edit mode toggled Off), the scenes of the deck can be viewed by clicking forward and backward, and the name and description can be hidden or shown, and independently positioned and scaled in the space to support various presentation scenarios.
+In view mode (Edit Mode toggled off), the scenes of the deck can be viewed by clicking forward and backward, and the name and description can be hidden or shown, and independently positioned and scaled in the space to support various presentation scenarios.
 
 ## Instructions
 
@@ -69,6 +69,7 @@ Arrange and render the 3D content, including size, location and hiding of any wo
 <UiItem name="Edit Mode" area="1.4,27.9,26.4,18.3">On to create and edit scenes. Off for view mode.</UiItem>
 <UiItem icon="files" name="Copy Selection" area="29.6,27.1,23.8,20.1">Copies content from one scene to paste into another.</UiItem>
 <UiItem icon="plus" name="New Scene" area="55.0,27.1,19.9,20.1">Adds a scene below the active one.</UiItem>
+<UiItem icon="plus" name="New Deck" area="76.4,27.1,19.6,20.1">Starts a new, empty Scene Deck, after a prompt that unsaved deck changes will be lost.</UiItem>
 <UiItem name="Scene 1" area="3.1,55.5,50.9,42.4">The active scene, with its default name.</UiItem>
 <UiItem icon="refresh" name="Update" area="54.5,61.1,9.5,29.3">Saves the current 3D content to the scene.</UiItem>
 <UiItem icon="info-circle" name="Notes" area="64.2,61.1,9.2,29.3">Opens the Scene Info panel for the scene's name and description.</UiItem>
@@ -103,7 +104,7 @@ Select **Notes** to open the Scene Info panel for the scene's name and descripti
     - Users may select any scene in the deck from which to start a new scene.  
     - Users may edit the active scene,  then add a new scene and update, or
     - Users may add a new scene, then edit and update it.
-- Remember to choose **Update** before switching scenes in edit mode. 
+- Remember to choose **Update** before switching scenes in Edit Mode. 
 
 *A new scene has been added, with default name Scene 2.*
 
@@ -123,11 +124,11 @@ Select **Notes** to open the Scene Info panel for the scene's name and descripti
 
 <em>Several scenes in a Scene Deck have been created.</em>
 
-### 4. Reviewing scenes in View mode (Edit mode toggled off)
+### 4. Reviewing scenes in View mode (Edit Mode toggled off)
 
 <ShotRow src="plugins-page/scene-viewer/review-scenes-1.png" alt="The Scene Viewer with Edit Mode off, showing the scene list, Open Scene Info and the arrows" crop="0,11.1,53.6,85.6">
 
-- When **Edit mode** is toggled off, the menu options are simplified to viewing controls. Select a scene to view it, or use the arrows (<< , < , > , >>) to navigate through the scenes.
+- When **Edit Mode** is toggled off, the menu options are simplified to viewing controls. Select a scene to view it, or use the arrows (<< , < , > , >>) to navigate through the scenes.
 - Click **Open Scene Info** to see the notes on the scene in a separate panel. Move and scale the panel to preference; it will remain in position with only content changes as scenes are changed.
 
 *The Scene Viewer when Edit Mode is toggled off.*

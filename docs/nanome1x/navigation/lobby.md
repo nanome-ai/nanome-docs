@@ -37,7 +37,7 @@ An email address is required to create a Nanome account.
 
 <vimg src="navigating-page/nanome_basics.png" alt="The Nanome Basics panel on Trigger Selection, with Restart Scenario, Jump to Advanced and Exit Tutorial beside it" />
 
-Nanome Basics is our introductory tutorial that gets the user acquainted with the Nanome virtual environment and controllers. The tutorial consists of 7 levels. Follow the instructions on the Level Panel and the narrated audio to complete the levels.
+Nanome Basics is our introductory tutorial that gets the user acquainted with the Nanome virtual environment and controllers. The tutorial consists of 7 levels. The Level Panel and the narrated audio guide you through each level.
 
 ### Navigating the Tutorial Using Level Panels
 
@@ -67,7 +67,7 @@ Once the Nanome Basics tutorial is completed, you can move onto Advanced Tutoria
 <ShotRow src="navigating-page/lobbytopbar1.24.3.png" alt="The lobby top bar on the Lobby tab" crop="0,0,100,90">
 
 <UiList label="Lobby top bar">
-<UiItem icon="login" name="Join By Meeting ID" href="#_1-join-by-meeting-id" area="4.3,50.0,27.7,37.5">Join a prescheduled meeting with its Meeting ID.</UiItem>
+<UiItem icon="login" name="Join By Meeting ID" href="#_1-join-by-meeting-id" area="4.3,50.0,27.7,37.5">Join a scheduled meeting with its Meeting ID.</UiItem>
 <UiItem icon="plus" name="Create Room" href="#_2-creating-a-room" area="33.6,50.0,23.2,37.5">Public, Private or Single User, depending on your license.</UiItem>
 <UiItem icon="building" name="Public / My Org" href="#_3-public-my-org-server-selector" area="63.0,50.0,33.8,37.5">Nanome Public Server or Custom Private Server.</UiItem>
 <UiItem icon="calendar" name="Meetings" href="#_4-meetings" area="25.9,8.5,24.4,34.5">Manage and join scheduled meetings.</UiItem>
@@ -78,7 +78,7 @@ Once the Nanome Basics tutorial is completed, you can move onto Advanced Tutoria
 
 ### Join By Meeting ID {#_1-join-by-meeting-id}
 
-Users can join a prescheduled meeting in Nanome by entering the Meeting ID provided by the room host. Find out how to [create meetings here](/home.nanome.ai/meetings).
+Users can join a scheduled meeting in Nanome by entering the Meeting ID provided by the room host. The [Meetings](/home.nanome.ai/meetings) page explains how to create one.
 
 ### Creating a Room {#_2-creating-a-room}
 
@@ -143,6 +143,6 @@ The left window in the lobby offers a quick way to make changes to how you inter
 <UiItem name="Change Avatar" area="52.8,67.9,40.5,7.8">Ability to change how you appear to yourself and others in a Nanome room.</UiItem>
 </UiList>
 
-To check Mixed Reality compatibility, check out our [Hardware Matrix](/help/choosinghardware-classic).
+The [Hardware Matrix](/help/choosinghardware-classic) lists which headsets support Mixed Reality.
 
 </ShotRow>

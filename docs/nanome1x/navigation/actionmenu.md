@@ -6,7 +6,7 @@ title: Action Menu
 
 <vimg src="navigating-page/ActionMenu.gif" alt="The action menu opening and closing in front of a protein, with Menus, Room, Entries and more under Actions" />
 
-The action menu gives quick access to the main features of Nanome from anywhere. If you are using a Vive system, press and hold the touch pad on your left controller to activate the menu. If you are using an Oculus system, the Y button on your left controller opens and closes the menu.
+The action menu gives quick access to the main features of Nanome from anywhere. If you are using a Vive system, press and hold the touchpad on your left controller to activate the menu. If you are using an Oculus system, the Y button on your left controller opens and closes the menu.
 
 To change your avatar's color, see [How to change the color of your avatar](/nanome1x/howto/howto#how-to-change-the-color-of-your-avatar).
 
