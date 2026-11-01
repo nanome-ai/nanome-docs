@@ -138,6 +138,12 @@
   margin: 0 0 20px;
 }
 
+/* An accordion has no margin of its own under it, so text that follows one
+   keeps the same gap as between paragraphs. */
+.vp-doc .n-accordion + :is(p, ul, ol) {
+  margin-top: 20px;
+}
+
 .vp-doc strong {
   color: var(--n-text);
   font-weight: 600;
@@ -230,6 +236,12 @@
   font-size: 0.875em;
 }
 
+/* Short code with no spaces, such as mara-client, stays on one line instead
+   of breaking at its hyphen (see config.mjs). */
+.vp-doc code.n-nobreak {
+  white-space: nowrap;
+}
+
 .vp-doc div[class*='language-'] {
   position: relative;
   margin: 24px 0;
@@ -246,7 +258,21 @@
   background: transparent;
 }
 
+/* The first line starts under the language label, so a long line never
+   scrolls under it. */
+.vp-doc div[class*='language-']:has(> .lang:not(:empty)) > pre {
+  padding-top: 30px;
+}
+
+/* The block clips anything outside it, so the ring of a focused block, which
+   scrolls with the keyboard, is drawn inside it. */
+.vp-doc div[class*='language-'] > pre:focus-visible {
+  outline-offset: -2px;
+}
+
+/* The pre's padding is the only inset, so text starts 20px in. */
 .vp-doc div[class*='language-'] code {
+  padding: 0;
   font-family: var(--n-font-mono);
   font-size: 0.875rem;
   line-height: 1.65;
@@ -271,7 +297,42 @@
 
 /* --- Tables ------------------------------------------------------------- */
 
+/* A table wider than the column scrolls sideways. Each edge with more of the
+   table beyond it fades out, over the cells' own colours too, and the fade
+   goes once that end is reached. Every rule that lets a table scroll sets
+   `mask-image: var(--n-table-mask)`. */
+@property --n-table-fade-l {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --n-table-fade-r {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+@keyframes n-table-fade {
+  0% {
+    --n-table-fade-l: 0px;
+    --n-table-fade-r: 40px;
+  }
+  8% {
+    --n-table-fade-l: 40px;
+  }
+  92% {
+    --n-table-fade-r: 40px;
+  }
+  100% {
+    --n-table-fade-l: 40px;
+    --n-table-fade-r: 0px;
+  }
+}
+
 .vp-doc table {
+  --n-table-mask: linear-gradient(to right, transparent, #000 var(--n-table-fade-l),
+    #000 calc(100% - var(--n-table-fade-r)), transparent);
   display: table;
   width: 100%;
   margin: 24px 0;
@@ -279,10 +340,25 @@
   font-size: var(--n-text-base);
 }
 
+/* The scroll position drives the fade. A table that fits has nothing to
+   scroll, so it doesn't fade. */
+@supports (animation-timeline: scroll()) {
+  .vp-doc table {
+    animation: n-table-fade linear both;
+    animation-timeline: scroll(self inline);
+  }
+}
+
+/* A focused table shows its whole ring. */
+.vp-doc table:focus-visible {
+  --n-table-mask: none;
+}
+
 @media (max-width: 767px) {
   .vp-doc table {
     display: block;
     overflow-x: auto;
+    mask-image: var(--n-table-mask);
   }
 }
 
@@ -305,15 +381,73 @@
     display: block;
     table-layout: auto;
     overflow-x: auto;
+    mask-image: var(--n-table-mask);
   }
 }
 
-/* Side-by-side screenshots get equal columns, so each image's size doesn't
-   depend on how long its header is. */
+/* Nine columns don't fit even then, so each cell keeps its longest word whole
+   and the table scrolls sideways if it must. Narrower cell padding lets it
+   fit a wide desktop's column. */
+.vp-doc table:has(tr > :nth-child(9)) {
+  display: block;
+  table-layout: auto;
+  overflow-x: auto;
+  mask-image: var(--n-table-mask);
+}
+
 @media (min-width: 768px) {
-  .vp-doc table:has(.vimg) {
+  .vp-doc table:has(tr > :nth-child(9)) :is(th, td) {
+    padding-inline: 12px;
+  }
+}
+
+/* Account Tiers: the seat columns line up from one comparison table to the
+   next. The feature column takes a set share and the seats split the rest. */
+@media (min-width: 768px) {
+  .n-seats .vp-doc table:has(tr > :nth-child(5)) {
     table-layout: fixed;
   }
+
+  .n-seats .vp-doc table:has(tr > :nth-child(5)) :is(th, td):first-child {
+    width: 36%;
+  }
+}
+
+/* Side-by-side screenshots get equal columns at every width, so each image's
+   size doesn't depend on how long its header is, and a row of them fits a
+   phone without scrolling sideways. */
+.vp-doc table:has(.vimg) {
+  display: table;
+  table-layout: fixed;
+}
+
+/* On a phone, less padding leaves room for five thumbnails, and a long
+   header wraps between them. */
+@media (max-width: 767px) {
+  .vp-doc table:has(.vimg) :is(th, td) {
+    padding-inline: 6px;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+}
+
+/* Two screenshots with no headers, such as two menus, stack on a phone, each
+   at the column's width. Side by side, the shorter one sits level with the
+   middle of the taller one. */
+@media (max-width: 559px) {
+  .vp-doc table:has(.vimg):not(:has(th, tr > :nth-child(3))),
+  .vp-doc table:has(.vimg):not(:has(th, tr > :nth-child(3))) :is(tbody, tr, td) {
+    display: block;
+    width: auto;
+  }
+
+  .vp-doc table:has(.vimg):not(:has(th, tr > :nth-child(3))) td + td {
+    border-top: 0;
+  }
+}
+
+.vp-doc table:has(.vimg):not(:has(th)) td {
+  vertical-align: middle;
 }
 
 /* Dense comparison tables: a size down, and the row label column stays put. */
@@ -340,6 +474,15 @@
   border: 1px solid var(--n-border-soft);
   text-align: left;
   vertical-align: top;
+}
+
+/* On phones, tables that only just miss the column fit without scrolling
+   sideways, and 3 columns fit on the narrowest. */
+@media (max-width: 480px) {
+  .vp-doc th,
+  .vp-doc td {
+    padding: 10px 8px;
+  }
 }
 
 .vp-doc th {
@@ -461,8 +604,9 @@
 
 /* A screenshot row, screen map or option panel at the top level of a page
    also takes the space beside the text column on a wide screen, up to
-   1040px, so the image and its legend both have room. */
-@media (min-width: 1280px) {
+   1040px, so the image and its legend both have room. It starts once that
+   gains at least 36px on each side, so it never reads as a misalignment. */
+@media (min-width: 1344px) {
   .n-layout.has-sidebar.has-aside .vp-doc > div > div > .n-shotrow-hold,
   .n-layout.has-sidebar.has-aside .vp-doc > div > div > .n-screenmap-hold,
   .n-layout.has-sidebar.has-aside .vp-doc > div > div > .n-demo {

@@ -39,11 +39,16 @@ const props = defineProps({
   stack: { type: Boolean, default: false },
 })
 
-const wide = computed(() => {
+/** The image's width over its height, after the crop. */
+const ar = computed(() => {
   const [w, h] = imageInfo(props.src).size || []
   const [, , cw, ch] = parseBox(props.crop) || [0, 0, 100, 100]
-  return (w * cw) / (h * ch) > 1.9
+  return (w * cw) / (h * ch)
 })
+
+const wide = computed(() => ar.value > 1.9)
+// A tall panel: kept under half a phone screen high, it's narrower than the screen.
+const tall = computed(() => ar.value < 0.9)
 
 // Legend rows with an area register here, in page order.
 const spots = ref([])
@@ -67,7 +72,9 @@ function holdWhileScrolling() {
   const mine = ++holds
   holding = mine
   const end = () => setTimeout(() => holding === mine && (holding = 0), 100)
+  // The page scrolls, or the full-screen view does.
   addEventListener('scrollend', end, { once: true })
+  root.value?.addEventListener('scrollend', end, { once: true })
   // For a browser without scrollend.
   setTimeout(end, 1500)
 }
@@ -82,14 +89,35 @@ provide('n-hotspots', {
   unregister(n) {
     spots.value = spots.value.filter((s) => s.n !== n)
   },
-  enter,
+  enter(n) {
+    enter(n)
+    reveal()
+  },
   leave,
 })
 
 const root = ref(null)
 const view = useFocusView(root)
 
-/** A click on a region with no link: light its row and bring it into view. */
+/**
+ * Full screen on a phone, an image wider than the window pans sideways, so a
+ * legend row can light a part that's out of view. Pan the image to it.
+ */
+async function reveal() {
+  if (!view.focused.value) return
+  await nextTick()
+  const shot = root.value?.querySelector('.n-shotrow__shot')
+  const parts = [...(shot?.querySelectorAll('.hotshot__spot.is-active') || [])].map((el) => el.getBoundingClientRect())
+  if (!parts.length || shot.scrollWidth <= shot.clientWidth) return
+  const s = shot.getBoundingClientRect()
+  const left = Math.min(...parts.map((r) => r.left))
+  const right = Math.max(...parts.map((r) => r.right))
+  if (left >= s.left && right <= s.right) return
+  const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+  shot.scrollBy({ left: (left + right) / 2 - (s.left + s.right) / 2, behavior })
+}
+
+/** A click on a region with no link: light its row and bring it into view if it's out of view. */
 async function pick(n) {
   active.value = n
   const el = spots.value.find((s) => s.n === n)?.el?.()
@@ -107,22 +135,36 @@ async function pick(n) {
   }
   const r = el.getBoundingClientRect()
   // Below the sticky chrome: the breadcrumb strip, or the nav bar without it.
+  // Full screen, the view covers both, so only its own top counts, and on a
+  // phone the image that stays over the legend counts too.
   const bar = document.querySelector('.n-pagebar') || document.querySelector('.n-navbar')
-  const chrome = bar ? bar.getBoundingClientRect().bottom : 56
-  if (r.top < chrome + 24 || r.bottom > window.innerHeight) {
+  const shot = root.value.querySelector('.n-shotrow__shot')
+  const s = shot.getBoundingClientRect()
+  const sticky = getComputedStyle(shot).position === 'sticky'
+  let top = view.focused.value
+    ? root.value.getBoundingClientRect().top
+    : (bar ? bar.getBoundingClientRect().bottom : 56) + 24
+  if (sticky && r.left < s.right) top = Math.max(top, s.bottom)
+  if (r.top < top || r.bottom > window.innerHeight) {
     holdWhileScrolling()
     const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
-    el.scrollIntoView({ block: 'center', behavior })
+    // A sticky image stays put, so the row comes to the middle. One that
+    // scrolls with the page is above the row, so a row below the window comes
+    // up only as far as it must, and as much of the image as can stays in view.
+    el.scrollIntoView({ block: sticky || r.top < top ? 'center' : 'nearest', behavior })
   }
 }
 </script>
 
 <template>
-  <div class="n-shotrow-hold" :style="view.focused.value ? { height: `${view.holdHeight.value}px` } : null">
+  <div
+    class="n-shotrow-hold"
+    :style="{ '--shot-ar': Number.isFinite(ar) ? ar.toFixed(4) : undefined, height: view.focused.value ? `${view.holdHeight.value}px` : undefined }"
+  >
     <div
       ref="root"
       class="n-shotrow"
-      :class="{ 'is-wide': wide, 'is-stack': stack, 'is-focus': view.focused.value, 'has-spots': spots.length > 0 }"
+      :class="{ 'is-wide': wide, 'is-tall': tall, 'is-stack': stack, 'is-focus': view.focused.value, 'has-spots': spots.length > 0 }"
       :role="view.focused.value ? 'dialog' : undefined"
       :aria-modal="view.focused.value ? 'true' : undefined"
       :aria-label="(view.focused.value && alt) || undefined"
@@ -225,9 +267,11 @@ async function pick(n) {
   line-height: 1.45;
 }
 
+/* Less padding too, so the glyph stays the size it is in a plain legend. */
 .n-shotrow__legend :deep(.n-uiitem .n-appicon.is-button) {
   width: 1.75rem;
   height: 1.75rem;
+  padding: 0.4rem;
 }
 
 /* The name beside an icon matches the smaller icon here. */
@@ -266,6 +310,19 @@ async function pick(n) {
 .n-shotrow.is-stack:not(.is-focus) .n-shotrow__legend {
   max-width: calc(var(--n-content-max) - 2 * var(--n-gutter));
   margin-inline: auto;
+}
+
+/* Stacked on a phone, a tall panel stays short enough to see whole, in the
+   middle of the column, so a part of it and its legend row fit on screen
+   together. */
+@container shotrow (width < 600px) {
+  .n-shotrow:not(.is-focus, .is-stack, .is-wide) .n-shotrow__shot {
+    --hotshot-maxh: min(70vh, 640px);
+  }
+
+  .n-shotrow:not(.is-focus, .is-stack, .is-wide) :deep(.hotshot) {
+    margin-inline: auto;
+  }
 }
 
 /* Side by side once there's room for both: about 46% for the image. */
@@ -312,7 +369,7 @@ async function pick(n) {
   position: fixed;
   top: 12px;
   right: 16px;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   padding: 8px;
   border: 1px solid var(--n-border);
@@ -333,11 +390,31 @@ async function pick(n) {
   margin-inline: auto;
 }
 
+/* On a tall phone the image stays at the top of the full-screen view while a
+   long legend scrolls under it, so a lit part stays in sight. A tall panel
+   would come out smaller there than in the page, so it scrolls as before. */
+@media (max-width: 599.98px) and (min-height: 700px) {
+  .n-shotrow.is-focus:not(.is-wide, .is-tall) .n-shotrow__shot {
+    position: sticky;
+    top: -56px;
+    z-index: 1;
+    margin-top: -56px;
+    padding: 56px 0 8px;
+    background: var(--n-bg);
+    --hotshot-maxh: 45vh;
+  }
+}
+
 @container shotrow (min-width: 600px) {
+  /* The image's column is as wide as the image at full height, so a tall
+     panel sits next to its legend, and the two are centered together. A
+     landscape shot gets up to about two thirds of the row. */
   .n-shotrow.is-focus:not(.is-wide) .n-shotrow__grid {
-    grid-template-columns: minmax(0, 1.7fr) minmax(18rem, 1fr);
-    max-width: 1600px;
-    margin: 0 auto;
+    grid-template-columns:
+      min(calc((100vh - 100px) * var(--shot-ar, 1)), 63%, 100% - 18rem - 40px)
+      minmax(18rem, 34rem);
+    justify-content: center;
+    column-gap: 40px;
   }
 
   .n-shotrow.is-focus:not(.is-wide) .n-shotrow__shot {
@@ -348,6 +425,20 @@ async function pick(n) {
   /* A tall panel fills only part of its column, so it sits in the middle. */
   .n-shotrow.is-focus:not(.is-wide) :deep(.hotshot) {
     margin-inline: auto;
+  }
+}
+
+/* On a phone, full screen shows the image larger than the page can: up to
+   2.5 screens wide, as long as it stays short enough for the window, and the
+   image scrolls sideways. A tall panel stays as it is. */
+@media (max-width: 639px) {
+  .n-shotrow.is-focus .n-shotrow__shot {
+    overflow-x: auto;
+  }
+
+  .n-shotrow.is-focus .n-shotrow__shot :deep(.hotshot) {
+    width: max(100%, min(var(--hotshot-shown), 250vw, (var(--hotshot-maxh, 100vh - 120px)) * var(--hotshot-ar)));
+    max-width: none;
   }
 }
 </style>

@@ -22,7 +22,7 @@ Examples of workflows in Nanome XR, including using MARA to load a structure and
 2. In Nanome Web, open **Conversations** and start a new chat.
 3. Ask MARA to load a structure, for example "Load 1KV2". MARA shows it in its 3D viewer (Mol*).
 4. Click **Open in XR**. In **Add to Workspace**, pick a workspace or type a name for a new one, then click **Upload**.
-5. Nanome Web opens that workspace and sends it to Nanome XR. In the headset it opens straight away when you're alone, or with a [Load from Web](/nanome_v2/collaboration#load-for-all-vs-load-for-me) prompt when others are in your session.
+5. Nanome Web opens that workspace and sends it to Nanome XR. In the headset it opens straight away when you're alone, or with a [Load from Web](/nanome_v2/collaboration#load-from-web) prompt when others are in your session.
 
 </Steps>
 

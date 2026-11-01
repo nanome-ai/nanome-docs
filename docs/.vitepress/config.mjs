@@ -137,6 +137,15 @@ function withSections(items) {
   return items
 }
 
+/** The attributes that hold a component's visible label, for the search index. */
+const SEARCH_LABELS = {
+  UiItem: ['name'],
+  MapCard: ['title'],
+  IconCard: ['title'],
+  Accordion: ['title', 'teaser'],
+  Callout: ['title'],
+}
+
 export default defineConfig({
   title: 'Help & Documentation',
   description: 'Documentation site for Nanome software.',
@@ -174,6 +183,17 @@ export default defineConfig({
           }
         }
       })
+
+      // Short inline code with no spaces, such as `mara-client` or
+      // `XXXX-XXXX`, gets a class that keeps it on one line (doc.css), so it
+      // never breaks at its hyphen. Longer code, such as a path or URL, can
+      // still wrap on a phone.
+      const codeInline = md.renderer.rules.code_inline
+      md.renderer.rules.code_inline = (tokens, idx, options, env, self) => {
+        const { content } = tokens[idx]
+        if (content.length <= 24 && !/\s/.test(content)) tokens[idx].attrJoin('class', 'n-nobreak')
+        return codeInline(tokens, idx, options, env, self)
+      }
     }
   },
 
@@ -222,10 +242,21 @@ export default defineConfig({
         // heading's first `<a`, and matches it in any case, so the <AppIcon> in
         // front of a heading left the title empty and the section out of the
         // index. Drop the icons first. `search: false` still leaves a page out.
+        //
+        // The index keeps only text, so labels written as attributes, such as
+        // a legend row's button name or a card's title, are copied into the
+        // text after their tag, and a search for a button finds its section.
         _render(src, env, md) {
           const html = md.render(src, env)
           if (env.frontmatter?.search === false) return ''
-          return html.replace(/<\/?AppIcon\b[^>]*>/g, '')
+          return html
+            .replace(/<\/?AppIcon\b[^>]*>/g, '')
+            .replace(/<(UiItem|MapCard|IconCard|Accordion|Callout)\b([^>]*)>/g, (tag, name, attrs) => {
+              const text = (SEARCH_LABELS[name] || [])
+                .map((a) => attrs.match(new RegExp(`(?:^|\\s)${a}="([^"]*)"`))?.[1])
+                .filter(Boolean)
+              return text.length ? `${tag} ${text.join('. ')}. ` : tag
+            })
         }
       }
     },

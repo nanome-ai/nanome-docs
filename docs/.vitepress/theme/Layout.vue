@@ -8,7 +8,7 @@
  * `getHeaders()` in the outline composable selects `.VPDoc :where(h1,…,h6)`,
  * so dropping the class would empty the right-hand rail.
  */
-import { computed, provide, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, provide, ref, watch } from 'vue'
 import { useData, useRoute } from 'vitepress'
 import {
   useCloseSidebarOnEscape,
@@ -43,6 +43,20 @@ useCloseSidebarOnEscape(sidebarOpen, closeSidebar)
 
 // The page behind the open drawer holds still (see base.css).
 watch(sidebarOpen, (isOpen) => document.documentElement.classList.toggle('n-drawer-open', isOpen))
+
+// It can't take focus either, so Tab goes round the nav bar and the drawer.
+// The drawer only exists below 960px (SideNav.vue); wider, the rail is part
+// of the page and nothing is set aside.
+const narrow = ref(false)
+const drawer = computed(() => sidebarOpen.value && narrow.value)
+let narrowQuery = null
+const onNarrow = () => (narrow.value = narrowQuery.matches)
+onMounted(() => {
+  narrowQuery = matchMedia('(max-width: 959px)')
+  onNarrow()
+  narrowQuery.addEventListener('change', onNarrow)
+})
+onBeforeUnmount(() => narrowQuery?.removeEventListener('change', onNarrow))
 
 /** Cross-fade the theme switch when the browser supports it. */
 provide('toggle-appearance', async ({ clientX: x = innerWidth / 2, clientY: y = innerHeight / 2 } = {}) => {
@@ -112,7 +126,7 @@ const showPagebar = computed(
       { 'has-sidebar': hasSidebar, 'has-aside': showAside, 'has-pagebar': showPagebar },
     ]"
   >
-    <a class="n-skip" href="#n-content" @click="skipToContent">Skip to content</a>
+    <a class="n-skip" href="#n-content" :inert="drawer" @click="skipToContent">Skip to content</a>
 
     <NavBar
       :sidebar-open="sidebarOpen"
@@ -131,7 +145,7 @@ const showPagebar = computed(
     <!-- A section link keeps the route, so the drawer closes on any link. -->
     <SideNav v-if="hasSidebar" :open="sidebarOpen" @navigate="closeSidebar" />
 
-    <div class="n-body">
+    <div class="n-body" :inert="drawer">
       <div v-if="showPagebar" class="n-pagebar">
         <div class="n-pagebar__inner">
           <Breadcrumb />

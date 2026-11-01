@@ -55,7 +55,7 @@ An invited colleague sees **Join Workspace?** with <Btn icon="x">Refuse</Btn> or
 
 Along the way, 3 popups can appear:
 
-<Tabs :labels="['Need Permissions', 'Loading Workspace', 'Load from Web']">
+<Tabs :labels="['Need Permissions', 'Loading Workspace', 'Load from Web']" :ids="['need-permissions', 'loading-workspace', 'load-from-web']">
 <Tab>
 
 When some people in your session don't have access, **Load for All** shows a **Need Permissions** prompt that reads "Some users cannot access the workspace". It offers to add them as <Btn icon="eye">Viewers</Btn> or <Btn icon="edit">Editors</Btn>, or <Btn icon="x">Cancel</Btn>.

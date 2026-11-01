@@ -34,6 +34,14 @@ defineProps({
   }
 }
 
+/* A grid of just 3 cards keeps them in one row on a tablet, instead of 2 and
+   a lone card under them. */
+@media (min-width: 640px) and (max-width: 899px) {
+  .n-icongrid.cols-3:where(:not(:has(> :nth-child(4)))) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 639px) {
   .n-icongrid,
   .n-icongrid.cols-3 {
