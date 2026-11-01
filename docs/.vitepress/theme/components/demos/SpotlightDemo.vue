@@ -17,19 +17,21 @@
  *
  *   <SpotlightDemo />
  */
-import { computed, ref } from 'vue'
+import { computed, nextTick, ref } from 'vue'
 import AppIcon from '../AppIcon.vue'
 import DemoStage from './DemoStage.vue'
 import { useAutoplay } from './autoplay.js'
 
 const O = 'nanome-v2/v2-7/options/'
 
-// Participant colors as the 2.7.1 captures show them. The chip text is the
-// contrast color the app picks: black on Ana's yellow, white on Ben's blue.
-const YOU = { color: '#f35286', ink: '#fff' }
+// Participant colors as the 2.7.1 captures show them. The app picks white
+// text on Ben's blue and on your pink (MenuDetailUtils.GetContrastColor), but
+// that's 3.4:1 and 3.3:1 for bold 15 and 16px labels, so the copy uses black
+// there, as it does on Ana's yellow, to reach 4.5:1.
+const YOU = { color: '#f35286', ink: '#000' }
 const PEOPLE = {
   ana: { name: 'Ana', color: '#fabf26', ink: '#000', her: 'her', she: 'she', src: `${O}follow-ana.webp`, alt: "1KV2 as Ana sees it, with Ben's avatar to the left" },
-  ben: { name: 'Ben', color: '#218cf2', ink: '#fff', her: 'his', she: 'he', src: `${O}follow-ben.webp`, alt: "1KV2 as Ben sees it, with Ana's avatar to the right" },
+  ben: { name: 'Ben', color: '#218cf2', ink: '#000', her: 'his', she: 'he', src: `${O}follow-ben.webp`, alt: "1KV2 as Ben sees it, with Ana's avatar to the right" },
 }
 const OWN = { src: `${O}follow-you.webp`, alt: "1KV2 from your seat, with Ana's and Ben's avatars across it" }
 
@@ -63,8 +65,23 @@ function act(next) {
   auto.stop()
   apply(next)
 }
+/**
+ * Following someone disables their chip, and the bar swaps its button, so
+ * focus would drop to the page. When it was in the demo, it moves to the
+ * control that now holds the state, once the change is drawn.
+ */
+function keepFocus(sel, change) {
+  const had = root.value?.contains(document.activeElement)
+  change()
+  if (had) nextTick(() => root.value?.querySelector(sel)?.focus())
+}
 function follow(key) {
-  act({ mode: 'follow', leader: key })
+  keepFocus('.n-spot__stop', () => act({ mode: 'follow', leader: key }))
+}
+// Spotlight Me, Stop spotlighting and Stop each swap the bar's button, and
+// the wide button is the one left: Spotlighting 2/2 or Spotlight Me.
+function toMode(mode) {
+  keepFocus('.n-spot__wide', () => act({ mode }))
 }
 function resetOrientation() {
   auto.stop()
@@ -160,7 +177,7 @@ const alt = computed(() => (mode.value === 'follow' ? PEOPLE[leader.value].alt :
       </div>
 
       <div class="n-spot__bar">
-        <button v-if="mode === 'you'" type="button" class="n-spot__wide" title="Start spotlighting" @click="act({ mode: 'spot' })">
+        <button v-if="mode === 'you'" type="button" class="n-spot__wide" title="Start spotlighting" @click="toMode('spot')">
           <AppIcon name="crown" size="1.25rem" :style="{ color: YOU.color }" />Spotlight Me
         </button>
         <button
@@ -169,7 +186,7 @@ const alt = computed(() => (mode.value === 'follow' ? PEOPLE[leader.value].alt :
           class="n-spot__wide is-on"
           :style="{ background: YOU.color, color: YOU.ink }"
           title="Stop spotlighting"
-          @click="act({ mode: 'you' })"
+          @click="toMode('you')"
         >
           <AppIcon name="crown" size="1.25rem" />Spotlighting 2/2
         </button>
@@ -179,14 +196,14 @@ const alt = computed(() => (mode.value === 'follow' ? PEOPLE[leader.value].alt :
           <button type="button" class="n-spot__round" title="Reset orientation" aria-label="Reset orientation" @click="resetOrientation">
             <AppIcon name="analyze-filled" size="1rem" />
           </button>
-          <button type="button" class="n-app-pill n-spot__stop" title="Stop following" @click="act({ mode: 'you' })">Stop</button>
+          <button type="button" class="n-app-pill n-spot__stop" title="Stop following" @click="toMode('you')">Stop</button>
         </div>
       </div>
     </div>
 
     <figure class="n-demo__view">
       <DemoStage :src="src" :next="auto.playing.value ? next : ''" :alt="alt" :playing="auto.playing.value" @toggle="auto.toggle" />
-      <figcaption class="n-demo__caption" aria-live="polite"><strong>{{ caption.title }}</strong> {{ caption.text }}</figcaption>
+      <figcaption class="n-demo__caption" :aria-live="auto.playing.value ? 'off' : 'polite'"><strong>{{ caption.title }}</strong> {{ caption.text }}</figcaption>
     </figure>
   </div>
 </template>
@@ -253,8 +270,10 @@ const alt = computed(() => (mode.value === 'follow' ? PEOPLE[leader.value].alt :
   border-color: var(--app-text);
 }
 
+/* A chip that can't be selected is muted. Its label stays at full
+   strength, since it names the state the demo shows. */
 .n-spot__chip:disabled {
-  opacity: 0.5;
+  filter: saturate(0.4);
   cursor: default;
 }
 
@@ -350,6 +369,21 @@ const alt = computed(() => (mode.value === 'follow' ? PEOPLE[leader.value].alt :
 .n-spot__round:focus-visible {
   outline: 2px solid var(--app-purple);
   outline-offset: 2px;
+}
+
+/* Room for the longest caption under the render, so the page below doesn't
+   move as the tour steps. It takes 5 lines in the narrowest columns: on a
+   phone, and beside the sidebar just past 960px. */
+@media (max-width: 1439px) {
+  .n-spot .n-demo__caption {
+    min-height: 6em;
+  }
+}
+
+@media (max-width: 374px), (min-width: 960px) and (max-width: 1039px) {
+  .n-spot .n-demo__caption {
+    min-height: 7.5em;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

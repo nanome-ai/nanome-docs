@@ -41,7 +41,7 @@ Nanome Basics is our introductory tutorial that gets the user acquainted with th
 
 ### Navigating the Tutorial Using Level Panels
 
-<ShotRow src="navigating-page/tutorial_task_panel.png" alt="A Nanome Basics level panel with three tasks, and the back and forward arrows">
+<ShotRow src="navigating-page/tutorial_task_panel.png" alt="A Nanome Basics level panel with 3 tasks, and the back and forward arrows">
 
 <UiList label="Level panel">
 <UiItem icon="check" name="Task checkboxes" area="2.7,23.5,6.0,48.9">A checkmark will appear when each task is completed within a level panel.</UiItem>
@@ -84,7 +84,7 @@ Users can join a prescheduled meeting in Nanome by entering the Meeting ID provi
 
 <vimg src="navigating-page/createroom.png" alt="The Create Room panel with Room Name, Display Name, Room Password (optional) and Choose Room Access set to Private (My Org)" />
 
-There are three Room Types a user can create depending on their Nanome License.
+There are 3 Room Types a user can create depending on their Nanome License.
 
 Room Types:
 
@@ -96,7 +96,7 @@ Any room can also have an optional Room Password.
 
 ### (3) Public / My Org Server Selector
 
-Indicates connection to Nanome Public Server or Custom Private Server
+Indicates connection to Nanome Public Server or Custom Private Server.
 
 ### (4) Meetings
 
@@ -109,14 +109,24 @@ The Meetings tab is the central location for users to manage and join scheduled 
 In the Settings tab, users can adjust various settings.
 
 <UiList label="Settings tab">
+<UiItem name="Display Name" area="37.0,28.0,18.7,4.5">Your display name, here Nanomer.</UiItem>
+<UiItem name="2FA" area="57.1,28.5,4.9,3.5">Shows whether two-factor authentication is on. Disabled here.</UiItem>
+<UiItem icon="stack-2" name="STACKS" area="63.0,28.5,5.2,3.5">Shows whether Stacks is on. Enabled here.</UiItem>
+<UiItem name="Vibrations" area="37.3,36.4,11.7,3.6">Turns vibrations on or off.</UiItem>
+<UiItem name="Microphone" area="37.3,41.5,11.7,3.6">Turns the microphone on or off.</UiItem>
+<UiItem name="Notifications" area="37.3,46.7,11.7,3.6">Turns notifications on or off.</UiItem>
+<UiItem name="Toggle VR Mode" area="51.6,35.6,8.7,4.3">Turns VR mode on or off.</UiItem>
+<UiItem name="3D Avatar Settings" area="51.6,40.9,8.7,4.4">Opens the 3D avatar settings.</UiItem>
+<UiItem name="Set Accent Color" area="51.6,46.5,8.7,4.4">Sets your accent color.</UiItem>
 <UiItem name="Open Config" area="61.4,45.8,6.8,4.5">The Configuration button. Opens the Configuration Viewer, below.</UiItem>
+<UiItem name="Volume" area="37.3,54.2,30.0,24.7">Master, Music, SFX, MIC and Voice volume.</UiItem>
 </UiList>
 
 </ShotRow>
 
 **Configuration Viewer**
 
-By selecting the Configuration button in the Settings tab, users can view the Nanome Configuration file, which contains additional settings that cannot be controlled directly from within the app. The Configuration file also has Presentation Setup Options, which let the presenter manage guests who join their room. The Configuration file can be located in the same directory as the app build directory.
+By selecting the Configuration button in the Settings tab, users can view the Nanome Configuration file, which contains additional settings that cannot be controlled directly from within the app. The Configuration file also has Presenter Setup Options, which let the presenter manage guests who join their room. The Configuration file can be located in the same directory as the app build directory.
 
 <vimg src="navigating-page/Lobby-ConfigurationViewer.jpg" alt="The Configuration viewer listing settings such as desktop-mode = False" />
 

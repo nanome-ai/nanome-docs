@@ -6,7 +6,7 @@ title: Stack Studio
 
 *A drag and drop interface for creating Plugin Menus*
 
-Stack studio is a GUI for creating plugin user interfaces that appear before users in Nanome. A Nanome plugin usually contains two major components: plugin scripts and plugin UI. While the scripts contain the behavior and computation of the plugin, the plugin UI is what the user sees and accesses in Nanome software. To create a sophisticated Nanome plugin, it's very likely that you would need to both write the script and create the UI.
+Stack Studio is a GUI for creating plugin user interfaces that appear before users in Nanome. A Nanome plugin usually contains 2 major components: plugin scripts and plugin UI. While the scripts contain the behavior and computation of the plugin, the plugin UI is what the user sees and accesses in Nanome software. To create a sophisticated Nanome plugin, it's very likely that you would need to both write the script and create the UI.
 
 ## Get Started
 
@@ -20,7 +20,7 @@ You can send feedback to bugs@nanome.ai or chat with us in our Slack user group 
 
 1. Download Stack Studio and extract the zip file. If you can't extract it, an archiver such as [7-Zip](https://www.7-zip.org/download.html) can.
 
-2. Once you extract the file, open StackStudio.exe from the extracted content. Once StackStudio.exe is running, you'll see the interface below.
+2. Once you extract the file, open Stack Studio from the extracted folder (StackStudio.exe on Windows). Once it's running, you'll see the interface below.
 <vimg src="plugins-page/pluginator/stackstudio.JPG" alt="Stack Studio on first launch, with an empty menu view, the Outline, and the Editor reading Create a Menu" />
 
 3. Create a JSON file at your preferred location. Copy the [RMSD plugin menu JSON](https://raw.githubusercontent.com/nanome-ai/plugin-rmsd/master/plugin/rmsd_pluginator.json) into the JSON file.
@@ -31,7 +31,7 @@ You can send feedback to bugs@nanome.ai or chat with us in our Slack user group 
 5. Once the JSON file is loaded, you'll see the interface below.
 <vimg src="plugins-page/pluginator/rmsd.JPG" alt="Stack Studio with the RMSD plugin's menu in the menu view and its nodes in the Outline" />
 
-6. This is the menu of Nanome's first-party plugin, RMSD. You can feel free to play with it to get a rough idea of how Stack Studio works.
+6. This is the menu of Nanome's first-party plugin, RMSD. Try changing it to get a rough idea of how Stack Studio works.
 
 ## Workspace
 
@@ -47,13 +47,13 @@ Menu view renders a 2D interactable preview of the menu that you are creating. A
 
 <vimg src="plugins-page/pluginator/outline.JPG" alt="The Outline view with the Root node, and the Add Node and Delete Node buttons" />
 
-Nanome plugin UI is managed in a hierarchical fashion, and Outline view gives easy access to this hierarchy. Each component in the menu is called a node. A node's size is always smaller than its parent node. You can collapse or expand a node that contains multiple children nodes. Click on the eye icon on a node to toggle its visibility. Drag and drop a node to move it in the hierarchy and change its parent.
+Nanome plugin UI is managed in a hierarchical fashion, and Outline view shows this hierarchy. Each component in the menu is called a node. A node can't be larger than its parent node. You can collapse or expand a node that contains multiple children nodes. Click on the eye icon on a node to toggle its visibility. Drag and drop a node to move it in the hierarchy and change its parent.
 
 ### Editor View
 
 <vimg src="plugins-page/pluginator/editor.JPG" alt="The Editor view on the Content tab, with an Add Content button" />
 
-The Editor has options for a node's layout and content, and for the menu size. These options are organized into three tabs. Switch tab by clicking on the tab that you want to view or edit. Switch what node you are editing by clicking on that node in the outline view.
+The Editor has options for a node's layout and content, and for the menu size. These options are organized into 3 tabs. Switch tab by clicking on the tab that you want to view or edit. Switch what node you are editing by clicking on that node in the outline view.
 
 #### Layout Tab
 
@@ -87,7 +87,7 @@ When you add content to a new node, these are the contents currently available.
 
 <vimg src="plugins-page/pluginator/button.JPG" alt="A menu with one button that reads Button" />
 
-Button is the fundamental interactable component of a plugin menu. When clicked on, a button sends an event to the plugin script with its name as payload. A button can include five sub-components, all of them optional: __Text__, __Icon__, __Mesh__, __Outline__, __Tooltip__. A button contains five states: __Idle__, __Selected__, __Highlighted__, __Both__, __Unusable__. You can customize the properties, such as color and visibility, of all five sub-components under all five states.
+Button is the fundamental interactable component of a plugin menu. When clicked on, a button sends an event to the plugin script with its name as payload. A button can include 5 sub-components, all of them optional: __Text__, __Icon__, __Mesh__, __Outline__, __Tooltip__. A button contains 5 states: __Idle__, __Selected__, __Highlighted__, __Both__, __Unusable__. You can customize the properties, such as color and visibility, of all 5 sub-components under all 5 states.
 
 ### Mesh
 
@@ -133,7 +133,7 @@ Loading bar is a horizontal bar that can be empty or filled by a solid color tha
 
 ## Integrate a Plugin Menu
 
-Integrating a menu created with Stack Studio into a plugin is simple:
+To integrate a menu made with Stack Studio into a plugin:
 
 ### 1. Export the plugin menu as a JSON file
 

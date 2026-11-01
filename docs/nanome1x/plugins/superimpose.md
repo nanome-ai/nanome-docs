@@ -6,7 +6,7 @@ title: Superimpose Proteins
 
 The Superimpose Proteins plugin overlays two or more proteins in 3D space for visual comparison and calculates Root Mean Square Deviation (RMSD) values, a number in Å that measures how far apart the structures are.
 
-Protein overlay is done either by using backbone (alpha carbons) or by using all heavy protein atoms; and the alignment can be done on the full protein or limited to a chain.
+Protein overlay uses either the backbone (alpha carbons) or all heavy protein atoms. The alignment can use the full protein, one chain, a ligand's binding site, or a selection.
 
 A **Fixed Reference** structure is chosen, and **Moving Structures** are rotated and moved onto the Fixed Reference. RMSD values are reported between the Fixed Reference and each Moving Structure.
 
@@ -14,23 +14,18 @@ A **Fixed Reference** structure is chosen, and **Moving Structures** are rotated
 
 <ShotRow src="plugins-page/superimpose/superimpose_menu.png" alt="The Superimpose Proteins menu with Backbone α carbons and Entire Fixed Reference picked, and 5KHX as the Fixed Reference">
 
-1. In the upper left, the user can select the Overlay Method.
+1. In the upper left, under **Overlay using**, pick how structures are overlaid.
     -   **Backbone α carbons**: Overlay structures based on all paired alpha carbons between the two proteins.
     -   **All Heavy Atoms**: Uses backbone atoms and side chain atoms (all protein atoms except for Hydrogen) for paired residues.
-
-2. In the upper right, there are 4 available alignment modes.
+2. In the upper right, under **Align Structure(s) to**, there are 4 alignment modes.
     -   **Entire Fixed Reference**: Uses a sequence based alignment to superimpose entire proteins on top of each other.
     -   **1 specific chain from the Fixed Reference**: Uses a sequence based alignment to superimpose the moving structures onto a specified chain on the Fixed Reference.
     -   **By Binding Site**: The user selects a ligand on the Fixed Reference, and the surrounding binding site is aligned to the moving structures using Site-Motif (See Methodologies for more details)
     -   **By Selection** (not in this screenshot; see step 6): The user selects specific residues in the fixed reference and the moving structures are aligned by that selection only.  Users may choose to specify residues on both the fixed and moving structures but only selections in the fixed reference are required for the plugin to run.
-
 3. A list of proteins in the workspace appears in the main panel.  In this panel, choose **Fixed Reference** and **Moving Structures**, and subselect a chain or ligand for each, if aligning by chain or binding site, respectively (see 4, below).
     - By default, the first entry is set as Fixed, and designated by the yellow pin. When selected as Fixed, the box under Moving will be inactive.  To change this selection, select the pin next to the desired Fixed Reference protein.
-
     - Choose one or more Moving Structures by selecting the boxes under the Moving Structures column.  This box will turn green when selected.
-
     - Once selections are made, the Superimpose button in the lower right will become active and show the number of proteins selected.  (e.g. “Superimpose (3)” for a Fixed Reference and 2 Moving Structures).  Click this button to superimpose the proteins and calculate RMSD values.   The button will change to “Calculating...” as the process is being completed.
-
     - Once complete, the proteins will be superimposed and locked, for visual inspection. The RMSD tables pulldown menu in the lower left will become active. Each superimpose run will generate a new table, with the most recent run appearing at the top of the pulldown list.  Select the run to open the table in the workspace. Tables can be closed and reopened in the workspace.
 
 <UiList label="Superimpose Proteins menu">
@@ -68,7 +63,6 @@ A **Fixed Reference** structure is chosen, and **Moving Structures** are rotated
 <ShotRow src="plugins-page/superimpose/superimpose_menu_2.png" alt="The Superimpose Proteins menu aligning by chain, with chain B picked on 3AP1 and 5WRI and the chains highlighted green on the structures">
 
 4. When aligning by chain, the main panel chain selection boxes will become active. Choose **Fixed** and **Moving Structures** as above, and additionally choose a chain for each protein to be superimposed
-
     - Note that selecting a chain on the plugin main panel will also apply green highlighting to the selected chain of the protein structure, to visualize the selections before running.
 
 <UiList label="Aligning by chain">
@@ -117,10 +111,10 @@ The RMSD table for a chain run names the chain with each structure.
 <vimg src="plugins-page/superimpose/superimpose-5b.png" alt="RMSD Run 1 table with 1xbb blue as the Fixed Reference, 4xg2 gold at RMSD 0.59 and 5y5t red-orange at 0.65, above the superimposed proteins" />
 
 
-6. When aligning by selection, the user must make a selection in the **Fixed Reference**.  These selections can be made by using the selector tool on the 3D structure itself, or by using menus such as Hierarchy and Antibody Regions table
+6. When aligning by selection, the user must make a selection in the **Fixed Reference**.  These selections can be made by using the selector tool on the 3D structure itself, or by using menus such as the Entry Hierarchy and the Antibody Regions table.
 
     <vimg src="plugins-page/superimpose/superimpose-6a.png" alt="The Entry Hierarchy for chain A of 4xg2 yellow, with residues selected in the sequence, beside the yellow and orange structures" />
-    *Making a selection in the Fixed Reference using the hierarchy menu.*
+    *Making a selection in the Fixed Reference using the Entry Hierarchy.*
     <br><br>
     <vimg src="plugins-page/superimpose/superimpose-6b.png" alt="The Superimpose Proteins menu with By Selection picked, 4xg2 yellow as the Fixed Reference and 5y5t orange as a Moving Structure, beside the superimposed structures" />
     *Structures superimposed based on a selection in the fixed reference*
@@ -133,9 +127,9 @@ The RMSD table for a chain run names the chain with each structure.
 
 ## Methodologies
 
-We have two primary approaches to superimposing proteins:
+We have 2 main approaches to superimposing proteins:
 
-Full Protein and Chain alignments both use a sequence based approach.
+Full protein, chain and selection alignments use a sequence based approach.
 
 Binding site overlays use the Site-Motif algorithm, with fpocket for identifying inputs.
 
@@ -160,6 +154,7 @@ After all moving atoms have been transformed, we update the complexes in the wor
 ##### Alignment
 - For Entire Fixed Reference, the whole protein sequence is aligned.
 - For 1 specific chain, only the chosen chains are aligned.
+- For By Selection, only the selected residues are aligned. A Moving Structure with no selection is aligned whole.
 
 ##### Global alignment scoring values
 - match = 2

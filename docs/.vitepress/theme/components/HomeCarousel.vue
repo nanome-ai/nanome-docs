@@ -1,5 +1,5 @@
 <template>
-  <div class="home-carousel">
+  <div class="home-carousel" :style="{ '--shown': shown }">
     <h2>{{ title }}</h2>
     <SimpleCarousel
       :items="slides"
@@ -116,6 +116,22 @@ function getSlideURL(slide) {
   padding: 0 0.25em;
 }
 
+/* The outer slides' padding sits past the column, so the first and last
+   images line up with the headings and keep the gap between cards. */
+.home-carousel :deep(.carousel-container) {
+  margin-inline: -0.25em;
+  container-type: inline-size;
+}
+
+/* The arrows cover only the picture, so the title under it stays clear. On a
+   touch screen they always show. The picture is 16:9 and as wide as a slide
+   less its padding. */
+.home-carousel :deep(.carousel-nav) {
+  top: 0;
+  height: calc((100cqw / var(--shown) - var(--n-text-body) / 2) * 9 / 16);
+  transform: none;
+}
+
 .home-carousel .slide > .title {
   margin-top: 1em;
   margin-bottom: 0.2em;
@@ -130,9 +146,17 @@ function getSlideURL(slide) {
 }
 
 .home-carousel a {
+  display: block;
   cursor: pointer;
   color: unset;
   font-weight: unset;
   text-decoration: unset !important;
+}
+
+/* The card fills the scrolling track, which would clip a ring outside it. */
+.home-carousel a:focus-visible {
+  outline: 2px solid var(--n-accent);
+  outline-offset: -2px;
+  border-radius: 6px;
 }
 </style>
