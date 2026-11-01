@@ -51,9 +51,9 @@ Windows PCs over Meta Link (PCVR), and in any modern browser at app.nanome.ai.
     </tr>
     <tr>
       <th>Display, per eye</th>
-      <td>2,064 × 2,208 (3S: 1,832 × 1,920), 72–120 Hz</td>
+      <td>2,064 × 2,208 (3S: 1,832 × 1,920), 72 to 120 Hz</td>
       <td>3,552 × 3,840 micro-OLED, 72 Hz default, 90 Hz max</td>
-      <td>~3,660 × 3,200 micro-OLED, 90–100 Hz (up to 120 Hz on M5)</td>
+      <td>~3,660 × 3,200 micro-OLED, 90 to 100 Hz (up to 120 Hz on M5)</td>
       <td>Set by the Quest headset</td>
       <td>Monitor</td>
     </tr>
@@ -126,7 +126,7 @@ Windows PCs over Meta Link (PCVR), and in any modern browser at app.nanome.ai.
       <td>Quest 3 $599.99; Quest 3S from $349.99</td>
       <td>$1,799</td>
       <td>From $3,699</td>
-      <td>A VR-ready PC, a Quest, and a Link cable ($30–100)</td>
+      <td>A VR-ready PC, a Quest, and a Link cable ($30 to $100)</td>
       <td>Free</td>
     </tr>
     <tr>
