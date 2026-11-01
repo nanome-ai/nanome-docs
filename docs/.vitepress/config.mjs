@@ -1,4 +1,5 @@
-import { existsSync, readFileSync } from 'node:fs'
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs'
+import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vitepress'
 
@@ -146,6 +147,117 @@ const SEARCH_LABELS = {
   Callout: ['title'],
 }
 
+// --- Image data --------------------------------------------------------------
+
+/**
+ * scripts/compress.js lists each image's copy size, content hash, dark twin,
+ * on-screen width and smaller copy in theme/image-*.json. The theme script
+ * doesn't carry those lists, which hold every image on the site. Instead each
+ * page's script gets the entries for the images its markdown names, and adds
+ * them (addImages in theme/components/image.js) before the page renders.
+ *
+ * The option-panel demos pick their frames as the reader clicks, so no page
+ * names them. A page with one of those demos (a component in theme/components/
+ * demos that uses image.js or DemoStage) imports one more chunk with every
+ * frame's entry, which the browser fetches beside the page's script and keeps.
+ */
+const themeDir = fileURLToPath(new URL('./theme/', import.meta.url))
+const IMAGE_LISTS = ['sizes', 'versions', 'variants', 'widths', 'small']
+const IMAGE_MODULE = `${themeDir}components/image.js`
+const FRAMES = 'nanome-v2/v2-7/options/'
+const FRAMES_ID = 'virtual:demo-frames'
+const IMAGE_PATH = /[\w.@+\/-]+\.(?:png|jpe?g|gif|webp)/gi
+const FRAME_DEMOS = new RegExp(
+  `<(${readdirSync(`${themeDir}components/demos`)
+    .filter((f) => f.endsWith('.vue') && /DemoStage|imageInfo/.test(readFileSync(`${themeDir}components/demos/${f}`, 'utf8')))
+    .map((f) => f.slice(0, -4))
+    .join('|')})\\b`
+)
+
+function imageData() {
+  let lists = null
+  let stamp = ''
+
+  // Read again whenever compress.js has rewritten a list, for `docs:dev`.
+  function readLists() {
+    const files = IMAGE_LISTS.map((name) => `${themeDir}image-${name}.json`)
+    const now = files.map((f) => (existsSync(f) ? statSync(f).mtimeMs : 0)).join()
+    if (now !== stamp) {
+      stamp = now
+      lists = Object.fromEntries(
+        IMAGE_LISTS.map((name, i) => [name, existsSync(files[i]) ? JSON.parse(readFileSync(files[i], 'utf8')) : {}])
+      )
+    }
+    return lists
+  }
+
+  /** The entries for these images and their dark twins, sorted. */
+  function entries(srcs) {
+    const { sizes, versions, variants, widths, small } = readLists()
+    const all = new Set()
+    for (const src of srcs) {
+      if (!sizes[src]) continue
+      all.add(src)
+      if (sizes[variants[src]]) all.add(variants[src])
+    }
+    const out = {}
+    for (const src of [...all].sort()) {
+      const entry = { size: sizes[src], v: versions[src] }
+      if (widths[src]) entry.shown = Math.round(widths[src] / 2)
+      if (variants[src]) entry.dark = variants[src]
+      if (small[src]) entry.small = small[src]
+      out[src] = entry
+    }
+    return out
+  }
+
+  /** A page's markdown, with any files it includes. */
+  function source(file, depth = 0) {
+    let text = ''
+    try {
+      text = readFileSync(file, 'utf8')
+    } catch {
+      return ''
+    }
+    if (depth > 3) return text
+    return text.replace(/<!--\s*@include:\s*([^\s{#]+)[^>]*?-->/g, (all, inc) => {
+      const at = inc.startsWith('@/') ? resolve(docsDir, inc.slice(2)) : resolve(dirname(file), inc)
+      return `${all}\n${source(at, depth + 1)}`
+    })
+  }
+
+  return {
+    name: 'nanome-image-data',
+    enforce: 'post',
+    resolveId(id) {
+      if (id === FRAMES_ID) return `\0${FRAMES_ID}`
+    },
+    load(id) {
+      if (id !== `\0${FRAMES_ID}`) return
+      const frames = Object.keys(readLists().sizes).filter((src) => src.startsWith(FRAMES))
+      return `import { addImages } from ${JSON.stringify(IMAGE_MODULE)}\naddImages(${JSON.stringify(entries(frames))})\n`
+    },
+    transform(code, id) {
+      if (!id.endsWith('.md')) return
+      const md = source(id)
+      const { sizes } = readLists()
+      const named = new Set()
+      for (const [path] of md.matchAll(IMAGE_PATH)) {
+        const src = path.replace(/^\.?\/?(assets\/(compressed|original)\/)?/, '')
+        if (sizes[src]) named.add(src)
+      }
+      const head = []
+      if (named.size) {
+        head.push(`import { addImages as __addImages } from ${JSON.stringify(IMAGE_MODULE)}`)
+        head.push(`__addImages(${JSON.stringify(entries(named))})`)
+      }
+      if (FRAME_DEMOS.test(md)) head.push(`import ${JSON.stringify(FRAMES_ID)}`)
+      if (!head.length) return
+      return { code: `${head.join('\n')}\n${code}`, map: null }
+    },
+  }
+}
+
 export default defineConfig({
   title: 'Help & Documentation',
   description: 'Documentation site for Nanome software.',
@@ -160,6 +272,9 @@ export default defineConfig({
   // heading margins in theme/styles/doc.css match it for links opened
   // directly. The section highlight in the rails uses the same line.
   scrollOffset: { selector: ['.n-pagebar', '.n-navbar'], padding: 40 },
+
+  // Each page's image entries go in its own script (see imageData above).
+  vite: { plugins: [imageData()] },
 
   srcExclude: isProduction ? ['contributing/**'] : [],
 
@@ -208,7 +323,7 @@ export default defineConfig({
       'script',
       {
         async: '',
-        src: 'https://www.googletagmanager.com/gtag/js?id=UA-79179574-15'
+        src: 'https://www.googletagmanager.com/gtag/js?id=G-WZG1LLVNW8'
       }
     ],
     [
@@ -217,7 +332,7 @@ export default defineConfig({
       `window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'UA-79179574-15');`
+      gtag('config', 'G-WZG1LLVNW8');`
     ]
   ],
 
