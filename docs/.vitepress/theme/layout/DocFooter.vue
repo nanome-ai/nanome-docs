@@ -1,31 +1,19 @@
 <script setup>
-/** Previous / next page, and when the page last changed. */
+/** Previous / next page. */
 import { computed } from 'vue'
-import { useData, withBase } from 'vitepress'
+import { withBase } from 'vitepress'
 import { usePrevNext } from 'vitepress/dist/client/theme-default/composables/prev-next.js'
 
-const { page, theme } = useData()
 const control = usePrevNext()
 
 const prev = computed(() => (control.value.prev?.link ? control.value.prev : null))
 const next = computed(() => (control.value.next?.link ? control.value.next : null))
 const hasLinks = computed(() => !!(prev.value || next.value))
-
-const updated = computed(() => {
-  if (!theme.value.lastUpdated || !page.value.lastUpdated) return null
-  return new Date(page.value.lastUpdated).toLocaleDateString(undefined, {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  })
-})
 </script>
 
 <template>
-  <footer v-if="hasLinks || updated" class="n-docfooter">
-    <p v-if="updated" class="n-docfooter__updated">Last updated {{ updated }}</p>
-
-    <nav v-if="hasLinks" class="n-docfooter__links" aria-label="Previous and next page">
+  <footer v-if="hasLinks" class="n-docfooter">
+    <nav class="n-docfooter__links" aria-label="Previous and next page">
       <a
         v-if="prev"
         class="n-docfooter__link n-docfooter__link--prev"
@@ -53,12 +41,6 @@ const updated = computed(() => {
   margin-top: 56px;
   padding-top: 24px;
   border-top: 1px solid var(--n-border-soft);
-}
-
-.n-docfooter__updated {
-  margin: 0 0 20px;
-  color: var(--n-text-faint);
-  font-size: var(--n-text-sm);
 }
 
 .n-docfooter__links {
