@@ -27,8 +27,8 @@ The Chemical Interactions plugin visualizes ligand-receptor and protein-protein 
 
 4. Modify the Display Settings to show or hide interactions of interest.
     - Change the visibility or color of each interaction type
-    - `Show All`: Shows all interaction types, hides them all, or goes back to the default ones. Its label cycles through Show All, Hide All and Show Default.
-    - `Clear Frame` button will delete all interaction lines currently visible in the workspace.
+    - **Show All**: Shows all interaction types, hides them all, or goes back to the default ones. Its label cycles through Show All, Hide All and Show Default.
+    - **Clear Frame** deletes all interaction lines visible in the workspace.
 
 </Steps>
 

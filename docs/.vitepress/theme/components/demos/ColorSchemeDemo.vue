@@ -96,7 +96,7 @@ const caption = computed(() => {
   if (s.key === 'chain-instance' && on) {
     return {
       title: `${name} · Carbons only`,
-      text: 'The default for atom styles: carbons take each chain’s color and the other atoms keep their element colors. 1KV2 has one chain, so every carbon here is the same lavender.',
+      text: 'The default for atom styles: carbons take each chain’s color and the other atoms keep their element colors. 1KV2 has 1 chain, so every carbon here is the same lavender.',
     }
   }
   let text = s.key === 'uniform' ? UNIFORM_DESC[props.app] : s.desc
@@ -149,7 +149,7 @@ const alt = computed(() => `1KV2's binding site colored by ${caption.value.title
 
     <figure class="n-demo__view">
       <DemoStage :src="src" :next="auto.playing.value ? next : ''" :alt="alt" :playing="auto.playing.value" @toggle="auto.toggle" />
-      <figcaption class="n-demo__caption" aria-live="polite"><strong>{{ caption.title }}</strong> {{ caption.text }}</figcaption>
+      <figcaption class="n-demo__caption" :aria-live="auto.playing.value ? 'off' : 'polite'"><strong>{{ caption.title }}</strong> {{ caption.text }}</figcaption>
     </figure>
   </div>
 </template>

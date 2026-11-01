@@ -6,11 +6,9 @@ title: Action Menu
 
 <vimg src="navigating-page/ActionMenu.gif" alt="The action menu opening and closing in front of a protein, with Menus, Room, Entries and more under Actions" />
 
-Action menu offers a quick access to all major features in Nanome anywhere. If you are using a Vive system, press and hold the touch pad on your left controller to activate the menu. If you are using an Oculus system, the Y button on your left controller opens and closes the menu.
+The action menu gives quick access to the main features of Nanome from anywhere. If you are using a Vive system, press and hold the touch pad on your left controller to activate the menu. If you are using an Oculus system, the Y button on your left controller opens and closes the menu.
 
-## Example of using the action menu to change avatar color
-
-<vimg src="navigating-page/AvatarColor.gif" alt="Opening the action menu and choosing Change my color under Room" />
+To change your avatar's color, see [How to change the color of your avatar](/nanome1x/howto/howto#how-to-change-the-color-of-your-avatar).
 
 ## Use the action menu to set up a meeting
 
@@ -50,7 +48,7 @@ Passthrough works on the headsets marked in the [Classic hardware matrix](/help/
 
 ## Use the action menu to change Presenter Setup Options
 
-When guests join the room, the presenter can toggle options to position all users in the presenter's current position, hide guests, or hide all users.
+When guests join the room, the presenter can toggle options to position guests in the presenter's current position, hide guests, or hide all users.
 
 <ShotRow src="navigating-page/action-menu-presenter-config.png" alt="The action menu open at Actions, Room, with the On Room Entry options outlined in red">
 
@@ -59,7 +57,7 @@ When guests join the room, the presenter can toggle options to position all user
 <UiItem icon="users" name="Room" area="35.1,5.7,33.3,5.6">Opens the room options. The setup options are under On Room Entry.</UiItem>
 <UiItem name="Hide All Users" area="68.8,79.1,29.0,5.0">Hides all users.</UiItem>
 <UiItem name="Hide Guests" area="68.8,84.2,29.0,4.5">Hides guests.</UiItem>
-<UiItem name="Position Guests in Same Spot" area="68.8,88.9,29.0,5.0">Puts all users in the presenter's current position.</UiItem>
+<UiItem name="Position Guests in Same Spot" area="68.8,88.9,29.0,5.0">Puts guests in the presenter's current position.</UiItem>
 </UiList>
 
 </ShotRow>

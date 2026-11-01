@@ -8,11 +8,11 @@ Nanome is accessible from a keyboard and mouse setup on a 2D monitor as well.
 
 <ScreenMap src="navigating-page/2D.jpg" alt="Nanome on a 2D monitor, with the Entry List in the middle and the side panel on the right" label="2D screen">
 <MapCard icon="list" title="Entry List" href="/nanome1x/navigation/menus#entry-list" side="top" area="36.5,32.1,26.8,44.7">A list of all the structures loaded into the environment.</MapCard>
-<MapCard icon="keyboard" title="Control Guide" href="#controls-tab" side="left" area="1.9,88.3,15.5,11.0">Press H to show or hide the controls.</MapCard>
-<MapCard icon="stack-2" title="Menu Management" href="#menu-management-tab" side="right" area="91.1,0.0,2.2,3.0">Toggle or manage menus.</MapCard>
-<MapCard icon="users-group" title="Room" href="#room-tab" side="right" area="93.3,0.0,2.2,3.0">Manage users or request presenter privilege.</MapCard>
-<MapCard icon="camera" title="View Navigation" href="#view-navigation-tab" side="right" area="95.6,0.0,2.2,3.0">Change options for view control.</MapCard>
-<MapCard icon="settings" title="Setting" href="#settings-tab" side="right" area="97.8,0.0,2.2,3.0">Volume and environment background.</MapCard>
+<MapCard icon="keyboard" title="Control Guide" href="#controls-tab" side="bottom" area="1.9,88.3,15.5,11.0">Press H to show or hide the controls.</MapCard>
+<MapCard icon="stack-2" title="Menu Management" href="#menu-management-tab" side="top" area="91.1,0.0,2.2,3.0">Toggle or manage menus.</MapCard>
+<MapCard icon="users-group" title="Room" href="#room-tab" side="top" area="93.3,0.0,2.2,3.0">Manage users or request presenter privilege.</MapCard>
+<MapCard icon="camera" title="View Navigation" href="#view-navigation-tab" side="top" area="95.6,0.0,2.2,3.0">Change options for view control.</MapCard>
+<MapCard icon="settings" title="Setting" href="#settings-tab" side="top" area="97.8,0.0,2.2,3.0">Volume and environment background.</MapCard>
 <MapCard icon="plus" title="Load" href="/nanome1x/navigation/menus#load" side="bottom" area="36.8,77.0,3.6,8.2">Opens the Load menu.</MapCard>
 <MapCard icon="plug-connected" title="Plugin" href="/nanome1x/plugins/overview" side="bottom" area="40.6,77.0,3.6,8.2">Opens the Plugin menu.</MapCard>
 <MapCard icon="eye" title="Display" href="/nanome1x/navigation/menus#display" side="bottom" area="44.3,77.0,3.6,8.2">Opens the Display menu.</MapCard>

@@ -9,7 +9,7 @@
     :autoplay-speed="5000"
   >
     <template #default="{ item, clone }">
-      <a :href="item.url" class="slide" target="_blank" :tabindex="clone ? -1 : undefined">
+      <a :href="item.url" class="slide" :style="{ aspectRatio: ratio }" target="_blank" :tabindex="clone ? -1 : undefined">
         <img :src="item.img" :alt="item.title || item.alt || ''" />
       </a>
     </template>
@@ -23,6 +23,11 @@ defineProps({
   slides: {
     type: Array,
     required: true
+  },
+  /** The frame's shape, to match the images so they fill it. */
+  ratio: {
+    type: String,
+    default: '16 / 9'
   }
 })
 </script>
@@ -31,9 +36,14 @@ defineProps({
 .slide {
   position: relative;
   display: block;
-  aspect-ratio: 16 / 9;
   overflow: hidden;
   background: #111;
+}
+
+/* The slide fills the scrolling track, which would clip a ring outside it. */
+.slide:focus-visible {
+  outline: 2px solid var(--n-accent);
+  outline-offset: -2px;
 }
 
 .slide img {
@@ -42,7 +52,7 @@ defineProps({
   margin: 0; /* drop the page's image margin and frame */
   border: 0;
   border-radius: 0;
-  object-fit: contain; /* banners are wider than 16:9; show them whole */
+  object-fit: contain; /* a banner of another shape shows whole */
   background: var(--n-surface-sunken);
 }
 

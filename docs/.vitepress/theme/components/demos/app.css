@@ -16,7 +16,9 @@
   --app-track: #cbd5e1;
   --app-purple: #7c4cff;
   --app-purple-soft: #ede9fe;
-  --app-purple-text: #7c4cff;
+  /* Darker than the app's purple, so a picked item's text on
+     --app-purple-soft reaches 4.5:1. */
+  --app-purple-text: #6a3de8;
   --app-card: #fff;
   --app-raised: #fff;
   --app-thumb: #fff;
@@ -171,6 +173,17 @@
   outline-offset: 2px;
 }
 
+/* A segmented control clips its buttons to its rounded ends, so the ring
+   goes inside, on the pill. */
+.n-app-seg button:focus-visible {
+  outline: none;
+}
+
+.n-app-seg button:focus-visible > span {
+  outline: 2px solid var(--app-purple);
+  outline-offset: -2px;
+}
+
 .n-app-palette {
   display: inline-flex;
   flex: none;
@@ -180,6 +193,7 @@
   height: 32px;
   border-radius: 50%;
   opacity: 0.45;
+  cursor: default;
 }
 
 .n-app-palette.is-on {
@@ -506,10 +520,32 @@
 }
 
 .n-ltab button:focus-visible,
-.n-ltab input:focus-visible,
-.n-ltab tbody tr:focus-visible {
+.n-ltab input:focus-visible {
   outline: 2px solid var(--lt-purple);
   outline-offset: -2px;
+}
+
+/* A focused row's ring is drawn on its cells, so the sticky drawing cell
+   can't cover its left end. */
+.n-ltab tbody tr:focus-visible {
+  outline: none;
+}
+
+.vp-doc .n-ltab .n-ltab__table tbody tr:focus-visible > td {
+  box-shadow: inset 0 2px var(--lt-purple), inset 0 -2px var(--lt-purple);
+}
+
+.vp-doc .n-ltab .n-ltab__table tbody tr:focus-visible > td:first-child {
+  box-shadow: inset 2px 0 var(--lt-purple), inset 0 2px var(--lt-purple), inset 0 -2px var(--lt-purple);
+}
+
+.vp-doc .n-ltab .n-ltab__table tbody tr:focus-visible > td:last-child {
+  box-shadow: inset -2px 0 var(--lt-purple), inset 0 2px var(--lt-purple), inset 0 -2px var(--lt-purple);
+}
+
+.vp-doc .n-ltab .n-ltab__scroll.is-scrolled tbody tr:focus-visible > td.n-ltab__img {
+  box-shadow: inset 2px 0 var(--lt-purple), inset 0 2px var(--lt-purple), inset 0 -2px var(--lt-purple),
+    6px 0 6px -6px rgba(0, 0, 0, 0.25);
 }
 
 .n-ltab .n-appicon {
@@ -771,7 +807,7 @@
 }
 
 .vp-doc .n-ltab .n-ltab__table td.is-faint {
-  color: var(--lt-faint);
+  color: var(--lt-muted);
 }
 
 .n-ltab__table tbody tr {
@@ -799,6 +835,13 @@
 
 .n-ltab__scroll.is-scrolled .n-ltab__img {
   box-shadow: 6px 0 6px -6px rgba(0, 0, 0, 0.25);
+}
+
+/* While more columns sit off to the right, the table fades out at its right
+   edge, so it's clear there's more to scroll to. */
+.n-ltab__scroll.has-more {
+  -webkit-mask-image: linear-gradient(to left, transparent, #000 32px);
+  mask-image: linear-gradient(to left, transparent, #000 32px);
 }
 
 .vp-doc .n-ltab img {

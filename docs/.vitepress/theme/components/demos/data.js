@@ -115,8 +115,8 @@ export const SCHEMES = [
   { key: 'bfactor', name: 'BFactor', carbons: true, desc: 'By the B-factor (atomic displacement parameter) recorded in the file. Low values are blue, middle ones white and high ones red. Most atoms here are blue; the most mobile, such as the Arg67 side chain, are paler and pinker.' },
   { key: 'occupancy', name: 'Occupancy', carbons: true, desc: 'By the occupancy recorded in the file. Every atom here has occupancy 1.00, so the scheme gives them all the same red.' },
   { key: 'uniform', name: 'Uniform', carbons: true },
-  { key: 'chain-instance', name: 'Chain Instance', carbons: true, desc: 'One color per chain in each entry, so chain A in two entries gets two colors. 1KV2 has one chain, so the site takes a single lavender.' },
-  { key: 'model-instance', name: 'Model Instance', xrOnly: true, carbons: true, desc: 'One color per model in each entry. 1KV2 has one model, so the site takes a single orange, much like Chain Name.' },
+  { key: 'chain-instance', name: 'Chain Instance', carbons: true, desc: 'One color per chain in each entry, so chain A in 2 entries gets 2 colors. 1KV2 has 1 chain, so the site takes a single lavender.' },
+  { key: 'model-instance', name: 'Model Instance', xrOnly: true, carbons: true, desc: 'One color per model in each entry. 1KV2 has 1 model, so the site takes a single orange, much like Chain Name.' },
 ]
 
 export const UNIFORM_DESC = {

@@ -6,7 +6,7 @@ title: Antibody Representation
 
 The Antibody Representation plugin adds the IMGT color scheme, labels antibody regions on a selected protein, and highlights CDR loops.  A table of Antibody Regions allows independent selection of CDR loops for calculations or representational changes.  Importantly, only antibodies and fragments of antibodies are modified; the representation of antigens in the complex is unchanged.
 
-The plugin is accessible through the Stacks menu. Select the antibody structure in the Entry list, click Activate and then Run. The structure will update with heavy and light chains colored in grays and CDR loops colored according to the IMGT scheme.
+The plugin is accessible through the Stacks menu. Select the antibody structure in the Entry List, click Activate and then Run. The structure will update with heavy and light chains colored in grays and CDR loops colored according to the IMGT scheme.
 
 <vimg src="plugins-page/antibodies/image1.png" alt="The Stacks menu with Antibody Representation selected and its Activate button" />
 
@@ -59,7 +59,7 @@ Add surfaces to any selection of CDR loops in 5 steps:
 1.  Make selections in the Regions table
 2.  Activate the High Quality Surfaces plugin from the Stacks menu to launch the plugin menu
 3.  In the menu, select the protein, and a chain that contains the selection or the entire protein.
-4.  In the right panel of the menu, set the Selection Only toggle to On. This will apply surfaces to the selected CDR loops in the Regions table, as well as any other selections made on the structure using the select tool, entry list, or other menus.  
+4.  In the right panel of the menu, set the Selection Only toggle to On. This will apply surfaces to the selected CDR loops in the Regions table, as well as any other selections made on the structure using the select tool, Entry List, or other menus.  
 5.  Click “Generate”, then adjust surface color and opacity.
 
 <vimg src="plugins-page/antibodies/image5.png" alt="The High Quality Surfaces menu with 5GGS as the entry and Selection Only on, beside the 5GGS Regions table with CDRH3 and CDRK3 selected" />

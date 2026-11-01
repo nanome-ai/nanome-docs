@@ -100,9 +100,12 @@ onBeforeUnmount(() => {
 
 function step(by) {
   model.value = wrap(model.value + by)
+  // While playing, the model moves on under the note, so it names none.
   note.value = {
     title: by > 0 ? 'Next model' : 'Previous model',
-    text: `Steps to model ${model.value}/10, wrapping around at either end.${playing.value ? ' Playback carries on from there.' : ''}`,
+    text: playing.value
+      ? `Steps ${by > 0 ? 'forward' : 'back'} 1 model, wrapping around at either end. Playback carries on from there.`
+      : `Steps to model ${model.value}/10, wrapping around at either end.`,
   }
 }
 function rowPlay() {
@@ -148,7 +151,11 @@ const caption = computed(() => {
 })
 const alt = computed(() => `1D3Z, model ${model.value} of 10, as Cartoon`)
 
-// Nanome Web fills the arrows of the direction that's playing.
+// Nanome Web fills the arrows of the direction that's playing. Its row button
+// and arrows follow playbackEntrySerial, which pausing clears: PausePlayback
+// sets the playing entry to null and GetPlaybackState sends that as
+// entrySerial (PlaybackViewModelWeb.cs). So while paused the row shows play
+// and neither arrow is filled, as here.
 const filled = (back) => !xr.value && playing.value && backward.value === back
 </script>
 

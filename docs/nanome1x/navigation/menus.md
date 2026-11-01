@@ -7,7 +7,7 @@ title: Main Menus
 ## Entry List
 
 <ScreenMap src="navigating-page/Limiter.png" alt="The Entry List with the Device Limit bar above it and the menu buttons down its left side" label="Entry List and menu buttons">
-<MapCard icon="headset" title="Device Limit" href="#device-limiter" side="top" area="3.4,1.3,93.2,10.2">How close the atom count is to a standalone device's limit.</MapCard>
+<MapCard icon="headset" title="Device Limit" href="#device-limiter" side="top" area="3.4,1.3,93.2,10.2">How close the atom count is to what wireless headsets can show.</MapCard>
 <MapCard icon="plus" title="Load" href="#load" side="left" area="2.8,13.3,13.0,10.3">Load molecules or structures into your workspace.</MapCard>
 <MapCard icon="stack-2" title="Stacks" href="#stacks" side="left" area="2.6,23.9,13.0,10.2">Opens the list of plugins.</MapCard>
 <MapCard icon="eye" title="Display" href="#display" side="left" area="2.5,34.4,13.2,10.1">Atoms, ribbons, surfaces, sub structures and labels.</MapCard>
@@ -26,7 +26,7 @@ The Load, Stacks (plugins), Display, Color, Modify, Select, Macro, and Content (
 
 ## Device Limiter
 
-The Device Limiter is an indicator that shows how close the current amount of atoms is to hitting the limit of a standalone device's computing capability. This indicator only shows up when using a device in standalone mode (if applicable). When the amount of atoms approaches or hits the limit, the following prompts will show up.
+The Device Limiter bar shows how close the number of atoms in your workspace is to what all-in-one (wireless) headsets can show. When the count gets close to the limit or reaches it, one of these prompts appears. Each warns that guests on a wireless headset may see lag or hidden structures, and offers Dismiss or Ribbon Only.
 
 <vimg src="navigating-page/Limiter-Close.jpg" alt="The Close to max limit! prompt, with Dismiss and Ribbon Only buttons" />
 <vimg src="navigating-page/Limiter-Max.jpg" alt="The Max limit reached! prompt, with Dismiss and Ribbon Only buttons" />
@@ -37,7 +37,7 @@ The Device Limiter is an indicator that shows how close the current amount of at
 
 <UiList label="Entry row">
 <UiItem icon="hierarchy" name="Hierarchy" area="32.6,27.4,2.8,7.6">Opens the Hierarchy Menu for the structure.</UiItem>
-<UiItem icon="player-play" name="Frame Data" href="#frame-data" area="29.7,27.2,2.9,7.6">Opens Frame Data for the structure.</UiItem>
+<UiItem icon="player-play" name="Frame Menu" href="#frame-data" area="29.7,27.2,2.9,7.6">Opens the Frame Menu for the structure.</UiItem>
 </UiList>
 
 <UiList label="Entry Hierarchy">
@@ -81,11 +81,11 @@ Different Viewing Modes can be toggled to modify the substructure icon sizes in 
 |:-----:|:-----:|
 | <vimg src="navigating-page/Entry-MediumIcon.jpg" alt="Chain A of 6LU7 with medium icons: each residue's name and number" /> | <vimg src="navigating-page/Entry-BigIcon.jpg" alt="Chain A of 6LU7 with large icons" /> |
 
-### Frame Data
+### Frame Menu {#frame-data}
 
 <ShotRow src="navigating-page/frame_menu_speeds.png" alt="The Frame Menu for 2HIU on its Playback and Edit tabs">
 
-Frame data allows users to navigate and modify different frames of the same structure (Academic and Enterprise only).
+The Frame Menu lets users navigate and modify different frames of the same structure (Academic and Enterprise only).
 
 <UiList label="Frame Menu tabs">
 <UiItem icon="list-details" name="Frames" area="1.7,14.6,24.0,8.4">The list of frames, shown below.</UiItem>
@@ -128,15 +128,15 @@ Frame data allows users to navigate and modify different frames of the same stru
 
 <vimg src="features-page/edm.gif" alt="An electron density map shown as a blue mesh around a structure" />
 
-<ShotRow src="navigating-page/Entry-EDM.jpg" alt="The Electron Density menu for 1A0M with two maps loaded">
+<ShotRow src="navigating-page/Entry-EDM.jpg" alt="The Electron Density menu for 1A0M with 2 maps loaded">
 
 The Electron Density tab shows the configuration of viewing the Electron Density Map of the structure (Academic and Enterprise only).
 
 <UiList label="Electron Density">
-<UiItem icon="list" name="Maps" area="1.9,23.8,45.8,19.6">The maps loaded for the structure, here two .dsn6 files.</UiItem>
+<UiItem icon="list" name="Maps" area="1.9,23.8,45.8,19.6">The maps loaded for the structure, here 2 .dsn6 files.</UiItem>
 <UiItem icon="palette" name="Color" area="52.5,53.8,18.4,28.6">The map's color.</UiItem>
 <UiItem name="Sigma" area="74.0,53.8,22.1,28.6">The sigma level, from -10 to 10. Its value in e/Å³ shows beside it, here 0.61.</UiItem>
-<UiItem name="Draw style" area="53.8,85.6,41.8,9.7">Three ways to draw the map.</UiItem>
+<UiItem name="Draw style" area="53.8,85.6,41.8,9.7">3 ways to draw the map.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -161,7 +161,7 @@ This menu specifies residue conformations.
 <UiItem name="# Conformations" area="35.7,27.9,23.6,56.3">How many conformations are shown, and how many are available.</UiItem>
 <UiItem name="Show Conformation" area="60.9,32.4,26.6,51.9">The conformations shown, such as A (.7), B (.3).</UiItem>
 <UiItem icon="select-all" name="Select All Residues" area="3.2,85.8,33.8,10.0">Selects all the residues.</UiItem>
-<UiItem icon="eye" name="Apply View" area="45.8,85.8,51.2,10.0">ALL, and two other views.</UiItem>
+<UiItem icon="eye" name="Apply View" area="45.8,85.8,51.2,10.0">ALL and 2 other views.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -200,7 +200,7 @@ When saving a workspace, you have the option to create a spatial anchor for your
 
 ## Load
 
-Load molecules or structures into your workspace. Supported file formats include (v1.26):
+Load molecules or structures into your workspace. Supported file formats include (v1.24):
 
 _Structural Coordinate File Formats_ <br />
 .pdb, .cif, .mmcif, .pse, .nanome, .sdf, .mol, .xyz, .mol2, .pqr
@@ -227,6 +227,12 @@ Workspaces that contain featured structures and tutorials.
 
 Molecules featured by Nanome for their interesting properties or background.
 
+### Files {#my-files}
+
+<vimg src="navigating-page/Load-MyFiles.jpg" alt="The Load menu's Files tab, with Favorites, Desktop, Downloads and other folders, and Recent at the bottom of the list" />
+
+The Files tab loads structures from your computer. Recent files are listed under Files.
+
 ### Source {#database}
 
 <vimg src="navigating-page/Load-Database.jpg" alt="The Load menu's Source tab, listing RCSB MMCIF, RCSB PDB, RCSB EDM, DrugBank and PubChem" />
@@ -238,18 +244,6 @@ From the Source tab, structures can be loaded directly from RCSB, DrugBank (Acad
 <vimg src="navigating-page/Load-Keyword.jpg" alt="The Load menu's Search tab, with an Enter keyword box" />
 
 From the Search tab, find and load a structure by keyword.
-
-### Files {#my-files}
-
-<vimg src="navigating-page/Load-MyFiles.jpg" alt="The Load menu's Files tab, with Favorites, Desktop, Downloads and other folders, and Recent at the bottom of the list" />
-
-The Files tab loads structures from your computer. Recent files are listed under Files.
-
-### Recent
-
-<vimg src="navigating-page/Load-Recent.jpg" alt="An older Load menu on its Recent tab, with 2hiu under Recently Opened" />
-
-Recent files loaded in Nanome.
 
 ### Cancel a load
 
@@ -317,7 +311,7 @@ This tab contains options for the visual of atoms and bonds.
 This tab contains options for the visual of ribbons.
 
 <UiList label="Ribbon tab">
-<UiItem name="Cartoon" area="22.9,20.9,34.7,35.5">Show ribbon in cartoon visual that highlight secondary structures using helix and arrows.</UiItem>
+<UiItem name="Cartoon" area="22.9,20.9,34.7,35.5">Shows the ribbon as a cartoon: helices as spirals and strands as arrows.</UiItem>
 <UiItem name="Coil" area="57.6,20.9,34.2,35.5">Show ribbon in uniform tube visual.</UiItem>
 <UiItem name="Putty" area="22.9,56.4,34.7,34.8">Show ribbon in tube with widths proportional to the atoms' b-factor value.</UiItem>
 <UiItem icon="eye-off" name="Hide" area="57.6,56.4,34.2,34.8">Hide the ribbon.</UiItem>
@@ -422,11 +416,18 @@ Colors picked in schemes are applied in a certain pattern.
 
 <UiList label="Schemes tab">
 <UiItem name="Carbonite / Monochrome" area="37.0,30.9,57.9,11.1">As in the Picker tab.</UiItem>
+<UiItem name="Type" area="37.3,45.5,28.5,8.0">Colors each residue by its type.</UiItem>
+<UiItem name="Element" area="66.0,45.5,28.6,8.0">Colors atoms by element. Picked here.</UiItem>
 <UiItem name="Occupancy" area="37.3,53.6,28.5,8.0">Colors the selected structures by occupancy.</UiItem>
+<UiItem name="Donor Acceptor" area="66.0,53.6,28.6,8.0">Colors hydrogen-bond donors and acceptors.</UiItem>
 <UiItem name="BFactor" area="37.3,61.7,28.5,8.0">Colors the selected structures by b-factor.</UiItem>
+<UiItem name="Cartoon" area="66.0,61.7,28.6,8.0">Colors by secondary structure.</UiItem>
 <UiItem name="Rainbow" area="37.3,69.8,28.5,8.0">Colors the selected structures in rainbow colors.</UiItem>
 <UiItem name="YRB Hydrophobe" area="66.0,69.8,28.6,8.0">Colors carbons not bound to nitrogen or oxygen yellow, the charged oxygens of Asp and Glu red, and the charged nitrogens of Lys and Arg blue. Everything else is white.</UiItem>
-<UiItem name="IMGT" area="37.3,86.0,28.5,8.2">Color selected antibody structures by their regions.</UiItem>
+<UiItem name="Chain" area="37.3,77.9,28.5,8.0">Gives each chain its own color.</UiItem>
+<UiItem name="Hydrophobe" area="66.0,77.9,28.6,8.0">Colors by hydrophobicity.</UiItem>
+<UiItem name="IMGT" area="37.3,86.0,28.5,8.2">Colors the selected antibody structures by their regions.</UiItem>
+<UiItem name="Kabat" area="66.0,86.0,28.6,8.2">Colors antibody regions as the Kabat numbering scheme defines them.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -484,7 +485,7 @@ Apply certain computations on the selected structures and modify them according 
 
 <ShotRow src="navigating-page/Modify-Compute-Clashes.jpg" alt="The Clashes menu">
 
-**Calculate Clashes:** config the tolerance of atom clashes.
+**Calculate Clashes:** sets the clash tolerance.
 
 <UiList label="Clashes menu">
 <UiItem name="Overlap Tolerance" area="6.8,26.2,86.1,25.7">The tolerance, from -1 to 1 Å.</UiItem>
@@ -496,7 +497,7 @@ Apply certain computations on the selected structures and modify them according 
 
 <ShotRow src="navigating-page/Modify-Compute-Hbond.jpg" alt="The H-bonds menu">
 
-**Calculate H-bonds:** config the threshold for generating h-bonds.
+**Calculate H-bonds:** sets the threshold for finding H-bonds.
 
 <UiList label="H-bonds menu">
 <UiItem name="Relax H-bonds" area="7.1,25.2,83.1,6.2">Relaxes the h-bond constraints. On here.</UiItem>
@@ -509,7 +510,7 @@ Apply certain computations on the selected structures and modify them according 
 
 <ShotRow src="navigating-page/Modify-Compute-Minimize.jpg" alt="The Minimize menu">
 
-**Minimize:** config forcefield and step for minimizing potential energy of selected structures.
+**Minimize:** sets the force field and steps used to minimize the selected structures.
 
 <UiList label="Minimize menu">
 <UiItem name="Force Fields" area="4.0,20.4,42.9,75.0">The force field to use.</UiItem>
@@ -664,7 +665,7 @@ See [Content Discovery](#content-discovery).
 
 <vimg src="navigating-page/spat_rec_menu.png" alt="The Spatial Recording menu with Name, Show avatars, Record voice, Set spectator location and Record" />
 
-Record your entire workspace, including structures, menus, and virtual movements; then, playback at a later time. During the playback you can pause and even interact with the structures in the recording.
+Record your entire workspace, including structures, menus, and virtual movements, and play it back later. During the playback you can pause and even interact with the structures in the recording.
 
 Spatial recordings can be accessed from either the Wrist Menu (see below) or the [Action Menu](/nanome1x/navigation/actionmenu).
 

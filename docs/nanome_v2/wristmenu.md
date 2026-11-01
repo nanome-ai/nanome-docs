@@ -4,7 +4,7 @@ title: Wrist Menu
 
 # Wrist Menu
 
-The Wrist Menu sits at the wrist end of your off-hand controller. It shows only in a headset.
+The Wrist Menu sits at the wrist end of your off-hand controller. It shows only in a headset, and hides while scenes play back.
 
 <ScreenMap src="nanome-v2/v2-7/wrist-menu.webp" alt="The Wrist Menu below the off-hand controller: the clock and menu button, MARA, and a muted mic" crop="18,4,52,88" label="Wrist Menu buttons">
 <MapCard icon="menu-2" title="Clock and menu" href="#time" side="left" area="23.0,55.3,28.2,25.7">The big button. Shows or hides the Main Panel.</MapCard>

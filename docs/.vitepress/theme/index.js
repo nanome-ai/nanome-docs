@@ -63,6 +63,34 @@ import Steps from './components/interactive/Steps.vue'
 import CopyBlock from './components/interactive/CopyBlock.vue'
 import Callout from './components/interactive/Callout.vue'
 
+/**
+ * Focuses the element the URL's #hash names. A heading, or any other element
+ * that isn't a control, shows no focus ring there (base.css), since the page
+ * has just scrolled to it. One that can't take focus, such as a card, gets a
+ * tabindex until focus leaves it. A control, such as a tab, keeps its ring.
+ */
+function focusSection() {
+  let el = null
+  try {
+    el = document.getElementById(decodeURIComponent(location.hash.slice(1)))
+  } catch {}
+  if (!el || el === document.activeElement) return
+  if (!el.matches('a[href], button, input, select, textarea, summary')) {
+    const added = !el.hasAttribute('tabindex')
+    if (added) el.setAttribute('tabindex', '-1')
+    el.classList.add('n-section-target')
+    el.addEventListener(
+      'blur',
+      () => {
+        el.classList.remove('n-section-target')
+        if (added) el.removeAttribute('tabindex')
+      },
+      { once: true }
+    )
+  }
+  el.focus({ preventScroll: true })
+}
+
 // The default theme's global styles and `<Badge>` are imported directly at the
 // top, and the nav bar imports its search button and dialog. Only its Layout,
 // and every component under it, is left out. The router shows NotFound in
@@ -78,17 +106,61 @@ export default {
     // Back and Forward skip onBeforeRouteChange, so this starts in
     // onBeforePageLoad. Smooth scrolling comes back two frames after the
     // route change, once the router's own scroll has run.
+    //
+    // A link to a section also moves focus there, as the skip link does, so
+    // the next Tab carries on from the section instead of going back to the
+    // link. The router scrolls to the section itself, so focus moves without
+    // scrolling, on the frame after the router's. Back and Forward leave focus
+    // alone, since they restore the reader's place instead.
     if (typeof window !== 'undefined') {
       const root = document.documentElement
+      const afterScroll = (fn) => requestAnimationFrame(() => requestAnimationFrame(fn))
+      let followingLink = false
+      router.onBeforeRouteChange = () => {
+        followingLink = true
+      }
       router.onBeforePageLoad = () => {
         root.style.scrollBehavior = 'auto'
       }
       router.onAfterRouteChange = () =>
-        requestAnimationFrame(() =>
-          requestAnimationFrame(() => {
-            root.style.scrollBehavior = ''
-          })
-        )
+        afterScroll(() => {
+          root.style.scrollBehavior = ''
+          if (followingLink) focusSection()
+          followingLink = false
+        })
+      // A link within the page: the router has already handled it and set the
+      // new hash by the time the click gets here.
+      document.addEventListener('click', (event) => {
+        const link = event.target.closest?.('a[href*="#"]')
+        if (!link || !event.defaultPrevented) return
+        const url = new URL(link.href, location.href)
+        if (url.hash && url.pathname === location.pathname) afterScroll(focusSection)
+      })
+
+      // A link within the page adds a history entry without saving the
+      // reader's place, so Back would go to the top of the page. Keep the
+      // current entry's scroll position for the router to restore: once
+      // scrolling settles, and straight away on a click or Enter, which can
+      // come right after a scroll. Back and Forward change the entry, so a
+      // save still pending then is dropped.
+      const saveScroll = () => {
+        try {
+          history.replaceState({ ...history.state, scrollPosition: window.scrollY }, '')
+        } catch {}
+      }
+      let saveTimer = 0
+      const dropSave = () => clearTimeout(saveTimer)
+      addEventListener(
+        'scroll',
+        () => {
+          dropSave()
+          saveTimer = setTimeout(saveScroll, 150)
+        },
+        { passive: true }
+      )
+      addEventListener('pointerdown', saveScroll, { capture: true })
+      addEventListener('keydown', (event) => event.key === 'Enter' && saveScroll(), { capture: true })
+      addEventListener('popstate', dropSave)
     }
 
     app.component('Badge', VPBadge)

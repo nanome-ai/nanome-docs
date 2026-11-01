@@ -12,7 +12,7 @@ The **Entries** tab lists every structure in the workspace and the components th
 <MapCard icon="layout-list" title="Structure actions" href="#structure-actions" side="right" area="74.5,35.0,4.4,3.2">Alignment and interaction components.</MapCard>
 <MapCard icon="dots" title="More options" href="#more-options" side="right" area="88.6,35.0,4.4,3.2">Rename, export, load a map or trajectory, delete.</MapCard>
 <MapCard icon="scribble" title="Representations" href="#representations" side="right" area="63.7,39.8,16.4,5.1">How a component is drawn.</MapCard>
-<MapCard icon="palette" title="Colors" href="#colors" side="bottom" area="69.0,63.5,10.8,3.6">Color schemes, from the palette button beside each representation.</MapCard>
+<MapCard icon="palette" title="Colors" href="#colors" side="bottom" area="69.0,63.5,10.8,3.6">Color schemes, from the palette buttons in a representation chip's panel.</MapCard>
 <MapCard icon="mist" title="Interactions" href="#interactions" side="bottom" area="20.5,74.6,72.5,4.0">The interaction types a component such as Pocket + Ligand shows.</MapCard>
 </ScreenMap>
 
@@ -64,7 +64,7 @@ The copy of the panel below works like the app's: each switch shows 1KV2's bindi
 
 ### <AppIcon name="palette" /> Colors {#colors}
 
-The palette button beside a representation opens its color schemes. The copy below colors 1KV2's binding site, drawn as Stick, in each scheme.
+The palette button beside a representation opens its color schemes. The copy below colors 1KV2's binding site, drawn as Stick, in each scheme. A DX map attached with **Load DX map** can also color a **Surface**, as described under **Electrostatic coloring** after the copy.
 
 <ColorSchemeDemo app="web" />
 
@@ -112,7 +112,7 @@ The representation panel ends with an **Interactions** row. Its count is the num
 
 A component within one entry shows the interactions inside it, which is how **Pocket + Ligand** works. A component that spans several entries shows only the interactions between entries.
 
-In a component that mixes substructure types, such as protein, ligand and water, hydrogen bonds are drawn only between atoms of different types, for example from ligand to protein. Hydrogen bonds between two waters still show.
+In a component that mixes substructure types, such as protein, ligand and water, hydrogen bonds are drawn only between atoms of different types, for example from ligand to protein. Hydrogen bonds between 2 waters still show.
 
 When a donor has no explicit hydrogen, its hydrogen bond is drawn from the donor atom itself. If that donor has more than one possible acceptor, the closest acceptor gets the full color and the others a darker shade.
 
@@ -122,7 +122,7 @@ Metal-ligand bonds that the Chemical Component Dictionary flags as coordination 
 
 <Accordion title="How clashes are counted" teaser="Only between entries, any overlap, hydrogens included.">
 
-Clashes are only computed between entries. Any overlap counts and hydrogens are included, so ordinary close contacts, such as hydrogen-bonded atoms, can also show as clashes. Clash markers grow larger and brighter the more two atoms overlap.
+Clashes are only computed between entries. Any overlap counts and hydrogens are included, so ordinary close contacts, such as hydrogen-bonded atoms, can also show as clashes. Clash markers grow larger and brighter the more 2 atoms overlap.
 
 </Accordion>
 
@@ -147,11 +147,11 @@ Anion-π, CH-π and water-bridged interactions aren't detected.
 
 The <AppIcon name="layout-list" /> **Structure actions** button on an entry row opens:
 
-<ShotRow src="nanome-web/entry-structure-actions.webp" alt="The Structure actions menu for an entry" crop="9.8,2.9,78.3,87.6">
+<ShotRow src="nanome-web/entry-structure-actions.webp" alt="The Structure actions menu for an entry" crop="9.8,2.9,71.7,86.9">
 
 <UiList label="Structure actions">
-<UiItem icon="arrow-left-to-arc" name="Align proteins to this" area="17.6,22.1,59.7,10.9">Superposes other protein entries onto this one. Grayed out unless this entry and at least one other entry hold a protein, and while an alignment runs.</UiItem>
-<UiItem icon="polygon" name="Create interaction components" href="#interaction-components" area="17.6,35.4,59.7,10.9">Computes interactions and adds components that show them.</UiItem>
+<UiItem icon="arrow-left-to-arc" name="Align proteins to this" area="17.6,22.1,59.7,10.9">Opens a list of the other protein entries, each with a checkbox. A checked entry with several chains also gets chips for All or single chains. Align superposes the checked entries onto this one, and Close leaves. The item is grayed out unless this entry and at least one other entry hold a protein, and while an alignment runs.</UiItem>
+<UiItem icon="polygon" name="Create interaction components" href="#interaction-components" area="17.6,35.4,59.7,10.9">Computes interactions and adds components that show them. Grayed out unless the entry holds a polymer.</UiItem>
 <UiItem icon="square-x" name="Remove interaction components" area="17.6,48.6,59.7,10.9">Removes the interaction components from the entry.</UiItem>
 <UiItem icon="refresh" name="Reset components" area="17.6,61.9,59.7,10.9">Restores the entry's default components.</UiItem>
 <UiItem icon="eraser" name="Remove components" area="17.6,75.2,59.7,10.9">Removes the entry's components.</UiItem>
@@ -163,7 +163,7 @@ Nanome runs the alignment on its server with CE-Align. TM-Align is available in 
 
 <Accordion title="Alignment results" teaser="RMSD, length and the Cα minimum.">
 
-- Each aligned entry gets an RMSD, the Cα RMSD over the aligned residues, and a length, the number of aligned residues.
+- After a run, each aligned entry shows its RMSD, the Cα RMSD over the aligned residues in Å, and its length, the number of aligned residues, beside its name in the **Align proteins to this** list.
 - At least 8 Cα atoms are needed.
 - Switching scenes while an alignment runs cancels it.
 
@@ -176,13 +176,15 @@ Nanome runs the alignment on its server with CE-Align. TM-Align is available in 
 **Create interaction components** opens a dialog with 2 modes:
 
 <UiList label="Create interaction components">
-<UiItem name="Polymer-Ligand" area="11.4,13.6,38.1,15.8">Interactions between this entry's polymer, such as a protein, and a ligand in another entry. With no other ligand entries in the workspace, the dialog shows No ligands available.</UiItem>
-<UiItem name="Polymer-Polymer" area="49.9,13.6,36.7,15.8">Interactions Between Chains of one entry, chosen with the chain checkboxes, or Between Molecules in different entries.</UiItem>
-<UiItem name="Create" area="61.5,75.6,26.2,11.8">Adds the components.</UiItem>
+<UiItem name="Polymer-Ligand" area="11.4,13.6,38.1,15.8">Interactions between this entry's polymer, such as a protein, and a ligand in another entry.</UiItem>
+<UiItem name="Polymer-Polymer" area="49.9,13.6,36.7,15.8">Interactions Between Chains of one entry, with 2 chain checkboxes checked, or Between Molecules in different entries. Checking a third chain clears the earliest.</UiItem>
+<UiItem name="Create" area="61.5,75.6,26.2,11.8">Adds the components. Grayed out until something is checked.</UiItem>
 <UiItem name="Close" area="36.1,75.6,23.9,11.8">Leaves without changes.</UiItem>
 </UiList>
 
 </ShotRow>
+
+When there's nothing to pick, the list says so. Polymer-Ligand shows No ligands available when no other entry holds a ligand. Between Chains shows Structure has less than 2 chains for an entry with fewer than 2 chains, and Between Molecules shows No polymers available when no other entry holds a polymer.
 
 <Accordion title="What Between Chains adds" teaser="3 components for each pair of chains.">
 
@@ -200,14 +202,14 @@ Only polymer atoms count toward the interface.
 <Tabs :labels="['Entry menu', 'Component menu']">
 <Tab>
 
-<ShotRow src="nanome-web/entry-more-options.webp" alt="An entry's More options menu" crop="50.9,8.4,46.0,84.0">
+<ShotRow src="nanome-web/entry-more-options.webp" alt="An entry's More options menu" crop="55.2,8.4,41.8,81.4">
 
 <UiList label="Entry More options">
 <UiItem icon="pencil" name="Rename" area="57.5,22.1,33.7,10.9">Renames the entry.</UiItem>
 <UiItem icon="download" name="Export file" area="57.5,35.4,33.7,10.9">Downloads the entry as a file.</UiItem>
 <UiItem icon="upload" name="Load DX map" href="#colors" area="57.5,48.6,33.7,10.9">Attaches an electrostatic potential map in .dx format to the entry, for coloring its surface.</UiItem>
 <UiItem icon="upload" name="Load trajectory" href="/nanome_web/mdplayback" area="57.5,61.9,33.7,10.9">Attaches a trajectory to the entry.</UiItem>
-<UiItem icon="trash" name="Delete" area="57.5,75.2,33.7,10.9">Removes the entry from the workspace.</UiItem>
+<UiItem icon="trash" name="Delete" area="57.5,75.2,33.7,10.9">Removes the entry from the workspace. The first click turns it into Confirm delete, and a second click within 3 seconds deletes it.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -215,13 +217,13 @@ Only polymer atoms count toward the interface.
 </Tab>
 <Tab>
 
-<ShotRow src="nanome-web/component-more-options.webp" alt="A component's More options menu" crop="50.9,1.4,46.0,97.75">
+<ShotRow src="nanome-web/component-more-options.webp" alt="A component's More options menu" crop="55.2,19.6,41.8,67.9">
 
 <UiList label="Component More options">
 <UiItem icon="pencil" name="Rename" area="57.5,24.3,33.7,12.7">Renames the component.</UiItem>
 <UiItem icon="download" name="Export file" area="57.5,39.8,33.7,12.7">Downloads the component's atoms as a file.</UiItem>
 <UiItem icon="mist" name="Edit selection" area="57.5,55.2,33.7,12.7">Changes which atoms the component contains.</UiItem>
-<UiItem icon="trash" name="Delete" area="57.5,70.5,33.7,12.7">Removes the component.</UiItem>
+<UiItem icon="trash" name="Delete" area="57.5,70.5,33.7,12.7">Removes the component. The first click turns it into Confirm delete, and a second click within 3 seconds deletes it.</UiItem>
 </UiList>
 
 </ShotRow>
