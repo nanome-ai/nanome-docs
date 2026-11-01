@@ -24,7 +24,7 @@ The account menu sits at the right end of the top bar, under your initial. It sh
 
 <ShotRow src="nanome-web/login-device-code.webp" alt="The Login via Device Code dialog">
 
-Nanome XR can sign in with a 4-character code. The headset's login page shows the code, and entering it in **Login via Device Code** on Nanome Web signs the headset in to the same account. The same dialog opens from the <AppIcon name="lock-cog" /> lock icon in the top bar.
+Nanome XR can sign in with a 4-character code. The headset's login page shows the code and the address [nanome.ai/activate](https://nanome.ai/activate), which opens **Login via Device Code** on Nanome Web. Entering the code there signs the headset in to the same account. The same dialog opens from the <AppIcon name="lock-cog" /> lock icon in the top bar.
 
 </ShotRow>
 
@@ -67,7 +67,7 @@ claude mcp add --transport http nanome https://workspaces.nanome.ai/mcp
 claude mcp login nanome
 ```
 
-The assistant asks you to sign in and approve access in a browser the first time it connects. Through the MCP server, an assistant can list and manage projects, workspaces, scenes, entries and components, read a summary of each workspace (chains, residue ranges, ligands and ions), export ligands as SDF, and add annotations.
+The assistant asks you to sign in and approve access in a browser the first time it connects. Through the MCP server, an assistant can list and manage projects, workspaces, scenes, entries and components, and read a summary of each workspace (chains, residue ranges, ligands and ions). It can also load structures, export entries as SDF, PDB, SMILES or FASTA, export ligands as SDF, and add text labels and distance, angle and dihedral measurements.
 
 ### Preferences
 
