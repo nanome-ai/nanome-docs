@@ -12,7 +12,7 @@ The minimization plugin optimizes the conformation of the selected molecule or c
 
 To use the minimization plugin, activate it from the Stacks menu and select one or more complexes in the Entry List. You can then press Run to use the default settings.
 
-The minimization window is also accessible in the **Modify Menu** under the Compute Tab. Click on the gear wheel icon to access settings.
+The **Modify** menu's Compute tab has its own Minimize menu, behind its gear button. It has **Force Fields**, **Number of Steps**, a **Steepest Descent** toggle and **Start minimization**, as [Main Menus](/nanome1x/navigation/menus#compute) shows.
 
 **Auto-minimize** is a separate feature that can be toggled on or off in the Prep tab of the [MedChem Tools](/nanome1x/navigation/toolsmenu#medchem-tools).  Small molecules or edits to the protein will be minimized automatically when the feature is on.  See [MedChem Tools](/nanome1x/navigation/toolsmenu#medchem-tools) for more.
 
@@ -21,7 +21,7 @@ The minimization process can be stopped at any time by pressing the 'Stop' butto
 
 ## Settings
 
-Settings can be viewed and changed before running the minimization from the Advanced Settings icon button; this is the “gear wheel” in the main minimization window.
+Before a run, the settings can be viewed and changed from **Advanced Settings**, the gear button above **Run** in the Stacks menu.
 
 Force fields that are supported in Nanome: *General Amber*, *Ghemical*, *MMFF94*, *MMFF94s*, and *Universal*. The default force field is **Universal**. 
 

@@ -5,7 +5,7 @@ title: MD Trajectory Playback
 
 # MD Trajectory Playback
 
-Nanome plays molecular dynamics trajectories in Nanome Web and streams them to Nanome XR. The trajectory stays on Nanome's servers, so a standalone headset needs no local files and no high-end GPU.
+Nanome plays molecular dynamics trajectories in Nanome Web and streams them to Nanome XR. The trajectory stays on Nanome's servers and streams to the headset as it plays, so a standalone headset needs no local copy of the files.
 
 <DocVideo src="v2-7/web-md-playback.mp4" caption="Trajectory playback in Nanome Web: an IRMOF-16 metal-organic framework supercell with a guest polymer." />
 
@@ -13,7 +13,7 @@ Nanome plays molecular dynamics trajectories in Nanome Web and streams them to N
 
 A frame trajectory attaches to a structure that's already loaded. In the **Entries** tab, the entry's <AppIcon name="dots" /> **(...)** menu has **Load trajectory**.
 
-<ShotRow src="nanome-web/entry-more-options.webp" alt="An entry's More options menu, with Load trajectory" crop="17.5,0,79.4,87.3">
+<ShotRow src="nanome-web/entry-more-options.webp" alt="An entry's More options menu, with Load trajectory" crop="9,0,87.9,100">
 
 <UiList label="Attaching a trajectory">
 <UiItem icon="dots" name="More options" href="/nanome_web/entries#more-options" area="89.0,8.2,3.5,6.6">On the entry's row. Opens the entry's menu.</UiItem>

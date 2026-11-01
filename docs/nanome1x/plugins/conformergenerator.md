@@ -22,11 +22,11 @@ For the seed, the plugin reports the UFF energy of a minimized copy, while the s
 
 <ShotRow src="plugins-page/conformer-generator/plugin-list.png" alt="The Stacks menu with Conformer Generator selected in the plugin list">
 
-Access the Conformer Generator plugin from the Stacks menu.
+Conformer Generator starts from the Stacks menu. **Activate** starts the plugin, and its **Open** button then shows the Conf Gen panel.
 
 <UiList label="Stacks menu">
 <UiItem name="Conformer Generator" area="2.3,57.6,50.3,11.1">Selected here, with its description on the right.</UiItem>
-<UiItem name="Activate" area="59.6,85.5,17.9,10.9">Starts the selected plugin.</UiItem>
+<UiItem name="Activate" area="59.6,85.5,17.9,10.9">Starts the selected plugin. Its Open button then shows the Conf Gen panel.</UiItem>
 <UiItem name="Data Table" area="2.4,77.6,50.0,10.5">Another plugin for viewing the results, shown at the end of this page.</UiItem>
 </UiList>
 
@@ -39,8 +39,8 @@ Access the Conformer Generator plugin from the Stacks menu.
 1. In the upper left, the user can select either a protein entry containing a ligand or an individual ligand entry
 2. Next, choose the maximum number of conformers (50, 100 or 200) from the pulldown. Conformers too similar to one already kept are left out, so you may get fewer.
 3. Users may optionally choose to have the conformer set locked with the seed structure
-4. Clicking Generate runs the plugin.  During calculation, this button reads “Generating”
-5. Once complete, the “Generating” button returns to “Generate” state and a new entry appears in the Entry List
+4. Clicking Generate runs the plugin.  During calculation, this button reads “Generating...”
+5. Once complete, the “Generating...” button returns to “Generate” state and a new entry appears in the Entry List
 6. The new entry of conformer frames has associated meta data of conformation energy and RMSD to seed ligand
 
 </Steps>
@@ -51,7 +51,7 @@ Access the Conformer Generator plugin from the Stacks menu.
 <UiItem name="Max number of conformers" area="3.8,35.2,91.9,9.1">50, 100 or 200.</UiItem>
 <UiItem name="Sort conformers by" area="3.8,52.0,91.9,9.1">Set to minimized energy here.</UiItem>
 <UiItem name="Lock entry and result" area="4.1,64.4,91.4,6.9">Optional. Locks the conformer set with the seed structure.</UiItem>
-<UiItem name="Generate" area="4.1,87.1,91.4,11.9">Runs the plugin. Reads Generating while it runs.</UiItem>
+<UiItem name="Generate" area="4.1,87.1,91.4,11.9">Runs the plugin. Reads Generating... while it runs.</UiItem>
 </UiList>
 
 </ShotRow>

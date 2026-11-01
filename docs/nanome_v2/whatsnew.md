@@ -68,9 +68,9 @@ In Nanome XR, playback computes upcoming frames in the background. Interactions,
 - The Residue Editor scores rotamers against visible atoms or all atoms, and suggests rotamers much faster in large workspaces.
 - Components gained **Delete Atoms**, an atom count on hover and a grayed look when empty. Distance components can include atoms from every entry.
 - Clash markers grow with how much atoms overlap.
-- Metal coordination detection covers methionine sulfur and iron-sulfur cluster sulfides.
+- Metal coordination detection covers methionine sulfur, iron-sulfur cluster sulfides and aromatic nitrogens in ligands, such as those in porphyrin and imidazole rings.
 - Annotations can be hidden one at a time or all at once.
-- **Export analysis** downloads interactions, measurements and minimization history as a ZIP of CSV files.
+- In Nanome Web, **Export analysis** in the [workspace menu](/nanome_web/home#workspaces) downloads the current scene's interactions, measurements and minimization history as a ZIP of CSV files.
 - Projects, Workspaces, Ligands and rotamer lists share a new sortable table.
 - Presence, invitations and join requests update instantly.
 - Free licenses have limits (1 owned project, 3 owned workspaces, 5 structures per workspace), Nanome warns 30 days before a license expires, and sign-in errors explain what went wrong.

@@ -101,7 +101,7 @@ function value(l, key) {
 }
 
 function cell(l, c) {
-  if (c.key === 'tag') return tags.value[l.ccd] || '–'
+  if (c.key === 'tag') return tags.value[l.ccd] || '-'
   return formatValue(value(l, c.key))
 }
 
