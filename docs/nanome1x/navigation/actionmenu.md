@@ -12,7 +12,7 @@ To change your avatar's color, see [How to change the color of your avatar](/nan
 
 ## Use the action menu to set up a meeting
 
-<ShotRow src="navigating-page/action-menu-create-meeting.png" alt="The action menu open at Actions, Menus, Create Meeting, with the Create Meeting panel beside it" crop="1.5,8.5,93.9,88.0">
+<ShotRow src="navigating-page/action-menu-create-meeting.png" alt="The action menu open at Actions, Menus, Create Meeting, with the Create Meeting panel beside it" crop="1.5,8.5,93.9,88.0" stack>
 
 <UiList label="Path to Create Meeting">
 <UiItem icon="topology-star-3" name="Actions" area="2.2,9.9,13.0,6.0">Where the action menu starts.</UiItem>

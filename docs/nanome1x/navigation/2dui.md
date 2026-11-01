@@ -96,7 +96,7 @@ The control scheme can be accessed at any time by pressing the [H] key on the ke
 <UiItem name="W A S D" area="16.1,34.9,24.6,16.6">Move</UiItem>
 <UiItem name="H" area="40.8,27.7,22.2,21.8">Hide/Show Control Guide</UiItem>
 <UiItem name="Shift + left mouse button" area="71.4,21.3,9.5,28.3">Grab</UiItem>
-<UiItem name="Right mouse button" area="79.7,22.6,6.9,27.2">Context Menu</UiItem>
+<UiItem name="Right mouse button" area="79.0,22.6,7.6,27.2">Context Menu</UiItem>
 <UiItem name="Alt" area="16.5,56.5,22.2,7.3">Rotate Down</UiItem>
 <UiItem name="Space" area="38.8,56.5,20.3,17.9">Rotate Up</UiItem>
 <UiItem name="Arrow keys" area="60.6,49.4,14.5,24.4">Move</UiItem>

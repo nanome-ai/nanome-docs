@@ -10,7 +10,7 @@ An example of this would be having a Molecular Database Partner or customer's in
 
 Please note that:
 
-1. The deep linking/app protocol requires the Nanome application to be downloaded and requires Windows registry binding. Thus, users who want to use this method will need to have installed Nanome using the Windows Setup Installer located on the [nanome.ai/setup](https://nanome.ai/setup) page.
+1. The deep linking/app protocol requires the Nanome application to be downloaded and requires Windows registry binding. Thus, users who want to use this method will need to have installed Nanome Classic with the Windows installer from the [Nanome Classic downloads](https://nanome.ai/versions#classic).
 
 2. All-in-one headsets do not yet have support for this deep linking protocol unless invoked through the Nanome in-VR web browser.
 

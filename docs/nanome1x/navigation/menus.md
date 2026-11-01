@@ -7,7 +7,7 @@ title: Main Menus
 ## Entry List
 
 <ScreenMap src="navigating-page/Limiter.png" alt="The Entry List with the Device Limit bar above it and the menu buttons down its left side" label="Entry List and menu buttons">
-<MapCard icon="headset" title="Device Limit" href="#device-limiter" side="top" area="3.4,1.3,93.2,10.2">How close the atom count is to what wireless headsets can show.</MapCard>
+<MapCard icon="headset" title="Device Limit" href="#device-limiter" side="top" area="3.4,1.3,93.2,10.2">How much your workspace shows, ribbons included, next to what wireless headsets can draw.</MapCard>
 <MapCard icon="plus" title="Load" href="#load" side="left" area="2.8,13.3,13.0,10.3">Load molecules or structures into your workspace.</MapCard>
 <MapCard icon="stack-2" title="Stacks" href="#stacks" side="left" area="2.6,23.9,13.0,10.2">Opens the list of plugins.</MapCard>
 <MapCard icon="eye" title="Display" href="#display" side="left" area="2.5,34.4,13.2,10.1">Atoms, ribbons, surfaces, sub structures and labels.</MapCard>
@@ -26,7 +26,7 @@ The Load, Stacks (plugins), Display, Color, Modify, Select, Macro, and Content (
 
 ## Device Limiter
 
-The Device Limiter bar shows how close the number of atoms in your workspace is to what all-in-one (wireless) headsets can show. When the count gets close to the limit or reaches it, one of these prompts appears. Each warns that guests on a wireless headset may see lag or hidden structures, and offers Dismiss or Ribbon Only.
+The Device Limit bar compares how much your workspace shows, atoms and ribbons alike, with what all-in-one (wireless) headsets can draw. When it gets close to the limit or reaches it, one of these prompts appears. Each warns that guests on a wireless headset may see lag or hidden structures, and offers Dismiss or Ribbon Only, plus a Don't show again box.
 
 <vimg src="navigating-page/Limiter-Close.jpg" alt="The Close to max limit! prompt, with Dismiss and Ribbon Only buttons" />
 <vimg src="navigating-page/Limiter-Max.jpg" alt="The Max limit reached! prompt, with Dismiss and Ribbon Only buttons" />
@@ -134,6 +134,7 @@ The Electron Density tab shows the configuration of viewing the Electron Density
 
 <UiList label="Electron Density">
 <UiItem icon="list" name="Maps" area="1.9,23.8,45.8,19.6">The maps loaded for the structure, here 2 .dsn6 files.</UiItem>
+<UiItem name="Opacity" area="51.9,23.7,44.0,7.4">The map's opacity, here 75 %.</UiItem>
 <UiItem icon="palette" name="Color" area="52.5,53.8,18.4,28.6">The map's color.</UiItem>
 <UiItem name="Sigma" area="74.0,53.8,22.1,28.6">The sigma level, from -10 to 10. Its value in e/Å³ shows beside it, here 0.61.</UiItem>
 <UiItem name="Draw style" area="53.8,85.6,41.8,9.7">3 ways to draw the map.</UiItem>
@@ -203,7 +204,7 @@ When saving a workspace, you have the option to create a spatial anchor for your
 Load molecules or structures into your workspace. Supported file formats include (v1.24):
 
 _Structural Coordinate File Formats_ <br />
-.pdb, .cif, .mmcif, .pse, .nanome, .sdf, .mol, .xyz, .mol2, .pqr
+.pdb, .cif, .mmcif, .pse, .nanome, .sdf, .mol, .xyz, .mol2, .pqr, .mae (Maestro), .moe (MOE), and SMILES files
 
 _Electron Density Map File Formats_ <br />
 .ccp4, .dsn6
@@ -213,6 +214,8 @@ _Trajectory/Molecular Dynamics File Formats_ <br />
 
 _Image File Formats_ <br />
 .png, .jpg, .jpeg, .pdf
+
+Gzip-compressed copies (.gz) of supported files load too.
 
 For the file formats supported in Nanome v2, see [Supported File Formats](/nanome_web/fileformats).
 
@@ -244,6 +247,10 @@ From the Source tab, structures can be loaded directly from RCSB, DrugBank (Acad
 <vimg src="navigating-page/Load-Keyword.jpg" alt="The Load menu's Search tab, with an Enter keyword box" />
 
 From the Search tab, find and load a structure by keyword.
+
+### Stacks {#load-stacks}
+
+The Stacks tab loads structures from custom databases added through plugins.
 
 ### Cancel a load
 
@@ -285,7 +292,7 @@ This tab contains options for the visual of atoms and bonds.
 <UiItem name="Wire" area="20.4,17.9,25.1,38.8">Hide atoms and show bonds in thin wire visual.</UiItem>
 <UiItem name="Stick" area="45.5,17.9,24.4,38.8">Show small atoms and bonds in volumetric stick visual.</UiItem>
 <UiItem name="Van Der Waals" area="70.0,17.9,24.8,38.8">Shows each atom as a sphere at its van der Waals radius, with no bonds.</UiItem>
-<UiItem name="Adapt to color" area="20.4,56.7,25.1,38.7">Also called Adaptive. Show atoms with radius proportional to their b-factor value and hide bonds.</UiItem>
+<UiItem name="Adapt to color" area="20.4,56.7,25.1,38.7">Also called Adaptive. Shows each atom as a sphere sized by its color, with no bonds.</UiItem>
 <UiItem name="Ball & Stick" area="45.5,56.7,24.4,38.7">Show atoms as small balls joined by stick bonds.</UiItem>
 <UiItem icon="eye-off" name="Hide" area="70.0,56.7,24.8,38.7">Hide all atoms and bonds.</UiItem>
 </UiList>
@@ -352,8 +359,8 @@ Navigate to Display/Styles > Surface Styles, then check the "Mesh Surface" optio
 <ShotRow src="navigating-page/Display-SubStructure-Menu.jpg" alt="The Display menu on its Sub Structure tab">
 
 <UiList label="Sub Structure tab">
-<UiItem icon="hexagon" name="Hetatoms" area="24.2,29.3,68.0,11.7">Show hetatoms.</UiItem>
-<UiItem name="Waters" area="24.2,50.0,68.0,11.7">Show hetatoms, including water.</UiItem>
+<UiItem icon="hexagon" name="Hetatoms" area="24.2,29.3,68.0,11.7">Shows hetatoms other than water, such as ligands.</UiItem>
+<UiItem name="Waters" area="24.2,50.0,68.0,11.7">Shows waters.</UiItem>
 <UiItem name="Hydrogens" area="24.2,70.7,68.0,11.8">Show hydrogens.</UiItem>
 </UiList>
 
@@ -370,7 +377,7 @@ Navigate to Display/Styles > Surface Styles, then check the "Mesh Surface" optio
 <UiList label="Labels tab">
 <UiItem icon="tag" name="Atom" area="23.3,29.5,68.5,11.7">Show labels on atoms.</UiItem>
 <UiItem icon="tag" name="Residue" area="23.3,50.3,68.5,11.7">Show labels on residues.</UiItem>
-<UiItem icon="tag" name="Chain" area="23.3,71.1,68.5,11.8">Grayed out in this screenshot.</UiItem>
+<UiItem icon="tag" name="Chain" area="23.3,71.1,68.5,11.8">Show labels on chains. Grayed out in this screenshot.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -500,6 +507,7 @@ Apply certain computations on the selected structures and modify them according 
 **Calculate H-bonds:** sets the threshold for finding H-bonds.
 
 <UiList label="H-bonds menu">
+<UiItem name="Precise / Relaxed" area="7.1,18.0,85.0,6.8">The color key: cyan for precise h-bonds, orange for relaxed ones.</UiItem>
 <UiItem name="Relax H-bonds" area="7.1,25.2,83.1,6.2">Relaxes the h-bond constraints. On here.</UiItem>
 <UiItem name="Relax Constraints By" area="6.8,33.6,83.6,33.7">The threshold, in Angstrom and degrees.</UiItem>
 <UiItem name="Calculate: Once / Continuously" area="6.9,69.4,85.4,14.2">Calculates h-bonds one time, or keeps calculating them.</UiItem>
@@ -515,6 +523,7 @@ Apply certain computations on the selected structures and modify them according 
 <UiList label="Minimize menu">
 <UiItem name="Force Fields" area="4.0,20.4,42.9,75.0">The force field to use.</UiItem>
 <UiItem name="Number of Steps" area="53.1,19.5,42.5,20.2">The arrows change the number of steps.</UiItem>
+<UiItem name="Steepest Descent" area="52.4,47.4,43.6,10.0">Uses the steepest descent method for the minimization. On here.</UiItem>
 <UiItem name="Start minimization" area="53.1,82.9,42.7,12.4">Starts minimizing the selected structures.</UiItem>
 </UiList>
 
@@ -659,7 +668,7 @@ Tutorials of advanced concepts and features in Nanome, presented using spatial r
 
 ## Advanced Tutorials
 
-See [Content Discovery](#content-discovery).
+In version 1.24.6, [Content Discovery](#content-discovery) replaced the Advanced Tutorials menu.
 
 ## Spatial Recordings
 

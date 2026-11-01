@@ -150,7 +150,7 @@ Nanome can be loaded onto the Oculus Quest or Oculus Quest 2 via a few different
 
 <vimg src="howto-page/nanome_on_oculus_quest.gif" alt="Searching for Nanome in the Oculus phone app and opening its App Lab page" />
 
-Downloading Nanome from Oculus App Lab will be the easiest method for getting access to the software on your Quest device. For alternative methods (such as sideloading), you can refer to our [setup page](https://nanome.ai/setup).
+Downloading Nanome from Oculus App Lab will be the easiest method for getting access to the software on your Quest device. For other methods, such as sideloading, see the [Nanome Classic downloads](https://nanome.ai/versions#classic).
 
 ## How to use Oculus Dash
 

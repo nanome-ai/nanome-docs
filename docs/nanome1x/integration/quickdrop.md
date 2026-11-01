@@ -33,6 +33,7 @@ const files = [file1, file2]
 // get user login token
 const loginRes = await fetch(`${NANOME_API}/user/login`, {
     method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
         login: 'username',
         pass: 'password'
@@ -40,7 +41,7 @@ const loginRes = await fetch(`${NANOME_API}/user/login`, {
 }).then(res => res.json())
 
 const token = loginRes.results.token.value
-const headers = { 'Authorization': 'Bearer ' + token }
+const headers = { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' }
 
 // get S3 upload URLs
 const addRes = await fetch(`${NANOME_API}/quickdrop/add`, {
@@ -94,6 +95,7 @@ const files = [file1, file2]
 // get user unique ID
 const loginRes = await fetch(`${NANOME_API}/user/login`, {
     method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
         login: 'username',
         pass: 'password'

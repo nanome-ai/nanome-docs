@@ -56,7 +56,7 @@ Nanome Basics is our introductory tutorial that gets the user acquainted with th
 Once the Nanome Basics tutorial is completed, you can move onto Advanced Tutorials or you can exit the tutorial.
 
 <UiList label="Tutorial completed">
-<UiItem name="Advanced Tutorials" area="40.1,69.9,24.2,11.2">Brings the user into a Nanome workspace and pulls up the Spatial Tutorials menu.</UiItem>
+<UiItem name="Advanced Tutorials" href="/nanome1x/navigation/menus#content-discovery" area="40.1,69.9,24.2,11.2">Brings the user into a Nanome workspace and opens the Content Discovery menu.</UiItem>
 <UiItem name="Exit Tutorial" area="13.6,69.7,23.9,11.2">Returns to the Lobby.</UiItem>
 </UiList>
 
@@ -64,7 +64,7 @@ Once the Nanome Basics tutorial is completed, you can move onto Advanced Tutoria
 
 ## Lobby Top Bar
 
-<ShotRow src="navigating-page/lobbytopbar1.24.3numbered.png" alt="The lobby top bar on the Lobby tab, with its parts numbered 1 to 5" crop="0,0,100,90">
+<ShotRow src="navigating-page/lobbytopbar1.24.3.png" alt="The lobby top bar on the Lobby tab" crop="0,0,100,90">
 
 <UiList label="Lobby top bar">
 <UiItem icon="login" name="Join By Meeting ID" href="#_1-join-by-meeting-id" area="4.3,50.0,27.7,37.5">Join a prescheduled meeting with its Meeting ID.</UiItem>
@@ -76,11 +76,11 @@ Once the Nanome Basics tutorial is completed, you can move onto Advanced Tutoria
 
 </ShotRow>
 
-### (1) Join By Meeting ID
+### Join By Meeting ID {#_1-join-by-meeting-id}
 
 Users can join a prescheduled meeting in Nanome by entering the Meeting ID provided by the room host. Find out how to [create meetings here](/home.nanome.ai/meetings).
 
-### (2) Creating a Room
+### Creating a Room {#_2-creating-a-room}
 
 <vimg src="navigating-page/createroom.png" alt="The Create Room panel with Room Name, Display Name, Room Password (optional) and Choose Room Access set to Private (My Org)" />
 
@@ -94,15 +94,15 @@ Room Types:
 
 Any room can also have an optional Room Password.
 
-### (3) Public / My Org Server Selector
+### Public / My Org Server Selector {#_3-public-my-org-server-selector}
 
 Indicates connection to Nanome Public Server or Custom Private Server.
 
-### (4) Meetings
+### Meetings {#_4-meetings}
 
 The Meetings tab is the central location for users to manage and join scheduled meetings. The lobby screenshot at the [top of this page](#lobby) shows this tab.
 
-### (5) Settings
+### Settings {#_5-settings}
 
 <ShotRow src="navigating-page/lobbysettings.png" alt="The Settings tab in the lobby" crop="35.9,21.5,34.0,59.7">
 
