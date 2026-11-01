@@ -128,3 +128,16 @@ For a quote, use **Contact us** on [nanome.ai/pricing](https://nanome.ai/pricing
 ## <AppIcon name="list" /> Assigning seats {#assign}
 
 An admin assigns seats at home.nanome.ai under **Licenses** > **Assign Users**, using each user's account email. Step by step: [Manage Licenses](/home.nanome.ai/licenses). [Accounts & licenses](/getting-started#account) in Getting Started covers getting a whole team ready.
+
+<style scoped>
+/* The 5 seat tables share column widths, so each seat's column starts at the same x in every table. */
+@media (min-width: 768px) {
+  table:has(th:nth-child(5)) {
+    table-layout: fixed;
+  }
+
+  table:has(th:nth-child(5)) :is(th, td):first-child {
+    width: 36%;
+  }
+}
+</style>

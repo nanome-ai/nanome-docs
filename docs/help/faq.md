@@ -31,7 +31,7 @@ Nanome is a collaborative molecular modeling tool made for professional research
 
 <Accordion title="How many users can join a Nanome session at the same time?" teaser="In Classic: up to 20 in VR, and 50 more in 2D mode." tag="Classic">
 
-Nanome currently supports up to 20 XR collaborators in a room at once. Up to 50 more users can join through Nanome's 2D mode.
+Nanome Classic supports up to 20 collaborators in VR in a room at once, and up to 50 more through its 2D mode.
 
 </Accordion>
 
@@ -101,9 +101,9 @@ Nanome Classic is free to download from all major VR stores, including Oculus, S
 
 <AccordionGroup label="4 questions">
 
-<Accordion title="What file formats does Nanome v2 support?" teaser="Structures, session files, trajectories and DX maps.">
+<Accordion title="What file formats does Nanome Web support?" teaser="Structures, session files, trajectories and DX maps.">
 
-In short, v2 imports structures (PDB, mmCIF, SDF, SMILES, XYZ, PQR, PDBQT, and MOL/MOL2 through a MARA tool), session files (MAE, MOE, PSE), trajectories (GRO, XTC, TRR, DCD), and DX electrostatic maps. Molecule export is single-frame, to PDB, SDF, or SMILES.
+In short, Nanome Web imports structures (PDB, mmCIF, SDF, SMILES, XYZ, PQR, PDBQT, and MOL/MOL2 through a MARA tool), session files (MAE, MOE, PSE), trajectories (GRO, XTC, TRR, DCD), and DX electrostatic maps. Molecule export is single-frame, to PDB, SDF, or SMILES.
 
 The full per-format list, with import and export capability, trajectory playback and per-release changes, is on [Supported File Formats](/nanome_web/fileformats).
 
@@ -172,7 +172,7 @@ A free license covers Nanome in the browser at app.nanome.ai, with 1 owned proje
 
 <Accordion title="Can my team get a free trial?" teaser="Yes. Every new account starts with a 14-day trial.">
 
-Every new account at app.nanome.ai starts with a 14-day Full license trial. For a trial for your team, whether for research, training or presentations, use **Contact us** on [nanome.ai/pricing](https://nanome.ai/pricing#contact-form). To schedule a demo with one of our team, [request one here](https://nanome.ai/demo/).
+Every new account at app.nanome.ai starts with a 14-day Full license trial. For a trial for your team, whether for research, training or presentations, use **Contact us** on [nanome.ai/pricing](https://nanome.ai/pricing#contact-form). Nanome's team also gives [live demos](https://nanome.ai/demo/).
 
 </Accordion>
 
@@ -212,7 +212,7 @@ One workflow we recommend:
 
 </Steps>
 
-One of the licenses is assigned to the admin account automatically, but you can reassign it. If you don't have user accounts yet, you can create new Nanome accounts (e.g. "student-1", "student-2", etc.) and assign the licenses to them.
+One of the licenses is assigned to the admin account automatically, but you can reassign it. If you don't have user accounts yet, you can create new Nanome accounts (e.g., "student-1", "student-2") and assign the licenses to them.
 
 </Accordion>
 
@@ -251,7 +251,7 @@ A log file is named "YYYY-MM-DD_HH-MM-SS_details.txt", after the time the sessio
 
 </Accordion>
 
-<Accordion title="Where are the log files for all-in-one VR (e.g. Quest 2 or Vive Focus 3)?" teaser="On the headset. Copy them over a USB-C data cable." tag="Classic">
+<Accordion title="Where are the log files for all-in-one VR (e.g., Quest 2 or Vive Focus 3)?" teaser="On the headset. Copy them over a USB-C data cable." tag="Classic">
 
 All-in-one headsets such as the Quest 2 and Vive Focus 3 run Android-based operating systems and save log files on the headset. To move or copy them, connect the headset to your computer with a USB-C cable.
 
@@ -267,7 +267,7 @@ All-in-one headsets such as the Quest 2 and Vive Focus 3 run Android-based opera
 
 1. Plug the headset into your computer with the USB-C cable.
 2. Turn on the headset and put it on.
-3. In VR, click "Allow" to let the computer read the headset's files.
+3. In VR, choose **Allow** to let the computer read the headset's files.
 
 </Steps>
 
@@ -279,13 +279,13 @@ On Windows, open File Explorer and look at the left panel, which lists the stora
 
 <Accordion title="I have requests or ideas for new features. Where can I send them?" teaser="Email support@nanome.ai.">
 
-Email your requests to support@nanome.ai. We take all our users' feedback seriously.
+Email your requests to support@nanome.ai.
 
 </Accordion>
 
-<Accordion title="I'm in a country with GDPR. How do I ask to delete or view my customer data?" teaser="Email support@nanome.ai. It takes 2-3 weeks.">
+<Accordion title="I'm in a country with GDPR. How do I ask to delete or view my customer data?" teaser="Email support@nanome.ai. It takes 2 to 3 weeks.">
 
-Contact support@nanome.ai to request the deletion of your customer data, or a downloadable copy. This is a manual process and takes 2-3 weeks.
+Contact support@nanome.ai to request the deletion of your customer data, or a downloadable copy. This is a manual process and takes 2 to 3 weeks.
 
 </Accordion>
 

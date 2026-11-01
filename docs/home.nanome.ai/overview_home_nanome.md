@@ -4,7 +4,7 @@ title: Account Management and Billing
 
 # Account Management and Billing
 
-You manage your account and billing at [home.nanome.ai](https://home.nanome.ai). There you can view your account information, manage billing information, see your usage and billing history, upgrade your account, assign licenses and manage team members.
+You manage your account and billing at [home.nanome.ai](https://home.nanome.ai). There you can view your account information, manage billing information, see your billing history, upgrade your account, assign licenses and manage team members.
 
 <IconGrid label="Account management" :cols="3">
 <IconCard icon="list" title="Licenses" href="/home.nanome.ai/licenses">Assign licenses to people, or take them back.</IconCard>

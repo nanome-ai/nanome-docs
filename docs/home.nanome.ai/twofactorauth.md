@@ -16,9 +16,7 @@ With 2FA on, you enter a 6-digit code from an authenticator app every time you l
 
    <vimg src="home-nanome/account-security.webp" alt="The Enable 2FA button in the Security section" />
 
-3. Scan the QR code with your authenticator app, then enter a 6-digit code to confirm. Download the recovery codes too.
-
-4. You're all set. From now on, every login to your Nanome account asks for your 2FA code.
+3. Scan the QR code with your authenticator app, then enter a 6-digit code to confirm. Download the recovery codes too. From then on, every login asks for a 2FA code.
 
 </Steps>
 
@@ -30,7 +28,7 @@ Keep the QR code and the recovery codes private.
 
 ## Turning 2FA off {#disable-2fa}
 
-2FA is strongly encouraged. To turn it off, open **Account Settings** and choose **Disable 2FA** under **Security**.
+Turning 2FA off leaves the account protected by its password alone. **Disable 2FA**, under **Security** in **Account Settings**, turns it off.
 
 ## Signing in to Nanome XR with 2FA {#signing-in-to-nanome-xr-with-2fa}
 

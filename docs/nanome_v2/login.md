@@ -4,7 +4,7 @@ title: Login Screen
 
 # Login Screen
 
-Nanome opens on the login screen. It has two tabs: one for your password, and one for a code you enter on another device.
+Nanome opens on the login screen. It has 2 tabs: one for your password, and one for a code you enter on another device.
 
 <ScreenMap src="nanome-v2/v2-7/login-password.webp" alt="The Nanome XR login screen on the Password tab" crop="1.9,0.5,45.1,95" label="Login screen">
 <MapCard icon="password" title="Password" href="#password" side="top" area="10.6,11.9,13.7,4.6">Your Nanome username or email address, and password.</MapCard>

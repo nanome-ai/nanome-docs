@@ -45,15 +45,15 @@ compares them.
 
 <div class="lineup">
   <figure>
-    <img src="/assets/original/setup/meta-devices.png" alt="" loading="lazy" />
-    <figcaption>Meta Quest 3 and 3S</figcaption>
+    <img src="/assets/compressed/setup/meta-devices.webp" alt="" loading="lazy" />
+    <figcaption>Meta Quest 3 and Quest Pro</figcaption>
   </figure>
   <figure>
-    <img src="/assets/original/setup/galaxy-xr-headset.png" alt="" loading="lazy" />
+    <img src="/assets/compressed/setup/galaxy-xr-headset.w800.webp" alt="" loading="lazy" />
     <figcaption>Samsung Galaxy XR</figcaption>
   </figure>
   <figure>
-    <img src="/assets/original/setup/vision-pro-headset.png" alt="" loading="lazy" />
+    <img src="/assets/compressed/setup/vision-pro-headset.w800.webp" alt="" loading="lazy" />
     <figcaption>Apple Vision Pro</figcaption>
   </figure>
 </div>
@@ -123,7 +123,7 @@ This chapter matters once headsets are shared or spread across a team.
       id: 'device',
       label: 'Which headset?',
       options: [
-        { id: 'meta', label: 'Meta Quest', detail: 'Quest 3 and 3S' },
+        { id: 'meta', label: 'Meta Quest', detail: 'Quest 2, 3, 3S, and Pro' },
         { id: 'galaxy', label: 'Samsung Galaxy XR', detail: 'Android XR' },
         { id: 'visionpro', label: 'Apple Vision Pro', detail: 'visionOS' }
       ]
@@ -651,7 +651,7 @@ the latest release.
     }
   ]">
 
-<ChooserResult when="method=store device=meta" verdict="Install from the Meta Horizon Store">
+<ChooserResult when="method=store device=meta" verdict="Install from the Meta Horizon Store.">
 
 <Steps>
 
@@ -667,7 +667,7 @@ from Discover Apps through an MDM.
 
 </ChooserResult>
 
-<ChooserResult when="method=store device=visionpro" verdict="Join the TestFlight beta">
+<ChooserResult when="method=store device=visionpro" verdict="Join the TestFlight beta.">
 
 <Steps>
 
@@ -683,21 +683,21 @@ in the TestFlight app.
 
 </ChooserResult>
 
-<ChooserResult when="method=store device=galaxy" verdict="Not available from a store">
+<ChooserResult when="method=store device=galaxy" verdict="Not available from a store.">
 
 Nanome isn't listed on Google Play. Android XR headsets install the APK, either
 sideloaded or through an MDM.
 
 </ChooserResult>
 
-<ChooserResult when="method=store device=windows" verdict="Not available from a store">
+<ChooserResult when="method=store device=windows" verdict="Not available from a store.">
 
 Current Nanome for Windows isn't sold through a store (the Steam listing is
 Nanome Classic). It's a direct download.
 
 </ChooserResult>
 
-<ChooserResult when="method=mdm device=meta" verdict="Push it from the MDM's app library">
+<ChooserResult when="method=mdm device=meta" verdict="Push it from the MDM's app library.">
 
 Quest headsets enroll through HMS first. Each MDM then adds Nanome from its own
 app library:
@@ -719,7 +719,7 @@ matched to a private Nanome server.
 
 </ChooserResult>
 
-<ChooserResult when="method=mdm device=galaxy" verdict="Upload the Android XR APK to the MDM">
+<ChooserResult when="method=mdm device=galaxy" verdict="Upload the Android XR APK to the MDM.">
 
 HMS manages Meta Quest only. ArborXR and ManageXR both manage Samsung Galaxy XR
 headsets; ManageXR enrolls them over USB with its Device Setup Tool for now and
@@ -740,19 +740,19 @@ For Managed Google Play deployments, such as through Microsoft Intune,
 
 </ChooserResult>
 
-<ChooserResult when="method=mdm device=windows" verdict="Not managed this way">
+<ChooserResult when="method=mdm device=windows" verdict="Not managed this way.">
 
 Headset MDMs don't manage Windows PCs. Nanome for Windows is a direct download.
 
 </ChooserResult>
 
-<ChooserResult when="method=mdm device=visionpro" verdict="Not managed this way">
+<ChooserResult when="method=mdm device=visionpro" verdict="Not managed this way.">
 
 The Vision Pro beta installs through Apple TestFlight.
 
 </ChooserResult>
 
-<ChooserResult when="method=sideload device=meta" verdict="Sideload the Quest APK">
+<ChooserResult when="method=sideload device=meta" verdict="Sideload the Quest APK.">
 
 <Steps>
 
@@ -778,7 +778,7 @@ way.
 
 </ChooserResult>
 
-<ChooserResult when="method=sideload device=galaxy" verdict="Sideload the Android XR APK">
+<ChooserResult when="method=sideload device=galaxy" verdict="Sideload the Android XR APK.">
 
 <Steps>
 
@@ -794,7 +794,7 @@ way.
 
 </ChooserResult>
 
-<ChooserResult when="method=sideload device=windows" verdict="Download and run the Windows build">
+<ChooserResult when="method=sideload device=windows" verdict="Download and run the Windows build.">
 
 <Steps>
 
@@ -811,7 +811,7 @@ way.
 
 </ChooserResult>
 
-<ChooserResult when="method=sideload device=visionpro" verdict="Not installed this way">
+<ChooserResult when="method=sideload device=visionpro" verdict="Not installed this way.">
 
 Vision Pro apps install through Apple, and the Nanome beta is on TestFlight.
 

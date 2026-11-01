@@ -32,7 +32,7 @@ Recommended specs:
 | | VM #1: Private Server | VM #2: Dedicated Plugins |
 | --- | --- | --- |
 | Instance | Amazon AWS T2.Medium EC2 Windows 2012 Server or greater, or equivalent | Amazon AWS T2.Large EC2 Linux machine, or equivalent |
-| CPU | 1 quad core CPU (e.g., Intel Xeon 3440, E3-1230 etc.) | 4 CPU, equiv. to an Intel Broadwell E5-2686v4 or higher |
+| CPU | 1 quad core CPU, such as an Intel Xeon 3440 or E3-1230 | 4 CPU, equiv. to an Intel Broadwell E5-2686v4 or higher |
 | RAM | 4 GB | 8 GB |
 | Network | 1 Gbps NIC / uplink port speed | 1 Gbps NIC / uplink port speed |
 | Operating system | Windows Server 2012 and above | A Linux based operating system (Ubuntu or CentOS) |
@@ -44,7 +44,7 @@ Recommended specs:
 
 | To | Ports | So that |
 | --- | --- | --- |
-| VM&nbsp;#1 | UDP 5055, 5056; TCP 443, 80, 8888 | VM #1 can connect to the VR devices |
+| VM&nbsp;#1 | UDP 5055, 5056; TCP 443, 80, 8888 | The VR devices can reach VM #1 |
 | VM&nbsp;#2 | TCP 80, 443 | Plugin webpages (like Vault and Data Table) can connect |
 
 ### Outbound, from each VR device
@@ -77,7 +77,7 @@ The [Nanome Plugin Deployer README](https://github.com/nanome-ai/nanome-plugin-d
 
 ### Plugins that need DNS entries {#plugins-that-require-dns-entries}
 
-The Data Table, Vault and Quickdrop plugins are hosted differently from other plugins, as DNS entries under your domain.
+The Data Table, Vault and Quick Drop plugins are hosted differently from other plugins, as DNS entries under your domain.
 
 ```
 NTS_IP=<NTS_IP>

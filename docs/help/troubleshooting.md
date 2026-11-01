@@ -190,7 +190,7 @@ You need:
 1. An existing organizational VPN and VPN software on your PC
 2. Admin access to your Windows 10 PC
 3. Your VPN credentials
-4. A wireless card that supports this. Check it: https://www.quora.com/How-do-i-know-if-i-have-Qualcomm-Atheros-wireless-card
+4. A wireless adapter that supports Mobile Hotspot
 
 Then create the VPN-enabled hotspot:
 
@@ -200,8 +200,8 @@ Then create the VPN-enabled hotspot:
 2. Press the Windows key and type Mobile Hotspot. Open **Mobile Hotspot**, change your Wi-Fi name and password, then turn on the hotspot.
 3. Open **Control Panel** > **Network and Internet** > **Network and Sharing Center** > **Change adapter settings**.
 4. Find the Ethernet # connection marked "Unidentified Network, TAP-&lt;VPNType&gt; Windows Adapter".
-5. Right-click it and go to the **Sharing** tab.
-6. Check allow sharing for other users in the network. From the dropdown, select your mobile hotspot connection, "Local Area Connection #". It should be labeled WiFi Direct Virtual Adapter.
+5. Right-click it, choose **Properties**, then open the **Sharing** tab.
+6. Select **Allow other network users to connect through this computer's Internet connection**. From the dropdown, select your mobile hotspot connection, "Local Area Connection #". It should be labeled WiFi Direct Virtual Adapter.
 7. Join the Mobile Hotspot Wi-Fi from your Oculus Quest.
 8. Check that the VPN applies by checking your IP and location (https://whatismyipaddress.com/).
 9. Launch Nanome behind your firewall.
