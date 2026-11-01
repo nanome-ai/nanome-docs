@@ -13,9 +13,12 @@
  * opens the group its folder belongs to (page-trail.js). The page's own row
  * lists its sections (SideNavItem), and the rail scrolls itself to keep the
  * page and the section in view.
+ *
+ * Under 768px the nav bar has no room for the site links (Home, Nanome.ai,
+ * Download, Contact), so the drawer lists them under the sections.
  */
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
-import { useData } from 'vitepress'
+import { useData, withBase } from 'vitepress'
 import { hasActiveLink } from 'vitepress/dist/client/theme-default/support/sidebar.js'
 import { useSidebar } from 'vitepress/dist/client/theme-default/composables/sidebar.js'
 import SideNavItem from './SideNavItem.vue'
@@ -31,7 +34,7 @@ const emit = defineEmits(['navigate'])
 
 // Active state is matched against the page's source path, not the URL — that
 // is what VitePress's own helpers compare, and it survives `cleanUrls`.
-const { page } = useData()
+const { page, theme } = useData()
 const { sidebarGroups } = useSidebar()
 const sectionId = useSectionSpy()
 const pageTrail = usePageTrail()
@@ -102,6 +105,19 @@ const groups = computed(() =>
   }))
 )
 
+// The nav bar's site links, opened the same way.
+const siteLinks = computed(() =>
+  (theme.value.nav || []).map((link) => {
+    const external = /^https?:\/\//.test(link.link)
+    return {
+      text: link.text,
+      href: external ? link.link : withBase(link.link),
+      target: external ? '_blank' : undefined,
+      rel: external ? 'noopener noreferrer' : undefined,
+    }
+  })
+)
+
 function isOpen(group) {
   if (!group.collapsible) return true
   const override = overrides.value[group.text]
@@ -164,6 +180,18 @@ function toggle(group) {
           />
         </ul>
       </div>
+    </nav>
+    <nav v-if="siteLinks.length" class="n-sidenav__site" aria-label="Site" @click="onClick">
+      <a
+        v-for="link in siteLinks"
+        :key="link.text"
+        class="n-sidenav__sitelink"
+        :href="link.href"
+        :target="link.target"
+        :rel="link.rel"
+      >
+        {{ link.text }}
+      </a>
     </nav>
   </aside>
 </template>
@@ -260,6 +288,37 @@ function toggle(group) {
 
 .n-sidenav__group.is-open > .n-sidenav__label > .n-sidenav__caret {
   color: var(--n-accent);
+}
+
+/* The site links, under the sections, only while the nav bar hides them. */
+.n-sidenav__site {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--n-border);
+}
+
+.n-sidenav__sitelink {
+  padding: 5px 8px;
+  border-radius: var(--n-radius-sm);
+  color: var(--n-text-muted);
+  font-size: var(--n-text-sm);
+  font-weight: 500;
+  line-height: 1.45;
+  text-decoration: none;
+  transition: color var(--n-transition), background var(--n-transition);
+}
+
+.n-sidenav__sitelink:hover {
+  background: var(--n-surface-hover);
+  color: var(--n-text);
+}
+
+@media (min-width: 768px) {
+  .n-sidenav__site {
+    display: none;
+  }
 }
 
 /* --- Drawer below 960px -------------------------------------------------- */

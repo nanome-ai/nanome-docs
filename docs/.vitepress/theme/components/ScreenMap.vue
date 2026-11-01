@@ -203,10 +203,28 @@ export default defineComponent({
         if (row.children.length > n) row.style.setProperty('--sm-card-max', `${Math.floor(((width - (n - 1) * gap) / n) * 100) / 100}px`)
       }
     }
+    // With the cards around the image, the row above it comes first in the
+    // page, so Tab and a screen reader meet the parts in the order they're
+    // seen. Listed under the image, the cards follow it (see the render).
+    const around = ref(false)
+    const placeShot = () => {
+      const map = root.value?.querySelector('.n-screenmap')
+      if (!map) return
+      const next = getComputedStyle(map).gridTemplateAreas !== 'none'
+      if (next === around.value) return
+      // Moving a part of the map takes focus off it, so it gets it back.
+      const had = root.value.contains(document.activeElement) ? document.activeElement : null
+      around.value = next
+      if (had) nextTick(() => had.isConnected && document.activeElement !== had && had.focus({ preventScroll: true }))
+    }
+
     let rower = null
     onMounted(() => {
       if (typeof ResizeObserver === 'undefined' || !root.value) return
-      rower = new ResizeObserver(evenRows)
+      rower = new ResizeObserver(() => {
+        evenRows()
+        placeShot()
+      })
       rower.observe(root.value)
       for (const row of root.value.querySelectorAll('.n-screenmap > .n-screenmap__top, .n-screenmap > .n-screenmap__bottom')) rower.observe(row)
     })
@@ -319,6 +337,7 @@ export default defineComponent({
         return h(
           'div',
           {
+            key: s,
             class: ['n-screenmap__side', `n-screenmap__${s}`, { 'is-level': at !== null }],
             style: at !== null ? { '--sm-at': at.toFixed(3) } : lean(s),
           },
@@ -339,6 +358,41 @@ export default defineComponent({
         },
         ...SIDES.map((s) => ({ [`has-${s}`]: sides[s].length > 0 })),
       ]
+
+      const shot = h('div', { class: 'n-screenmap__shot', key: 'shot' }, [
+        h(
+          'div',
+          {
+            class: ['n-screenmap__scroll', { 'more-left': more.value.left, 'more-right': more.value.right }],
+            tabindex: pan.value ? 0 : undefined,
+            role: pan.value ? 'region' : undefined,
+            'aria-label': pan.value ? `${props.alt || 'Screenshot'}, scrolls sideways` : undefined,
+            onScrollPassive: edges,
+          },
+          [
+            h(HotShot, {
+              src: props.src,
+              alt: props.alt,
+              crop: props.crop,
+              spots,
+              active: active.value,
+              focus: view.focused.value,
+              onEnter: enter,
+              onLeave: leave,
+              onOpen: open,
+              onPick: pick,
+            }),
+          ]
+        ),
+        pan.value
+          ? h('p', { class: 'n-screenmap__hint', 'aria-hidden': 'true' }, [
+              h('svg', { viewBox: '0 0 24 24', width: 14, height: 14 }, [
+                h('path', { d: 'M7 8l-4 4 4 4M17 8l4 4-4 4M3 12h18', fill: 'none', stroke: 'currentColor', 'stroke-width': 2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }),
+              ]),
+              'Scrolls sideways',
+            ])
+          : null,
+      ])
 
       return h(
         'div',
@@ -375,49 +429,14 @@ export default defineComponent({
                     '--sm-fit-h': fitHeight.value ? `${fitHeight.value}px` : undefined,
                   },
                 },
-                // The image first, then the cards in reading order, so Tab
-                // reaches them in the order they're read when they're listed
-                // under the image. Around the image, grid areas place them.
-                [
-                  h('div', { class: 'n-screenmap__shot' }, [
-                    h(
-                      'div',
-                      {
-                        class: ['n-screenmap__scroll', { 'more-left': more.value.left, 'more-right': more.value.right }],
-                        tabindex: pan.value ? 0 : undefined,
-                        role: pan.value ? 'region' : undefined,
-                        'aria-label': pan.value ? `${props.alt || 'Screenshot'}, scrolls sideways` : undefined,
-                        onScrollPassive: edges,
-                      },
-                      [
-                        h(HotShot, {
-                          src: props.src,
-                          alt: props.alt,
-                          crop: props.crop,
-                          spots,
-                          active: active.value,
-                          focus: view.focused.value,
-                          onEnter: enter,
-                          onLeave: leave,
-                          onOpen: open,
-                          onPick: pick,
-                        }),
-                      ]
-                    ),
-                    pan.value
-                      ? h('p', { class: 'n-screenmap__hint', 'aria-hidden': 'true' }, [
-                          h('svg', { viewBox: '0 0 24 24', width: 14, height: 14 }, [
-                            h('path', { d: 'M7 8l-4 4 4 4M17 8l4 4-4 4M3 12h18', fill: 'none', stroke: 'currentColor', 'stroke-width': 2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }),
-                          ]),
-                          'Scrolls sideways',
-                        ])
-                      : null,
-                  ]),
-                  column('top'),
-                  column('left'),
-                  column('right'),
-                  column('bottom'),
-                ]
+                // In a list, the image first, then the cards in reading order;
+                // around the image, the row above it, the image between the
+                // columns beside it, then the row below. Either way Tab reaches
+                // them in the order they're seen. Grid areas place them around
+                // the image, and keys let the image move without reloading.
+                around.value
+                  ? [column('top'), column('left'), shot, column('right'), column('bottom')]
+                  : [shot, column('top'), column('left'), column('right'), column('bottom')]
               ),
             ]
           ),

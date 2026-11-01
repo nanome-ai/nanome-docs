@@ -233,9 +233,27 @@ function onPointerLeave() {
   if (!focusInside) startAutoplay()
 }
 
-function onFocusIn() {
+function onFocusIn(event) {
   focusInside = true
   stopAutoplay()
+  const slide = event.target.closest?.('.carousel-slide')
+  if (slide) showFocused(slide)
+}
+
+// Tab can reach a slide that only a sliver of overlaps the track, and the
+// browser doesn't scroll to it then. Slide it fully into view, at the edge
+// it came from. Clones have nothing to focus, so the slide is a real one.
+function showFocused(slide) {
+  if (!track.value || !slide.contains(document.activeElement)) return
+  if (isTransitioning.value) {
+    setTimeout(() => showFocused(slide), 150)
+    return
+  }
+  const t = track.value.getBoundingClientRect()
+  const r = slide.getBoundingClientRect()
+  const i = [...track.value.children].indexOf(slide)
+  if (r.right > t.right + 1) scrollAndWrap(i - props.slidesToShow + 1)
+  else if (r.left < t.left - 1) scrollAndWrap(i)
 }
 
 function onFocusOut(event) {

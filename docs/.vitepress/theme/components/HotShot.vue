@@ -24,6 +24,8 @@ const props = defineProps({
   spots: { type: Array, default: () => [] },
   active: { type: Number, default: 0 },
   focus: { type: Boolean, default: false },
+  /** Puts the expand button under the frame, for an image whose free corners show controls. */
+  expandBelow: { type: Boolean, default: false },
 })
 
 const emit = defineEmits(['enter', 'leave', 'open', 'pick'])
@@ -106,11 +108,15 @@ watch(
  * top left and bottom left in turn. When every corner holds a region, as on a
  * sequence strip at phone width, it sits just under the frame's bottom-right
  * corner instead. A region over a quarter of the frame, such as a whole panel,
- * doesn't count: the button hides only its edge.
+ * doesn't count: the button hides only its edge. So does a strip under about
+ * 2.5 times the button's height, where any corner would cover its text, and
+ * an image whose corners show controls the legend doesn't list (`expandBelow`).
  */
 const corner = computed(() => {
   if (!props.spots.length) return ''
+  if (props.expandBelow) return 'is-below'
   const [fw, fh] = frameSize.value || [400, 400 / ratio.value]
+  if (fh < 70) return 'is-below'
   // The button is 25px square, 8px in from the edges; 1px more all round.
   const bw = (27 / fw) * 100
   const bh = (27 / fh) * 100
@@ -282,7 +288,7 @@ function pick(spot) {
         <svg viewBox="0 0 24 24" width="15" height="15"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
       </button>
     </div>
-    <!-- Every corner holds a region, so the button sits under the frame. -->
+    <!-- No corner is free, so the button sits under the frame. -->
     <button
       v-if="!focus && below"
       type="button"

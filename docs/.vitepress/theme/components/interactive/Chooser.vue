@@ -112,8 +112,12 @@ function pruneStranded() {
   }
 }
 
-function reset() {
+// Start over goes away with the answers, so focus moves to the first option
+// instead of dropping to the page.
+async function reset() {
   for (const key of Object.keys(answers)) answers[key] = undefined
+  await nextTick()
+  root.value?.querySelector('.n-choice')?.focus()
 }
 
 // Results read the answers through here rather than through props.

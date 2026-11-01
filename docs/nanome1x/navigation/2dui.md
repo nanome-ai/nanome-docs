@@ -38,7 +38,7 @@ Manage users or request presenter privilege.
 
 ## Menu Management Tab
 
-<ShotRow src="navigating-page/2D-Menu.jpg" alt="The Menu Management tab with its menu buttons">
+<ShotRow src="navigating-page/2D-Menu.jpg" alt="The Menu Management tab with its menu buttons" expand-below>
 
 Toggle or manage menus.
 
@@ -56,7 +56,7 @@ Toggle or manage menus.
 
 ## View Navigation Tab
 
-<ShotRow src="navigating-page/2D-View.jpg" alt="The View Navigation tab with Movement, Sensitivity and Camera">
+<ShotRow src="navigating-page/2D-View.jpg" alt="The View Navigation tab with Movement, Sensitivity and Camera" expand-below>
 
 Change options for view control.
 
@@ -70,7 +70,7 @@ Change options for view control.
 
 ## Setting Tab {#settings-tab}
 
-<ShotRow src="navigating-page/2D-Setting.jpg" alt="The Setting tab with the Skybox and Volume sliders">
+<ShotRow src="navigating-page/2D-Setting.jpg" alt="The Setting tab with the Skybox and Volume sliders" expand-below>
 
 Change settings including volume and environment background.
 

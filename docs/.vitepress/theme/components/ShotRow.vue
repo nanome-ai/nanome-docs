@@ -9,6 +9,10 @@
  * `stack` stacks them at every width: the image, centered and no taller than
  * min(70vh, 640px), then the legend under it.
  *
+ * `expand-below` puts the expand button under the image instead of in a
+ * corner, for a screenshot whose corners show controls, such as a tab icon or
+ * an Undo button, that the legend doesn't list.
+ *
  * A legend row (<UiItem>) or card (<IconCard>) with an `area` ("x,y,w,h",
  * percent of the image) lights up that part of the image while it's hovered,
  * and hovering the image lights up the row. Clicking a part of the image goes
@@ -43,6 +47,7 @@ const props = defineProps({
   alt: { type: String, default: '' },
   crop: { type: String, default: '' },
   stack: { type: Boolean, default: false },
+  expandBelow: { type: Boolean, default: false },
 })
 
 /** The image's width over its height, after the crop. */
@@ -365,6 +370,7 @@ async function pick(n) {
               :spots="spots"
               :active="active"
               :focus="view.focused.value"
+              :expand-below="expandBelow"
               @enter="enter"
               @leave="leave"
               @open="view.open"

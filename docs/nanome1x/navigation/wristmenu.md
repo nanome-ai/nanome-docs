@@ -18,7 +18,7 @@ Wrist menu contains access to features independent from the content of the works
 
 ## Quick Menus
 
-<ShotRow src="navigating-page/Wrist-QuickMenus.jpg" alt="The Quick Menus panel above the Wrist Menu" crop="4.4,5.5,66.1,90.9">
+<ShotRow src="navigating-page/Wrist-QuickMenus.jpg" alt="The Quick Menus panel above the Wrist Menu" crop="4.4,5.5,66.1,90.9" expand-below>
 
 Toggle on and off each menu quickly or all at once.
 
@@ -32,7 +32,7 @@ Toggle on and off each menu quickly or all at once.
 
 ## Room
 
-<ShotRow src="navigating-page/Wrist-Room-ManageUsers.jpg" alt="The Manage Users panel above the Room buttons of the Wrist Menu" crop="4.0,1.5,66.0,95.5">
+<ShotRow src="navigating-page/Wrist-Room-ManageUsers.jpg" alt="The Manage Users panel above the Room buttons of the Wrist Menu" crop="4.0,1.5,66.0,95.5" expand-below>
 
 <UiList label="Manage Users">
 <UiItem icon="users" name="Manage Users" area="17.2,63.7,19.9,12.3">Manage users by giving them the presenter privilege or teleporting them.</UiItem>
@@ -59,7 +59,7 @@ Quickly manage the enabled menus and format them in certain layouts.
 
 ## Settings
 
-<ShotRow src="navigating-page/Wrist_Settings_Menu2.jpg" alt="The Settings buttons of the Wrist Menu" crop="5.0,10.0,64.0,80.0">
+<ShotRow src="navigating-page/Wrist_Settings_Menu2.jpg" alt="The Settings buttons of the Wrist Menu" crop="5.0,10.0,64.0,80.0" expand-below>
 
 <UiList label="Settings on the Wrist Menu">
 <UiItem name="Mic indicator" area="14.8,39.0,42.5,4.4">The center area of the settings menu has an indicator for your current mic volume. You can use it to check if your mic is working.</UiItem>
@@ -85,7 +85,7 @@ Quickly manage the enabled menus and format them in certain layouts.
 
 ### User
 
-<ShotRow src="navigating-page/Wrist_Settings_User_2.png" alt="The User tab of the Settings menu" crop="32.0,17.3,64.0,40.9">
+<ShotRow src="navigating-page/Wrist_Settings_User_2.png" alt="The User tab of the Settings menu" crop="32.0,17.3,64.0,40.9" expand-below>
 
 <UiList label="User">
 <UiItem name="Avatar Settings" area="66.7,20.5,26.8,13.2">Opens the avatar customizations below.</UiItem>

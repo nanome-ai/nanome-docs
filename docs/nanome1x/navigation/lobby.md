@@ -51,7 +51,7 @@ Nanome Basics is our introductory tutorial that gets the user acquainted with th
 
 </ShotRow>
 
-<ShotRow src="navigating-page/nanome_basics_completed.png" alt="The Nanome Basics completed panel, with Exit Tutorial and Advanced Tutorials buttons">
+<ShotRow src="navigating-page/nanome_basics_completed.png" alt="The Nanome Basics completed panel, with Exit Tutorial and Advanced Tutorials buttons" expand-below>
 
 Once the Nanome Basics tutorial is completed, you can move onto Advanced Tutorials or you can exit the tutorial.
 
