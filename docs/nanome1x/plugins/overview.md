@@ -1,8 +1,8 @@
 ---
-title: Overview
+title: Plugins Overview
 ---
 
-# Overview
+# Plugins Overview
 
 *The Plugin System, Nanome's Python API, lets scientists customize the interface and connect outside molecular simulation tools.*
 

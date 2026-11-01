@@ -6,6 +6,8 @@ title: Voice Command
 
 You can control Nanome with your voice. To start, hold down the Y button on the left controller or say "OK Nanome". When the voice command prompt appears, you can say a command into your headset's mic.
 
+An option in the action menu turns off the need for the activation phrase.
+
 Here are the voice commands and combinations currently available:
 
 ## Menu Commands
@@ -21,6 +23,9 @@ Here are the voice commands and combinations currently available:
 - Split selection
 - Duplicate selection
 - Delete selection
+- Select / Deselect waters
+- Select / Deselect hetatoms
+- Extend / Shrink selection (by up to 19 Å)
 - Export
 
 ## Structure Display Commands
@@ -33,7 +38,7 @@ Here are the voice commands and combinations currently available:
   - Boxes
   - Waters
   - Hydrogens
-  - heteroatom(s)
+  - Heteroatoms
   - Selection
   - All
 - Display using +
@@ -62,6 +67,8 @@ Here are the voice commands and combinations currently available:
 - Request presenter
 - Turn the music on / off
 - Mute / Unmute Microphone
+- Undo / Redo
+- Save
 - Yes / No / Cancel (for answering prompts)
 
 ## Coloring Commands

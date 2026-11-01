@@ -13,7 +13,7 @@ The Chemical Interactions plugin visualizes ligand-receptor and protein-protein 
 
 <Steps>
 
-1. Select Structure 1 from the dropdown. This should be the receptor, or the larger of the two interacting proteins.
+1. Select Structure 1 from the dropdown. This should be the receptor, or the larger of the 2 interacting proteins.
 
 2. Set your Selection mode for Structure 2
     - **Selected Atoms/Residues**: Uses the atoms/residues selected in the workspace, and calculates interactions with Structure 1.
@@ -29,17 +29,19 @@ The Chemical Interactions plugin visualizes ligand-receptor and protein-protein 
     - Change the visibility or color of each interaction type
     - **Show All**: Shows all interaction types, hides them all, or goes back to the default ones. Its label cycles through Show All, Hide All and Show Default.
     - **Clear Frame** deletes all interaction lines visible in the workspace.
+    - **Distances**: labels each visible interaction line with its length in Å.
 
 </Steps>
 
 <UiList label="Chem Interactions menu">
-<UiItem name="Structure 1" area="31.1,20.0,19.2,11.3">The receptor, or the larger of the two interacting proteins.</UiItem>
+<UiItem name="Structure 1" area="31.1,20.0,19.2,11.3">The receptor, or the larger of the 2 interacting proteins.</UiItem>
 <UiItem name="Structure 2" area="50.5,20.0,18.7,11.3">Another complex, or a ligand found in Structure 1. Used with Specific Structures.</UiItem>
 <UiItem name="Selected Atoms/Residues" area="31.1,33.2,38.1,5.0">Selection mode that uses the atoms/residues selected in the workspace.</UiItem>
 <UiItem name="Specific Structures" area="31.1,38.3,38.1,5.1">Selection mode that uses the Structure 2 dropdown. Picked here.</UiItem>
 <UiItem name="Calculate" area="31.1,44.4,38.1,7.2">Finds the interactions with Arpeggio and draws them in the workspace.</UiItem>
 <UiItem name="Show All" area="31.4,59.7,6.8,3.7">Shows or hides all interaction types. Its label cycles through Show All, Hide All and Show Default.</UiItem>
 <UiItem name="Clear Frame" area="44.2,59.7,9.6,3.7">Deletes all interaction lines visible in the workspace.</UiItem>
+<UiItem name="Distances" area="56.8,59.4,12.2,4.4">Labels each interaction line with its length in Å.</UiItem>
 <UiItem name="Interaction types" area="32.0,65.3,16.6,30.1">Shows or hides each interaction type.</UiItem>
 <UiItem name="Colors" area="52.3,65.3,15.1,30.1">Sets the color of each interaction type.</UiItem>
 </UiList>

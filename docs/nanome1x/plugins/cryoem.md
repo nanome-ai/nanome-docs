@@ -9,7 +9,7 @@ The Cryo-EM plugin allows you to load Cryo-EM maps into Nanome.
 There are 2 ways to load a map into Nanome:
 1) Load a map from the Electron Microscopy Data Bank (EMDB), and align it with its corresponding model from the RCSB PDB.
 
-2) Load Maps and models from your Vault.
+2) Load maps and models from your Vault.
 
 ##  Instructions
 
@@ -69,6 +69,7 @@ To edit map colors and isovalues, click the map group on the right-hand side. Th
 <UiList label="Cryo-EM Edit Map Menu">
 <UiItem name="Contour / Isovalue" href="#edit-isovalue" area="49.2,58.1,43.9,4.8">The slider for a new isovalue.</UiItem>
 <UiItem name="Redraw Map" href="#edit-isovalue" area="79.3,47.5,12.9,8.4">Redraws the map at the isovalue on the slider.</UiItem>
+<UiItem name="Opacity" area="47.6,65.5,45.4,9.0">Sets how opaque the map is, in percent. The map updates when you let go of the slider.</UiItem>
 <UiItem name="Color Scheme" href="#change-color-scheme" area="47.7,76.7,46.4,6.3">Dropdown for the coloring scheme of the map.</UiItem>
 <UiItem name="Show Full Map" href="#map-boxing-options" area="9.3,85.4,27.8,8.8">Renders the entire map.</UiItem>
 <UiItem name="Box Around Model" href="#map-boxing-options" area="37.2,84.9,28.9,8.9">Renders the map only around the model.</UiItem>

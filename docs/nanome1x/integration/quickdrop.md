@@ -4,13 +4,13 @@ title: Quick Drop
 
 # Quick Drop
 
-Quick Drop loads files into Nanome. Files you drag onto home.nanome.ai load the next time you open Nanome on your headset or computer. Other applications can use Quick Drop through Nanome's API to open files in Nanome.
+Quick Drop loads files into Nanome. Files you drag onto home.nanome.ai, up to 100 MB in all, load the next time you open Nanome on your headset or computer. home.nanome.ai keeps them for up to 24 hours and deletes them once they load. Other applications can use Quick Drop through Nanome's API to open files in Nanome.
 
 ## Third-Party Integration
 
 By default, Quick Drop is only available on the home.nanome.ai webpage. However, third-party applications can integrate Quick Drop into their own applications by using Nanome's API. The following sections describe how to integrate Quick Drop into your application.
 
-Nanome has created a PyMOL plugin using Quick Drop, available [here.](https://github.com/nanome-ai/Pymol-plugin-Nanome-Quickdrop)
+Nanome made a [PyMOL plugin that uses Quick Drop](https://github.com/nanome-ai/Pymol-plugin-Nanome-Quickdrop).
 
 As of Nanome 1.24.4, Quick Drop has both a Nanome-hosted and a self-hosted version of Quick Drop. The APIs for these slightly differ, so please refer to the appropriate section below.
 
@@ -33,6 +33,7 @@ const files = [file1, file2]
 // get user login token
 const loginRes = await fetch(`${NANOME_API}/user/login`, {
     method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
         login: 'username',
         pass: 'password'
@@ -40,7 +41,7 @@ const loginRes = await fetch(`${NANOME_API}/user/login`, {
 }).then(res => res.json())
 
 const token = loginRes.results.token.value
-const headers = { 'Authorization': 'Bearer ' + token }
+const headers = { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' }
 
 // get S3 upload URLs
 const addRes = await fetch(`${NANOME_API}/quickdrop/add`, {
@@ -94,6 +95,7 @@ const files = [file1, file2]
 // get user unique ID
 const loginRes = await fetch(`${NANOME_API}/user/login`, {
     method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
         login: 'username',
         pass: 'password'
