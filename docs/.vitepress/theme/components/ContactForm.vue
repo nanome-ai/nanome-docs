@@ -69,11 +69,8 @@
       </button>
     </form>
     <div v-else ref="done" class="contact__done" role="status" tabindex="-1">
-      <h3>Your request has been sent!</h3>
-      <p>
-        Your request was received by our staff, we will get back to you shortly
-        by the email you've provided.
-      </p>
+      <p class="contact__intro">Your request has been sent</p>
+      <p>Thanks. The Nanome team will reply to the email you gave.</p>
     </div>
   </div>
 </template>

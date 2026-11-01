@@ -377,6 +377,12 @@
   hyphens: auto;
 }
 
+/* A web address keeps its spelling: it breaks only at a <wbr>, never with an
+   added hyphen. */
+.vp-doc .n-nohyph {
+  hyphens: manual;
+}
+
 /* Below a wide desktop there is not enough room to share out, so a wide table
    scrolls sideways rather than breaking every word in half. */
 @media (max-width: 1279px) {

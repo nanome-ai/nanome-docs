@@ -40,7 +40,7 @@ Nanome XR.
       <th>Samsung Galaxy XR</th>
       <th>Apple Vision Pro</th>
       <th>Windows PC over Meta Link</th>
-      <th>app.nanome.ai</th>
+      <th><span class="n-nohyph">app.<wbr>nanome.ai</span></th>
     </tr>
   </thead>
   <tbody>
@@ -73,7 +73,7 @@ Nanome XR.
       <td>Meta Horizon Store, through an MDM, or a sideloaded APK</td>
       <td>APK, through an MDM or sideloaded (not on Google Play)</td>
       <td>Apple TestFlight beta</td>
-      <td>Direct download from nanome.ai/versions</td>
+      <td>Direct download from <span class="n-nohyph">nanome.ai/<wbr>versions</span></td>
       <td>Nothing to install</td>
     </tr>
     <tr>
@@ -176,10 +176,8 @@ for each platform, with nothing else on screen.
 
 1. 'Shown Atom Count' only refers to the count of atoms displayed in the
    workspace. Larger structures can be loaded within the workspace and hidden.
-2. Surfaces (on/off), secondary structures (ribbons on/off), and supplemental
-   materials (PDF/JPEGs, whiteboards, web browsers, labels) all affect
-   performance in different ways significantly. The 'Shown Atom Count' column
-   is given assuming nothing else is displayed in the scene.
+2. Surfaces, cartoons, labels and images in the scene all add to what has to
+   be drawn. The 'Shown Atom Count' column assumes nothing else is shown.
 3. Desktop is assumed to be "VR ready"; see the
    [minimum and recommended PC specs](/help/pchardware). PCVR ratings carry
    over from Nanome Classic (v1.24). Nanome XR sets no drawing budget on PCVR,
@@ -362,6 +360,5 @@ for each platform, with nothing else on screen.
 </table>
 
 Keeping a session inside these numbers is covered in
-[Keep it comfortable](/session-guide#comfort): hide what a scene does not need,
-keep surfaces to the pocket or hide them, and show one atomistic
-representation per component.
+[Keep it comfortable](/session-guide#comfort): hide what a scene doesn't need,
+keep surfaces small, and show atoms only for the part under discussion.
