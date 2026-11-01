@@ -372,7 +372,7 @@ The estimate is a simple cosine term for the dihedral angle (3-fold for spÂ³-spÂ
 
 The Residue Editor mutates protein residues and picks their side-chain rotamers. Its rotamer library is the 2010 backbone-dependent library from the Dunbrack lab.
 
-It works on the selected protein residues. Picking one in its list edits that residue. Moving the thumbstick left or right previews the rotamers, scored for clashes and hydrogen bonds.
+It works on the selected protein residues. Pulling the trigger on a residue in 3D adds it to the selection, or removes it if it's already selected. Picking one in the editor's list edits that residue. Moving the thumbstick left or right previews the rotamers, scored for clashes and hydrogen bonds.
 
 <ShotRow src="nanome-v2/v2-7/tool-residue-editor.webp" alt="The Residue Editor panel">
 
