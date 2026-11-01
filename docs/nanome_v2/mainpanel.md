@@ -5,7 +5,7 @@ title: Main Panel
 
 # Main Panel
 
-The Main Panel is where you manage structures, ligands, workspaces, people and settings. It opens from the [Wrist Menu](/nanome_v2/wristmenu) or with the **Menu** button on the off-hand controller. Everyone in a session has their own.
+The Main Panel is where you manage structures, ligands, workspaces, people and settings. It opens from the [Wrist Menu](/nanome_v2/wristmenu) or, in right-handed mode, with the **Menu** button on the left controller. Everyone in a session has their own.
 
 The [Scenes Panel](/nanome_v2/scenespanel) sits on the left of the Main Panel and the [Tools Panel](/nanome_v2/toolspanel) on the right. The 2 buttons at the panel's top right change the panel itself.
 
@@ -130,7 +130,7 @@ In a headset, **Load Structure** in the Tools Panel loads a structure by PDB cod
 Both entries are crystal structures of E. coli dihydrofolate reductase from Sawaya and Kraut, Biochemistry 36:586-603 (1997), [doi:10.1021/bi962337c](https://doi.org/10.1021/bi962337c).
 
 - [1RX2](https://www.rcsb.org/structure/1RX2) holds folate and NADP+, at 1.8 Å. The substrate site and the cofactor site sit side by side: NADP+'s nicotinamide is 3.1 Å from folate, so Include ligands brings NADP+ in from 4 Å.
-- [1RX3](https://www.rcsb.org/structure/1RX3) holds methotrexate, an antifolate drug that binds where folate does, with the enzyme's NADP cofactor beside it, at 2.2 Å. The two crystals have the same space group and nearly the same cell, so their Cα atoms agree to 0.23 Å RMSD as deposited and the entries overlay without an alignment.
+- [1RX3](https://www.rcsb.org/structure/1RX3) holds methotrexate, an antifolate drug that binds where folate does, with the enzyme's NADP cofactor beside it, at 2.2 Å. The 2 crystals have the same space group and nearly the same cell, so their Cα atoms agree to 0.23 Å RMSD as deposited and the entries overlay without an alignment.
 
 </Accordion>
 
@@ -175,13 +175,13 @@ Metal coordination has been an interaction type since release 2.4. Since 2.7, me
 
 <Accordion title="How clashes are counted" teaser="Any overlap, hydrogens included.">
 
-**VDW Clashes** are computed only between entries, for atoms closer than the sum of their van der Waals radii. Any overlap counts and hydrogens are included, so ordinary close contacts, such as hydrogen-bonded atoms, can also show as clashes. Clash markers grow larger and brighter the more two atoms overlap.
+**VDW Clashes** are computed only between entries, for atoms closer than the sum of their van der Waals radii. Any overlap counts and hydrogens are included, so ordinary close contacts, such as hydrogen-bonded atoms, can also show as clashes. Clash markers grow larger and brighter the more the atoms overlap.
 
 </Accordion>
 
 <Accordion title="Detection thresholds" teaser="The geometric criteria for each interaction type.">
 
-- **Hydrogen bond**: donor-acceptor distance up to 3.9 Å when the acceptor is N, O or F (4.4 Å otherwise). With explicit hydrogens, the H···acceptor distance must be 1.6 Å to 2.7 Å (1.8 Å to 3.0 Å for other acceptors) and the donor-H···acceptor angle at least 100°. Without hydrogens, only the distance and the angle at the acceptor are checked. Backbone amide N isn't an acceptor, and proline N isn't a donor.
+- **Hydrogen bond**: donor-acceptor distance up to 3.9 Å when the acceptor is N, O or F (4.4 Å otherwise). With explicit hydrogens, the H···acceptor distance must be 1.6 Å to 2.7 Å (1.8 Å to 3.0 Å for other acceptors) and the donor-H···acceptor angle at least 100°. Without hydrogens, Nanome places one 0.96 Å from the donor, toward the acceptor. Either way, the angle from the hydrogen through the acceptor to an atom bonded to it must be over 75°. A water oxygen with nothing bonded to it skips that angle and needs the donor within 3.5 Å instead. Backbone amide N isn't an acceptor, and proline N isn't a donor.
 - **π stacking**: face-to-face rings within 5.5 Å and under 30° apart, or T-shaped rings within 6.5 Å at 60° to 120°, with a lateral offset under 2 Å.
 - **Salt bridge**: charged-group centroids within 5.5 Å.
 - **Cation-π**: cation within 6 Å of a ring centroid, offset under 2 Å.
@@ -270,7 +270,7 @@ Entries with several models, such as a multi-MODEL PDB, and entries with a traje
 <UiItem icon="player-pause" name="Play / Pause" area="72.9,44.2,7.1,7.5">Pauses or resumes.</UiItem>
 <UiItem icon="player-track-next" name="Play forwards" area="80.8,44.2,7.1,7.5">Plays in order. The lit button shows which way it's playing.</UiItem>
 <UiItem name="Speed" area="55.8,52.4,41.3,6.2">×1, ×2, ×5, ×10 or ×20.</UiItem>
-<UiItem icon="player-stop" name="Stop model playback and reset active models" area="33.3,8.9,7.1,7.4">In the Components toolbar while anything plays. Stops playback.</UiItem>
+<UiItem icon="player-stop" name="Stop model playback and reset active models" area="33.3,8.9,7.1,7.4">In the Components toolbar while anything plays. Stops playback and returns each entry to the model or frame it showed before playback.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -303,7 +303,7 @@ Every ligand in the workspace in one table, with a 2D drawing and calculated pro
 <UiItem name="Property columns" href="#ligand-property-columns" area="24.0,19.0,44.0,17.6">NumAtoms and MolWeight to start.</UiItem>
 <UiItem icon="zoom" name="Zoom" area="76.1,26.7,5.8,5.3">Centers the view on the ligand.</UiItem>
 <UiItem icon="info-small" name="Details" area="82.0,26.7,5.8,5.3">Lists the ligand's tag and properties, each with a switch that shows it as a 3D label, and a Duplicate to Entry button.</UiItem>
-<UiItem icon="edit-circle" name="Edit" href="/nanome_v2/toolspanel#builder-tool" area="87.9,26.7,5.8,5.3">Opens the ligand in the Builder Tool.</UiItem>
+<UiItem icon="edit-circle" name="Edit ligand" href="/nanome_v2/toolspanel#builder-tool" area="87.9,26.7,5.8,5.3">Opens the ligand in the Builder Tool.</UiItem>
 <UiItem icon="caret-down-filled" name="Set Tag" area="73.8,32.7,22.3,5.3">Tags it, for example as Hit or Lead. Also Remove Tag, Edit list and Show 3D tag.</UiItem>
 </UiList>
 
@@ -337,18 +337,18 @@ Nanome calculates the properties with RDKit on its server, and Nanome Web shows 
 | Column | What it is |
 |--------|------------|
 | **NumAtoms** | Number of atoms, including hydrogens. For B96 in 1KV2 (C₃₁H₃₇N₅O₃) it's 76: 31 C, 37 H, 5 N and 3 O |
-| **NumHeavyAtoms** | Number of non-hydrogen atoms |
+| **NumHeavy<wbr>Atoms** | Number of non-hydrogen atoms |
 | **MolWeight** | Monoisotopic (exact) mass in daltons, including hydrogens |
-| **HeavyAtomMolWeight** | Monoisotopic (exact) mass of the non-hydrogen atoms only |
+| **HeavyAtom<wbr>MolWeight** | Monoisotopic (exact) mass of the non-hydrogen atoms only |
 | **LogP** | Wildman-Crippen estimate of log P, the base-10 logarithm of the octanol-water partition coefficient |
 | **TPSA** | Topological polar surface area (Ertl method, from N and O atoms only), in Å² |
 | **HbondD** | Hydrogen-bond donor count (RDKit's pattern-based definition, which differs from Lipinski's N-H plus O-H count) |
 | **HbondA** | Hydrogen-bond acceptor count (RDKit's pattern-based definition, which differs from Lipinski's N plus O count) |
-| **NumRotatableBonds** | Rotatable bond count |
+| **NumRotatable<wbr>Bonds** | Rotatable bond count |
 | **NumRings** | Ring count |
-| **NumAromaticRings** | Aromatic ring count |
-| **NumAliphaticRings** | Count of rings with at least one non-aromatic bond |
-| **NumSaturatedRings** | Count of rings made only of single bonds |
+| **NumAromatic<wbr>Rings** | Aromatic ring count |
+| **NumAliphatic<wbr>Rings** | Count of rings with at least 1 non-aromatic bond |
+| **NumSaturated<wbr>Rings** | Count of rings made only of single bonds |
 | **SMILES** | SMILES string |
 | **InChIKey** | Standard InChIKey |
 | **Rating** | A value people enter, stored with the ligand. The column shows 5 stars; picking the current star again clears it |
@@ -359,13 +359,13 @@ Nanome calculates the properties with RDKit on its server, and Nanome Web shows 
 
 </Callout>
 
-The table below holds 8 inhibitors of p38α MAP kinase from the PDB. It looks like Nanome Web's table, with NumAtoms headed **Atoms** and MolWeight **MW**, and it sorts, searches, filters, keeps view presets and enlarges drawings the way Nanome XR does. Its row menu follows Nanome Web's. In Nanome XR a row has Zoom, Details, Edit and Set Tag, listed above.
+The table below holds 8 inhibitors of p38α MAP kinase from the PDB. It looks like Nanome Web's table, with NumAtoms headed **Atoms** and MolWeight **MW**, and it sorts, searches, filters, keeps view presets and enlarges drawings the way Nanome XR does. Its row menu follows Nanome Web's. In Nanome XR a row has Zoom, Details, Edit ligand and Set Tag, listed above.
 
 <LigandTableDemo app="xr" />
 
 <Accordion title="Where the sample ligands come from" teaser="8 PDB entries of human p38α, and RDKit for the values.">
 
-Each one comes from an X-ray structure of human p38α MAP kinase (UniProt Q16539) in which it's the only ligand. Its SMILES comes from its record in the RCSB Chemical Component Dictionary, and each value is computed from that SMILES with RDKit. RDKit gives the NumAtoms and MolWeight values Nanome shows: 76 and 527.290 for B96 in 1KV2, and 72 and 548.216 for G0T in 4CEO.
+Each one comes from an X-ray structure of human p38α MAP kinase (UniProt Q16539) in which it's the only ligand. Its SMILES comes from its record in the RCSB Chemical Component Dictionary, and each value is computed from that SMILES with RDKit. RDKit gives the NumAtoms and MolWeight values Nanome shows, such as 76 and 527.290 for B96 in 1KV2.
 
 | Name | Ligand | PDB entry | Also known as |
 |------|--------|-----------|---------------|
@@ -410,7 +410,7 @@ The tags are examples, and so are the 2 hidden entries, 1BL6 and 1BL7, that **Fi
 
 <ShotRow src="nanome-v2/v2-7/workspaces-tab-projects.webp" alt="The Projects list in the Workspaces tab" stack>
 
-The **Projects** tab lists projects with their workspace count, owner and modified date. Choosing a project filters the workspace list to it. Projects are edited in [Nanome Web](/nanome_web/home#projects).
+The **Projects** tab lists projects with their workspace count, owner and modified date. Choosing a project opens its page: a back arrow, the project's **Description**, **Focus** and **Lead**, and its workspaces with **New**, **Load for All** and **Load**. There the date column is **Modified** instead of **Last Opened**. Projects are edited in [Nanome Web](/nanome_web/home#projects).
 
 </ShotRow>
 
@@ -491,3 +491,14 @@ When more than one server is set up, a <AppIcon name="server" /> **Change Server
 The themes are Default, Arctic Cyan, Aurora Green, Black & White, Gold Orange, Island and Pure Black. Since release 2.7 the skyboxes are procedurally generated mountains in each theme's colors, and Night mode switches each one between its day and night version. Pure Black is a plain black sky by day and by night.
 
 Each theme, by day and by night, is on the [Environment](/nanome_v2/environment#skybox-and-floor) page.
+
+<style scoped>
+/* The long RDKit names in the Property columns table break at their <wbr>
+   points only on a phone. Wider screens drop those break points, so each
+   name stays on one line. */
+@media (min-width: 640px) {
+  table td:first-child wbr {
+    display: none;
+  }
+}
+</style>

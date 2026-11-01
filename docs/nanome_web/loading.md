@@ -20,14 +20,14 @@ When a structure has a bound ligand, Nanome builds a binding-site view automatic
 
 ## <AppIcon name="upload" /> Upload from your computer {#upload-from-your-computer}
 
-The <Btn icon="upload">Click to Upload</Btn> button opens a file picker, and files can also be dragged onto the workspace. The web app accepts the full range of [supported formats](/nanome_web/fileformats): structures, session files, trajectories and electrostatic maps.
+The <Btn icon="upload">Click to Upload</Btn> button opens a file picker for structures, session files and trajectories. Files, DX maps included, can also be dropped anywhere in Nanome Web. An **Upload** dialog then offers **Add to this Workspace**, **Add to other Workspace** and, with MARA, **Attach to Chat**. A single `.mae`, `.moe` or `.pse` session file can also **Load as New Workspace**. Neither the picker nor a drop takes `.ent`, `.smi` or `.smiles` files. [Supported File Formats](/nanome_web/fileformats) lists every format.
 
 - Some formats that a workspace can't open on its own, such as `.bcif`, `.mcif`, `.sd`, `.mol` and `.mol2`, are loaded through a MARA tool that supports them.
 - Trajectories and DX maps attach to an entry. They're added from the entry's <AppIcon name="dots" /> **(...)** menu with **Load trajectory** or **Load DX map**, or uploaded like any other file. An uploaded one attaches to a structure uploaded with it under the same name, such as `run1.pdb` with `run1.xtc`. Otherwise it goes to the workspace's only entry, and with more entries **Attach to Entry** asks which one. See [MD Trajectory Playback](/nanome_web/mdplayback).
 
 ## <AppIcon name="messages" /> Import from Chat {#import-from-chat}
 
-**Import from Chat** lists the structure, session and trajectory files from your MARA conversations, with the chat each came from and its date. The checkboxes select files. **Import** then adds them to the workspace (the button shows the count, such as Import 2 files), and **Deselect All** clears the selection.
+**Import from Chat** shows on accounts with MARA. It lists the structure, session and trajectory files from your MARA conversations, with the chat each came from and its date. The checkboxes select files. **Import** then adds them to the workspace (the button shows the count, such as Import 2 files), and **Deselect All** clears the selection.
 
 <ShotRow src="nanome-web/import-chat-menu.webp" alt="Import from Chat with a file row menu open">
 

@@ -15,7 +15,7 @@ When starting the plugin for the first time, this is what the login menu looks l
 <UiList label="LiveDesign Login">
 <UiItem name="1. Login to LD" area="4.4,11.7,91.5,17.0">Opens the Nanome web browser to log in to LiveDesign.</UiItem>
 <UiItem name="2. Get Auth Token" area="4.4,28.9,91.5,16.7">Opens a web page with your token.</UiItem>
-<UiItem name="Auth Token" area="4.4,61.5,91.5,17.3">Under 3. Paste Auth Token Below. The token goes here.</UiItem>
+<UiItem name="Auth Token" area="4.4,61.5,91.5,17.3">The field under "3. Paste Auth Token Below", where the token goes.</UiItem>
 <UiItem name="Login with Token" area="4.4,81.5,91.5,14.0">Logs in with the pasted token.</UiItem>
 </UiList>
 

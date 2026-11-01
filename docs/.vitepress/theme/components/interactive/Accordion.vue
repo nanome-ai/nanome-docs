@@ -113,6 +113,8 @@ function onToggle(event) {
   font-size: var(--n-text-base);
   font-weight: 600;
   line-height: 1.4;
+  /* A long error name has no spaces, so it breaks where it has to. */
+  overflow-wrap: anywhere;
 }
 
 .n-accordion__tag {

@@ -30,7 +30,7 @@ Viewers can use <span style="white-space: nowrap"><Btn icon="droplet">Pointer</B
 
 ## <AppIcon name="hand-click" /> The controller in each tool {#controller}
 
-Choosing a tool also changes what your dominant-hand controller shows: the tool's badge, the white tip sphere at its tip, and, for tools with 2 or more modes, the current mode above the thumbstick.
+Choosing a tool also changes what your dominant-hand controller shows: the tool's badge, the white tip sphere, and, for tools with 2 or more modes, the current mode above the thumbstick.
 
 <ToolsDemo />
 
@@ -372,7 +372,7 @@ The estimate is a simple cosine term for the dihedral angle (3-fold for spÂ³-spÂ
 
 The Residue Editor mutates protein residues and picks their side-chain rotamers. Its rotamer library is the 2010 backbone-dependent library from the Dunbrack lab.
 
-It works on the selected protein residues. Picking one in its list edits that residue. Moving the thumbstick left or right previews the rotamers, scored for clashes and hydrogen bonds.
+It works on the selected protein residues. Pulling the trigger on a residue in 3D adds it to the selection, or removes it if it's already selected. Picking one in the editor's list edits that residue. Moving the thumbstick left or right previews the rotamers, scored for clashes and hydrogen bonds.
 
 <ShotRow src="nanome-v2/v2-7/tool-residue-editor.webp" alt="The Residue Editor panel">
 
@@ -446,7 +446,7 @@ After a run, the page shows the result and any output files, and <AppIcon name="
 
 ## <AppIcon name="download" /> Load Structure {#load-structure}
 
-**Load Structure** opens a box for a PDB code. <Btn>Load from RCSB</Btn> downloads the entry into the workspace. Other formats are loaded in [Nanome Web](/nanome_web/loading).
+**Load Structure** opens an **Enter Code** box for a 4-character PDB code. <Btn>Load</Btn> downloads the entry from the RCSB into the workspace. Other formats are loaded in [Nanome Web](/nanome_web/loading).
 
 ## <AppIcon name="bug" /> Report a problem {#report-a-problem}
 

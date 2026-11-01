@@ -126,7 +126,7 @@ A session rests on 3 things: how many people join, what they join from, and how 
 
 One workspace works while the group fits in one conversation. Past that, each group gets its own copy built from the same material, so a change one group makes stays with that group.
 
-**Duplicate**, in a workspace's More options menu in Nanome XR or Nanome Web, makes the copy: the same structures and scenes, under the original name with "- Copy" added, owned by whoever made it. The copy keeps the global level but not the people added by email, and every workspace has its own code. On a free license, each copy counts toward the 3 workspaces you can own.
+**Duplicate**, in a workspace's <AppIcon name="dots" /> menu in Nanome XR or Nanome Web, makes the copy: the same structures and scenes, under the original name with "- Copy" added, owned by whoever made it. The copy keeps the global level but not the people added by email, and every workspace has its own code. On a free license, each copy counts toward the 3 workspaces you can own.
 
 </Accordion>
 

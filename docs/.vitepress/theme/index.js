@@ -236,8 +236,20 @@ export default {
     // no zoom view. Detaching closes an open zoom view, so its overlay can't
     // stay on the next page.
     let zoom
+    // Tab while an image is zoomed would move focus to the page under the
+    // overlay, out of sight, so it closes the zoom instead. Vimg then puts
+    // focus back on the image.
+    const onTab = (event) => {
+      if (event.key !== 'Tab' || !zoom.getZoomedImage()) return
+      event.preventDefault()
+      zoom.close()
+    }
     const initZoom = () => {
-      zoom ??= mediumZoom({ background: 'var(--n-bg)' })
+      if (!zoom) {
+        zoom = mediumZoom({ background: 'var(--n-bg)' })
+        zoom.on('open', () => document.addEventListener('keydown', onTab))
+        zoom.on('closed', () => document.removeEventListener('keydown', onTab))
+      }
       zoom.detach()
       zoom.attach('.vimg > img:not(a img), .vp-doc img:not(.no-zoom):not(a img)')
     }

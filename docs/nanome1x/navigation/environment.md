@@ -10,7 +10,7 @@ title: Environment
 
 <vimg src="navigating-page/Teleportation.gif" alt="Teleporting to new spots around a protein" />
 
-In addition to physically moving around in VR, users can teleport around the environment by pointing to a spot on the floor and pressing and holding down the trigger button with their index finger.
+In addition to physically moving around in VR, users can teleport around the environment. Since version 1.24.6, teleporting is turned on with [Edit Position](/nanome1x/navigation/wristmenu) on the wrist menu. Users then point to a spot on the floor and press and hold the trigger button with their index finger.
 
 ## Scaling
 

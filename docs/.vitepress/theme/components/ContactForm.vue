@@ -68,18 +68,15 @@
         <span class="contact__send">Send</span>
       </button>
     </form>
-    <div v-else>
-      <h3>Your request has been sent!</h3>
-      <p>
-        Your request was received by our staff, we will get back to you shortly
-        by the email you've provided.
-      </p>
+    <div v-else ref="done" class="contact__done" role="status" tabindex="-1">
+      <p class="contact__intro">Your request has been sent</p>
+      <p>Thanks. The Nanome team will reply to the email you gave.</p>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { nextTick, ref } from 'vue'
 
 const firstName = ref('')
 const lastName = ref('')
@@ -91,6 +88,8 @@ const content = ref('')
 const success = ref(false)
 const error = ref('')
 const sending = ref(false)
+// The confirmation that replaces the form, which takes focus from Send.
+const done = ref(null)
 
 async function onSubmit() {
   error.value = ''
@@ -122,6 +121,8 @@ async function onSubmit() {
     }
 
     success.value = true
+    await nextTick()
+    done.value?.focus()
   }
   catch {
     error.value = `There was an error processing your request. Please try again later.`
@@ -134,6 +135,11 @@ async function onSubmit() {
 </script>
 
 <style scoped>
+/* It takes focus only so a screen reader reads it; it isn't a control. */
+.contact__done:focus {
+  outline: none;
+}
+
 /* The intro and field labels look as the page's h2 and h3 do, without being
    headings, so the page's outline and heading list stay its own. */
 .contact__intro {

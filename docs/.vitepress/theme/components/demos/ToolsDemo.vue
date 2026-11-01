@@ -93,7 +93,7 @@ const TEXT = {
   'builder-bond': `Pulling the trigger on 2 atoms bonds them, and on a bond changes its order. The white tip sphere is back, and ${HINT('bond')}`,
   'builder-delete': `Pulling the trigger on atoms or bonds deletes them. The badge and the tip sphere turn red, and ${HINT('delete')}`,
   torsion: 'With a structure picked, holding the trigger on a bond rotates the atoms on one side of it. The tool has one mode, so nothing shows above the thumbstick.',
-  'residue-editor': 'The trigger picks the residue at the tip for editing. One mode, so nothing shows above the thumbstick, which steps through rotamers instead.',
+  'residue-editor': 'The trigger selects or deselects the residue at the tip, and the editor works on the selection. One mode, so nothing shows above the thumbstick, which steps through rotamers instead.',
   'mara-tools': 'Tools are picked and run in the MARA Tools panel. The badge shows a wrench, with no tip sphere and no modes.',
 }
 
