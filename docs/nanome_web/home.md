@@ -62,13 +62,13 @@ The **All Workspaces** view lists every workspace you can open.
 Right-clicking a workspace row, or clicking its <AppIcon name="dots" /> **(...)** button, opens the same menu that sits in the header of an open workspace:
 
 <UiList label="Workspace menu">
-<UiItem name="Open in new tab" area="63.8,21.0,31.5,8.5">Opens the workspace in a new browser tab.</UiItem>
+<UiItem icon="external-link" name="Open in new tab" area="63.8,21.0,31.5,8.5">Opens the workspace in a new browser tab.</UiItem>
 <UiItem icon="pencil" name="Edit info" area="63.8,30.1,31.5,8.5">Changes the workspace name and description.</UiItem>
 <UiItem icon="link" name="Copy shareable link" area="63.8,39.3,31.5,8.5">Copies a link to the workspace. If Link access is Members only, it first changes it to Anyone can view.</UiItem>
 <UiItem icon="copy" name="Duplicate" area="63.8,48.6,31.5,8.5">Makes a copy of the workspace.</UiItem>
 <UiItem icon="device-vision-pro" name="Open in XR" href="/nanome_web/collaboration#sending-a-workspace-to-a-headset" area="63.8,57.9,31.5,8.5">Sends the workspace to Nanome XR on your headset. With other people in the headset's session, it asks Just Me or Load for All.</UiItem>
-<UiItem name="Move to project" area="63.8,67.2,31.5,8.5">Moves the workspace into another project.</UiItem>
-<UiItem name="Export analysis" area="63.8,76.5,31.5,8.5">A ZIP of CSV files for the current scene: chemical interactions, measurements and minimization history. Only the open workspace's menu has it; in the list it shows on that workspace's row, grayed out.</UiItem>
+<UiItem icon="folder-share" name="Move to project" area="63.8,67.2,31.5,8.5">Moves the workspace into another project.</UiItem>
+<UiItem icon="file-analytics" name="Export analysis" area="63.8,76.5,31.5,8.5">A ZIP of CSV files for the current scene: chemical interactions, measurements and minimization history. Only the open workspace's menu has it; in the list it shows on that workspace's row, grayed out.</UiItem>
 <UiItem icon="trash" name="Delete" area="63.8,85.8,31.5,8.5">Deletes the workspace. If you don't own the workspace or its project, this item is Leave, which removes you from it.</UiItem>
 </UiList>
 
