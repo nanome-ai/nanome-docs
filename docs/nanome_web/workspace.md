@@ -217,8 +217,8 @@ The bottom of the viewer has Settings on the left, the scene controls in the mid
 
 <UiList label="Viewer settings">
 <UiItem icon="settings" name="Settings" area="9.5,87.3,13.4,11.4">At the bottom left of the viewer: opens the settings card.</UiItem>
-<UiItem icon="sun" name="Day and night toggle" href="#environment-themes" area="14.6,64.0,11.2,9.6">Switches the theme between its day and night versions.</UiItem>
-<UiItem icon="view-360" name="Environment theme" href="#environment-themes" area="27.2,3.7,61.1,70.1">Default, Arctic Cyan, Aurora Green, Black & White, Gold Orange, Island or Pure Black.</UiItem>
+<UiItem icon="sun" name="Toggle night/day skybox" href="#environment-themes" area="14.6,64.0,11.2,9.6">Switches the theme between its day and night versions.</UiItem>
+<UiItem icon="view-360" name="Theme" href="#environment-themes" area="27.2,3.7,61.1,70.1">Default, Arctic Cyan, Aurora Green, Black & White, Gold Orange, Island or Pure Black.</UiItem>
 <UiItem icon="arrows-maximize" name="Fullscreen" area="14.8,74.6,73.8,10.2">Shows the viewer full screen.</UiItem>
 </UiList>
 
@@ -230,7 +230,7 @@ The 7 themes match the themes in Nanome XR.
 
 Since release 2.7 the background around the structures is a range of procedurally generated mountains in the colors of the theme, with a day and a night version of each theme. Nanome Web draws the same mountains as Nanome XR.
 
-Each theme in the copy below shows the viewer in it, by day or by night.
+The copy of the theme settings below shows the viewer in each theme, by day or by night.
 
 <ThemeDemo app="web" />
 
@@ -323,4 +323,4 @@ A scene can hold a recorded presentation, made in Nanome XR with [Add Recording]
 
 ## <AppIcon name="wifi-off" /> Connection warning {#connection-warning}
 
-When the ping to Nanome's server reaches 160 ms, a yellow warning icon <AppIcon name="alert-triangle" /> appears at the top left of the viewer. From 220 ms it turns into a red <AppIcon name="wifi-off" />. Hovering it shows the ping time.
+When the ping to Nanome's server is 160 ms or more on 2 checks in a row (the app checks every 5 seconds), a yellow warning icon <AppIcon name="alert-triangle" /> appears at the top left of the viewer. From 220 ms it turns into a red <AppIcon name="wifi-off" />. Hovering it shows **High ping** and the ping time. A ping warning goes away after 3 checks in a row under 160 ms. The red icon also shows while the viewer reconnects after losing its connection to the session, and hovering it then shows **Connection lost** or **Reconnecting**.

@@ -17,12 +17,12 @@ Videos and articles to help you get started with MARA.
 
 ## <AppIcon name="route" /> Example use cases and workflows {#examples}
 
-Blog posts on how people use MARA in their own workflows.
+Nanome's blog posts that walk through example workflows in MARA.
 
 <IconGrid label="Example use cases">
-<IconCard icon="file-text" title="Bioinformatics Workflow" href="https://nanome.ai/blog/mara-bioinformatics-workflow/">Blog post.</IconCard>
-<IconCard icon="file-text" title="MARA and CDD Integration Example" href="https://nanome.ai/blog/mara-and-cdd-integration-example/">Blog post.</IconCard>
-<IconCard icon="file-text" title="Computer-Aided Drug Discovery and Design through MARA" href="https://nanome.ai/blog/computer-aided-drug-discovery-and-design-through-mara/">Blog post.</IconCard>
+<IconCard icon="file-text" title="MARA Bioinformatics Workflow" href="https://nanome.ai/blog/mara-bioinformatics-workflow/">Blog post.</IconCard>
+<IconCard icon="file-text" title="MARA & CDD Integration Example" href="https://nanome.ai/blog/mara-and-cdd-integration-example/">Blog post.</IconCard>
+<IconCard icon="file-text" title="Computer-Aided Drug Discovery & Design through MARA" href="https://nanome.ai/blog/computer-aided-drug-discovery-and-design-through-mara/">Blog post.</IconCard>
 </IconGrid>
 
 ## <AppIcon name="video" /> Webinars {#webinars}

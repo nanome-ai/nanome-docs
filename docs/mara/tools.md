@@ -1,5 +1,6 @@
 ---
 title: Tools
+outline: [2, 3]
 ---
 
 # Tools {#tools-page}
@@ -27,6 +28,8 @@ title: Tools
 ## <AppIcon name="tool" /> Tools {#tools}
 
 The list shows every tool MARA can run, including your organization's custom tools and public ones. Clicking one opens its page, with its description, its arguments (**Args**), its script or endpoint, and a **Run** section that runs the tool with values you enter for its arguments.
+
+Most tool pages have <AppIcon name="pin" /> **Pin** at the top right. It moves the tool into **Pinned** at the top of the list, above **All tools**, and **Unpin** moves it back.
 
 ### Tool tags {#tool-tags}
 

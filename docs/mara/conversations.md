@@ -1,5 +1,6 @@
 ---
 title: Conversations
+outline: [2, 3]
 ---
 
 # Conversations
@@ -24,7 +25,7 @@ The Chat tab lists the chats started on this page, newest first: pinned chats at
 <UiItem icon="plus" name="New Chat" area="0.9,15.6,15.0,4.5">Starts a new chat.</UiItem>
 <UiItem icon="search" name="Search (⌘F)" area="0.9,20.7,15.0,4.6">Searches your chat titles. On Windows and Linux the shortcut is Ctrl+F.</UiItem>
 <UiItem icon="play" name="Learn the Basics" area="39.1,40.6,11.0,15.4">Plays a walkthrough video of Nanome and MARA.</UiItem>
-<UiItem icon="message-2-share" name="Open Examples" href="#examples" area="50.7,40.6,10.9,15.4">Four example chats, one for each field.</UiItem>
+<UiItem icon="message-2-share" name="Open Examples" href="#examples" area="50.7,40.6,10.9,15.4">4 example chats, one for each field.</UiItem>
 <UiItem icon="upload" name="Click to upload files" area="62.5,40.6,15.8,15.4">Opens a file picker, then asks what to do with the files, such as attach them to the chat or add them to a workspace. Files dropped anywhere on the page upload too.</UiItem>
 </UiList>
 
@@ -69,7 +70,7 @@ An example chat is marked **Example** and has no message box. **Continue this ch
 
 <ShotRow src="mara/example-chat.webp" alt="The Cheminformatics - PCA example chat, with a tool step, file links and a plot" stack>
 
-In your own chats, the header has <AppIcon name="pencil" /> **Edit title** next to the title, and <AppIcon name="share-2" /> [Share](#sharing).
+In your own chats, the header has <AppIcon name="pencil" /> **Rename** next to the title, and <AppIcon name="share-2" /> [Share](#sharing).
 
 Above each answer, MARA names the tool or workflow it ran. The <AppIcon name="chevron-right" /> chevron beside it expands the step to show the tool's inputs and output. Files that MARA makes appear as links in the answer, and images and structures show under it.
 
@@ -145,7 +146,7 @@ A chat starts either on this page or in a workspace's [MARA tab](/nanome_web/wor
 | **File link** | Opens beside the chat | Asks where to open it |
 | **Files** | A side panel, with Tables | Replaces the chat |
 | **Add to Workspace** | Asks which workspace | Asks which workspace |
-| **Edit title, Pin, Share** | Yes | No |
+| **Rename, Pin, Share** | Yes | No |
 
 A chat on this page has no workspace attached, but MARA's Nanome tools can still make a workspace and load files into it. In both kinds of chat, **Add to Workspace** in Files asks which workspace to load into. In the MARA tab it doesn't fill in the one you're in.
 
