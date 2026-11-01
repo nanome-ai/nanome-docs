@@ -259,11 +259,15 @@ function pick(spot) {
 </template>
 
 <style scoped>
+/* At most --hotshot-maxh tall, counting the frame's 1px border. */
 .hotshot {
-  max-width: min(var(--hotshot-cap, var(--hotshot-shown)), calc(var(--hotshot-maxh, 100000px) * var(--hotshot-ar)));
+  max-width: min(var(--hotshot-cap, var(--hotshot-shown)), calc((var(--hotshot-maxh, 100000px) - 2px) * var(--hotshot-ar) + 2px));
 }
 
+/* The aspect ratio sizes the box inside the border, the box the image fills,
+   so a tall image leaves no strip under it. */
 .hotshot__frame {
+  box-sizing: content-box;
   position: relative;
   overflow: hidden;
   border: 1px solid var(--n-border-soft);

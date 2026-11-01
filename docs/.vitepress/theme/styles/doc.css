@@ -413,12 +413,41 @@
   }
 }
 
-/* Side-by-side screenshots get equal columns, so each image's size doesn't
-   depend on how long its header is. */
-@media (min-width: 768px) {
-  .vp-doc table:has(.vimg) {
-    table-layout: fixed;
+/* Side-by-side screenshots get equal columns at every width, so each image's
+   size doesn't depend on how long its header is, and a row of them fits a
+   phone without scrolling sideways. */
+.vp-doc table:has(.vimg) {
+  display: table;
+  table-layout: fixed;
+}
+
+/* On a phone, less padding leaves room for five thumbnails, and a long
+   header wraps between them. */
+@media (max-width: 767px) {
+  .vp-doc table:has(.vimg) :is(th, td) {
+    padding-inline: 6px;
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
+}
+
+/* Two screenshots with no headers, such as two menus, stack on a phone, each
+   at the column's width. Side by side, the shorter one sits level with the
+   middle of the taller one. */
+@media (max-width: 559px) {
+  .vp-doc table:has(.vimg):not(:has(th, tr > :nth-child(3))),
+  .vp-doc table:has(.vimg):not(:has(th, tr > :nth-child(3))) :is(tbody, tr, td) {
+    display: block;
+    width: auto;
+  }
+
+  .vp-doc table:has(.vimg):not(:has(th, tr > :nth-child(3))) td + td {
+    border-top: 0;
+  }
+}
+
+.vp-doc table:has(.vimg):not(:has(th)) td {
+  vertical-align: middle;
 }
 
 /* Dense comparison tables: a size down, and the row label column stays put. */

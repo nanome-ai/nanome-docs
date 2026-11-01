@@ -136,6 +136,31 @@ export default {
         const url = new URL(link.href, location.href)
         if (url.hash && url.pathname === location.pathname) afterScroll(focusSection)
       })
+
+      // A link within the page adds a history entry without saving the
+      // reader's place, so Back would go to the top of the page. Keep the
+      // current entry's scroll position for the router to restore: once
+      // scrolling settles, and straight away on a click or Enter, which can
+      // come right after a scroll. Back and Forward change the entry, so a
+      // save still pending then is dropped.
+      const saveScroll = () => {
+        try {
+          history.replaceState({ ...history.state, scrollPosition: window.scrollY }, '')
+        } catch {}
+      }
+      let saveTimer = 0
+      const dropSave = () => clearTimeout(saveTimer)
+      addEventListener(
+        'scroll',
+        () => {
+          dropSave()
+          saveTimer = setTimeout(saveScroll, 150)
+        },
+        { passive: true }
+      )
+      addEventListener('pointerdown', saveScroll, { capture: true })
+      addEventListener('keydown', (event) => event.key === 'Enter' && saveScroll(), { capture: true })
+      addEventListener('popstate', dropSave)
     }
 
     app.component('Badge', VPBadge)
