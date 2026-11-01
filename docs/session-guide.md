@@ -415,7 +415,7 @@ Each headset does this on its own, so one person can lose an entry that everyone
 
 <Card title="Keep surfaces small">
 
-A surface costs the same at every detail level and opacity, and **Sheer** and **Semi** only change how see-through it is. A surface on the pocket costs far less than one over the whole protein.
+A surface draws the same geometry at every detail level and opacity: **Sheer** and **Semi** only change how see-through it is, so they don't lighten the scene. A surface on the pocket costs far less than one over the whole protein.
 
 </Card>
 
