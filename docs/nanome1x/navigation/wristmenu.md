@@ -38,7 +38,7 @@ Quick Menus turns each menu on or off. This screenshot shows the wrist menu's ea
 
 ## Room
 
-<ShotRow src="navigating-page/wrist_menu_spatrec.png" alt="The Wrist Menu's Room buttons: Manage Users, Meetings, Spatial Recording, Return to Lobby and Exit Nanome">
+<ShotRow src="navigating-page/wrist_menu_spatrec.png" alt="The Wrist Menu's Room buttons: Manage Users, Meetings, Spatial Recording, Return to Lobby and Exit Nanome" expand-below>
 
 <UiList label="Room">
 <UiItem icon="users" name="Manage Users" href="#manage-users" area="18.6,7.0,28.7,31.5">Opens Manage Users, below.</UiItem>
