@@ -123,7 +123,7 @@ As listed on [nanome.ai/pricing](https://nanome.ai/pricing) in October 2026, bil
 - **Commercial: Cloud** runs on a single-tenant Nanome-hosted stack with premium support. **Commercial: Enterprise** is deployed behind the organization's firewall, on a private cloud or on-premise; its network needs are in [Getting Started](/getting-started#on-prem).
 - Customers in Japan contact Nanome's partner, Fujitsu.
 
-For a quote, use **Contact us** on [nanome.ai/pricing](https://nanome.ai/pricing).
+For a quote, use **Contact us** on [nanome.ai/pricing](https://nanome.ai/pricing#contact-form).
 
 ## <AppIcon name="list" /> Assigning seats {#assign}
 

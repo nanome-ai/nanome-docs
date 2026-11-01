@@ -15,7 +15,7 @@ title: FAQ
 
 <Callout type="note" title="Nanome XR, Nanome Web and Nanome Classic">
 
-Answers tagged **Classic** describe Nanome Classic (v1.24 and v1.26), the earlier headset app. For Nanome XR and Nanome Web, start with [Getting Started](/getting-started).
+Answers tagged **Classic** describe Nanome Classic (v1.24), the earlier headset app. For Nanome XR and Nanome Web, start with [Getting Started](/getting-started).
 
 </Callout>
 
@@ -41,9 +41,9 @@ Nanome currently supports up to 20 XR collaborators in a room at once. Up to 50 
 
 <AccordionGroup label="5 questions">
 
-<Accordion title="What VR headsets does Nanome support?" teaser="Meta Quest 3 and 3S, Samsung Galaxy XR, Apple Vision Pro, and Windows PCs over Meta Link.">
+<Accordion title="What VR headsets does Nanome support?" teaser="Meta Quest 2, 3, 3S and Pro, Samsung Galaxy XR, Apple Vision Pro, and Windows PCs over Meta Link.">
 
-Nanome XR runs on Meta Quest 3 and 3S, Samsung Galaxy XR, Apple Vision Pro, and Windows PCs over Meta Link. [Choosing Hardware](/help/choosinghardware) compares them. The older list for Nanome Classic is on [Hardware Requirements](/help/hardwarerequirements).
+Nanome XR runs on Meta Quest 3 and 3S, Samsung Galaxy XR, Apple Vision Pro, and Windows PCs over Meta Link. It also runs on Meta Quest 2 and Quest Pro, the minimum Quest headsets for Nanome XR. Quest 3 and 3S are recommended: Quest 2 and Quest Pro have a little over half the Quest 3 rendering budget, so detail drops sooner as a scene grows. [Choosing Hardware](/help/choosinghardware) compares them. The older list for Nanome Classic is on [Hardware Requirements](/help/hardwarerequirements).
 
 </Accordion>
 
@@ -109,9 +109,9 @@ The full per-format list, with import and export capability, trajectory playback
 
 </Accordion>
 
-<Accordion title="What file formats does Nanome support, and how do I import them?" teaser="PDB and SDF are the most stable, plus many more." tag="v1.26">
+<Accordion title="What file formats does Nanome support, and how do I import them?" teaser="PDB and SDF are the most stable, plus many more." tag="v1.24">
 
-*This answer describes Nanome 1.26 (Classic).*
+*This answer describes Nanome Classic (v1.24).*
 
 Nanome supports .pdb and .sdf, and has limited compatibility with other atomic coordinate files, like .cif. The .pdb and .sdf formats are the most stable, and we keep improving the parser's handling of anomalies.
 
@@ -123,9 +123,9 @@ We recommend making Nanome the default software for .pdb files. Double-clicking 
 
 </Accordion>
 
-<Accordion title="What are the supported files and limits for trajectory (MD) files?" teaser="Formats, the 500-frame subsample, and atom counts by device." tag="v1.26">
+<Accordion title="What are the supported files and limits for trajectory (MD) files?" teaser="Formats, the 500-frame subsample, and atom counts by device." tag="v1.24">
 
-*This answer describes Nanome 1.26 (Classic). For trajectories in Nanome XR and Nanome Web, see [Supported File Formats](/nanome_web/fileformats#trajectory-molecular-dynamics).*
+*This answer describes Nanome Classic (v1.24). For trajectories in Nanome XR and Nanome Web, see [Supported File Formats](/nanome_web/fileformats#trajectory-molecular-dynamics).*
 
 | File Type | Description                                      | Source Software      |
 | --------- | ------------------------------------------------ | -------------------- |
@@ -172,7 +172,7 @@ A free license covers Nanome in the browser at app.nanome.ai, with 1 owned proje
 
 <Accordion title="Can my team get a free trial?" teaser="Yes. Every new account starts with a 14-day trial.">
 
-Every new account at app.nanome.ai starts with a 14-day Full license trial. For a trial for your team, whether for research, training or presentations, email sales@nanome.ai. To schedule a demo with one of our team, [request one here](https://nanome.ai/demo/).
+Every new account at app.nanome.ai starts with a 14-day Full license trial. For a trial for your team, whether for research, training or presentations, use **Contact us** on [nanome.ai/pricing](https://nanome.ai/pricing#contact-form). To schedule a demo with one of our team, [request one here](https://nanome.ai/demo/).
 
 </Accordion>
 
@@ -182,9 +182,9 @@ Yes. [nanome.ai/edu](https://nanome.ai/edu) explains how.
 
 </Accordion>
 
-<Accordion title="Do you have a site subscription license?" teaser="Yes. Contact sales@nanome.ai.">
+<Accordion title="Do you have a site subscription license?" teaser="Yes. Ask for a quote on nanome.ai/pricing.">
 
-Yes. For Nanome site licenses, contact sales@nanome.ai.
+Yes. For a site license quote, use **Contact us** on [nanome.ai/pricing](https://nanome.ai/pricing#contact-form).
 
 </Accordion>
 
@@ -207,7 +207,7 @@ One workflow we recommend:
 <Steps>
 
 1. Choose a Nanome account to act as the "license administrator". It can be your own account, or one your department or lab maintains together. It doesn't need a license assigned to it, but it will own all the licenses you intend to use.
-2. Buy the licenses from that account. If you [request a quote](https://home.nanome.ai/quote), give the email address of the license administrator account.
+2. Buy the licenses from that account. If you ask for a quote through **Contact us** on [nanome.ai/pricing](https://nanome.ai/pricing#contact-form), give the email address of the license administrator account.
 3. Once the licenses are allocated, they show in the Licenses section on home.nanome.ai. [Assign them to other users](/home.nanome.ai/licenses#assign-licenses).
 
 </Steps>
@@ -216,18 +216,18 @@ One of the licenses is assigned to the admin account automatically, but you can 
 
 </Accordion>
 
-<Accordion title="I have a coupon code. How do I redeem it?" teaser="Choose the plan your coupon covers, then enter the code at checkout.">
+<Accordion title="I have a coupon code. How do I redeem it?" teaser="Send it to the Nanome team through nanome.ai/pricing.">
+
+Checkout at app.nanome.ai has no field for coupon codes, so a code goes to the Nanome team instead.
 
 <Steps>
 
-1. Create an account or log in at [nanome.ai/pricing](https://nanome.ai/pricing/).
-2. In the sidebar on the right, click plans and products. The premium tiers show, with annual and monthly plans on top.
-3. Select the plan your coupon covers.
-4. On the next menu, enter your credit card information and type your coupon in the blank. You have to enter card details, but the coupon should cancel any actual fee.
+1. Go to **Contact us** on [nanome.ai/pricing](https://nanome.ai/pricing#contact-form).
+2. Fill in the form, add your code under **I'm interested in...**, and choose **Send**.
 
 </Steps>
 
-If your card was charged after the transaction, contact us at support@nanome.ai and we'll issue a refund immediately.
+The right person at Nanome will follow up.
 
 </Accordion>
 

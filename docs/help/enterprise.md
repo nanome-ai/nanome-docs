@@ -31,12 +31,12 @@ Recommended specs:
 
 | | VM #1: Private Server | VM #2: Dedicated Plugins |
 | --- | --- | --- |
-| Instance | Amazon AWS T2.Medium EC2 Windows 2012 Server or greater, or equivalent | Amazon AWS T2.Large EC2 Linux machine with 30 GB of disk storage, or equivalent |
+| Instance | Amazon AWS T2.Medium EC2 Windows 2012 Server or greater, or equivalent | Amazon AWS T2.Large EC2 Linux machine, or equivalent |
 | CPU | 1 quad core CPU (e.g., Intel Xeon 3440, E3-1230 etc.) | 4 CPU, equiv. to an Intel Broadwell E5-2686v4 or higher |
-| RAM | 4 GB | 8GB |
-| Network | 1 GBps NIC / uplink port speed | 1 GBps NIC / uplink port speed |
+| RAM | 4 GB | 8 GB |
+| Network | 1 Gbps NIC / uplink port speed | 1 Gbps NIC / uplink port speed |
 | Operating system | Windows Server 2012 and above | A Linux based operating system (Ubuntu or CentOS) |
-| Storage | 10GB + | 90GB |
+| Storage | 10 GB+ | 90 GB |
 
 ## <AppIcon name="wifi" /> Ports {#ports}
 

@@ -37,7 +37,11 @@ Steps 2 and 3, device management, are for IT teams with several headsets. With o
 <p class="chapter-kicker">Step 1 of 7 · Headsets, and where to buy them</p>
 
 Nanome runs on Meta Quest 3 and 3S, Samsung Galaxy XR, Apple Vision Pro, and
-Windows PCs over Meta Link.
+Windows PCs over Meta Link. It also runs on Meta Quest 2 and Quest Pro, the
+minimum Quest headsets for Nanome XR. Quest 3 and 3S are recommended: Quest 2
+and Quest Pro have a little over half the Quest 3 rendering budget, so detail
+drops sooner as a scene grows. [Choosing Hardware](/help/choosinghardware)
+compares them.
 
 <div class="lineup">
   <figure>
@@ -881,11 +885,11 @@ workspace, and view-only access to workspaces and projects others share.
 
 After the trial, headset access continues on a paid seat. The pricing page
 lists what each seat includes, and the Nanome team quotes volume and academic
-pricing by email.
+pricing.
 
 [Compare the seats](/home.nanome.ai/accounttiers)
 · [Plans and pricing](https://nanome.ai/pricing)
-· [Ask for a quote](mailto:support@nanome.ai)
+· [Ask for a quote](https://nanome.ai/pricing#contact-form)
 
 </Accordion>
 
