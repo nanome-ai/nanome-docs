@@ -36,12 +36,14 @@ The names come from the chain, the 3-character ligand code and the residue numbe
 Each row has these controls:
 
 <UiList label="Entry and component rows">
-<UiItem icon="eye" name="Show / Hide">Shows or hides the entry or component. Hidden rows are grayed out.</UiItem>
+<UiItem icon="eye" name="Show / Hide">Shows or hides the entry or component. Hidden rows are grayed out. On an entry with no components, its tooltip reads Add default representations, and clicking it adds the default components.</UiItem>
 <UiItem name="Cartoon" href="#representations">The representation chip (for example, Cartoon or 2 representations): opens the representation panel.</UiItem>
 <UiItem icon="layout-list" name="Structure actions" href="#structure-actions">On entry rows.</UiItem>
 <UiItem icon="search" name="Zoom">Zooms the view to the entry or component.</UiItem>
 <UiItem icon="dots" name="More options" href="#more-options">Rename, Export file, Delete and more.</UiItem>
 </UiList>
+
+**Structure actions** and **More options** show only for Editors. Viewers can't use **Show / Hide** or the representation chip, but **Zoom** works for everyone.
 
 An entry with a trajectory or several models also has [playback buttons](/nanome_web/mdplayback#playing-it-back) on its row.
 
@@ -206,7 +208,7 @@ Only polymer atoms count toward the interface.
 
 <UiList label="Entry More options">
 <UiItem icon="pencil" name="Rename" area="57.5,22.1,33.7,10.9">Renames the entry.</UiItem>
-<UiItem icon="download" name="Export file" area="57.5,35.4,33.7,10.9">Downloads the entry as a file.</UiItem>
+<UiItem icon="download" name="Export file" area="57.5,35.4,33.7,10.9">Opens Export as PDB and Export as SDF, with a Use scene coordinates switch. With it on, the file has the atoms where they sit in the current scene, for example after Align proteins to this.</UiItem>
 <UiItem icon="upload" name="Load DX map" href="#colors" area="57.5,48.6,33.7,10.9">Attaches an electrostatic potential map in .dx format to the entry, for coloring its surface.</UiItem>
 <UiItem icon="upload" name="Load trajectory" href="/nanome_web/mdplayback" area="57.5,61.9,33.7,10.9">Attaches a trajectory to the entry.</UiItem>
 <UiItem icon="trash" name="Delete" area="57.5,75.2,33.7,10.9">Removes the entry from the workspace. The first click turns it into Confirm delete, and a second click within 3 seconds deletes it.</UiItem>
@@ -221,7 +223,7 @@ Only polymer atoms count toward the interface.
 
 <UiList label="Component More options">
 <UiItem icon="pencil" name="Rename" area="57.5,24.3,33.7,12.7">Renames the component.</UiItem>
-<UiItem icon="download" name="Export file" area="57.5,39.8,33.7,12.7">Downloads the component's atoms as a file.</UiItem>
+<UiItem icon="download" name="Export file" area="57.5,39.8,33.7,12.7">Opens Export as PDB and Export as SDF for the component's atoms, with a Use scene coordinates switch. With it on, the file has the atoms where they sit in the current scene.</UiItem>
 <UiItem icon="mist" name="Edit selection" area="57.5,55.2,33.7,12.7">Changes which atoms the component contains.</UiItem>
 <UiItem icon="trash" name="Delete" area="57.5,70.5,33.7,12.7">Removes the component. The first click turns it into Confirm delete, and a second click within 3 seconds deletes it.</UiItem>
 </UiList>

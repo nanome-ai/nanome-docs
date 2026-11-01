@@ -28,7 +28,7 @@ Nanome XR can sign in with a 4-character code. The headset's login page shows th
 
 </ShotRow>
 
-## Settings {#settings}
+## <AppIcon name="settings" /> Settings {#settings}
 
 **Settings** has 2 tabs: **Account** and **System**. System holds API Keys, MCP Setup and the preference switches. Below the tabs, **Help** opens this site's [MARA overview](/mara/overview), and **Feedback** sends Nanome feedback or a bug report.
 
@@ -74,11 +74,11 @@ The assistant asks you to sign in and approve access in a browser the first time
 <ShotRow src="nanome-web/settings-preferences.webp" alt="The preference switches in System settings" stack>
 
 <UiList label="Preferences">
-<UiItem name="Auto-open Files" area="3.5,9.1,92.7,9.1">Opens supported files in the split view when they're added to a chat.</UiItem>
-<UiItem name="Auto-run Workflows" area="3.5,27.9,92.7,9.1">Runs workflows in chat automatically.</UiItem>
-<UiItem name="Dark Mode" area="3.5,46.7,92.7,9.2">Darker colors for the web app.</UiItem>
-<UiItem name="Hide Credits" area="3.5,65.6,92.7,8.6">Hides the credits display. The switch shows only for accounts with unlimited credits.</UiItem>
-<UiItem name="Reset chats" area="3.5,84.2,92.7,9.2">Its Delete all button permanently deletes all MARA chats and uploaded files.</UiItem>
+<UiItem icon="file-import" name="Auto-open Files" area="3.5,9.1,92.7,9.1">Opens supported files in the split view when they're added to a chat.</UiItem>
+<UiItem icon="route" name="Auto-run Workflows" area="3.5,27.9,92.7,9.1">Runs workflows in chat automatically.</UiItem>
+<UiItem icon="moon" name="Dark Mode" area="3.5,46.7,92.7,9.2">Darker colors for the web app.</UiItem>
+<UiItem icon="infinity" name="Hide Credits" area="3.5,65.6,92.7,8.6">Hides the credits display. The switch shows only for accounts with unlimited credits.</UiItem>
+<UiItem icon="trash" name="Reset chats" area="3.5,84.2,92.7,9.2">Its Delete all button permanently deletes all MARA chats and uploaded files.</UiItem>
 </UiList>
 
 </ShotRow>
