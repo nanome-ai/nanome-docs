@@ -615,13 +615,9 @@
   }
 
   /* A wide screenshot sits under its legend, so the legend keeps to the text
-     column like the paragraphs around it, and the image is centered under it. */
+     column like the paragraphs around it. (ShotRow centers the image.) */
   .n-layout.has-sidebar.has-aside:not(.n-wide) .vp-doc > div > div > .n-shotrow-hold .n-shotrow.is-wide:not(.is-focus) .n-shotrow__legend {
     max-width: calc(var(--n-content-max) - 2 * var(--n-gutter));
-    margin-inline: auto;
-  }
-
-  .n-layout.has-sidebar.has-aside:not(.n-wide) .vp-doc > div > div > .n-shotrow-hold .n-shotrow.is-wide:not(.is-focus) .hotshot {
     margin-inline: auto;
   }
 }

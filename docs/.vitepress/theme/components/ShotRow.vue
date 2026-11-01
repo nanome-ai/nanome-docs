@@ -61,6 +61,10 @@ const shownWidth = computed(() => {
 const wide = computed(() => ar.value > 1.9 && shownWidth.value > 400)
 // A tall panel: kept under half a phone screen high, it's narrower than the screen.
 const tall = computed(() => ar.value < 0.9)
+// Full screen, a stacked desktop capture a little under the wide shape comes
+// first with the legend under it too. Beside the legend it would show no
+// larger than in the page.
+const fsWide = computed(() => wide.value || (props.stack && ar.value > 1.6))
 
 // Legend rows with an area register here, in page order.
 const spots = ref([])
@@ -126,9 +130,37 @@ async function reveal() {
   const s = shot.getBoundingClientRect()
   const left = Math.min(...parts.map((r) => r.left))
   const right = Math.max(...parts.map((r) => r.right))
-  if (left >= s.left && right <= s.right) return
+  const by = panBy(left, right, s.left, s.right)
+  if (!by) return
   const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
-  shot.scrollBy({ left: (left + right) / 2 - (s.left + s.right) / 2, behavior })
+  shot.scrollBy({ left: by, behavior })
+}
+
+/**
+ * How far to pan a view that shows `from` to `to` so a part from `left` to
+ * `right` comes into it: 0 when it's in view. A part that fits comes to the
+ * middle. One wider than the view shows from its start, since its middle is
+ * often empty field; when its start is in view already, it stays put.
+ */
+function panBy(left, right, from, to) {
+  if (left >= from && right <= to) return 0
+  if (right - left <= to - from) return (left + right) / 2 - (from + to) / 2
+  if (left >= from && left < to) return 0
+  return left - 16 - from
+}
+
+/**
+ * On open, a view that pans starts on the image's parts: all of them in the
+ * middle when they fit, or else from the first one.
+ */
+function startOnParts(el) {
+  if (!el || el.scrollWidth <= el.clientWidth + 1) return
+  el.scrollLeft = 0
+  const parts = [...el.querySelectorAll('.hotshot__spot')].map((p) => p.getBoundingClientRect())
+  if (!parts.length) return
+  const s = el.getBoundingClientRect()
+  const by = panBy(Math.min(...parts.map((r) => r.left)), Math.max(...parts.map((r) => r.right)), s.left, s.right)
+  if (by) el.scrollLeft = by
 }
 
 /**
@@ -145,8 +177,8 @@ const more = ref({ left: false, right: false })
 /**
  * Full screen on a phone, an image outside the strip that shows wider than
  * the screen pans sideways too, with the same faded edges and hint (`pan`).
- * One that would come out only a little wider than the screen fits it
- * instead (`fit`): a few pixels more aren't worth cutting off its edge.
+ * One that would come out under a quarter wider than the screen fits it
+ * instead (`fit`): that little more isn't worth cutting off its edge.
  */
 const pan = ref(false)
 const fit = ref(false)
@@ -159,7 +191,7 @@ function edges() {
       : { left: false, right: false }
 }
 
-async function fitPan() {
+async function fitPan(opening) {
   const on = view.focused.value && !strip.value && matchMedia('(max-width: 639px)').matches
   fit.value = false
   pan.value = false
@@ -167,15 +199,16 @@ async function fitPan() {
     await nextTick()
     const el = scroller.value
     if (el && view.focused.value) {
-      fit.value = el.scrollWidth > el.clientWidth && el.scrollWidth < 1.15 * el.clientWidth
+      fit.value = el.scrollWidth > el.clientWidth && el.scrollWidth < 1.25 * el.clientWidth
       pan.value = !fit.value && el.scrollWidth > el.clientWidth + 1
     }
   }
   await nextTick()
+  if (opening === true && view.focused.value) startOnParts(scroller.value)
   edges()
 }
 
-function fitStrip() {
+function fitStrip(opening) {
   if (!view.focused.value || !wide.value) {
     strip.value = false
   } else {
@@ -186,13 +219,13 @@ function fitStrip() {
     const readable = Math.min(shown, 0.6 * innerHeight * ((w * cw) / (h * ch)))
     strip.value = readable > 1.5 * document.documentElement.clientWidth
   }
-  nextTick(fitPan)
+  nextTick(() => fitPan(opening))
 }
 
 watch(view.focused, (on) => {
   if (on) addEventListener('resize', fitStrip)
   else removeEventListener('resize', fitStrip)
-  fitStrip()
+  fitStrip(on)
 })
 
 /** In the strip, a region lit from its legend row slides into view. */
@@ -205,9 +238,10 @@ function slideTo(n) {
   const from = frame.getBoundingClientRect().left - el.getBoundingClientRect().left + el.scrollLeft
   const start = from + ((spot.box[0] - cx) / cw) * frame.clientWidth
   const end = start + (spot.box[2] / cw) * frame.clientWidth
-  if (start >= el.scrollLeft && end <= el.scrollLeft + el.clientWidth) return
+  const by = panBy(start, end, el.scrollLeft, el.scrollLeft + el.clientWidth)
+  if (!by) return
   const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
-  el.scrollTo({ left: (start + end - el.clientWidth) / 2, behavior })
+  el.scrollTo({ left: Math.max(0, el.scrollLeft + by), behavior })
 }
 
 // Two or more legends in the row share the widest of their name columns. Each
@@ -304,7 +338,7 @@ async function pick(n) {
     <div
       ref="root"
       class="n-shotrow"
-      :class="{ 'is-wide': wide, 'is-tall': tall, 'is-stack': stack, 'is-focus': view.focused.value, 'is-strip': strip, 'is-pan': pan, 'is-fit': fit, 'has-spots': spots.length > 0 }"
+      :class="{ 'is-wide': wide, 'is-fswide': fsWide, 'is-tall': tall, 'is-stack': stack, 'is-focus': view.focused.value, 'is-strip': strip, 'is-pan': pan, 'is-fit': fit, 'has-spots': spots.length > 0 }"
       :role="view.focused.value ? 'dialog' : undefined"
       :aria-modal="view.focused.value ? 'true' : undefined"
       :aria-label="(view.focused.value && alt) || undefined"
@@ -474,6 +508,12 @@ async function pick(n) {
   margin-inline: auto;
 }
 
+/* A wide image narrower than the column sits in the middle of it, at every
+   width, like a stacked one. */
+.n-shotrow.is-wide:not(.is-focus) :deep(.hotshot) {
+  margin-inline: auto;
+}
+
 /* Stacked on a phone, a tall panel stays short enough to see whole, in the
    middle of the column, so a part of it and its legend row fit on screen
    together. */
@@ -490,7 +530,7 @@ async function pick(n) {
 /* Side by side once there's room for both: about 46% for the image. */
 @container shotrow (min-width: 600px) {
   .n-shotrow:not(.is-wide, .is-stack) .n-shotrow__grid,
-  .n-shotrow.is-focus:not(.is-wide) .n-shotrow__grid {
+  .n-shotrow.is-focus:not(.is-fswide) .n-shotrow__grid {
     display: grid;
     grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
     grid-template-areas: 'shot legend';
@@ -499,13 +539,13 @@ async function pick(n) {
   }
 
   .n-shotrow:not(.is-wide, .is-stack) .n-shotrow__legend,
-  .n-shotrow.is-focus:not(.is-wide) .n-shotrow__legend {
+  .n-shotrow.is-focus:not(.is-fswide) .n-shotrow__legend {
     grid-area: legend;
     margin-top: 0;
   }
 
   .n-shotrow:not(.is-wide, .is-stack) .n-shotrow__shot,
-  .n-shotrow.is-focus:not(.is-wide) .n-shotrow__shot {
+  .n-shotrow.is-focus:not(.is-fswide) .n-shotrow__shot {
     grid-area: shot;
     position: sticky;
     /* Clears the nav bar and the breadcrumb strip under it. */
@@ -548,13 +588,14 @@ async function pick(n) {
 }
 
 /* On a phone the full-screen view opens on the image, with the legend under
-   it. So does a wide image at any size: it stays short enough that a legend of
-   a few rows fits under it in the window, and a long legend scrolls. */
-.n-shotrow.is-focus.is-wide .n-shotrow__shot {
+   it. So does a wide image at any size (`is-fswide`): it stays short enough
+   that a legend of a few rows fits under it in the window, and a long legend
+   scrolls. */
+.n-shotrow.is-focus.is-fswide .n-shotrow__shot {
   --hotshot-maxh: max(50vh, 100vh - 300px);
 }
 
-.n-shotrow.is-focus.is-wide :deep(.hotshot) {
+.n-shotrow.is-focus.is-fswide :deep(.hotshot) {
   margin-inline: auto;
 }
 
@@ -637,7 +678,7 @@ async function pick(n) {
   /* The image's column is as wide as the image at full height, so a tall
      panel sits next to its legend, and the two are centered together. A
      landscape shot gets up to about two thirds of the row. */
-  .n-shotrow.is-focus:not(.is-wide) .n-shotrow__grid {
+  .n-shotrow.is-focus:not(.is-fswide) .n-shotrow__grid {
     grid-template-columns:
       min(calc((100vh - 100px) * var(--shot-ar, 1)), 63%, 100% - 18rem - 40px)
       minmax(18rem, 34rem);
@@ -645,13 +686,13 @@ async function pick(n) {
     column-gap: 40px;
   }
 
-  .n-shotrow.is-focus:not(.is-wide) .n-shotrow__shot {
+  .n-shotrow.is-focus:not(.is-fswide) .n-shotrow__shot {
     top: 0;
     --hotshot-maxh: calc(100vh - 100px);
   }
 
   /* A tall panel fills only part of its column, so it sits in the middle. */
-  .n-shotrow.is-focus:not(.is-wide) :deep(.hotshot) {
+  .n-shotrow.is-focus:not(.is-fswide) :deep(.hotshot) {
     margin-inline: auto;
   }
 }
