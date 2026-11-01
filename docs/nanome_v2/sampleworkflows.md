@@ -41,12 +41,12 @@ Sharing starts with <Btn icon="share">Share</Btn> in the Users tab. There are 2 
 <Tabs :labels="['Share the code', 'Invite by email']">
 <Tab>
 
-Set the **Global permission level** from **None** to **Viewer** or **Editor**, then tell your colleagues the workspace code.
+Anyone with the workspace code can open the workspace once the menu beside the code is set to **Viewer** or **Editor**. At **None**, only people added by email, or with access to its project, can open it.
 
 </Tab>
 <Tab>
 
-Invite a user directly by email if they have a Nanome account. It must be an exact email match: there is no auto-completion.
+Colleagues with a Nanome account can be added with **Add people by email**. The address must match exactly: there's no auto-completion.
 
 Each user added by email appears in the Share dialog's list. Each user's <AppIcon name="dots" /> menu has **Make Editor** (or **Make Viewer** for an Editor) and, for the workspace owner, **Remove User**.
 
@@ -104,7 +104,7 @@ The energy is the force-field energy that the minimization tool reports for the 
 
 <YoutubeEmbed videoId="jNaFAtmfaRE" title="Nanome v2.4 Quick Tips: Aligning Proteins" />
 
-<ShotRow src="nanome-v2/v2-7/align-proteins.webp" alt="Align proteins to this, with 1A9U aligned to 1KV2 by CE-Align">
+<ShotRow src="nanome-v2/v2-7/align-proteins.webp" alt="Align proteins to this, with 1A9U aligned to 1KV2 by CE-Align" stack>
 
 <Steps>
 

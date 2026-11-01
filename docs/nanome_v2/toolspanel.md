@@ -30,7 +30,7 @@ Viewers can use <span style="white-space: nowrap"><Btn icon="droplet">Pointer</B
 
 ## <AppIcon name="hand-click" /> The controller in each tool {#controller}
 
-Choosing a tool also changes what your dominant-hand controller shows: the tool's badge, the white tip sphere at its tip, and, for tools with 2 or more modes, the current mode above the thumbstick.
+Choosing a tool also changes what your dominant-hand controller shows: the tool's badge, the white tip sphere, and, for tools with 2 or more modes, the current mode above the thumbstick.
 
 <ToolsDemo />
 
@@ -446,7 +446,7 @@ After a run, the page shows the result and any output files, and <AppIcon name="
 
 ## <AppIcon name="download" /> Load Structure {#load-structure}
 
-**Load Structure** opens a box for a PDB code. <Btn>Load from RCSB</Btn> downloads the entry into the workspace. Other formats are loaded in [Nanome Web](/nanome_web/loading).
+**Load Structure** opens an **Enter Code** box for a 4-character PDB code. <Btn>Load</Btn> downloads the entry from the RCSB into the workspace. Other formats are loaded in [Nanome Web](/nanome_web/loading).
 
 ## <AppIcon name="bug" /> Report a problem {#report-a-problem}
 
