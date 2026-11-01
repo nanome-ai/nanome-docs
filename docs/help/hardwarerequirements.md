@@ -34,7 +34,7 @@ For example:
 
 Recommended specs:
 
-- 1 quad core CPU (e.g., Intel Xeon 3440, E3-1230 etc.)
+- 1 quad core CPU, such as an Intel Xeon 3440 or E3-1230
 - 4 GB RAM
 - 1 Gbps NIC / uplink port speed
 - Windows Server 2012 and above
