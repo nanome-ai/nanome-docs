@@ -18,7 +18,7 @@ Please note that:
 
 - Loading a single file
 
-> A scientist visits a web page that is showing a single molecule or project with information about it. Clicking the "Open in Nanome" button would launch Nanome and automatically load in a PDB, Nanome/Pymol session file, or any of our supported file types.
+> A scientist visits a web page that is showing a single molecule or project with information about it. Clicking the "Open in Nanome" button would launch Nanome and automatically load in a PDB, Nanome/PyMOL session file, or any of our supported file types.
 
 <a href="https://open.nanome.ai/#/W3sidHlwZSI6ImxvYWQiLCJzb3VyY2VzIjpbeyJ0eXBlIjoiaHR0cCIsInBhdGgiOiJodHRwczovL2ZpbGVzLnJjc2Iub3JnL2Rvd25sb2FkLzZMVTcuY2lmIn1dfV0=" class="btn">Open a single file in Nanome</a>
 
@@ -30,7 +30,7 @@ Please note that:
 
 - Run a script
 
-> A scientist can click a button in the web browser and it would load and run a Nanome Macro (written in Lua) in the room and apply changes such as changing the molecular representation for the secondary structure, doing modifying molecular operations. [(See Lua Script here)](#run-script-functions-lua-directly)
+> A scientist can click a button in the web browser and it would load and run a Nanome Macro (written in Lua) in the room and apply changes such as changing the molecular representation for the secondary structure. [(See Lua Script here)](#run-script-functions-lua-directly)
 
 <a href="https://open.nanome.ai/#/W3sidHlwZSI6InNjcmlwdCIsInNjcmlwdCI6IlxuICAgICAgICAgICAgZnVuY3Rpb24gbWFpbiAoKVxuICAgICAgICAgICAgICAgIGlmIExpc3RfTGVuZ3RoKFNlbGVjdGlvbl9HZXRDb21wbGV4ZXMoKSkgPD0gMCB0aGVuXG4gICAgICAgICAgICAgICAgICAgIHJldHVybiBcIkVycm9yOiBObyBTdHJ1Y3R1cmUgU2VsZWN0ZWRcIlxuICAgICAgICAgICAgICAgIGVuZFxuICAgICAgICAgICAgICAgIENvbW1hbmRfU2V0UmliYm9uc1JlbmRlcihcInNlY29uZGFyeS1zdHJ1Y3R1cmVzXCIpXG4gICAgICAgICAgICAgICAgQ29tbWFuZF9TZXRTdXJmYWNlc1RyYW5zcGFyZW5jeSgwLjUpXG4gICAgICAgICAgICAgICAgQ29tbWFuZF9Db2xvcmluZ0F0b21zQm9uZHMoXCJkZWZhdWx0XCIsIG5pbCwgbmlsLCB0cnVlKVxuICAgICAgICAgICAgICAgIENvbW1hbmRfQ29sb3JpbmdSaWJib25zKFwiZGVmYXVsdFwiKVxuICAgICAgICAgICAgICAgIENvbW1hbmRfQ29sb3JpbmdTdXJmYWNlcyhcImRlZmF1bHRcIilcbiAgICAgICAgICAgICAgICByZXR1cm4gXCJTdWNjZXNzXCJcbiAgICAgICAgICAgIGVuZCJ9XQ==" class="btn">Run a script in Nanome</a>
 
@@ -76,13 +76,13 @@ window.open(deepLink)
 
 Wrapping this entire thing into a function to be triggered on a button press in javascript would enable your web platform to automatically push data to Nanome as described.
 
-If you are accessing the button from inside the Nanome in-VR web browser, then it will be useful to only have the linking. You can detect if the source of the request is coming from the Nanome in-VR web browser by looking at the UserAgent for the website requests and seeing the Nanome version.
+If you are accessing the button from inside the Nanome in-VR web browser, then only the link is needed. You can detect if the source of the request is coming from the Nanome in-VR web browser by looking at the UserAgent for the website requests and seeing the Nanome version.
 
 Example button:
 
 <a href="nanome:///W3sidHlwZSI6ImxvYWQiLCJzb3VyY2VzIjpbeyJ0eXBlIjoiaHR0cCIsInBhdGgiOiJodHRwczovL2ZpbGVzLnJjc2Iub3JnL2Rvd25sb2FkLzZMVTcuY2lmIn1dfV0=" class="btn">Open in Nanome Example Button</a>
 
-Alternatively, you can pass it through Nanome's deep linking landing page by adding your URL to the end of this URL "https://open.nanome.ai/#/"
+Alternatively, you can pass it through Nanome's landing page by adding the base64 part of your link (everything after nanome:///) to the end of https://open.nanome.ai/#/.
 
 An example is below:
 
@@ -116,7 +116,7 @@ window.open(deepLink)
 
 ### Run script functions (Lua) directly
 
-Runs a Nanome Macro (Lua) commands directly in the JSON. See the [Nanome Macro documentation](https://github.com/nanome-ai/nanome-macros/blob/master/Documentation/API.md) for supported Macro Script commands.
+Runs Nanome Macro (Lua) commands directly in the JSON. See the [Nanome Macro documentation](https://github.com/nanome-ai/nanome-macros/blob/master/Documentation/API.md) for supported Macro Script commands.
 
 ```js
 const commands = [
@@ -174,5 +174,5 @@ window.open(deepLink)
 ## Additional Notes
 
 - The Nanome in-VR web browser catches the data/type and handles it so this works on All-in-one devices. This does not work on the all-in-one VR/AR devices' native browser due to them not exposing the necessary browser APIs.
-- Sequential commands are stored in a collection that implies order
-- Opening a Session file (Nanome, Pymol, MOE, Maestro) or Spatial recording will prompt to clear your existing room if you already have Nanome open
+- Sequential commands are stored in a collection that implies order.
+- Opening a Session file (Nanome, PyMOL, MOE, Maestro) or Spatial recording will prompt to clear your existing room if you already have Nanome open.

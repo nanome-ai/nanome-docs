@@ -22,9 +22,9 @@ The Hand Tool is the default state of the hand and allows for basic interaction 
 
 <vimg src="navigating-page/Tool-Measurement.jpg" alt="The Measurement Tool in hand, with Current Mode: Distance above it" />
 
-<vimg src="navigating-page/Measurement_Distance.gif" alt="Picking two atoms with the Measurement Tool to show the distance between them" />
+<vimg src="navigating-page/Measurement_Distance.gif" alt="Picking 2 atoms with the Measurement Tool to show the distance between them" />
 
-Measurement Tool places measurement points and measure the distances and angles between atoms and points of interests.
+Measurement Tool places measurement points and measures distances and angles between atoms and points of interest.
 
 ## Selection Tool
 
@@ -42,22 +42,24 @@ Torsion Tool twists rotatable bonds and changes the dihedral angles between atom
 
 ## MedChem Tools
 
-<vimg src="features-page/medchem.gif" alt="Adding rings and atoms to a molecule with the MedChem Rings & Chains and Atoms & Bonds menus" />
+<vimg src="features-page/medchem.gif" alt="Adding a ring from the MedChem Rings & Chains menu, then an alcohol from Functional Groups" />
 
-MedChem Tools enable editing the atoms directly using hands, bundling a rich set of features including atom addition and removal.
+MedChem Tools let you add and remove atoms with your hands.
 
 ### Prep
 
 <ShotRow src="navigating-page/Medchem-Prep.jpg" alt="The Prep tab of the MedChem menu">
 
-Offers options to quickly access binding sites and config the auxiliary features such as auto-minimization.
+Offers options to quickly access binding sites and set up the auxiliary features such as auto-minimization.
 
 <UiList label="Prep tab">
 <UiItem name="Build" href="#build" area="51.1,2.3,42.2,9.3">Switches to the Build tab.</UiItem>
 <UiItem name="Cycle through site views" area="14.9,13.0,74.2,10.5">Quick access to binding sites.</UiItem>
+<UiItem name="Get selected frame data" area="16.0,24.2,72.3,8.3">Grayed out here.</UiItem>
 <UiItem name="Auto-hydrogens" area="16.4,34.9,73.3,7.0">Turns auto-hydrogens on or off.</UiItem>
 <UiItem name="Auto-minimize" area="16.4,44.3,73.3,6.7">While on, small molecules or edits to the protein are minimized automatically.</UiItem>
 <UiItem name="Auto-select edges" area="16.4,53.3,73.3,6.7">Turns auto-select edges on or off.</UiItem>
+<UiItem name="Build / Edit / Delete" area="65.6,66.3,26.5,22.5">The tool's modes. Build is on here.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -81,7 +83,7 @@ Select a substructure from the build menu and build it on top of existing atoms 
 
 <ShotRow src="navigating-page/Medchem-Place.jpg" alt="Placing a new benzene at an empty space">
 
-Hold down trigger at an empty space to place a new structure.
+Hold the trigger at an empty space to place a new structure.
 
 <UiList label="Placing a structure">
 <UiItem name="Create New Molecule (Hold)" area="41.1,15.8,48.1,14.5">Shown at an empty space. Hold the trigger to place the structure.</UiItem>
@@ -105,22 +107,21 @@ Select any atom type from the periodic table to use in build mode.
 
 ## Whiteboard Tool {#draw-tool}
 
-<vimg src="navigating-page/whiteboard.gif" alt="Users in one room writing and drawing on whiteboards" />
+<ShotRow src="navigating-page/updated_whiteboard.png" alt="The whiteboard with the Share toggle and the undo, redo, save and trash buttons">
 
-<ShotRow src="navigating-page/updated_whiteboard.png" alt="The whiteboard with the Share toggle and the undo, redo and save buttons">
-
-The Whiteboard tool puts a marker in your hand and brings up a whiteboard that you can draw/write on. Toggle the right joystick sideways (left/right) to switch between your marker and eraser. On the right of the whiteboard, there are undo/redo buttons as well as a button to save your drawing as a PNG file.
+The Whiteboard tool puts a marker in your hand and brings up a whiteboard that you can draw/write on. Toggle the right joystick sideways (left/right) to switch between your marker and eraser. On the right of the whiteboard are Undo, Redo, Save, which saves your drawing as a PNG file, and a trash button.
 
 <UiList label="Whiteboard">
 <UiItem name="Share" area="49.6,3.0,20.6,11.8">Shares the whiteboard with other users in your workspace.</UiItem>
 <UiItem icon="arrow-back-up" name="Undo" area="88.2,20.0,7.9,9.6">Undoes the last change.</UiItem>
 <UiItem icon="arrow-forward-up" name="Redo" area="88.5,30.0,7.9,9.8">Redoes what Undo took back.</UiItem>
 <UiItem icon="device-floppy" name="Save" area="88.7,40.2,7.9,10.2">Saves your drawing as a PNG file.</UiItem>
+<UiItem icon="trash" name="Trash" area="88.6,51.0,7.9,10.0">Clears the drawing.</UiItem>
 </UiList>
 
 </ShotRow>
 
-The Share switch at the top of the whiteboard shares it with other users in your workspace. In the left-hand menu, you can change the marker color and hide the whiteboard.
+In the left-hand menu, you can change the marker color and hide the whiteboard.
 
 <vimg src="navigating-page/pdf_drawing.gif" alt="A person in a headset drawing with the marker on a loaded paper and on an image" />
 

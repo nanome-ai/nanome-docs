@@ -8,7 +8,7 @@ title: How To
 
 <ShotRow src="howto-page/autoheightsetting.png" alt="The Action Menu with Auto Height Adjust selected and its Enabled toggle open">
 
-Auto height calibration can be toggled on/off using the action menu. If users are having height issues, we recommend using this toggle to help troubleshoot the issue. By default, the toggle is off when users are in Mixed Reality Passthrough and turned on when users are in virtual reality. If height issues persist, we recommend resetting your floor height by calibrating your device. On Meta headsets, that means resetting the Guardian.
+Auto Height Adjust can be turned on or off from the action menu. If users are having height issues, we recommend using this toggle to help troubleshoot the issue. By default, the toggle is off when users are in Mixed Reality Passthrough and turned on when users are in virtual reality. If height issues persist, we recommend resetting your floor height by calibrating your device. On Meta headsets, that means resetting the Guardian.
 
 <UiList label="Action Menu">
 <UiItem name="Auto Height Adjust" area="32.7,77.9,30.8,8.4">Opens the toggle for auto height adjustment.</UiItem>
@@ -21,8 +21,10 @@ Auto height calibration can be toggled on/off using the action menu. If users ar
 ## How to export a molecule for future access or other software
 
 1. Select the structure you want to save.
-2. On the Entry List menu, click the [Export button](/nanome1x/navigation/menus#menu-actions)
-3. On the menu that appears after clicking Export, select where on your computer you want to save the structure (Desktop or Documents), and then select the file format you want to export to (pdb, sdf, or mmcif).
+2. On the Entry List menu, click the [Export button](/nanome1x/navigation/menus#menu-actions).
+3. In Save As, name the file and pick the format (.PDB, .SDF or .MMCIF).
+4. Under Where, pick Desktop or Documents.
+5. Select Export.
 
 ## How to load a structure stored on local computer
 
@@ -32,14 +34,13 @@ Auto height calibration can be toggled on/off using the action menu. If users ar
 
 ## How to load an MD trajectory file {#how-to-load-a-md-trajectory-file}
 
-<video src="https://user-images.githubusercontent.com/125503369/235212408-5e740ee3-1cb3-49a3-9bd9-0cc5aba5137a.mp4" controls="controls" width="1920" height="1080" style="width: 100%; max-width: 720px; height: auto; aspect-ratio: 16 / 9;" loop muted playsinline></video>
 
 Nanome supports the following MD trajectory files (v1.24): .PDB, .PSE, .DCD, .GRO, .XTC, .TRR. For trajectory support in Nanome v2, see [Supported File Formats](/nanome_web/fileformats#trajectory-molecular-dynamics). 
 1. Go to the [Load menu](/nanome1x/navigation/menus#load).
 2. Click on [Files](/nanome1x/navigation/menus#my-files). Navigate to the folder that contains your trajectories and press load (you may also have to multi-select the topology file for trajectories generated via GROMACS or Desmond).
-3. Once loaded, you can play the trajectory by launching the “Frame” menu with its button on the [Entry List](/nanome1x/navigation/menus#entry-list), shown in [the next section](#how-to-open-the-frame-menu-and-execute-frame-operations).
+3. Once loaded, you can play the trajectory by launching the Frame Menu with its button on the [Entry List](/nanome1x/navigation/menus#entry-list), shown in [the next section](#how-to-open-the-frame-menu-and-execute-frame-operations).
 
-If a trajectory doesn’t load properly, please try reducing its frame count and/or export as a multi-model .PDB. Additionally, please let us know some details about the problematic files and we can look into resolving them. Relevant details would include the file format type and the number of frames. Typically, the shorter the trajectory the easier time you’ll have to load it in. 
+If a trajectory doesn’t load properly, please try reducing its frame count and/or export as a multi-model .PDB. Additionally, please let us know some details about the problematic files and we can look into resolving them. Relevant details would include the file format type and the number of frames. Shorter trajectories load more easily. 
 
 ## How to open the Frame Menu and execute frame operations
 
@@ -102,13 +103,13 @@ Click on the [Build Menu](/nanome1x/navigation/toolsmenu#build) Tab Button on th
 ### How to build molecules using the MedChem tool
 
 1. Click on a structure on the [Build menu](/nanome1x/navigation/toolsmenu#build) to select it for placement.
-2. Overlap the structure on the right controller with an atom on the ligand. Once a yellow outline encloses the atom(s) that you want to build on, press down trigger button on your right controller in order to place the structure.
+2. Overlap the structure on the right controller with an atom on the ligand. Once a yellow outline encloses the atom(s) that you want to build on, press the trigger on your right controller to place the structure.
 
 ## How to use the Measurement tool
 
 1. Hold down the B Button on the right controller to bring up the [Tools Menu](/nanome1x/navigation/toolsmenu), hover the ray over the [Measurement Tool](/nanome1x/navigation/toolsmenu#measurement-tool) button to the top right and release B button.
 2. Overlap the tip of the tool with the atom that you want to measure and press trigger on the right hand controller to place a measurement point.
-3. Do the same action for another atom in order to create a distance measurement between the two atoms.
+3. Do the same action for another atom in order to create a distance measurement between the 2 atoms.
 
 ## How to change the color of your avatar
 
@@ -120,7 +121,7 @@ Click on the [Build Menu](/nanome1x/navigation/toolsmenu#build) Tab Button on th
 
 <vimg src="howto-page/WindowsContent.gif" alt="Opening Oculus Dash in Nanome and pinning a desktop window beside the menus" />
 
-When using the Oculus Rift/Rift S or Oculus Link (Quest connected to a desktop), users can take advantage of Oculus Dash to ‘pin’ windows or their entire desktop in VR and Nanome. This means users can view excel sheets, websites, and other 3rd party software while the headset is on. This way, users can work in Nanome with their existing desktop apps. However, please note that this pinned window is not visible to other users in the same room. If you want to collaboratively view a PDF file with your colleague in Nanome, please [load](/nanome1x/navigation/menus#load) the PDF file into your workspace.
+When using the Oculus Rift/Rift S or Oculus Link (Quest connected to a desktop), users can use Oculus Dash to ‘pin’ windows or their entire desktop in VR and Nanome. This means users can view excel sheets, websites, and other 3rd party software while the headset is on. This way, users can work in Nanome with their existing desktop apps. However, please note that this pinned window is not visible to other users in the same room. If you want to collaboratively view a PDF file with your colleague in Nanome, please [load](/nanome1x/navigation/menus#load) the PDF file into your workspace.
 
 To view a tutorial on how to use Oculus Dash to pin windows, we recommend this UploadVR article here: [https://uploadvr.com/oculus-dash-windows-button/](https://uploadvr.com/oculus-dash-windows-button/)
 
@@ -161,7 +162,7 @@ Downloading Nanome from Oculus App Lab will be the easiest method for getting ac
 
 Prior to the official release of each new Nanome version, we will make available a beta release on the Steam and Oculus stores. These are strictly beta builds and are not meant for regular use; rather, you have an opportunity to preview the next version as we are putting the finishing touches on it.
 
-On the Steam store, you can switch to the beta release by following [this guide](https://partner.steamgames.com/doc/store/application/branches). On the Oculus store, refer to the following GIF. (Be sure to switch back to the ‘LIVE’ for the latest stable release.)
+On the Steam store, you can switch to the beta release by following [this guide](https://partner.steamgames.com/doc/store/application/branches). On the Oculus store, refer to the following GIF. (Be sure to switch back to LIVE for the latest stable release.)
 
 <vimg src="howto-page/beta-release-oculus-store.gif" alt="Switching Nanome from the LIVE version to the BETA version on its Oculus store page" />
 
