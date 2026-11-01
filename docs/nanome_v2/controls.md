@@ -48,7 +48,7 @@ The right hand is the dominant hand to start: it holds the current tool. The lef
 <UiItem icon="droplet" name="Trigger" href="/nanome_v2/toolspanel">Away from panels, uses the current tool. With the Pointer, selects or deselects the residue under the pointer.</UiItem>
 <UiItem icon="x" name="Trigger, aimed at the sky">Clears the selection, in any tool. The pointer has to aim within 30° of straight up, with nothing under it.</UiItem>
 <UiItem icon="chevron-right" name="Thumbstick left or right">Away from panels, switches the current tool's mode, for example between Distance, Angle and Dihedral. In the Residue Editor, steps through rotamers.</UiItem>
-<UiItem name="A and B">Not used.</UiItem>
+<UiItem icon="ban" name="A and B">Not used.</UiItem>
 </UiList>
 
 The current tool's icon shows on this controller. For a tool with several modes, the mode shows beside it, between arrows that light up as the thumbstick switches it.
