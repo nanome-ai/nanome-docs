@@ -4,49 +4,73 @@ title: Wrist Menu
 
 # Wrist Menu
 
-Wrist menu contains access to features independent from the content of the workspace such as quick menu access and room management.
+The Wrist Menu holds features that don't depend on what's in the workspace, such as quick menu access and room management.
 
 <ScreenMap src="navigating-page/wrist-menu-1-24.png" alt="The Wrist Menu in Nanome 1.24" crop="5.0,10.0,95.0,90.0" label="Wrist Menu buttons">
-<MapCard icon="users" title="Room" href="#room" side="top" area="21.7,15.9,27.1,29.7">Manage users and presenter requests.</MapCard>
-<MapCard icon="layout-grid" title="Quick Menus" href="#quick-menus" side="top" area="49.6,13.4,28.6,30.4">Toggle each menu, or all at once.</MapCard>
+<MapCard icon="crown" title="Presenter" href="#presenter" side="left" area="10.4,14.8,11.7,19.6">Request presenter, or see and grant requests.</MapCard>
+<MapCard icon="arrows-maximize" title="Edit Position" href="/nanome1x/navigation/environment#teleportation" side="left" area="8.2,54.0,12.4,20.2">Turns on moving around the room by teleporting.</MapCard>
+<MapCard icon="users" title="Room" href="#room" side="top" area="21.7,15.9,27.1,29.7">Manage Users, Meetings, Spatial Recording, Return to Lobby and Exit Nanome.</MapCard>
+<MapCard icon="layout-grid" title="Quick Menus" href="#quick-menus" side="top" area="49.6,13.4,28.6,30.4">Toggle each menu.</MapCard>
 <MapCard icon="files" title="Menu Layouts" href="#menu-layouts" side="left" area="20.5,45.4,28.1,30.2">Manage the enabled menus and their layout.</MapCard>
 <MapCard icon="settings" title="Settings" href="#settings" side="right" area="49.3,43.6,29.8,31.3">Mic indicator, sound, avatar and more.</MapCard>
+<MapCard icon="arrow-back-up" title="Undo and Redo" side="right" area="78.9,12.6,16.4,19.4;81.0,77.1,17.9,20.5">Undoes or redoes the last change.</MapCard>
+<MapCard icon="clock" title="Time" side="right" area="80.4,44.3,19.6,18.5">The current time.</MapCard>
 <MapCard icon="file-text" title="Shared Notepad" href="#notepad" side="bottom" area="6.9,74.4,12.8,20.9">A sticky note.</MapCard>
 <MapCard icon="world" title="Web Browser" href="#in-vr-web-browser" side="bottom" area="19.7,76.7,14.0,18.9">A web browser inside VR.</MapCard>
 <MapCard icon="camera" title="Screenshot Tool" href="#screenshot-tool" side="bottom" area="34.2,76.0,14.4,20.3">Take a screenshot and email it.</MapCard>
+<MapCard icon="device-floppy" title="Quick Save" side="bottom" area="49.5,76.4,14.0,19.4">Saves the workspace.</MapCard>
+<MapCard icon="microphone" title="Mute" side="bottom" area="64.9,76.2,14.9,19.8">Mutes or unmutes your mic.</MapCard>
 </ScreenMap>
 
 ## Quick Menus
 
-<ShotRow src="navigating-page/Wrist-QuickMenus.jpg" alt="The Quick Menus panel above the Wrist Menu" crop="4.4,5.5,66.1,90.9">
+<ShotRow src="navigating-page/Wrist-QuickMenus.jpg" alt="The Quick Menus panel above the Wrist Menu" crop="4.4,5.5,66.1,90.9" expand-below>
 
-Toggle on and off each menu quickly or all at once.
+Quick Menus turns each menu on or off. This screenshot shows the wrist menu's earlier design.
 
 <UiList label="Quick Menus">
 <UiItem name="Menu buttons" area="12.2,7.5,49.0,39.5">Each one toggles its menu on or off.</UiItem>
 <UiItem name="Clear All" area="20.1,48.6,14.7,6.5">Turns every menu off.</UiItem>
-<UiItem name="Open All" area="38.4,48.8,14.6,6.5">Turns every menu on.</UiItem>
+<UiItem name="Open All" area="38.4,48.8,14.6,6.5">Turned every menu on. Version 1.24.6 removed this button.</UiItem>
 </UiList>
 
 </ShotRow>
 
 ## Room
 
-<ShotRow src="navigating-page/Wrist-Room-ManageUsers.jpg" alt="The Manage Users panel above the Room buttons of the Wrist Menu" crop="4.0,1.5,66.0,95.5">
+<ShotRow src="navigating-page/wrist_menu_spatrec.png" alt="The Wrist Menu's Room buttons: Manage Users, Meetings, Spatial Recording, Return to Lobby and Exit Nanome" expand-below>
 
-<UiList label="Manage Users">
-<UiItem icon="users" name="Manage Users" area="17.2,63.7,19.9,12.3">Manage users by giving them the presenter privilege or teleporting them.</UiItem>
-<UiItem name="Users" area="7.7,17.0,57.7,12.2">The users in the room, with a count.</UiItem>
-<UiItem name="Teleport Guests To Me" area="7.7,52.1,32.1,5.7">Teleports guests to you.</UiItem>
+<UiList label="Room">
+<UiItem icon="users" name="Manage Users" href="#manage-users" area="18.6,7.0,28.7,31.5">Opens Manage Users, below.</UiItem>
+<UiItem icon="calendar" name="Meetings" href="/home.nanome.ai/meetings" area="47.7,4.0,31.2,34.9">Scheduled meetings.</UiItem>
+<UiItem name="Spatial Recording" href="/nanome1x/navigation/menus#spatial-recordings" area="20.1,40.6,28.1,31.7">Records the workspace to play back later.</UiItem>
+<UiItem icon="logout" name="Return to Lobby" area="52.5,41.4,13.1,31.7">Leaves the room for the lobby.</UiItem>
+<UiItem icon="x" name="Exit Nanome" area="66.0,41.4,13.1,32.0">Closes Nanome.</UiItem>
 </UiList>
 
 </ShotRow>
 
-<ShotRow src="navigating-page/Wrist-Room-PresenterRequests.jpg" alt="The Presenter Requests panel above the Room buttons of the Wrist Menu" crop="1.6,1.8,75.4,97.8">
+### Manage Users
+
+<ShotRow src="navigating-page/Wrist-Room-ManageUsers.jpg" alt="The Manage Users panel" crop="4.0,1.0,67.0,61.0" expand-below>
+
+<UiList label="Manage Users">
+<UiItem name="Users" area="7.7,17.0,57.7,12.2">The users in the room, with a count. From here you can hide a user or give them the presenter privilege.</UiItem>
+<UiItem name="Teleport Guests To Me" area="7.7,52.1,32.1,5.7">Teleports guests to you.</UiItem>
+<UiItem name="Invite" area="53.1,52.5,13.7,5.1">Invites others to the room.</UiItem>
+</UiList>
+
+</ShotRow>
+
+## Presenter
+
+In version 1.24.6, one Presenter (crown) button on the Wrist Menu both requests presenter and opens Presenter Requests.
+
+<ShotRow src="navigating-page/Wrist-Room-PresenterRequests.jpg" alt="The Presenter Requests panel" crop="1.6,1.5,76.0,69.5">
 
 <UiList label="Presenter Requests">
-<UiItem icon="crown" name="Presenter Requests" area="39.3,72.5,20.1,10.2">View the presenter requests and grant presenter privilege.</UiItem>
-<UiItem name="Requests" area="3.5,10.4,72.2,47.9">The requests waiting, with a count.</UiItem>
+<UiItem name="Requests" area="3.5,10.4,72.2,47.9">The requests waiting, with a count. Grant presenter privilege from here.</UiItem>
+<UiItem name="Remove All" area="39.2,59.0,29.4,6.6">Clears every request.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -55,11 +79,13 @@ Toggle on and off each menu quickly or all at once.
 
 <vimg src="navigating-page/Wrist-Menu.jpg" alt="The wrist menu with Focus On Menu, Grid Lock Menus, Hide Menus and Lock Menus" />
 
-Quickly manage the enabled menus and format them in certain layouts.
+The Menu Layouts buttons arrange, hide and lock the open menus. This screenshot shows the wrist menu's earlier design.
 
 ## Settings
 
-<ShotRow src="navigating-page/Wrist_Settings_Menu2.jpg" alt="The Settings buttons of the Wrist Menu" crop="5.0,10.0,64.0,80.0">
+<ShotRow src="navigating-page/Wrist_Settings_Menu2.jpg" alt="The Settings buttons of the Wrist Menu" crop="5.0,10.0,64.0,80.0" expand-below>
+
+This screenshot shows the wrist menu's earlier design.
 
 <UiList label="Settings on the Wrist Menu">
 <UiItem name="Mic indicator" area="14.8,39.0,42.5,4.4">The center area of the settings menu has an indicator for your current mic volume. You can use it to check if your mic is working.</UiItem>
@@ -85,7 +111,7 @@ Quickly manage the enabled menus and format them in certain layouts.
 
 ### User
 
-<ShotRow src="navigating-page/Wrist_Settings_User_2.png" alt="The User tab of the Settings menu" crop="32.0,17.3,64.0,40.9">
+<ShotRow src="navigating-page/Wrist_Settings_User_2.png" alt="The User tab of the Settings menu" crop="32.0,17.3,64.0,40.9" expand-below>
 
 <UiList label="User">
 <UiItem name="Avatar Settings" area="66.7,20.5,26.8,13.2">Opens the avatar customizations below.</UiItem>
@@ -100,12 +126,12 @@ Quickly manage the enabled menus and format them in certain layouts.
 
 **Avatar Customizations**
 
-Change your display name, hairstyle, hair color, eyeglasses color, and shirt color.
+Avatar Settings changes your display name, hairstyle, hair color, eyeglasses color and shirt color.
 
 <UiList label="Avatar Settings">
-<UiItem name="Hairstyle" area="60.1,60.0,29.7,10.0">Pick a hairstyle.</UiItem>
-<UiItem name="Hair, Eyeglasses, Shirt" area="60.5,71.6,29.5,6.3">Pick what to color.</UiItem>
-<UiItem name="Colors" area="61.3,78.4,27.8,12.6">Pick its color.</UiItem>
+<UiItem name="Hairstyle" area="60.1,60.0,29.7,10.0">Picks a hairstyle.</UiItem>
+<UiItem name="Hair, Eyeglasses, Shirt" area="60.5,71.6,29.5,6.3">Picks what to color.</UiItem>
+<UiItem name="Colors" area="61.3,78.4,27.8,12.6">Picks its color.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -165,7 +191,7 @@ Change your display name, hairstyle, hair color, eyeglasses color, and shirt col
 
 <vimg src="navigating-page/Wrist-ScreenshotTool.gif" alt="Opening the camera from the wrist menu and taking a picture of a protein" />
 
-Use the screenshot tool to take a screenshot of your workspace and send it via email.
+The screenshot tool takes a picture of your workspace and can email it.
 
 ### Camera as Desktop View
 
@@ -177,11 +203,11 @@ Use the screenshot tool to take a screenshot of your workspace and send it via e
 
 </ShotRow>
 
-## Notepad
+## Shared Notepad {#notepad}
 
 <ShotRow src="navigating-page/notepad.png" alt="The Shared Notepad">
 
-The shared notepad can be used as a sticky note.
+The Shared Notepad works as a sticky note.
 
 <UiList label="Shared Notepad">
 <UiItem icon="text-size" name="Text Size" area="6.7,86.2,46.4,7.3">S, M or L.</UiItem>

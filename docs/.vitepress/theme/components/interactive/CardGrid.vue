@@ -6,7 +6,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="n-cardgrid" :style="{ '--n-cols': cols }">
+  <div class="n-cardgrid" :class="`cols-${cols}`" :style="{ '--n-cols': cols }">
     <slot />
   </div>
 </template>
@@ -19,9 +19,17 @@ defineProps({
   margin: 24px 0;
 }
 
+/* 3 columns stay 3 on a tablet, as in <IconGrid>, instead of 2 with a lone
+   card under them, and become 1 where they'd get too narrow. */
 @media (max-width: 860px) {
-  .n-cardgrid {
+  .n-cardgrid:not(.cols-3) {
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  }
+}
+
+@media (max-width: 639px) {
+  .n-cardgrid.cols-3 {
+    grid-template-columns: 1fr;
   }
 }
 

@@ -64,24 +64,24 @@ release, see [Choosing Hardware](/help/choosinghardware).
         </tr>
         <tr>
             <td>MDM Support</td>
-            <td>Meta QFB</td>
-            <td>Meta QFB</td>
-            <td>Meta QFB</td>
+            <td>Meta Horizon managed services (HMS)</td>
+            <td>Meta Horizon managed services (HMS)</td>
+            <td>Meta Horizon managed services (HMS)</td>
             <td>ArborXR, ManageXR</td>
             <td>ArborXR, ManageXR</td>
             <td>ArborXR</td>
-            <td>Meta QFB</td>
+            <td>Meta Horizon managed services (HMS)</td>
             <td>None</td>
         </tr>
         <tr>
             <td>MDM Cost</td>
-            <td>With shared mode: $24; With enhanced support: $31</td>
-            <td>With shared mode: $24; With enhanced support: $31</td>
-            <td>With shared mode: $24; With enhanced support: $31</td>
-            <td>ArborXR: $13; ManageXR: $12</td>
-            <td>ArborXR: $13; ManageXR: $12</td>
-            <td>ArborXR: $13</td>
-            <td>With shared mode: $24; With enhanced support: $31</td>
+            <td>Free (HMS)</td>
+            <td>Free (HMS)</td>
+            <td>Free (HMS)</td>
+            <td>ArborXR and ManageXR from $7 per headset per month</td>
+            <td>ArborXR and ManageXR from $7 per headset per month</td>
+            <td>ArborXR from $7 per headset per month</td>
+            <td>Free (HMS)</td>
             <td>N</td>
         </tr>
         <tr>
@@ -139,13 +139,13 @@ release, see [Choosing Hardware](/help/choosinghardware).
         </tr>
         <tr>
             <td>Procurement (Note: Quest devices can be bundled)</td>
-            <td>Through Nanome Inc. or <a href="https://www.meta.com/quest/Quest-pro">Meta Quest Pro</a></td>
+            <td>Through Nanome Inc. or Meta Quest Pro</td>
             <td>Through Nanome Inc. or <a href="https://www.meta.com/quest/quest-3/">Meta Quest 3</a></td>
             <td>Through Nanome Inc. or <a href="https://www.meta.com/quest/products/quest-2/">Meta Quest 2</a><br></td>
             <td>Through Nanome Inc. or <a href="https://business.vive.com/eu/solutions/streaming/">HTC</a></td>
             <td><a href="https://www.picoxr.com/global/products/pico4">PicoXR</a><br></td>
             <td>PicoXR<br></td>
-            <td><a href="https://www.meta.com/help/quest/articles/headsets-and-accessories/oculus-link/meta-quest-link-compatibility/">Meta Quest Link Cable Requirements</a></td>
+            <td><a href="https://www.meta.com/help/quest/140991407990979/">Meta Link requirements</a></td>
             <td></td>
         </tr>
         <tr>
@@ -179,7 +179,7 @@ structures can be loaded within the workspace in the Meta Quest 2 & Vive Focus 3
 2. Surfaces (on/off), secondary structures (ribbons on/off), and supplemental materials
 (PDF/JPEGs, whiteboards, web browsers, labels) all affect performance in different ways
 significantly. ‘Shown Atom Count’ column is given assuming nothing else is displayed in the scene.
-3. Desktop is assumed to be “VR ready” (Nvidia GTX 1060 or greater).
+3. Desktop is assumed to be “VR ready”; see the [minimum and recommended PC specs](/help/pchardware).
 
 </Accordion>
 
@@ -270,7 +270,7 @@ significantly. ‘Shown Atom Count’ column is given assuming nothing else is d
     <tbody>
         <tr>
             <td><b>Feature</b></td>
-            <td><b>Oculus Quest 2 & HTC Vive Focus 3</b></td>
+            <td><b>Meta Quest 2 & HTC Vive Focus 3</b></td>
             <td><b>Windows Desktop (both 2D and VR)</b></td>
         </tr>
         <tr>

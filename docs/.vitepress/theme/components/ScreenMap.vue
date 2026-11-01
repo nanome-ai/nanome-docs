@@ -18,7 +18,7 @@
  *
  * Cards keep the order they're written in on each side.
  */
-import { Fragment, cloneVNode, defineComponent, h, nextTick, onBeforeUnmount, provide, ref, watch } from 'vue'
+import { Fragment, cloneVNode, defineComponent, h, nextTick, onBeforeUnmount, onMounted, provide, ref, watch } from 'vue'
 import HotShot from './HotShot.vue'
 import MapCard from './MapCard.vue'
 import { imageInfo, parseBox } from './image.js'
@@ -72,7 +72,14 @@ export default defineComponent({
       // For a browser without scrollend.
       setTimeout(end, 1500)
     }
-    provide('n-screenmap', { active, enter, leave })
+    provide('n-screenmap', {
+      active,
+      enter(n) {
+        enter(n)
+        reveal()
+      },
+      leave,
+    })
 
     // The image's height in the page, so the full-screen view doesn't show it
     // much smaller than that.
@@ -114,14 +121,126 @@ export default defineComponent({
       )
       fitHeight.value = rows.length && room >= 0.9 * pageHeight.value && tallest <= room ? Math.floor(room) : 0
     }
+    // Full screen on a phone, an image wider than the screen pans sideways,
+    // with faded edges where there's more to see and a hint under it, as in a
+    // <ShotRow>. It opens on its parts: all of them in the middle when they
+    // fit, or else centered on them. One that would come out under a quarter
+    // wider than the screen fits it instead (`fitWidth`).
+    const pan = ref(false)
+    const fitWidth = ref(false)
+    const more = ref({ left: false, right: false })
+    const scroller = () => root.value?.querySelector('.n-screenmap__scroll')
+    const edges = () => {
+      const el = scroller()
+      more.value =
+        pan.value && el
+          ? { left: el.scrollLeft > 1, right: el.scrollLeft + el.clientWidth < el.scrollWidth - 1 }
+          : { left: false, right: false }
+    }
+    const startOnParts = (el) => {
+      el.scrollLeft = 0
+      const parts = [...el.querySelectorAll('.hotshot__spot')].map((p) => p.getBoundingClientRect())
+      if (!parts.length) return
+      const s = el.getBoundingClientRect()
+      const left = Math.min(...parts.map((r) => r.left))
+      const right = Math.max(...parts.map((r) => r.right))
+      const mid =
+        right - left <= s.width
+          ? (left + right) / 2
+          : parts.reduce((sum, r) => sum + r.left + r.width / 2, 0) / parts.length
+      el.scrollLeft = mid - (s.left + s.right) / 2
+    }
+    const fitPan = async (opening) => {
+      fitWidth.value = false
+      await nextTick()
+      const el = scroller()
+      const on = !!el && view.focused.value && matchMedia('(max-width: 639px)').matches
+      fitWidth.value = on && el.scrollWidth > el.clientWidth && el.scrollWidth < 1.25 * el.clientWidth
+      pan.value = on && !fitWidth.value && el.scrollWidth > el.clientWidth + 1
+      await nextTick()
+      if (pan.value && opening === true) startOnParts(el)
+      edges()
+    }
+    const resized = () => {
+      fit()
+      fitPan()
+    }
+
+    /**
+     * Full screen, a card lit while its region is out of the panning view
+     * pans the image to it: to the middle when it fits, or to its start.
+     */
+    const reveal = async () => {
+      if (!view.focused.value || !pan.value) return
+      await nextTick()
+      const el = scroller()
+      const parts = [...(el?.querySelectorAll('.hotshot__spot.is-active') || [])].map((p) => p.getBoundingClientRect())
+      if (!parts.length) return
+      const s = el.getBoundingClientRect()
+      const left = Math.min(...parts.map((r) => r.left))
+      const right = Math.max(...parts.map((r) => r.right))
+      if (left >= s.left && right <= s.right) return
+      if (right - left > s.width && left >= s.left && left < s.right) return
+      const by = right - left <= s.width ? (left + right) / 2 - (s.left + s.right) / 2 : left - 16 - s.left
+      const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+      el.scrollBy({ left: by, behavior })
+    }
+
+    // A short last row of cards takes the width the full rows above it settle
+    // at, so the cards' edges line up in columns (see the CSS).
+    const evenRows = () => {
+      const rows = root.value?.querySelectorAll('.n-screenmap > .n-screenmap__top, .n-screenmap > .n-screenmap__bottom') || []
+      for (const row of rows) {
+        row.style.removeProperty('--sm-card-max')
+        const style = getComputedStyle(row)
+        const basis = row.children.length ? parseFloat(getComputedStyle(row.children[0]).flexBasis) : NaN
+        if (style.display !== 'flex' || !basis) continue
+        const gap = parseFloat(style.columnGap) || 0
+        const width = row.clientWidth
+        // A map in a closed tab has no width until the tab opens.
+        if (!width) continue
+        const n = Math.max(1, Math.floor((width + gap) / (basis + gap)))
+        if (row.children.length > n) row.style.setProperty('--sm-card-max', `${Math.floor(((width - (n - 1) * gap) / n) * 100) / 100}px`)
+      }
+    }
+    // With the cards around the image, the row above it comes first in the
+    // page, so Tab and a screen reader meet the parts in the order they're
+    // seen. Listed under the image, the cards follow it (see the render).
+    const around = ref(false)
+    const placeShot = () => {
+      const map = root.value?.querySelector('.n-screenmap')
+      if (!map) return
+      const next = getComputedStyle(map).gridTemplateAreas !== 'none'
+      if (next === around.value) return
+      // Moving a part of the map takes focus off it, so it gets it back.
+      const had = root.value.contains(document.activeElement) ? document.activeElement : null
+      around.value = next
+      if (had) nextTick(() => had.isConnected && document.activeElement !== had && had.focus({ preventScroll: true }))
+    }
+
+    let rower = null
+    onMounted(() => {
+      if (typeof ResizeObserver === 'undefined' || !root.value) return
+      rower = new ResizeObserver(() => {
+        evenRows()
+        placeShot()
+      })
+      rower.observe(root.value)
+      for (const row of root.value.querySelectorAll('.n-screenmap > .n-screenmap__top, .n-screenmap > .n-screenmap__bottom')) rower.observe(row)
+    })
+    onBeforeUnmount(() => rower?.disconnect())
+
     watch(view.focused, (on) => {
-      if (on) addEventListener('resize', fit)
+      if (on) addEventListener('resize', resized)
       else {
-        removeEventListener('resize', fit)
+        removeEventListener('resize', resized)
         fitHeight.value = 0
+        pan.value = false
+        fitWidth.value = false
+        more.value = { left: false, right: false }
       }
     })
-    onBeforeUnmount(() => removeEventListener('resize', fit))
+    onBeforeUnmount(() => removeEventListener('resize', resized))
 
     const open = async () => {
       const frame = root.value?.querySelector('.hotshot__frame')
@@ -132,6 +251,7 @@ export default defineComponent({
       fit()
       await nextTick()
       fit()
+      fitPan(true)
     }
 
     // A click on a region whose card has no link: light the card and bring
@@ -143,14 +263,20 @@ export default defineComponent({
       const r = el.getBoundingClientRect()
       // Below the sticky chrome: the breadcrumb strip, or the nav bar without
       // it. Full screen, the view covers both, so only its own top counts.
+      // On a phone, the image that stays over the cards counts too.
       const bar = document.querySelector('.n-pagebar') || document.querySelector('.n-navbar')
-      const top = view.focused.value
+      const shot = root.value.querySelector('.n-screenmap__shot')
+      const sticky = view.focused.value && getComputedStyle(shot).position === 'sticky'
+      let top = view.focused.value
         ? root.value.getBoundingClientRect().top
         : (bar ? bar.getBoundingClientRect().bottom : 56) + 24
+      if (sticky) top = Math.max(top, shot.getBoundingClientRect().bottom)
       const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
       if (r.top < top || r.bottom > window.innerHeight) {
         holdWhileScrolling()
-        el.scrollIntoView({ block: 'center', behavior })
+        // Under a sticky image, the card comes up to just below it.
+        if (sticky) root.value.scrollBy({ top: r.top - top - 12, behavior })
+        else el.scrollIntoView({ block: 'center', behavior })
       }
     }
 
@@ -211,6 +337,7 @@ export default defineComponent({
         return h(
           'div',
           {
+            key: s,
             class: ['n-screenmap__side', `n-screenmap__${s}`, { 'is-level': at !== null }],
             style: at !== null ? { '--sm-at': at.toFixed(3) } : lean(s),
           },
@@ -223,11 +350,49 @@ export default defineComponent({
         {
           'is-focus': view.focused.value,
           'is-fit': view.focused.value && fitHeight.value > 0,
+          'is-fitwidth': view.focused.value && fitWidth.value,
           // Cards on both sides of a screenshot that isn't tall.
           'is-flanked': sides.left.length > 0 && sides.right.length > 0 && ar >= 0.75,
+          // A tall screen, which stays as it is full screen on a phone.
+          'is-tall': Number.isFinite(ar) && ar < 0.9,
         },
         ...SIDES.map((s) => ({ [`has-${s}`]: sides[s].length > 0 })),
       ]
+
+      const shot = h('div', { class: 'n-screenmap__shot', key: 'shot' }, [
+        h(
+          'div',
+          {
+            class: ['n-screenmap__scroll', { 'more-left': more.value.left, 'more-right': more.value.right }],
+            tabindex: pan.value ? 0 : undefined,
+            role: pan.value ? 'region' : undefined,
+            'aria-label': pan.value ? `${props.alt || 'Screenshot'}, scrolls sideways` : undefined,
+            onScrollPassive: edges,
+          },
+          [
+            h(HotShot, {
+              src: props.src,
+              alt: props.alt,
+              crop: props.crop,
+              spots,
+              active: active.value,
+              focus: view.focused.value,
+              onEnter: enter,
+              onLeave: leave,
+              onOpen: open,
+              onPick: pick,
+            }),
+          ]
+        ),
+        pan.value
+          ? h('p', { class: 'n-screenmap__hint', 'aria-hidden': 'true' }, [
+              h('svg', { viewBox: '0 0 24 24', width: 14, height: 14 }, [
+                h('path', { d: 'M7 8l-4 4 4 4M17 8l4 4-4 4M3 12h18', fill: 'none', stroke: 'currentColor', 'stroke-width': 2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }),
+              ]),
+              'Scrolls sideways',
+            ])
+          : null,
+      ])
 
       return h(
         'div',
@@ -264,29 +429,14 @@ export default defineComponent({
                     '--sm-fit-h': fitHeight.value ? `${fitHeight.value}px` : undefined,
                   },
                 },
-                // The image first, then the cards in reading order, so Tab
-                // reaches them in the order they're read when they're listed
-                // under the image. Around the image, grid areas place them.
-                [
-                  h('div', { class: 'n-screenmap__shot' }, [
-                    h(HotShot, {
-                      src: props.src,
-                      alt: props.alt,
-                      crop: props.crop,
-                      spots,
-                      active: active.value,
-                      focus: view.focused.value,
-                      onEnter: enter,
-                      onLeave: leave,
-                      onOpen: open,
-                      onPick: pick,
-                    }),
-                  ]),
-                  column('top'),
-                  column('left'),
-                  column('right'),
-                  column('bottom'),
-                ]
+                // In a list, the image first, then the cards in reading order;
+                // around the image, the row above it, the image between the
+                // columns beside it, then the row below. Either way Tab reaches
+                // them in the order they're seen. Grid areas place them around
+                // the image, and keys let the image move without reloading.
+                around.value
+                  ? [column('top'), column('left'), shot, column('right'), column('bottom')]
+                  : [shot, column('top'), column('left'), column('right'), column('bottom')]
               ),
             ]
           ),
@@ -347,6 +497,12 @@ export default defineComponent({
     align-items: center;
   }
 
+  /* With cards only above and below it, the image spans the rows of cards,
+     with no gap kept for the empty columns beside it. */
+  .n-screenmap:not(.has-left, .has-right) {
+    column-gap: 0;
+  }
+
   /* Under a row of cards, the image leaves room for the row, so the two fit
      in the window together. */
   .n-screenmap.has-top:not(.is-focus) {
@@ -373,11 +529,13 @@ export default defineComponent({
   }
 
   /* A row wraps as if each card were 12.5rem, and the cards then take up to
-     13.5rem of any room left, so a two-word title stays on one line. */
+     13.5rem of any room left, so a two-word title stays on one line. A short
+     last row's cards grow no wider than the full rows' (evenRows() in the
+     script), so their edges line up with the cards above. */
   .n-screenmap__top > *,
   .n-screenmap__bottom > * {
     flex: 1 1 12.5rem;
-    max-width: 13.5rem;
+    max-width: min(13.5rem, var(--sm-card-max, 13.5rem));
   }
 
   /* Cards beside the image stay compact, so the image keeps the room. */
@@ -421,7 +579,7 @@ export default defineComponent({
      just the image's column, so they line up with the parts they point to. */
   .n-screenmap.has-right:not(.has-left) > .n-screenmap__top,
   .n-screenmap.has-right:not(.has-left) > .n-screenmap__bottom {
-    grid-column: 1 / 3;
+    grid-column: 2 / 3;
   }
 
   .n-screenmap__left {
@@ -451,16 +609,19 @@ export default defineComponent({
     justify-content: center;
   }
 
-  /* A row over the image alone still holds 2 cards side by side, and the
-     image keeps to the cards on its right. */
-  .n-screenmap.is-focus.has-right:not(.has-left):is(.has-top, .has-bottom) {
+  /* With cards only on its right, in the page too, the image's column is
+     as wide as the image, so the cards sit close to it. A row over the image
+     alone still holds 2 cards side by side, and the image keeps to the cards
+     on its right. */
+  .n-screenmap.has-right:not(.has-left):is(.has-top, .has-bottom) {
     grid-template-columns:
       0px
       minmax(0, max(calc(var(--hotshot-maxh) * var(--sm-ar, 1)), 26rem))
       minmax(0, var(--n-sm-right, 0px));
+    justify-content: center;
   }
 
-  .n-screenmap.is-focus.has-right:not(.has-left) .hotshot {
+  .n-screenmap.has-right:not(.has-left) .hotshot {
     margin-right: 0;
   }
 
@@ -481,7 +642,8 @@ export default defineComponent({
    would leave it half its size. Until the map is 1000px wide, the image comes
    first and the cards follow in a list instead. */
 @container screenmap (max-width: 999.98px) {
-  .n-screenmap.is-flanked {
+  /* As specific as the full-screen columns above, so this wins there too. */
+  .n-screenmap.is-flanked:is(.has-left, .has-right) {
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
     grid-template-areas: none;
     gap: 10px;
@@ -490,6 +652,12 @@ export default defineComponent({
 
   .n-screenmap.is-flanked:not(.is-focus) {
     --hotshot-maxh: calc(100vh - var(--n-nav-height) - var(--n-pagebar-space) - 60px);
+  }
+
+  /* A tall image would fill the window, so it leaves room for the first row
+     of cards under it: a card and a part at the image's top fit together. */
+  .n-screenmap.is-flanked.is-tall:not(.is-focus) {
+    --hotshot-maxh: calc(100vh - var(--n-nav-height) - var(--n-pagebar-space) - 190px);
   }
 
   .n-screenmap.is-flanked.is-focus {
@@ -545,7 +713,8 @@ export default defineComponent({
   position: fixed;
   top: 12px;
   right: 16px;
-  z-index: 1;
+  /* Over the image that stays at the top on a phone. */
+  z-index: 3;
   display: flex;
   padding: 8px;
   border: 1px solid var(--n-border);
@@ -586,15 +755,64 @@ html.n-focus-open {
 
 /* On a phone, full screen shows the image larger than the page can: up to
    2.5 screens wide, as long as it stays short enough for the window, and the
-   image scrolls sideways. A tall screen stays as it is. */
+   image scrolls sideways (fitPan() in the script). A tall screen stays as it
+   is, and so does one that would come out only a little wider (is-fitwidth). */
 @media (max-width: 639px) {
-  .n-screenmap.is-focus .n-screenmap__shot {
+  .n-screenmap.is-focus:not(.is-tall) .n-screenmap__scroll {
+    --fade: 32px;
     overflow-x: auto;
+    overscroll-behavior-x: contain;
   }
 
-  .n-screenmap.is-focus .n-screenmap__shot .hotshot {
+  .n-screenmap.is-focus:not(.is-tall) .n-screenmap__scroll .hotshot {
     width: max(100%, min(var(--hotshot-shown), 250vw, (var(--hotshot-maxh, 100vh - 120px)) * var(--hotshot-ar)));
     max-width: none;
+  }
+
+  .n-screenmap.is-focus.is-fitwidth .n-screenmap__scroll .hotshot {
+    width: 100%;
+  }
+
+  .n-screenmap.is-focus .n-screenmap__scroll.more-right {
+    mask-image: linear-gradient(to left, transparent, #000 var(--fade));
+  }
+
+  .n-screenmap.is-focus .n-screenmap__scroll.more-left {
+    mask-image: linear-gradient(to right, transparent, #000 var(--fade));
+  }
+
+  .n-screenmap.is-focus .n-screenmap__scroll.more-left.more-right {
+    mask-image: linear-gradient(to right, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent);
+  }
+
+  .n-screenmap.is-focus .n-screenmap__scroll[tabindex]:focus-visible {
+    outline: 2px solid var(--n-accent);
+    outline-offset: 2px;
+    mask-image: none;
+  }
+
+  .n-screenmap__hint {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 4px 0 0;
+    color: var(--n-text-muted);
+    font-size: var(--n-text-xs);
+  }
+}
+
+/* On a tall phone the image stays at the top of the full-screen view while
+   the cards scroll under it, so a lit part stays in sight, as in a
+   <ShotRow>. A tall screen would come out smaller there, so it scrolls. */
+@media (max-width: 599.98px) and (min-height: 700px) {
+  .n-screenmap.is-focus:not(.is-tall) .n-screenmap__shot {
+    position: sticky;
+    top: -56px;
+    z-index: 1;
+    margin-top: -56px;
+    padding: 56px 0 8px;
+    background: var(--n-bg);
+    --hotshot-maxh: 45vh;
   }
 }
 </style>

@@ -50,6 +50,12 @@ defineProps({
   list-style: none;
 }
 
+/* A list with no icons drops the empty icon column, so its names start about
+   as far in from the edge as its descriptions end. */
+.vp-doc .n-uilist:not(:has(.n-uiitem__mark .n-appicon)) {
+  --uil-mark: 0px;
+}
+
 /* Narrow: the description goes under its name. */
 @container uilist (max-width: 22rem) {
   .vp-doc .n-uilist,

@@ -54,7 +54,7 @@ const caption = computed(() => {
   const s = state()
   const title = [
     `${d} Å`,
-    s.whole ? 'Whole residues' : 'Atoms only',
+    s.whole ? 'Whole residues' : 'Whole residues off',
     !s.ignoreSelf && 'Ignore self off',
     s.includeLigands && 'Include ligands',
     s.allEntries && 'All entries',
@@ -97,7 +97,9 @@ const caption = computed(() => {
       }
     } else {
       text.push(
-        `1RX3, the same enzyme crystallized with methotrexate, sits in the same place, so its ${r.res3} residues and ${r.wat3} waters in range join, with orange carbons. The name now starts with all within.`
+        s.whole
+          ? `1RX3, the same enzyme crystallized with methotrexate, sits in the same place, so its ${r.res3} residues and ${r.wat3} waters in range join, with orange carbons. The name now starts with all within.`
+          : `1RX3, the same enzyme crystallized with methotrexate, sits in the same place, so its atoms within ${d} Å of folate join too, from ${r.res3} residues and ${r.wat3} waters, with orange carbons. The name now starts with all within.`
       )
       if (s.includeLigands) {
         text.push(

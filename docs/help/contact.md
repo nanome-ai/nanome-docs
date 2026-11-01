@@ -4,6 +4,6 @@ title: Contact
 
 # Contact us
 
-For help downloading or using Nanome, or just to say hello, email our team at [support@nanome.ai](mailto:support@nanome.ai).
+The Nanome team answers questions about downloading and using Nanome at [support@nanome.ai](mailto:support@nanome.ai), or through the form below.
 
 <ContactForm />

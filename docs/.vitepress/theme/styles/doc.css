@@ -83,11 +83,14 @@
   margin-top: 0;
 }
 
-/* Anchor links appear on hover, in the gutter, so they never shift the text. */
+/* Anchor links appear on hover, in the gutter, so they never shift the text.
+   VitePress also pulls the # left by a margin, which would add to `left` and
+   put it under the sidebar or past the window's edge. */
 .vp-doc .header-anchor {
   position: absolute;
   top: 0;
   left: -0.75em;
+  margin-left: 0;
   padding-top: inherit;
   color: var(--n-text-faint);
   font-weight: 400;
@@ -119,9 +122,9 @@
   top: 0;
 }
 
-/* A phone-width window has no gutter to spare, so the # sits at the
+/* A narrow window has too little gutter for the #, so it sits at the
    heading's right edge, inside the column, in room the heading keeps free. */
-@media (max-width: 640px) and (hover: hover) {
+@media (max-width: 820px) and (hover: hover) {
   .vp-doc :is(h1, h2, h3, h4):has(> .header-anchor) {
     padding-right: 0.8em;
   }
@@ -374,6 +377,12 @@
   hyphens: auto;
 }
 
+/* A web address keeps its spelling: it breaks only at a <wbr>, never with an
+   added hyphen. */
+.vp-doc .n-nohyph {
+  hyphens: manual;
+}
+
 /* Below a wide desktop there is not enough room to share out, so a wide table
    scrolls sideways rather than breaking every word in half. */
 @media (max-width: 1279px) {
@@ -615,13 +624,9 @@
   }
 
   /* A wide screenshot sits under its legend, so the legend keeps to the text
-     column like the paragraphs around it, and the image is centered under it. */
+     column like the paragraphs around it. (ShotRow centers the image.) */
   .n-layout.has-sidebar.has-aside:not(.n-wide) .vp-doc > div > div > .n-shotrow-hold .n-shotrow.is-wide:not(.is-focus) .n-shotrow__legend {
     max-width: calc(var(--n-content-max) - 2 * var(--n-gutter));
-    margin-inline: auto;
-  }
-
-  .n-layout.has-sidebar.has-aside:not(.n-wide) .vp-doc > div > div > .n-shotrow-hold .n-shotrow.is-wide:not(.is-focus) .hotshot {
     margin-inline: auto;
   }
 }

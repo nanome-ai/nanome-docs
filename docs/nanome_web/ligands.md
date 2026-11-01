@@ -48,24 +48,24 @@ Each row shows the ligand's 2D drawing, its entry, its name, and the chosen prop
 <UiItem icon="arrows-sort" name="Sort" area="50.3,41.7,5.6,6.4">A column header with arrows sorts the table by that column.</UiItem>
 <UiItem icon="info-circle" name="Column info" href="#property-columns" area="67.0,42.5,1.3,5.8">Shows what the column means.</UiItem>
 <UiItem name="Tag" href="#tags-and-ratings" area="84.0,41.7,4.2,48.1">The ligand's tag. A dash means it has none.</UiItem>
-<UiItem icon="dots-vertical" name="Row menu" href="#row-menu" area="93.2,61.0,1.3,6.5">Download SDF, Sketch variant, Properties and Tag.</UiItem>
+<UiItem icon="dots-vertical" name="Actions" href="#row-menu" area="93.2,61.0,1.3,6.5">The row's menu: Download SDF, Sketch variant, Properties and Tag.</UiItem>
 <UiItem name="Checkboxes" area="96.4,41.4,1.8,49.5">One on each row, and one in the header row. With rows checked, the bottom buttons show the count, such as Preview 2 and Download 2, and act on those rows only.</UiItem>
 <UiItem icon="x" name="Close" area="95.4,5.8,3.4,15.9">Closes the full-screen table.</UiItem>
 </UiList>
 
 </ShotRow>
 
-### Row menu {#row-menu}
+### Actions menu {#row-menu}
 
 <ShotRow src="nanome-web/ligand-row-menu.webp" alt="A ligand row's menu" crop="30,0,70,100">
 
-Each row has a checkbox and a <AppIcon name="dots-vertical" /> menu, at the right end of the table:
+Each row has a checkbox and a <AppIcon name="dots-vertical" /> **Actions** menu, at the right end of the table:
 
-<UiList label="Ligand row menu">
+<UiList label="Ligand Actions menu">
 <UiItem icon="cloud-download" name="Download SDF" area="62.5,32.2,25.3,6.6">Downloads the ligand as an SDF file.</UiItem>
 <UiItem icon="hexagon-plus-2" name="Sketch variant" area="62.5,39.9,25.3,6.6">Opens the ligand in the 2D sketcher to draw a variant. Saving it adds a new entry, named sketch 1, sketch 2 and so on, aligned onto the ligand it came from.</UiItem>
 <UiItem icon="info-circle" name="Properties" area="62.5,47.7,25.3,6.6">Shows the ligand's properties by their property names, in 2 groups: Imported Properties from the file and Computed Properties.</UiItem>
-<UiItem icon="tag" name="Tag" href="#tags-and-ratings" area="62.5,56.8,25.3,37.5">Hit, Lead, Add to Synthesis, or New tag… for a custom tag. On a tagged ligand, Remove tag clears it. The tag appears in the Tag column.</UiItem>
+<UiItem icon="tag" name="Tag" href="#tags-and-ratings" area="62.5,56.8,25.3,37.5">Hit, Lead, Add to Synthesis, or New tag… for a custom tag. The current tag has a check mark, and Remove tag clears it. The tag appears in the Tag column.</UiItem>
 </UiList>
 
 Only Editors see **Sketch variant**, the **Tag** list and **Sketch new**.
@@ -116,7 +116,7 @@ The copy of the table under [Property columns](#property-columns) filters and ap
 
 ## <AppIcon name="tag" /> Tags and ratings {#tags-and-ratings}
 
-A tag marks where a ligand stands, such as a hit or a lead. The **Tag** list in the [row menu](#row-menu) sets it.
+A tag marks where a ligand stands, such as a hit or a lead. The **Tag** list in a row's [Actions menu](#row-menu) sets it.
 
 - A ligand has 1 tag at most. Picking another replaces it.
 - By default the list has **Hit**, **Lead** and **Add to Synthesis**. **New tag…** adds a custom tag to the workspace's list and tags the ligand with it.
@@ -202,6 +202,17 @@ Calculated values depend on the hydrogens and bond orders in the loaded structur
 @media (min-width: 640px) {
   table td:first-child wbr {
     display: none;
+  }
+}
+
+/* The sample ligands table in the accordion needs a little more room on a
+   phone: narrower cell padding, and long names may hyphenate. */
+@media (max-width: 480px) {
+  details table th,
+  details table td {
+    padding-right: 4px;
+    padding-left: 4px;
+    hyphens: auto;
   }
 }
 </style>

@@ -73,6 +73,7 @@ The comment becomes a text note in the current scene, attached to those atoms. I
 
 - The note belongs to the scene that was current when it was posted, so the viewer shows it only in that scene.
 - Hovering the atom chip highlights the atoms while that scene is the current one. Clicking the chip zooms the view to them.
+- Editors can hide the note from its comment. While the note's scene is the current one, the row of buttons that shows on hover has <AppIcon name="eye" /> **Hide annotation**, which reads **Show annotation** once the note is hidden. The change applies for everyone in the workspace. **Hide all annotations**, at the right end of the filter row, does the same for every note in the current scene.
 - In Nanome Web, a note made this way is always white and at the default size. Text notes with other sizes and colors, and sound notes, are made with the Comments tool in Nanome XR. They're covered on [Text and sound notes](/nanome_v2/toolspanel#text-and-sound-notes).
 
 <Accordion title="Reading an atom chip" teaser="How a chip names entries, chains, residues and atoms.">

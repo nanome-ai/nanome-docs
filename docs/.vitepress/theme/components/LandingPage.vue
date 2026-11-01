@@ -3,7 +3,7 @@
     <!-- Start here: one card per place a reader might be coming from. -->
     <section v-if="data.start" class="start">
       <h1 class="start__title">Nanome Help</h1>
-      <p class="start__lede">Pick where you're working.</p>
+      <p class="start__lede">Guides for Nanome XR, Nanome Web and MARA, and for setting up headsets and accounts.</p>
       <IconGrid :cols="3" label="Start here">
         <IconCard
           v-for="item in data.start"

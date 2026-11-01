@@ -10,9 +10,9 @@ An example of this would be having a Molecular Database Partner or customer's in
 
 Please note that:
 
-1. The deep linking/app protocol requires the Nanome application to be downloaded and requires Windows registry binding. Thus, users who want to use this method will need to have installed Nanome using the Windows Setup Installer located on the [nanome.ai/setup](https://nanome.ai/setup) page.
+1. The deep linking/app protocol requires the Nanome application to be downloaded and requires Windows registry binding. Thus, users who want to use this method will need to have installed Nanome Classic with the Windows installer from the [Nanome Classic downloads](https://nanome.ai/versions#classic).
 
-2. All-in-one headsets do not yet have support for this deep linking protocol unless invoked through the Nanome in-VR web browser.
+2. All-in-one headsets support this deep linking protocol only through the Nanome in-VR web browser.
 
 ## Use cases
 
@@ -22,7 +22,7 @@ Please note that:
 
 <a href="https://open.nanome.ai/#/W3sidHlwZSI6ImxvYWQiLCJzb3VyY2VzIjpbeyJ0eXBlIjoiaHR0cCIsInBhdGgiOiJodHRwczovL2ZpbGVzLnJjc2Iub3JnL2Rvd25sb2FkLzZMVTcuY2lmIn1dfV0=" class="btn">Open a single file in Nanome</a>
 
-- Loading Multiple files
+- Loading multiple files
 
 > A scientist visits a web page that has many ligands and a protein. The scientist could then select several compounds and click "Open in Nanome". The Nanome application launches automatically loading in the ligands aligned to the protein.
 
@@ -30,7 +30,7 @@ Please note that:
 
 - Run a script
 
-> A scientist can click a button in the web browser and it would load and run a Nanome Macro (written in Lua) in the room and apply changes such as changing the molecular representation for the secondary structure. [(See Lua Script here)](#run-script-functions-lua-directly)
+> A scientist can click a button in the web browser and it would load and run a Nanome Macro (written in Lua) in the room and apply changes such as changing the molecular representation for the secondary structure. [The Lua script](#run-script-functions-lua-directly) is below.
 
 <a href="https://open.nanome.ai/#/W3sidHlwZSI6InNjcmlwdCIsInNjcmlwdCI6IlxuICAgICAgICAgICAgZnVuY3Rpb24gbWFpbiAoKVxuICAgICAgICAgICAgICAgIGlmIExpc3RfTGVuZ3RoKFNlbGVjdGlvbl9HZXRDb21wbGV4ZXMoKSkgPD0gMCB0aGVuXG4gICAgICAgICAgICAgICAgICAgIHJldHVybiBcIkVycm9yOiBObyBTdHJ1Y3R1cmUgU2VsZWN0ZWRcIlxuICAgICAgICAgICAgICAgIGVuZFxuICAgICAgICAgICAgICAgIENvbW1hbmRfU2V0UmliYm9uc1JlbmRlcihcInNlY29uZGFyeS1zdHJ1Y3R1cmVzXCIpXG4gICAgICAgICAgICAgICAgQ29tbWFuZF9TZXRTdXJmYWNlc1RyYW5zcGFyZW5jeSgwLjUpXG4gICAgICAgICAgICAgICAgQ29tbWFuZF9Db2xvcmluZ0F0b21zQm9uZHMoXCJkZWZhdWx0XCIsIG5pbCwgbmlsLCB0cnVlKVxuICAgICAgICAgICAgICAgIENvbW1hbmRfQ29sb3JpbmdSaWJib25zKFwiZGVmYXVsdFwiKVxuICAgICAgICAgICAgICAgIENvbW1hbmRfQ29sb3JpbmdTdXJmYWNlcyhcImRlZmF1bHRcIilcbiAgICAgICAgICAgICAgICByZXR1cm4gXCJTdWNjZXNzXCJcbiAgICAgICAgICAgIGVuZCJ9XQ==" class="btn">Run a script in Nanome</a>
 
@@ -51,7 +51,7 @@ Entering this URL in the browser would automatically launch Nanome from the Wind
 
 Note: the 3rd forward-slash (`/`) in the URL is intentional and important.
 
-To create the URL, first create the commands JSON. This one is to load the Protein MMCIF file of PDB: 6LU7 (Covid19 Main Protease)
+To create the URL, first create the commands JSON. This one loads the protein mmCIF file of PDB 6LU7 (SARS-CoV-2 main protease):
 
 ```js
 const commands = [
@@ -141,7 +141,7 @@ const deepLink = "nanome:///" + btoa(JSON.stringify(commands))
 window.open(deepLink)
 ```
 
-### Load a molecule and run a script
+### Load files and run a script
 
 ```js
 const commands = [
@@ -173,6 +173,6 @@ window.open(deepLink)
 
 ## Additional Notes
 
-- The Nanome in-VR web browser catches the data/type and handles it so this works on All-in-one devices. This does not work on the all-in-one VR/AR devices' native browser due to them not exposing the necessary browser APIs.
+- The Nanome in-VR web browser catches the data/type and handles it so this works on all-in-one devices. This does not work on the all-in-one VR/AR devices' native browser due to them not exposing the necessary browser APIs.
 - Sequential commands are stored in a collection that implies order.
 - Opening a Session file (Nanome, PyMOL, MOE, Maestro) or Spatial recording will prompt to clear your existing room if you already have Nanome open.

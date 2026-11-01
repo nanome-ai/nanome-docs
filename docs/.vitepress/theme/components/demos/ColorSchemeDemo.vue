@@ -113,7 +113,7 @@ const alt = computed(() => `1KV2's binding site colored by ${caption.value.title
 </script>
 
 <template>
-  <div ref="root" class="n-demo" v-on="auto.hold">
+  <div ref="root" class="n-demo n-schemes-demo" v-on="auto.hold">
     <div class="n-app-card n-app-schemes" role="group" aria-label="Color schemes">
       <div class="n-app-schemelist" role="group" aria-label="Color scheme" @keydown="arrowPick">
         <button
@@ -126,7 +126,8 @@ const alt = computed(() => `1KV2's binding site colored by ${caption.value.title
           @click="pick(s)"
         >{{ s.name }}</button>
       </div>
-      <div v-if="scheme === 'uniform'" class="n-app-swatches" role="group" aria-label="Uniform color" @keydown="arrowPick">
+      <!-- Hidden unless Uniform is picked, keeping its space so the card doesn't jump. -->
+      <div class="n-app-swatches" :style="{ visibility: scheme === 'uniform' ? null : 'hidden' }" role="group" aria-label="Uniform color" @keydown="arrowPick">
         <button
           v-for="u in UNIFORM_SWATCHES"
           :key="u.hex"
@@ -153,3 +154,99 @@ const alt = computed(() => `1KV2's binding site colored by ${caption.value.title
     </figure>
   </div>
 </template>
+
+<style>
+/* Room for the longest caption in the tour, Potential Interactions, so the
+   page below doesn't move as it steps. Measured in lines of 1.5em: on a
+   phone the caption is as wide as the screen less 40px, and side by side as
+   wide as the render. */
+.n-schemes-demo .n-demo__caption {
+  min-height: 6em;
+}
+
+@media (max-width: 689.98px) {
+  .n-schemes-demo .n-demo__caption {
+    min-height: 7.5em;
+  }
+}
+
+@media (max-width: 564.98px) {
+  .n-schemes-demo .n-demo__caption {
+    min-height: 9em;
+  }
+}
+
+@media (max-width: 479.98px) {
+  .n-schemes-demo .n-demo__caption {
+    min-height: 10.5em;
+  }
+}
+
+@media (max-width: 409.98px) {
+  .n-schemes-demo .n-demo__caption {
+    min-height: 12em;
+  }
+}
+
+@media (max-width: 371.98px) {
+  .n-schemes-demo .n-demo__caption {
+    min-height: 13.5em;
+  }
+}
+
+@media (max-width: 344.98px) {
+  .n-schemes-demo .n-demo__caption {
+    min-height: 15em;
+  }
+}
+
+@media (max-width: 315.98px) {
+  .n-schemes-demo .n-demo__caption {
+    min-height: 16.5em;
+  }
+}
+
+@media (min-width: 760px) {
+  @container (max-width: 649.98px) {
+    .n-schemes-demo .n-demo__caption {
+      min-height: 7.5em;
+    }
+  }
+
+  @container (max-width: 524.98px) {
+    .n-schemes-demo .n-demo__caption {
+      min-height: 9em;
+    }
+  }
+
+  @container (max-width: 439.98px) {
+    .n-schemes-demo .n-demo__caption {
+      min-height: 10.5em;
+    }
+  }
+
+  @container (max-width: 369.98px) {
+    .n-schemes-demo .n-demo__caption {
+      min-height: 12em;
+    }
+  }
+
+  @container (max-width: 331.98px) {
+    .n-schemes-demo .n-demo__caption {
+      min-height: 13.5em;
+    }
+  }
+
+  @container (max-width: 304.98px) {
+    .n-schemes-demo .n-demo__caption {
+      min-height: 15em;
+    }
+  }
+
+  @container (max-width: 275.98px) {
+    .n-schemes-demo .n-demo__caption {
+      min-height: 16.5em;
+    }
+  }
+}
+</style>

@@ -20,7 +20,7 @@ The top of the sidebar shows the workspace name and 2 icons:
 
 <UiList label="Workspace header">
 <UiItem icon="alert-triangle" name="Network health">Appears when the connection degrades. Its tooltip shows the ping, or that the connection was lost.</UiItem>
-<UiItem icon="user" name="Access">A lock when the workspace is private, a person or two people when it's shared. Hovering the workspace name shows its project, and its code when it has one.</UiItem>
+<UiItem icon="user" name="Access">A lock when the workspace is private, 1 person or 2 people when it's shared. Hovering the workspace name shows its project, and its code when it has one.</UiItem>
 </UiList>
 
 ## <AppIcon name="box" /> Controls {#controls}
@@ -154,7 +154,7 @@ With several people in a workspace, colored dots on each scene show who's in it,
 </Tab>
 </Tabs>
 
-Since release 2.7, people in Nanome Web follow a new spotlight straight away, with no prompt. A **You are following** popup has **Stop Following**. After you stop, a **You stopped following** popup offers **Resume Following** for 3 seconds. Holding the grip also stops following.
+Since release 2.7, people in Nanome Web follow a new spotlight straight away, with no prompt. While they follow, a **Following** bar with the leader's name has <AppIcon name="analyze-filled" /> **Reset orientation** and **Stop**. In a headset, a **You are following** popup with **Stop Following** shows for 3 seconds when following starts. After you stop, **You stopped following** offers **Resume Following** for 3 seconds. Holding the grip for 2 seconds also stops following, with a **Continue gripping to stop following** prompt while you hold.
 
 <Accordion title="Changes in 2.7" teaser="Joining mid-spotlight, live edits and follow chains.">
 
