@@ -34,11 +34,12 @@ defineProps({
 .vp-doc .n-uilist,
 .n-uilist {
   /* Icon, name, description. A long name wraps rather than squeeze the
-     descriptions. */
+     descriptions. Legends that share a <ShotRow> share its widest name
+     column (--uil-name-col), so their descriptions line up. */
   --uil-mark: 2.1rem;
   --uil-name: 38%;
   display: grid;
-  grid-template-columns: var(--uil-mark) fit-content(var(--uil-name)) minmax(0, 1fr);
+  grid-template-columns: var(--uil-mark) var(--uil-name-col, fit-content(var(--uil-name))) minmax(0, 1fr);
   column-gap: 12px;
   row-gap: 2px;
   margin: 0;
