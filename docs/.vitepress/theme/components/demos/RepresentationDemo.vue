@@ -230,7 +230,8 @@ const alt = computed(() => `1KV2's binding site: ${caption.value.title}`)
       <hr />
 
       <div class="n-app-row n-app-ints">
-        <AppIcon name="mist" size="1rem" />
+        <!-- Nanome Web draws a mist icon here. Nanome XR's label is a NanoText, which has no icon. -->
+        <AppIcon v-if="app !== 'xr'" name="mist" size="1rem" />
         <span class="n-app-row__name">Interactions <span class="n-app-badge">{{ count }}</span></span>
         <button type="button" class="n-app-pill" :aria-expanded="showList" @click="toggleList">
           <span class="n-app-caret" :class="{ 'is-up': showList }" aria-hidden="true" />{{ showList ? 'Hide' : 'Show' }}

@@ -6,12 +6,12 @@ title: Sample Workflows
 
 Examples of workflows in Nanome XR, including using MARA to load a structure and open it in Nanome XR.
 
-<IconGrid label="Workflows">
+<IconGrid label="Workflows" :cols="3">
 <IconCard icon="sparkles" title="Opening from MARA" href="#opening-from-mara">Load a structure in a MARA chat, then open it in XR.</IconCard>
 <IconCard icon="share" title="Sharing a workspace" href="#sharing-workspace">By workspace code, or by email.</IconCard>
 <IconCard icon="polygon" title="Displaying interactions" href="#displaying-interactions-between-structures">Interaction components between structures.</IconCard>
 <IconCard icon="minimize" title="Minimizing a ligand in its pocket" href="#minimizing-a-ligand-in-its-pocket">Pocket minimization in the Builder Tool.</IconCard>
-<IconCard icon="arrow-left-to-arc" title="Aligning proteins" href="#aligning-proteins-in-xr">CE-Align or TM-Align, from Structure actions.</IconCard>
+<IconCard icon="arrow-left-to-arc" title="Aligning proteins" href="#aligning-proteins-in-xr"><span style="white-space: nowrap">CE-Align</span> or <span style="white-space: nowrap">TM-Align</span>, from Structure actions.</IconCard>
 </IconGrid>
 
 ## <AppIcon name="sparkles" /> Opening from MARA {#opening-from-mara}
@@ -104,7 +104,7 @@ The energy is the force-field energy that the minimization tool reports for the 
 
 <YoutubeEmbed videoId="jNaFAtmfaRE" title="Nanome v2.4 Quick Tips: Aligning Proteins" />
 
-<ShotRow src="nanome-v2/align-proteins.gif" alt="Aligning 2 proteins with Align proteins to this">
+<ShotRow src="nanome-v2/v2-7/align-proteins.webp" alt="Align proteins to this, with 1A9U aligned to 1KV2 by CE-Align">
 
 <Steps>
 

@@ -96,10 +96,9 @@ export const COLUMNS = [
   },
   {
     // Nanome computes it with calcExactMW(mol, true) (RdkitCommandGenerateMetadata.cs
-    // in WorkspaceAPI). Kept to 4 decimals, so B96's 490.0001 stays fractional
-    // and shows as 490.000, as Nanome Web shows it. Nanome XR shows that one
-    // value unrounded, since FormatMetadataValue leaves a value within float
-    // tolerance of a whole number as it is.
+    // in WorkspaceAPI), a monoisotopic mass, unlike RDKit's average-mass
+    // Descriptors.HeavyAtomMolWt. The Python call below is the same C++ function.
+    // Values are kept to 4 decimals (see the B96 note above LIGANDS).
     key: 'HeavyAtomMolWeight',
     label: 'HeavyAtomMolWeight',
     web: 'Heavy Atom MW',
@@ -216,6 +215,11 @@ export function formatValue(v) {
  * Filter by currently visible leaves out, which is a hidden entry in Nanome XR
  * and an entry the 3D view hasn't loaded in Nanome Web (1BL6 and 1BL7 here,
  * so turning it on lists 6 of 8).
+ *
+ * B96's HeavyAtomMolWeight is 490.00011386, kept as 490.0001 so formatValue
+ * shows 490.000, as Nanome Web does. Rounded to 490 it would show without
+ * decimals. Nanome XR shows the stored text for a value this close to a whole
+ * number (Mathf.Approximately in LigandsMenu.FormatMetadataValue).
  */
 export const LIGANDS = [
   { ccd: 'B96', pdb: '1KV2', entry: '1kv2', name: 'A:B96_391', tag: 'Lead', formula: 'C31 H37 N5 O3',

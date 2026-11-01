@@ -6,7 +6,7 @@ title: Collaboration
 
 A workspace holds the structures, their representations, scenes, comments and permissions, and several people can work in it at once. Workspaces are managed from the Workspaces tab of the Main Panel and in Nanome Web.
 
-<IconGrid label="Working together">
+<IconGrid label="Working together" :cols="3">
 <IconCard icon="share" title="Permissions" href="#permissions">Viewer, Editor, Owner or None.</IconCard>
 <IconCard icon="users-group" title="Invitations and join requests" href="#invitations-and-join-requests">Invite a colleague in, or ask to join them.</IconCard>
 <IconCard icon="layout-grid" title="Load for All vs. Load" href="#load-for-all-vs-load-for-me">Move everyone to the next workspace, or just you.</IconCard>
@@ -24,7 +24,8 @@ Permissions decide who can open a workspace and who can change it. They're set w
 <UiItem name="Viewer" area="55.7,31.5,19.4,6.4">Chosen from the same menu as Editor. Can look around, select, point, comment, follow, spotlight their own view and move between scenes.</UiItem>
 <UiItem name="Editor" area="55.7,31.5,19.4,6.4">Can make every change and invite others to view or edit.</UiItem>
 <UiItem name="Owner" area="58.0,55.0,9.6,4.0">The same as Editor, and can remove people and delete the workspace.</UiItem>
-<UiItem name="None" area="68.5,22.9,19.4,6.3">The global level for a private workspace. Only people added by email can open it.</UiItem>
+<UiItem name="Project Owner" area="58.0,48.0,18.8,4.0">Access that comes from the workspace's project, shown as Project Viewer, Editor or Owner. It's managed in Nanome Web.</UiItem>
+<UiItem name="None" area="68.5,22.9,19.4,6.3">The global level for a private workspace. Only people added by email, or with access to its project, can open it.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -41,7 +42,7 @@ Both start from **Users in organization**, in the Users tab.
 
 <UiList label="Invitations and join requests">
 <UiItem icon="plus" name="Invite">Beside a colleague: invites them to your workspace.</UiItem>
-<UiItem icon="login" name="Join">Takes you to the colleague's workspace. Without access, it sends the colleague a join request. Join is off when the colleague has less than Editor access there.</UiItem>
+<UiItem icon="login" name="Join">Takes you to the colleague's workspace. Without access, it sends the colleague a join request, so it's off when the colleague has less than Editor access there.</UiItem>
 </UiList>
 
 An invited colleague sees **Join Workspace?** with <Btn icon="x">Refuse</Btn> or <Btn icon="check">Accept</Btn>. The colleague can accept a join request as <Btn icon="eye">Viewer</Btn> or <Btn icon="edit">Editor</Btn>, or <Btn icon="ban">Deny</Btn> it.
@@ -96,6 +97,6 @@ Since release 2.7, followers see the leader's current tool and mode, what they h
 A few details matter when several people work in the same session:
 
 - Structures are organized into entries and components, listed in the Components tab.
-- New scenes start with fresh, unset representations, so each entry needs setting up.
+- A new scene starts with every entry hidden. The entry's eye in the Components tab brings back its default components.
 - A duplicated scene is identical to the scene it came from.
 - **Share selection**, in the Selection Tool, shows your selection to the others in your color.

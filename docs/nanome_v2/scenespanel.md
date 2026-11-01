@@ -16,7 +16,7 @@ The Scenes Panel sits in the left sidebar, beside the Main Panel. A scene is a s
 
 ## <AppIcon name="layout-grid" /> Workspace header {#workspace-header}
 
-The top of the sidebar shows the workspace name and two icons:
+The top of the sidebar shows the workspace name and 2 icons:
 
 <UiList label="Workspace header">
 <UiItem icon="alert-triangle" name="Network health">Appears when the connection degrades. Its tooltip shows the ping, or that the connection was lost.</UiItem>
