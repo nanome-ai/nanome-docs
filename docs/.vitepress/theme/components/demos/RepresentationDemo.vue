@@ -11,6 +11,8 @@
  *   time.
  * - The interaction list shows the ligand as Stick, with the types that are
  *   switched on drawn.
+ * - None, Polar and All change every render: the frames come from 1KV2 with
+ *   hydrogens added, and the setting applies to the ligand and the pocket.
  *
  * Each app has its own renders: Nanome XR's with its floor, Nanome Web's
  * without.
@@ -26,12 +28,13 @@ import DemoStage from './DemoStage.vue'
 import { arrowPick } from './arrows.js'
 import { useAutoplay } from './autoplay.js'
 import {
-  ATOMISTIC, HYDROGENS, HYDROGEN_DESC, INTERACTIONS, MACRO, SURFACES, SURFACE_DESC, interactionFrame, repFrame,
-  surfaceFrame,
+  ATOMISTIC, HB_HIDDEN, HYDROGENS, HYDROGEN_ADDED, HYDROGEN_DESC, INTERACTIONS, MACRO, SURFACES, SURFACE_DESC,
+  SURFACE_H, interactionFrame, repFrame, surfaceFrame,
 } from './data.js'
 
 const props = defineProps({ app: { type: String, default: 'web' } })
 const label = (o) => (props.app === 'xr' ? o.xr : o.web)
+const hbHidden = () => HB_HIDDEN(label(HYDROGENS[0]))
 
 /** The atomistic style on the ligand: bs, stick, wire or vdw. */
 const atom = ref('bs')
@@ -47,12 +50,12 @@ const note = ref(null)
 const count = computed(() => INTERACTIONS.filter((t) => ints[t.key]).length)
 
 function frameFor(s) {
-  if (s.list) return interactionFrame(props.app, ints)
-  if (s.extra === 'surface') return surfaceFrame(props.app, s.surface)
-  if (s.extra) return repFrame(props.app, MACRO.find((x) => x.key === s.extra).file)
-  return repFrame(props.app, ATOMISTIC.find((x) => x.key === s.atom).file)
+  if (s.list) return interactionFrame(props.app, ints, s.h)
+  if (s.extra === 'surface') return surfaceFrame(props.app, s.surface, s.h)
+  if (s.extra) return repFrame(props.app, MACRO.find((x) => x.key === s.extra).file, s.h)
+  return repFrame(props.app, ATOMISTIC.find((x) => x.key === s.atom).file, s.h)
 }
-const state = () => ({ atom: atom.value, extra: extra.value, surface: surface.value, list: showList.value })
+const state = () => ({ atom: atom.value, extra: extra.value, surface: surface.value, list: showList.value, h: hydrogen.value })
 const src = computed(() => frameFor(state()))
 
 /** Sets the whole state at once, so switches and render never disagree. */
@@ -78,7 +81,7 @@ const auto = useAutoplay(root, () => {
   note.value = null
   apply(TOUR[at.value])
 })
-const next = computed(() => frameFor({ surface: surface.value, ...TOUR[(at.value + 1) % TOUR.length] }))
+const next = computed(() => frameFor({ surface: surface.value, h: hydrogen.value, ...TOUR[(at.value + 1) % TOUR.length] }))
 
 /**
  * Points the tour at the state on show, so Play carries on from the reader's
@@ -128,7 +131,12 @@ function pickSurface(key) {
 function pickHydrogen(key) {
   auto.stop()
   hydrogen.value = key
-  note.value = { title: `Hydrogens · ${label(HYDROGENS.find((h) => h.key === key))}`, text: `${HYDROGEN_DESC[key]} 1KV2's file has no hydrogen atoms, so the render stays the same.` }
+  // What else the setting does to the render on show.
+  const more = showList.value
+    ? ints.hb && (key === 'none' ? hbHidden() : 'All 5 hydrogen bonds show, as each starts at a polar hydrogen.')
+    : extra.value === 'surface' && SURFACE_H
+  const text = [HYDROGEN_DESC[key], key !== 'none' && HYDROGEN_ADDED, more].filter(Boolean).join(' ')
+  note.value = { title: `Hydrogens · ${label(HYDROGENS.find((h) => h.key === key))}`, text }
 }
 // In the app, Show and Hide only open and close the list. The copy's
 // interaction renders draw the ligand as Stick, so Hide puts back the
@@ -151,25 +159,31 @@ function toggleType(t, e) {
   ints[t.key] = !ints[t.key]
   sync(e, ints[t.key])
   const absent = t.here ? '' : ' 1KV2’s binding site has none.'
-  note.value = { title: `${t.name} ${ints[t.key] ? 'on' : 'off'}`, text: `${t.desc}${absent}` }
+  const hidden = t.needsH && ints[t.key] && hydrogen.value === 'none' ? ` ${hbHidden()}` : ''
+  note.value = { title: `${t.name} ${ints[t.key] ? 'on' : 'off'}`, text: `${t.desc}${absent}${hidden}` }
 }
 
-const caption = computed(() => {
-  if (note.value) return note.value
+/** The line for the render on show, without a note about the last click. */
+const base = computed(() => {
   if (showList.value) {
-    // Only the types 1KV2's binding site has are drawn, so name those.
-    const shown = INTERACTIONS.filter((t) => t.here && ints[t.key]).map((t) => t.shown(t.here))
+    // Only the types 1KV2's binding site has are drawn, so name those. With
+    // None the hydrogen bonds hide along with their hydrogens.
+    const noH = hydrogen.value === 'none'
+    const shown = INTERACTIONS.filter((t) => t.here && ints[t.key] && !(t.needsH && noH)).map((t) => t.shown(t.here))
     const list = shown.length > 1 ? `${shown.slice(0, -1).join(', ')} and ${shown.at(-1)}` : shown[0]
     // Pocket + Ligand draws every interaction inside it, and both salt
     // bridges here join pocket residues.
     const salt = ints.salt ? ' Both salt bridges join pocket residues to each other.' : ''
+    const hidden = ints.hb && noH ? ` ${hbHidden()}` : ''
     return {
       title: `Interactions · ${count.value} ${count.value === 1 ? 'type' : 'types'} on`,
       text: list
-        ? `Dashed lines between the atoms that interact. In this binding site: ${list}.${salt}`
-        : count.value
-          ? '1KV2’s binding site has none of the types that are on, so no lines show.'
-          : 'Every type is off, so no lines show.',
+        ? `Dashed lines between the atoms that interact. In this binding site: ${list}.${salt}${hidden}`
+        : hidden
+          ? `No lines show.${hidden}`
+          : count.value
+            ? '1KV2’s binding site has none of the types that are on, so no lines show.'
+            : 'Every type is off, so no lines show.',
     }
   }
   if (extra.value === 'surface') {
@@ -183,8 +197,10 @@ const caption = computed(() => {
   const a = ATOMISTIC.find((x) => x.key === atom.value)
   return { title: label(a), text: a.desc }
 })
+const caption = computed(() => note.value || base.value)
 
-const alt = computed(() => `1KV2's binding site: ${caption.value.title}`)
+const H_ALT = { none: 'no hydrogens', polar: 'polar hydrogens', all: 'all hydrogens' }
+const alt = computed(() => `1KV2's binding site: ${base.value.title}, ${H_ALT[hydrogen.value]}`)
 </script>
 
 <template>
