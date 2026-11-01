@@ -3,13 +3,13 @@ title: Home
 aside: false
 hero:
   - title: Resonac case study
-    img: /assets/carousels/hero/resonac.webp
+    img: /assets/compressed/carousels/hero/resonac.webp
     url: https://nanome.ai/blog/how-resonac-turned-two-years-of-misaligned-randd-into-a-single-afternoon-breakthrough
   - title: Nimbus Therapeutics case study
-    img: /assets/carousels/hero/nimbus.png
+    img: /assets/compressed/carousels/hero/nimbus.webp
     url: https://nanome.ai/case-studies/nimbus-therapeutics
   - title: Novartis case study
-    img: /assets/carousels/hero/novartis.png
+    img: /assets/compressed/carousels/hero/novartis.webp
     url: https://nanome.ai/case-studies/novartis
 start:
   - icon: device-vision-pro
@@ -47,31 +47,31 @@ newUpdates:
   url: /nanome_v2/whatsnew
 quickTips:
   - title: 'Nanome v2.5 Quick Tips: Web App Basics'
-    img: /assets/carousels/quicktips/web-app-basics.jpg
+    img: /assets/compressed/carousels/quicktips/web-app-basics.webp
     description: A full walkthrough of the Nanome web interface at app.nanome.ai
     url: https://youtu.be/sseI0CxNrDc
   - title: 'Nanome v2.5 Quick Tips: Loading Structures from the Web'
-    img: /assets/carousels/quicktips/loading-from-web.jpg
+    img: /assets/compressed/carousels/quicktips/loading-from-web.webp
     description: Create a project and workspace, then load your first protein in under 3 minutes
     url: https://youtu.be/BkZ6R8fPbgQ
   - title: 'Nanome v2.5 Quick Tips: Invite Users & Follow from the Web'
-    img: /assets/carousels/quicktips/invite-follow-web.jpg
+    img: /assets/compressed/carousels/quicktips/invite-follow-web.webp
     description: Share a workspace and follow a colleague's VR perspective in real time
     url: https://youtu.be/6v7xlQNzzoY
   - title: 'Nanome v2.5 Quick Tips: MD Trajectory Playback'
-    img: /assets/carousels/quicktips/md-playback.jpg
+    img: /assets/compressed/carousels/quicktips/md-playback.webp
     description: Stream molecular dynamics trajectories from the web to standalone XR headsets
     url: https://youtu.be/cNW8DnFap6A
   - title: 'Nanome v2.5 Quick Tips: Load Structures, Invite & Follow from XR'
-    img: /assets/carousels/quicktips/load-invite-follow-xr.jpg
+    img: /assets/compressed/carousels/quicktips/load-invite-follow-xr.webp
     description: Create a workspace, load from RCSB, invite collaborators, and spotlight your view
     url: https://youtu.be/5uikQlDO7FA
   - title: 'Nanome v2.5 Quick Tips: Torsion Tool (Beta)'
-    img: /assets/carousels/quicktips/torsion-tool.jpg
+    img: /assets/compressed/carousels/quicktips/torsion-tool.webp
     description: Inspect and manipulate dihedral angles with real-time strain coloring
     url: https://youtu.be/IBQeKcSOJ8A
   - title: 'Nanome v2.5 Quick Tips: Chemical Interactions Menu'
-    img: /assets/carousels/quicktips/chem-interactions.jpg
+    img: /assets/compressed/carousels/quicktips/chem-interactions.webp
     description: Create polymer interaction components and explore the interactions report in VR
     url: https://youtu.be/YHOGQq1dUck
 carousels:

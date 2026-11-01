@@ -8,9 +8,13 @@
     :autoplay="true"
     :autoplay-speed="5000"
   >
-    <template #default="{ item, clone }">
+    <template #default="{ item, clone, near }">
       <a :href="item.url" class="slide" :style="{ aspectRatio: ratio }" target="_blank" :tabindex="clone ? -1 : undefined">
-        <img :src="item.img" :alt="item.title || item.alt || ''" />
+        <img
+          :src="item.img"
+          :alt="item.title || item.alt || ''"
+          :loading="near || (eager && item === slides[0] && !clone) ? 'eager' : 'lazy'"
+        />
       </a>
     </template>
   </SimpleCarousel>
@@ -28,6 +32,12 @@ defineProps({
   ratio: {
     type: String,
     default: '16 / 9'
+  },
+  // Load the first slide with the page, ahead of the rest. The home page
+  // sets this on its topmost carousel.
+  eager: {
+    type: Boolean,
+    default: false
   }
 })
 </script>

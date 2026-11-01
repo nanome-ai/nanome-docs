@@ -208,7 +208,7 @@ export default defineConfig({
       'script',
       {
         async: '',
-        src: 'https://www.googletagmanager.com/gtag/js?id=UA-79179574-15'
+        src: 'https://www.googletagmanager.com/gtag/js?id=G-WZG1LLVNW8'
       }
     ],
     [
@@ -217,7 +217,7 @@ export default defineConfig({
       `window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'UA-79179574-15');`
+      gtag('config', 'G-WZG1LLVNW8');`
     ]
   ],
 
