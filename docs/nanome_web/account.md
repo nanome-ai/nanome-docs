@@ -24,11 +24,11 @@ The account menu sits at the right end of the top bar, under your initial. It sh
 
 <ShotRow src="nanome-web/login-device-code.webp" alt="The Login via Device Code dialog">
 
-Nanome XR can sign in with a 4-character code. The headset's login page shows the code, and entering it in **Login via Device Code** on Nanome Web signs the headset in to the same account. The same dialog opens from the <AppIcon name="lock-cog" /> lock icon in the top bar.
+Nanome XR can sign in with a 4-character code. The headset's login page shows the code and the address [nanome.ai/activate](https://nanome.ai/activate), which opens **Login via Device Code** on Nanome Web. Entering the code there signs the headset in to the same account. The same dialog opens from the <AppIcon name="lock-cog" /> lock icon in the top bar.
 
 </ShotRow>
 
-## Settings {#settings}
+## <AppIcon name="settings" /> Settings {#settings}
 
 **Settings** has 2 tabs: **Account** and **System**. System holds API Keys, MCP Setup and the preference switches. Below the tabs, **Help** opens this site's [MARA overview](/mara/overview), and **Feedback** sends Nanome feedback or a bug report.
 
@@ -67,18 +67,18 @@ claude mcp add --transport http nanome https://workspaces.nanome.ai/mcp
 claude mcp login nanome
 ```
 
-The assistant asks you to sign in and approve access in a browser the first time it connects. Through the MCP server, an assistant can list and manage projects, workspaces, scenes, entries and components, read a summary of each workspace (chains, residue ranges, ligands and ions), export ligands as SDF, and add annotations.
+The assistant asks you to sign in and approve access in a browser the first time it connects. Through the MCP server, an assistant can list and manage projects, workspaces, scenes, entries and components, and read a summary of each workspace (chains, residue ranges, ligands and ions). It can also load structures, export entries as SDF, PDB, SMILES or FASTA, export ligands as SDF, and add text labels and distance, angle and dihedral measurements.
 
 ### Preferences
 
 <ShotRow src="nanome-web/settings-preferences.webp" alt="The preference switches in System settings" stack>
 
 <UiList label="Preferences">
-<UiItem name="Auto-open Files" area="3.5,9.1,92.7,9.1">Opens supported files in the split view when they're added to a chat.</UiItem>
-<UiItem name="Auto-run Workflows" area="3.5,27.9,92.7,9.1">Runs workflows in chat automatically.</UiItem>
-<UiItem name="Dark Mode" area="3.5,46.7,92.7,9.2">Darker colors for the web app.</UiItem>
-<UiItem name="Hide Credits" area="3.5,65.6,92.7,8.6">Hides the credits display. The switch shows only for accounts with unlimited credits.</UiItem>
-<UiItem name="Reset chats" area="3.5,84.2,92.7,9.2">Its Delete all button permanently deletes all MARA chats and uploaded files.</UiItem>
+<UiItem icon="file-import" name="Auto-open Files" area="3.5,9.1,92.7,9.1">Opens supported files in the split view when they're added to a chat.</UiItem>
+<UiItem icon="route" name="Auto-run Workflows" area="3.5,27.9,92.7,9.1">Runs workflows in chat automatically.</UiItem>
+<UiItem icon="moon" name="Dark Mode" area="3.5,46.7,92.7,9.2">Darker colors for the web app.</UiItem>
+<UiItem icon="infinity" name="Hide Credits" area="3.5,65.6,92.7,8.6">Hides the credits display. The switch shows only for accounts with unlimited credits.</UiItem>
+<UiItem icon="trash" name="Reset chats" area="3.5,84.2,92.7,9.2">Its Delete all button permanently deletes all MARA chats and uploaded files.</UiItem>
 </UiList>
 
 </ShotRow>

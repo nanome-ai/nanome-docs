@@ -88,7 +88,7 @@ All of these use the same parser on Nanome's server.
 - **No workspace-file export**: workspaces live in the database, and there's no portable workspace file.
 - **No trajectory export**: export is single-frame only.
 - **No export** for mmCIF, MAE, MOE, or PSE (import-only).
-- **Surfaces are held during trajectory playback.** Surface controls are disabled while frames play, and changes apply when playback stops.
+- **Surfaces are held during trajectory playback.** A new or changed surface shows once playback stops. In Nanome XR the surface controls are disabled while frames play.
 
 ## How animation works
 
@@ -129,6 +129,16 @@ Each row names the format or IO capability that changed in that release.
   table td {
     padding-right: 8px;
     padding-left: 8px;
+  }
+}
+
+/* Below 360px even that is too much for the last column, so the side
+   padding drops to 3px. */
+@media (max-width: 359px) {
+  table th,
+  table td {
+    padding-right: 3px;
+    padding-left: 3px;
   }
 }
 </style>
