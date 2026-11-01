@@ -6,7 +6,7 @@ title: Vault
 
 Nanome Vault is a plugin for storing files in the cloud. You can upload and download them from a VR headset or a web browser. A file you drop into the browser is then ready to load in your Nanome session.
 
-Standalone headsets such as Quest store files on the headset, so moving files usually means plugging it into a computer and using Android File Transfer. Nanome Vault allows users to open up a web browser on any computer to access cloud storage that is integrated directly into your Nanome session and linked to your Nanome account. You can visit the Nanome-hosted Vault Plugin at https://vault.nanome.ai. _Note that if you are an Enterprise customer, your Organization will have a different web address for the private-cloud deployment of the Nanome Vault; your Nanome administrator has the correct URL_.
+Standalone headsets such as Quest store files on the headset, so moving files usually means connecting it to a computer with a USB cable. Nanome Vault allows users to open up a web browser on any computer to access cloud storage that is integrated directly into your Nanome session and linked to your Nanome account. You can visit the Nanome-hosted Vault Plugin at https://vault.nanome.ai. _Note that if you are an Enterprise customer, your Organization will have a different web address for the private-cloud deployment of the Nanome Vault; your Nanome administrator has the correct URL_.
 
 There are 3 main folders in Nanome Vault:
 - shared: a public folder everyone can see
@@ -30,10 +30,10 @@ From here you can drag and drop files into the web browser as well as rename, mo
 After you launch Nanome, open up the Load Menu and go to the "Stacks" tab. This will show the Nanome Vault which you can now click and navigate through to see what you have uploaded.
 <vimg src="plugins-page/nanome-vault/plugin-shared.png" alt="The Nanome Vault menu in Nanome at files / shared, with 2 folders, 3 example files and the Open Website and Upload Here buttons" />
 
-Additionally, users can upload from inside a Nanome Session to the Nanome Vault to use for other applications or come back to later. 
+Additionally, users can upload from inside a Nanome session to the Nanome Vault to use for other applications or come back to later. 
 
-Whenever you have a prompt to export (e.g. Workspace Session File, Molecule, Image, etc), there is a "where" field on the destination you would like to save your file to. Each of these file destination dropdowns contain a "Vault - Browse" option that lets you navigate through the Nanome vault and select a specific file save location. 
+Whenever you have a prompt to export (e.g. Workspace Session File, Molecule, Image), there is a "where" field on the destination you would like to save your file to. Each of these file destination dropdowns contains a "Vault - Browse" option that lets you navigate through the Nanome vault and select a specific file save location. 
 
-This is particularly useful if you have made several ligand design iterations and wanted to upload them to share with other colleagues.
+This is particularly useful if you've made several ligand design iterations and want to share them with colleagues.
 
 You can also access the Scene Viewer from Vault, which allows you to arrange content in Nanome. The [Scene Viewer](/nanome1x/plugins/sceneviewer) page has more.
