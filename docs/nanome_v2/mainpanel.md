@@ -157,7 +157,7 @@ The copy of the panel below works like the app's: each switch shows 1KV2's bindi
 
 <YoutubeEmbed videoId="wdECz2HmR3o" title="Nanome v2.4 Quick Tips: Changing Molecular Representations" />
 
-Recorded in Nanome 2.4. The panel works the same way in 2.7.1, and since 2.6 **Interactions** also lists **Halogen-π** and has a **Filter** switch. The video says the pocket reaches 5 Å from the ligand. Nanome uses 4 Å.
+Recorded in Nanome 2.4. The panel works the same way in 2.7.1, with 2 additions: since 2.5 a surface can also be colored **Electrostatic** from a loaded map, and since 2.6 **Interactions** also lists **Halogen-π** and has a **Filter** switch. The video says the pocket reaches 5 Å from the ligand. Nanome uses 4 Å.
 
 ### Interactions {#interactions}
 
