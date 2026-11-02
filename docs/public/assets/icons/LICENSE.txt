@@ -1,6 +1,9 @@
 These icons are Tabler Icons, taken from the icon font that ships in the Nanome
 XR client (TablerIcons.ttf) and saved one per file, so the help site shows the
-same glyphs as the app. Nanome Web uses the same Tabler set.
+same glyphs as the app. Nanome Web uses the same Tabler set. The few that
+Nanome Web shows and the XR font lacks (at, dna2, file-arrow-right,
+message-2-plus, microscope, play, share-2) are the stroke versions from Nanome
+Web's own stylesheet.
 
 Tabler Icons - https://tabler.io/icons
 
