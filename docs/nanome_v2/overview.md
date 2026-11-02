@@ -14,9 +14,10 @@ These pages cover Nanome XR, version 2. Nanome Classic (v1.24), the earlier head
 
 ## Start here
 
-<IconGrid label="Start here" :cols="3">
+<IconGrid label="Start here">
 <IconCard icon="headset" title="Set up a headset" href="/getting-started">Hardware, install and first login.</IconCard>
 <IconCard icon="login-2" title="Log in" href="/nanome_v2/login">With your password, or a code from another device.</IconCard>
+<IconCard icon="hand-grab" title="Controls" href="/nanome_v2/controls">Grab, scale, point and select, with controllers or hands.</IconCard>
 <IconCard icon="sparkles" title="What's new in 2.7" href="/nanome_v2/whatsnew">Comments, pocket minimization and more.</IconCard>
 </IconGrid>
 
@@ -28,12 +29,12 @@ These pages cover Nanome XR, version 2. Nanome Classic (v1.24), the earlier head
 <MapCard icon="box" title="Scenes Panel" href="/nanome_v2/scenespanel" side="left" area="32.7,33.0,8.9,33.2">Saved views, playback and Spotlight.</MapCard>
 <MapCard icon="menu-2" title="Wrist Menu" href="/nanome_v2/wristmenu" side="left" area="16.2,57.0,12.2,17.4">On your off-hand controller: the Main Panel, MARA and your mic.</MapCard>
 <MapCard icon="droplet" title="Tools Panel" href="/nanome_v2/toolspanel" side="right" area="60.6,33.0,2.2,33.0">Pointer, measuring, building, comments and the other tools.</MapCard>
-<MapCard icon="mist" title="Sequence Panel" href="/nanome_v2/sequencepanel" side="bottom" area="55.8,63.2,4.2,2.4">Opens from Sequences: every chain's sequence, for selecting residues.</MapCard>
+<MapCard icon="mist" title="Sequence Panel" href="/nanome_v2/sequencepanel" side="right" area="55.8,63.2,4.2,2.4">Opens from Sequences: every chain's sequence, for selecting residues.</MapCard>
 </ScreenMap>
 
 ## Working together
 
-<IconGrid label="Working together" :cols="3">
+<IconGrid label="Working together">
 <IconCard icon="users-group" title="Collaboration" href="/nanome_v2/collaboration">Sharing a workspace and following each other.</IconCard>
 <IconCard icon="crown" title="Session Guide" href="/session-guide">Running a group session from start to finish.</IconCard>
 <IconCard icon="route" title="Sample Workflows" href="/nanome_v2/sampleworkflows">Step-by-step examples.</IconCard>
