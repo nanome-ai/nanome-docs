@@ -7,6 +7,11 @@
  * theme. The stage always has the frame's shape, so it never changes size
  * while the frames of one set (all the same size) come and go. `cut` swaps
  * frames without the fade, for playback.
+ *
+ * `heading` is the caption's bold title. It shows on one line under the
+ * render only where the render sticks on a phone and the full caption sits
+ * under the panel (app.css), so the stuck render still says what it shows.
+ * Screen readers get it once, from the caption.
  */
 import { computed, nextTick, ref, watch } from 'vue'
 import AppIcon from '../AppIcon.vue'
@@ -21,6 +26,8 @@ const props = defineProps({
   cut: { type: Boolean, default: false },
   /** The round play button that steps through the options. */
   playButton: { type: Boolean, default: true },
+  /** The caption's title, for the line under a stuck render. */
+  heading: { type: String, default: '' },
 })
 const emit = defineEmits(['toggle'])
 
@@ -62,27 +69,30 @@ const frames = computed(() => loaded.value.map((src) => ({ src, info: imageInfo(
 </script>
 
 <template>
-  <div ref="stage" class="n-demo-stage" :class="{ 'is-cut': cut }" :style="{ '--stage-ar': ratio }">
-    <div
-      v-for="f in frames"
-      :key="f.src"
-      class="n-demo-stage__frame"
-      :class="{ 'is-on': f.src === shown, 'has-dark': !!f.info.dark }"
-      :aria-hidden="f.src === shown ? undefined : 'true'"
-    >
-      <img class="n-demo-stage__img n-demo-stage__light no-zoom" :src="f.info.light" :alt="f.src === shown ? alt : ''" loading="lazy" decoding="async" @load="onReady(f.src)" @error="onReady(f.src)" />
-      <img v-if="f.info.dark" class="n-demo-stage__img n-demo-stage__dark no-zoom" :src="f.info.dark" :alt="f.src === shown ? alt : ''" loading="lazy" decoding="async" @load="onReady(f.src)" @error="onReady(f.src)" />
+  <div class="n-demo-stick">
+    <div ref="stage" class="n-demo-stage" :class="{ 'is-cut': cut }" :style="{ '--stage-ar': ratio }">
+      <div
+        v-for="f in frames"
+        :key="f.src"
+        class="n-demo-stage__frame"
+        :class="{ 'is-on': f.src === shown, 'has-dark': !!f.info.dark }"
+        :aria-hidden="f.src === shown ? undefined : 'true'"
+      >
+        <img class="n-demo-stage__img n-demo-stage__light no-zoom" :src="f.info.light" :alt="f.src === shown ? alt : ''" loading="lazy" decoding="async" @load="onReady(f.src)" @error="onReady(f.src)" />
+        <img v-if="f.info.dark" class="n-demo-stage__img n-demo-stage__dark no-zoom" :src="f.info.dark" :alt="f.src === shown ? alt : ''" loading="lazy" decoding="async" @load="onReady(f.src)" @error="onReady(f.src)" />
+      </div>
+      <button
+        v-if="playButton"
+        type="button"
+        class="n-demo-stage__play"
+        :aria-label="playing ? 'Stop stepping through the options' : 'Step through the options'"
+        :title="playing ? 'Stop' : 'Play'"
+        @click="emit('toggle')"
+      >
+        <AppIcon :name="playing ? 'player-pause' : 'player-play'" size="0.85rem" />
+      </button>
     </div>
-    <button
-      v-if="playButton"
-      type="button"
-      class="n-demo-stage__play"
-      :aria-label="playing ? 'Stop stepping through the options' : 'Step through the options'"
-      :title="playing ? 'Stop' : 'Play'"
-      @click="emit('toggle')"
-    >
-      <AppIcon :name="playing ? 'player-pause' : 'player-play'" size="0.85rem" />
-    </button>
+    <div class="n-demo-stick__title" aria-hidden="true">{{ heading }}</div>
   </div>
 </template>
 

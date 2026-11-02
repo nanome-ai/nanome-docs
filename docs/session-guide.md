@@ -53,7 +53,7 @@ A session rests on 3 things: how many people join, what they join from, and how 
 - A review this size fits in one workspace, and edit access lets anyone change the view as the discussion moves.
 - Building 2 or 3 scenes ahead covers the views the discussion keeps coming back to.
 - About 7,500 shown atoms or fewer suits a Quest 3 or Galaxy XR. Vision Pro and PCVR carry more.
-- People on a free license have Viewer access to workspaces they don't own, even when they're added as Editors.
+- Each headset needs a Collab or Full seat, and a Collab seat has Viewer access in Nanome XR, whatever its level in the workspace.
 
 </ChooserResult>
 
@@ -469,7 +469,7 @@ As the global level, it keeps the workspace private: only people added by email,
 
 </CardGrid>
 
-On a free license, people have Viewer access to workspaces they don't own, even when they're added as Editors.
+On a free license, people have Viewer access to workspaces they don't own, even when they're added as Editors. Like every Viewer, they can still spotlight and follow.
 
 [What each level can do →](/nanome_v2/collaboration#permissions)
 
@@ -531,7 +531,7 @@ The global level can drop to **None** at any point, and one person can be change
 
 ## <AppIcon name="crown" /> Run the session {#live}
 
-Nobody has to be the designated presenter. Anyone can spotlight their view and anyone can follow someone else, so handing over the session is a matter of who spotlights next.
+Nobody has to be the designated presenter. Anyone in the workspace can spotlight their view or follow someone else, whatever their permission level or seat, so handing over the session is a matter of who spotlights next.
 
 ### Spotlight and follow
 

@@ -59,6 +59,8 @@ Each user added by email appears in the Share dialog's list. Each user's <AppIco
 
 <YoutubeEmbed videoId="tgocYV6N0X8" title="Nanome v2.4 Quick Tips: Cross-Entry Interaction Components" />
 
+Recorded in Nanome 2.4. The steps are the same in 2.7.1.
+
 <ShotRow src="nanome-v2/display-interactions.gif" alt="Creating interaction components between 2 entries">
 
 <Steps>
@@ -75,6 +77,8 @@ Each user added by email appears in the Share dialog's list. Each user's <AppIco
 ### Video: Chemical Interactions Menu
 
 <YoutubeEmbed videoId="YHOGQq1dUck" title="Nanome v2.5 Quick Tips: Chemical Interactions Menu" />
+
+Recorded in Nanome 2.5. The Interactions Tool works the same way in 2.7.1.
 
 Once interaction components exist, the <AppIcon name="link" /> **Interactions Tool** lists every interaction found, under **Visible**, **Pinned** and **All**. Hovering over a row highlights the interaction in 3D, and **Pin** adds it to the **Pinned** list. A pinned interaction can also be labeled. Interaction types, including clashes, are switched on and off in the component's [representation panel](/nanome_v2/mainpanel#interactions).
 
@@ -103,6 +107,8 @@ The energy is the force-field energy that the minimization tool reports for the 
 ### Video: Aligning Proteins
 
 <YoutubeEmbed videoId="jNaFAtmfaRE" title="Nanome v2.4 Quick Tips: Aligning Proteins" />
+
+Recorded in Nanome 2.4. Since 2.6, each row labels its numbers **RMSD** and **Length**, and since 2.7 the popup also offers **CE-Align** or **TM-Align**, as in the screenshot below.
 
 <ShotRow src="nanome-v2/v2-7/align-proteins.webp" alt="Align proteins to this, with 1A9U aligned to 1KV2 by CE-Align" stack>
 

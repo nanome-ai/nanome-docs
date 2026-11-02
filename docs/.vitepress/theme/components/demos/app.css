@@ -55,6 +55,12 @@
   }
 }
 
+/* The caption's title on one line under the render, only while the render
+   sticks (below). */
+.n-demo-stick__title {
+  display: none;
+}
+
 /* On a phone the render sits above the panel. Where the screen is tall
    enough, the render stays under the breadcrumb strip while the panel
    scrolls up behind it, so a lower switch changes a render that's still in
@@ -64,11 +70,15 @@
    - The figure's own box steps aside, so the render can stick on its own.
    - The render keeps one size, and its caption moves under the panel, so a
      longer or shorter caption never moves the switch that changed it.
+   - The caption's title stays with the render on one line, cut short with
+     an ellipsis, so the stuck render says what it shows and keeps one
+     height. Screen readers skip it and read the caption.
    - A band of page color around the render hides the panel passing behind.
    - A control reached with the keyboard scrolls clear of the render. */
 @media (max-width: 759.98px) and (min-height: 700px) and (max-aspect-ratio: 2/3) {
   .n-demo {
     --n-demo-stage-h: calc((100vw - 40px) * 3 / 4);
+    --n-demo-title-h: calc(var(--n-text-sm) * 1.5 + 6px);
   }
 
   .n-demo:has(.n-app-themes) {
@@ -84,7 +94,21 @@
     top: calc(var(--n-nav-height) + var(--n-pagebar-space) + 10px);
     z-index: 3;
     order: -1;
+    background: var(--n-bg);
     box-shadow: 0 0 0 10px var(--n-bg);
+  }
+
+  .n-demo-stick__title {
+    display: block;
+    height: 1.5em;
+    margin-top: 6px;
+    overflow: hidden;
+    color: var(--n-text);
+    font-size: var(--n-text-sm);
+    font-weight: 600;
+    line-height: 1.5;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   .n-demo__view > .n-demo__caption {
@@ -93,7 +117,7 @@
   }
 
   .n-demo:has(> .n-demo__view) > :not(.n-demo__view) :is(a[href], button, input, select, [tabindex]:not([tabindex='-1'])) {
-    scroll-margin-top: calc(var(--n-pagebar-space) + var(--n-demo-stage-h) + 20px);
+    scroll-margin-top: calc(var(--n-pagebar-space) + var(--n-demo-stage-h) + var(--n-demo-title-h) + 20px);
   }
 }
 

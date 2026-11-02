@@ -22,7 +22,7 @@ A role sets what someone can do in a workspace. The Users tab shows each person'
 <UiList label="Roles">
 <UiItem name="Owner">The person who creates a workspace becomes its Owner. Each workspace has 1 Owner, who can do everything an Editor can and can't be removed from it.</UiItem>
 <UiItem name="Editor">Can change the workspace.</UiItem>
-<UiItem name="Viewer">Can open the workspace and look around without changing it.</UiItem>
+<UiItem name="Viewer">Can open the workspace, look around, follow and spotlight without changing it.</UiItem>
 <UiItem name="None">No access. Someone who isn't a member of the workspace or its project has None while Link access is Members only and Public workspace is off.</UiItem>
 </UiList>
 
@@ -130,7 +130,7 @@ Nanome Web can follow someone in Nanome XR, so the browser view tracks what they
 - While you follow, a border in the leader's color frames the 3D view, and a bar names the leader. **Stop** ends following, and **Reset orientation** lines your view up with theirs again.
 - Following also stops when the leader leaves the workspace.
 
-<AppIcon name="crown" /> **Spotlight Me**, the crown button beside the initials, starts a spotlight from the browser. While you spotlight, a Spotlighting bar counts your followers, and **Stop** ends the spotlight. When someone starts a spotlight, Nanome Web follows them straight away. A headset first shows a prompt for about 6 seconds. People who open the workspace during a spotlight follow it too, and its followers stop following when it ends. The headset's controls are under [Spotlight Mode](/nanome_v2/scenespanel#spotlight-mode).
+<AppIcon name="crown" /> **Spotlight Me**, the crown button beside the initials, starts a spotlight from the browser. It shows while someone else is in the workspace, for every role and seat. While you spotlight, a Spotlighting bar counts your followers, and **Stop** ends the spotlight. When someone starts a spotlight, Nanome Web follows them straight away. A headset first shows a prompt for about 6 seconds. People who open the workspace during a spotlight follow it too, and its followers stop following when it ends. The headset's controls are under [Spotlight Mode](/nanome_v2/scenespanel#spotlight-mode).
 
 <Accordion title="What following shows" teaser="The leader's tool and edits, and chains of followers.">
 
@@ -148,4 +148,4 @@ Following keeps the structures where they sit in the leader's view. To keep the 
 
 <YoutubeEmbed videoId="6v7xlQNzzoY" title="Nanome v2.5 Quick Tips: Invite Users & Follow from the Web" />
 
-The tutorial was recorded in v2.5. It covers setting a collaborator to Viewer or Editor, adding specific people to a workspace by email, and following: locking the web view to what an XR user sees, for example while they zoom in to a metal-residue bond or move through a binding site.
+The tutorial was recorded in v2.5. It covers setting a collaborator to Viewer or Editor, adding specific people to a workspace by email, and following: locking the web view to what an XR user sees, for example while they zoom in to a metal-residue bond or move through a binding site. Since then, the access menu has become **Link access**, with **Members only**, **Anyone can view** and **Anyone can edit** in place of the video's Disabled, Viewer and Editor, and the Users tab sits in the workspace panel. Following still starts from someone's initial, as shown.
