@@ -112,7 +112,7 @@ Nanome XR.
       <th>Signing in</th>
       <td>Code, or username and password</td>
       <td>Code, or username and password</td>
-      <td>Code, or username and password</td>
+      <td>Username and password (no code sign-in in the beta)</td>
       <td>Code, or username and password</td>
       <td>Email, Google, Microsoft, Apple, or SSO</td>
     </tr>

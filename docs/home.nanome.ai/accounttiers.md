@@ -11,7 +11,7 @@ Each Nanome account has 1 of 4 seats. The seat decides where you can work, in th
 
 <Card badge="Web" title="Free Web Seat" meta="Free, with 50 credits" href="https://app.nanome.ai/register" cta="Create an account">
 
-- 3 workspaces and 1 project in the web app
+- 3 workspaces with up to 5 structures each, and 1 project, in the web app
 - View-only collaboration with XR users, with Spotlight and Follow
 - The 5 most recent files and the last 7 days of chats
 
@@ -53,7 +53,7 @@ Every new account gets a 14-day Full license trial, with no credit card required
 
 | Feature | Free Web Seat | Full Web Seat | Collab | Full Seat |
 | --- | --- | --- | --- | --- |
-| Visualization and workspace setup | 3 workspaces | ✓ | ✓ | ✓ |
+| Visualization and workspace setup | 3 workspaces, 5 structures each | ✓ | ✓ | ✓ |
 | Multi-user collaboration with XR users | View only | ✓ | ✓ | ✓ |
 | Natural language representations | Credits-based | ✓ | ✓ | ✓ |
 | Trajectory and multi-frame playback | ✓ | ✓ | ✓ | ✓ |
