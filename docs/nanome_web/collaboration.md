@@ -148,4 +148,4 @@ Following keeps the structures where they sit in the leader's view. To keep the 
 
 <YoutubeEmbed videoId="6v7xlQNzzoY" title="Nanome v2.5 Quick Tips: Invite Users & Follow from the Web" />
 
-The tutorial was recorded in v2.5. It covers setting a collaborator to Viewer or Editor, adding specific people to a workspace by email, and following: locking the web view to what an XR user sees, for example while they zoom in to a metal-residue bond or move through a binding site.
+The tutorial was recorded in v2.5. It covers setting a collaborator to Viewer or Editor, adding specific people to a workspace by email, and following: locking the web view to what an XR user sees, for example while they zoom in to a metal-residue bond or move through a binding site. Since then, the access menu has become **Link access**, with **Members only**, **Anyone can view** and **Anyone can edit** in place of the video's Disabled, Viewer and Editor, and the Users tab sits in the workspace panel. Following still starts from someone's initial, as shown.

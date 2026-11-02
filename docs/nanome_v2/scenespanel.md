@@ -67,6 +67,8 @@ Create scene, Scene settings, the drag handle and each scene's <AppIcon name="do
 
 <YoutubeEmbed videoId="vngy1zlFvRA" title="Nanome v2.4 Quick Tips: Working with Scenes" />
 
+Recorded in Nanome 2.4. The Scenes Panel's toolbar has changed since: **Duplicate** is in each scene's <AppIcon name="dots" /> menu, and **Set scene POV** and **Disable Scene POVs** are under **Scene settings**, as shown above.
+
 ## <AppIcon name="video" /> Recording a scene {#recording-a-scene}
 
 Since release 2.6, a scene can hold a recorded presentation: the presenter's voice and pointer movements, played back in the scene.

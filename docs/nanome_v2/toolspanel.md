@@ -368,6 +368,8 @@ The estimate is a simple cosine term for the dihedral angle (3-fold for spÂ³-spÂ
 
 <YoutubeEmbed videoId="IBQeKcSOJ8A" title="Nanome v2.5 Quick Tips: Torsion Tool (Beta)" />
 
+Recorded in Nanome 2.5. The tool works the same way in 2.7.1, and its strain number is still the sum of the simple cosine terms described above.
+
 ## <AppIcon name="arrow-rotary-first-left" /> Residue Editor {#residue-editor}
 
 The Residue Editor mutates protein residues and picks their side-chain rotamers. Its rotamer library is the 2010 backbone-dependent library from the Dunbrack lab.

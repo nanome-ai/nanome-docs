@@ -96,6 +96,8 @@ In a headset, **Load Structure** in the Tools Panel loads a structure by PDB cod
 
 <YoutubeEmbed videoId="5uikQlDO7FA" title="Nanome v2.5 Quick Tips: Load Structures, Invite & Follow from XR" />
 
+Recorded in Nanome 2.5. Since 2.6, the Users tab's **Permissions** button reads **Share**. It opens the same dialog.
+
 ### Component menu
 
 <ShotRow src="nanome-v2/v2-7/component-more-options.webp" alt="A component's More options menu" stack>
@@ -154,6 +156,8 @@ The copy of the panel below works like the app's: each switch shows 1KV2's bindi
 #### Video: Changing Molecular Representations
 
 <YoutubeEmbed videoId="wdECz2HmR3o" title="Nanome v2.4 Quick Tips: Changing Molecular Representations" />
+
+Recorded in Nanome 2.4. The panel works the same way in 2.7.1, and since 2.6 **Interactions** also lists **Halogen-π** and has a **Filter** switch. The video says the pocket reaches 5 Å from the ligand. Nanome uses 4 Å.
 
 ### Interactions {#interactions}
 
@@ -254,6 +258,8 @@ The options are **Ligands**, **Residues**, a **Type** (protein, nucleic acid, li
 #### Video: Building Custom Components
 
 <YoutubeEmbed videoId="Mw3oZhPD14k" title="Nanome v2.4 Quick Tips: Building Custom Components" />
+
+Recorded in Nanome 2.4. **Create component** works the same way in 2.7.1.
 
 ### Model and trajectory playback
 
