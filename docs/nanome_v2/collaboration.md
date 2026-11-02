@@ -32,7 +32,7 @@ Permissions decide who can open a workspace and who can change it. They're set w
 
 <Callout type="note" title="What Viewers can't do">
 
-Viewers can't measure, edit structures or representations, or use the Interactions, Builder, Torsion, Residue Editor or MARA tools. A free license has Viewer access to workspaces that others own.
+Viewers can't measure, edit structures or representations, or use the Interactions, Builder, Torsion, Residue Editor or MARA tools. A Collab seat has Viewer access in Nanome XR, whatever its level in the workspace. A free license works in Nanome Web only.
 
 </Callout>
 
@@ -84,7 +84,7 @@ The controls are under [Spotlight Mode](/nanome_v2/scenespanel#spotlight-mode) o
 
 Pointers point relative to the structures, so even when nobody is following, everyone sees a pointer on the same structural feature.
 
-Nobody has to be the designated presenter. People can move structures, spotlight and follow each other freely, much like editing a shared document. Stepping into a colleague's view shows exactly what they're asking about.
+Nobody has to be the designated presenter. Anyone can spotlight and follow, Viewers included, and Editors can move structures freely, much like editing a shared document. Stepping into a colleague's view shows exactly what they're asking about.
 
 <Accordion title="Changes in 2.7" teaser="Followers see the leader's tools and edits live.">
 
