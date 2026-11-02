@@ -92,12 +92,6 @@ Each entry holds **components**: named parts of the structure, each with its own
 
 In a headset, **Load Structure** in the Tools Panel loads a structure by PDB code. Other file types are loaded in [Nanome Web](/nanome_web/loading), and the workspace updates in XR.
 
-#### Video: Load Structures, Invite & Follow from XR
-
-<YoutubeEmbed videoId="5uikQlDO7FA" title="Nanome v2.5 Quick Tips: Load Structures, Invite & Follow from XR" />
-
-Recorded in Nanome 2.5. Since 2.6, the Users tab's **Permissions** button reads **Share**. It opens the same dialog.
-
 ### Component menu
 
 <ShotRow src="nanome-v2/v2-7/component-more-options.webp" alt="A component's More options menu" stack>
