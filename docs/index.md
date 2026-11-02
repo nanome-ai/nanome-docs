@@ -62,10 +62,6 @@ quickTips:
     img: /assets/compressed/carousels/quicktips/md-playback.webp
     description: Stream molecular dynamics trajectories from the web to standalone XR headsets
     url: https://youtu.be/cNW8DnFap6A
-  - title: 'Nanome v2.5 Quick Tips: Load Structures, Invite & Follow from XR'
-    img: /assets/compressed/carousels/quicktips/load-invite-follow-xr.webp
-    description: Create a workspace, load from RCSB, invite collaborators, and spotlight your view
-    url: https://youtu.be/5uikQlDO7FA
   - title: 'Nanome v2.5 Quick Tips: Torsion Tool (Beta)'
     img: /assets/compressed/carousels/quicktips/torsion-tool.webp
     description: Inspect and manipulate dihedral angles with real-time strain coloring
