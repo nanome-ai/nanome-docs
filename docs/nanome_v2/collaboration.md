@@ -21,7 +21,7 @@ Permissions decide who can open a workspace and who can change it. They're set w
 <ShotRow src="nanome-v2/v2-7/users-tab-share-dialog.webp" alt="The Share dialog with the workspace code and the people with access" crop="9.6,20.0,81.0,60.4">
 
 <UiList label="Permission levels">
-<UiItem name="Viewer" area="55.7,31.5,19.4,6.4">Chosen from the same menu as Editor. Can look around, select, point, comment, follow, spotlight their own view and move between scenes.</UiItem>
+<UiItem name="Viewer" area="55.7,31.5,19.4,6.4">Chosen from the same menu as Editor. Can look around, select, point, read comments, follow, spotlight their own view and move between scenes.</UiItem>
 <UiItem name="Editor" area="55.7,31.5,19.4,6.4">Can make every change and invite others to view or edit.</UiItem>
 <UiItem name="Owner" area="58.0,55.0,9.6,4.0">The same as Editor, and can remove people and delete the workspace.</UiItem>
 <UiItem name="Project Owner" area="58.0,48.0,18.8,4.0">Access that comes from the workspace's project, shown as Project Viewer, Editor or Owner. It's managed in Nanome Web.</UiItem>
