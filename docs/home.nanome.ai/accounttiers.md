@@ -5,14 +5,14 @@ outline: [2, 3]
 
 # Account Tiers
 
-Each Nanome account has 1 of 4 seats. The seat decides where you can work, in the browser at app.nanome.ai or also in a headset, and what you can do there. Everything on this page comes from [nanome.ai/pricing](https://nanome.ai/pricing).
+Each Nanome account has 1 of 4 seats. The seat decides where you can work, in the browser at app.nanome.ai or also in a headset, and what you can do there. The seats and prices come from [nanome.ai/pricing](https://nanome.ai/pricing), and where the app works differently, this page follows the app.
 
 <CardGrid :cols="2">
 
 <Card badge="Web" title="Free Web Seat" meta="Free, with 50 credits" href="https://app.nanome.ai/register" cta="Create an account">
 
 - 3 workspaces and 1 project in the web app
-- View-only collaboration with XR users, and Follow only
+- View-only collaboration with XR users, with Spotlight and Follow
 - The 5 most recent files and the last 7 days of chats
 
 </Card>
@@ -57,7 +57,7 @@ Every new account gets a 14-day Full license trial, with no credit card required
 | Multi-user collaboration with XR users | View only | ✓ | ✓ | ✓ |
 | Natural language representations | Credits-based | ✓ | ✓ | ✓ |
 | Trajectory and multi-frame playback | ✓ | ✓ | ✓ | ✓ |
-| Spotlight and Follow | Follow only | ✓ | ✓ | ✓ |
+| Spotlight and Follow | ✓ | ✓ | ✓ | ✓ |
 | Direct upload of PDB/SDF/CIF | ✓ | ✓ | ✓ | ✓ |
 | Scene viewing & playback | ✓ | ✓ | ✓ | ✓ |
 | 2D chemical building | ✓ | ✓ | ✓ | ✓ |
@@ -73,7 +73,7 @@ Every new account gets a 14-day Full license trial, with no credit card required
 | XR Structure Alignment | — | — | ✓ *coming soon* | ✓ |
 | XR Chemical builder tool | — | — | — | ✓ |
 | MARA voice commands | — | — | — | ✓ |
-| Spotlight from XR | — | — | ✓ *coming soon* | ✓ |
+| Spotlight from XR | — | — | ✓ | ✓ |
 | Trajectory and multi-frame playback in XR | — | — | ✓ | ✓ |
 
 ### <AppIcon name="tool" /> Integrations and tools {#integrations}

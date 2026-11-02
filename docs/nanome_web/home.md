@@ -131,4 +131,4 @@ The top bar is on every page.
 
 ## Account limits
 
-Free licenses are limited to 1 owned project, 3 owned workspaces and 5 structures per workspace, with view-only access to workspaces and projects that others share. Nanome Web shows a message when a limit is reached. [Account Tiers](/home.nanome.ai/accounttiers) compares the free and paid seats.
+Free licenses are limited to 1 owned project, 3 owned workspaces and 5 structures per workspace, with view-only access to workspaces and projects that others share. They can still spotlight and follow there. Nanome Web shows a message when a limit is reached. [Account Tiers](/home.nanome.ai/accounttiers) compares the free and paid seats.
