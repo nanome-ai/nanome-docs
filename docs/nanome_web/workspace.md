@@ -150,14 +150,14 @@ Nanome shows dihedral angles from 0° to 180°. Torsions of −60° and +60° bo
 
 </Callout>
 
-Nanome Web draws measurements the same way as Nanome XR. A distance, a dihedral and an angle look like this:
+Nanome Web draws measurements the same way as Nanome XR. A distance, an angle and a dihedral look like this:
 
-<ShotRow src="nanome-v2/v2-7/measurement-types.webp" alt="A distance from the 1KV2 ligand to Met109, and a dihedral and an angle on the ligand">
+<ShotRow src="nanome-v2/v2-7/measurement-types.webp" alt="A distance from the 1KV2 ligand to Met109, then an angle and a dihedral on the ligand, one per panel">
 
 <UiList label="Measurement types">
-<UiItem icon="ruler-measure" name="Distance" area="19.9,40.7,8.9,23.2">2 atoms, in Å.</UiItem>
-<UiItem icon="rotate-clockwise-2" name="Dihedral" area="60.6,31.8,15.7,13.9">4 atoms: the torsion around the axis from atom 2 to atom 3, in degrees.</UiItem>
-<UiItem icon="angle" name="Angle" area="66.8,46.1,9.2,17.1">3 atoms, measured at the second atom, in degrees.</UiItem>
+<UiItem icon="ruler-measure" name="Distance" area="11.1,32.4,10.2,37.4">2 atoms, in Å.</UiItem>
+<UiItem icon="angle" name="Angle" area="44.9,41.4,11.4,19.3">3 atoms, measured at the second atom, in degrees.</UiItem>
+<UiItem icon="rotate-clockwise-2" name="Dihedral" area="76.5,33.6,14.6,17.1">4 atoms: the torsion around the axis from atom 2 to atom 3, in degrees.</UiItem>
 </UiList>
 
 </ShotRow>
