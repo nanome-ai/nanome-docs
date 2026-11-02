@@ -211,7 +211,7 @@ const filled = (back) => !xr.value && playing.value && backward.value === back
     </div>
 
     <figure class="n-demo__view">
-      <DemoStage :src="src" :preload="preload" :alt="alt" :play-button="false" cut />
+      <DemoStage :src="src" :preload="preload" :alt="alt" :heading="caption.title" :play-button="false" cut />
       <figcaption class="n-demo__caption" aria-live="polite">
         <strong>{{ caption.title }}</strong> {{ caption.text }}
         <span class="n-play__about">1D3Z is an NMR ensemble of ubiquitin: 10 models that each fit the data, so the order isn't a time series. The C-terminal tail moves most.</span>

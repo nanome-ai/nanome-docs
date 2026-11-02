@@ -63,4 +63,4 @@ Since 2.7, bonds that the dictionary flags as metal coordination are no longer d
 
 <YoutubeEmbed videoId="BkZ6R8fPbgQ" title="Nanome v2.5 Quick Tips: Loading Structures from the Web" />
 
-The tutorial was recorded in v2.5. It covers creating a project and workspace, importing from the RCSB by PDB ID, uploading from your computer by dragging files into the workspace, and importing from chat to pull in molecules from earlier MARA chats.
+The tutorial was recorded in v2.5. It covers creating a project and workspace, importing from the RCSB by PDB ID, uploading from your computer by dragging files into the workspace, and importing from chat to pull in molecules from earlier MARA chats. The Import tab now sits in the workspace panel on the right. The video says the pocket reaches 5 Å from the ligand. Nanome uses 4 Å.
