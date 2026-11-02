@@ -50,8 +50,8 @@ const ints = reactive(Object.fromEntries(INTERACTIONS.map((t) => [t.key, t.on]))
 const note = ref(null)
 const count = computed(() => INTERACTIONS.filter((t) => ints[t.key]).length)
 
-function frameFor(s) {
-  if (s.list) return interactionFrame(props.app, ints, s.h)
+function frameFor(s, on = ints) {
+  if (s.list) return interactionFrame(props.app, on, s.h)
   if (s.extra === 'surface') return surfaceFrame(props.app, s.surface, s.h)
   if (s.extra) return repFrame(props.app, MACRO.find((x) => x.key === s.extra).file, s.h)
   return repFrame(props.app, ATOMISTIC.find((x) => x.key === s.atom).file, s.h)
@@ -105,6 +105,21 @@ function syncAt() {
 // is on (RepresentationsPopup).
 const looksOff = computed(() => props.app === 'xr' && (extra.value !== 'surface' || showList.value))
 const lookOn = (key) => surface.value === key && !looksOff.value
+
+/**
+ * The frame each control leads to, for its data-frame, so the stage can
+ * fetch it before it's picked. Each follows its handler below.
+ */
+const frameAfter = (change, on = ints) => frameFor({ ...state(), ...change }, on)
+function extraAfter(key) {
+  if (extra.value === key && !showList.value) return frameAfter({ extra: null, list: false })
+  return frameAfter({ atom: 'stick', extra: key, list: false, surface: key === 'surface' && props.app === 'xr' ? 'semi' : surface.value })
+}
+function listAfter() {
+  if (!showList.value) return frameAfter({ atom: 'stick', extra: null, list: true })
+  const b = beforeList ?? { atom: atom.value }
+  return frameAfter({ atom: b.atom, extra: b.extra ?? null, surface: b.surface ?? surface.value, list: false })
+}
 
 /** A switch is checked only when the state says so, whatever was clicked. */
 function sync(e, on) {
@@ -211,7 +226,7 @@ const alt = computed(() => `1KV2's binding site: ${base.value.title}, ${H_ALT[hy
 <template>
   <div ref="root" class="n-demo n-reps-demo" v-on="auto.hold">
     <div class="n-app-card n-app-reps" role="group" :aria-label="app === 'xr' ? 'Representations, as in Nanome XR' : 'Representations, as in Nanome Web'">
-      <label v-for="a in ATOMISTIC" :key="a.key" class="n-app-row">
+      <label v-for="a in ATOMISTIC" :key="a.key" class="n-app-row" :data-frame="frameAfter({ atom: a.key, extra: null, list: false })">
         <AppIcon :name="a.icon" size="1rem" />
         <span class="n-app-row__name">{{ label(a) }}</span>
         <input type="checkbox" role="switch" class="n-app-switch" :checked="atom === a.key" @change="pickAtom(a.key, $event)" />
@@ -219,7 +234,7 @@ const alt = computed(() => `1KV2's binding site: ${base.value.title}, ${H_ALT[hy
       </label>
 
       <div class="n-app-seg" role="group" aria-label="Hydrogens" @keydown="arrowPick">
-        <button v-for="h in HYDROGENS" :key="h.key" type="button" :aria-pressed="hydrogen === h.key" :class="{ 'is-on': hydrogen === h.key }" @click="pickHydrogen(h.key)">
+        <button v-for="h in HYDROGENS" :key="h.key" type="button" :data-frame="frameAfter({ h: h.key })" :aria-pressed="hydrogen === h.key" :class="{ 'is-on': hydrogen === h.key }" @click="pickHydrogen(h.key)">
           <span><AppIcon :name="h.icon" size="0.85rem" />{{ label(h) }}</span>
         </button>
       </div>
@@ -227,7 +242,7 @@ const alt = computed(() => `1KV2's binding site: ${base.value.title}, ${H_ALT[hy
       <hr />
 
       <template v-for="m in MACRO" :key="m.key">
-        <label class="n-app-row">
+        <label class="n-app-row" :data-frame="extraAfter(m.key)">
           <AppIcon :name="m.icon" size="1rem" />
           <span class="n-app-row__name">{{ label(m) }}</span>
           <input type="checkbox" role="switch" class="n-app-switch" :checked="extra === m.key && !showList" @change="toggleExtra(m.key, $event)" />
@@ -236,14 +251,14 @@ const alt = computed(() => `1KV2's binding site: ${base.value.title}, ${H_ALT[hy
         <hr />
       </template>
 
-      <label class="n-app-row">
+      <label class="n-app-row" :data-frame="extraAfter('surface')">
         <AppIcon name="egg-fried" size="1rem" />
         <span class="n-app-row__name">Surface</span>
         <input type="checkbox" role="switch" class="n-app-switch" :checked="extra === 'surface' && !showList" @change="toggleExtra('surface', $event)" />
         <span class="n-app-palette" :class="{ 'is-on': extra === 'surface' && !showList }" aria-hidden="true" @click.prevent><AppIcon name="palette" size="0.95rem" /></span>
       </label>
       <div class="n-app-seg" role="group" aria-label="Surface look" @keydown="arrowPick">
-        <button v-for="s in SURFACES" :key="s.key" type="button" :disabled="looksOff" :aria-pressed="lookOn(s.key)" :class="{ 'is-on': lookOn(s.key) }" @click="pickSurface(s.key)">
+        <button v-for="s in SURFACES" :key="s.key" type="button" :data-frame="looksOff ? undefined : frameAfter({ atom: 'stick', extra: 'surface', surface: s.key, list: false })" :disabled="looksOff" :aria-pressed="lookOn(s.key)" :class="{ 'is-on': lookOn(s.key) }" @click="pickSurface(s.key)">
           <span><AppIcon :name="s.icon" size="0.85rem" />{{ s.name }}</span>
         </button>
       </div>
@@ -254,12 +269,12 @@ const alt = computed(() => `1KV2's binding site: ${base.value.title}, ${H_ALT[hy
         <!-- Nanome Web draws a mist icon here. Nanome XR's label is a NanoText, which has no icon. -->
         <AppIcon v-if="app !== 'xr'" name="mist" size="1rem" />
         <span class="n-app-row__name">Interactions <span class="n-app-badge">{{ count }}</span></span>
-        <button type="button" class="n-app-pill" :aria-expanded="showList" @click="toggleList">
+        <button type="button" class="n-app-pill" :data-frame="listAfter()" :aria-expanded="showList" @click="toggleList">
           <span class="n-app-caret" :class="{ 'is-up': showList }" aria-hidden="true" />{{ showList ? 'Hide' : 'Show' }}
         </button>
       </div>
       <div v-if="showList" class="n-app-intlist">
-        <label v-for="t in INTERACTIONS" :key="t.key" class="n-app-row is-small">
+        <label v-for="t in INTERACTIONS" :key="t.key" class="n-app-row is-small" :data-frame="frameAfter({}, { ...ints, [t.key]: !ints[t.key] })">
           <span class="n-app-dot" :style="{ background: t.color }" aria-hidden="true" />
           <span class="n-app-row__name">{{ t.name }}</span>
           <input type="checkbox" role="switch" class="n-app-switch" :checked="ints[t.key]" @change="toggleType(t, $event)" />

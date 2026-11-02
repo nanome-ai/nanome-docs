@@ -45,6 +45,11 @@ function flip() {
   night.value = !night.value
 }
 
+// The frame each control leads to, for its data-frame, so the stage can
+// fetch it before it's picked.
+const pickFrame = (t) => themeFrame(props.app, t.key, night.value)
+const flipFrame = () => themeFrame(props.app, theme.value, !night.value)
+
 const current = computed(() => THEMES.find((t) => t.key === theme.value))
 const src = computed(() => themeFrame(props.app, theme.value, night.value))
 // Pure Black has no mountains in Nanome XR: every color in its sky is black.
@@ -75,13 +80,14 @@ const alt = computed(() => {
           :key="t.key"
           type="button"
           class="n-app-theme"
+          :data-frame="pickFrame(t)"
           :class="{ 'is-on': theme === t.key }"
           :aria-pressed="theme === t.key"
           @click="pick(t)"
         >{{ t.name }}</button>
       </div>
       <div class="n-app-themebar">
-        <button type="button" class="n-app-round" role="switch" :aria-checked="night" aria-label="Night" @click="flip">
+        <button type="button" class="n-app-round" role="switch" :data-frame="flipFrame()" :aria-checked="night" aria-label="Night" @click="flip">
           <AppIcon :name="night ? 'moon' : 'sun'" size="1.1rem" />
         </button>
         <span class="n-app-field">{{ current.name }}</span>

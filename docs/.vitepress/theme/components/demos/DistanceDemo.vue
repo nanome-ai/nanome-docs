@@ -47,6 +47,14 @@ function flip(key) {
   opts[key].value = !opts[key].value
 }
 
+/**
+ * The frames each control leads to, for its data-frame, so the stage can
+ * fetch them before they're picked: every stop on the slider, and each
+ * switch flipped.
+ */
+const slideFrames = () => DIST_STEPS.map((d) => distFrame(d, state())).join(' ')
+const flipFrame = (key) => distFrame(distance.value, { ...state(), [key]: !opts[key].value })
+
 // What's on screen, from the counts Nanome 2.7.1 gave for each state.
 const caption = computed(() => {
   const d = distance.value
@@ -117,24 +125,24 @@ const alt = computed(() => `Folate in 1RX2 and the atoms a distance component pi
 <template>
   <div ref="root" class="n-demo" v-on="auto.hold">
     <div class="n-app-card n-app-distance" role="group" aria-label="Distance component">
-      <label class="n-app-slider">
+      <label class="n-app-slider" :data-frame="slideFrames()">
         <span class="n-app-slider__head"><span>Distance (Å)</span><output>{{ distance }}</output></span>
         <input type="range" min="2" max="10" step="2" :value="distance" @input="onSlide" />
       </label>
       <hr />
-      <label class="n-app-row">
+      <label class="n-app-row" :data-frame="flipFrame('whole')">
         <span class="n-app-row__name">Whole residues</span>
         <input type="checkbox" role="switch" class="n-app-switch" :checked="whole" @change="flip('whole')" />
       </label>
-      <label class="n-app-row">
+      <label class="n-app-row" :data-frame="flipFrame('ignoreSelf')">
         <span class="n-app-row__name">Ignore self</span>
         <input type="checkbox" role="switch" class="n-app-switch" :checked="ignoreSelf" @change="flip('ignoreSelf')" />
       </label>
-      <label class="n-app-row">
+      <label class="n-app-row" :data-frame="flipFrame('includeLigands')">
         <span class="n-app-row__name">Include ligands</span>
         <input type="checkbox" role="switch" class="n-app-switch" :checked="includeLigands" @change="flip('includeLigands')" />
       </label>
-      <label class="n-app-row">
+      <label class="n-app-row" :data-frame="flipFrame('allEntries')">
         <span class="n-app-row__name">All entries</span>
         <input type="checkbox" role="switch" class="n-app-switch" :checked="allEntries" @change="flip('allEntries')" />
       </label>

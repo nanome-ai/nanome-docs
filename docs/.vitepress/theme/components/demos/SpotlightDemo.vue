@@ -165,6 +165,7 @@ const alt = computed(() => (mode.value === 'follow' ? PEOPLE[leader.value].alt :
           :key="c.key"
           type="button"
           class="n-spot__chip"
+          :data-frame="c.off ? undefined : c.src"
           :style="{ background: c.color, color: c.ink }"
           :disabled="c.off"
           :title="c.tip"
@@ -196,7 +197,7 @@ const alt = computed(() => (mode.value === 'follow' ? PEOPLE[leader.value].alt :
           <button type="button" class="n-spot__round" title="Reset orientation" aria-label="Reset orientation" @click="resetOrientation">
             <AppIcon name="analyze-filled" size="1rem" />
           </button>
-          <button type="button" class="n-app-pill n-spot__stop" title="Stop following" @click="toMode('you')">Stop</button>
+          <button type="button" class="n-app-pill n-spot__stop" title="Stop following" :data-frame="OWN.src" @click="toMode('you')">Stop</button>
         </div>
       </div>
     </div>

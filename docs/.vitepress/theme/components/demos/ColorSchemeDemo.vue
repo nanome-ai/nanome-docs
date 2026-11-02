@@ -70,6 +70,17 @@ function pickSwatch(u) {
     changed.value = 'swatch-carbons'
   }
 }
+/**
+ * The frame each control leads to, for its data-frame, so the stage can
+ * fetch it before it's picked. Each follows its handler.
+ */
+function pickFrame(s) {
+  const web = props.app === 'web'
+  return schemeFrame(props.app, s.key, web && s.noCarbons ? false : carbons.value, web && s.key === 'uniform' ? 'ffffff' : hex.value)
+}
+const swatchFrame = (u) => schemeFrame(props.app, scheme.value, props.app === 'web' ? false : carbons.value, u.hex)
+const carbonsFrame = () => schemeFrame(props.app, scheme.value, !carbons.value, hex.value)
+
 function flipCarbons() {
   auto.stop()
   carbons.value = !carbons.value
@@ -121,6 +132,7 @@ const alt = computed(() => `1KV2's binding site colored by ${caption.value.title
           :key="s.key"
           type="button"
           class="n-app-scheme"
+          :data-frame="pickFrame(s)"
           :class="{ 'is-on': scheme === s.key }"
           :aria-pressed="scheme === s.key"
           @click="pick(s)"
@@ -133,6 +145,7 @@ const alt = computed(() => `1KV2's binding site colored by ${caption.value.title
           :key="u.hex"
           type="button"
           class="n-app-swatch"
+          :data-frame="scheme === 'uniform' ? swatchFrame(u) : undefined"
           :class="{ 'is-on': hex === u.hex }"
           :style="{ background: `#${u.hex}` }"
           :aria-pressed="hex === u.hex"
@@ -142,7 +155,7 @@ const alt = computed(() => `1KV2's binding site colored by ${caption.value.title
         />
       </div>
       <!-- Hidden while Element Type is picked, keeping its space so the card doesn't jump. -->
-      <label class="n-app-row" :style="{ visibility: current.noCarbons ? 'hidden' : null }">
+      <label class="n-app-row" :data-frame="current.noCarbons ? undefined : carbonsFrame()" :style="{ visibility: current.noCarbons ? 'hidden' : null }">
         <span class="n-app-row__name">Carbons only</span>
         <input type="checkbox" role="switch" class="n-app-switch" :checked="carbons" :disabled="current.noCarbons" @change="flipCarbons" />
       </label>

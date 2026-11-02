@@ -11,8 +11,9 @@
  * model) and the box below it the playback popup: backwards, play or pause,
  * forwards, the speeds and its note, plus Nanome XR's standalone-speed
  * warning. Stepping doesn't stop playback, as in both apps. Frames swap with
- * a hard cut, and a tick waits until its frame has loaded, as the app holds
- * on a frame that isn't ready.
+ * a hard cut, and a tick waits until its frame is loaded and decoded, as the
+ * app holds on a frame that isn't ready. At ×10 and ×20 playback waits until
+ * all 10 are, so it never stutters on its first pass.
  *
  * It starts playing forwards at ×1 once it's on screen and pauses while it's
  * off screen; with reduced motion it starts paused on model 1.
@@ -20,10 +21,9 @@
  *   <PlaybackDemo app="xr" />   as Nanome XR draws it
  *   <PlaybackDemo app="web" />  as Nanome Web draws it
  */
-import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
 import { useData } from 'vitepress'
 import AppIcon from '../AppIcon.vue'
-import { imageInfo } from '../image.js'
 import DemoStage from './DemoStage.vue'
 import { arrowPick } from './arrows.js'
 import { PLAY_MODELS, PLAY_SPEEDS, playFrame } from './data.js'
@@ -44,36 +44,25 @@ const frames = Array.from({ length: PLAY_MODELS }, (_, i) => playFrame(props.app
 const src = computed(() => frames[model.value - 1])
 const preload = ref([])
 
-// Which frames have loaded, by URL, so a tick can wait for its frame.
-const loaded = new Set()
-function load(dark) {
-  for (const f of frames) {
-    const info = imageInfo(f)
-    const url = dark && info.dark ? info.dark : info.light
-    if (loaded.has(url)) continue
-    const img = new Image()
-    img.onload = () => loaded.add(url)
-    img.src = url
-  }
-}
-function isReady(n) {
-  const info = imageInfo(frames[n - 1])
-  return loaded.has(isDark.value && info.dark ? info.dark : info.light)
-}
+// The frames the stage has loaded and decoded in the current theme, so a
+// tick can wait for its frame. A theme change starts the list over.
+const ready = reactive(new Set())
+const isReady = (n) => ready.has(frames[n - 1])
+const allReady = computed(() => ready.size === PLAY_MODELS)
 
 const wrap = (n) => ((n - 1 + PLAY_MODELS) % PLAY_MODELS) + 1
 
 let timer = 0
 function schedule() {
   clearInterval(timer)
-  if (!playing.value || !visible.value) return
+  if (!playing.value || !visible.value || (speed.value >= 10 && !allReady.value)) return
   timer = setInterval(() => {
     const n = wrap(model.value + (backward.value ? -1 : 1))
     if (isReady(n)) model.value = n
   }, 1000 / speed.value)
 }
-watch([playing, visible, speed, backward], schedule)
-watch(isDark, (dark) => preload.value.length && load(dark))
+watch([playing, visible, speed, backward, allReady], schedule)
+watch(isDark, () => ready.clear())
 
 const root = ref(null)
 let observer = null
@@ -86,7 +75,6 @@ onMounted(() => {
       if (!visible.value || started) return
       started = true
       preload.value = frames
-      load(isDark.value)
       if (!still) playing.value = true
     },
     { threshold: [0, 0.4] }
@@ -211,7 +199,7 @@ const filled = (back) => !xr.value && playing.value && backward.value === back
     </div>
 
     <figure class="n-demo__view">
-      <DemoStage :src="src" :preload="preload" :alt="alt" :heading="caption.title" :play-button="false" cut />
+      <DemoStage :src="src" :preload="preload" :alt="alt" :heading="caption.title" :play-button="false" cut @ready="(f) => ready.add(f)" />
       <figcaption class="n-demo__caption" aria-live="polite">
         <strong>{{ caption.title }}</strong> {{ caption.text }}
         <span class="n-play__about">1D3Z is an NMR ensemble of ubiquitin: 10 models that each fit the data, so the order isn't a time series. The C-terminal tail moves most.</span>

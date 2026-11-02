@@ -31,6 +31,7 @@ import DemoStage from './DemoStage.vue'
 import { arrowPick } from './arrows.js'
 import { useAutoplay } from './autoplay.js'
 import { imageInfo } from '../image.js'
+import { decodeFrame } from './frames.js'
 
 const O = 'nanome-v2/v2-7/options/'
 
@@ -130,6 +131,18 @@ const auto = useAutoplay(root, () => {
 })
 const next = computed(() => frameFor(STATES[(at + 1) % STATES.length]))
 
+/**
+ * The frame each control leads to, for its data-frame, so the stage can
+ * fetch it before it's picked. Each follows its handler below.
+ */
+const toolFrame = (t) => frameFor({ tool: t.key, mode: t.modes && t.key !== 'builder' ? t.modes[0] : null })
+const modeFrame = (m) => frameFor({ tool: tool.value, mode: m })
+function stickFrame(dir) {
+  if (!canStep.value) return undefined
+  const list = modes.value
+  return modeFrame(list[(list.indexOf(mode.value) + dir + list.length) % list.length])
+}
+
 /** The tour carries on from wherever the reader leaves it. */
 function sync() {
   at = STATES.findIndex((s) => s.tool === tool.value && s.mode === mode.value)
@@ -206,9 +219,7 @@ const closeups = computed(() =>
 watch(src, (s) => {
   if (!seen.value.includes(s)) seen.value.push(s)
   const info = imageInfo(s)
-  const img = new Image()
-  img.src = document.documentElement.classList.contains('dark') && info.dark ? info.dark : info.light
-  img.decode().catch(() => {}).then(() => {
+  decodeFrame(document.documentElement.classList.contains('dark') && info.dark ? info.dark : info.light).then(() => {
     if (s === src.value) shown.value = s
   })
 })
@@ -223,6 +234,7 @@ watch(src, (s) => {
           :key="t.key"
           type="button"
           class="n-app-theme n-tools__tool"
+          :data-frame="toolFrame(t)"
           :class="{ 'is-on': tool === t.key }"
           :aria-pressed="tool === t.key"
           @click="pickTool(t)"
@@ -236,7 +248,7 @@ watch(src, (s) => {
       <div class="n-tools__modes">
         <div class="n-tools__head">
           <span>Mode</span>
-          <button v-if="tool === 'builder' && mode" type="button" class="n-app-pill n-tools__mini" @click="closeLigand">Cancel</button>
+          <button v-if="tool === 'builder' && mode" type="button" class="n-app-pill n-tools__mini" :data-frame="modeFrame(null)" @click="closeLigand">Cancel</button>
         </div>
         <div class="n-tools__body">
           <div v-if="modes.length" class="n-app-seg" role="group" aria-label="Mode" @keydown="arrowPick">
@@ -244,6 +256,7 @@ watch(src, (s) => {
               v-for="m in modes"
               :key="m"
               type="button"
+              :data-frame="modeFrame(m)"
               :aria-pressed="mode === m"
               :class="{ 'is-on': mode === m }"
               @click="pickMode(m)"
@@ -251,7 +264,7 @@ watch(src, (s) => {
               <span><AppIcon :name="MODES[m].icon" size="0.85rem" />{{ MODES[m].label }}</span>
             </button>
           </div>
-          <button v-else-if="tool === 'builder'" type="button" class="n-app-pill" aria-label="Edit A:B96_391" @click="openLigand">
+          <button v-else-if="tool === 'builder'" type="button" class="n-app-pill" aria-label="Edit A:B96_391" :data-frame="modeFrame('build')" @click="openLigand">
             <AppIcon name="pencil" size="0.9rem" />A:B96_391
           </button>
           <span v-else class="n-tools__none">{{ current.none }}</span>
@@ -264,6 +277,7 @@ watch(src, (s) => {
           class="n-app-round"
           aria-label="Thumbstick left"
           title="Thumbstick left"
+          :data-frame="stickFrame(-1)"
           :class="{ 'is-idle': !canStep && tool !== 'residue-editor' }"
           @click="step(-1)"
         >
@@ -275,6 +289,7 @@ watch(src, (s) => {
           class="n-app-round"
           aria-label="Thumbstick right"
           title="Thumbstick right"
+          :data-frame="stickFrame(1)"
           :class="{ 'is-idle': !canStep && tool !== 'residue-editor' }"
           @click="step(1)"
         >

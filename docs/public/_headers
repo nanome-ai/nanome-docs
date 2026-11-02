@@ -7,12 +7,24 @@
 # ships to the host root, where Cloudflare Pages reads it. A splat matches
 # across folders, so /assets/*.js covers /assets/chunks/ too. Images under
 # /assets/compressed and /assets/original keep stable names and match
-# neither rule, so they keep the host's default caching. Most pages add a
-# ?v= hash to an image's URL, but the home page's carousel images have none.
+# neither rule, so they keep the host's default caching, apart from the demo
+# frames below. Most pages add a ?v= hash to an image's URL, but the home
+# page's carousel images have none.
 # A hand-named .js or .css file under docs/public/assets would get the same
 # year-long cache, so such files belong somewhere else in docs/public.
 /assets/*.js
   Cache-Control: public, max-age=31536000, immutable
 
 /assets/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+# The option-panel demos' frames. A rule can't see the query string, so this
+# one is safe only because every URL to this folder carries the copy's hash
+# as ?v=: the demos build them with image.js, which always adds it, and no
+# page links a frame by hand. A changed frame gets a new hash, so a browser
+# that kept the old copy asks for the new URL, and a reader who comes back
+# gets every frame already fetched from its own cache, without asking the
+# host whether each one changed. A link to a frame without ?v= would be kept
+# for a year too, so link frames only through image.js.
+/assets/compressed/nanome-v2/v2-7/options/*
   Cache-Control: public, max-age=31536000, immutable
