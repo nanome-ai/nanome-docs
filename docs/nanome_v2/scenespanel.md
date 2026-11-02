@@ -102,8 +102,8 @@ With several people in a workspace, colored dots on each scene show who's in it,
 <UiList label="Users section">
 <UiItem name="Scene dots" area="8.7,40.5,11.8,4.1">One dot per person in that scene, in their color, you included. Pointing at the dots lists the names. No dots show while you're alone in the workspace.</UiItem>
 <UiItem name="Name chips" area="5.4,76.6,88.9,5.7">Each person's name, in their color. Selecting a chip follows them. Up to 4 chips fit, and with more people, 3 chips show beside a button with the number of others.</UiItem>
-<UiItem icon="share" name="Share" href="/nanome_v2/mainpanel#share" area="63.7,70.1,30.9,5.7">Opens the Share dialog.</UiItem>
-<UiItem icon="crown" name="Spotlight Me" href="#spotlight-mode" area="5.4,82.9,89.3,6.7">Starts Spotlight Mode. The crown is in your color.</UiItem>
+<UiItem icon="share" name="Share" href="/nanome_v2/mainpanel#share" area="63.7,70.1,30.9,5.7">Opens the Share dialog. Editors and the Owner have it.</UiItem>
+<UiItem icon="crown" name="Spotlight Me" href="#spotlight-mode" area="5.4,82.9,89.3,6.7">Starts Spotlight Mode. Everyone has it, Viewers included. The crown is in your color.</UiItem>
 <UiItem icon="chevrons-right" name="Collapse sidebar" area="2.5,90.9,94.9,7.9">Collapses the sidebar.</UiItem>
 </UiList>
 
