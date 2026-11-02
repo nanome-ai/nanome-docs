@@ -54,6 +54,8 @@ Accounts created with Google, Microsoft or Apple, accounts that use single sign-
 
 <YoutubeEmbed videoId="cB82b8xIZoY" title="Nanome v2.4 Quick Tips: Creating Your Account" />
 
+Recorded in Nanome 2.4. The **Collaboration** tab is now called **Users**, and the **Settings** tab has more options. Since 2.6, **Show other user Avatars** is off to start.
+
 ## <AppIcon name="info-circle" /> Also on the screen {#also-on-the-screen}
 
 <UiList label="Login screen">
