@@ -68,8 +68,10 @@ function apply(next) {
 }
 
 // The tour: each atomistic style, Cartoon, Residue Label, then each surface
-// look. It leaves the interaction list closed, so the page below the card
-// doesn't move; the reader opens it with Show.
+// look. It keeps the hydrogen setting, All to start, and leaves the
+// interaction list closed: opening it makes the card about 280px taller,
+// which would push the page below on every loop. The reader opens it with
+// Show, and with All on, the 5 hydrogen bonds draw.
 const TOUR = [
   ...ATOMISTIC.map((a) => ({ atom: a.key })),
   ...MACRO.map((m) => ({ atom: 'stick', extra: m.key })),
