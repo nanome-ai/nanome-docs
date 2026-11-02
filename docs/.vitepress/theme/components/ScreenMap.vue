@@ -754,13 +754,21 @@ html.n-focus-open {
 }
 
 /* The page under a full-screen view (this one or a <ShotRow>'s) holds still
-   too. Safari can tie the page's scroll position to a part of the view, and
-   then scrolls the page as the view's image settles. Every part of the view
-   is ruled out, since Safari doesn't rule out what's inside a box that is. */
-.n-screenmap-view.is-focus,
-.n-screenmap-view.is-focus *,
-.n-shotrow.is-focus,
-.n-shotrow.is-focus * {
+   too. A browser keeps the page tied to whatever sits at the top of the
+   window (scroll anchoring). When that was a part of the view, Chrome and
+   Safari scrolled the page by as far as it moved as the view went full
+   screen or came back: closing the Overview page's screen map went to the
+   bottom of the page. So nothing inside the box that holds the view's place
+   is ever chosen, and the box itself, which keeps its height, is chosen
+   instead. The rule holds at all times, since Safari keeps a part it chose
+   before the view opened, and it covers ::before and ::after, which Safari
+   can pick too. */
+.n-screenmap-hold *,
+.n-screenmap-hold *::before,
+.n-screenmap-hold *::after,
+.n-shotrow-hold *,
+.n-shotrow-hold *::before,
+.n-shotrow-hold *::after {
   overflow-anchor: none;
 }
 
