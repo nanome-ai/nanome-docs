@@ -90,12 +90,12 @@ Each measurement is listed in the panel with its type and value. Hovering a row 
 
 </ShotRow>
 
-<ShotRow src="nanome-v2/v2-7/measurement-types.webp" alt="A distance from the 1KV2 ligand to Met109, and a dihedral and an angle on the ligand">
+<ShotRow src="nanome-v2/v2-7/measurement-types.webp" alt="A distance from the 1KV2 ligand to Met109, then an angle and a dihedral on the ligand, one per panel">
 
 <UiList label="Measurement types">
-<UiItem icon="ruler-measure" name="Distance" area="19.9,40.7,8.9,22.9">The 2.90 Å hydrogen bond from the ligand's morpholine O to the backbone N of Met109 in the hinge.</UiItem>
-<UiItem icon="rotate-clockwise-2" name="Dihedral" area="60.4,32.1,16.1,12.9">4.4° between the urea's C=O and the bond from its N to the pyrazole: the urea is close to planar.</UiItem>
-<UiItem icon="angle" name="Angle" area="67.7,45.7,8.2,17.9">118.1° at the urea carbon, between its 2 N atoms.</UiItem>
+<UiItem icon="ruler-measure" name="Distance" area="11.1,32.4,10.2,37.4">The 2.90 Å hydrogen bond from the ligand's morpholine O to the backbone N of Met109 in the hinge.</UiItem>
+<UiItem icon="angle" name="Angle" area="44.9,41.4,11.4,19.3">118.1° at the urea carbon, between its 2 N atoms.</UiItem>
+<UiItem icon="rotate-clockwise-2" name="Dihedral" area="76.5,33.6,14.6,17.1">178.4° between the urea carbon's bond to the N on the naphthalene side and the bond from the other N to the pyrazole. The 2 bonds point opposite ways, so the urea is close to planar.</UiItem>
 </UiList>
 
 <Callout type="note" title="Dihedrals show without a sign">
