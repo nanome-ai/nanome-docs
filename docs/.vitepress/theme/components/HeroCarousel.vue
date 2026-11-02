@@ -10,10 +10,11 @@
   >
     <template #default="{ item, clone, near }">
       <a :href="item.url" class="slide" :style="{ aspectRatio: ratio }" target="_blank" :tabindex="clone ? -1 : undefined">
+        <!-- `loading` before `src`, so Safari keeps a far slide lazy (Vimg.vue). -->
         <img
+          :loading="near || (eager && item === slides[0] && !clone) ? 'eager' : 'lazy'"
           :src="item.img"
           :alt="item.title || item.alt || ''"
-          :loading="near || (eager && item === slides[0] && !clone) ? 'eager' : 'lazy'"
         />
       </a>
     </template>

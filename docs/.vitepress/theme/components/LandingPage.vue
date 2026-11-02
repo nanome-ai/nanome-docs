@@ -25,9 +25,10 @@
       <div class="update-card">
         <a :href="data.newUpdates.url" class="update-image" :class="{ 'has-dark': !!updateImage.dark }">
           <!-- Width and height keep the card's space while the image loads.
-               The dark copy loads only in dark mode, where it shows. -->
+               The dark copy loads only in dark mode, where it shows; its
+               `loading` comes before `src` so Safari keeps it lazy too. -->
           <img class="update-light" :src="updateImage.light" :alt="data.newUpdates.title" :width="updateImage.size?.[0]" :height="updateImage.size?.[1]" />
-          <img v-if="updateImage.dark" class="update-dark" :src="updateImage.dark" :alt="data.newUpdates.title" :width="updateImage.darkSize?.[0]" :height="updateImage.darkSize?.[1]" loading="lazy" />
+          <img v-if="updateImage.dark" class="update-dark" loading="lazy" :src="updateImage.dark" :alt="data.newUpdates.title" :width="updateImage.darkSize?.[0]" :height="updateImage.darkSize?.[1]" />
         </a>
         <div class="update-content">
           <h3>{{ data.newUpdates.title }}</h3>

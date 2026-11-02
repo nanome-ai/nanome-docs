@@ -753,6 +753,25 @@ html.n-focus-open {
   overflow: hidden;
 }
 
+/* The page under a full-screen view (this one or a <ShotRow>'s) holds still
+   too. A browser keeps the page tied to whatever sits at the top of the
+   window (scroll anchoring). When that was a part of the view, Chrome and
+   Safari scrolled the page by as far as it moved as the view went full
+   screen or came back: closing the Overview page's screen map went to the
+   bottom of the page. So nothing inside the box that holds the view's place
+   is ever chosen, and the box itself, which keeps its height, is chosen
+   instead. The rule holds at all times, since Safari keeps a part it chose
+   before the view opened, and it covers ::before and ::after, which Safari
+   can pick too. */
+.n-screenmap-hold *,
+.n-screenmap-hold *::before,
+.n-screenmap-hold *::after,
+.n-shotrow-hold *,
+.n-shotrow-hold *::before,
+.n-shotrow-hold *::after {
+  overflow-anchor: none;
+}
+
 /* On a phone, full screen shows the image larger than the page can: up to
    2.5 screens wide, as long as it stays short enough for the window, and the
    image scrolls sideways (fitPan() in the script). A tall screen stays as it

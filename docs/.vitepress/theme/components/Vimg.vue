@@ -1,8 +1,13 @@
 <template>
   <div>
     <div class="vimg" :class="{ 'has-dark': !!info.dark }" :style="box">
+      <!-- `loading` comes before `src`: on a page reached by a link, Vue
+           sets them in this order, and Safari fetches an image as soon as it
+           has a source, before it learns the image is lazy. -->
       <img
         class="vimg__light"
+        loading="lazy"
+        decoding="async"
         :src="info.light"
         :srcset="info.lightSet"
         :sizes="info.lightSet && info.sizes"
@@ -11,8 +16,6 @@
         :width="info.size?.[0]"
         :height="info.size?.[1]"
         :style="ratio(info.size)"
-        loading="lazy"
-        decoding="async"
         v-bind="playable"
         @keydown.enter.prevent="play"
         @keydown.space.prevent="play"
@@ -21,6 +24,8 @@
       <img
         v-if="info.dark"
         class="vimg__dark"
+        loading="lazy"
+        decoding="async"
         :src="info.dark"
         :srcset="info.darkSet"
         :sizes="info.darkSet && info.sizes"
@@ -29,8 +34,6 @@
         :width="info.darkSize?.[0]"
         :height="info.darkSize?.[1]"
         :style="ratio(info.darkSize)"
-        loading="lazy"
-        decoding="async"
         v-bind="playable"
         @keydown.enter.prevent="play"
         @keydown.space.prevent="play"

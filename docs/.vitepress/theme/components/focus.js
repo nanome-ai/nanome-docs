@@ -14,6 +14,22 @@ import { useRoute } from 'vitepress'
 const FOCUSABLE =
   'a[href], button:not([disabled]), input:not([disabled]), select, textarea, summary, iframe, [tabindex]:not([tabindex="-1"])'
 
+/**
+ * Puts the page back at `y` when closing the view moved it. The box that
+ * holds the view's place is a query container, and Safari lays the page out
+ * once before that box has its height back. The page is briefly too short,
+ * so it scrolls up, as far as the top. This runs before the page is drawn,
+ * so the reader never sees it; where the page didn't move, it does nothing.
+ */
+function stayAt(y) {
+  if (Math.abs(window.scrollY - y) < 1) return
+  const root = document.documentElement
+  const smooth = root.style.scrollBehavior
+  root.style.scrollBehavior = 'auto'
+  window.scrollTo(0, y)
+  root.style.scrollBehavior = smooth
+}
+
 export function useFocusView(root) {
   const focused = ref(false)
   const holdHeight = ref(0)
@@ -54,6 +70,7 @@ export function useFocusView(root) {
 
   async function shut(restore) {
     if (!focused.value) return
+    const y = window.scrollY
     focused.value = false
     holdHeight.value = 0
     document.documentElement.classList.remove('n-focus-open')
@@ -64,6 +81,7 @@ export function useFocusView(root) {
     // The expand button comes back on the next render, so wait for it. A
     // browser that doesn't focus a clicked button leaves the page as opener.
     await nextTick()
+    stayAt(y)
     const target =
       back?.isConnected && root.value?.contains(back)
         ? back

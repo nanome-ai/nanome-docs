@@ -288,12 +288,31 @@ let legendWidth = 0
 function alignLists() {
   const lists = [...(legend.value?.querySelectorAll('.n-uilist') || [])].filter((l) => l.getClientRects().length)
   for (const l of lists) l.style.removeProperty('--uil-name-col')
+  shareNameColumn(lists)
+  relayRows(lists)
+}
+
+function shareNameColumn(lists) {
   if (lists.length < 2) return
   const tracks = lists.map((l) => getComputedStyle(l).gridTemplateColumns.split(' '))
   // A narrow list puts each description under its name, so they line up already.
   if (tracks.some((t) => t.length !== 3)) return
   const widest = Math.ceil(Math.max(...tracks.map((t) => parseFloat(t[1]))))
   for (const l of lists) l.style.setProperty('--uil-name-col', `${widest}px`)
+}
+
+/**
+ * Safari doesn't lay a legend's rows out again when only the split between
+ * its columns changes, since each row keeps its width, so a description that
+ * now wraps onto another line spills out of the card. Each row gets another
+ * width for one layout pass, then its own back, before anything is drawn.
+ */
+function relayRows(lists) {
+  const rows = lists.flatMap((l) => [...l.children])
+  if (!rows.length) return
+  for (const r of rows) r.style.width = '0px'
+  void lists[0].offsetWidth
+  for (const r of rows) r.style.width = ''
 }
 
 onMounted(() => {

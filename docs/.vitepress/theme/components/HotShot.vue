@@ -201,8 +201,11 @@ function pick(spot) {
       @keydown.enter.self="open"
       @keydown.space.self="open"
     >
+      <!-- `loading` before `src`, so Safari keeps the image lazy (Vimg.vue). -->
       <img
         class="hotshot__img hotshot__light no-zoom"
+        loading="lazy"
+        decoding="async"
         :src="info.light"
         :srcset="focus ? undefined : info.lightSet"
         :sizes="focus || !info.lightSet ? undefined : info.sizes"
@@ -211,12 +214,12 @@ function pick(spot) {
         :width="info.size?.[0]"
         :height="info.size?.[1]"
         :style="image"
-        loading="lazy"
-        decoding="async"
       />
       <img
         v-if="info.dark"
         class="hotshot__img hotshot__dark no-zoom"
+        loading="lazy"
+        decoding="async"
         :src="info.dark"
         :srcset="focus ? undefined : info.darkSet"
         :sizes="focus || !info.darkSet ? undefined : info.sizes"
@@ -225,8 +228,6 @@ function pick(spot) {
         :width="info.darkSize?.[0]"
         :height="info.darkSize?.[1]"
         :style="image"
-        loading="lazy"
-        decoding="async"
       />
       <!-- Full screen, a GIF plays: the original, over its still copy while it loads. -->
       <img
