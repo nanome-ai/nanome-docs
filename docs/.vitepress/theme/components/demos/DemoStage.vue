@@ -19,7 +19,9 @@
  * decode() would do the same, but Chrome then scales the frame down by
  * another route, and it comes out a little sharper on some screens than it
  * did before. Only the copy for the current theme is requested: a frame's
- * other copy gets its URL when the theme changes.
+ * other copy gets its URL when the theme changes, and until that copy is
+ * in, the frame on show keeps its old one in view, as a pick keeps the last
+ * render, so the stage never goes blank.
  *
  * `heading` is the caption's bold title. It shows on one line under the
  * render only where the render sticks on a phone and the full caption sits
@@ -83,8 +85,11 @@ function urlOf(src) {
 
 /** The <img> a frame shows in the current theme, once it's in the page. */
 function imgOf(src) {
-  const el = stage.value?.children[frames.value.findIndex((f) => f.src === src)]
-  return el ? [...el.querySelectorAll('img')].find((i) => i.offsetWidth > 0) || null : null
+  const i = frames.value.findIndex((f) => f.src === src)
+  const img = stage.value?.children[i]?.querySelector(
+    isDark.value && frames.value[i].info.dark ? '.n-demo-stage__dark' : '.n-demo-stage__light'
+  )
+  return img?.offsetWidth > 0 ? img : null
 }
 
 /** Resolves once the image has loaded or failed. */
@@ -117,12 +122,23 @@ async function stageFrame(src, decode = false) {
 }
 const preloadAll = () => props.preload.forEach((s) => stageFrame(s, true))
 
+/** The frame on show while it keeps its old theme's copy in view. */
+const holding = ref('')
+async function hold(src) {
+  holding.value = src
+  await nextTick()
+  const img = imgOf(src)
+  if (img) await loaded(img)
+  if (holding.value === src) holding.value = ''
+}
+
 watch(() => props.src, show)
 watch(() => props.preload, preloadAll)
 watch(isDark, (dark) => {
   for (const f of frames.value) {
     if (dark && f.info.dark) f.want.dark = true
     else f.want.light = true
+    if (f.src === shown.value && f.info.dark) hold(f.src)
   }
   nextTick(() => {
     preloadAll()
@@ -212,7 +228,7 @@ onBeforeUnmount(() => {
         v-for="f in frames"
         :key="f.src"
         class="n-demo-stage__frame"
-        :class="{ 'is-on': f.src === shown, 'has-dark': !!f.info.dark }"
+        :class="{ 'is-on': f.src === shown, 'has-dark': !!f.info.dark, 'is-holding': f.src === holding }"
         :aria-hidden="f.src === shown ? undefined : 'true'"
       >
         <img
@@ -289,6 +305,14 @@ onBeforeUnmount(() => {
 }
 
 .dark .n-demo-stage__frame.has-dark .n-demo-stage__dark {
+  display: block;
+}
+
+/* Just after a theme change, both copies stacked in the same place: the old
+   one shows until the new one is in (hold in the script). */
+.n-demo-stage .n-demo-stage__frame.has-dark.is-holding .n-demo-stage__img {
+  position: absolute;
+  inset: 0;
   display: block;
 }
 

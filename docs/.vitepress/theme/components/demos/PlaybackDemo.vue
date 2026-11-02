@@ -12,8 +12,7 @@
  * forwards, the speeds and its note, plus Nanome XR's standalone-speed
  * warning. Stepping doesn't stop playback, as in both apps. Frames swap with
  * a hard cut, and a tick waits until its frame is loaded and decoded, as the
- * app holds on a frame that isn't ready. At ×10 and ×20 playback waits until
- * all 10 are, so it never stutters on its first pass.
+ * app holds on a frame that isn't ready.
  *
  * It starts playing forwards at ×1 once it's on screen and pauses while it's
  * off screen; with reduced motion it starts paused on model 1.
@@ -48,20 +47,19 @@ const preload = ref([])
 // tick can wait for its frame. A theme change starts the list over.
 const ready = reactive(new Set())
 const isReady = (n) => ready.has(frames[n - 1])
-const allReady = computed(() => ready.size === PLAY_MODELS)
 
 const wrap = (n) => ((n - 1 + PLAY_MODELS) % PLAY_MODELS) + 1
 
 let timer = 0
 function schedule() {
   clearInterval(timer)
-  if (!playing.value || !visible.value || (speed.value >= 10 && !allReady.value)) return
+  if (!playing.value || !visible.value) return
   timer = setInterval(() => {
     const n = wrap(model.value + (backward.value ? -1 : 1))
     if (isReady(n)) model.value = n
   }, 1000 / speed.value)
 }
-watch([playing, visible, speed, backward, allReady], schedule)
+watch([playing, visible, speed, backward], schedule)
 watch(isDark, () => ready.clear())
 
 const root = ref(null)
