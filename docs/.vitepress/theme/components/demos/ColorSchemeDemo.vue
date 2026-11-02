@@ -149,7 +149,7 @@ const alt = computed(() => `1KV2's binding site colored by ${caption.value.title
     </div>
 
     <figure class="n-demo__view">
-      <DemoStage :src="src" :next="auto.playing.value ? next : ''" :alt="alt" :playing="auto.playing.value" @toggle="auto.toggle" />
+      <DemoStage :src="src" :next="auto.playing.value ? next : ''" :alt="alt" :heading="caption.title" :playing="auto.playing.value" @toggle="auto.toggle" />
       <figcaption class="n-demo__caption" :aria-live="auto.playing.value ? 'off' : 'polite'"><strong>{{ caption.title }}</strong> {{ caption.text }}</figcaption>
     </figure>
   </div>

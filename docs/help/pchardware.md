@@ -12,6 +12,5 @@ Nanome runs on a PC in 2D mode, or in PCVR with a compatible headset connected.
 | GPU | RTX 3060 | GTX 1070 |
 | RAM | 32 GB | 8 GB |
 | Storage | 256 GB SSD | 256 GB SSD |
-| Operating system | Windows 10 | Windows 10 |
 
-Installation needs 2 GB of free space.
+The minimum operating system is 64-bit Windows 10, and Nanome XR needs version 21H1 or later. Installation needs 2 GB of free space.

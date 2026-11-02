@@ -96,21 +96,23 @@ In a headset, **Load Structure** in the Tools Panel loads a structure by PDB cod
 
 <YoutubeEmbed videoId="5uikQlDO7FA" title="Nanome v2.5 Quick Tips: Load Structures, Invite & Follow from XR" />
 
+Recorded in Nanome 2.5. Since 2.6, the Users tab's **Permissions** button reads **Share**. It opens the same dialog.
+
 ### Component menu
 
 <ShotRow src="nanome-v2/v2-7/component-more-options.webp" alt="A component's More options menu" stack>
 
 <UiList label="Component More options">
-<UiItem icon="pencil" name="Rename" area="68.2,49.0,30.0,4.7">Renames the component.</UiItem>
-<UiItem icon="trash" name="Remove" area="68.2,54.1,30.0,4.7">Removes the component. Its atoms stay in the entry.</UiItem>
-<UiItem icon="trash" name="Delete Atoms" area="68.2,59.1,30.0,4.7">Permanently deletes the component's atoms from the entry, after a confirmation.</UiItem>
-<UiItem icon="mist" name="Edit Selection" area="68.2,64.1,30.0,4.7">Selects the component's atoms.</UiItem>
-<UiItem icon="list-check" name="Copy Component" area="68.2,69.2,30.0,4.7">Copies the component to other scenes.</UiItem>
-<UiItem icon="copy" name="Duplicate to Entry" area="68.2,74.2,30.0,4.7">Copies the atoms into a new entry.</UiItem>
-<UiItem icon="scissors" name="Extract to Entry" area="68.2,79.3,30.0,4.7">Moves the atoms into a new entry.</UiItem>
-<UiItem icon="edit" name="Set substructure" area="68.2,84.3,30.0,4.7">Marks it as ligand, ion, protein, nucleic, sugar or solvent.</UiItem>
-<UiItem icon="circle-dashed" name="Create Distance Component" area="68.2,89.3,30.0,4.7">The atoms within a set distance of this component.</UiItem>
-<UiItem icon="resize" name="Update Distance Filter" href="#distance-components" area="68.2,94.4,30.0,4.7">On a distance component, such as this pocket: changes its distance.</UiItem>
+<UiItem icon="pencil" name="Rename" area="67.3,48.3,29.6,4.6">Renames the component.</UiItem>
+<UiItem icon="trash" name="Remove" area="67.3,53.4,29.6,4.6">Removes the component. Its atoms stay in the entry.</UiItem>
+<UiItem icon="trash" name="Delete Atoms" area="67.3,58.3,29.6,4.6">Permanently deletes the component's atoms from the entry, after a confirmation.</UiItem>
+<UiItem icon="mist" name="Edit Selection" area="67.3,63.2,29.6,4.6">Selects the component's atoms.</UiItem>
+<UiItem icon="list-check" name="Copy Component" area="67.3,68.2,29.6,4.6">Copies the component to other scenes.</UiItem>
+<UiItem icon="copy" name="Duplicate to Entry" area="67.3,73.2,29.6,4.6">Copies the atoms into a new entry.</UiItem>
+<UiItem icon="scissors" name="Extract to Entry" area="67.3,78.2,29.6,4.6">Moves the atoms into a new entry.</UiItem>
+<UiItem icon="edit" name="Set substructure" area="67.3,83.1,29.6,4.6">Marks it as ligand, ion, protein, nucleic, sugar or solvent.</UiItem>
+<UiItem icon="circle-dashed" name="Create Distance Component" area="67.3,88.1,29.6,4.6">The atoms within a set distance of this component.</UiItem>
+<UiItem icon="resize" name="Update Distance Filter" href="#distance-components" area="67.3,93.1,29.6,4.6">On a distance component, such as this pocket: changes its distance.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -154,6 +156,8 @@ The copy of the panel below works like the app's: each switch shows 1KV2's bindi
 #### Video: Changing Molecular Representations
 
 <YoutubeEmbed videoId="wdECz2HmR3o" title="Nanome v2.4 Quick Tips: Changing Molecular Representations" />
+
+Recorded in Nanome 2.4. The panel works the same way in 2.7.1, and since 2.6 **Interactions** also lists **Halogen-π** and has a **Filter** switch. The video says the pocket reaches 5 Å from the ligand. Nanome uses 4 Å.
 
 ### Interactions {#interactions}
 
@@ -255,6 +259,8 @@ The options are **Ligands**, **Residues**, a **Type** (protein, nucleic acid, li
 
 <YoutubeEmbed videoId="Mw3oZhPD14k" title="Nanome v2.4 Quick Tips: Building Custom Components" />
 
+Recorded in Nanome 2.4. **Create component** works the same way in 2.7.1.
+
 ### Model and trajectory playback
 
 Entries with several models, such as a multi-MODEL PDB, and entries with a trajectory get playback buttons on their row.
@@ -318,11 +324,11 @@ While Bulk-Display is on, the table lists only ligands from entries with more th
 **Select property columns** lists every property the ligands have, including SDF data fields from the source file. Each one you pick becomes a column when you save.
 
 <UiList label="Property column picker">
-<UiItem icon="columns-3" name="Select property columns" area="18.3,9.4,7.5,6.9">Opens and closes the list.</UiItem>
-<UiItem name="Picked properties" area="20.0,17.9,30.5,10.2">Numbered in column order. Picking one again takes it out.</UiItem>
-<UiItem name="Other properties" area="20.0,28.5,30.5,63.3">In alphabetical order. Picking one adds it as the next column.</UiItem>
-<UiItem icon="x" name="Cancel" area="20.0,93.2,17.0,5.8">Closes the list and keeps the columns as they were.</UiItem>
-<UiItem icon="check" name="Save" area="38.2,93.2,14.6,5.8">Shows the picked columns in their numbered order.</UiItem>
+<UiItem icon="columns-3" name="Select property columns" area="18.3,9.2,7.5,6.8">Opens and closes the list.</UiItem>
+<UiItem name="Picked properties" area="20.0,17.6,30.5,10.0">Numbered in column order. Picking one again takes it out.</UiItem>
+<UiItem name="Other properties" area="20.0,28.0,30.5,62.2">In alphabetical order. Picking one adds it as the next column.</UiItem>
+<UiItem icon="x" name="Cancel" area="20.0,91.6,17.0,5.7">Closes the list and keeps the columns as they were.</UiItem>
+<UiItem icon="check" name="Save" area="38.2,91.6,14.6,5.7">Shows the picked columns in their numbered order.</UiItem>
 </UiList>
 
 </ShotRow>
@@ -414,7 +420,7 @@ The **Projects** tab lists projects with their workspace count, owner and modifi
 
 </ShotRow>
 
-Free licenses are limited to 1 owned project, 3 owned workspaces and 5 structures per workspace, with view-only access to workspaces others share.
+A free license works in Nanome Web only, with 1 owned project, 3 owned workspaces and 5 structures per workspace. Nanome XR needs a Collab or Full seat.
 
 ## <AppIcon name="users-group" /> Users tab {#users-tab}
 
@@ -454,11 +460,11 @@ The dialog shows the workspace code, and has:
 
 <Callout type="note" title="Viewer or Editor">
 
-Viewers can look around, select, point and comment. These are for Editors only:
+Viewers can look around, select, point, comment, follow and spotlight. These are for Editors only:
 
 <Btn icon="ruler-2">Measurement</Btn> <Btn icon="link">Interactions</Btn> <Btn icon="hexagon-plus-2">Builder</Btn> <Btn icon="rotate-360">Torsion</Btn> <Btn icon="arrow-rotary-first-left">Residue Editor</Btn> <Btn icon="tool">MARA Tools</Btn> <Btn icon="download">Load Structure</Btn> <Btn icon="sparkles">Open MARA</Btn>
 
-A free license gives Viewer access to workspaces others own.
+A Collab seat has Viewer access in Nanome XR, whatever its level in the workspace. A free license works in Nanome Web only.
 
 </Callout>
 
