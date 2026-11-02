@@ -23,7 +23,7 @@ Since release 2.7, the Nanome XR login screen says why a sign-in failed. **Detai
 | The message is about | What to do |
 | --- | --- |
 | A wrong username or password | Check both. Forgotten passwords are reset at [home.nanome.ai](https://home.nanome.ai). |
-| An account that has to use the Code tab | Accounts created with Google, Microsoft or Apple, accounts that use SSO, and accounts with two-factor authentication sign in with the <Btn icon="key">Code</Btn> tab. [How the Code tab works](/nanome_v2/login#code). |
+| An account that has to use the Code tab | Accounts created with Google, Microsoft or Apple, accounts that use SSO, and accounts with two-factor authentication sign in with the <Btn icon="key">Code</Btn> tab. [How the Code tab works](/nanome_v2/login#code). The Apple Vision Pro beta has no Code tab, so these accounts can't sign in there yet. |
 | An organization IP restriction | The organization only allows sign-in from certain networks. Try again from one of them, or ask the organization's Nanome admin. |
 | No license for Nanome XR | See [License](#license). |
 | A network problem | See [Network](#network). |

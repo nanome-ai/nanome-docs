@@ -921,7 +921,9 @@ team, who add the organization's licenses to it.
 
 The headset login screen has 2 tabs: <Btn icon="password">Password</Btn>, for a
 username and password typed in the headset, and <Btn icon="key">Code</Btn>, for
-a short code confirmed from a phone or laptop.
+a short code confirmed from a phone or laptop. The Apple Vision Pro beta has
+only username and password, so SSO, Google, Microsoft, Apple and two-factor
+accounts can't sign in there yet ([Vision Pro login](/nanome_v2/visionpro#log-in)).
 
 ### 2 ways in {#two-ways-in}
 
