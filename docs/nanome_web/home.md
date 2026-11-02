@@ -12,8 +12,8 @@ A **project** is a folder of workspaces with its own members. A **workspace** is
 <ScreenMap src="nanome-web/home-recent.webp" alt="The Home page with recent workspaces and projects" label="Home page">
 <MapCard icon="home" title="Home" href="#top-bar" side="top" area="12.7,3.5,3.6,9.2">Returns to this page.</MapCard>
 <MapCard icon="cube-3d-sphere" title="Workspace" href="/nanome_web/workspace" side="top" area="17.1,3.5,6.0,9.2">Returns to your open workspace tabs.</MapCard>
-<MapCard icon="messages" title="Conversations" href="/mara/overview" side="top" area="24.0,3.5,7.4,9.2">MARA chats, plus the comment threads you watch and comments that mention you.</MapCard>
-<MapCard icon="tool" title="Tools" href="/mara/overview" side="top" area="32.2,3.5,3.1,9.2">MARA's tools, integrations, workflows and knowledge.</MapCard>
+<MapCard icon="messages" title="Conversations" href="/mara/conversations" side="top" area="24.0,3.5,7.4,9.2">MARA chats, plus the comment threads you watch and comments that mention you.</MapCard>
+<MapCard icon="tool" title="Tools" href="/mara/tools" side="top" area="32.2,3.5,3.1,9.2">MARA's tools, integrations, workflows and knowledge.</MapCard>
 <MapCard icon="infinity" title="Credits" href="#top-bar" side="top" area="82.2,2.6,7.8,9.4">Your account's credit balance.</MapCard>
 <MapCard icon="search" title="Search (⌘K)" href="#top-bar" side="top" area="90.5,2.6,2.5,9.4">Finds workspaces and projects.</MapCard>
 <MapCard icon="lock-cog" title="Login via Device Code" href="/nanome_web/account#login-via-device-code" side="top" area="93.5,2.6,2.4,9.4">Signs a headset in to your account.</MapCard>
@@ -113,8 +113,8 @@ The top bar is on every page.
 <UiList label="Top bar">
 <UiItem name="Home">Returns to this page.</UiItem>
 <UiItem name="Workspace">Returns to your open workspace tabs.</UiItem>
-<UiItem name="Conversations" href="/mara/overview">MARA chats, plus the comment threads you watch and comments that mention you.</UiItem>
-<UiItem name="Tools" href="/mara/overview">MARA's tools, integrations, workflows and knowledge.</UiItem>
+<UiItem name="Conversations" href="/mara/conversations">MARA chats, plus the comment threads you watch and comments that mention you.</UiItem>
+<UiItem name="Tools" href="/mara/tools">MARA's tools, integrations, workflows and knowledge.</UiItem>
 <UiItem icon="infinity" name="Credits">Your account's credit balance. Accounts with unlimited credits can hide it in Settings.</UiItem>
 <UiItem icon="cube-3d-sphere" name="Join Workspace via Code">Opens a workspace from its 8-character code, on pages without their own Join via Code button.</UiItem>
 <UiItem icon="lock-cog" name="Login via Device Code" href="/nanome_web/account#login-via-device-code">Signs a headset in to your account.</UiItem>
