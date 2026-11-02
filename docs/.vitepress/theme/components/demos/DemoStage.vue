@@ -78,8 +78,10 @@ const frames = computed(() => loaded.value.map((src) => ({ src, info: imageInfo(
         :class="{ 'is-on': f.src === shown, 'has-dark': !!f.info.dark }"
         :aria-hidden="f.src === shown ? undefined : 'true'"
       >
-        <img class="n-demo-stage__img n-demo-stage__light no-zoom" :src="f.info.light" :alt="f.src === shown ? alt : ''" loading="lazy" decoding="async" @load="onReady(f.src)" @error="onReady(f.src)" />
-        <img v-if="f.info.dark" class="n-demo-stage__img n-demo-stage__dark no-zoom" :src="f.info.dark" :alt="f.src === shown ? alt : ''" loading="lazy" decoding="async" @load="onReady(f.src)" @error="onReady(f.src)" />
+        <!-- `loading` before `src`, so Safari doesn't fetch the copy for the
+             other theme, which never shows (Vimg.vue). -->
+        <img class="n-demo-stage__img n-demo-stage__light no-zoom" loading="lazy" decoding="async" :src="f.info.light" :alt="f.src === shown ? alt : ''" @load="onReady(f.src)" @error="onReady(f.src)" />
+        <img v-if="f.info.dark" class="n-demo-stage__img n-demo-stage__dark no-zoom" loading="lazy" decoding="async" :src="f.info.dark" :alt="f.src === shown ? alt : ''" @load="onReady(f.src)" @error="onReady(f.src)" />
       </div>
       <button
         v-if="playButton"

@@ -753,6 +753,17 @@ html.n-focus-open {
   overflow: hidden;
 }
 
+/* The page under a full-screen view (this one or a <ShotRow>'s) holds still
+   too. Safari can tie the page's scroll position to a part of the view, and
+   then scrolls the page as the view's image settles. Every part of the view
+   is ruled out, since Safari doesn't rule out what's inside a box that is. */
+.n-screenmap-view.is-focus,
+.n-screenmap-view.is-focus *,
+.n-shotrow.is-focus,
+.n-shotrow.is-focus * {
+  overflow-anchor: none;
+}
+
 /* On a phone, full screen shows the image larger than the page can: up to
    2.5 screens wide, as long as it stays short enough for the window, and the
    image scrolls sideways (fitPan() in the script). A tall screen stays as it

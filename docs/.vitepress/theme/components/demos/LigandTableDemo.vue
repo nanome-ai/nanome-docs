@@ -975,9 +975,10 @@ const caption = computed(() => {
                   @mouseleave="preview = null"
                   @click="xr && (preview = l.ccd)"
                 >
-                  <!-- Lazy, so the copy for the other theme, never shown, is never fetched. -->
-                  <img class="n-ltab__light no-zoom" :src="src(l, false)" :alt="`2D drawing of ${l.ccd}`" width="84" height="42" loading="lazy" decoding="async" />
-                  <img class="n-ltab__dark no-zoom" :src="src(l, true)" alt="" width="84" height="42" loading="lazy" decoding="async" />
+                  <!-- Lazy, so the copy for the other theme, never shown, is never fetched.
+                       `loading` comes before `src`, or Safari fetches it anyway (Vimg.vue). -->
+                  <img class="n-ltab__light no-zoom" loading="lazy" decoding="async" :src="src(l, false)" :alt="`2D drawing of ${l.ccd}`" width="84" height="42" />
+                  <img class="n-ltab__dark no-zoom" loading="lazy" decoding="async" :src="src(l, true)" alt="" width="84" height="42" />
                 </td>
                 <td
                   v-for="c in headers"
