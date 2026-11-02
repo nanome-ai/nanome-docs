@@ -2,15 +2,15 @@
 title: Enterprise
 ---
 
-# Enterprise Deployment (Nanome 1.x)
+# Enterprise Deployment (Nanome Classic)
 
-<Callout type="warning" title="Nanome 1.x only">
+<Callout type="warning" title="Nanome Classic (v1.24) only">
 
-This page is for Nanome 1.x only. For MARA or NanomeAI deployment information, contact your enterprise account manager.
+This page is for Nanome Classic (v1.24) only. For Nanome XR and Nanome Web on a private VM, the network requirements are in [Getting Started](/getting-started#on-prem) and installation is in Nanome's [v2 deployment guide](https://nanome.ai/deploy). For help with a deployment, contact your enterprise account manager.
 
 </Callout>
 
-Information and resources for on-prem enterprise deployments. For help setting up or managing your environments, reach out to your dedicated Nanome representative.
+Information and resources for on-prem enterprise deployments.
 
 <IconGrid label="Enterprise deployment">
 <IconCard icon="topology-star-3" title="Recommended infrastructure" href="#recommended-infrastructure">How network traffic flows in Nanome.</IconCard>
@@ -31,12 +31,12 @@ Recommended specs:
 
 | | VM #1: Private Server | VM #2: Dedicated Plugins |
 | --- | --- | --- |
-| Instance | Amazon AWS T2.Medium EC2 Windows 2012 Server or greater, or equivalent | Amazon AWS T2.Large EC2 Linux machine with 30 GB of disk storage, or equivalent |
-| CPU | 1 quad core CPU (e.g., Intel Xeon 3440, E3-1230 etc.) | 4 CPU, equiv. to an Intel Broadwell E5-2686v4 or higher |
-| RAM | 4 GB | 8GB |
-| Network | 1 GBps NIC / uplink port speed | 1 GBps NIC / uplink port speed |
+| Instance | Amazon AWS T2.Medium EC2 Windows 2012 Server or greater, or equivalent | Amazon AWS T2.Medium EC2 Linux machine, or equivalent |
+| CPU | 2 vCPUs on a T2.Medium, or 1 quad core CPU such as an Intel Xeon 3440 or E3-1230 on a physical server | 2 vCPUs, equiv. to an Intel Broadwell E5-2686v4 or higher |
+| RAM | 4 GB | 4 GB |
+| Network | 1 Gbps NIC / uplink port speed | 1 Gbps NIC / uplink port speed |
 | Operating system | Windows Server 2012 and above | A Linux based operating system (Ubuntu or CentOS) |
-| Storage | 10GB + | 90GB |
+| Storage | 10 GB+ | 30 GB |
 
 ## <AppIcon name="wifi" /> Ports {#ports}
 
@@ -44,8 +44,8 @@ Recommended specs:
 
 | To | Ports | So that |
 | --- | --- | --- |
-| VM #1 | UDP 5055, 5056; TCP 443, 80, 8888 | VM #1 can connect to the VR devices |
-| VM #2 | TCP 80, 443 | Plugin webpages (like Vault and Data Table) can connect |
+| VM&nbsp;#1 | UDP 5055, 5056; TCP 443, 80, 8888 | The VR devices can reach VM #1 |
+| VM&nbsp;#2 | TCP 80, 443 | Plugin webpages (like Vault and Data Table) can connect |
 
 ### Outbound, from each VR device
 
@@ -77,7 +77,7 @@ The [Nanome Plugin Deployer README](https://github.com/nanome-ai/nanome-plugin-d
 
 ### Plugins that need DNS entries {#plugins-that-require-dns-entries}
 
-The Data Table, Vault and Quickdrop plugins are hosted differently from other plugins, as DNS entries under your domain.
+The Data Table, Vault and Quick Drop plugins are hosted differently from other plugins, as DNS entries under your domain.
 
 ```
 NTS_IP=<NTS_IP>

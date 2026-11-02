@@ -15,7 +15,7 @@ title: FAQ
 
 <Callout type="note" title="Nanome XR, Nanome Web and Nanome Classic">
 
-Answers tagged **Classic** describe Nanome Classic (v1.24 and v1.26), the older PC VR app. For Nanome XR and Nanome Web, start with [Getting Started](/getting-started).
+Answers tagged **Classic** describe Nanome Classic (v1.24), the earlier headset app. For Nanome XR and Nanome Web, start with [Getting Started](/getting-started).
 
 </Callout>
 
@@ -23,15 +23,15 @@ Answers tagged **Classic** describe Nanome Classic (v1.24 and v1.26), the older 
 
 <AccordionGroup label="2 questions">
 
-<Accordion title="What is Nanome?" teaser="Collaborative VR molecular modelling for researchers.">
+<Accordion title="What is Nanome?" teaser="Collaborative molecular modeling for researchers, in a headset or a browser.">
 
-Nanome is a collaborative virtual-reality molecular modelling tool made for professional researchers working on structures and proteins at the nano scale. You can analyze the 3D arrangement of molecules from inside a protein binding pocket, surround yourself with crystal data, or show your ligand design to colleagues in the same virtual room. It's made for structural biologists, crystallographers, computational chemists, medicinal chemists and protein engineers.
+Nanome is a collaborative molecular modeling tool made for professional researchers working on structures and proteins at the nano scale. It runs in a headset as Nanome XR and in a browser as Nanome Web, with MARA, Nanome's AI assistant, built in. You can analyze the 3D arrangement of molecules from inside a protein binding pocket, surround yourself with crystal data, or show your ligand design to colleagues in the same virtual room. It's made for structural biologists, crystallographers, computational chemists, medicinal chemists and protein engineers.
 
 </Accordion>
 
 <Accordion title="How many users can join a Nanome session at the same time?" teaser="In Classic: up to 20 in VR, and 50 more in 2D mode." tag="Classic">
 
-Nanome currently supports up to 20 XR collaborators in a room at once. Up to 50 more users can join through Nanome's 2D mode.
+Nanome Classic supports up to 20 collaborators in VR in a room at once, and up to 50 more through its 2D mode.
 
 </Accordion>
 
@@ -41,9 +41,9 @@ Nanome currently supports up to 20 XR collaborators in a room at once. Up to 50 
 
 <AccordionGroup label="5 questions">
 
-<Accordion title="What VR headsets does Nanome support?" teaser="Meta Quest 3 and 3S, Samsung Galaxy XR, Apple Vision Pro, and Windows PCs over Meta Link.">
+<Accordion title="What VR headsets does Nanome support?" teaser="Meta Quest 2, 3, 3S and Pro, Samsung Galaxy XR, Apple Vision Pro, and Windows PCs over Meta Link.">
 
-Nanome XR runs on Meta Quest 3 and 3S, Samsung Galaxy XR, Apple Vision Pro, and Windows PCs over Meta Link. [Choosing Hardware](/help/choosinghardware) compares them. The older list for Nanome Classic is on [Hardware Requirements](/help/hardwarerequirements).
+Nanome XR runs on Meta Quest 3 and 3S, Samsung Galaxy XR, Apple Vision Pro, and Windows PCs over Meta Link. It also runs on Meta Quest 2 and Quest Pro, the minimum Quest headsets for Nanome XR. Quest 3 and 3S are recommended: Quest 2 and Quest Pro have a little over half the Quest 3 drawing budget, so detail drops sooner as a scene grows. [Choosing Hardware](/help/choosinghardware#quest-minimum-recommended) compares them. The older list for Nanome Classic is on [Hardware Requirements](/help/hardwarerequirements).
 
 </Accordion>
 
@@ -69,9 +69,9 @@ Nanome Classic had a 2D desktop mode for users without VR devices: you joined a 
 
 </Accordion>
 
-<Accordion title="Do I need an internet connection to use Nanome?" teaser="Highly recommended, and needed to collaborate or use online databases.">
+<Accordion title="Do I need an internet connection to use Nanome?" teaser="Yes, to sign in and open workspaces.">
 
-A stable internet connection is highly recommended, especially when collaborating with other users. You also need the web to download structures from databases like RCSB and DrugBank. Solo users with structures stored on their own machine don't need internet access.
+Yes. Nanome XR and Nanome Web sign in, check your license and open workspaces over the network, from Nanome's servers or your organization's own server. Nanome XR also loads structures from RCSB by PDB code. On an on-prem deployment, headsets without internet access sign in through the [auth proxy](/getting-started#on-prem). Nanome Classic could run on its own with structures stored on the computer.
 
 </Accordion>
 
@@ -85,13 +85,13 @@ A stable internet connection is highly recommended, especially when collaboratin
 
 [Download &amp; install](/getting-started#install) covers Nanome XR on each headset.
 
-Nanome Classic is free to download from all major VR stores, including Oculus, Steam and VivePort, or directly from [home.nanome.ai/setup](https://home.nanome.ai/setup). Premium versions with upgraded features are for sale on our website.
+Nanome Classic is free to download from all major VR stores, including Oculus, Steam and VivePort, or directly from the [Versions page](https://nanome.ai/versions). Premium versions with upgraded features are for sale on our website.
 
 </Accordion>
 
-<Accordion title="How do I update Nanome to the latest version?" teaser="Follow the Nanome update guide.">
+<Accordion title="How do I update Nanome to the latest version?" teaser="See Download &amp; install in Getting Started.">
 
-Download the [Nanome update guide](https://drive.google.com/file/d/1x6LEc1-kV3yp9XYgSqxnIsU8iv1ou4fk/view?usp=sharing) and follow its instructions.
+[Download &amp; install](/getting-started#install) covers updates for Nanome XR on each headset. For Nanome Classic, the [Nanome update guide](https://drive.google.com/file/d/1x6LEc1-kV3yp9XYgSqxnIsU8iv1ou4fk/view?usp=sharing) has the steps.
 
 </Accordion>
 
@@ -101,17 +101,17 @@ Download the [Nanome update guide](https://drive.google.com/file/d/1x6LEc1-kV3yp
 
 <AccordionGroup label="4 questions">
 
-<Accordion title="What file formats does Nanome v2 support?" teaser="Structures, session files, trajectories and DX maps.">
+<Accordion title="What file formats does Nanome Web support?" teaser="Structures, session files, trajectories and DX maps.">
 
-In short, v2 imports structures (PDB, mmCIF, SDF, SMILES, XYZ, PQR, PDBQT, and MOL/MOL2 through a MARA tool), session files (MAE, MOE, PSE), trajectories (GRO, XTC, TRR, DCD), and DX electrostatic maps. Molecule export is single-frame, to PDB, SDF, or SMILES.
+In short, Nanome Web imports structures (PDB, mmCIF, SDF, SMILES, XYZ, PQR, PDBQT, and MOL/MOL2 through a MARA tool), session files (MAE, MOE, PSE), trajectories (GRO, XTC, TRR, DCD), and DX electrostatic maps. Molecule export is single-frame, to PDB, SDF, or SMILES.
 
 The full per-format list, with import and export capability, trajectory playback and per-release changes, is on [Supported File Formats](/nanome_web/fileformats).
 
 </Accordion>
 
-<Accordion title="What file formats does Nanome support, and how do I import them?" teaser="PDB and SDF are the most stable, plus many more." tag="v1.26">
+<Accordion title="What file formats does Nanome support, and how do I import them?" teaser="PDB and SDF are the most stable, plus many more." tag="v1.24">
 
-*This answer describes Nanome 1.26 (Classic).*
+*This answer describes Nanome Classic (v1.24).*
 
 Nanome supports .pdb and .sdf, and has limited compatibility with other atomic coordinate files, like .cif. The .pdb and .sdf formats are the most stable, and we keep improving the parser's handling of anomalies.
 
@@ -123,22 +123,22 @@ We recommend making Nanome the default software for .pdb files. Double-clicking 
 
 </Accordion>
 
-<Accordion title="What are the supported files and limits for trajectory (MD) files?" teaser="Formats, the 500-frame subsample, and atom counts by device." tag="v1.26">
+<Accordion title="What are the supported files and limits for trajectory (MD) files?" teaser="Formats, the 500-frame subsample, and atom counts by device." tag="v1.24">
 
-*This answer describes Nanome 1.26 (Classic). For trajectories in Nanome XR and Nanome Web, see [Supported File Formats](/nanome_web/fileformats#trajectory-molecular-dynamics).*
+*This answer describes Nanome Classic (v1.24). For trajectories in Nanome XR and Nanome Web, see [Supported File Formats](/nanome_web/fileformats#trajectory-molecular-dynamics).*
 
 | File Type | Description                                      | Source Software      |
 | --------- | ------------------------------------------------ | -------------------- |
-| PDB/MMCIF | Classical Protein file that supports multi-frame | Most MD Softwares    |
+| PDB/MMCIF | Classical Protein file that supports multi-frame | Most MD software     |
 | DCD       | Trajectory File from NAMD                        | NAMD, CHARMM, LAMMPS |
 | GRO       | GROMACS coordinate file                          | GROMACS              |
 | PSF       | Protein Structure File                           | NAMD                 |
-| XTC       | Trajectory File (Compressed)                     | Gromacs              |
-| TRR       | Trajectory File (Lossless) (XDR backend)         | Gromacs              |
+| XTC       | Trajectory File (Compressed)                     | GROMACS              |
+| TRR       | Trajectory File (Lossless) (XDR backend)         | GROMACS              |
 
 Most molecular dynamics data comes as 2 files loaded in parallel: the topology file and the position coordinate file. Trajectories play back from the Advanced Menu of the Entry list for the loaded trajectory.
 
-Nanome subsamples a molecular dynamics file to 500 frames. How many atoms a system can have depends on the device's hardware. A PCVR setup can play back rather large simulated systems at 500 frames (e.g., 200k-300k atoms), while a standalone headset supports a much smaller system (e.g., 5000-6000 atoms).
+Nanome subsamples a molecular dynamics file to 500 frames. How many atoms a system can have depends on the device's hardware. A PCVR setup can play back rather large simulated systems at 500 frames (e.g., 200,000 to 300,000 atoms), while a standalone headset supports a much smaller system (e.g., 5,000 to 6,000 atoms).
 
 The whole trajectory has to be stored in memory and also sent over the network to other users. So on standalone headsets, larger MD files can't load into the small amount of memory of a device equivalent to a smartphone, and other users wait longer to receive all of the data and render it.
 
@@ -148,7 +148,7 @@ We recommend keeping systems small, with only the atoms relevant to the collabor
 
 </Accordion>
 
-<Accordion title="Are there any limitations for Nanome Vault file storage?" teaser="No file size limit, but the client has to load what you store.">
+<Accordion title="Are there any limitations for Nanome Vault file storage?" teaser="No file size limit, but the client has to load what you store." tag="Classic">
 
 Nanome Vault has no particular file size limit. The limits come from the Nanome client loading files that are too large, in number of atoms and bonds or in sheer file size.
 
@@ -164,27 +164,27 @@ Nanome Vault has no particular file size limit. The limits come from the Nanome 
 
 <AccordionGroup label="8 questions">
 
-<Accordion title="How does the Nanome licensing system work? Isn't Nanome free?" teaser="A limited version is free. Premium licenses are sold.">
+<Accordion title="How does the Nanome licensing system work? Isn't Nanome free?" teaser="The browser is free. Headsets take a Collab or Full seat.">
 
-A limited version of Nanome is free for all users, from any major VR store or from home.nanome.ai/setup. Licenses for premium capabilities are sold on the [Nanome website](https://nanome.ai/pricing/).
+A free license covers Nanome in the browser at app.nanome.ai, with 1 owned project, 3 owned workspaces and 5 structures per workspace. Working in a headset takes a Collab or Full seat, and every new account starts with a 14-day Full license trial. [Account Tiers](/home.nanome.ai/accounttiers) compares the seats and lists prices.
 
 </Accordion>
 
 <Accordion title="Can my team get a free trial?" teaser="Yes. Every new account starts with a 14-day trial.">
 
-Every new account at app.nanome.ai starts with a 14-day Full license trial. For a trial for your team, whether for research, training or presentations, email sales@nanome.ai. To schedule a demo with one of our team, [request one here](https://nanome.ai/demo/).
+Every new account at app.nanome.ai starts with a 14-day Full license trial. For a trial for your team, whether for research, training or presentations, use **Contact us** on [nanome.ai/pricing](https://nanome.ai/pricing#contact-form). Nanome's team also gives [live demos](https://nanome.ai/demo/).
 
 </Accordion>
 
 <Accordion title="Can I use this for my school?" teaser="Yes, through the academic program.">
 
-Yes. [home.nanome.ai/academic](https://home.nanome.ai/academic) explains how.
+Yes. [nanome.ai/edu](https://nanome.ai/edu) explains how.
 
 </Accordion>
 
-<Accordion title="Do you have a site subscription license?" teaser="Yes. Contact sales@nanome.ai.">
+<Accordion title="Do you have a site subscription license?" teaser="Yes. Ask for a quote on nanome.ai/pricing.">
 
-Yes. For Nanome site licenses, contact sales@nanome.ai.
+Yes. For a site license quote, use **Contact us** on [nanome.ai/pricing](https://nanome.ai/pricing#contact-form).
 
 </Accordion>
 
@@ -194,7 +194,7 @@ We provide full support for private data security, database integration, computa
 
 </Accordion>
 
-<Accordion title="Can I use plugins with an Academic License?" teaser="Plugins are Enterprise only for now.">
+<Accordion title="Can I use plugins with an Academic License?" teaser="Plugins are Enterprise only for now." tag="Classic">
 
 Plugins are only available with an Enterprise license for now. We may open them up to early adopters in academic institutions. To ask about the Nanome Developer Program, email support@nanome.ai.
 
@@ -207,27 +207,27 @@ One workflow we recommend:
 <Steps>
 
 1. Choose a Nanome account to act as the "license administrator". It can be your own account, or one your department or lab maintains together. It doesn't need a license assigned to it, but it will own all the licenses you intend to use.
-2. Buy the licenses from that account. If you [request a quote](https://home.nanome.ai/quote), give the email address of the license administrator account.
+2. Buy the licenses from that account. If you ask for a quote through **Contact us** on [nanome.ai/pricing](https://nanome.ai/pricing#contact-form), give the email address of the license administrator account.
 3. Once the licenses are allocated, they show in the Licenses section on home.nanome.ai. [Assign them to other users](/home.nanome.ai/licenses#assign-licenses).
 
 </Steps>
 
-One of the licenses is assigned to the admin account automatically, but you can reassign it. If you don't have user accounts yet, you can create new Nanome accounts (e.g. "student-1", "student-2", etc.) and assign the licenses to them.
+One of the licenses is assigned to the admin account automatically, but you can reassign it. If you don't have user accounts yet, you can create new Nanome accounts (e.g., "student-1", "student-2") and assign the licenses to them.
 
 </Accordion>
 
-<Accordion title="I have a coupon code. How do I redeem it?" teaser="Choose the plan your coupon covers, then enter the code at checkout.">
+<Accordion title="I have a coupon code. How do I redeem it?" teaser="Send it to the Nanome team through nanome.ai/pricing.">
+
+Checkout at app.nanome.ai has no field for coupon codes, so a code goes to the Nanome team instead.
 
 <Steps>
 
-1. Create an account or log in at [nanome.ai/pricing](https://nanome.ai/pricing/).
-2. In the sidebar on the right, click plans and products. The premium tiers show, with annual and monthly plans on top.
-3. Select the plan your coupon covers.
-4. On the next menu, enter your credit card information and type your coupon in the blank. You have to enter card details, but the coupon should cancel any actual fee.
+1. Go to **Contact us** on [nanome.ai/pricing](https://nanome.ai/pricing#contact-form).
+2. Fill in the form, add your code under **I'm interested in...**, and choose **Send**.
 
 </Steps>
 
-If your card was charged after the transaction, contact us at support@nanome.ai and we'll issue a refund immediately.
+The right person at Nanome will follow up.
 
 </Accordion>
 
@@ -235,11 +235,13 @@ If your card was charged after the transaction, contact us at support@nanome.ai 
 
 ## <AppIcon name="bug" /> Logs and support {#support}
 
-When something goes wrong in Nanome, send us the logs for the event (both messages.txt and details.txt) so we can investigate. Email your bug report to support@nanome.ai.
+Nanome XR sends its log to Nanome on its own while you're signed in, every few minutes and after an error. Bug reports go to support@nanome.ai, and the time it happened helps us find the log.
+
+Nanome XR also keeps the log on the device as `Nanome2_<date>_<time>.txt` in a History folder: on Windows in `C:\Users\[USERNAME]\AppData\LocalLow\Nanome Inc\Nanome\History`, and on Meta Quest or Galaxy XR in `Android/data/com.nanome.nanome/files/History`.
 
 <AccordionGroup label="4 questions">
 
-<Accordion title="Where are the log files for PC-tethered VR?" teaser="In AppData on your computer.">
+<Accordion title="Where are the log files for PC-tethered VR?" teaser="In AppData on your computer." tag="Classic">
 
 With PC 2D mode or a PC-tethered VR headset, the logs for your session are on your computer. In File Explorer, go to:
 
@@ -249,7 +251,7 @@ A log file is named "YYYY-MM-DD_HH-MM-SS_details.txt", after the time the sessio
 
 </Accordion>
 
-<Accordion title="Where are the log files for all-in-one VR (e.g. Quest 2 or Vive Focus 3)?" teaser="On the headset. Copy them over a USB-C data cable.">
+<Accordion title="Where are the log files for all-in-one VR (e.g., Quest 2 or Vive Focus 3)?" teaser="On the headset. Copy them over a USB-C data cable." tag="Classic">
 
 All-in-one headsets such as the Quest 2 and Vive Focus 3 run Android-based operating systems and save log files on the headset. To move or copy them, connect the headset to your computer with a USB-C cable.
 
@@ -265,11 +267,11 @@ All-in-one headsets such as the Quest 2 and Vive Focus 3 run Android-based opera
 
 1. Plug the headset into your computer with the USB-C cable.
 2. Turn on the headset and put it on.
-3. In VR, click "Allow" to let the computer read the headset's files.
+3. In VR, choose **Allow** to let the computer read the headset's files.
 
 </Steps>
 
-The computer can now read the headset's storage. The next step depends on whether you're on Windows or Mac.
+The computer can now read the headset's storage.
 
 On Windows, open File Explorer and look at the left panel, which lists the storage devices connected to your computer. One of them is the headset's file storage, sometimes named "Quest" or "Oculus".
 
@@ -277,13 +279,13 @@ On Windows, open File Explorer and look at the left panel, which lists the stora
 
 <Accordion title="I have requests or ideas for new features. Where can I send them?" teaser="Email support@nanome.ai.">
 
-Email your requests to support@nanome.ai. We take all our users' feedback seriously.
+Email your requests to support@nanome.ai.
 
 </Accordion>
 
-<Accordion title="I'm in a country with GDPR. How do I ask to delete or view my customer data?" teaser="Email support@nanome.ai. It takes 2-3 weeks.">
+<Accordion title="I'm in a country with GDPR. How do I ask to delete or view my customer data?" teaser="Email support@nanome.ai. It takes 2 to 3 weeks.">
 
-Contact support@nanome.ai to request the deletion of your customer data, or a downloadable copy. This is a manual process and takes 2-3 weeks.
+Contact support@nanome.ai to request the deletion of your customer data, or a downloadable copy. This is a manual process and takes 2 to 3 weeks.
 
 </Accordion>
 
