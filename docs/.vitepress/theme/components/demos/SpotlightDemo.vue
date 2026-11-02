@@ -68,12 +68,13 @@ function act(next) {
 /**
  * Following someone disables their chip, and the bar swaps its button, so
  * focus would drop to the page. When it was in the demo, it moves to the
- * control that now holds the state, once the change is drawn.
+ * control that now holds the state, once the change is drawn, without
+ * scrolling the page under the reader's finger.
  */
 function keepFocus(sel, change) {
   const had = root.value?.contains(document.activeElement)
   change()
-  if (had) nextTick(() => root.value?.querySelector(sel)?.focus())
+  if (had) nextTick(() => root.value?.querySelector(sel)?.focus({ preventScroll: true }))
 }
 function follow(key) {
   keepFocus('.n-spot__stop', () => act({ mode: 'follow', leader: key }))

@@ -194,7 +194,7 @@ function warm(event) {
 /**
  * The frame on show's copy for the other theme, so a theme switch shows it at
  * once. Once the frame on show is in, with the demo near the screen, that one
- * copy is queued at low priority for when the browser is idle; a newer frame
+ * copy is queued at low priority, behind the frames one click away; a newer frame
  * on show replaces it in the queue, and nothing is queued while the reader
  * saves data (prefetch). Playback cuts through its frames, so there only a
  * frame it rests on for 1.5 seconds gets its copy. A copy the browser
@@ -216,7 +216,7 @@ function warmOtherTheme() {
     const dark = !isDark.value
     const copy = stage.value?.children[i]?.querySelector(dark ? '.n-demo-stage__dark' : '.n-demo-stage__light')
     if (copy?.naturalWidth > 0) return
-    prefetch(themeOwner, [dark ? f.info.dark : f.info.light])
+    prefetch(themeOwner, [dark ? f.info.dark : f.info.light], true)
   }, props.cut ? 1500 : 0)
 }
 

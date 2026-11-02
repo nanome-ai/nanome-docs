@@ -8,7 +8,9 @@
  *   frame paints at once when it's picked.
  * - prefetch(owner, urls) queues low-priority requests, a few at a time when
  *   the browser is idle. Each call replaces the URLs the same demo queued
- *   before, newest first, and an empty list clears them. Nothing is queued
+ *   before, newest first, and an empty list clears them. With late set, the
+ *   URLs wait behind every other demo's queue, so a frame one click away
+ *   never waits for them. Nothing is queued
  *   while the reader's browser asks to save data or reports a 3G or slower
  *   connection; a control the reader points at still fetches its frame.
  */
@@ -50,10 +52,11 @@ function sparing() {
   return !!c && (c.saveData || /^(slow-2g|2g|3g)$/.test(c.effectiveType || ''))
 }
 
-export function prefetch(owner, urls) {
+export function prefetch(owner, urls, late = false) {
   const others = queue.filter((q) => q.owner !== owner)
-  const fresh = sparing() ? [] : urls.filter((url) => !images.has(url)).map((url) => ({ owner, url }))
-  queue = [...fresh, ...others]
+  const fresh = sparing() ? [] : urls.filter((url) => !images.has(url)).map((url) => ({ owner, url, late }))
+  const all = [...fresh, ...others]
+  queue = [...all.filter((q) => !q.late), ...all.filter((q) => q.late)]
   if (queue.length) pump()
 }
 
