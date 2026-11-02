@@ -460,7 +460,7 @@ The dialog shows the workspace code, and has:
 
 <Callout type="note" title="Viewer or Editor">
 
-Viewers can look around, select, point, comment, follow and spotlight. These are for Editors only:
+Viewers can look around, select, point, read comments, follow and spotlight. These are for Editors only:
 
 <Btn icon="ruler-2">Measurement</Btn> <Btn icon="link">Interactions</Btn> <Btn icon="hexagon-plus-2">Builder</Btn> <Btn icon="rotate-360">Torsion</Btn> <Btn icon="arrow-rotary-first-left">Residue Editor</Btn> <Btn icon="tool">MARA Tools</Btn> <Btn icon="download">Load Structure</Btn> <Btn icon="sparkles">Open MARA</Btn>
 

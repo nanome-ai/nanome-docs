@@ -75,7 +75,7 @@ A session rests on 3 things: how many people join, what they join from, and how 
 
 <ChooserResult when="size=group mode=xr" verdict="One prepared workspace, the group as Viewers.">
 
-- With the global level on Viewer before the code goes out, people can look around, point, comment, spotlight, follow and move between scenes, and the workspace stays as it was prepared.
+- With the global level on Viewer before the code goes out, people can look around, point, read comments, spotlight, follow and move between scenes, and the workspace stays as it was prepared.
 - Scenes built ahead let the group start straight away.
 - The least powerful headset in the room sets how much a scene can show.
 
@@ -445,7 +445,7 @@ Permissions are set per workspace. The global level applies to anyone who joins 
 
 <Card title="Viewer">
 
-The usual level for a group. Viewers look around, select, point, comment, follow, spotlight and move between scenes, and the workspace stays as it is.
+The usual level for a group. Viewers look around, select, point, follow, spotlight and move between scenes, and the workspace stays as it is. They can add comments in Nanome Web and read them in Nanome XR.
 
 </Card>
 
