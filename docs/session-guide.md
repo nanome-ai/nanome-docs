@@ -597,7 +597,7 @@ When a scene is far over a headset's budget, Nanome lowers detail and then hides
 
 <Accordion title="Someone can't change anything" teaser="Their level is Viewer, which is usually on purpose.">
 
-**My Permission**, at the top of the Users tab, shows each person their own level. An Editor or the Owner can choose **Make Editor** from the menu beside their address in the Share dialog. On a free license, people stay Viewers in workspaces they don't own.
+**My Permission**, at the top of the Users tab, shows each person their own level. An Editor or the Owner can choose **Make Editor** from the menu beside their address in the Share dialog. On a free license, people stay Viewers in workspaces they don't own. A Collab seat stays a Viewer in Nanome XR whatever its level, under a **You have a Viewer seat** banner.
 
 </Accordion>
 
