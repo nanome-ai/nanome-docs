@@ -56,9 +56,18 @@
 }
 
 /* The caption's title on one line under the render, only while the render
-   sticks (below). */
+   sticks (below), or where a demo's caption sits under its panel. */
 .n-demo-stick__title {
   display: none;
+  height: 1.5em;
+  margin-top: 6px;
+  overflow: hidden;
+  color: var(--n-text);
+  font-size: var(--n-text-sm);
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 /* On a phone the render sits above the panel. Where the screen is tall
@@ -100,15 +109,6 @@
 
   .n-demo-stick__title {
     display: block;
-    height: 1.5em;
-    margin-top: 6px;
-    overflow: hidden;
-    color: var(--n-text);
-    font-size: var(--n-text-sm);
-    font-weight: 600;
-    line-height: 1.5;
-    white-space: nowrap;
-    text-overflow: ellipsis;
   }
 
   .n-demo__view > .n-demo__caption {

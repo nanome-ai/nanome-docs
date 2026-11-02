@@ -309,4 +309,44 @@ const alt = computed(() => `1KV2's binding site: ${base.value.title}, ${H_ALT[hy
     min-height: 9em;
   }
 }
+
+/* On a shorter phone the render scrolls with the page and the caption sits
+   between it and the panel (app.css), so it needs room for the longest
+   caption a switch can bring, notes included, or the switch that was tapped
+   moves. Measured at every width from 300px, with a few px to spare. */
+@media (max-width: 735.98px) and (max-height: 699.98px), (max-width: 735.98px) and (min-aspect-ratio: 20001/30000) {
+  .n-reps-demo .n-demo__caption {
+    min-height: 6em;
+  }
+}
+
+@media (max-width: 582.98px) and (max-height: 699.98px), (max-width: 582.98px) and (min-aspect-ratio: 20001/30000) {
+  .n-reps-demo .n-demo__caption {
+    min-height: 7.5em;
+  }
+}
+
+@media (max-width: 481.98px) and (max-height: 699.98px), (max-width: 481.98px) and (min-aspect-ratio: 20001/30000) {
+  .n-reps-demo .n-demo__caption {
+    min-height: 9em;
+  }
+}
+
+@media (max-width: 409.98px) and (max-height: 699.98px), (max-width: 409.98px) and (min-aspect-ratio: 20001/30000) {
+  .n-reps-demo .n-demo__caption {
+    min-height: 10.5em;
+  }
+}
+
+@media (max-width: 351.98px) and (max-height: 699.98px), (max-width: 351.98px) and (min-aspect-ratio: 20001/30000) {
+  .n-reps-demo .n-demo__caption {
+    min-height: 12em;
+  }
+}
+
+@media (max-width: 317.98px) and (max-height: 699.98px), (max-width: 317.98px) and (min-aspect-ratio: 20001/30000) {
+  .n-reps-demo .n-demo__caption {
+    min-height: 13.5em;
+  }
+}
 </style>

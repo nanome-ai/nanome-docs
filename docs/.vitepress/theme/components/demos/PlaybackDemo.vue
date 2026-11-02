@@ -146,7 +146,7 @@ const filled = (back) => !xr.value && playing.value && backward.value === back
 </script>
 
 <template>
-  <div ref="root" class="n-demo n-play">
+  <div ref="root" class="n-demo n-play" :class="{ 'is-xr': xr }">
     <div class="n-app-card" role="group" :aria-label="xr ? 'Model playback, as in Nanome XR' : 'Model playback, as in Nanome Web'">
       <div class="n-play__row">
         <span class="n-play__name">1D3Z</span>
@@ -313,5 +313,58 @@ const filled = (back) => !xr.value && playing.value && backward.value === back
 .n-play__about {
   display: block;
   margin-top: 4px;
+}
+
+/* On a shorter phone the render scrolls with the page and the caption sits
+   between it and the panel (app.css), so it keeps room for its longest
+   version, or a tapped button moves as the line above it changes. Measured
+   at every width from 300px, with a few px to spare; 4px is the note's
+   margin. */
+@media (max-width: 759.98px) and (max-height: 699.98px), (max-width: 759.98px) and (min-aspect-ratio: 20001/30000) {
+  .n-play:not(.is-xr) .n-demo__caption {
+    min-height: calc(6em + 4px);
+  }
+}
+
+@media (max-width: 491.98px) and (max-height: 699.98px), (max-width: 491.98px) and (min-aspect-ratio: 20001/30000) {
+  .n-play:not(.is-xr) .n-demo__caption {
+    min-height: calc(9em + 4px);
+  }
+}
+
+@media (max-width: 348.98px) and (max-height: 699.98px), (max-width: 348.98px) and (min-aspect-ratio: 20001/30000) {
+  .n-play:not(.is-xr) .n-demo__caption {
+    min-height: calc(12em + 4px);
+  }
+}
+
+@media (max-width: 759.98px) and (max-height: 699.98px), (max-width: 759.98px) and (min-aspect-ratio: 20001/30000) {
+  .n-play.is-xr .n-demo__caption {
+    min-height: calc(6em + 4px);
+  }
+}
+
+@media (max-width: 623.98px) and (max-height: 699.98px), (max-width: 623.98px) and (min-aspect-ratio: 20001/30000) {
+  .n-play.is-xr .n-demo__caption {
+    min-height: calc(7.5em + 4px);
+  }
+}
+
+@media (max-width: 491.98px) and (max-height: 699.98px), (max-width: 491.98px) and (min-aspect-ratio: 20001/30000) {
+  .n-play.is-xr .n-demo__caption {
+    min-height: calc(9em + 4px);
+  }
+}
+
+@media (max-width: 433.98px) and (max-height: 699.98px), (max-width: 433.98px) and (min-aspect-ratio: 20001/30000) {
+  .n-play.is-xr .n-demo__caption {
+    min-height: calc(10.5em + 4px);
+  }
+}
+
+@media (max-width: 348.98px) and (max-height: 699.98px), (max-width: 348.98px) and (min-aspect-ratio: 20001/30000) {
+  .n-play.is-xr .n-demo__caption {
+    min-height: calc(13.5em + 4px);
+  }
 }
 </style>

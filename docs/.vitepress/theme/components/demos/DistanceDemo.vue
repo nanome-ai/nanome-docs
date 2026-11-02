@@ -123,7 +123,7 @@ const alt = computed(() => `Folate in 1RX2 and the atoms a distance component pi
 </script>
 
 <template>
-  <div ref="root" class="n-demo" v-on="auto.hold">
+  <div ref="root" class="n-demo n-dist-demo" v-on="auto.hold">
     <div class="n-app-card n-app-distance" role="group" aria-label="Distance component">
       <label class="n-app-slider" :data-frame="slideFrames()">
         <span class="n-app-slider__head"><span>Distance (Å)</span><output>{{ distance }}</output></span>
@@ -154,3 +154,30 @@ const alt = computed(() => `Folate in 1RX2 and the atoms a distance component pi
     </figure>
   </div>
 </template>
+
+<style>
+/* Its caption runs from 2 to 13 lines on a 393px phone, too much to keep
+   room for between the render and the switches. So on a shorter phone too,
+   where the render scrolls with the page, the caption sits under the panel,
+   as it does on a tall one (app.css), with its title on one line under the
+   render, and a longer or shorter caption never moves the switch that
+   changed it. */
+@media (max-width: 759.98px) {
+  .n-dist-demo > .n-demo__view {
+    display: contents;
+  }
+
+  .n-dist-demo > .n-demo__view > :first-child {
+    order: -1;
+  }
+
+  .n-dist-demo .n-demo-stick__title {
+    display: block;
+  }
+
+  .n-dist-demo > .n-demo__view > .n-demo__caption {
+    order: 1;
+    margin-top: -8px;
+  }
+}
+</style>

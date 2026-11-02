@@ -21,7 +21,9 @@
  * did before. Only the copy for the current theme is requested: a frame's
  * other copy gets its URL when the theme changes, and until that copy is
  * in, the frame on show keeps its old one in view, as a pick keeps the last
- * render, so the stage never goes blank.
+ * render, so the stage never goes blank. The frame on show's other copy is
+ * fetched ahead while the browser is idle (warmOtherTheme), so that wait is
+ * usually over before it starts.
  *
  * `heading` is the caption's bold title. It shows on one line under the
  * render only where the render sticks on a phone and the full caption sits
@@ -189,10 +191,40 @@ function warm(event) {
   for (const s of named(event.target)) if (!has(s)) fetchFrame(urlOf(s), true)
 }
 
+/**
+ * The frame on show's copy for the other theme, so a theme switch shows it at
+ * once. Once the frame on show is in, with the demo near the screen, that one
+ * copy is queued at low priority for when the browser is idle; a newer frame
+ * on show replaces it in the queue, and nothing is queued while the reader
+ * saves data (prefetch). Playback cuts through its frames, so there only a
+ * frame it rests on for 1.5 seconds gets its copy. A copy the browser
+ * already has is skipped, as Chrome loads the first frame's hidden copy
+ * itself.
+ */
+const themeOwner = {}
+let settle = 0
+function warmOtherTheme() {
+  clearTimeout(settle)
+  if (!near) return prefetch(themeOwner, [])
+  const src = shown.value
+  settle = setTimeout(async () => {
+    const on = imgOf(src)
+    if (on) await loaded(on)
+    const i = frames.value.findIndex((f) => f.src === src)
+    const f = frames.value[i]
+    if (src !== shown.value || !near || !f?.info.dark) return
+    const dark = !isDark.value
+    const copy = stage.value?.children[i]?.querySelector(dark ? '.n-demo-stage__dark' : '.n-demo-stage__light')
+    if (copy?.naturalWidth > 0) return
+    prefetch(themeOwner, [dark ? f.info.dark : f.info.light])
+  }, props.cut ? 1500 : 0)
+}
+
 watch(
   () => props.next,
   (n) => n && near && stageFrame(n)
 )
+watch(shown, warmOtherTheme)
 onUpdated(rescan)
 
 onMounted(() => {
@@ -201,6 +233,7 @@ onMounted(() => {
     ([e]) => {
       near = e.isIntersecting
       if (near && props.next) stageFrame(props.next)
+      warmOtherTheme()
       scan()
     },
     { rootMargin: '400px 0px' }
@@ -214,10 +247,12 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   observer?.disconnect()
+  clearTimeout(settle)
   root?.removeEventListener('pointerover', warm)
   root?.removeEventListener('pointerdown', warm)
   root?.removeEventListener('focusin', warm)
   prefetch(owner, [])
+  prefetch(themeOwner, [])
 })
 </script>
 

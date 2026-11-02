@@ -10,9 +10,11 @@
   >
     <template #default="{ item, clone, near }">
       <a :href="item.url" class="slide" :style="{ aspectRatio: ratio }" target="_blank" :tabindex="clone ? -1 : undefined">
-        <!-- `loading` before `src`, so Safari keeps a far slide lazy (Vimg.vue). -->
+        <!-- `loading` before `src`, so Safari keeps a far slide lazy (Vimg.vue).
+             The first slide's loop copy loads with it, so Safari takes both
+             from one request instead of fetching the image again later. -->
         <img
-          :loading="near || (eager && item === slides[0] && !clone) ? 'eager' : 'lazy'"
+          :loading="near || (eager && item === slides[0]) ? 'eager' : 'lazy'"
           :src="item.img"
           :alt="item.title || item.alt || ''"
         />
