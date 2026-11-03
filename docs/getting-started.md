@@ -4,33 +4,56 @@ outline: [2, 3]
 ---
 
 <script setup>
-import { NANOME_HOSTS, NETWORK_ALLOWLIST } from './.vitepress/data/setup-network.js'
+import { NANOME_HOSTS, NETWORK_ALLOWLIST, ONPREM_DNS, ONPREM_OUTBOUND, ONPREM_ALLOWLIST } from './.vitepress/data/setup-network.js'
 </script>
 
 # Getting started with Nanome XR
 
-7 steps from boxed headsets to a shared session: hardware, choosing an MDM, setting it up, Wi-Fi, installation, accounts, and sign-in.
+From boxed headsets to a shared session. Nanome works best in a headset, but no headset is needed to start: it also runs in any browser at [app.nanome.ai](https://app.nanome.ai).
 
-Nanome is **device-agnostic** — best experienced in VR or MR, but no headset is required. Jump in from any browser at [app.nanome.ai](https://app.nanome.ai) and start exploring molecules right away.
+<Callout type="note" title="Looking for Nanome Classic?">
 
-## Hardware {#hardware}
+This guide sets up Nanome XR, version 2. Nanome Classic (v1.24), the earlier headset app, has its own [Nanome Classic docs](/nanome1x/overview). In the Meta Horizon Store, Nanome XR has the purple icon and Classic the blue one.
+
+</Callout>
+
+<IconGrid label="Setup stages" :cols="3">
+<IconCard icon="device-vision-pro" title="Hardware" href="#hardware">Headsets, and where to buy them.</IconCard>
+<IconCard icon="devices" title="MDM" href="#mdm">Choose and set up device management for a fleet.</IconCard>
+<IconCard icon="wifi" title="Network" href="#network">Wi-Fi and the hosts IT needs to allow.</IconCard>
+<IconCard icon="download" title="Install" href="#install">Get Nanome onto each headset or PC.</IconCard>
+<IconCard icon="user-circle" title="Account" href="#account">An account and a license for each user.</IconCard>
+<IconCard icon="login-2" title="Log in" href="#login">Sign in on a headset, with a code or a password.</IconCard>
+</IconGrid>
+
+<Callout type="note" title="Setting up one headset?">
+
+Steps 2 and 3, device management, are for IT teams with several headsets. With one headset, skip ahead to [Wi-Fi & network](#network): the headset needs a network without a browser sign-in page.
+
+</Callout>
+
+## <AppIcon name="device-vision-pro" /> Hardware {#hardware}
 
 <p class="chapter-kicker">Step 1 of 7 · Headsets, and where to buy them</p>
 
 Nanome runs on Meta Quest 3 and 3S, Samsung Galaxy XR, Apple Vision Pro, and
-Windows PCs over Meta Link.
+Windows PCs over Meta Link. It also runs on Meta Quest 2 and Quest Pro, the
+minimum Quest headsets for Nanome XR. Quest 3 and 3S are recommended: Quest 2
+and Quest Pro have a little over half the Quest 3 drawing budget, so detail
+drops sooner as a scene grows. [Choosing Hardware](/help/choosinghardware#quest-minimum-recommended)
+compares them.
 
 <div class="lineup">
   <figure>
-    <img src="/assets/original/setup/meta-devices.png" alt="" loading="lazy" />
-    <figcaption>Meta Quest 3 and 3S</figcaption>
+    <img src="/assets/compressed/setup/meta-devices.webp" alt="" loading="lazy" />
+    <figcaption>Meta Quest 3 and Quest Pro</figcaption>
   </figure>
   <figure>
-    <img src="/assets/original/setup/galaxy-xr-headset.png" alt="" loading="lazy" />
+    <img src="/assets/compressed/setup/galaxy-xr-headset.w800.webp" alt="" loading="lazy" />
     <figcaption>Samsung Galaxy XR</figcaption>
   </figure>
   <figure>
-    <img src="/assets/original/setup/vision-pro-headset.png" alt="" loading="lazy" />
+    <img src="/assets/compressed/setup/vision-pro-headset.w800.webp" alt="" loading="lazy" />
     <figcaption>Apple Vision Pro</figcaption>
   </figure>
 </div>
@@ -55,8 +78,7 @@ can be added to every headset.
 
 Meta Quest 3 and 3S are sold by Meta, Best Buy, and Amazon. Meta stopped
 selling business editions in February 2026, so organizations now buy the
-standard headsets and enroll them in Meta's free device management
-([Choose an MDM](#mdm)).
+standard headsets and enroll them in Meta's free device management.
 
 [Meta](https://www.meta.com/quest/quest-3/)
 · [Best Buy](https://www.bestbuy.com/site/meta/meta-quest/pcmcat1767121486992.c?id=pcmcat1767121486992)
@@ -75,7 +97,7 @@ Cable only matters for Windows PCVR.
 
 </Callout>
 
-## Choose an MDM {#mdm}
+## <AppIcon name="devices" /> Choose an MDM {#mdm}
 
 <p class="chapter-kicker">Step 2 of 7 · Managing a fleet of headsets</p>
 
@@ -95,13 +117,13 @@ This chapter matters once headsets are shared or spread across a team.
 
 <Chooser
   param="mdm"
-  title="Answer three questions"
+  title="Answer up to 3 questions"
   :steps="[
     {
       id: 'device',
       label: 'Which headset?',
       options: [
-        { id: 'meta', label: 'Meta Quest', detail: 'Quest 3 and 3S' },
+        { id: 'meta', label: 'Meta Quest', detail: 'Quest 2, 3, 3S, and Pro' },
         { id: 'galaxy', label: 'Samsung Galaxy XR', detail: 'Android XR' },
         { id: 'visionpro', label: 'Apple Vision Pro', detail: 'visionOS' }
       ]
@@ -118,7 +140,7 @@ This chapter matters once headsets are shared or spread across a team.
     {
       id: 'budget',
       label: 'Is there budget for device management?',
-      hint: 'Asked for Meta Quest only — HMS is the one free service, and it manages Meta hardware.',
+      hint: 'Asked for Meta Quest only. HMS is the one free service, and it manages Meta hardware.',
       when: 'device=meta fleet=many',
       options: [
         { id: 'none', label: 'Free tooling only', detail: 'No line item for device management' },
@@ -163,42 +185,38 @@ Meta's free service enrolls Quest headsets, pushes Wi-Fi and Nanome to all of
 them, and keeps every headset on the version IT approved. It covers a shared
 lab or classroom without a budget line.
 
-**Meta Horizon managed services (HMS)** — Free. Free since February 20, 2026.
-Works with Quest 2, 3, 3S, and Pro.
+Meta Horizon managed services (HMS), formerly Quest for Business, has been
+free since February 20, 2026, and works with Quest 2, 3, 3S, and Pro.
 
 - Enrolls Meta Quest headsets and runs them without personal Meta accounts
 - Device presets, Wi-Fi profiles, app and file push, and remote wipe
 - Nanome installs from the Managed App Store under Discover Apps
 
-[HMS sign-up](https://work.meta.com/help/944423209536772)
-· [Go to the HMS setup guide →](#mdm-setup)
+[Go to the HMS setup guide →](#mdm-setup)
 
 </ChooserResult>
 
 <ChooserResult when="device=meta fleet=many budget=paid" verdict="Add ArborXR or ManageXR on top of HMS.">
 
-Both enroll Quest headsets through HMS and add premium device management with
-a support team, plus headsets HMS cannot manage. Either one works with Nanome,
-so the choice comes down to price, headset mix, and which team you would rather
+Both enroll Quest headsets through HMS and add device management with
+a support team, plus headsets HMS can't manage. Either one works with Nanome,
+so the choice comes down to price, headset mix, and which team you'd rather
 have on a call.
 
-**ArborXR** — From $7 per headset per month, billed annually. 30-day free trial.
+ArborXR costs from $7 per headset per month, billed annually, with a 30-day free trial.
 
 - Also manages PICO, HTC VIVE, Galaxy XR, and Magic Leap 2 headsets
 - ArborXR Home launcher or single-app kiosk, locked with an admin PIN
 - Release channels hold each group on the Nanome version IT approved
 
-[ArborXR pricing](https://arborxr.com/pricing)
-
-**ManageXR** — From $7 per headset per month, billed annually. 30-day free trial.
+ManageXR costs from $7 per headset per month, billed annually, with a 30-day free trial.
 
 - Also manages Samsung Galaxy XR, PICO, and HTC VIVE headsets
 - Imports Nanome from the Meta managed store as a CSV, or an uploaded APK
 - Single-app kiosk and Wi-Fi with certificates on the Essential plan, though
-  Galaxy XR cannot be kiosk-locked yet
+  Galaxy XR can't be kiosk-locked yet
 
-[ManageXR pricing](https://www.managexr.com/pricing)
-· [Go to the ArborXR and ManageXR guides →](#mdm-setup)
+[Go to the ArborXR and ManageXR guides →](#mdm-setup)
 
 </ChooserResult>
 
@@ -212,16 +230,14 @@ by Samsung sales rather than listed per device.
 ManageXR supports most Galaxy XR features today, apart from locking a headset
 into a kiosk home screen.
 
-[ArborXR supported devices](https://arborxr.com/supported-devices)
-· [ManageXR supported devices](https://help.managexr.com/en/articles/5281345-supported-devices)
-· [Samsung Knox Manage](https://www.samsungknox.com/en/solutions/it-solutions/knox-manage)
+[Samsung Knox Manage](https://www.samsungknox.com/en/solutions/it-solutions/knox-manage)
 · [Go to the ArborXR and ManageXR guides →](#mdm-setup)
 
 </ChooserResult>
 
 <ChooserResult when="device=visionpro fleet=many" verdict="Managed with an Apple MDM.">
 
-ArborXR does not manage Apple hardware and ManageXR lists visionOS as planned,
+ArborXR doesn't manage Apple hardware and ManageXR lists visionOS as planned,
 so Vision Pro headsets enroll in Apple Business Manager alongside an Apple MDM.
 Several of those have free tiers at small fleet sizes, including Mosyle Business
 for up to 30 devices and Jamf Now for the first 3.
@@ -236,17 +252,17 @@ with the Nanome team.
 
 </Chooser>
 
-### Compare all three side by side
+### Compare all 3 side by side
 
 <AccordionGroup label="Cost, supported headsets, and features">
 
 <Accordion title="Meta Horizon managed services (HMS)" teaser="Free. Manages Meta Quest only." tag="Free">
 
-**Free** — Free since February 20, 2026. Works with Quest 2, 3, 3S, and Pro.
-Manages Meta Quest only.
+Free since February 20, 2026. HMS was called Quest for Business before Meta
+renamed it.
 
 - Manages Meta Quest headsets only, on Quest 2, 3, 3S, and Pro
-- Quest headsets that are not already enrolled in an MDM enroll through HMS on
+- Quest headsets that aren't already enrolled in an MDM enroll through HMS on
   Horizon OS v74 and later
 - Runs shared headsets without personal Meta accounts, with a fresh session for
   each user
@@ -256,14 +272,12 @@ Manages Meta Quest only.
   with no stated date for Quest 2 and Pro
 
 [Meta Horizon managed services](https://work.meta.com/)
-· [HMS sign-up](https://work.meta.com/help/944423209536772)
 
 </Accordion>
 
 <Accordion title="ArborXR" teaser="From $7 per headset per month. Multi-brand." tag="Paid">
 
-**From $7** — Per headset per month, billed annually. 30-day free trial.
-Manages Meta Quest, Galaxy XR, PICO, HTC VIVE, Magic Leap 2.
+From $7 per headset per month, billed annually, with a 30-day free trial.
 
 - Adds a management layer on top of HMS for Quest headsets
 - Also manages PICO, HTC VIVE, Samsung Galaxy XR, and Magic Leap 2 headsets,
@@ -273,45 +287,41 @@ Manages Meta Quest, Galaxy XR, PICO, HTC VIVE, Magic Leap 2.
 - Release channels hold each device group on the Nanome version IT has approved
 - Remote casting and usage analytics on the Essential plan
 
-[ArborXR](https://arborxr.com/) · [ArborXR pricing](https://arborxr.com/pricing)
+[ArborXR pricing](https://arborxr.com/pricing)
 
 </Accordion>
 
 <Accordion title="ManageXR" teaser="From $7 per headset per month. Multi-brand." tag="Paid">
 
-**From $7** — Per headset per month, billed annually. 30-day free trial.
-Manages Meta Quest, Galaxy XR, PICO, HTC VIVE.
+From $7 per headset per month, billed annually, with a 30-day free trial.
 
 - Enrolls Quest headsets through HMS with an organization enrollment token
 - Also manages Samsung Galaxy XR, PICO, and HTC VIVE headsets, with features
   that vary by model
 - Imports Nanome from the Meta managed store as a CSV, or deploys an uploaded APK
 - Single-app kiosk and Wi-Fi with certificates on the Essential plan, though
-  Galaxy XR cannot be kiosk-locked yet
+  Galaxy XR can't be kiosk-locked yet
 - Multi-app home screen, release channels, remote screen streaming, and usage
   analytics on the Premium plan
 
-[ManageXR](https://www.managexr.com/)
-· [ManageXR pricing](https://www.managexr.com/pricing)
+[ManageXR pricing](https://www.managexr.com/pricing)
 
 </Accordion>
 
 </AccordionGroup>
 
-## MDM setup guides {#mdm-setup}
+## <AppIcon name="devices" /> MDM setup guides {#mdm-setup}
 
 <p class="chapter-kicker">Step 3 of 7 · Setting up an MDM</p>
 
-Enrollment happens during a headset's first-time setup, so it comes before apps
-and accounts. Each guide covers signing up, enrolling headsets, and pushing
-Nanome.
+Each guide covers signing up, enrolling headsets, and pushing Nanome.
 
 <Callout type="warning" title="Before new headsets are switched on">
 
-Enrollment happens during a headset's first-time setup, and that setup needs a
-working Wi-Fi network ([Wi-Fi & network](#network)). On Meta
-Quest, a headset already signed in to a personal Meta account needs a factory
-reset before it can enroll.
+Enrollment happens during a headset's first-time setup, so it comes before apps
+and accounts, and that setup needs a working Wi-Fi network
+([Wi-Fi & network](#network)). On Meta Quest, a headset already signed in to a
+personal Meta account needs a factory reset before it can enroll.
 
 </Callout>
 
@@ -322,7 +332,7 @@ reset before it can enroll.
 
 Manages Meta Quest headsets only.
 
-[**Official Meta Horizon managed services documentation** — work.meta.com/help](https://work.meta.com/help/1088202249750609)
+[Official Meta Horizon managed services documentation](https://work.meta.com/help/1088202249750609)
 
 <Steps>
 
@@ -341,21 +351,18 @@ Manages Meta Quest headsets only.
 
 </Steps>
 
-[Meta's enrollment guide →](https://work.meta.com/help/258897560520071/)
-· [HMS sign-up walkthrough →](https://help.arborxr.com/en/articles/12821712-how-to-sign-up-for-horizon-managed-services-free)
-
 </Tab>
 <Tab>
 
 Manages Meta Quest, Samsung Galaxy XR, PICO, HTC VIVE, and Magic Leap 2, with
 features that vary by model.
 
-[**Official ArborXR help center** — help.arborxr.com](https://help.arborxr.com/en/)
+[Official ArborXR help center](https://help.arborxr.com/en/)
 
 <Steps>
 
 1. Set up the free HMS organization first (steps 1 and 2 of the HMS guide).
-   Quest headsets that are not already enrolled in an MDM enroll through HMS on
+   Quest headsets that aren't already enrolled in an MDM enroll through HMS on
    Horizon OS v74 and later.
 2. Start an [ArborXR free trial](https://arborxr.com/demo/free-trial) and create
    a device group.
@@ -372,20 +379,13 @@ features that vary by model.
 
 </Steps>
 
-[Enroll through HMS →](https://help.arborxr.com/en/articles/10305755-enroll-meta-quest-devices-through-horizon-managed-services)
-· [Group devices →](https://help.arborxr.com/en/articles/6342954-add-devices-to-groups)
-· [Upload apps →](https://help.arborxr.com/en/articles/6333163-upload-apps-to-arborxr)
-· [Share apps with an organization →](https://help.arborxr.com/en/articles/9535199-share-apps-with-organizations)
-· [Kiosk mode →](https://help.arborxr.com/en/articles/6378802-configure-arborxr-kiosk-mode)
-· [Shared Mode settings →](https://help.arborxr.com/en/articles/11408552-configure-shared-mode-settings-on-horizon-managed-services-devices)
-
 </Tab>
 <Tab>
 
 Manages Meta Quest, Samsung Galaxy XR, PICO, and HTC VIVE, with features that
 vary by model.
 
-[**Official ManageXR help center** — help.managexr.com](https://help.managexr.com/en/)
+[Official ManageXR help center](https://help.managexr.com/en/)
 
 <Steps>
 
@@ -407,12 +407,6 @@ vary by model.
 
 </Steps>
 
-[Quest enrollment →](https://help.managexr.com/en/articles/10447105-meta-quest-device-enrollment)
-· [Galaxy XR enrollment →](https://help.managexr.com/en/articles/14128691-samsung-galaxy-xr-device-enrollment-guide)
-· [Meta store apps →](https://help.managexr.com/en/articles/13199177-meta-horizon-managed-app-store-integration)
-· [Upload an APK →](https://help.managexr.com/en/articles/5281561-upload-a-managed-app)
-· [Wi-Fi profiles →](https://help.managexr.com/en/articles/5983636-configure-wi-fi-network-profiles)
-
 </Tab>
 </Tabs>
 
@@ -424,15 +418,21 @@ those can enroll Quest headsets the same way.
 
 </Callout>
 
-## Wi-Fi & network {#network}
+## <AppIcon name="wifi" /> Wi-Fi & network {#network}
 
 <p class="chapter-kicker">Step 4 of 7 · A network Nanome can reach</p>
 
 Headsets need Wi-Fi with direct internet access and a short list of hostnames
-allowed through the firewall. The checklist below is written to hand straight
-to IT.
+allowed through the firewall. What IT allows depends on where Nanome runs.
 
-### Six checks for IT
+<IconGrid label="Where Nanome runs" :cols="2">
+<IconCard icon="world" title="Nanome cloud" href="#cloud">app.nanome.ai, run by Nanome. 6 checks for IT.</IconCard>
+<IconCard icon="server" title="On-prem or private VM" href="#on-prem">Nanome on the organization's own VM. Ports, DNS and the auth proxy.</IconCard>
+</IconGrid>
+
+### <AppIcon name="world" /> Nanome cloud (app.nanome.ai) {#cloud}
+
+6 checks, written to hand straight to IT.
 
 <AccordionGroup label="6 checks for IT">
 
@@ -448,7 +448,10 @@ can't reach Meta, before Nanome ever opens.
 
 Allow outbound TCP 443 to `*.nanome.ai` and `*.nanome.com`. Nanome's servers
 run on Cloudflare and AWS, where IP addresses change, so IP-based rules
-eventually break.
+eventually break. Collaboration and voice run over a secure WebSocket on the
+same port, so Nanome needs no UDP ports, and it doesn't accept incoming
+connections. Headsets also load structures by PDB ID straight from
+files.rcsb.org.
 
 <ul class="hosts">
   <li v-for="entry in NANOME_HOSTS" :key="entry.host">
@@ -506,17 +509,114 @@ both publish network tests that also run in the headset's browser.
 
 </AccordionGroup>
 
-<Callout type="note" title="Private and on-premise deployments">
+### <AppIcon name="server" /> On-prem or private VM {#on-prem}
 
-Running Nanome on a private cloud or on-premise server? Those deployments use
-their own hosts and ports, covered in the
-[enterprise deployment guide](https://nanome.ai/deploy). Samsung Galaxy XR
-fleets managed under Android Enterprise also need
+These apply only when Nanome v2 runs on the organization's own Linux VM. Nanome
+cloud users don't need any of them. Installation is covered in Nanome's
+[v2 deployment guide](https://nanome.ai/deploy).
+
+<AccordionGroup label="6 checks for on-prem">
+
+<Accordion title="Ports on the VM" teaser="TCP 80, and TCP 443 when SSL certificates are provisioned.">
+
+The VM needs TCP 80 (HTTP) open, and TCP 443 (HTTPS) when SSL certificates are
+provisioned. An nginx proxy on the VM routes each DNS name to its service, so
+headsets and browsers reach the VM only through those names, and no other port
+on it needs to be reachable from them.
+
+</Accordion>
+
+<Accordion title="DNS names" teaser="Names under the organization's domain, pointing to the VM.">
+
+The deployment guide writes the organization's domain as company.com. These
+names point to the VM, and the Nanome team needs them to configure the
+organization's licenses:
+
+<ul class="hosts">
+  <li v-for="entry in ONPREM_DNS" :key="entry.host">
+    <code>{{ entry.host }}</code>
+    <span>{{ entry.purpose }}</span>
+  </li>
+</ul>
+
+If the VM already has an A record, add CNAME records for these names that
+point to it. Otherwise, create A records that point to the VM's IP address.
+With HTTPS, the SSL certificate covers `*.company.com`, or each name.
+
+The deployment guide marks nanome-auth as optional. The deployer asks for it
+whenever it sets up workspaces, and headsets only need it when they can't
+reach api.nanome.com.
+
+</Accordion>
+
+<Accordion title="Headsets without internet access" teaser="An auth proxy on the VM, set up through the MDM.">
+
+Headsets sign in and check licenses through Nanome's API at api.nanome.com,
+even on an on-prem deployment. When the internal network stops headsets from
+reaching the internet, the auth proxy on the VM takes those requests and
+forwards them to api.nanome.com. It starts on the VM during deployment and
+uses the nanome-auth name. Meta Quest and Galaxy XR read the setting from a
+file the MDM puts on the headset.
+
+<Steps>
+
+1. Create a plain text file named `nanome_config` that contains
+   `auth_proxy=http://nanome-auth.company.com`.
+2. With the MDM, add the file to each headset at
+   `/sdcard/Managed files/nanome_config`.
+3. Open Nanome. On **Nanome Routing unreachable**, choose
+   **Read routing file on device**, then **Allow**, and accept the Android
+   prompt for file access.
+4. Check that you can log in.
+
+</Steps>
+
+</Accordion>
+
+<Accordion title="AI features" teaser="An LLM provider: Anthropic, OpenAI, AWS Bedrock or Microsoft Foundry.">
+
+AI features in Nanome XR and Nanome Web need access to an LLM provider:
+Anthropic, OpenAI, AWS Bedrock or Microsoft Foundry. Have the provider's URL
+and API key, or other auth details, ready before installation. For another
+provider, ask [support@nanome.ai](mailto:support@nanome.ai).
+
+</Accordion>
+
+<Accordion title="What the VM connects to" teaser="Nanome's API, image registries, the LLM provider and science data sources.">
+
+<ul>
+  <li v-for="item in ONPREM_OUTBOUND" :key="item">{{ item }}</li>
+</ul>
+
+</Accordion>
+
+<Accordion title="Testing the deployment" teaser="The web app first, then a headset in the same workspace.">
+
+<Steps>
+
+1. Open nanome.company.com in a browser and log in.
+2. Drag a PDB file onto the page, create a workspace, and check the workspace
+   contains the molecule.
+3. Log in to Nanome on a headset and check the workspace shows up with the
+   molecule.
+4. While in XR, check the XR cursors appear in the web preview.
+
+</Steps>
+
+</Accordion>
+
+</AccordionGroup>
+
+<CopyBlock title="On-prem network summary" :text="ONPREM_ALLOWLIST" />
+
+<Callout type="note" title="Samsung Galaxy XR under Android Enterprise">
+
+Galaxy XR fleets managed under Android Enterprise also need
 [Google's endpoints](https://support.google.com/work/android/answer/10513641).
 
 </Callout>
 
-## Download & install {#install}
+## <AppIcon name="download" /> Download & install {#install}
 
 <p class="chapter-kicker">Step 5 of 7 · Downloading and installing Nanome</p>
 
@@ -551,7 +651,7 @@ the latest release.
     }
   ]">
 
-<ChooserResult when="method=store device=meta" verdict="Install from the Meta Horizon Store">
+<ChooserResult when="method=store device=meta" verdict="Install from the Meta Horizon Store.">
 
 <Steps>
 
@@ -567,7 +667,7 @@ from Discover Apps through an MDM.
 
 </ChooserResult>
 
-<ChooserResult when="method=store device=visionpro" verdict="Join the TestFlight beta">
+<ChooserResult when="method=store device=visionpro" verdict="Join the TestFlight beta.">
 
 <Steps>
 
@@ -583,30 +683,30 @@ in the TestFlight app.
 
 </ChooserResult>
 
-<ChooserResult when="method=store device=galaxy" verdict="Not available from a store">
+<ChooserResult when="method=store device=galaxy" verdict="Not available from a store.">
 
 Nanome isn't listed on Google Play. Android XR headsets install the APK, either
 sideloaded or through an MDM.
 
 </ChooserResult>
 
-<ChooserResult when="method=store device=windows" verdict="Not available from a store">
+<ChooserResult when="method=store device=windows" verdict="Not available from a store.">
 
 Current Nanome for Windows isn't sold through a store (the Steam listing is
 Nanome Classic). It's a direct download.
 
 </ChooserResult>
 
-<ChooserResult when="method=mdm device=meta" verdict="Push it from the MDM's app library">
+<ChooserResult when="method=mdm device=meta" verdict="Push it from the MDM's app library.">
 
 Quest headsets enroll through HMS first. Each MDM then adds Nanome from its own
 app library:
 
-- **HMS** — Add Nanome from **Apps & Content** > **Discover Apps** in Device
+- HMS: add Nanome from **Apps & Content** > **Discover Apps** in Device
   Manager, or upload the APK as a private app.
-- **ArborXR** — Upload the APK to **Content Library** and assign it to a device
+- ArborXR: upload the APK to **Content Library** and assign it to a device
   group.
-- **ManageXR** — Save Nanome in HMS Discover Apps and import the exported list
+- ManageXR: save Nanome in HMS Discover Apps and import the exported list
   under **VR Content** > **Add Content** > **Meta Horizon Store Apps**, or
   upload the APK under VR Content.
 
@@ -619,7 +719,7 @@ matched to a private Nanome server.
 
 </ChooserResult>
 
-<ChooserResult when="method=mdm device=galaxy" verdict="Upload the Android XR APK to the MDM">
+<ChooserResult when="method=mdm device=galaxy" verdict="Upload the Android XR APK to the MDM.">
 
 HMS manages Meta Quest only. ArborXR and ManageXR both manage Samsung Galaxy XR
 headsets; ManageXR enrolls them over USB with its Device Setup Tool for now and
@@ -640,19 +740,19 @@ For Managed Google Play deployments, such as through Microsoft Intune,
 
 </ChooserResult>
 
-<ChooserResult when="method=mdm device=windows" verdict="Not managed this way">
+<ChooserResult when="method=mdm device=windows" verdict="Not managed this way.">
 
 Headset MDMs don't manage Windows PCs. Nanome for Windows is a direct download.
 
 </ChooserResult>
 
-<ChooserResult when="method=mdm device=visionpro" verdict="Not managed this way">
+<ChooserResult when="method=mdm device=visionpro" verdict="Not managed this way.">
 
 The Vision Pro beta installs through Apple TestFlight.
 
 </ChooserResult>
 
-<ChooserResult when="method=sideload device=meta" verdict="Sideload the Quest APK">
+<ChooserResult when="method=sideload device=meta" verdict="Sideload the Quest APK.">
 
 <Steps>
 
@@ -678,11 +778,11 @@ way.
 
 </ChooserResult>
 
-<ChooserResult when="method=sideload device=galaxy" verdict="Sideload the Android XR APK">
+<ChooserResult when="method=sideload device=galaxy" verdict="Sideload the Android XR APK.">
 
 <Steps>
 
-1. Open nanome.ai/setup in the headset's browser and download the Android XR APK.
+1. Open nanome.ai/versions in the headset's browser and download the Android XR APK.
 2. Allow installs from unknown sources when Android asks, then install.
 
 </Steps>
@@ -694,7 +794,7 @@ way.
 
 </ChooserResult>
 
-<ChooserResult when="method=sideload device=windows" verdict="Download and run the Windows build">
+<ChooserResult when="method=sideload device=windows" verdict="Download and run the Windows build.">
 
 <Steps>
 
@@ -711,7 +811,7 @@ way.
 
 </ChooserResult>
 
-<ChooserResult when="method=sideload device=visionpro" verdict="Not installed this way">
+<ChooserResult when="method=sideload device=visionpro" verdict="Not installed this way.">
 
 Vision Pro apps install through Apple, and the Nanome beta is on TestFlight.
 
@@ -727,7 +827,7 @@ deployments, and the full release notes are on the
 
 </Callout>
 
-## Accounts & licenses {#account}
+## <AppIcon name="user-circle" /> Accounts & licenses {#account}
 
 <p class="chapter-kicker">Step 6 of 7 · Accounts and licenses</p>
 
@@ -735,7 +835,7 @@ Each user signs in with their own Nanome account, even on a shared headset.
 Users work in the web app at app.nanome.ai, and admins manage licenses and
 organization membership at home.nanome.ai.
 
-### Two sites, two jobs
+### 2 sites, 2 jobs {#two-sites-two-jobs}
 
 <CardGrid :cols="2">
 
@@ -744,9 +844,7 @@ organization membership at home.nanome.ai.
 Where users create their Nanome account, with an email or a Google, Microsoft,
 Apple, or SSO sign-in. It's also where the work lives: projects and workspaces,
 structures loaded by PDB ID or dragged in from a computer, and sharing by link,
-8-digit code, or email invite.
-
-New accounts include a 14-day Full license trial.
+8-character code, or email invite.
 
 </Card>
 
@@ -760,9 +858,9 @@ authentication.
 
 </CardGrid>
 
-<vimg src="setup/accounts/enable-2fa.jpg" />
+<vimg src="home-nanome/account-security.webp" alt="Two-factor authentication under Account Settings, Security, at home.nanome.ai" />
 
-*Account Settings > Security. See [Two Factor Auth](/home.nanome.ai/twofactorauth).*
+*Account Settings > Security.*
 
 ### Getting a team ready
 
@@ -770,15 +868,16 @@ authentication.
 
 <Accordion title="1. An account for each user" teaser="Created at app.nanome.ai, with a 14-day Full trial.">
 
-Each user creates a Nanome account at app.nanome.ai, including users who share
-a headset. Every new account starts with a 14-day Full license trial.
+Each user creates a Nanome account at app.nanome.ai. Every new account starts
+with a 14-day Full license trial.
 
 </Accordion>
 
 <Accordion title="2. A seat that includes XR" teaser="Headset use takes a Collab or Full seat.">
 
-Working in a headset takes a Collab or Full seat. The Free Web Seat covers 3
-workspaces in the browser and view-only collaboration.
+Working in a headset takes a Collab or Full seat. A free license covers the
+browser, with 1 owned project, 3 owned workspaces and 5 structures per
+workspace, and view-only access to workspaces and projects others share.
 
 </Accordion>
 
@@ -786,10 +885,11 @@ workspaces in the browser and view-only collaboration.
 
 After the trial, headset access continues on a paid seat. The pricing page
 lists what each seat includes, and the Nanome team quotes volume and academic
-pricing by email.
+pricing.
 
-[Plans and seats](https://nanome.ai/pricing)
-· [Ask for a quote](mailto:support@nanome.ai)
+[Compare the seats](/home.nanome.ai/accounttiers)
+· [Plans and pricing](https://nanome.ai/pricing)
+· [Ask for a quote](https://nanome.ai/pricing#contact-form)
 
 </Accordion>
 
@@ -799,9 +899,9 @@ An admin assigns licenses in home.nanome.ai under **Licenses** >
 **Assign Users**, using each user's account email. The license activates once
 that user confirms the email Nanome sends.
 
-<vimg src="setup/accounts/assign-licenses.jpg" />
+<vimg src="home-nanome/licenses-owned.webp" alt="The Owned licenses table, with Assign Users at the top right, at home.nanome.ai" />
 
-*Licenses > Assign Users. See [Licenses](/home.nanome.ai/licenses).*
+*Licenses > Assign Users. Step by step: [Manage Licenses](/home.nanome.ai/licenses).*
 
 </Accordion>
 
@@ -815,19 +915,17 @@ team, who add the organization's licenses to it.
 
 </Callout>
 
-Related pages: [Web App Basics](/nanome_web/basics)
-· [Licenses](/home.nanome.ai/licenses)
-· [home.nanome.ai overview](/home.nanome.ai/overview_home_nanome)
-· [Plans and seats](https://nanome.ai/pricing)
-
-## Log in {#login}
+## <AppIcon name="login-2" /> Log in {#login}
 
 <p class="chapter-kicker">Step 7 of 7 · Signing in on a headset</p>
 
-The headset login screen has 2 tabs: Code, for a short code confirmed from a
-phone or laptop, and Password, for a username and password typed in the headset.
+The headset login screen has 2 tabs: <Btn icon="password">Password</Btn>, for a
+username and password typed in the headset, and <Btn icon="key">Code</Btn>, for
+a short code confirmed from a phone or laptop. The Apple Vision Pro beta has
+only username and password, so SSO, Google, Microsoft, Apple and two-factor
+accounts can't sign in there yet ([Vision Pro login](/nanome_v2/visionpro#log-in)).
 
-### Two ways in
+### 2 ways in {#two-ways-in}
 
 <AccordionGroup label="2 ways to log in on a headset">
 
@@ -835,16 +933,18 @@ phone or laptop, and Password, for a username and password typed in the headset.
 
 <Steps>
 
-1. On the headset's login screen, open the **Code** tab. Nanome shows a short
-   code.
-2. On a phone or computer, sign in at app.nanome.ai and choose
-   **Login via Device Code**.
+1. On the headset's login screen, open the <Btn icon="key">Code</Btn> tab.
+   Nanome shows a short code.
+2. On a phone or computer, visit nanome.ai/activate, or sign in at
+   app.nanome.ai and choose <Btn icon="lock-cog">Login via Device Code</Btn>.
 3. Enter the code. The headset signs in to that account.
 
 </Steps>
 
-Each code signs in one user's account. Accounts that use single sign-on (SSO)
-sign in to headsets this way.
+Each code signs in one user's account, and a new code appears every 5 minutes.
+Accounts that use single sign-on (SSO), accounts created with Google,
+Microsoft or Apple, and accounts with two-factor authentication sign in to
+headsets this way.
 
 </Accordion>
 
@@ -852,10 +952,10 @@ sign in to headsets this way.
 
 <Steps>
 
-1. On the **Password** tab, enter the Nanome username and password, then choose
-   **Log in**.
-2. **Create Account** on the same screen starts a new account with a 14-day free
-   trial.
+1. On the <Btn icon="password">Password</Btn> tab, enter the Nanome username
+   and password, then choose <Btn icon="login-2">Log in</Btn>.
+2. <Btn icon="user-plus">Create Account</Btn> on the same screen starts a new
+   account with a 14-day free trial.
 
 </Steps>
 
@@ -869,8 +969,8 @@ Forgotten passwords are reset at home.nanome.ai.
 
 <Callout type="note" title="Shared headsets">
 
-On shared headsets, **Log Out** sits at the bottom of the Settings tab, so the
-next user starts with their own account.
+On shared headsets, <Btn icon="outbound">Log Out</Btn> sits at the bottom of the
+Settings tab, so the next user starts with their own account.
 
 </Callout>
 

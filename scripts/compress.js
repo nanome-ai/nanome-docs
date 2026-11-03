@@ -1,125 +1,206 @@
+// Builds the web copies of every image in docs/public/assets/original.
+//
+// Pages show the copy in docs/public/assets/compressed (via <Vimg>), and
+// clicking it opens the original. The copy is a WebP no wider than
+// MAX_WIDTH, which is twice the 768px content column, so screenshots stay
+// sharp on high-density screens. Images in WIDE keep more pixels, because
+// pages show them cropped, so a small part of the image fills the column.
+//
+// A copy is rebuilt whenever its original is newer, so replacing a
+// screenshot and running `npm run docs:compress` is enough. Pass --force to
+// rebuild everything.
+//
+// An image wider than SMALL_MIN also gets a copy SMALL_WIDTH wide,
+// `<name>.w800.webp`, listed in image-small.json. A screenshot beside its
+// legend shows about 390px wide, so 1x and 2x screens load that copy, and the
+// full-screen view loads the full one (see image.js).
+//
+// The theme script doesn't carry the lists this script writes
+// (docs/.vitepress/theme/image-*.json): the build hands each page the entries
+// for the images it names (imageData in docs/.vitepress/config.mjs). Every
+// list is sorted, one image per line, so the same images always give the same
+// files. After a merge that adds or deletes images, run
+// `npm run docs:compress` and commit what it writes (and removes).
+//
+// A screenshot can have a dark-mode twin saved beside it as
+// `<name>.dark.<ext>`. The script lists those pairs in
+// docs/.vitepress/theme/image-variants.json, and <Vimg> shows the twin while
+// the site is in dark mode. Markdown only ever names the light image.
+//
+// It also records the width of each 2x screenshot (the paths HIDPI matches) in
+// image-widths.json, so <Vimg> shows them at their on-screen size instead of
+// stretching a narrow panel across the content column. In mara/ only the WebP
+// screenshots are 2x; the PNG diagrams there are not.
+
 const sharp = require('sharp')
-// const imagemin = require('imagemin');
-// const imageminGifsicle = require('imagemin-gifsicle');
 const fs = require('fs')
+const path = require('path')
+const crypto = require('crypto')
 
-const assetDir = __dirname + '/../docs/public/assets/original'
-const compressedDir = __dirname + '/../docs/public/assets/compressed'
+const assetDir = path.join(__dirname, '../docs/public/assets/original')
+const compressedDir = path.join(__dirname, '../docs/public/assets/compressed')
+const manifestFile = path.join(__dirname, '../docs/.vitepress/theme/image-variants.json')
+const widthsFile = path.join(__dirname, '../docs/.vitepress/theme/image-widths.json')
+const sizesFile = path.join(__dirname, '../docs/.vitepress/theme/image-sizes.json')
+const versionsFile = path.join(__dirname, '../docs/.vitepress/theme/image-versions.json')
+const smallFile = path.join(__dirname, '../docs/.vitepress/theme/image-small.json')
 
-const regex = {
-  file: /^(.+)\.(\w+)$/
+const HIDPI = /^(nanome-web|nanome-v2\/v2-7|home-nanome)\/|^mara\/.*\.webp$/
+const MAX_WIDTH = 1600
+// The desktop layout is shown cropped to one panel on the Tools Panel and
+// Scenes Panel pages, about 4.5 times its full-width size.
+const WIDE = {
+  'nanome-v2/v2-7/desktop-layout.webp': 3840,
+  'nanome-v2/v2-7/desktop-layout.dark.webp': 3840,
 }
+// The smaller copy: a little over twice the ~390px a screenshot beside its
+// legend shows at. A copy up to SMALL_MIN wide gets none, since it would
+// shrink too little to be worth a second file.
+const SMALL_WIDTH = 800
+const SMALL_MIN = 1000
+// The option-panel demos show their frames whole on the stage, never through
+// <Vimg> or <HotShot>, so they get no smaller copy.
+const NO_SMALL = /^nanome-v2\/v2-7\/options\//
+const QUALITY = 80
+const force = process.argv.includes('--force')
 
-;(async function() {
-  console.log('Compressing images and gifs')
-  await recursiveCompress('')
-  console.log('Done compressing')
-})()
+;(async function () {
+  console.log('Compressing images')
+  let built = 0
+  for (const file of walk(assetDir)) {
+    const rel = path.relative(assetDir, file)
+    if (!/\.(png|jpe?g|gif|webp)$/i.test(rel)) continue
+    const key = rel.split(path.sep).join('/')
 
-async function recursiveCompress(parent) {
-  await compressDir(parent)
-
-  const dirs = await getDirs(`${assetDir}/${parent}`)
-
-  if (!fs.existsSync(compressedDir)) {
-    fs.mkdirSync(compressedDir)
-  }
-
-  for (const dir of dirs) {
-    await recursiveCompress(`${parent}/${dir}`)
-  }
-}
-
-async function compressDir(dir) {
-  // Check if directory exists in compressed folder. If not, make it
-  if (!fs.existsSync(`${compressedDir}/${dir}`)) {
-    fs.mkdirSync(`${compressedDir}/${dir}`)
-  }
-
-  const files = await getFiles(`${assetDir}/${dir}`)
-
-  // Loop through all files in dir
-  for (const file of files) {
-    const match = file.match(regex.file)
-    if (!match) continue
-    const [, fileName, format] = match
-
-    // If file type is a match
-    if (/png|jpg|jpeg|gif/i.test(format)) {
-      if (fs.existsSync(`${compressedDir}${dir}/${fileName}.jpg`)) {
-        continue
-      }
-
-      let image = await sharp(`${assetDir}/${dir}/${file}`)
-      const data = await image.metadata()
-
-      // If needs to be compressed
-      let { width, height } = data
-      if (width > 450) {
-        const ratio = 450 / width
-        width *= ratio
-        height *= ratio
-      }
-      if (height > 450) {
-        const ratio = 450 / height
-        width *= ratio
-        height *= ratio
-      }
-
-      // Convert from float to int
-      width = parseInt(width)
-      height = parseInt(height)
-
-      // If needs resizing
-      if (width < data.width || height < data.height) {
-        image = await image.resize(width, height)
-      }
-
-      await image
-        .toFormat('jpeg')
-        .toFile(`${compressedDir}/${dir}/${fileName}.jpg`)
+    const out = path.join(compressedDir, rel.replace(/\.\w+$/, '.webp'))
+    if (stale(out, file)) {
+      fs.mkdirSync(path.dirname(out), { recursive: true })
+      // GIFs get a still of their first frame; the original plays on click.
+      await sharp(file, { pages: 1 })
+        .resize({ width: WIDE[key] || MAX_WIDTH, withoutEnlargement: true })
+        .webp({ quality: QUALITY })
+        .toFile(out)
+      built++
+      console.log(`- ${rel}`)
     }
 
-    // If file type is gif, compress
-    // if (/gif/i.test(format)) {
-    //   if (fs.existsSync(`${compressedDir}${dir}/${fileName}.gif`)) {
-    //     continue;
-    //   }
-
-    //   await imagemin(
-    //     [`docs/.vuepress/public/assets/original/${dir}/${fileName}.gif`],
-    //     {
-    //       destination: `docs/.vuepress/public/assets/compressed/${dir}`,
-    //       plugins: [
-    //         imageminGifsicle({
-    //           optimizationLevel: 3,
-    //           colors: 128
-    //         })
-    //       ]
-    //     }
-    //   );
-    // }
-
-    console.log(`- Compressed ${dir}/${file}`)
+    const small = smallCopy(key)
+    if (small && stale(path.join(compressedDir, small), file) && (await wider(file))) {
+      await sharp(file, { pages: 1 })
+        .resize({ width: SMALL_WIDTH })
+        .webp({ quality: QUALITY })
+        .toFile(path.join(compressedDir, small))
+      built++
+      console.log(`- ${small}`)
+    }
   }
+  console.log(`Done compressing (${built} rebuilt)`)
+
+  // Light image -> its dark twin, for <Vimg>.
+  const files = walk(assetDir)
+    .map((f) => path.relative(assetDir, f).split(path.sep).join('/'))
+    .sort()
+  const darkByBase = new Map(
+    files
+      .filter((f) => /\.dark\.\w+$/.test(f))
+      .map((f) => [f.replace(/\.dark\.\w+$/, ''), f])
+  )
+  const variants = {}
+  for (const f of files) {
+    if (/\.dark\.\w+$/.test(f)) continue
+    const dark = darkByBase.get(f.replace(/\.\w+$/, ''))
+    if (dark) variants[f] = dark
+  }
+  fs.writeFileSync(manifestFile, JSON.stringify(variants, null, 2) + '\n')
+  console.log(`${Object.keys(variants).length} images have a dark version`)
+
+  // Light 2x screenshot -> its width in pixels. Reading the header is enough.
+  const widths = {}
+  for (const f of files) {
+    if (!HIDPI.test(f) || /\.dark\.\w+$/.test(f)) continue
+    const { width } = await sharp(path.join(assetDir, f)).metadata()
+    widths[f] = width
+  }
+  fs.writeFileSync(widthsFile, JSON.stringify(widths, null, 2) + '\n')
+
+  // Every copy's size, light and dark, in image-sizes.json. <Vimg> gives the
+  // <img> its width and height, so the page keeps room for an image before it
+  // loads; otherwise a link to a heading lands short as the images above it
+  // arrive and push the heading down.
+  const sizes = {}
+  // And a short hash of each copy, which the pages add to its URL, so a
+  // browser or CDN that cached an earlier copy fetches the new one.
+  const versions = {}
+  for (const f of files) {
+    if (!/\.(png|jpe?g|gif|webp)$/i.test(f)) continue
+    const copy = path.join(compressedDir, f.replace(/\.\w+$/, '.webp'))
+    const { width, height } = await sharp(copy).metadata()
+    sizes[f] = [width, height]
+    versions[f] = crypto.createHash('sha1').update(fs.readFileSync(copy)).digest('hex').slice(0, 8)
+  }
+  // One image per line, sorted, so branches that add images merge cleanly.
+  const lines = Object.keys(sizes)
+    .sort()
+    .map((f) => `  ${JSON.stringify(f)}: [${sizes[f].join(', ')}]`)
+  fs.writeFileSync(sizesFile, `{\n${lines.join(',\n')}\n}\n`)
+  const vlines = Object.keys(versions)
+    .sort()
+    .map((f) => `  ${JSON.stringify(f)}: ${JSON.stringify(versions[f])}`)
+  fs.writeFileSync(versionsFile, `{\n${vlines.join(',\n')}\n}\n`)
+
+  // The smaller copy's width and short hash, for each image that has one.
+  const smalls = []
+  const kept = new Set()
+  for (const f of Object.keys(sizes).sort()) {
+    const small = smallCopy(f)
+    if (!small || sizes[f][0] <= SMALL_MIN) continue
+    kept.add(small)
+    const copy = path.join(compressedDir, small)
+    const { width } = await sharp(copy).metadata()
+    const hash = crypto.createHash('sha1').update(fs.readFileSync(copy)).digest('hex').slice(0, 8)
+    smalls.push(`  ${JSON.stringify(f)}: [${width}, ${JSON.stringify(hash)}]`)
+  }
+  fs.writeFileSync(smallFile, `{\n${smalls.join(',\n')}\n}\n`)
+  console.log(`${smalls.length} images have a smaller copy`)
+
+  // A smaller copy whose image is gone, or no longer gets one, goes too, so a
+  // merge that deletes an image leaves no copy of it behind.
+  const copies = new Set(files.map((f) => f.replace(/\.\w+$/, '.webp')))
+  for (const file of walk(compressedDir)) {
+    const rel = path.relative(compressedDir, file).split(path.sep).join('/')
+    if (/\.w\d+\.webp$/.test(rel) && !kept.has(rel) && !copies.has(rel)) {
+      fs.unlinkSync(file)
+      console.log(`- removed ${rel}`)
+    }
+  }
+})()
+
+/** True when the copy is missing or older than its original, or with --force. */
+function stale(copy, original) {
+  return force || !fs.existsSync(copy) || fs.statSync(copy).mtimeMs < fs.statSync(original).mtimeMs
 }
 
-// Get all directories by directory name
-function getDirs(dirname) {
-  return fs
-    .readdirSync(dirname, {
-      withFileTypes: true
-    })
-    .filter(item => item.isDirectory())
-    .map(item => item.name)
+/**
+ * Where the smaller copy of an image goes, under assets/compressed, or null
+ * for an image that never gets one: a demo frame, or one shown cropped (WIDE).
+ */
+function smallCopy(key) {
+  if (NO_SMALL.test(key) || WIDE[key]) return null
+  return key.replace(/\.\w+$/, `.w${SMALL_WIDTH}.webp`)
 }
 
-// Get all files by directory name
-function getFiles(dirname) {
+/** True when the original is wide enough to get a smaller copy. */
+async function wider(file) {
+  const { width } = await sharp(file, { pages: 1 }).metadata()
+  return width > SMALL_MIN
+}
+
+function walk(dir) {
   return fs
-    .readdirSync(dirname, {
-      withFileTypes: true
-    })
-    .filter(item => !item.isDirectory())
-    .map(item => item.name)
+    .readdirSync(dir, { withFileTypes: true })
+    .flatMap((entry) =>
+      entry.isDirectory()
+        ? walk(path.join(dir, entry.name))
+        : [path.join(dir, entry.name)]
+    )
 }

@@ -1,0 +1,538 @@
+<script setup>
+/**
+ * A screenshot with regions that light up. <ShotRow> and <ScreenMap> pass the
+ * regions in `spots` and say which one is active; hovering a region here
+ * reports it back, so the legend row or card for it lights up too.
+ *
+ * Boxes are "x,y,w,h" in percent of the full image, so they hold for the
+ * light and dark copies alike. `crop` (same form) shows only part of the
+ * image, such as the panels of a wide desktop capture.
+ *
+ * A region is also a way in: clicking one with a link goes to the section
+ * about it, and clicking one without a link asks the parent to point at its
+ * legend row (`pick`). The expand button opens the full-screen view; on an
+ * image with no regions, so does clicking the image itself.
+ */
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { imageInfo, parseBox } from './image.js'
+
+const props = defineProps({
+  src: { type: String, required: true },
+  alt: { type: String, default: '' },
+  crop: { type: String, default: '' },
+  /** [{ n, box: [x, y, w, h], label, href }] */
+  spots: { type: Array, default: () => [] },
+  active: { type: Number, default: 0 },
+  focus: { type: Boolean, default: false },
+  /** Puts the expand button under the frame, for an image whose free corners show controls. */
+  expandBelow: { type: Boolean, default: false },
+})
+
+const emit = defineEmits(['enter', 'leave', 'open', 'pick'])
+
+const info = computed(() => imageInfo(props.src))
+const crop = computed(() => parseBox(props.crop) || [0, 0, 100, 100])
+
+/** The frame's width over height, after the crop. */
+const ratio = computed(() => {
+  const [w, h] = info.value.size || [16, 9]
+  const [, , cw, ch] = crop.value
+  return (w * cw) / (h * ch)
+})
+
+const outer = computed(() => ({
+  '--hotshot-shown': info.value.shown ? `${Math.round((info.value.shown * crop.value[2]) / 100)}px` : '100%',
+  '--hotshot-ar': ratio.value.toFixed(4),
+}))
+
+const frame = computed(() => ({ aspectRatio: ratio.value.toFixed(4) }))
+
+const image = computed(() => {
+  const [cx, cy, cw, ch] = crop.value
+  return {
+    width: `${(100 / cw) * 100}%`,
+    left: `${(-cx / cw) * 100}%`,
+    top: `${(-cy / ch) * 100}%`,
+  }
+})
+
+/** A box in full-image percent, as [x, y, w, h] in percent of the cropped frame. */
+function framed(box) {
+  const [cx, cy, cw, ch] = crop.value
+  const [x, y, w, h] = box
+  return [((x - cx) / cw) * 100, ((y - cy) / ch) * 100, (w / cw) * 100, (h / ch) * 100]
+}
+
+/** A box in full-image percent, placed inside the cropped frame. */
+function place(box) {
+  const [x, y, w, h] = framed(box)
+  return { left: `${x}%`, top: `${y}%`, width: `${w}%`, height: `${h}%` }
+}
+
+// The frame's size on screen, to know how much of it the expand button covers.
+const frameEl = ref(null)
+const frameSize = ref(null)
+let sizer = null
+onMounted(() => {
+  // Measured now, the button's place is set from the frame's real size as the
+  // regions arrive. A guess could put it under the frame for a moment and
+  // move the page, and a #section link with it.
+  const el = frameEl.value
+  if (el?.clientWidth && el.clientHeight) frameSize.value = [el.clientWidth, el.clientHeight]
+  if (typeof ResizeObserver === 'undefined' || !frameEl.value) return
+  sizer = new ResizeObserver(([entry]) => {
+    // A frame in a closed tab has no size until the tab opens.
+    const { width, height } = entry.contentRect
+    if (width && height) frameSize.value = [width, height]
+  })
+  sizer.observe(frameEl.value)
+})
+onBeforeUnmount(() => sizer?.disconnect())
+
+// Leaving full screen, the frame is measured as soon as it's back in the page,
+// before the ResizeObserver reports it. The expand button then renders in its
+// final place, in the frame or under it, before focus returns to it, so the
+// button that gets focus is the one that stays.
+watch(
+  () => props.focus,
+  () => {
+    const el = frameEl.value
+    if (el?.clientWidth && el.clientHeight) frameSize.value = [el.clientWidth, el.clientHeight]
+  },
+  { flush: 'post' }
+)
+
+/**
+ * The expand button's corner. It sits bottom right unless it would cover part
+ * of a region there, such as a Send or Close button. Then it tries top right,
+ * top left and bottom left in turn. When every corner holds a region, as on a
+ * sequence strip at phone width, it sits just under the frame's bottom-right
+ * corner instead. A region over a quarter of the frame, such as a whole panel,
+ * doesn't count: the button hides only its edge. So does a strip under about
+ * 2.5 times the button's height, where any corner would cover its text, and
+ * an image whose corners show controls the legend doesn't list (`expandBelow`).
+ */
+const corner = computed(() => {
+  if (!props.spots.length) return ''
+  if (props.expandBelow) return 'is-below'
+  const [fw, fh] = frameSize.value || [400, 400 / ratio.value]
+  if (fh < 70) return 'is-below'
+  // The button is 25px square, 8px in from the edges; 1px more all round.
+  const bw = (27 / fw) * 100
+  const bh = (27 / fh) * 100
+  const boxes = props.spots.map((s) => framed(s.box)).filter(([, , w, h]) => w * h < 2500)
+  const covers = ([top, left]) => {
+    const x = left ? (7 / fw) * 100 : 100 - (7 / fw) * 100 - bw
+    const y = top ? (7 / fh) * 100 : 100 - (7 / fh) * 100 - bh
+    return Math.max(
+      0,
+      ...boxes.map(([sx, sy, sw, sh]) => {
+        const ox = Math.min(x + bw, sx + sw) - Math.max(x, sx)
+        const oy = Math.min(y + bh, sy + sh) - Math.max(y, sy)
+        return ox > 0 && oy > 0 ? (ox * oy) / (sw * sh) : 0
+      })
+    )
+  }
+  const free = [[false, false], [true, false], [true, true], [false, true]].find((c) => covers(c) === 0)
+  if (!free) return 'is-below'
+  const [top, left] = free
+  return [top && 'is-top', left && 'is-left'].filter(Boolean).join(' ')
+})
+
+const below = computed(() => corner.value === 'is-below')
+
+// Larger regions first, so a smaller one inside it stays on top to hover.
+const ordered = computed(() =>
+  [...props.spots].sort((a, b) => b.box[2] * b.box[3] - a.box[2] * a.box[3])
+)
+
+// The active part's regions: one, or one for each place it shows up.
+const lits = computed(() => props.spots.filter((s) => s.n === props.active))
+const lit = computed(() => (lits.value.length === 1 ? lits.value[0] : null))
+
+/**
+ * With several lit regions, one dim layer has a hole for each, so no part of
+ * the image is dimmed twice. The holes' corners round by 6px, like the
+ * outlines, in a frame that stretches the 0-100 box to its own shape.
+ */
+const holes = computed(() => {
+  if (lits.value.length < 2) return ''
+  const [fw, fh] = frameSize.value || [400, 400 / ratio.value]
+  const f = (v) => +v.toFixed(3)
+  return lits.value
+    .map((s) => {
+      const [x, y, w, h] = framed(s.box)
+      const a = f(Math.min((6 / fw) * 100, w / 2))
+      const b = f(Math.min((6 / fh) * 100, h / 2))
+      const arc = (tx, ty) => `A${a} ${b} 0 0 1 ${f(tx)} ${f(ty)}`
+      return (
+        `M${f(x + a)} ${f(y)}H${f(x + w - a)}${arc(x + w, y + b)}V${f(y + h - b)}${arc(x + w - a, y + h)}` +
+        `H${f(x + a)}${arc(x, y + h - b)}V${f(y + b)}${arc(x + a, y)}Z`
+      )
+    })
+    .join('')
+})
+
+/** Only an image with no regions opens the larger view by itself. */
+const opensOnClick = computed(() => !props.focus && props.spots.length === 0)
+
+function open(event) {
+  if (!opensOnClick.value) return
+  event.preventDefault()
+  emit('open')
+}
+
+function pick(spot) {
+  if (!spot.href) emit('pick', spot.n)
+}
+</script>
+
+<template>
+  <div class="hotshot" :class="{ 'has-dark': !!info.dark, 'is-focus': focus, 'has-expand-below': below && !focus }" :style="outer">
+    <div
+      ref="frameEl"
+      class="hotshot__frame"
+      :class="{ 'opens-on-click': opensOnClick }"
+      :style="frame"
+      :role="opensOnClick ? 'button' : undefined"
+      :tabindex="opensOnClick ? 0 : undefined"
+      :aria-label="opensOnClick ? `${alt || 'Screenshot'}. Show larger` : undefined"
+      @click="open"
+      @keydown.enter.self="open"
+      @keydown.space.self="open"
+    >
+      <!-- `loading` before `src`, so Safari keeps the image lazy (Vimg.vue). -->
+      <img
+        class="hotshot__img hotshot__light no-zoom"
+        loading="lazy"
+        decoding="async"
+        :src="info.light"
+        :srcset="focus ? undefined : info.lightSet"
+        :sizes="focus || !info.lightSet ? undefined : info.sizes"
+        :data-full="info.lightSet && info.light"
+        :alt="alt"
+        :width="info.size?.[0]"
+        :height="info.size?.[1]"
+        :style="image"
+      />
+      <img
+        v-if="info.dark"
+        class="hotshot__img hotshot__dark no-zoom"
+        loading="lazy"
+        decoding="async"
+        :src="info.dark"
+        :srcset="focus ? undefined : info.darkSet"
+        :sizes="focus || !info.darkSet ? undefined : info.sizes"
+        :data-full="info.darkSet && info.dark"
+        :alt="alt"
+        :width="info.darkSize?.[0]"
+        :height="info.darkSize?.[1]"
+        :style="image"
+      />
+      <!-- Full screen, a GIF plays: the original, over its still copy while it loads. -->
+      <img
+        v-if="focus && info.isGif"
+        class="hotshot__img no-zoom"
+        :src="info.zoom"
+        alt=""
+        :width="info.size?.[0]"
+        :height="info.size?.[1]"
+        :style="image"
+        decoding="async"
+      />
+
+      <!-- A linked region is for the pointer. The keyboard and screen readers
+           reach the same link once, through its legend row or card. -->
+      <component
+        :is="s.href ? 'a' : 'span'"
+        v-for="(s, i) in ordered"
+        :key="`${s.n}-${i}`"
+        class="hotshot__spot"
+        :class="{ 'is-active': s.n === active }"
+        :style="place(s.box)"
+        :href="s.href || undefined"
+        :tabindex="s.href ? -1 : undefined"
+        :aria-hidden="s.href ? 'true' : undefined"
+        :title="s.label || undefined"
+        @mouseenter="emit('enter', s.n)"
+        @mouseleave="emit('leave', s.n)"
+        @click="pick(s)"
+      />
+
+      <span
+        class="hotshot__lit"
+        :class="{ 'is-on': !!lit }"
+        :style="lit ? place(lit.box) : null"
+        aria-hidden="true"
+      />
+      <template v-if="holes">
+        <svg class="hotshot__dim" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <path :d="`M0 0H100V100H0Z${holes}`" fill-rule="evenodd" />
+        </svg>
+        <span v-for="(s, i) in lits" :key="i" class="hotshot__ring" :style="place(s.box)" aria-hidden="true" />
+      </template>
+
+
+      <span v-if="info.isGif && !focus" class="hotshot__play" aria-hidden="true">&#9654;</span>
+      <span v-if="!focus && opensOnClick" class="hotshot__expand" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="15" height="15"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </span>
+      <button
+        v-else-if="!focus && !below"
+        type="button"
+        class="hotshot__expand is-button"
+        :class="corner"
+        :aria-label="`${alt || 'Screenshot'}. Show larger`"
+        title="Show larger"
+        @click.stop="emit('open')"
+      >
+        <svg viewBox="0 0 24 24" width="15" height="15"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </button>
+    </div>
+    <!-- No corner is free, so the button sits under the frame. -->
+    <button
+      v-if="!focus && below"
+      type="button"
+      class="hotshot__expand is-button is-below"
+      :aria-label="`${alt || 'Screenshot'}. Show larger`"
+      title="Show larger"
+      @click.stop="emit('open')"
+    >
+      <svg viewBox="0 0 24 24" width="15" height="15"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+    </button>
+  </div>
+</template>
+
+<style scoped>
+/* At most --hotshot-maxh tall, counting the frame's 1px border. */
+.hotshot {
+  max-width: min(var(--hotshot-cap, var(--hotshot-shown)), calc((var(--hotshot-maxh, 100000px) - 2px) * var(--hotshot-ar) + 2px));
+}
+
+/* The aspect ratio sizes the box inside the border, the box the image fills,
+   so a tall image leaves no strip under it. */
+.hotshot__frame {
+  box-sizing: content-box;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--n-border-soft);
+  border-radius: var(--n-radius);
+  background: var(--n-surface-sunken);
+}
+
+.hotshot__frame.opens-on-click {
+  cursor: zoom-in;
+}
+
+.hotshot__frame:focus-visible {
+  outline: 2px solid var(--n-accent);
+  outline-offset: 2px;
+}
+
+.vp-doc .hotshot__img,
+.hotshot__img {
+  position: absolute;
+  max-width: none;
+  height: auto;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+}
+
+.hotshot__spot {
+  position: absolute;
+  border-radius: 6px;
+  transition: box-shadow var(--n-transition);
+}
+
+/* Over the image, show faintly where the regions are. */
+.hotshot__frame:hover .hotshot__spot {
+  box-shadow: inset 0 0 0 1px var(--n-accent-border);
+}
+
+.hotshot__spot {
+  cursor: pointer;
+}
+
+.hotshot__spot:focus-visible {
+  outline: 2px solid var(--n-accent);
+  outline-offset: 1px;
+}
+
+/* The lit region: an outline, and the rest of the image dimmed around it. */
+.hotshot__lit {
+  position: absolute;
+  border-radius: 6px;
+  box-shadow: 0 0 0 2px var(--n-accent), 0 0 0 100vmax rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 140ms var(--n-ease),
+    left 180ms var(--n-ease),
+    top 180ms var(--n-ease),
+    width 180ms var(--n-ease),
+    height 180ms var(--n-ease);
+}
+
+.hotshot__lit.is-on {
+  opacity: 1;
+}
+
+/* Several lit regions: one dim layer with a hole for each, and an outline
+   around each. */
+.hotshot__dim {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+}
+
+.hotshot__ring {
+  position: absolute;
+  border-radius: 6px;
+  box-shadow: 0 0 0 2px var(--n-accent);
+  pointer-events: none;
+}
+
+.hotshot__dim,
+.hotshot__ring {
+  animation: hotshot-in 140ms var(--n-ease);
+}
+
+@keyframes hotshot-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hotshot__lit {
+    transition: none;
+  }
+
+  .hotshot__dim,
+  .hotshot__ring {
+    animation: none;
+  }
+}
+
+.hotshot__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 3rem;
+  text-shadow: 0 0 10px #000;
+  pointer-events: none;
+}
+
+.hotshot__expand {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  display: flex;
+  padding: 5px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  opacity: 0;
+  transition: opacity var(--n-transition);
+  pointer-events: none;
+}
+
+.hotshot__frame:hover .hotshot__expand,
+.hotshot__frame:focus-visible .hotshot__expand,
+.hotshot__frame:focus-within .hotshot__expand {
+  opacity: 1;
+}
+
+/* With regions to click, the larger view has a button of its own. */
+.hotshot__expand.is-button {
+  z-index: 2;
+  margin: 0;
+  border: 0;
+  cursor: zoom-in;
+  pointer-events: auto;
+}
+
+/* Out of the way of a region in the bottom right corner. */
+.hotshot__expand.is-top {
+  top: 8px;
+  bottom: auto;
+}
+
+.hotshot__expand.is-left {
+  right: auto;
+  left: 8px;
+}
+
+.hotshot__expand.is-button:hover {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+/* Under the frame's bottom-right corner, on the page instead of the image,
+   with room kept for it so it never reaches what follows. */
+.hotshot.has-expand-below {
+  position: relative;
+  padding-bottom: 31px;
+}
+
+.hotshot__expand.is-below {
+  right: 0;
+  bottom: 0;
+  padding: 4px;
+  border: 1px solid var(--n-border);
+  background: var(--n-surface);
+  color: var(--n-text-muted);
+}
+
+.hotshot__expand.is-below:hover {
+  border-color: var(--n-accent-border);
+  background: var(--n-surface-hover);
+  color: var(--n-text);
+}
+
+.hotshot:hover .hotshot__expand.is-below,
+.hotshot__expand.is-below:focus-visible {
+  opacity: 1;
+}
+
+.hotshot__expand.is-button:focus-visible {
+  outline: 2px solid var(--n-accent);
+  outline-offset: 2px;
+}
+
+/* Without a mouse there's no hover to reveal it. */
+@media (hover: none) {
+  .hotshot__expand {
+    opacity: 1;
+  }
+}
+</style>
+
+<!-- Unscoped: these follow the .dark class on <html>. -->
+<style>
+/* Dark captures need a deeper dim for the lit region to stand out. */
+.dark .hotshot__lit {
+  box-shadow: 0 0 0 2px var(--n-accent), 0 0 0 100vmax rgba(0, 0, 0, 0.62);
+}
+
+.dark .hotshot__dim {
+  fill: rgba(0, 0, 0, 0.62);
+}
+
+.hotshot.has-dark .hotshot__dark {
+  display: none;
+}
+
+.dark .hotshot.has-dark .hotshot__light {
+  display: none;
+}
+
+.dark .hotshot.has-dark .hotshot__dark {
+  display: block;
+}
+</style>

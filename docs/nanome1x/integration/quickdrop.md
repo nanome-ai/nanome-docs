@@ -4,13 +4,13 @@ title: Quick Drop
 
 # Quick Drop
 
-Nanome Quick Drop is a powerful feature of Nanome that simplifies the process of loading files into the Nanome application. With Quick Drop, users can conveniently drag and drop files onto the home.nanome.ai webpage, and the files will automatically load the next time they open Nanome on their headset or computer. Third-party applications can utilize Quick Drop via Nanome's API to allow users to open files directly from their application into Nanome.
+Quick Drop loads files into Nanome. Files you drag onto home.nanome.ai, up to 100 MB in all, load the next time you open Nanome on your headset or computer. home.nanome.ai keeps them for up to 24 hours and deletes them once they load. Other applications can use Quick Drop through Nanome's API to open files in Nanome.
 
 ## Third-Party Integration
 
 By default, Quick Drop is only available on the home.nanome.ai webpage. However, third-party applications can integrate Quick Drop into their own applications by using Nanome's API. The following sections describe how to integrate Quick Drop into your application.
 
-Nanome has created a PyMOL plugin using Quick Drop, available [here.](https://github.com/nanome-ai/Pymol-plugin-Nanome-Quickdrop)
+Nanome made a [PyMOL plugin that uses Quick Drop](https://github.com/nanome-ai/Pymol-plugin-Nanome-Quickdrop).
 
 As of Nanome 1.24.4, Quick Drop has both a Nanome-hosted and a self-hosted version of Quick Drop. The APIs for these slightly differ, so please refer to the appropriate section below.
 
@@ -27,12 +27,13 @@ The following code snippet demonstrates this flow:
 const NANOME_API = 'https://api.nanome.ai'
 
 // array of File or Blob objects from <input type="file" />
-// or manually contructed from file data with new File() constructor
+// or manually constructed from file data with new File() constructor
 const files = [file1, file2]
 
 // get user login token
 const loginRes = await fetch(`${NANOME_API}/user/login`, {
     method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
         login: 'username',
         pass: 'password'
@@ -40,7 +41,7 @@ const loginRes = await fetch(`${NANOME_API}/user/login`, {
 }).then(res => res.json())
 
 const token = loginRes.results.token.value
-const headers = { 'Authorization': 'Bearer ' + token }
+const headers = { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' }
 
 // get S3 upload URLs
 const addRes = await fetch(`${NANOME_API}/quickdrop/add`, {
@@ -55,7 +56,7 @@ const urls = addRes.results
 let done = 0
 
 const onFileUploaded = async () => {
-    if (done != files.length) return
+    if (++done != files.length) return
 
     // notify Nanome API that all files are uploaded
     await fetch(`${NANOME_API}/quickdrop/update`, {
@@ -88,12 +89,13 @@ const NANOME_API = 'https://api.nanome.ai'
 const QUICKDROP_API = 'https://quickdrop.example.com'
 
 // array of File or Blob objects from <input type="file" />
-// or manually contructed from file data with new File() constructor
+// or manually constructed from file data with new File() constructor
 const files = [file1, file2]
 
 // get user unique ID
 const loginRes = await fetch(`${NANOME_API}/user/login`, {
     method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
         login: 'username',
         pass: 'password'
@@ -104,10 +106,10 @@ const unique = loginRes.results.user.unique
 let done = 0
 
 const onFileUploaded = async () => {
-    if (done != files.length) return
+    if (++done != files.length) return
 
     // notify Quick Drop server that all files are uploaded
-    await fetch(`${NANOME_API}/quickdrop/${unique}/update`, {
+    await fetch(`${QUICKDROP_API}/quickdrop/${unique}/update`, {
         method: 'POST'
     })
 }

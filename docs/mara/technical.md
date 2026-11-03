@@ -4,21 +4,37 @@ title: Technical Documentation
 
 # Technical Documentation
 
-## Architecture
-<vimg src="mara/architecture.png" />
-Enterprise deployment layout
+<IconGrid label="Technical topics">
+<IconCard icon="topology-star-3" title="Architecture and deployment" href="#architecture">How an enterprise deployment is laid out.</IconCard>
+<IconCard icon="tool" title="Tool creation" href="#tool-creation">Making your own tools for MARA.</IconCard>
+<IconCard icon="key" title="API keys" href="#api-keys">Using MARA and Nanome from other applications.</IconCard>
+<IconCard icon="lock" title="Authentication" href="#authentication">Single sign-on with SAML, and secrets shared across an organization.</IconCard>
+</IconGrid>
 
-## Tool Creation
+## <AppIcon name="topology-star-3" /> Architecture and deployment {#architecture}
 
-You can create your own custom tools to integrate with MARA! For more information on tool creation, refer to <a href="https://nanome.ai/blog/introduction-to-mara-tool-creation/">this blog.</a>
+MARA can run inside an organization's firewall and connect to its internal informatics systems. The layout of an enterprise deployment:
 
-## Creating API Keys & API Documentation
+<vimg src="mara/architecture.png" alt="Inside the customer firewall: the MARA server, the tool server, an internally hosted LLM API, users, and internal services and databases. Outside it: Nanome's authentication and SSO provider, and third-party services and public databases." />
 
-In the Settings page under the "System" tab, users can create and manage API keys to interact with MARA from third-party applications. These API keys enable developers to integrate MARA with existing web applications, communicate with MARA via chat platforms like Slack or Microsoft Teams, and perform all available MARA functionalities such as executing workflows. To generate a new API key, simply click on the "Create" button, and MARA will provide a key with an expiration date, which can be used to authenticate requests securely. Make sure to keep your API keys private to maintain security.
+## <AppIcon name="tool" /> Tool creation {#tool-creation}
 
-Official API documentation coming soon!
+Custom tools are Python scripts, SQL queries or HTTP endpoints, made on the [Tools page](/mara/tools#creating-a-tool) or imported from GitHub. MARA reads each tool's name and description to decide when to use it. Nanome's blog has an [introduction to MARA tool creation](https://nanome.ai/blog/introduction-to-mara-tool-creation/).
 
-## Authentication
+## <AppIcon name="key" /> API keys {#api-keys}
 
-MARA supports Single Sign-On (SSO) integration through standard SAML methods, enabling seamless and secure user authentication across enterprise environments. This allows organizations to centralize identity management and improve security by leveraging widely used identity providers such as Microsoft Azure Active Directory (AD), Okta, and other SAML-compliant platforms. 
-Additionally, administrators can configure organization-wide API keys for specific tools, granting controlled access to MARA’s resources, ensuring that integrations are both secure and scalable while simplifying the management of user permissions across the organization.
+API keys let other applications work with MARA and Nanome: tool routes, the `mara-client` Python package, or a chat platform such as Slack or Microsoft Teams. Keys are made under **API Keys** on the **System** tab of [Settings](/nanome_web/account#system), and each one has an expiry date.
+
+<Callout type="warning" title="Keep API keys private">
+
+A key works for anyone who has it, so a key that's no longer used, or that may have leaked, is best revoked.
+
+</Callout>
+
+The same tab has [MCP setup](/nanome_web/account#mcp-setup), which connects an AI assistant such as Claude Code to your Nanome projects and workspaces.
+
+## <AppIcon name="lock" /> Authentication {#authentication}
+
+MARA supports single sign-on (SSO) through standard SAML methods, so organizations can manage identity in one place with providers such as Microsoft Entra ID (formerly Azure Active Directory), Okta and other SAML-compliant platforms.
+
+Tools can also share secrets, such as an API key, across an organization. Under **Secrets** on the [Tools page](/mara/tools), **Create for** sets a secret for **my org** or for **myself**.

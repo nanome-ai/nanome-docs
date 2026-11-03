@@ -1,15 +1,316 @@
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vitepress'
 
 // Pages for people editing the docs. `docs:dev` serves them; `docs:build` leaves
-// them out, so they never reach docs.nanome.ai, its sitemap or its search index.
+// them out, so they never reach help.nanome.ai, its sitemap or its search index.
 const isProduction = process.env.NODE_ENV === 'production'
+
+// --- Page sections -----------------------------------------------------------
+
+const docsDir = fileURLToPath(new URL('..', import.meta.url))
+
+/** VitePress's heading slug (`slugify` in @mdit-vue/shared), copied because
+    the package is bundled inside VitePress rather than installed on its own. */
+const rControl = /[\u0000-\u001f]/g
+const rSpecial = /[\s~`!@#$%^&*()\-_+=[\]{}|\\;:"'“”‘’<>,.?/]+/g
+const rCombining = /[\u{300}-\u{36f}]/gu
+
+const slugify = (str) =>
+  str
+    .normalize('NFKD')
+    .replace(rCombining, '')
+    .replace(rControl, '')
+    .replace(rSpecial, '-')
+    .replace(/-{2,}/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .replace(/^(\d)/, '_$1')
+    .toLowerCase()
+
+const ENTITIES = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: '\u{a0}' }
+
+/**
+ * The text a heading's slug is made from: what markdown-it-anchor reads from
+ * its text and inline-code tokens. Inline HTML (the `<AppIcon>` in front of most
+ * headings), images and emphasis markers are not text, so they drop out.
+ */
+function headingText(source) {
+  return source
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+    .replace(/<\/?[A-Za-z][^>]*>/g, '')
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/`+ ?([^`]*?) ?`+/g, '$1')
+    .replace(/(?<!\*)(\*{1,3})(?![\s*])(.*?[^\s*])\1(?!\*)/g, '$2')
+    .replace(/(?<![\w_])(_{1,3})(?![\s_])(.*?[^\s_])\1(?![\w_])/g, '$2')
+    .replace(/(?<!~)~~(?![\s~])(.*?[^\s~])~~(?!~)/g, '$1')
+    .replace(/\\([!-/:-@[-`{-~])/g, '$1')
+    .replace(/&(#x?[0-9a-f]+|[a-z]+);/gi, (match, name) =>
+      name[0] === '#'
+        ? String.fromCodePoint(parseInt(name.slice(1).replace(/^x/i, '0x')))
+        : ENTITIES[name.toLowerCase()] ?? match
+    )
+}
+
+/**
+ * The h2 headings of the page a sidebar link points at, as `{ text, link }`.
+ *
+ * Read from the markdown when the config loads, so every page in the sidebar
+ * carries its own sections, whichever page is open. The id is the heading's
+ * own `{#id}`, or else the slug VitePress gives it. Ids are claimed in page
+ * order across every heading level, as VitePress claims them, so a repeated
+ * title gets the same `-1` suffix. In `docs:dev`, a new or renamed heading
+ * shows up here after a restart.
+ */
+function pageSections(link) {
+  const path = link.slice(1).replace(/\.(md|html)$/, '').replace(/(^|\/)$/, '$1index')
+  const file = [`${path}.md`, `${path}/index.md`]
+    .map((name) => `${docsDir}${name}`)
+    .find((name) => existsSync(name))
+  if (!file) return []
+
+  const lines = readFileSync(file, 'utf8')
+    .replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, '')
+    .split(/\r?\n/)
+
+  const sections = []
+  const taken = new Set()
+  let fence = null
+  let inComment = false
+
+  for (const line of lines) {
+    if (fence) {
+      if (line.match(/^ {0,3}(`{3,}|~{3,})[ \t]*$/)?.[1].startsWith(fence)) fence = null
+      continue
+    }
+    if (inComment) {
+      inComment = !line.includes('-->')
+      continue
+    }
+
+    const open = line.match(/^ {0,3}(`{3,}|~{3,})/)
+    if (open) {
+      fence = open[1]
+      continue
+    }
+    if (/<!--(?![\s\S]*-->)/.test(line)) {
+      inComment = true
+      continue
+    }
+
+    const heading = line.match(/^ {0,3}(#{1,6})(?:[ \t]+(.*?))?(?:[ \t]+#+)?[ \t]*$/)
+    if (!heading) continue
+
+    let content = heading[2] ?? ''
+    let id = null
+    const attrs = content.match(/[ \t]*\{([^{}]*)\}[ \t]*$/)
+    if (attrs) {
+      content = content.slice(0, attrs.index)
+      id = attrs[1].match(/(?:^|\s)#([^\s}]+)/)?.[1] ?? null
+    }
+
+    const text = headingText(content)
+    if (!id) {
+      const base = slugify(text)
+      id = base
+      for (let n = 1; taken.has(id); n++) id = `${base}-${n}`
+    }
+    taken.add(id)
+
+    if (heading[1].length === 2) {
+      sections.push({ text: text.replace(/\s+/g, ' ').trim(), link: `${link}#${id}` })
+    }
+  }
+
+  return sections
+}
+
+/** Gives every page link in a sidebar tree its `sections`, for the theme's
+    left rail and breadcrumb. Section links carry a `#`, so they get none. */
+function withSections(items) {
+  for (const item of items) {
+    if (item.items) withSections(item.items)
+    if (item.link?.startsWith('/') && !item.link.includes('#')) {
+      const sections = pageSections(item.link)
+      if (sections.length) item.sections = sections
+    }
+  }
+  return items
+}
+
+/** The attributes that hold a component's visible label, for the search index. */
+const SEARCH_LABELS = {
+  UiItem: ['name'],
+  MapCard: ['title'],
+  IconCard: ['title'],
+  Accordion: ['title', 'teaser'],
+  Callout: ['title'],
+}
+
+// --- Image data --------------------------------------------------------------
+
+/**
+ * scripts/compress.js lists each image's copy size, content hash, dark twin,
+ * on-screen width and smaller copy in theme/image-*.json. The theme script
+ * doesn't carry those lists, which hold every image on the site. Instead each
+ * page's script gets the entries for the images its markdown names, and adds
+ * them (addImages in theme/components/image.js) before the page renders.
+ *
+ * The option-panel demos pick their frames as the reader clicks, so no page
+ * names them. A page with one of those demos (a component in theme/components/
+ * demos that uses image.js or DemoStage) imports one more chunk with every
+ * frame's entry, which the browser fetches beside the page's script and keeps.
+ */
+const themeDir = fileURLToPath(new URL('./theme/', import.meta.url))
+const IMAGE_LISTS = ['sizes', 'versions', 'variants', 'widths', 'small']
+const IMAGE_MODULE = `${themeDir}components/image.js`
+const FRAMES = 'nanome-v2/v2-7/options/'
+const FRAMES_ID = 'virtual:demo-frames'
+const IMAGE_PATH = /[\w.@+\/-]+\.(?:png|jpe?g|gif|webp)/gi
+const FRAME_DEMOS = new RegExp(
+  `<(${readdirSync(`${themeDir}components/demos`)
+    .filter((f) => f.endsWith('.vue') && /DemoStage|imageInfo/.test(readFileSync(`${themeDir}components/demos/${f}`, 'utf8')))
+    .map((f) => f.slice(0, -4))
+    .join('|')})\\b`
+)
+
+function imageData() {
+  let lists = null
+  let stamp = ''
+
+  // Read again whenever compress.js has rewritten a list, for `docs:dev`.
+  function readLists() {
+    const files = IMAGE_LISTS.map((name) => `${themeDir}image-${name}.json`)
+    const now = files.map((f) => (existsSync(f) ? statSync(f).mtimeMs : 0)).join()
+    if (now !== stamp) {
+      stamp = now
+      lists = Object.fromEntries(
+        IMAGE_LISTS.map((name, i) => [name, existsSync(files[i]) ? JSON.parse(readFileSync(files[i], 'utf8')) : {}])
+      )
+    }
+    return lists
+  }
+
+  /** The entries for these images and their dark twins, sorted. */
+  function entries(srcs) {
+    const { sizes, versions, variants, widths, small } = readLists()
+    const all = new Set()
+    for (const src of srcs) {
+      if (!sizes[src]) continue
+      all.add(src)
+      if (sizes[variants[src]]) all.add(variants[src])
+    }
+    const out = {}
+    for (const src of [...all].sort()) {
+      const entry = { size: sizes[src], v: versions[src] }
+      if (widths[src]) entry.shown = Math.round(widths[src] / 2)
+      if (variants[src]) entry.dark = variants[src]
+      if (small[src]) entry.small = small[src]
+      out[src] = entry
+    }
+    return out
+  }
+
+  /** A page's markdown, with any files it includes. */
+  function source(file, depth = 0) {
+    let text = ''
+    try {
+      text = readFileSync(file, 'utf8')
+    } catch {
+      return ''
+    }
+    if (depth > 3) return text
+    return text.replace(/<!--\s*@include:\s*([^\s{#]+)[^>]*?-->/g, (all, inc) => {
+      const at = inc.startsWith('@/') ? resolve(docsDir, inc.slice(2)) : resolve(dirname(file), inc)
+      return `${all}\n${source(at, depth + 1)}`
+    })
+  }
+
+  return {
+    name: 'nanome-image-data',
+    enforce: 'post',
+    resolveId(id) {
+      if (id === FRAMES_ID) return `\0${FRAMES_ID}`
+    },
+    load(id) {
+      if (id !== `\0${FRAMES_ID}`) return
+      const frames = Object.keys(readLists().sizes).filter((src) => src.startsWith(FRAMES))
+      return `import { addImages } from ${JSON.stringify(IMAGE_MODULE)}\naddImages(${JSON.stringify(entries(frames))})\n`
+    },
+    transform(code, id) {
+      if (!id.endsWith('.md')) return
+      const md = source(id)
+      const { sizes } = readLists()
+      const named = new Set()
+      for (const [path] of md.matchAll(IMAGE_PATH)) {
+        const src = path.replace(/^\.?\/?(assets\/(compressed|original)\/)?/, '')
+        if (sizes[src]) named.add(src)
+      }
+      const head = []
+      if (named.size) {
+        head.push(`import { addImages as __addImages } from ${JSON.stringify(IMAGE_MODULE)}`)
+        head.push(`__addImages(${JSON.stringify(entries(named))})`)
+      }
+      if (FRAME_DEMOS.test(md)) head.push(`import ${JSON.stringify(FRAMES_ID)}`)
+      if (!head.length) return
+      return { code: `${head.join('\n')}\n${code}`, map: null }
+    },
+  }
+}
 
 export default defineConfig({
   title: 'Help & Documentation',
   description: 'Documentation site for Nanome software.',
   cleanUrls: true,
 
+  // The site data, which now carries every page's section list, goes in one
+  // cached script instead of being inlined into every page's HTML.
+  metaChunk: true,
+
+  // Where a clicked anchor link puts its heading: 40px under the theme's
+  // breadcrumb strip, or under the nav bar on a page without one. The
+  // heading margins in theme/styles/doc.css match it for links opened
+  // directly. The section highlight in the rails uses the same line.
+  scrollOffset: { selector: ['.n-pagebar', '.n-navbar'], padding: 40 },
+
+  // Each page's image entries go in its own script (see imageData above).
+  vite: { plugins: [imageData()] },
+
   srcExclude: isProduction ? ['contributing/**'] : [],
+
+  // A line that starts with <Btn> or <AppIcon> stays a paragraph. VitePress
+  // otherwise reads any line that starts with a component as a block of its
+  // own, so the line loses its paragraph spacing, or runs on into the next
+  // paragraph or the line before it.
+  markdown: {
+    component: { inlineTags: ['Btn', 'AppIcon'] },
+
+    // A heading's permalink is named for the heading's text, without the
+    // <AppIcon> in front of it or the {#id} after it.
+    config(md) {
+      md.core.ruler.after('anchor', 'n-anchor-label', (state) => {
+        for (const token of state.tokens) {
+          if (token.type !== 'inline') continue
+          for (const child of token.children || []) {
+            if (child.type !== 'link_open' || !(child.attrGet('class') || '').includes('header-anchor')) continue
+            const text = headingText(token.content.replace(/[ \t]*\{[^{}]*\}[ \t]*$/, '')).replace(/\s+/g, ' ').trim()
+            child.attrSet('aria-label', `Permalink to "${text}"`)
+          }
+        }
+      })
+
+      // Short inline code with no spaces, such as `mara-client` or
+      // `XXXX-XXXX`, gets a class that keeps it on one line (doc.css), so it
+      // never breaks at its hyphen. Longer code, such as a path or URL, can
+      // still wrap on a phone.
+      const codeInline = md.renderer.rules.code_inline
+      md.renderer.rules.code_inline = (tokens, idx, options, env, self) => {
+        const { content } = tokens[idx]
+        if (content.length <= 24 && !/\s/.test(content)) tokens[idx].attrJoin('class', 'n-nobreak')
+        return codeInline(tokens, idx, options, env, self)
+      }
+    }
+  },
 
   head: [
     ['link', { rel: 'icon', href: '/assets/favicon.ico' }],
@@ -17,7 +318,7 @@ export default defineConfig({
       'script',
       {
         async: '',
-        src: 'https://www.googletagmanager.com/gtag/js?id=UA-79179574-15'
+        src: 'https://www.googletagmanager.com/gtag/js?id=G-WZG1LLVNW8'
       }
     ],
     [
@@ -26,12 +327,12 @@ export default defineConfig({
       `window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'UA-79179574-15');`
+      gtag('config', 'G-WZG1LLVNW8');`
     ]
   ],
 
   sitemap: {
-    hostname: 'https://docs.nanome.ai'
+    hostname: 'https://help.nanome.ai'
   },
 
   lastUpdated: true,
@@ -45,15 +346,39 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Nanome.ai', link: 'https://nanome.ai/' },
-      { text: 'Download', link: 'https://home.nanome.ai/setup' },
+      { text: 'Download', link: '/getting-started#install' },
       { text: 'Contact', link: '/help/contact' },
     ],
 
     search: {
-      provider: 'local'
+      provider: 'local',
+      options: {
+        // The search index reads a section's title from the text before the
+        // heading's first `<a`, and matches it in any case, so the <AppIcon> in
+        // front of a heading left the title empty and the section out of the
+        // index. Drop the icons first. `search: false` still leaves a page out.
+        //
+        // The index keeps only text, so labels written as attributes, such as
+        // a legend row's button name or a card's title, are copied into the
+        // text after their tag, and a search for a button finds its section.
+        _render(src, env, md) {
+          const html = md.render(src, env)
+          if (env.frontmatter?.search === false) return ''
+          return html
+            .replace(/<\/?AppIcon\b[^>]*>/g, '')
+            .replace(/<(UiItem|MapCard|IconCard|Accordion|Callout)\b([^>]*)>/g, (tag, name, attrs) => {
+              const text = (SEARCH_LABELS[name] || [])
+                .map((a) => attrs.match(new RegExp(`(?:^|\\s)${a}="([^"]*)"`))?.[1])
+                .filter(Boolean)
+              return text.length ? `${tag} ${text.join('. ')}. ` : tag
+            })
+        }
+      }
     },
 
-    sidebar: [
+    // Each Overview row names its group in `docFooterText`, so the previous and
+    // next links at the foot of a page say which overview they open.
+    sidebar: withSections([
       {
         text: 'Home',
         link: '/'
@@ -66,29 +391,40 @@ export default defineConfig({
             text: 'Nanome XR',
             collapsed: true,
             items: [
-              { text: 'Login', link: '/nanome_v2/login' },
-              { text: 'Environment', link: '/nanome_v2/environment' },
-              { text: 'Main Panel', link: '/nanome_v2/mainpanel' },
-              { text: 'Scenes Panel', link: '/nanome_v2/scenespanel' },
-              { text: 'Sequence Panel', link: '/nanome_v2/sequencepanel' },
-              { text: 'Tools Panel', link: '/nanome_v2/toolspanel' },
-              { text: 'Wrist Menu', link: '/nanome_v2/wristmenu' },
-              { text: 'Collaboration', link: '/nanome_v2/collaboration' },
-              { text: 'Sample Workflows', link: '/nanome_v2/sampleworkflows' },
+              { text: 'Overview', docFooterText: 'Nanome XR Overview', link: '/nanome_v2/overview' },
               { text: 'Getting Started', link: '/getting-started' },
+              { text: "What's New in 2.7", link: '/nanome_v2/whatsnew' },
+              { text: 'Login', link: '/nanome_v2/login' },
+              { text: 'Controls', link: '/nanome_v2/controls' },
+              { text: 'Main Panel', link: '/nanome_v2/mainpanel' },
+              { text: 'Tools Panel', link: '/nanome_v2/toolspanel' },
+              { text: 'Scenes Panel', link: '/nanome_v2/scenespanel' },
+              { text: 'Wrist Menu', link: '/nanome_v2/wristmenu' },
+              { text: 'Sequence Panel', link: '/nanome_v2/sequencepanel' },
+              { text: 'Environment', link: '/nanome_v2/environment' },
+              { text: 'Collaboration', link: '/nanome_v2/collaboration' },
               { text: 'Session Guide', link: '/session-guide' },
-              { text: 'Tips', link: '/nanome_v2/tips' }
+              { text: 'Sample Workflows', link: '/nanome_v2/sampleworkflows' },
+              { text: 'Tips', link: '/nanome_v2/tips' },
+              { text: 'Vision Pro', link: '/nanome_v2/visionpro' }
             ]
           },
           {
             text: 'Nanome Web',
             collapsed: true,
             items: [
-              { text: 'Overview', link: '/nanome_web/overview' },
-              { text: 'Web App Basics', link: '/nanome_web/basics' },
+              { text: 'Overview', docFooterText: 'Nanome Web Overview', link: '/nanome_web/overview' },
+              { text: 'Web App Basics (Video)', link: '/nanome_web/basics' },
+              { text: 'Home, Workspaces & Projects', link: '/nanome_web/home' },
+              { text: 'Workspace View', link: '/nanome_web/workspace' },
+              { text: 'Selection & Measurement', link: '/nanome_web/workspace#tool-rail' },
               { text: 'Loading Structures', link: '/nanome_web/loading' },
-              { text: 'Invite & Follow', link: '/nanome_web/collaboration' },
+              { text: 'Entries Tab', link: '/nanome_web/entries' },
+              { text: 'Ligands Tab', link: '/nanome_web/ligands' },
+              { text: 'Users & Sharing', link: '/nanome_web/collaboration' },
+              { text: 'Comments', link: '/nanome_web/comments' },
               { text: 'MD Trajectory Playback', link: '/nanome_web/mdplayback' },
+              { text: 'Account & Settings', link: '/nanome_web/account' },
               { text: 'Supported File Formats', link: '/nanome_web/fileformats' }
             ]
           }
@@ -98,12 +434,12 @@ export default defineConfig({
         text: 'MARA',
         collapsed: true,
         items: [
-          { text: 'Overview', link: '/mara/overview' },
-          { text: 'Navigation', link: '/mara/navigation' },
+          { text: 'Overview', docFooterText: 'MARA Overview', link: '/mara/overview' },
+          { text: 'Conversations', link: '/mara/conversations' },
+          { text: 'Tools', link: '/mara/tools' },
           { text: 'Features', link: '/mara/features' },
-          { text: 'Resources', link: '/mara/resources' },
-          { text: 'Deployment', link: '/mara/deployment' },
-          { text: 'Technical', link: '/mara/technical' }
+          { text: 'Technical', link: '/mara/technical' },
+          { text: 'Resources', link: '/mara/resources' }
         ]
       },
       {
@@ -112,13 +448,14 @@ export default defineConfig({
         items: [
           {
             text: 'Overview',
+            docFooterText: 'Nanome Classic Overview',
             link: '/nanome1x/overview'
           },
           {
             text: 'Nanome Controls',
             collapsed: true,
             items: [
-              { text: 'Overview', link: '/controls/overview' }
+              { text: 'Overview', docFooterText: 'Nanome Controls Overview', link: '/controls/overview' }
             ]
           },
           {
@@ -139,7 +476,7 @@ export default defineConfig({
             text: 'Nanome Plugins (Stacks)',
             collapsed: true,
             items: [
-              { text: 'Overview', link: '/nanome1x/plugins/overview' },
+              { text: 'Overview', docFooterText: 'Plugins Overview', link: '/nanome1x/plugins/overview' },
               { text: 'Chemical Interactions', link: '/nanome1x/plugins/cheminteractions' },
               { text: 'Superimpose', link: '/nanome1x/plugins/superimpose' },
               { text: 'Antibodies', link: '/nanome1x/plugins/antibodies' },
@@ -148,7 +485,7 @@ export default defineConfig({
               { text: 'Docking', link: '/nanome1x/plugins/docking' },
               { text: 'LiveDesign', link: '/nanome1x/plugins/LiveDesign' },
               { text: 'Minimization', link: '/nanome1x/plugins/minimization' },
-              { text: 'Real-Time Scoring', link: '/nanome1x/plugins/realtimescoring' },
+              { text: 'Real-time Scoring', link: '/nanome1x/plugins/realtimescoring' },
               { text: 'Structure Prep', link: '/nanome1x/plugins/structureprep' },
               { text: 'Vault', link: '/nanome1x/plugins/vault' },
               { text: 'Scene Viewer', link: '/nanome1x/plugins/sceneviewer' },
@@ -162,7 +499,7 @@ export default defineConfig({
             text: 'Nanome Macros',
             collapsed: true,
             items: [
-              { text: 'Overview', link: '/nanome1x/macros/overview' }
+              { text: 'Overview', docFooterText: 'Macros Overview', link: '/nanome1x/macros/overview' }
             ]
           },
           {
@@ -170,6 +507,16 @@ export default defineConfig({
             collapsed: true,
             items: [
               { text: 'How To', link: '/nanome1x/howto/howto' }
+            ]
+          },
+          {
+            text: 'Hardware & Deployment',
+            collapsed: true,
+            items: [
+              { text: 'Choosing Hardware (Classic)', link: '/help/choosinghardware-classic' },
+              { text: 'Hardware Requirements', link: '/help/hardwarerequirements' },
+              { text: 'PC Hardware', link: '/help/pchardware' },
+              { text: 'Enterprise Deployment', link: '/help/enterprise' }
             ]
           },
           {
@@ -183,29 +530,24 @@ export default defineConfig({
         ]
       },
       {
-        text: 'Account Management\nhome.nanome.ai',
+        text: 'Accounts & Licenses',
         collapsed: true,
         items: [
-          { text: 'Overview', link: '/home.nanome.ai/overview_home_nanome' },
-          { text: 'Account Tiers', link: '/home.nanome.ai/accounttiers' },
-          { text: 'Invoice', link: '/home.nanome.ai/invoice' },
+          { text: 'Overview', docFooterText: 'Accounts & Licenses Overview', link: '/home.nanome.ai/overview_home_nanome' },
           { text: 'Licenses', link: '/home.nanome.ai/licenses' },
-          { text: 'Meetings', link: '/home.nanome.ai/meetings' },
-          { text: 'Two Factor Auth', link: '/home.nanome.ai/twofactorauth' }
+          { text: 'Two-Factor Auth', link: '/home.nanome.ai/twofactorauth' },
+          { text: 'Invoice', link: '/home.nanome.ai/invoice' },
+          { text: 'Account Tiers', link: '/home.nanome.ai/accounttiers' },
+          { text: 'Meetings', link: '/home.nanome.ai/meetings' }
         ]
       },
       {
         text: 'Help',
         collapsed: true,
         items: [
-          { text: 'Troubleshooting', link: '/help/troubleshooting' },
-          { text: 'Hardware Requirements', link: '/help/hardwarerequirements' },
-          { text: 'PC Hardware', link: '/help/pchardware' },
-          { text: 'Choosing Hardware', link: '/help/choosinghardware' },
-          { text: 'Choosing Hardware (Nanome Classic)', link: '/help/choosinghardware-classic' },
-          { text: 'Quest for Business', link: '/help/questforbusiness' },
-          { text: 'Enterprise', link: '/help/enterprise' },
           { text: 'FAQ', link: '/help/faq' },
+          { text: 'Troubleshooting', link: '/help/troubleshooting' },
+          { text: 'Choosing Hardware', link: '/help/choosinghardware' },
           { text: 'Contact', link: '/help/contact' }
         ]
       },
@@ -216,7 +558,7 @@ export default defineConfig({
           { text: 'Interactive components', link: '/contributing/components' }
         ]
       }])
-    ],
+    ]),
 
     sidebarDepth: 2
   }

@@ -1,24 +1,40 @@
 ---
 title: Hardware Requirements
+classic: true
 ---
 
 # Hardware Requirements
 
-#### The recommended Virtual Reality Headsets
+<IconGrid label="Hardware">
+<IconCard icon="device-vision-pro" title="Headsets" href="#headsets">The recommended VR headsets.</IconCard>
+<IconCard icon="device-desktop" title="Desktop PC" href="/help/pchardware">Minimum and recommended PC specs.</IconCard>
+<IconCard icon="device-laptop" title="Laptops" href="#laptops">Examples of lightweight VR-ready laptops.</IconCard>
+<IconCard icon="server" title="Collaboration server" href="#collaboration-server">Specs for a private, secure server.</IconCard>
+</IconGrid>
 
-Supported headsets
+## <AppIcon name="device-vision-pro" /> Recommended headsets {#headsets}
 
-<vimg src="gettingStarted-page/SupportedHeadsets2023-2.png" />
+These headsets are for Nanome Classic. For Nanome XR on Meta Quest, Quest 2
+and Quest Pro are the minimum and Quest 3 and 3S are recommended, as
+[Choosing Hardware](/help/choosinghardware#quest-minimum-recommended) explains.
 
-#### Recommended specs for a desktop computer
-Please see <a href="/help/pchardware"> minimum and recommended PC specs here. </a>
+<vimg src="gettingStarted-page/SupportedHeadsets2023-2.png" alt="Supported headsets" />
 
-#### Examples of light weight VR ready laptops:
+Pictured, row by row: Meta Quest 3, Pico 4, HTC Vive XR Elite, Meta Quest 2 and Quest Pro, Pico Neo 3, HTC Vive Focus 3, Oculus Rift S, Varjo XR-3, HTC Vive Pro, Windows Mixed Reality (HP Reverb G2), Valve Index and HTC Vive Cosmos.
+
+## <AppIcon name="device-laptop" /> Lightweight VR-ready laptops {#laptops}
+
+For example:
+
 - MSI GS66 Stealth with RTX 3060
 - MSI GS66 Stealth with RTX 3070
 - MSI GS66 Stealth with RTX 3080
 
-#### The recommended specs for a private and secure collaboration server:
-1 quad core CPU (e.g., Intel Xeon 3440, E3-1230 etc.) 4 GB RAM
-1 GBps NIC / uplink port speed
-Windows Server 2012 and above
+## <AppIcon name="server" /> Private, secure collaboration server {#collaboration-server}
+
+Recommended specs:
+
+- 1 quad core CPU, such as an Intel Xeon 3440 or E3-1230
+- 4 GB RAM
+- 1 Gbps NIC / uplink port speed
+- Windows Server 2012 and above

@@ -6,13 +6,17 @@
  *   <Tabs :labels="['ArborXR', 'ManageXR', 'Meta HMS']">
  *     <Tab>…</Tab><Tab>…</Tab><Tab>…</Tab>
  *   </Tabs>
+ *
+ * `ids` names the tabs, so a link to #<id> opens that tab and lands on it.
  */
-import { computed, provide, ref, useId } from 'vue'
+import { computed, onBeforeUnmount, onMounted, provide, ref, useId } from 'vue'
 
 const props = defineProps({
   labels: { type: Array, required: true },
   /** Small note under each label, same order as `labels`. */
   notes: { type: Array, default: () => [] },
+  /** Anchor ids for the tabs, same order as `labels`. */
+  ids: { type: Array, default: () => [] },
 })
 
 const active = ref(0)
@@ -28,7 +32,7 @@ provide('n-tabs', {
 
 // Unique per instance: a long guide page can hold more than one tab set.
 const uid = useId()
-const tabId = (i) => `${uid}-tab-${i}`
+const tabId = (i) => props.ids[i] || `${uid}-tab-${i}`
 const panelId = (i) => `${uid}-panel-${i}`
 
 const count = computed(() => props.labels.length)
@@ -46,6 +50,22 @@ function onKey(event) {
 
   document.getElementById(tabId(active.value))?.focus()
 }
+
+/** A link to one of the tabs opens it. */
+function fromHash() {
+  let id = ''
+  try {
+    id = decodeURIComponent(location.hash.slice(1))
+  } catch {}
+  const i = id ? props.ids.indexOf(id) : -1
+  if (i >= 0) active.value = i
+}
+
+onMounted(() => {
+  fromHash()
+  addEventListener('hashchange', fromHash)
+})
+onBeforeUnmount(() => removeEventListener('hashchange', fromHash))
 </script>
 
 <template>
@@ -60,7 +80,7 @@ function onKey(event) {
         class="n-tabs__tab"
         :class="{ 'is-active': active === i }"
         :aria-selected="active === i ? 'true' : 'false'"
-        :aria-controls="panelId(i)"
+        :aria-controls="active === i ? panelId(i) : undefined"
         :tabindex="active === i ? 0 : -1"
         @click="active = i"
       >
@@ -89,7 +109,9 @@ function onKey(event) {
   display: flex;
   gap: 4px;
   overflow-x: auto;
-  border-bottom: 1px solid var(--n-border);
+  /* The rule under the tabs is drawn inside the list too, so the active
+     tab's line covers it instead of sitting above it. */
+  box-shadow: inset 0 -1px 0 var(--n-border);
   scrollbar-width: none;
 }
 
@@ -97,25 +119,57 @@ function onKey(event) {
   display: none;
 }
 
+/* The active tab's line is drawn inside the tab, so the strip's scroll box
+   can't clip it. */
 .n-tabs__tab {
   padding: 10px 14px;
   border: 0;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
   background: none;
+  box-shadow: inset 0 -2px 0 transparent;
   color: var(--n-text-faint);
   text-align: left;
   white-space: nowrap;
   cursor: pointer;
-  transition: color var(--n-transition), border-color var(--n-transition);
+  transition: color var(--n-transition), box-shadow var(--n-transition);
+}
+
+/* On a phone the tabs share one row and their labels wrap. A tab only
+   moves to a second row when a single word won't fit, so none hides past
+   the edge. */
+@media (max-width: 639px) {
+  /* Each tab draws its own part of the rule, so a second row has a rule
+     under it too, and the active tab's line sits on its row's rule. */
+  .n-tabs__list {
+    flex-wrap: wrap;
+    gap: 0;
+    box-shadow: none;
+  }
+
+  /* A column, so labels of one and two lines all start at the top. The side
+     padding stands in for the gap between tabs. */
+  .n-tabs__tab {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    padding: 10px;
+    white-space: normal;
+    box-shadow: inset 0 -1px 0 var(--n-border);
+  }
 }
 
 .n-tabs__tab:hover {
   color: var(--n-text);
 }
 
+/* Inset, so the strip's scroll box doesn't clip the ring. */
+.n-tabs__tab:focus-visible {
+  outline: 2px solid var(--n-accent);
+  outline-offset: -2px;
+  border-radius: var(--n-radius-sm);
+}
+
 .n-tabs__tab.is-active {
-  border-bottom-color: var(--n-accent);
+  box-shadow: inset 0 -2px 0 var(--n-accent);
   color: var(--n-text);
 }
 

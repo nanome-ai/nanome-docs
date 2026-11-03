@@ -1,49 +1,170 @@
 ---
 title: Troubleshooting
+outline: [2, 3]
 ---
 
 # Troubleshooting
 
-## Having Trouble Logging into Nanome?
+Fixes for Nanome XR and Nanome Web: sign-in messages, the device limit, licenses, the network and sound. The ports, VPN and firewall steps for Nanome Classic (v1.24) are in [their own section](#classic) at the end.
 
-### These ports are REQUIRED from each machine/VR device:
+<IconGrid label="Troubleshooting topics" :cols="3">
+<IconCard icon="alert-triangle" title="Sign-in messages" href="#sign-in">What each message means, and what to do next.</IconCard>
+<IconCard icon="devices" title="Device limit" href="#device-limit">Each license covers one device at a time.</IconCard>
+<IconCard icon="license" title="License" href="#license">No license for Nanome XR, or one about to expire.</IconCard>
+<IconCard icon="wifi" title="Network" href="#network">Nanome cloud checks, and on-prem deployments.</IconCard>
+<IconCard icon="volume" title="No sound" href="#audio">Your mic, muted people and device audio.</IconCard>
+<IconCard icon="headset" title="Nanome Classic" href="#classic">Ports, VPN and Windows Firewall for v1.24.</IconCard>
+</IconGrid>
 
-- (Authentication) TCP Port 443 to DNS api.nanome.ai
-- (Collaboration) UDP Ports 5055-5056 to DNS collaboration.nanome.ai, collaboration-us-east.nanome.ai, and collaboration-us-west.nanome.ai
-- (Plugins) TCP Port 8888 to DNS plugins.nanome.ai
+## <AppIcon name="alert-triangle" /> Sign-in messages {#sign-in}
 
-### These ports are OPTIONAL from each machine/VR device
+Since release 2.7, the Nanome XR login screen says why a sign-in failed. **Details** shows the error code, HTTP status and time, which are worth including when you [contact support](/help/contact).
 
-(Molecular Databases)
-- TCP 443 to DNS files.rcsb.org
-- TCP 443 to DNS pubchem.ncbi.nlm.nih.gov
-- TCP 443 to DNS www.drugbank.ca
+| The message is about | What to do |
+| --- | --- |
+| A wrong username or password | Check both. Forgotten passwords are reset at [home.nanome.ai](https://home.nanome.ai). |
+| An account that has to use the Code tab | Accounts created with Google, Microsoft or Apple, accounts that use SSO, and accounts with two-factor authentication sign in with the <Btn icon="key">Code</Btn> tab. [How the Code tab works](/nanome_v2/login#code). The Apple Vision Pro beta has no Code tab, so these accounts can't sign in there yet. |
+| An organization IP restriction | The organization only allows sign-in from certain networks. Try again from one of them, or ask the organization's Nanome admin. |
+| No license for Nanome XR | See [License](#license). |
+| A network problem | See [Network](#network). |
 
-### If you are unable to get the Steam or Oculus applications to work regardless of Nanome, try opening these ports from each device:
+[Login Screen](/nanome_v2/login#sign-in-messages) describes every button on the screen.
 
-#### Oculus (according to their documentation)
+## <AppIcon name="devices" /> Device limit {#device-limit}
 
-TCP port 80 & 443 for
+Each Nanome license covers one device at a time.
+
+- **A Device Limit screen at sign-in** means the account is already in use on another device. The screen lists those sessions. Choose **Sign Out** on one of them, then **Retry**.
+- **Signed out with a notice** can mean the same account signed in on another device. An expired license also signs out with a notice (see [License](#license)).
+
+On a shared headset, <Btn icon="outbound">Log Out</Btn> at the bottom of the [Settings tab](/nanome_v2/mainpanel#settings-tab) signs you out, so the next person starts with their own account.
+
+## <AppIcon name="license" /> License {#license}
+
+- **No license for Nanome XR.** Working in a headset takes a Collab or Full seat. A free license covers the browser at [app.nanome.ai](https://app.nanome.ai), with 1 owned project, 3 owned workspaces and 5 structures per workspace.
+- **Assigning a seat.** An admin assigns licenses at home.nanome.ai under **Licenses** > **Assign Users**, using each user's account email. The license activates once that user confirms the email Nanome sends. Step by step: [Manage Licenses](/home.nanome.ai/licenses).
+- **Expiring soon.** Nanome warns when a license will expire within 30 days. When it expires, Nanome signs out with a notice.
+
+Every new account starts with a 14-day Full license trial. [Account Tiers](/home.nanome.ai/accounttiers) compares the seats and lists prices.
+
+## <AppIcon name="wifi" /> Network {#network}
+
+The full checklist and the firewall allowlist for IT are in [Getting Started: Wi-Fi & network](/getting-started#network).
+
+### <AppIcon name="world" /> Nanome cloud (app.nanome.ai) {#network-cloud}
+
+These checks narrow down most connection problems.
+
+<Steps>
+
+1. **Read the sign-in message.** The login screen names network problems, such as no connection or a network that blocks the sign-in request.
+2. **Rule out a sign-in page.** Guest networks that ask for a browser sign-in (captive portals) block headset setup. A Quest also shows a no-internet message whenever it can't reach Meta, before Nanome opens.
+3. **Check the firewall.** Nanome needs outbound TCP 443 to `*.nanome.ai` and `*.nanome.com`, allowed by hostname, since the servers' IP addresses change. These hosts should also be exempt from TLS/SSL inspection.
+4. **Test the connection.** From the same network, `curl -v https://api.nanome.com` confirms port 443 is open (ping uses ICMP and doesn't test it). When a phone hotspot works and the office network doesn't, the office network is blocking something.
+
+</Steps>
+
+Collaboration and voice use the same secure WebSocket connection on TCP 443, so no UDP ports are involved. Nanome XR on Windows only makes outbound connections and doesn't listen for incoming ones, so Windows Firewall needs no inbound rule for it. The [Windows Firewall steps](#firewall) further down are for Nanome Classic.
+
+### <AppIcon name="server" /> On-prem or private VM {#network-on-prem}
+
+Only for Nanome v2 running on the organization's own VM. Its ports, DNS names and auth proxy are in [Getting Started: On-prem or private VM](/getting-started#on-prem), and installation is in Nanome's [v2 deployment guide](https://nanome.ai/deploy).
+
+<AccordionGroup label="3 on-prem problems">
+
+<Accordion title="A headset can't reach Nanome's servers" teaser="Without internet access, headsets sign in through the auth proxy.">
+
+Headsets sign in and check licenses through Nanome's API at api.nanome.com. On an internal network that stops them from reaching it, point Meta Quest and Galaxy XR headsets at the auth proxy on the VM with a config file from the MDM: [auth proxy setup](/getting-started#on-prem). The proxy forwards their requests to api.nanome.com. Once the file is on the headset, Nanome shows **Nanome Routing unreachable** with **Read routing file on device**.
+
+</Accordion>
+
+<Accordion title="Error response from daemon: pull access denied" teaser="AWS access on the VM, or aws_login.py skipped before a redeploy.">
+
+On a fresh deployment, the VM's AWS access isn't configured correctly. Check that the Access Key and Secret Key are in `~/.aws/credentials`, run `python aws_login.py`, and try again.
+
+When redeploying, run `python aws_login.py` before `docker compose up -d --wait`.
+
+</Accordion>
+
+<Accordion title="chromadb.errors.InvalidDimensionException" teaser="The embedding model changed, so the old embeddings have to go.">
+
+"Embedding dimension X does not match collection dimensionality Y" appears when a deployment switches to a different text embedding model. Older deployments use text-embedding-ada-002 by default. Clear the old embeddings:
+
+```sh
+docker compose down
+docker volume rm nanome-deployer_mara-embeddings-volume
+docker compose up -d --wait
+```
+
+</Accordion>
+
+</AccordionGroup>
+
+## <AppIcon name="volume" /> No sound {#audio}
+
+- **Nobody can hear you.** Check <Btn icon="microphone">Mic</Btn> in the [Users tab](/nanome_v2/mainpanel#user-settings): its meter moves when your mic picks up sound. The off-hand controller's primary button (**X**, or **A** when left-handed) also mutes you.
+- **You can't hear one person.** <Btn icon="volume-3">Mute</Btn> in that person's <AppIcon name="dots" /> menu, under **Users in workspace**, mutes them for you only. Check you haven't muted them.
+- **No sound at all.** Check the device's own audio: [sound problems in Windows](https://support.microsoft.com/en-us/windows/hardware/audio/fix-sound-or-audio-problems-in-windows), or the [Meta Quest Help Center](https://www.meta.com/help/quest/).
+
+## <AppIcon name="headset" /> Nanome Classic (v1.24) {#classic}
+
+<Callout type="warning" title="For Nanome Classic only">
+
+Everything in this section is for Nanome Classic (v1.24), the older app. For Nanome XR and Nanome Web, see [Network](#network) above.
+
+</Callout>
+
+### Ports Nanome Classic needs {#ports}
+
+These are **required** from each machine or VR device:
+
+| For | Port | To |
+| --- | --- | --- |
+| Authentication | TCP 443 | api.nanome.ai |
+| Collaboration | UDP 5055-5056 | collaboration.nanome.ai, collaboration-us-east.nanome.ai and collaboration-us-west.nanome.ai |
+| Plugins | TCP 8888 | plugins.nanome.ai |
+
+These are **optional**, for molecular databases:
+
+| For | Port | To |
+| --- | --- | --- |
+| Molecular databases | TCP 443 | files.rcsb.org, pubchem.ncbi.nlm.nih.gov and www.drugbank.ca |
+
+### Oculus and Steam {#oculus-and-steam}
+
+If the Steam or Oculus apps don't work at all, with or without Nanome, try opening these ports from each device.
+
+<AccordionGroup label="3 port lists">
+
+<Accordion title="Oculus" teaser="TCP 80 and 443, according to Oculus's documentation.">
+
+TCP ports 80 and 443 for:
+
 - oculus.com
 - facebook.com
 - fbcdn.net
 - akamaihd.net
 
-They also recommend TCP 3478 and UDP 500000-59999 to each of the above sites, but the drivers tend to work without them.
+Oculus also recommends TCP 3478 and UDP 50000-59999 to each of these sites, but the drivers tend to work without them.
 
-#### Oculus for Business Only:
+</Accordion>
 
-TCP Port 443 for:
+<Accordion title="Oculus for Business only" teaser="TCP 443 to 5 more hosts.">
+
+TCP port 443 for:
+
 - graph.oculus.com
 - graph.facebook-hardware.com
 - graph.facebook.com
 - mqtt.facebook.com
 - my.workplace.com
 
+</Accordion>
 
-#### Steam and SteamVR (according to their documentation)
+<Accordion title="Steam and SteamVR" teaser="TCP 80 and 443, according to Steam's documentation.">
 
-TCP port 80 & 443 for
+TCP ports 80 and 443 for:
+
 - steampowered.com
 - steamcommunity.com
 - steamgames.com
@@ -52,92 +173,86 @@ TCP port 80 & 443 for
 - steamstatic.com
 - akamaihd.net
 
-They also recommend opening network traffic to the Steam application for UDP Ports 27015-27030 and TCP Ports 27015-27030
+Steam also recommends opening network traffic to the Steam application on UDP ports 27015-27030 and TCP ports 27015-27030.
 
+</Accordion>
 
-#### Tips to use your Oculus Quest in a VPN network
+</AccordionGroup>
 
+### Using a Quest on a VPN network {#vpn}
 
-##### New Method
-The Oculus Quest 2 with the v29 firmware update from Oculus enables the use of arbitrary APK files (Android apps) to be used on the device. This means that you can sideload / install the APK file of your favorite VPN to the device, log in, and use as if you would for an Android device. Note that your VPN provider must offer an APK for this to work. We have seen it work properly with NordVPN, ExpressVPN, Cisco AnyConnect, and several others.
+The Oculus Quest 2 with Oculus's v29 firmware update can run arbitrary APK files (Android apps). So you can sideload the APK of your VPN, log in, and use it as you would on an Android device. Your VPN provider has to offer an APK for this to work. We've seen it work with NordVPN, ExpressVPN, Cisco AnyConnect and several others.
 
-##### Old method
+<Accordion title="Older method: a VPN-enabled hotspot from a Windows 10 PC" teaser="Share a PC's VPN connection with the Quest over a mobile hotspot.">
 
-Method 1: VPN-enabled Hotspot from a Windows 10 PC
-Requirements:
+You need:
+
 1. An existing organizational VPN and VPN software on your PC
 2. Admin access to your Windows 10 PC
-3. Have VPN Credentials on hand
-4. Validate your Wireless card can support this! https://www.quora.com/How-do-i-know-if-i-have-Qualcomm-Atheros-wireless-card
+3. Your VPN credentials
+4. A wireless adapter that supports Mobile Hotspot
 
-Once all requirements are met, follow these steps to create a VPN-enabled hotspot:
+Then create the VPN-enabled hotspot:
 
-Step 1: Open your VPN Software, Enter your credentials, and connect to your VPN
+<Steps>
 
-Verify you have an internet connection through the VPN and check your IP address to validate it changed and note the location/IP for later (https://whatismyipaddress.com/)
+1. Open your VPN software, enter your credentials and connect to your VPN. Check that you have an internet connection through the VPN, and check that your IP address changed. Note the location and IP for later (https://whatismyipaddress.com/).
+2. Press the Windows key and type Mobile Hotspot. Open **Mobile Hotspot**, change your Wi-Fi name and password, then turn on the hotspot.
+3. Open **Control Panel** > **Network and Internet** > **Network and Sharing Center** > **Change adapter settings**.
+4. Find the Ethernet # connection marked "Unidentified Network, TAP-&lt;VPNType&gt; Windows Adapter".
+5. Right-click it, choose **Properties**, then open the **Sharing** tab.
+6. Select **Allow other network users to connect through this computer's Internet connection**. From the dropdown, select your mobile hotspot connection, "Local Area Connection #". It should be labeled WiFi Direct Virtual Adapter.
+7. Join the Mobile Hotspot Wi-Fi from your Oculus Quest.
+8. Check that the VPN applies by checking your IP and location (https://whatismyipaddress.com/).
+9. Launch Nanome behind your firewall.
 
-Step 2: Hit Windows Key + type Mobile Hotspot
+</Steps>
 
-Open Mobile Hotspot and change your wifi name and password then turn on the hotspot
+</Accordion>
 
-Step 3: Open your Control Panel > Network and Internet > Network and Sharing Center > Change adapter settings.
+### Allow Nanome through Windows Firewall {#firewall}
 
-Step 4. Identify which connection is your Ethernet # with the indicator "Unidentified Network, TAP-&lt;VPNType&gt; Windows Adapter
+<Steps>
 
-Step 5: Right click it and go to the Sharing tab
+1. In the Start menu, choose **Settings**, then type Firewall in the **Find a setting** search box.
+2. Choose **Windows Defender Firewall** in the results. In the Windows Defender Firewall window, choose **Allow an app or feature through Windows Defender Firewall**.
 
-Step 6: Check allow sharing for other users in the network. From the dropdown, select your mobile hotspot connection "Local Area Connection #". It should be labeled as WiFi Direct Virtual Adapter
+   <vimg src="howto-page/Firewall1.png" alt="The Windows Defender Firewall window, with Allow an app or feature through Windows Defender Firewall" />
 
-Step 7: Join the Mobile Hotspot Wifi from your Oculus Quest
+3. In the **Allowed apps** window, choose **Change settings**, then select the check box for Nanome.
 
-Step 8: Verify you have the VPN applied by checking your IP/location (https://whatismyipaddress.com/)
+   <vimg src="howto-page/Firewall2.png" alt="The Allowed apps window, with Change settings and Allow another app..." />
 
-Step 9: Launch and enjoy Nanome behind your firewall!
+   If Nanome isn't in the list, choose **Allow another app...**, then type the path to Nanome.exe or choose **Browse** and select it. To find Nanome.exe, see below.
 
-Oculus for Business FAQ
-[https://developer.oculus.com/documentation/ofb/latest/concepts/ofb-developer-reference/](https://developer.oculus.com/documentation/ofb/latest/concepts/ofb-developer-reference/)
+   <vimg src="howto-page/Firewall3.png" alt="The Add an app dialog" />
 
-### Allow Nanome through firewall
+4. Choose **OK**, then close the Windows Defender Firewall window.
 
-#### 1. In the Start menu click Settings, and then enter Firewall in the Find a Setting search box.
+</Steps>
 
-#### 2. Click Windows Firewall in the search results. In the resulting Windows Firewall window, click Allow an App or Feature through Windows Firewall.
-<vimg src="howto-page/Firewall1.png" />
+#### Find Nanome.exe {#find-nanome-exe}
 
-#### 3. In the Allowed Apps window that appears, click the Change Settings button, and then select the check box for Nanome.
-<vimg src="howto-page/Firewall2.png" />
+<Tabs :labels="['Installed with Oculus', 'Installed with Steam']">
+<Tab>
 
-If you can't find Nanome in this list, click the Allow another app button, and type in the path to Nanome.exe or click the Browse button and select it.
-<vimg src="howto-page/Firewall3.png" />
+Click the three dots button, then **Details**. The location of Nanome is on the right.
 
-#### Find Nanome.exe if you installed Nanome using Oculus
+<vimg src="howto-page/Path_Oculus0.png" alt="The three dots menu for Nanome in the Oculus app" />
+<vimg src="howto-page/Path_Oculus1.png" alt="Nanome's install location in the Oculus app" />
 
-<vimg src="howto-page/Path_Oculus0.png" />
-<vimg src="howto-page/Path_Oculus1.png" />
-If you installed Nanome using Oculus, click on the three dots button and click Details. You can find the location of Nanome to the right.
+</Tab>
+<Tab>
 
-#### Find Nanome.exe if you installed Nanome using Steam
+Right-click Nanome in the library and click **Properties**. Select the **Local Files** tab and click **Browse Local Files** to open the folder that holds Nanome.
 
-<vimg src="howto-page/Path_Steam0.png" />
-<vimg src="howto-page/Path_Steam1.png" />
-If you installed Nanome using Steam, right click on Nanome in the library and click Properties. Select Local Files tab and click Browse Local Files to open the folder containing Nanome.
+<vimg src="howto-page/Path_Steam0.png" alt="Nanome's Properties in the Steam library" />
+<vimg src="howto-page/Path_Steam1.png" alt="The Local Files tab in Steam" />
 
-#### 4. Click OK and then click the Close button to close the Windows Firewall window.
+</Tab>
+</Tabs>
 
-## Having Trouble Hearing Anything?
+### Sound in Nanome Classic {#classic-audio}
 
-#### Windows Audio Troubleshooting
-
-[How to fix Windows audio](https://support.microsoft.com/en-us/help/4520288/windows-10-fix-sound-problems)
-
-#### Oculus Audio Troubleshooting
-
-[How to fix Oculus audio](https://support.oculus.com/948087951934283/)
-
-#### Vive Audio Troubleshooting
-
-[How to fix Vive audio](https://www.vive.com/uk/support/vive/category_howto/no-audio-while-using-extension-cable.html)
-
-#### Nanome Audio Troubleshooting
-
-[My Windows and Oculus audio are working, but I can't hear anything in Nanome](/nanome1x/navigating#settings)
+- Vive headsets: [How to fix Vive audio](https://www.vive.com/uk/support/vive/category_howto/no-audio-while-using-extension-cable.html)
+- Windows and headset audio work, but there's no sound in Nanome Classic: [Sound settings in the Wrist Menu](/nanome1x/navigation/wristmenu#sound)

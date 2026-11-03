@@ -1,16 +1,18 @@
 <template>
-  <div class="home-carousel">
+  <div class="home-carousel" :style="{ '--shown': shown }">
     <h2>{{ title }}</h2>
     <SimpleCarousel
       :items="slides"
-      :slides-to-show="numSlides"
+      :slides-to-show="shown"
       :show-arrows="true"
       :show-dots="false"
     >
-      <template #default="{ item }">
-        <a :href="getSlideURL(item)" target="_blank">
+      <template #default="{ item, clone, near }">
+        <a :href="getSlideURL(item)" target="_blank" :tabindex="clone ? -1 : undefined">
           <div class="slide">
-            <div class="img"><img :src="item.img" /></div>
+            <!-- The title below names the link, so the image adds nothing.
+                 `loading` comes before `src`, so Safari keeps a far slide lazy (Vimg.vue). -->
+            <div class="img"><img :loading="near ? 'eager' : 'lazy'" :src="item.img" alt="" /></div>
             <div class="title">{{ item.title }}</div>
             <div v-if="item.description" class="description">
               {{ item.description }}
@@ -41,11 +43,20 @@ const props = defineProps({
   }
 })
 
+// Fewer slides on narrow screens, so each stays readable.
+const shown = ref(props.numSlides)
+function fit() {
+  const w = window.innerWidth
+  shown.value = w < 640 ? 1 : w < 960 ? Math.min(2, props.numSlides) : props.numSlides
+}
+
 const isNanome = ref(false)
 const version = ref('1.22')
 let btoa = (x) => x
 
 onMounted(() => {
+  fit()
+  window.addEventListener('resize', fit)
   if (!window.navigator) return
   btoa = window.btoa.bind(window)
 
@@ -96,11 +107,30 @@ function getSlideURL(slide) {
 .home-carousel .img img {
   width: 100%;
   height: 100%;
+  margin: 0; /* drop the page's image margin and frame; the wrapper rounds */
+  border: 0;
+  border-radius: 0;
   object-fit: cover;
 }
 
 .home-carousel .slide {
   padding: 0 0.25em;
+}
+
+/* The outer slides' padding sits past the column, so the first and last
+   images line up with the headings and keep the gap between cards. */
+.home-carousel :deep(.carousel-container) {
+  margin-inline: -0.25em;
+  container-type: inline-size;
+}
+
+/* The arrows cover only the picture, so the title under it stays clear. On a
+   touch screen they always show. The picture is 16:9 and as wide as a slide
+   less its padding. */
+.home-carousel :deep(.carousel-nav) {
+  top: 0;
+  height: calc((100cqw / var(--shown) - var(--n-text-body) / 2) * 9 / 16);
+  transform: none;
 }
 
 .home-carousel .slide > .title {
@@ -117,9 +147,17 @@ function getSlideURL(slide) {
 }
 
 .home-carousel a {
+  display: block;
   cursor: pointer;
   color: unset;
   font-weight: unset;
   text-decoration: unset !important;
+}
+
+/* The card fills the scrolling track, which would clip a ring outside it. */
+.home-carousel a:focus-visible {
+  outline: 2px solid var(--n-accent);
+  outline-offset: -2px;
+  border-radius: 6px;
 }
 </style>

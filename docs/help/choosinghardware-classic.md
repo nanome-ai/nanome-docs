@@ -12,9 +12,15 @@ release, see [Choosing Hardware](/help/choosinghardware).
 
 </Callout>
 
-## Nanome Classic (v1.24) Headset Comparison Matrix
+<IconGrid label="Choosing hardware for Nanome Classic" :cols="3">
+<IconCard icon="device-vision-pro" title="Comparison matrix" href="#nanome-classic-v1-24-headset-comparison-matrix">Passthrough, MDM, VPN, deployment rating and cost.</IconCard>
+<IconCard icon="ban" title="Not supported" href="#headsets-not-supported">Headsets Nanome Classic doesn't run on.</IconCard>
+<IconCard icon="mood-smile" title="Comfort and capability" href="#comfort-comparison">Atom counts and features, all-in-one vs PCVR.</IconCard>
+</IconGrid>
 
-<table>
+## <AppIcon name="device-vision-pro" /> Headset comparison matrix {#nanome-classic-v1-24-headset-comparison-matrix}
+
+<table class="matrix">
     <col style="width: 15%;" />
     <!-- <col style="width: 10%;" />
     <col style="width: 10%;" />
@@ -40,7 +46,7 @@ release, see [Choosing Hardware](/help/choosinghardware).
             <td>Meta Quest 3</td>
             <td>Meta Quest 2</td>
             <td>Vive XR Elite</td>
-            <td>Pico Neo 4</td>
+            <td>Pico 4</td>
             <td>Pico Neo 3</td>
             <td>Meta Quest Link (Supports Meta Quest Pro & Meta Quest 2/3)</td>
             <td>SteamVR (Supports Valve Index, HTC Vive Pro)</td>
@@ -58,24 +64,24 @@ release, see [Choosing Hardware](/help/choosinghardware).
         </tr>
         <tr>
             <td>MDM Support</td>
-            <td>Meta QFB</td>
-            <td>Meta QFB</td>
-            <td>Meta QFB</td>
+            <td>Meta Horizon managed services (HMS)</td>
+            <td>Meta Horizon managed services (HMS)</td>
+            <td>Meta Horizon managed services (HMS)</td>
             <td>ArborXR, ManageXR</td>
             <td>ArborXR, ManageXR</td>
             <td>ArborXR</td>
-            <td>Meta QFB</td>
+            <td>Meta Horizon managed services (HMS)</td>
             <td>None</td>
         </tr>
         <tr>
             <td>MDM Cost</td>
-            <td>With shared mode: $24; With enhanced support: $31</td>
-            <td>With shared mode: $24; With enhanced support: $31</td>
-            <td>With shared mode: $24; With enhanced support: $31</td>
-            <td>ArborXR: $13; ManageXR: $12</td>
-            <td>ArborXR: $13; ManageXR: $12</td>
-            <td>ArborXR: $13</td>
-            <td>With shared mode: $24; With enhanced support: $31</td>
+            <td>Free (HMS)</td>
+            <td>Free (HMS)</td>
+            <td>Free (HMS)</td>
+            <td>ArborXR and ManageXR from $7 per headset per month</td>
+            <td>ArborXR and ManageXR from $7 per headset per month</td>
+            <td>ArborXR from $7 per headset per month</td>
+            <td>Free (HMS)</td>
             <td>N</td>
         </tr>
         <tr>
@@ -94,7 +100,7 @@ release, see [Choosing Hardware](/help/choosinghardware).
             <td>Partial Support (requires sideloaded APK file)</td>
             <td>Partial Support (requires sideloaded APK file)</td>
             <td>Partial Support (requires sideloaded APK file)</td>
-            <td>Yes has Full Support</td>
+            <td>Yes, full support</td>
             <td>Partial Support (requires sideloaded APK file)</td>
             <td>Partial Support (requires sideloaded APK file)</td>
             <td colspan=2 style="text-align: center">Yes, with PC</td>
@@ -133,13 +139,13 @@ release, see [Choosing Hardware](/help/choosinghardware).
         </tr>
         <tr>
             <td>Procurement (Note: Quest devices can be bundled)</td>
-            <td>Through Nanome Inc. or <a href="https://www.meta.com/quest/Quest-pro">Meta Quest Pro</a></td>
+            <td>Through Nanome Inc. or Meta Quest Pro</td>
             <td>Through Nanome Inc. or <a href="https://www.meta.com/quest/quest-3/">Meta Quest 3</a></td>
             <td>Through Nanome Inc. or <a href="https://www.meta.com/quest/products/quest-2/">Meta Quest 2</a><br></td>
             <td>Through Nanome Inc. or <a href="https://business.vive.com/eu/solutions/streaming/">HTC</a></td>
             <td><a href="https://www.picoxr.com/global/products/pico4">PicoXR</a><br></td>
-            <td><a href="https://www.picoxr.com/global/products/pico4">PicoXR</a><br></td>
-            <td><a href="https://www.meta.com/help/quest/articles/headsets-and-accessories/oculus-link/meta-quest-link-compatibility/">Meta Quest Link Cable Requirements</a></td>
+            <td>PicoXR<br></td>
+            <td><a href="https://www.meta.com/help/quest/140991407990979/">Meta Link requirements</a></td>
             <td></td>
         </tr>
         <tr>
@@ -156,29 +162,33 @@ release, see [Choosing Hardware](/help/choosinghardware).
     </tbody>
 </table>
 
-## Headsets Not Supported
+## <AppIcon name="ban" /> Headsets not supported {#headsets-not-supported}
 
 **Meta Quest 1**, originally sold as Oculus Quest, is not supported. It does not appear as
 a supported platform on any current Nanome store listing. Meta Quest 2 is the oldest
 all-in-one headset Nanome supports.
 
-## Nanome Classic (v1.24): All-In-One (Quest Pro, Quest 2 & Focus 3) vs PCVR Feature Comparison
+## <AppIcon name="mood-smile" /> All-in-one (Quest Pro, Quest 2 and Focus 3) vs PCVR {#comfort-comparison}
 
-The following tables below show brief overviews of the capabilities of the Meta Quest Pro, Meta Quest 2, Vive Focus 3
-vs Desktop VR. Please also note the following:
+The tables below give a brief overview of what the Meta Quest Pro, Meta Quest 2 and Vive Focus 3 can do compared with desktop VR.
+
+<Accordion title="Notes 1 to 3 on the tables" teaser="What the atom counts assume, and what counts as VR-ready.">
+
 1. ‘Shown Atom Count’ only refers to the count of atoms displayed in the workspace and larger
 structures can be loaded within the workspace in the Meta Quest 2 & Vive Focus 3.
 2. Surfaces (on/off), secondary structures (ribbons on/off), and supplemental materials
 (PDF/JPEGs, whiteboards, web browsers, labels) all affect performance in different ways
-significantly. ‘Shown Atom Count’ column is given nothing else is displayed in the scene.
-3. Desktop is assumed to be “VR ready” (Nvidia GTX 1060 or greater).
+significantly. ‘Shown Atom Count’ column is given assuming nothing else is displayed in the scene.
+3. Desktop is assumed to be “VR ready”; see the [minimum and recommended PC specs](/help/pchardware).
 
-### Comfort Legend (Nanome Classic v1.24)
+</Accordion>
 
-<table>
+### Comfort legend {#comfort-legend-nanome-classic-v1-24}
+
+<table class="legend">
     <thead>
         <tr>
-            <th>Comfortability</th>
+            <th>Comfort</th>
             <th>Frames Per Second (FPS)</th>
         </tr>
     </thead>
@@ -193,14 +203,14 @@ significantly. ‘Shown Atom Count’ column is given nothing else is displayed 
         </tr>
         <tr>
             <td style="background-color:#F4CCCC">Not recommended</td>
-            <td style="background-color:#FFFFFF">30 FPS or less</td>
+            <td style="background-color:#FFFFFF">Under 60 FPS</td>
         </tr>
     </tbody>
 </table>
 
-### Comfort Comparison (Nanome Classic v1.24)
+### Comfort comparison {#comfort-comparison-nanome-classic-v1-24}
 
-<table>
+<table class="comfort">
     <thead>
         <tr>
             <th></th>
@@ -254,13 +264,13 @@ significantly. ‘Shown Atom Count’ column is given nothing else is displayed 
     </tbody>
 </table>
 
-### Capability & Plugin Recommendation Comparison (Nanome Classic v1.24)
+### Capability and plugin recommendations {#capability-plugin-recommendation-comparison-nanome-classic-v1-24}
 
 <table>
     <tbody>
         <tr>
             <td><b>Feature</b></td>
-            <td><b>Oculus Quest 2 & HTC Vive Focus 3</b></td>
+            <td><b>Meta Quest 2 & HTC Vive Focus 3</b></td>
             <td><b>Windows Desktop (both 2D and VR)</b></td>
         </tr>
         <tr>
@@ -276,7 +286,7 @@ significantly. ‘Shown Atom Count’ column is given nothing else is displayed 
         <tr>
             <td><b>Voice Commands</b></td>
             <td>Not Compatible</td>
-            <td>Compatible (full list here)</td>
+            <td>Compatible (<a href="/nanome1x/navigation/voicecommand">full list</a>)</td>
         </tr>
         <tr>
             <td><b>in-VR Web browser</b></td>

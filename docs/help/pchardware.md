@@ -4,20 +4,13 @@ title: Minimum and Recommended PC Specs
 
 # Minimum and Recommended PC Specs
 
-Nanome can be run on PC and used in 2D mode, or in PCVR with a compatible connected headset.
+Nanome runs on a PC in 2D mode, or in PCVR with a compatible headset connected.
 
-## What are the System Requirements to run Nanome on PC?
-#### The recommended specs for desktop computer:
-- Intel i7
-- RTX 3060 GPU
-- 32 GB RAM
-- 256 GB SSD
-- Windows 10 Operating System
-#### The minimum:
-- Intel i7
-- GTX 1070 GPU
-- 8 GB RAM
-- 256 GB SSD
-- Windows 10 Operating System
+| | Recommended | Minimum |
+| --- | --- | --- |
+| CPU | Intel i7 | Intel i7 |
+| GPU | RTX 3060 | GTX 1070 |
+| RAM | 32 GB | 8 GB |
+| Storage | 256 GB SSD | 256 GB SSD |
 
-Note: 2 GB available space required for installation.
+The minimum operating system is 64-bit Windows 10, and Nanome XR needs version 21H1 or later. Installation needs 2 GB of free space.

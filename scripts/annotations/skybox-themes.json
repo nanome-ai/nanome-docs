@@ -1,0 +1,126 @@
+{
+  "source": "skybox-themes.webp",
+  "output": "nanome-v2/v2-7/skybox-themes.webp",
+  "display": 768,
+  "callouts": [
+    {
+      "text": "Default \u00b7 Day",
+      "label": [
+        60,
+        80
+      ],
+      "align": "left"
+    },
+    {
+      "text": "Default \u00b7 Night",
+      "label": [
+        2660,
+        80
+      ],
+      "align": "left",
+      "tone": "purple"
+    },
+    {
+      "text": "Arctic Cyan \u00b7 Day",
+      "label": [
+        60,
+        980
+      ],
+      "align": "left"
+    },
+    {
+      "text": "Arctic Cyan \u00b7 Night",
+      "label": [
+        2660,
+        980
+      ],
+      "align": "left",
+      "tone": "purple"
+    },
+    {
+      "text": "Aurora Green \u00b7 Day",
+      "label": [
+        60,
+        1880
+      ],
+      "align": "left"
+    },
+    {
+      "text": "Aurora Green \u00b7 Night",
+      "label": [
+        2660,
+        1880
+      ],
+      "align": "left",
+      "tone": "purple"
+    },
+    {
+      "text": "Black & White \u00b7 Day",
+      "label": [
+        60,
+        2780
+      ],
+      "align": "left"
+    },
+    {
+      "text": "Black & White \u00b7 Night",
+      "label": [
+        2660,
+        2780
+      ],
+      "align": "left",
+      "tone": "purple"
+    },
+    {
+      "text": "Gold Orange \u00b7 Day",
+      "label": [
+        60,
+        3680
+      ],
+      "align": "left"
+    },
+    {
+      "text": "Gold Orange \u00b7 Night",
+      "label": [
+        2660,
+        3680
+      ],
+      "align": "left",
+      "tone": "purple"
+    },
+    {
+      "text": "Island \u00b7 Day",
+      "label": [
+        60,
+        4580
+      ],
+      "align": "left"
+    },
+    {
+      "text": "Island \u00b7 Night",
+      "label": [
+        2660,
+        4580
+      ],
+      "align": "left",
+      "tone": "purple"
+    },
+    {
+      "text": "Pure Black \u00b7 Day",
+      "label": [
+        60,
+        5480
+      ],
+      "align": "left"
+    },
+    {
+      "text": "Pure Black \u00b7 Night",
+      "label": [
+        2660,
+        5480
+      ],
+      "align": "left",
+      "tone": "purple"
+    }
+  ]
+}

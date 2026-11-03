@@ -7,21 +7,37 @@
  * reader can fold away — with ~90 pages, showing every one at once would bury
  * the section the reader is actually in. Groups without `collapsed` stay open
  * as a plain labelled list.
+ *
+ * On every page, the groups holding it are open and the others are closed, so
+ * the rail always shows where the reader is. A page the sidebar doesn't list
+ * opens the group its folder belongs to (page-trail.js). The page's own row
+ * lists its sections (SideNavItem), and the rail scrolls itself to keep the
+ * page and the section in view.
+ *
+ * Under 768px the nav bar has no room for the site links (Home, Nanome.ai,
+ * Download, Contact), so the drawer lists them under the sections.
  */
-import { computed, ref } from 'vue'
-import { useData } from 'vitepress'
+import { computed, nextTick, onMounted, ref, watch } from 'vue'
+import { useData, withBase } from 'vitepress'
 import { hasActiveLink } from 'vitepress/dist/client/theme-default/support/sidebar.js'
 import { useSidebar } from 'vitepress/dist/client/theme-default/composables/sidebar.js'
 import SideNavItem from './SideNavItem.vue'
+import { useSectionSpy } from './section-spy.js'
+import { inTrail, usePageTrail } from './page-trail.js'
 
-defineProps({
+const props = defineProps({
   open: { type: Boolean, default: false },
 })
 
+// Any link, including a section on the same page, so the drawer can close.
+const emit = defineEmits(['navigate'])
+
 // Active state is matched against the page's source path, not the URL — that
 // is what VitePress's own helpers compare, and it survives `cleanUrls`.
-const { page } = useData()
+const { page, theme } = useData()
 const { sidebarGroups } = useSidebar()
+const sectionId = useSectionSpy()
+const pageTrail = usePageTrail()
 
 /**
  * Open state is derived rather than stored: the section holding the current
@@ -30,12 +46,76 @@ const { sidebarGroups } = useSidebar()
  */
 const overrides = ref({})
 
+const rail = ref(null)
+
+/**
+ * Scrolls the rail until `el` is in sight, leaving the page where it is. A
+ * row that has to come into view lands near the top, so the sections under
+ * it show too; a section only moves as far as it must.
+ */
+function reveal(el, { nearest = false } = {}) {
+  if (!el || !rail.value) return
+  const box = rail.value.getBoundingClientRect()
+  const row = el.getBoundingClientRect()
+  const margin = 24
+  if (row.top >= box.top + margin && row.bottom <= box.bottom - margin) return
+  rail.value.scrollTop +=
+    nearest && row.bottom > box.bottom - margin
+      ? row.bottom - box.bottom + margin
+      : row.top - box.top - (nearest ? margin : 2 * margin)
+}
+
+function revealPage() {
+  nextTick(() => reveal(rail.value?.querySelector('[aria-current="page"]')))
+}
+
+function onClick(event) {
+  if (event.target.closest('a')) emit('navigate')
+}
+
+watch(
+  () => page.value.relativePath,
+  () => {
+    overrides.value = {}
+    revealPage()
+  }
+)
+
+watch(sectionId, () =>
+  nextTick(() =>
+    reveal(rail.value?.querySelector('[aria-current="location"]'), { nearest: true })
+  )
+)
+
+// The drawer is laid out while hidden, but only worth scrolling once open.
+watch(
+  () => props.open,
+  (isOpen) => isOpen && revealPage()
+)
+
+onMounted(revealPage)
+
 const groups = computed(() =>
   sidebarGroups.value.map((group) => ({
     ...group,
     collapsible: group.collapsed != null && !!group.text,
-    active: hasActiveLink(page.value.relativePath, group.items || []),
+    active:
+      hasActiveLink(page.value.relativePath, group.items || []) ||
+      inTrail(pageTrail.value, group),
   }))
+)
+
+// The nav bar's site links, opened the same way.
+const siteLinks = computed(() =>
+  (theme.value.nav || []).map((link) => {
+    const external = /^https?:\/\//.test(link.link)
+    return {
+      text: link.text,
+      href: external ? link.link : withBase(link.link),
+      target: external ? '_blank' : undefined,
+      rel: external ? 'noopener noreferrer' : undefined,
+    }
+  })
 )
 
 function isOpen(group) {
@@ -51,11 +131,12 @@ function toggle(group) {
 
 <template>
   <aside
+    ref="rail"
     class="n-sidenav n-scroll"
     :class="{ 'is-open': open }"
     aria-label="Documentation sections"
   >
-    <nav class="n-sidenav__inner">
+    <nav class="n-sidenav__inner" @click="onClick">
       <div
         v-for="group in groups"
         :key="group.text || 'top'"
@@ -99,6 +180,18 @@ function toggle(group) {
           />
         </ul>
       </div>
+    </nav>
+    <nav v-if="siteLinks.length" class="n-sidenav__site" aria-label="Site" @click="onClick">
+      <a
+        v-for="link in siteLinks"
+        :key="link.text"
+        class="n-sidenav__sitelink"
+        :href="link.href"
+        :target="link.target"
+        :rel="link.rel"
+      >
+        {{ link.text }}
+      </a>
     </nav>
   </aside>
 </template>
@@ -153,6 +246,11 @@ function toggle(group) {
   color: var(--n-text);
 }
 
+/* Inside the button, so the sidebar's scroll box can't cut the ring off. */
+.n-sidenav__label--button:focus-visible {
+  outline-offset: -2px;
+}
+
 /* An open section, and the one holding the current page, read a shade louder
    than the rest — a heading should not be dimmer than the rows under it. */
 .n-sidenav__group.is-active > .n-sidenav__label,
@@ -190,6 +288,37 @@ function toggle(group) {
 
 .n-sidenav__group.is-open > .n-sidenav__label > .n-sidenav__caret {
   color: var(--n-accent);
+}
+
+/* The site links, under the sections, only while the nav bar hides them. */
+.n-sidenav__site {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--n-border);
+}
+
+.n-sidenav__sitelink {
+  padding: 5px 8px;
+  border-radius: var(--n-radius-sm);
+  color: var(--n-text-muted);
+  font-size: var(--n-text-sm);
+  font-weight: 500;
+  line-height: 1.45;
+  text-decoration: none;
+  transition: color var(--n-transition), background var(--n-transition);
+}
+
+.n-sidenav__sitelink:hover {
+  background: var(--n-surface-hover);
+  color: var(--n-text);
+}
+
+@media (min-width: 768px) {
+  .n-sidenav__site {
+    display: none;
+  }
 }
 
 /* --- Drawer below 960px -------------------------------------------------- */
