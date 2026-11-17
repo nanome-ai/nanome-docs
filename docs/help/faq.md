@@ -10,6 +10,7 @@ title: FAQ
 <IconCard icon="download" title="Download and updates" href="#download">Where to get Nanome and how to update it.</IconCard>
 <IconCard icon="files" title="File formats" href="#file-formats">Supported files, trajectories and Vault limits.</IconCard>
 <IconCard icon="license" title="Licenses and purchasing" href="#licenses">Trials, academic use, site licenses and coupons.</IconCard>
+<IconCard icon="circle-dashed" title="Working with structures" href="#structures">Editing what a component holds.</IconCard>
 <IconCard icon="bug" title="Logs and support" href="#support">Log files, feature requests and your data.</IconCard>
 </IconGrid>
 
@@ -228,6 +229,18 @@ Checkout at app.nanome.ai has no field for coupon codes, so a code goes to the N
 </Steps>
 
 The right person at Nanome will follow up.
+
+</Accordion>
+
+</AccordionGroup>
+
+## <AppIcon name="circle-dashed" /> Working with structures {#structures}
+
+<AccordionGroup label="1 question">
+
+<Accordion title="How do I add a residue to a binding pocket?" teaser="Widen the pocket's distance, or add the residue with Edit Selection.">
+
+In Nanome XR, open <Btn icon="dots">More options</Btn> on the **Pocket** component. <Btn icon="resize">Update Distance Filter</Btn> widens the pocket around the ligand, and <Btn icon="mist">Edit Selection</Btn> adds single residues through the Sequence Panel. Make the same change on **Pocket + Ligand** for interactions to show. [Editing a binding pocket](/nanome_v2/sampleworkflows#editing-a-binding-pocket) has the steps.
 
 </Accordion>
 

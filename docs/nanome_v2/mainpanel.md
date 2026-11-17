@@ -100,7 +100,7 @@ In a headset, **Load Structure** in the Tools Panel loads a structure by PDB cod
 <UiItem icon="pencil" name="Rename" area="67.3,48.3,29.6,4.6">Renames the component.</UiItem>
 <UiItem icon="trash" name="Remove" area="67.3,53.4,29.6,4.6">Removes the component. Its atoms stay in the entry.</UiItem>
 <UiItem icon="trash" name="Delete Atoms" area="67.3,58.3,29.6,4.6">Permanently deletes the component's atoms from the entry, after a confirmation.</UiItem>
-<UiItem icon="mist" name="Edit Selection" area="67.3,63.2,29.6,4.6">Selects the component's atoms.</UiItem>
+<UiItem icon="mist" name="Edit Selection" href="/nanome_v2/sequencepanel#features" area="67.3,63.2,29.6,4.6">Opens the Sequence Panel with the component's residues selected. Residues clicked there are added, and Update saves them to the component.</UiItem>
 <UiItem icon="list-check" name="Copy Component" area="67.3,68.2,29.6,4.6">Copies the component to other scenes.</UiItem>
 <UiItem icon="copy" name="Duplicate to Entry" area="67.3,73.2,29.6,4.6">Copies the atoms into a new entry.</UiItem>
 <UiItem icon="scissors" name="Extract to Entry" area="67.3,78.2,29.6,4.6">Moves the atoms into a new entry.</UiItem>
@@ -120,6 +120,8 @@ In a headset, **Load Structure** in the Tools Panel loads a structure by PDB cod
 - The distance runs from 2 Å to 10 Å, with 4 Å to start. The app's slider moves freely, and the copy above stops every 2 Å.
 - **Include ligands** is off to start, so other ligands, such as NADP+ here, are left out. Waters and ions in range still count. **All entries** searches every entry in the workspace, and the name then starts with "all within".
 - A distance component's menu also has **Update Distance Filter**, which changes the distance and keeps the other options. The name stays as it was.
+- Adding residues with **Edit Selection** turns a distance component into a fixed selection, and **Update Distance Filter** no longer changes it. To use both, set the distance first and add residues after.
+- A ligand's **Pocket** and **Pocket + Ligand** each have their own distance and selection, so a change to one isn't copied to the other. [Editing a binding pocket](/nanome_v2/sampleworkflows#editing-a-binding-pocket) covers both.
 
 <Accordion title="Where the distance example comes from" teaser="1RX2 and 1RX3, E. coli DHFR, from Sawaya and Kraut (1997).">
 

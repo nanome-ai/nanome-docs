@@ -23,6 +23,7 @@ The Sequence Panel shows every residue of the loaded structures in a horizontal,
 </UiList>
 
 - Hovering a residue shows its details at the bottom of the panel, such as "1KV2 A: THR 106".
+- <Btn icon="mist">Edit Selection</Btn> in a component's [menu](/nanome_v2/mainpanel#component-menu) opens the panel with that component active. [Editing a binding pocket](/nanome_v2/sampleworkflows#editing-a-binding-pocket) walks through adding a residue this way.
 - When a component is active in the panel, its name shows beside the buttons and **Create** becomes **Update**, which updates that component with the current selection. Selecting the name ends that, and the button goes back to **Create**.
 
 </ShotRow>

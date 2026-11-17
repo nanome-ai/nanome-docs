@@ -10,6 +10,7 @@ Examples of workflows in Nanome XR, including using MARA to load a structure and
 <IconCard icon="sparkles" title="Opening from MARA" href="#opening-from-mara">Load a structure in a MARA chat, then open it in XR.</IconCard>
 <IconCard icon="share" title="Sharing a workspace" href="#sharing-workspace">By workspace code, or by email.</IconCard>
 <IconCard icon="polygon" title="Displaying interactions" href="#displaying-interactions-between-structures">Interaction components between structures.</IconCard>
+<IconCard icon="circle-dashed" title="Editing a binding pocket" href="#editing-a-binding-pocket">Widen the pocket, or add a residue it left out.</IconCard>
 <IconCard icon="minimize" title="Minimizing a ligand in its pocket" href="#minimizing-a-ligand-in-its-pocket">Pocket minimization in the Builder Tool.</IconCard>
 <IconCard icon="arrow-left-to-arc" title="Aligning proteins" href="#aligning-proteins-in-xr"><span style="white-space: nowrap">CE-Align</span> or <span style="white-space: nowrap">TM-Align</span>, from Structure actions.</IconCard>
 </IconGrid>
@@ -81,6 +82,37 @@ Recorded in Nanome 2.4. The steps are the same in 2.7.1.
 Recorded in Nanome 2.5. The Interactions Tool works the same way in 2.7.1.
 
 Once interaction components exist, the <AppIcon name="link" /> **Interactions Tool** lists every interaction found, under **Visible**, **Pinned** and **All**. Hovering over a row highlights the interaction in 3D, and **Pin** adds it to the **Pinned** list. A pinned interaction can also be labeled. Interaction types, including clashes, are switched on and off in the component's [representation panel](/nanome_v2/mainpanel#interactions).
+
+## <AppIcon name="circle-dashed" /> Editing a binding pocket {#editing-a-binding-pocket}
+
+A ligand's **Pocket** component holds every whole residue with an atom within 4 Å of the ligand. When a residue that matters falls outside it, the pocket can be widened by distance, or the residue can be added on its own. Both start from <Btn icon="dots">More options</Btn> on the component, in the [component menu](/nanome_v2/mainpanel#component-menu).
+
+### Widen the pocket by distance {#widen-the-pocket-by-distance}
+
+<Steps>
+
+1. On **Pocket**, click <Btn icon="dots">More options</Btn> and choose <Btn icon="resize">Update Distance Filter</Btn>.
+2. Move the **Distance (Å)** slider to the distance you want, then click **Apply**.
+3. Do the same on **Pocket + Ligand**, which has its own distance.
+
+</Steps>
+
+### Add a single residue {#add-a-single-residue}
+
+<Steps>
+
+1. On **Pocket**, click <Btn icon="dots">More options</Btn> and choose <Btn icon="mist">Edit Selection</Btn>. The [Sequence Panel](/nanome_v2/sequencepanel) opens with the pocket's residues selected and its name beside the buttons.
+2. Click the residue to add. Hovering a residue shows its name and number at the bottom of the panel.
+3. Click **Update**.
+4. Do the same on **Pocket + Ligand**, so interactions between the new residue and the ligand show.
+
+</Steps>
+
+<Callout type="warning" title="Distance first, then residues">
+
+Adding a residue by hand turns the pocket into a fixed selection, and its distance can't be changed after that. To use both, widen the pocket first and add residues last.
+
+</Callout>
 
 ## <AppIcon name="minimize" /> Minimizing a ligand in its pocket {#minimizing-a-ligand-in-its-pocket}
 
