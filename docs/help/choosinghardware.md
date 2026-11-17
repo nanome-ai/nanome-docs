@@ -176,12 +176,14 @@ for each platform, with nothing else on screen.
 
 1. 'Shown Atom Count' only refers to the count of atoms displayed in the
    workspace. Larger structures can be loaded within the workspace and hidden.
-2. Surfaces, cartoons, labels and images in the scene all add to what has to
-   be drawn. The 'Shown Atom Count' column assumes nothing else is shown.
+2. Surfaces, labels and images in the scene all add to what has to be drawn.
+   Cartoon costs less to draw than ball-and-stick. The 'Shown Atom Count'
+   column assumes nothing else is shown.
 3. Desktop is assumed to be "VR ready"; see the
-   [minimum and recommended PC specs](/help/pchardware). PCVR ratings carry
-   over from Nanome Classic (v1.24). Nanome XR sets no drawing budget on PCVR,
-   so the PC's graphics card sets the limit.
+   [minimum and recommended PC specs](/help/pchardware). Nanome XR sets no
+   drawing budget on PCVR, so how much a PCVR session shows comfortably depends
+   entirely on the PC's hardware, and the PCVR column has no single rating. Two
+   VR-ready PCs can differ by a wide margin.
 4. Web performance depends entirely on the computer's GPU, so the Web column
    has no single rating. The example column shows an Apple M1 Max (32-core
    GPU); a lower-end laptop GPU will sit a rating or two lower, and a desktop
@@ -316,43 +318,43 @@ for each platform, with nothing else on screen.
   <tbody>
     <tr>
       <td>7,500</td>
-      <td class="rate-good">Comfortable</td>
+      <td class="rate-gpu">Depends on GPU</td>
       <td class="rate-gpu">Depends on GPU</td>
       <td class="rate-good">Comfortable</td>
     </tr>
     <tr>
       <td>10,000</td>
-      <td class="rate-good">Comfortable</td>
+      <td class="rate-gpu">Depends on GPU</td>
       <td class="rate-gpu">Depends on GPU</td>
       <td class="rate-good">Comfortable</td>
     </tr>
     <tr>
       <td>15,000</td>
-      <td class="rate-good">Comfortable</td>
+      <td class="rate-gpu">Depends on GPU</td>
       <td class="rate-gpu">Depends on GPU</td>
       <td class="rate-good">Comfortable</td>
     </tr>
     <tr>
       <td>20,000</td>
-      <td class="rate-good">Comfortable</td>
+      <td class="rate-gpu">Depends on GPU</td>
       <td class="rate-gpu">Depends on GPU</td>
       <td class="rate-good">Comfortable</td>
     </tr>
     <tr>
       <td>30,000</td>
-      <td class="rate-good">Comfortable</td>
+      <td class="rate-gpu">Depends on GPU</td>
       <td class="rate-gpu">Depends on GPU</td>
       <td class="rate-good">Comfortable</td>
     </tr>
     <tr>
       <td>100,000</td>
-      <td class="rate-good">Comfortable</td>
+      <td class="rate-gpu">Depends on GPU</td>
       <td class="rate-gpu">Depends on GPU</td>
       <td class="rate-ok">Moderate</td>
     </tr>
     <tr>
       <td>100,000+</td>
-      <td class="rate-gpu">Depends on GPU model</td>
+      <td class="rate-gpu">Depends on GPU</td>
       <td class="rate-gpu">Depends on GPU</td>
       <td class="rate-gpu">Depends on GPU model</td>
     </tr>

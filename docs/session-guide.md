@@ -332,7 +332,7 @@ A scene can hold a recorded walkthrough, with the presenter's voice and pointer,
 
 ## <AppIcon name="mood-smile" /> Keep it comfortable {#comfort}
 
-Comfort in a headset depends on a steady frame rate. Every shown atom, bond, cartoon residue, surface and label adds to the work each frame.
+Comfort in a headset depends on a steady frame rate. Every shown atom, bond, surface and label adds to the work each frame, and cartoon costs less to draw than ball-and-stick.
 
 ### Comfort by shown atom count
 
@@ -361,33 +361,33 @@ Nanome suggests these shown atom counts as starting points for each headset, wit
       <td class="rate-good">Comfortable</td>
       <td class="rate-good">Comfortable</td>
       <td class="rate-good">Comfortable</td>
-      <td class="rate-good">Comfortable</td>
+      <td class="rate-gpu">Depends on GPU</td>
     </tr>
     <tr>
       <td>10,000</td>
       <td class="rate-ok">Moderate</td>
       <td class="rate-ok">Moderate</td>
       <td class="rate-good">Comfortable</td>
-      <td class="rate-good">Comfortable</td>
+      <td class="rate-gpu">Depends on GPU</td>
     </tr>
     <tr>
       <td>15,000</td>
       <td class="rate-bad">Not recommended</td>
       <td class="rate-bad">Not recommended</td>
       <td class="rate-good">Comfortable</td>
-      <td class="rate-good">Comfortable</td>
+      <td class="rate-gpu">Depends on GPU</td>
     </tr>
     <tr>
       <td>20,000</td>
       <td class="rate-bad">Not recommended</td>
       <td class="rate-bad">Not recommended</td>
       <td class="rate-good">Comfortable</td>
-      <td class="rate-good">Comfortable</td>
+      <td class="rate-gpu">Depends on GPU</td>
     </tr>
   </tbody>
 </table>
 
-Galaxy XR ratings are estimates: Nanome gives it the same drawing budget as Quest 3. PCVR ratings carry over from Nanome Classic (v1.24). Quest 2 and Quest Pro get a little over half the Quest 3 budget, so heavy scenes lose detail and hide entries sooner on them.
+Galaxy XR ratings are estimates: Nanome gives it the same drawing budget as Quest 3. PCVR has no single rating, because it depends entirely on the PC's hardware. Quest 2 and Quest Pro get a little over half the Quest 3 budget, so heavy scenes lose detail and hide entries sooner on them.
 
 The count covers what's shown: a large structure can sit in the workspace with most of it hidden.
 
