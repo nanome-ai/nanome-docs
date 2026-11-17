@@ -4,7 +4,7 @@
  * dark switch. Search is the default theme's dialog — reimplementing it would
  * mean reimplementing the local search index with it.
  */
-import { computed, inject } from 'vue'
+import { computed, inject, onMounted, ref } from 'vue'
 import { useData } from 'vitepress'
 import { withBase } from 'vitepress'
 import VPNavBarSearch from 'vitepress/dist/client/theme-default/components/VPNavBarSearch.vue'
@@ -21,6 +21,15 @@ const { site, theme, isDark } = useData()
 const toggleAppearance = inject('toggle-appearance', () => {
   isDark.value = !isDark.value
 })
+
+// The server can't know the reader's theme, so the button's label waits for
+// mount and the icons swap by the .dark class; otherwise every dark-mode page
+// load reports a hydration mismatch.
+const mounted = ref(false)
+onMounted(() => (mounted.value = true))
+const themeLabel = computed(() =>
+  mounted.value && isDark.value ? 'Switch to light theme' : 'Switch to dark theme'
+)
 
 const logo = computed(() => {
   const l = theme.value.logo
@@ -86,12 +95,12 @@ function isExternal(href) {
         <button
           type="button"
           class="n-navbar__appearance"
-          :title="isDark ? 'Switch to light theme' : 'Switch to dark theme'"
-          :aria-label="isDark ? 'Switch to light theme' : 'Switch to dark theme'"
+          :title="themeLabel"
+          :aria-label="themeLabel"
           @click="toggleAppearance"
         >
           <svg
-            v-if="isDark"
+            class="n-navbar__sun"
             viewBox="0 0 24 24"
             width="17"
             height="17"
@@ -107,7 +116,7 @@ function isExternal(href) {
             />
           </svg>
           <svg
-            v-else
+            class="n-navbar__moon"
             viewBox="0 0 24 24"
             width="17"
             height="17"
@@ -289,10 +298,21 @@ function isExternal(href) {
 @media (max-width: 959px) {
   .n-navbar__burger {
     display: grid;
+    flex-shrink: 0;
   }
 
   .n-navbar__brand {
     width: auto;
+    /* No rail to line up with, so the lockup gives its room back. */
+    min-width: 0;
+  }
+}
+
+/* With the burger and the site links in the row, the tagline would push
+   search and the theme switch off the edge. */
+@media (min-width: 768px) and (max-width: 959px) {
+  .n-navbar__title {
+    display: none;
   }
 }
 
@@ -306,7 +326,8 @@ function isExternal(href) {
   }
 }
 
-@media (max-width: 420px) {
+/* The tagline needs about 447px with the burger, search and theme switch. */
+@media (max-width: 479px) {
   .n-navbar__title {
     display: none;
   }
@@ -316,5 +337,17 @@ function isExternal(href) {
   .n-burger span {
     transition: none;
   }
+}
+</style>
+
+<!-- Unscoped: the icons follow the .dark class on <html>. -->
+<style>
+.n-navbar__appearance .n-navbar__sun,
+.dark .n-navbar__appearance .n-navbar__moon {
+  display: none;
+}
+
+.dark .n-navbar__appearance .n-navbar__sun {
+  display: block;
 }
 </style>

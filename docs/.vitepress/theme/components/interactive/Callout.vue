@@ -35,6 +35,7 @@ defineProps({
   color: var(--n-text);
   font-size: var(--n-text-base);
   font-weight: 600;
+  text-wrap: balance;
 }
 
 .n-callout--tip .n-callout__title {

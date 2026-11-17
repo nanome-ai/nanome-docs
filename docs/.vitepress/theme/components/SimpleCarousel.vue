@@ -1,10 +1,21 @@
 <template>
-  <div class="simple-carousel" :class="{ 'carousel-dark': dark }">
+  <div
+    ref="root"
+    class="simple-carousel"
+    :class="{ 'carousel-dark': dark, 'has-dots': showDots }"
+    @mouseenter="onPointerEnter"
+    @mouseleave="onPointerLeave"
+    @focusin="onFocusIn"
+    @focusout="onFocusOut"
+    @pointerdown="stopForGood"
+    @touchstart.passive="stopForGood"
+    @keydown="stopForGood"
+  >
     <div class="carousel-container">
       <button
         v-if="showArrows"
         class="carousel-nav carousel-prev"
-        @click="scrollPrev"
+        @click="stopForGood(); scrollPrev()"
         aria-label="Previous"
       >
         ‹
@@ -16,15 +27,17 @@
           :key="index"
           class="carousel-slide"
           :style="{ width: slideWidth }"
+          :aria-hidden="isClone(index) ? 'true' : undefined"
         >
-          <slot :item="item" :index="index % items.length" />
+          <!-- Clones carry `clone`, so their links can leave the Tab order. -->
+          <slot :item="item" :index="index % items.length" :clone="isClone(index)" :near="near" />
         </div>
       </div>
 
       <button
         v-if="showArrows"
         class="carousel-nav carousel-next"
-        @click="scrollNext"
+        @click="stopForGood(); scrollNext()"
         aria-label="Next"
       >
         ›
@@ -37,7 +50,7 @@
         :key="index"
         :class="{ active: currentDot === index }"
       >
-        <button @click="scrollToSlide(index)" :aria-label="`Go to slide ${index + 1}`">
+        <button @click="stopForGood(); scrollToSlide(index)" :aria-label="`Go to slide ${index + 1}`">
           •
         </button>
       </li>
@@ -46,7 +59,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, nextTick, onMounted, onUnmounted, watch } from 'vue'
 
 const props = defineProps({
   items: {
@@ -79,11 +92,19 @@ const props = defineProps({
   }
 })
 
+const root = ref(null)
 const track = ref(null)
 const currentDot = ref(0)
 const currentIndex = ref(0)
 const autoplayTimer = ref(null)
 const isTransitioning = ref(false)
+
+// True once the carousel comes near the screen. Until then slide images
+// stay lazy; after, they all load, so a slide change never waits on its
+// image. Browsers differ on when a lazy image off to the side of a scroller
+// loads.
+const near = ref(false)
+let nearObserver = null
 
 const slideWidth = computed(() => {
   return `${100 / props.slidesToShow}%`
@@ -100,6 +121,15 @@ const clonedItems = computed(() => {
   return [...props.items.slice(-cloneCount), ...props.items, ...props.items.slice(0, cloneCount)]
 })
 
+// The copies before and after the real slides that make the loop seamless.
+function isClone(index) {
+  return index < props.slidesToShow || index >= props.slidesToShow + props.items.length
+}
+
+function reducedMotion() {
+  return window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+}
+
 function getSlidePixelWidth() {
   return track.value.offsetWidth / props.slidesToShow
 }
@@ -107,7 +137,7 @@ function getSlidePixelWidth() {
 function scrollToPosition(index, smooth = true) {
   track.value.scrollTo({
     left: getSlidePixelWidth() * index,
-    behavior: smooth ? 'smooth' : 'auto'
+    behavior: smooth && !reducedMotion() ? 'smooth' : 'auto'
   })
 }
 
@@ -169,7 +199,7 @@ function scrollToSlide(dotIndex) {
 }
 
 function startAutoplay() {
-  if (!props.autoplay) return
+  if (!props.autoplay || userStopped || autoplayTimer.value || reducedMotion()) return
   autoplayTimer.value = setInterval(scrollNext, props.autoplaySpeed)
 }
 
@@ -179,6 +209,89 @@ function stopAutoplay() {
     autoplayTimer.value = null
   }
 }
+
+// Autoplay waits while the pointer or keyboard focus is in the carousel.
+let hovering = false
+let focusInside = false
+
+// A tap, click, swipe or key press in the carousel stops autoplay for good.
+// A phone has no hover to hold it, so this is how a reader there stops it.
+let userStopped = false
+
+function stopForGood() {
+  userStopped = true
+  stopAutoplay()
+}
+
+function onPointerEnter() {
+  hovering = true
+  stopAutoplay()
+}
+
+function onPointerLeave() {
+  hovering = false
+  if (!focusInside) startAutoplay()
+}
+
+function onFocusIn(event) {
+  focusInside = true
+  stopAutoplay()
+  const slide = event.target.closest?.('.carousel-slide')
+  if (slide) showFocused(slide)
+}
+
+// Tab can reach a slide that only a sliver of overlaps the track, and the
+// browser doesn't scroll to it then. Slide it fully into view, at the edge
+// it came from. Clones have nothing to focus, so the slide is a real one.
+function showFocused(slide) {
+  if (!track.value || !slide.contains(document.activeElement)) return
+  if (isTransitioning.value) {
+    setTimeout(() => showFocused(slide), 150)
+    return
+  }
+  const t = track.value.getBoundingClientRect()
+  const r = slide.getBoundingClientRect()
+  const i = [...track.value.children].indexOf(slide)
+  if (r.right > t.right + 1) scrollAndWrap(i - props.slidesToShow + 1)
+  else if (r.left < t.left - 1) scrollAndWrap(i)
+}
+
+function onFocusOut(event) {
+  if (root.value?.contains(event.relatedTarget)) return
+  focusInside = false
+  if (!hovering) startAutoplay()
+}
+
+// A swipe or trackpad scroll snaps to a slide. Once it stops, pick up the
+// index and dot from where it landed, and step off a clone like scrollAndWrap.
+function onScrollSettled() {
+  if (!track.value || isTransitioning.value) return
+  const index = Math.round(track.value.scrollLeft / getSlidePixelWidth())
+  const realSlides = props.items.length
+  let settled = index
+  if (index < props.slidesToShow) settled = index + realSlides
+  else if (index >= props.slidesToShow + realSlides) settled = index - realSlides
+  currentIndex.value = settled
+  updateDot(settled)
+  if (settled !== index) scrollToPosition(settled, false)
+}
+
+let settleTimer = null
+function onScroll() {
+  clearTimeout(settleTimer)
+  settleTimer = setTimeout(onScrollSettled, 150)
+}
+
+let scrollListener = null
+
+// HomeCarousel shows fewer slides on narrow screens. The clones change with
+// it, so start again from the first real slide.
+watch(() => props.slidesToShow, () => nextTick(() => {
+  if (!track.value) return
+  currentIndex.value = props.slidesToShow
+  updateDot(props.slidesToShow)
+  scrollToPosition(props.slidesToShow, false)
+}))
 
 function onResize() {
   if (track.value) {
@@ -190,14 +303,29 @@ onMounted(() => {
   if (track.value) {
     currentIndex.value = props.slidesToShow
     scrollToPosition(props.slidesToShow, false)
+    scrollListener = 'onscrollend' in window ? ['scrollend', onScrollSettled] : ['scroll', onScroll]
+    track.value.addEventListener(...scrollListener)
   }
   window.addEventListener('resize', onResize)
   startAutoplay()
+  if (!('IntersectionObserver' in window)) {
+    near.value = true
+  } else if (root.value) {
+    nearObserver = new IntersectionObserver((entries) => {
+      if (!entries.some((e) => e.isIntersecting)) return
+      near.value = true
+      nearObserver.disconnect()
+    }, { rootMargin: '600px 0px' })
+    nearObserver.observe(root.value)
+  }
 })
 
 onUnmounted(() => {
   window.removeEventListener('resize', onResize)
+  if (scrollListener) track.value?.removeEventListener(...scrollListener)
+  clearTimeout(settleTimer)
   stopAutoplay()
+  nearObserver?.disconnect()
 })
 </script>
 
@@ -231,8 +359,23 @@ onUnmounted(() => {
   justify-content: center;
 }
 
-.carousel-container:hover .carousel-nav {
+.carousel-container:hover .carousel-nav,
+.carousel-nav:focus-visible {
   opacity: 1;
+}
+
+/* A touch screen has no hover to show them. Without dots, they stay in view
+   to show that there are more slides. */
+@media (hover: none) {
+  .simple-carousel:not(.has-dots) .carousel-nav {
+    opacity: 1;
+  }
+}
+
+/* Inset, like the dots' ring, so it stays inside the slide. */
+.carousel-nav:focus-visible {
+  outline: 2px solid var(--n-accent);
+  outline-offset: -2px;
 }
 
 .carousel-nav::before,
@@ -314,6 +457,11 @@ onUnmounted(() => {
   cursor: pointer;
 }
 
+/* No page list bullet beside each dot. */
+.carousel-dots li::before {
+  display: none;
+}
+
 .carousel-dots button {
   display: block;
   width: 12px;
@@ -324,18 +472,37 @@ onUnmounted(() => {
   cursor: pointer;
   color: transparent;
   border: 0;
-  outline: none;
   background: #888;
   border-radius: 50%;
+}
+
+.carousel-dots button:focus-visible {
+  outline: 2px solid var(--n-accent);
+  outline-offset: 2px;
 }
 
 .carousel-dots li.active button {
   background: #eee;
 }
 
+/* The hero's dots sit in a row under the slide, clear of its title. */
+.carousel-dark .carousel-dots {
+  position: static;
+}
+
+.carousel-dark .carousel-dots button {
+  background: var(--n-text-faint);
+}
+
+.carousel-dark .carousel-dots li.active button {
+  background: var(--n-accent);
+  transform: scale(1.25);
+}
+
 .carousel-track {
   display: flex;
   overflow-x: auto;
+  scroll-snap-type: x mandatory;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -347,5 +514,6 @@ onUnmounted(() => {
 .carousel-slide {
   flex-shrink: 0;
   box-sizing: border-box;
+  scroll-snap-align: start;
 }
 </style>

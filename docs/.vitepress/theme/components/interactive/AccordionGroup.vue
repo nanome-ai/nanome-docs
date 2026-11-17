@@ -47,7 +47,6 @@ onMounted(() => {
         v-if="count > 1"
         type="button"
         class="n-accordions__toggle"
-        :aria-pressed="String(allOpen)"
         @click="toggleAll"
       >
         {{ allOpen ? 'Collapse all' : 'Expand all' }}
@@ -80,7 +79,9 @@ onMounted(() => {
   font-weight: 500;
 }
 
+/* The label wraps on a phone; the button keeps to one line. */
 .n-accordions__toggle {
+  flex-shrink: 0;
   padding: 4px 11px;
   border: 1px solid var(--n-border);
   border-radius: var(--n-radius-pill);
@@ -88,6 +89,7 @@ onMounted(() => {
   color: var(--n-text-muted);
   font-size: var(--n-text-xs);
   font-weight: 500;
+  white-space: nowrap;
   cursor: pointer;
   transition: color var(--n-transition), border-color var(--n-transition);
 }

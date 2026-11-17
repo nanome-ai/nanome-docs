@@ -4,20 +4,26 @@ title: Sequence Panel
 
 # Sequence Panel
 
-<vimg src="nanome-v2/sequence-panel.jpg" />
+The Sequence Panel shows every residue of the loaded structures in a horizontal, scrollable view: amino acids by their 1-letter codes, and other residues, such as nucleotides and ligands, by name. <Btn icon="mist">Sequences</Btn> at the bottom-right of the [Components tab](/nanome_v2/mainpanel#components-tab) opens it.
 
-The Sequence Panel is opened by clicking the **Sequences** button at the bottom-right of the [Components Tab](/nanome_v2/mainpanel#components-tab). It displays the amino acid sequences of all loaded structures in a horizontal, scrollable view.
+## <AppIcon name="mist" /> Features {#features}
 
-## Features
+<ShotRow src="nanome-v2/v2-7/sequence-panel.webp" alt="The Sequence Panel for 1KV2, with chain A's sequence and some residues selected">
 
-- **Select by chain** — Click the chain letter (e.g., "A") to select an entire chain.
-- **Select by residue** — Click individual residues in the sequence to select them. Selected residues are highlighted.
-- **Hover for info** — Hovering over a residue shows its details (e.g., "5CEO A: TYR 226") at the bottom of the panel.
-- **Clear** — Clear the current selection.
-- **Create** — Create a new component from the current residue selection.
+<UiList label="Sequence Panel">
+<UiItem name="Entry" area="1.4,27.7,4.9,12.2">The structure the sequences belong to, such as 1KV2.</UiItem>
+<UiItem name="Chain" area="10.7,12.8,1.9,10.6">The chain letter, such as A. Clicking it selects the whole chain, or deselects it when any of its residues is selected.</UiItem>
+<UiItem name="Residue numbers" area="10.8,25.5,87.1,9.6">The chain's first residue number, then every tenth.</UiItem>
+<UiItem name="Gray letters" area="10.9,37.5,4.2,9.5">Residues in the entry's sequence that weren't located in the structure. They can't be hovered or selected.</UiItem>
+<UiItem name="Colored residues">Waters show as a red O. Residues that aren't standard amino acids, such as nucleotides and ligands, show their name in yellow.</UiItem>
+<UiItem name="Selected residues" area="48.5,35.1,48.5,13.8">Clicking a residue selects it, or deselects it if it's selected. Dragging along the row does the same to each residue it crosses. Selected residues are highlighted.</UiItem>
+<UiItem name="Filter hidden structures" area="2.9,70.7,25.6,16.5">Leaves out structures that have no visible representation.</UiItem>
+<UiItem name="Clear" area="81.9,67.6,7.2,22.9">Clears the selection.</UiItem>
+<UiItem name="Create" area="89.9,67.6,8.2,22.9">Editors only. Asks for a name, Sequence selection by default, then creates a component from the selected residues.</UiItem>
+</UiList>
 
-## Editing an Existing Component
+- Hovering a residue shows its details at the bottom of the panel, such as "1KV2 A: THR 106".
+- <Btn icon="mist">Edit Selection</Btn> in a component's [menu](/nanome_v2/mainpanel#component-menu) opens the panel with that component active. [Editing a binding pocket](/nanome_v2/sampleworkflows#editing-a-binding-pocket) walks through adding a residue this way.
+- When a component is active in the panel, its name shows beside the buttons and **Create** becomes **Update**, which updates that component with the current selection. Selecting the name ends that, and the button goes back to **Create**.
 
-To change which residues a component contains, choose **Edit Selection** from the component's (...) menu in the [Components Tab](/nanome_v2/mainpanel#component-more-options). The Sequence Panel opens with that component's residues highlighted and its name shown at the bottom, and an **Update** button appears.
-
-Click the residues to add, then click **Update** to save the change to the component. [Editing a Binding Pocket](/nanome_v2/sampleworkflows#editing-a-binding-pocket) walks through an example.
+</ShotRow>

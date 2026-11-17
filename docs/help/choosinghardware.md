@@ -5,19 +5,26 @@ pageClass: n-wide
 
 # Choosing Hardware
 
-<Callout type="note" title="Nanome v2, as of v2.6.1">
+<Callout type="note" title="Nanome XR, as of 2.7.1">
 
 This page covers the current release of Nanome. For Nanome Classic (v1.24), see
 [Choosing Hardware (Nanome Classic)](/help/choosinghardware-classic).
 
 </Callout>
 
-Nanome v2 runs on Meta Quest 3 and 3S, Apple Vision Pro, Samsung Galaxy XR,
-Windows PCs over Meta Link (PCVR), and in any modern browser at
-[app.nanome.ai](https://app.nanome.ai). Setting up a fleet of headsets is
-covered step by step in [Getting Started](/getting-started).
+Nanome XR runs on Meta Quest 3 and 3S, Apple Vision Pro, Samsung Galaxy XR,
+Windows PCs over Meta Link (PCVR), and in any modern browser at app.nanome.ai.
+It also runs on Meta Quest 2 and Quest Pro, the minimum Quest headsets for
+Nanome XR.
 
-## Nanome Headset Comparison Matrix
+<IconGrid label="Choosing hardware">
+<IconCard icon="device-vision-pro" title="Comparison matrix" href="#nanome-headset-comparison-matrix">Processor, display, installing, MDM, sign-in and price.</IconCard>
+<IconCard icon="headset" title="Minimum and recommended" href="#quest-minimum-recommended">Quest 2 and Pro at minimum, Quest 3 and 3S recommended.</IconCard>
+<IconCard icon="ban" title="Not supported" href="#headsets-not-supported">Headsets Nanome XR doesn't run on.</IconCard>
+<IconCard icon="mood-smile" title="Comfort comparison" href="#comfort-comparison">How much structure each platform shows comfortably.</IconCard>
+</IconGrid>
+
+## <AppIcon name="device-vision-pro" /> Headset comparison matrix {#nanome-headset-comparison-matrix}
 
 <table class="matrix">
   <thead>
@@ -33,7 +40,7 @@ covered step by step in [Getting Started](/getting-started).
       <th>Samsung Galaxy XR</th>
       <th>Apple Vision Pro</th>
       <th>Windows PC over Meta Link</th>
-      <th>app.nanome.ai</th>
+      <th><span class="n-nohyph">app.<wbr>nanome.ai</span></th>
     </tr>
   </thead>
   <tbody>
@@ -47,17 +54,17 @@ covered step by step in [Getting Started](/getting-started).
     </tr>
     <tr>
       <th>Display, per eye</th>
-      <td>2,064 × 2,208 (3S: 1,832 × 1,920), 72–120 Hz</td>
+      <td>2,064 × 2,208 (3S: 1,832 × 1,920), 72 to 120 Hz</td>
       <td>3,552 × 3,840 micro-OLED, 72 Hz default, 90 Hz max</td>
-      <td>~3,660 × 3,200 micro-OLED, 90–100 Hz (up to 120 Hz on M5)</td>
+      <td>~3,660 × 3,200 micro-OLED, 90 to 100 Hz (up to 120 Hz on M5)</td>
       <td>Set by the Quest headset</td>
       <td>Monitor</td>
     </tr>
     <tr>
       <th>Mixed reality passthrough</th>
-      <td>Yes, full colour, stereoscopic (Quest 3 adds a depth sensor)</td>
-      <td>Yes, full colour, stereoscopic</td>
-      <td>Yes, full colour, stereoscopic</td>
+      <td>Yes, full color, stereoscopic (Quest 3 adds a depth sensor)</td>
+      <td>Yes, full color, stereoscopic</td>
+      <td>Yes, full color, stereoscopic</td>
       <td>No</td>
       <td>No</td>
     </tr>
@@ -66,7 +73,7 @@ covered step by step in [Getting Started](/getting-started).
       <td>Meta Horizon Store, through an MDM, or a sideloaded APK</td>
       <td>APK, through an MDM or sideloaded (not on Google Play)</td>
       <td>Apple TestFlight beta</td>
-      <td>Direct download from nanome.ai/versions</td>
+      <td>Direct download from <span class="n-nohyph">nanome.ai/<wbr>versions</span></td>
       <td>Nothing to install</td>
     </tr>
     <tr>
@@ -98,14 +105,14 @@ covered step by step in [Getting Started](/getting-started).
       <td>No</td>
       <td>No</td>
       <td>No</td>
-      <td>The installer runs offline; signing in needs a network</td>
+      <td>The download runs offline once unzipped; signing in needs a network</td>
       <td>No</td>
     </tr>
     <tr>
       <th>Signing in</th>
       <td>Code, or username and password</td>
       <td>Code, or username and password</td>
-      <td>Code, or username and password</td>
+      <td>Username and password (no code sign-in in the beta)</td>
       <td>Code, or username and password</td>
       <td>Email, Google, Microsoft, Apple, or SSO</td>
     </tr>
@@ -122,13 +129,13 @@ covered step by step in [Getting Started](/getting-started).
       <td>Quest 3 $599.99; Quest 3S from $349.99</td>
       <td>$1,799</td>
       <td>From $3,699</td>
-      <td>A VR-ready PC, a Quest, and a Link cable ($30–100)</td>
+      <td>A VR-ready PC, a Quest, and a Link cable ($30 to $100)</td>
       <td>Free</td>
     </tr>
     <tr>
       <th>Where to buy</th>
       <td><a href="https://www.meta.com/quest/quest-3/">Meta</a>, Best Buy, Amazon, or preconfigured <a href="https://dashboard.vr-expert.com/order-form/a0jTg00000LTeqnIAD">Nanome kits from VR Expert</a></td>
-      <td><a href="https://www.samsung.com/us/xr/galaxy-xr/">Samsung</a>, or preconfigured <a href="https://dashboard.vr-expert.com/order-form/a0jTg00000LTeqnIAD">Nanome kits from VR Expert</a></td>
+      <td><a href="https://www.samsung.com/us/xr/galaxy-xr/galaxy-xr/">Samsung</a>, or preconfigured <a href="https://dashboard.vr-expert.com/order-form/a0jTg00000LTeqnIAD">Nanome kits from VR Expert</a></td>
       <td><a href="https://www.apple.com/apple-vision-pro/">Apple</a></td>
       <td><a href="https://www.meta.com/help/quest/140991407990979/">Meta Link requirements</a></td>
       <td>—</td>
@@ -140,54 +147,55 @@ Prices are list prices at the time of writing and change; the links above carry
 the current figure. MDM details, enrollment steps and network requirements are
 in [Getting Started](/getting-started#mdm).
 
-## Headsets Not Supported
+## <AppIcon name="headset" /> Minimum and recommended Quest headsets {#quest-minimum-recommended}
 
-**Meta Quest 1**, originally sold as Oculus Quest, is not supported. Nanome v2
-targets Meta Quest 3 and 3S; Quest 2 and Quest Pro run Nanome Classic (v1.24),
-covered on the [Classic hardware page](/help/choosinghardware-classic).
+| | Minimum | Recommended |
+| --- | --- | --- |
+| **Headsets** | Meta Quest 2, Meta Quest Pro | Meta Quest 3, Meta Quest 3S |
+| **Drawing budget in Nanome XR** | A little over half the Quest 3 budget | The full Quest 3 budget |
 
-## Nanome All-In-One vs PCVR vs Web Comfort Comparison
+When a scene needs more than its drawing budget, Nanome XR lowers the detail
+of the largest entries first, and hides whole entries if the scene stays far
+over budget. Quest 2 and Quest Pro get a little over half the Quest 3 drawing
+budget, so heavy scenes lose detail and hide entries sooner. The comfort
+tables below don't rate Quest 2 or Quest Pro.
 
-The tables below show how much structure each platform shows comfortably. Please
-also note the following:
+## <AppIcon name="ban" /> Headsets not supported {#headsets-not-supported}
+
+**Meta Quest 1**, originally sold as Oculus Quest, is not supported.
+
+## <AppIcon name="mood-smile" /> All-in-one vs PCVR vs Web comfort comparison {#comfort-comparison}
+
+The tables below show how much structure each platform shows comfortably.
+'Shown Atom Count' is what's displayed in the workspace, not what's loaded.
+
+The ratings Comfortable, Moderate and Not recommended are Nanome's guidance
+for each platform, with nothing else on screen.
+
+<Accordion title="Notes 1 to 6 on the comfort tables" teaser="What the atom counts assume, and how the PCVR, Web, Galaxy XR and M5 columns are rated.">
 
 1. 'Shown Atom Count' only refers to the count of atoms displayed in the
    workspace. Larger structures can be loaded within the workspace and hidden.
-2. Surfaces (on/off), secondary structures (ribbons on/off), and supplemental
-   materials (PDF/JPEGs, whiteboards, web browsers, labels) all affect
-   performance in different ways significantly. The 'Shown Atom Count' column
-   is given assuming nothing else is displayed in the scene.
+2. Surfaces, cartoons, labels and images in the scene all add to what has to
+   be drawn. The 'Shown Atom Count' column assumes nothing else is shown.
 3. Desktop is assumed to be "VR ready"; see the
-   [minimum and recommended PC specs](/help/pchardware).
+   [minimum and recommended PC specs](/help/pchardware). PCVR ratings carry
+   over from Nanome Classic (v1.24). Nanome XR sets no drawing budget on PCVR,
+   so the PC's graphics card sets the limit.
 4. Web performance depends entirely on the computer's GPU, so the Web column
    has no single rating. The example column shows an Apple M1 Max (32-core
-   GPU); a lower-end laptop GPU will sit a band or two lower, and a desktop GPU
-   higher.
-5. Samsung Galaxy XR's Snapdragon XR2+ Gen 2 carries the same GPU as the
-   Quest 3 clocked 15% higher, and its 16 GB of memory (Quest 3: 8 GB) helps
-   large structures load.
-6. Apple Vision Pro with M5 ratings are projected from the M2 model. The M5's
-   10-core GPU rates about 1.4 times the M2's, and reviews describe the M2
-   model as GPU-bound where the M5 is not; the M5 also renders 10% more pixels.
-   Net, that is roughly 1.4 to 1.5 times the headroom.
+   GPU); a lower-end laptop GPU will sit a rating or two lower, and a desktop
+   GPU higher.
+5. Samsung Galaxy XR ratings are estimates. Nanome XR gives Galaxy XR the same
+   drawing budget as Quest 3, so the ratings match Quest 3's. Its Snapdragon
+   XR2+ Gen 2 carries the same GPU as the Quest 3 clocked 15% higher, but its
+   displays have about 3 times as many pixels. The 16 GB of memory (Quest 3:
+   8 GB) helps large structures load.
+6. Ratings for Apple Vision Pro with M5 are projected from the M2 model.
 
-### Comfort Legend
+</Accordion>
 
-<table class="legend">
-  <thead>
-    <tr>
-      <th>Comfortability</th>
-      <th>Frames Per Second (FPS)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td class="rate-good">Comfortable</td><td>72 FPS +</td></tr>
-    <tr><td class="rate-ok">Moderate</td><td>60 FPS +</td></tr>
-    <tr><td class="rate-bad">Not recommended</td><td>30 FPS or less</td></tr>
-  </tbody>
-</table>
-
-### Comfort Comparison XR
+### Comfort comparison: XR {#comfort-comparison-xr}
 
 <table class="comfort">
   <colgroup>
@@ -227,7 +235,7 @@ also note the following:
     <tr>
       <td>15,000</td>
       <td class="rate-bad">Not recommended</td>
-      <td class="rate-ok">Moderate</td>
+      <td class="rate-bad">Not recommended</td>
       <td class="rate-good">Comfortable</td>
       <td class="rate-good">Comfortable</td>
     </tr>
@@ -283,7 +291,7 @@ also note the following:
   </tbody>
 </table>
 
-### Comfort Comparison PC & Web
+### Comfort comparison: PC and Web {#comfort-comparison-pc-web}
 
 <table class="comfort">
   <colgroup>
@@ -352,6 +360,5 @@ also note the following:
 </table>
 
 Keeping a session inside these numbers is covered in
-[Keep it comfortable](/session-guide#comfort): hide what a scene does not need,
-step surfaces down a density, and show one atomistic representation per
-component.
+[Keep it comfortable](/session-guide#comfort): hide what a scene doesn't need,
+keep surfaces small, and show atoms only for the part under discussion.

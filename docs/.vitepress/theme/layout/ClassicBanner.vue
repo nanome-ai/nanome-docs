@@ -25,7 +25,7 @@ const show = computed(() => {
     <p class="n-classic__text">
       <strong>This page is for Nanome Classic (v1.24).</strong>
       The current release, Nanome v2, is covered under
-      <a :href="withBase('/nanome_v2/login')">Nanome XR</a> and
+      <a :href="withBase('/nanome_v2/overview')">Nanome XR</a> and
       <a :href="withBase('/nanome_web/overview')">Nanome Web</a>
       (<a href="https://app.nanome.ai" target="_blank" rel="noopener">app.nanome.ai</a>).
     </p>
@@ -54,13 +54,23 @@ const show = computed(() => {
 }
 
 .n-classic__text a {
-  color: var(--n-accent);
+  color: var(--n-accent-hover);
   font-weight: 500;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 .n-classic__text a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* The darker blue is for the light tint only; on black the usual accent
+   reads well. */
+.dark .n-classic__text a {
+  color: var(--n-accent);
+}
+
+.dark .n-classic__text a:hover {
   color: var(--n-accent-hover);
 }
 </style>

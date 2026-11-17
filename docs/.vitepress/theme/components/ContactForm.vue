@@ -1,29 +1,29 @@
 <template>
   <div>
     <form v-if="!success" @submit.prevent="onSubmit" class="contact">
-      <h2>Tell us more about yourself and the right team will contact you.</h2>
+      <p class="contact__intro">Tell us more about yourself and the right team will contact you.</p>
       <div class="row">
         <label>
-          <h3>First Name <span class="required">*</span></h3>
+          <span class="contact__label">First Name <span class="required">*</span></span>
           <input v-model="firstName" type="text" required />
         </label>
         <label>
-          <h3>Last Name <span class="required">*</span></h3>
+          <span class="contact__label">Last Name <span class="required">*</span></span>
           <input v-model="lastName" type="text" required />
         </label>
       </div>
       <div class="row">
         <label>
-          <h3>Email <span class="required">*</span></h3>
+          <span class="contact__label">Email <span class="required">*</span></span>
           <input v-model="email" type="email" required />
         </label>
         <label>
-          <h3>Organization / Affiliation</h3>
+          <span class="contact__label">Organization / Affiliation</span>
           <input v-model="org" type="text" />
         </label>
       </div>
       <label>
-        <h3>Which of the following do you identify most closely with?</h3>
+        <span class="contact__label">Which of the following do you identify most closely with?</span>
         <select v-model="profession">
           <option value="" selected disabled></option>
           <option value="IT Professional">IT Professional</option>
@@ -42,7 +42,7 @@
         </select>
       </label>
       <label>
-        <h3>How did you hear about Nanome?</h3>
+        <span class="contact__label">How did you hear about Nanome?</span>
         <select v-model="referrer">
           <option value="" selected disabled></option>
           <option value="Facebook">Facebook</option>
@@ -58,28 +58,25 @@
         </select>
       </label>
       <label>
-        <h3>I'm interested in... <span class="required">*</span></h3>
+        <span class="contact__label">I'm interested in... <span class="required">*</span></span>
         <textarea v-model="content" cols="30" rows="10" required></textarea>
       </label>
-      <div v-if="!success && error" class="error">
+      <div v-if="!success && error" class="error" role="alert">
         {{ error }}
       </div>
-      <button type="submit" :disabled="!!error" class="btn">
-        <h3>Send</h3>
+      <button type="submit" :disabled="sending" class="btn">
+        <span class="contact__send">Send</span>
       </button>
     </form>
-    <div v-else>
-      <h3>Your request has been sent!</h3>
-      <p>
-        Your request was received by our staff, we will get back to you shortly
-        by the email you've provided.
-      </p>
+    <div v-else ref="done" class="contact__done" role="status" tabindex="-1">
+      <p class="contact__intro">Your request has been sent</p>
+      <p>Thanks. The Nanome team will reply to the email you gave.</p>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { nextTick, ref } from 'vue'
 
 const firstName = ref('')
 const lastName = ref('')
@@ -90,9 +87,13 @@ const referrer = ref('')
 const content = ref('')
 const success = ref(false)
 const error = ref('')
+const sending = ref(false)
+// The confirmation that replaces the form, which takes focus from Send.
+const done = ref(null)
 
 async function onSubmit() {
   error.value = ''
+  sending.value = true
 
   // Posts to the shared contact endpoint on nanome.ai, which emails the
   // submission to support@nanome.ai via Resend (replaces the old Make webhook).
@@ -120,18 +121,37 @@ async function onSubmit() {
     }
 
     success.value = true
+    await nextTick()
+    done.value?.focus()
   }
   catch {
     error.value = `There was an error processing your request. Please try again later.`
     success.value = false
   }
+  finally {
+    sending.value = false
+  }
 }
 </script>
 
 <style scoped>
-.contact h2 {
-  border-bottom: 2px solid #29a1ff;
+/* It takes focus only so a screen reader reads it; it isn't a control. */
+.contact__done:focus {
+  outline: none;
+}
+
+/* The intro and field labels look as the page's h2 and h3 do, without being
+   headings, so the page's outline and heading list stay its own. */
+.contact__intro {
+  margin: 56px 0 18px;
   padding: 1rem 0;
+  border-top: 1px solid var(--n-border-soft);
+  color: var(--n-text);
+  font-size: var(--n-text-xl);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: var(--n-tracking-tight);
+  text-wrap: balance;
 }
 
 .contact .row {
@@ -151,9 +171,15 @@ async function onSubmit() {
   margin-bottom: 1rem;
 }
 
-.contact h3 {
-  margin: 0;
+.contact__label {
+  display: block;
   margin-bottom: 0.5rem;
+  color: var(--n-text);
+  font-size: var(--n-text-lg);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: var(--n-tracking-tight);
+  text-wrap: balance;
 }
 
 .contact input,
@@ -163,14 +189,31 @@ async function onSubmit() {
   width: 100%;
   font-size: 1.1rem;
   padding: 0.5rem;
-  border: 1px solid var(--vp-c-border);
+  /* 3:1 against the page in both themes, so the fields read as fields. */
+  border: 1px solid color-mix(in srgb, var(--n-text) 45%, transparent);
   box-sizing: border-box;
   border-radius: 4px;
 }
 
+/* VitePress turns the outline off on focused fields; put the site's ring back. */
+.contact :is(input, select, textarea):focus-visible {
+  outline: 2px solid var(--n-accent);
+  outline-offset: 1px;
+}
+
+/* The browser arrow is gone (appearance: none), so draw one. Longhands keep
+   base.css's transparent background colour. */
+.contact select {
+  padding-right: 2rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%238a8a8a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.6rem center;
+  background-size: 14px;
+}
+
 .contact span.required,
 .contact .error {
-  color: #f04040;
+  color: var(--n-bad);
 }
 
 .error {
@@ -182,7 +225,10 @@ async function onSubmit() {
   width: 100%;
 }
 
-.contact button h3 {
-  margin-bottom: 0;
+.contact__send {
+  display: block;
+  font-size: var(--n-text-lg);
+  line-height: 1.4;
+  letter-spacing: var(--n-tracking-tight);
 }
 </style>

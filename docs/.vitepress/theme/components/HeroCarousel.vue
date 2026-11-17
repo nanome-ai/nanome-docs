@@ -8,9 +8,16 @@
     :autoplay="true"
     :autoplay-speed="5000"
   >
-    <template #default="{ item }">
-      <a :href="item.url" class="slide" target="_blank">
-        <img :src="item.img" />
+    <template #default="{ item, clone, near }">
+      <a :href="item.url" class="slide" :style="{ aspectRatio: ratio }" target="_blank" :tabindex="clone ? -1 : undefined">
+        <!-- `loading` before `src`, so Safari keeps a far slide lazy (Vimg.vue).
+             The first slide's loop copy loads with it, so Safari takes both
+             from one request instead of fetching the image again later. -->
+        <img
+          :loading="near || (eager && item === slides[0]) ? 'eager' : 'lazy'"
+          :src="item.img"
+          :alt="item.title || item.alt || ''"
+        />
       </a>
     </template>
   </SimpleCarousel>
@@ -23,6 +30,17 @@ defineProps({
   slides: {
     type: Array,
     required: true
+  },
+  /** The frame's shape, to match the images so they fill it. */
+  ratio: {
+    type: String,
+    default: '16 / 9'
+  },
+  // Load the first slide with the page, ahead of the rest. The home page
+  // sets this on its topmost carousel.
+  eager: {
+    type: Boolean,
+    default: false
   }
 })
 </script>
@@ -31,15 +49,24 @@ defineProps({
 .slide {
   position: relative;
   display: block;
-  aspect-ratio: 16 / 9;
   overflow: hidden;
   background: #111;
+}
+
+/* The slide fills the scrolling track, which would clip a ring outside it. */
+.slide:focus-visible {
+  outline: 2px solid var(--n-accent);
+  outline-offset: -2px;
 }
 
 .slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  margin: 0; /* drop the page's image margin and frame */
+  border: 0;
+  border-radius: 0;
+  object-fit: contain; /* a banner of another shape shows whole */
+  background: var(--n-surface-sunken);
 }
 
 </style>

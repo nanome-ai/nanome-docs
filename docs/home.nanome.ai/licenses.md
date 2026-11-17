@@ -4,30 +4,44 @@ title: Manage Licenses
 
 # Manage Licenses
 
-### Step 1: Log into your account at https://home.nanome.ai
+You assign your licenses to people, and take them back, at [home.nanome.ai](https://home.nanome.ai).
 
-<vimg src="nanome-page/Step1.png" />
+<Steps>
 
-### Step 2: On the dashboard, navigate to the left hand side and click on “Licenses”
+1. Log in to your account at home.nanome.ai.
 
-<vimg src="nanome-page/Licenses1.png" />
+   <vimg src="nanome-page/Step1.png" alt="The home.nanome.ai login page" />
 
-### Step 3: Now under “Licenses”, click on "Assign Users" to start managing licenses
+2. On the dashboard, choose **Licenses** on the left.
 
-<vimg src="nanome-page/Licenses2.png" />
+   <vimg src="home-nanome/dashboard-menu.webp" alt="Licenses in the dashboard's left menu" />
 
-### Step 4: Click on Done once you finish assigning your licenses in order to finalize the changes.
+3. Under **Licenses**, choose **Assign Users** to start managing licenses.
 
-<vimg src="nanome-page/Licenses5.png" />
+   <vimg src="home-nanome/licenses-owned.webp" alt="The Owned licenses table, with Assign Users at the top right" />
 
-## Assign Licenses
+4. Assign or unassign licenses (below), then choose **Done** to finalize the changes.
 
-<vimg src="nanome-page/Licenses3.png" />
+   <vimg src="nanome-page/Licenses5.png" alt="The Done button" />
 
-Type in the email address of the person that you want to assign your license to and click on the check mark to confirm. This will send a confirmation email. Once the email is confirmed, this person will gain access to features exclusive to this license.
+</Steps>
 
-## Unassign Licenses
+## Assign licenses {#assign-licenses}
 
-<vimg src="nanome-page/Licenses4.png" />
+<ShotRow src="nanome-page/Licenses3.png" alt="An email address typed into a license row, with the check mark beside it">
 
-Click on the cross button to unassign the license.
+<UiList label="Assign a license">
+<UiItem icon="check" name="Check mark" area="53.2,31.7,2.5,35.0">Confirms the email typed in the row. Nanome emails that person, and the license is theirs once they confirm.</UiItem>
+</UiList>
+
+</ShotRow>
+
+## Unassign licenses {#unassign-licenses}
+
+<ShotRow src="nanome-page/Licenses4.png" alt="The cross button on an assigned license">
+
+<UiList label="Unassign a license">
+<UiItem icon="x" name="Cross button" area="53.0,32.1,2.8,39.6">Takes the license back from that person.</UiItem>
+</UiList>
+
+</ShotRow>

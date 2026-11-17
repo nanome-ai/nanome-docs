@@ -36,6 +36,7 @@ const props = defineProps({
 const route = useRoute()
 const answers = reactive({})
 const ready = ref(false)
+const root = ref(null)
 
 /** Steps whose own `when` condition currently holds. */
 const activeSteps = computed(() =>
@@ -62,9 +63,42 @@ const complete = computed(() =>
 
 const answered = computed(() => Object.keys(answers).some((k) => answers[k]))
 
-function choose(stepId, optionId) {
-  answers[stepId] = answers[stepId] === optionId ? undefined : optionId
+function choose(stepId, optionId, event) {
+  const picked = answers[stepId] !== optionId
+  answers[stepId] = picked ? optionId : undefined
   pruneStranded()
+  if (picked) revealNext(event.currentTarget)
+}
+
+/**
+ * A choice can open the next question or the result below the fold, where the
+ * click looks like it did nothing. Scroll just far enough to show it, but stop
+ * before the clicked option would pass under the nav bar and breadcrumb strip,
+ * so the reader keeps their place. Nothing moves if it's already in view. The
+ * scroll follows the page's scroll-behavior: smooth, or instant when reduced
+ * motion is on (base.css).
+ */
+async function revealNext(option) {
+  await nextTick()
+  if (!root.value) return
+  const steps = root.value.querySelectorAll('.n-chooser__step')
+  const next = complete.value
+    ? root.value.querySelector('.n-chooser__results')
+    : steps[steps.length - 1]
+  const box = next?.getBoundingClientRect()
+  if (!box?.height) return
+
+  const gap = 24
+  const hidden = box.bottom - (window.innerHeight - gap)
+  if (hidden <= 0) return
+
+  const top =
+    (parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0) +
+    (parseFloat(getComputedStyle(option).scrollMarginTop) || 0)
+  const room = option.getBoundingClientRect().top - top - gap
+  const by = Math.min(hidden, room)
+  // A nudge smaller than the gap isn't worth the motion.
+  if (by >= gap) window.scrollBy({ top: by })
 }
 
 /**
@@ -78,8 +112,12 @@ function pruneStranded() {
   }
 }
 
-function reset() {
+// Start over goes away with the answers, so focus moves to the first option
+// instead of dropping to the page.
+async function reset() {
   for (const key of Object.keys(answers)) answers[key] = undefined
+  await nextTick()
+  root.value?.querySelector('.n-choice')?.focus()
 }
 
 // Results read the answers through here rather than through props.
@@ -118,9 +156,13 @@ function stepNumber(step) {
 </script>
 
 <template>
-  <div class="n-chooser">
+  <div ref="root" class="n-chooser" :class="{ 'is-bare': !title }">
     <div class="n-chooser__panel">
-      <div v-if="title || answered" class="n-chooser__head">
+      <div
+        v-if="title || answered"
+        class="n-chooser__head"
+        :class="{ 'is-bare': !title }"
+      >
         <p v-if="title" class="n-chooser__title">{{ title }}</p>
         <button
           v-if="answered"
@@ -156,7 +198,7 @@ function stepNumber(step) {
             class="n-choice"
             :class="{ 'is-selected': answers[step.id] === option.id }"
             :aria-pressed="answers[step.id] === option.id ? 'true' : 'false'"
-            @click="choose(step.id, option.id)"
+            @click="choose(step.id, option.id, $event)"
           >
             <span class="n-choice__text">
               <span class="n-choice__title">
@@ -203,6 +245,7 @@ function stepNumber(step) {
 }
 
 .n-chooser__panel {
+  position: relative;
   padding: 22px 24px;
   border: 1px solid var(--n-border);
   border-radius: var(--n-radius-lg);
@@ -215,6 +258,19 @@ function stepNumber(step) {
   justify-content: space-between;
   gap: 16px;
   margin-bottom: 18px;
+}
+
+/* With no title, "Start over" sits beside the first question, so the first
+   answer doesn't push the options down. The question keeps room for it. */
+.n-chooser__head.is-bare {
+  position: absolute;
+  top: 21px;
+  right: 24px;
+  margin: 0;
+}
+
+.n-chooser.is-bare .n-chooser__step:nth-child(1 of .n-chooser__step) .n-chooser__label {
+  padding-right: 6rem;
 }
 
 .n-chooser__title {
@@ -265,7 +321,7 @@ function stepNumber(step) {
   flex-shrink: 0;
   border-radius: 50%;
   background: var(--n-accent-soft);
-  color: var(--n-accent);
+  color: var(--n-accent-hover);
   font-size: var(--n-text-xs);
   font-weight: 700;
   font-variant-numeric: tabular-nums;
@@ -328,7 +384,7 @@ function stepNumber(step) {
   padding: 1px 7px;
   border-radius: var(--n-radius-pill);
   background: var(--n-accent-soft);
-  color: var(--n-accent);
+  color: var(--n-accent-hover);
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -361,6 +417,11 @@ function stepNumber(step) {
 @media (max-width: 520px) {
   .n-chooser__panel {
     padding: 18px 16px;
+  }
+
+  .n-chooser__head.is-bare {
+    top: 17px;
+    right: 16px;
   }
 
   .n-chooser__options {

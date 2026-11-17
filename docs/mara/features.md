@@ -1,75 +1,76 @@
-# Features
+---
+title: Features
+---
 
-## Chat
+# What MARA can do
 
-This is the primary interface for interacting with MARA. It is a chat interface that can help you analyze and reason about molecular data by constructing workflows of tools to achieve a specific goal.
-<vimg src="mara/mara-chat.png" />
+You ask MARA in plain language, in a [chat](/mara/conversations#chat) or a workspace's [MARA tab](/nanome_web/workspace#mara-tab). It picks the tools that reach your goal, runs them, and returns the results as text, files, tables, plots and 3D structures.
 
- Here are some examples of the types of tasks MARA can accomplish:
-* **Data Retrieval:**
-    - Downloading PDB files for specific proteins.
-    - Retrieving SMILES strings for given compounds.
-    - Extracting protein sequences from PDB or mmCIF files.
-* **Data Conversion:**
-    - Converting PDB files to mmCIF files and vice versa.
-    - Converting SMILES strings to 3D structures.
-    - Converting molecular dynamics (MD) trajectories to PDB files.
-* **Informatics:**
-    - Calculating chemical descriptors for lists of SMILES.
-    - Finding similar compounds in databases like ChEMBL using SMILES strings.
-    - Generating molecular fingerprints from SMILES.
-* **Analysis:**
-    - Aligning reference polymer structures to sets of mobile structures.
-    - Computing solvent accessible surface area (SASA) of proteins.
-    - Calculating RMSD from MD trajectories.
-* **Visualization:**
-    - Drawing 2D structures of molecules from SMILES strings.
-    - Generating 3D conformers for given molecules.
-    - Displaying protein sequences and alignments visually.
+<IconGrid label="MARA features" :cols="3">
+<IconCard icon="messages" title="Tasks" href="#tasks">What you can ask for, by kind of task.</IconCard>
+<IconCard icon="table" title="Tables" href="#tables">Query, filter, plot and export CSV data.</IconCard>
+<IconCard icon="atom" title="Structures" href="#structures">Results in 3D, and sending them to a workspace.</IconCard>
+</IconGrid>
 
-### Chat Input
-<vimg src="mara/chat-input.png" />
-Along with natural language, prompts can be augmented with files, or a SMILES can be drawn using a Ketcher chemical structure editor.
+## <AppIcon name="messages" /> Tasks {#tasks}
 
-- Hexagon button opens the chemical structure drawing tool
+Some of the tasks MARA can do:
 
-- Upload buttons opens a file picker to select files to upload
+<Tabs :labels="['Data retrieval', 'Data conversion', 'Informatics', 'Analysis', 'Visualization']">
+<Tab>
 
-(December 2024) MAE, MOE, and PSE session files can also be uploaded to a chat prompt.
+- Downloading PDB files for specific proteins.
+- Retrieving SMILES strings for given compounds.
+- Extracting protein sequences from PDB or mmCIF files.
 
-## Data Table
-With the MARA data table, you can perform a variety of tasks to analyze and manipulate your data.
+</Tab>
+<Tab>
 
-<vimg src="mara/data-table.png" />
+- Converting PDB files to mmCIF files and vice versa.
+- Converting SMILES strings to 3D structures.
+- Converting molecular dynamics (MD) trajectories to PDB files.
 
-Here are some of the key functionalities:
+</Tab>
+<Tab>
 
-- **Query and Extract Data from Table:** You can ask natural language queries to extract specific data from a CSV file. This is useful for quick insights without manual analysis.
-- **Generate a 2D or 3D Scatter Plot:** You can create scatter plots from your CSV data, which can be either 2D or 3D. This helps in visualizing the relationships between different data points.
-- **Export Data to CSV File:** You can write data into a CSV file, creating or overwriting it as needed. This is ideal for exporting processed or analyzed data into a CSV format.
-- **Filter and Extract CSV Data Based on a Query:** You can filter and extract specific rows from a CSV file based on a query, allowing you to focus on the most relevant data.
-- **Show Distributions of Numerical Data:** You can visualize the distribution of numerical data from a CSV file, which can help in understanding the spread and central tendencies of your data.
-- **Understand CSV File Content:** You can get a summary or overview of the contents of a CSV file, which can be useful for initial data exploration.
+- Calculating chemical descriptors for lists of SMILES.
+- Finding similar compounds in databases like ChEMBL using SMILES strings.
+- Generating molecular fingerprints from SMILES.
 
-These tools provide a comprehensive suite for handling and analyzing data tables, making it easier to derive meaningful insights from your datasets.
+</Tab>
+<Tab>
 
-### Creating Tables
-You can create a table by uploading a CSV file through the Chat input, or by dragging and dropping a file into the interface.
-<vimg src="mara/drag-drop.png" />
-The drag and drop interface contains two drop zones; the left side will upload the file to the chat, and the right side will upload the file and create a new table using that data.
+- Aligning sets of mobile structures to a reference polymer structure.
+- Computing solvent accessible surface area (SASA) of proteins.
+- Calculating RMSD from MD trajectories.
 
-Supported file types for tables: `.csv`, `.xlsx`
-## Molecular Visualization
-MARA allows you to visualize structures in 3D using Molstar, and update the representation using natural language.
+</Tab>
+<Tab>
 
-<vimg src="mara/mol-viz.png" />
+- Drawing 2D structures of molecules from SMILES strings.
+- Generating 3D conformers for given molecules.
+- Displaying protein sequences and alignments visually.
 
-Example Prompts:
-* Show all residues in chain D as ball and stick
-* Color residues 101-207 blue
-* Hide waters
-* Spin the molecule
-* Focus on ligand 50D
-* Download as [molx | stl | obj | glb | usdz]
-* Highlight residues 149-150 in green
-* Set style to illustrative
+</Tab>
+</Tabs>
+
+Besides plain language, a message can carry files, a structure drawn with <Btn icon="hexagon">Draw SMILES</Btn>, or a specific tool or workflow to run. MAE, MOE and PSE session files can be attached too. The 4 [example chats](/mara/conversations#examples) show complete tasks from start to finish.
+
+## <AppIcon name="table" /> Tables {#tables}
+
+With a CSV file in the chat, you can ask MARA to:
+
+- Query and extract specific data.
+- Make a 2D or 3D scatter plot, to see how data points relate.
+- Filter rows that match a condition.
+- Show the distribution of a numerical column, its spread and central tendency.
+- Summarize the file's contents, for a first look at the data.
+- Write the results to a new CSV file, or overwrite one, to export them.
+
+Tables for the chat live in the **Tables** section of the [Files panel](/mara/conversations#files-panel). A table comes from a CSV or SDF file dropped there, from Open as Data Table in a file's menu, or from MARA when asked in the chat.
+
+## <AppIcon name="atom" /> Structures {#structures}
+
+Structures that MARA finds or makes open in the chat's [3D viewer](/mara/conversations#3d-viewer), which steps through multi-model files such as docking poses. To keep working on them, <Btn icon="file-arrow-right">Add to Workspace</Btn> in the Files panel loads them into a Nanome workspace, where you can open them in Nanome Web or Nanome XR.
+
+Inside a workspace, the [MARA tab](/nanome_web/workspace#mara-tab) changes the workspace's representations when you ask in plain language.

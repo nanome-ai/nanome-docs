@@ -42,6 +42,8 @@ onBeforeUnmount(() => clearTimeout(timer))
       <button type="button" class="n-copyblock__button" @click="copy">
         {{ copied ? 'Copied' : 'Copy' }}
       </button>
+      <!-- The button's new label isn't read out, so a screen reader hears this. -->
+      <span class="n-copyblock__status" role="status">{{ copied ? 'Copied' : '' }}</span>
     </div>
     <pre class="n-copyblock__body"><code>{{ body }}</code></pre>
   </div>
@@ -89,6 +91,15 @@ onBeforeUnmount(() => clearTimeout(timer))
 .n-copyblock__button:hover {
   border-color: var(--n-accent);
   color: var(--n-text);
+}
+
+.n-copyblock__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .n-copyblock__body {

@@ -95,6 +95,7 @@ const wholeCard = computed(() => !!props.href && !props.cta)
   font-size: var(--n-text-base);
   font-weight: 600;
   line-height: 1.4;
+  text-wrap: balance;
 }
 
 .n-card__meta {

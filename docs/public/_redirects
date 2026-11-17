@@ -4,17 +4,39 @@
 /nanome_v2/mainmenus       /nanome_v2/mainpanel  301
 /nanome_v2/mainmenus.html  /nanome_v2/mainpanel  301
 
+# MARA's Navigation page described the stand-alone MARA app. Its sections
+# (Tools, Integrations, Workflows, Knowledge) are now on the Tools page.
+/mara/navigation           /mara/tools           301
+/mara/navigation.html      /mara/tools           301
+
+# MARA's Deployment page was folded into Technical Details.
+/mara/deployment           /mara/technical       301
+/mara/deployment.html      /mara/technical       301
+
+# Comments & Annotations was merged into the Comments section of the Tools Panel
+# page (2.7.1 docs refresh). The host never sees an old link's #anchor, so every
+# old link lands on the section's heading.
+/nanome_v2/comments       /nanome_v2/toolspanel#comments  301
+/nanome_v2/comments.html  /nanome_v2/toolspanel#comments  301
+
 # Nanome Classic pages moved under /nanome1x/ when the v2 and MARA sections were
 # added (#91). These send the old docs.nanome.ai paths, which older links still
 # use, to where the pages live now. Anchors survive the redirect.
 /plugins/nanomeplugins       /nanome1x/plugins/overview    301
 /plugins/nanomeplugins.html  /nanome1x/plugins/overview    301
-/features                    /nanome1x/features            301
-/features.html               /nanome1x/features            301
-/navigating                  /nanome1x/navigating          301
-/navigating.html             /nanome1x/navigating          301
+/features                    /nanome1x/overview            301
+/features.html               /nanome1x/overview            301
+/navigating                  /nanome1x/navigation/lobby    301
+/navigating.html             /nanome1x/navigation/lobby    301
 /navigation/*                /nanome1x/navigation/:splat   301
 /plugins/*                   /nanome1x/plugins/:splat      301
 /macros/*                    /nanome1x/macros/:splat       301
 /howto/*                     /nanome1x/howto/:splat        301
 /integration/*               /nanome1x/integration/:splat  301
+
+# The legacy Navigating Nanome and Key Features pages were retired (2.7.1 docs
+# refresh). The Navigation pages and the Classic overview cover the same ground.
+/nanome1x/navigating         /nanome1x/navigation/lobby    301
+/nanome1x/navigating.html    /nanome1x/navigation/lobby    301
+/nanome1x/features           /nanome1x/overview            301
+/nanome1x/features.html      /nanome1x/overview            301
