@@ -276,7 +276,7 @@ Entries with several models, such as a multi-MODEL PDB, and entries with a traje
 </ShotRow>
 
 - Playback shows only for you and the people following you.
-- Speeds of ×5 and above may run slowly on standalone headsets.
+- Speeds of ×5 and above may run slowly on standalone headsets, depending on how much is shown.
 - While it plays, that entry's Surface switch is grayed out.
 
 Each speed steps that many models or frames a second, so ×1 plays 1 a second and ×20 plays 20. A model or frame that isn't ready yet holds playback until it is. The copy below plays 1D3Z's 10 NMR models at each speed.
